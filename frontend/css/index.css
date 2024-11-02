@@ -1,0 +1,53 @@
+body {
+  background-color:#f8f9fa; /* Light background */
+}
+.image-container {
+  position: relative;
+  text-align: center; /* Center text */
+}
+.img {
+  height: 80vh; /* Set the height to 80% of the viewport */
+  width: 100%; /* Full width */
+  object-fit: cover; /* Cover the container without distortion */
+}
+.carousel-caption {
+  position: absolute; /* Position the caption absolutely within the container */
+  bottom: 20px; /* Position from the bottom */
+  left: 50%;
+  width: 50%; /* Center horizontally */
+  color: white; /* Text color */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 10px; /* Some padding for better readability */
+  border-radius: 5px; /* Rounded corners for the background */
+  text-align: center;
+}
+.carousel-caption h5 {
+  font-size: 2rem; /* Adjust the size as needed */
+}
+.carousel-caption p {
+  font-size: 1.70rem; /* Adjust the size as needed */
+}
+.navbar-nav{
+  margin-left: auto;
+  margin-right: 50px;
+}
+.nav-link {
+  position: relative; /* Positioning context for the pseudo-element */
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Position at the bottom of the link */
+  height: 2px; /* Adjust thickness of the underline */
+  background-color: white; /* Change to your desired color */
+  transform: scaleX(0); /* Start scaled down to 0 */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+.nav-link:hover::after {
+  transform: scaleX(1); /* Scale to full width on hover */
+}
+.logo-margin{
+  margin-left: 30px; /* Move logo 30px to the right */
+}
