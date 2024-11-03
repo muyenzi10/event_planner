@@ -28,7 +28,7 @@ video {
 .custom-caption {
     position: absolute;
     bottom: 100px;
-    left: 50%;
+    left: 300px;
     transform: translateX(-50%);
     text-align: center;
     padding: 20px;
