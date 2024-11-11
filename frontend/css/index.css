@@ -56,6 +56,11 @@ body {
   border: 1px solid #ddd; /* Optional: adds a border for better visibility */
   border-radius: 5px; /* Optional: rounds the corners */
   margin-bottom: 50px;
+  transition: all 0.3s;
+
+}
+.card:hover{
+  transform: scale(1.1);
 }
 .image-container img {
   height: 80vh; /* Adjust as needed */
@@ -68,15 +73,34 @@ body {
   width: 100%; /* Full width */
   object-fit: cover; /* Maintains aspect ratio while covering the area */
 }
-/* Styling for the card buttons */
+
+
 .card .btn {
-  margin-top: auto; /* Push the button towards the bottom */
-  padding: 12px 20px; /* Add more padding for larger button size */
-  font-size: 1rem; /* Increase font size for the button */
-  border-radius: 5px; /* Ensure the button has rounded corners */
-  text-align: center; /* Center the text in the button */
-  margin-bottom: 20px; /* Add some space between the button and the bottom of the card */
+  margin-top: auto;               /* Push the button towards the bottom */
+  padding: 8px 0px;              /* Reduce padding to make the button smaller */
+  font-size: 0.875rem;            /* Reduce font size */
+  border-radius: 5px;             /* Smaller border radius for a more compact look */
+  text-align: center;             /* Center the text in the button */
+  margin-bottom: 20px;            /* Add some space between the button and the bottom of the card */
+  background-color: transparent; /* Make the background transparent */
+  border: 2px solid #007bff;     /* Border color */
+  color: #1b4ef5;                /* Text color to match border */
+  transition: all 0.3s ease;      /* Smooth transition for hover effect */
 }
+
+/* Optional: Hover effect */
+.card .btn:hover {
+  background-color: #007bff;     /* Change background to blue on hover */
+  color: white;                  /* Change text color to white on hover */
+  border-color: #0056b3;         /* Change border color on hover */
+}
+/* Optional: Hover effect */
+.card .btn:hover {
+  background-color: #007bff;     /* Change background to blue on hover */
+  color: white;                  /* Change text color to white on hover */
+  border-color: #0056b3;         /* Change border color on hover */
+}
+
 
 /* For the card container (body area around the button) */
 .card-body {
@@ -95,7 +119,8 @@ body {
   font-weight: bold;                   /* Bold text for emphasis */
   color: #333;                         /* Dark color for text */
   text-align: center;
-  margin: 20px;                   /* Remove padding */
+  margin-top: 20px;
+  margin-bottom: 40px;                  /* Remove padding */    
 }
 
 
