@@ -51,3 +51,53 @@ body {
 .logo-margin{
   margin-left: 30px; /* Move logo 30px to the right */
 }
+.card {
+  background-color:black; /* Change this to your desired background color */
+  border: 1px solid #ddd; /* Optional: adds a border for better visibility */
+  border-radius: 5px; /* Optional: rounds the corners */
+  margin-bottom: 50px;
+}
+.image-container img {
+  height: 80vh; /* Adjust as needed */
+  width: 100%; /* Full width */
+  object-fit: cover; /* Maintains aspect ratio while covering the area */
+}
+
+.card img {
+  height: 400px; /* Set a fixed height */
+  width: 100%; /* Full width */
+  object-fit: cover; /* Maintains aspect ratio while covering the area */
+}
+/* Styling for the card buttons */
+.card .btn {
+  margin-top: auto; /* Push the button towards the bottom */
+  padding: 12px 20px; /* Add more padding for larger button size */
+  font-size: 1rem; /* Increase font size for the button */
+  border-radius: 5px; /* Ensure the button has rounded corners */
+  text-align: center; /* Center the text in the button */
+  margin-bottom: 20px; /* Add some space between the button and the bottom of the card */
+}
+
+/* For the card container (body area around the button) */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensure elements are spaced out */
+  padding: 20px; /* Ensure card body has sufficient padding */
+  height: 100%; /* Make sure the body area spans the full height of the card */
+}
+.title-containe{
+  text-align: 30px;
+}
+.title-container h1 {
+  font-size: 36px;                     /* Large font size for the heading */
+  font-family: 'Arial', sans-serif;     /* Modern sans-serif font */
+  font-weight: bold;                   /* Bold text for emphasis */
+  color: #333;                         /* Dark color for text */
+  text-align: center;
+  margin: 20px;                   /* Remove padding */
+}
+
+
+
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resize Example</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .image-container {
+            position: relative;
+            width: 100%; /* Adjust this as needed */
+            height: 300px; /* Set a fixed height for the image container */
+            overflow: hidden; /* Hide overflow to maintain aspect ratio */
+        }
+        .image-container img {
+            width: 100%;
+            height: auto; /* Keep aspect ratio */
+            object-fit: cover; /* Crop the image to fill the container */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the image */
+        }
+        .card img {
+            height: 200px; /* Set a fixed height for card images */
+            object-fit: cover; /* Crop to fill */
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container mb-4">
+        <img src="/assethome/5.jpg" alt="Welcome to Wedding Planner" class="img-fluid">
+        <div class="carousel-caption d-block">
+            <h5>Welcome to Wedding Planner</h5>
+            <p>We Already Be With You.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <img src="/assethome/6.jpg" class="card-img-top" alt="Card image 1">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title mb-2">Card title</h5>
+                        <p class="card-text flex-grow-1">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary mt-2">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <img src="/assethome/aime.jpg" class="card-img-top" alt="Card image 2">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <img src="/assethome/mc.jpg" class="card-img-top" alt="Card image 3">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
