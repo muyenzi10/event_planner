@@ -120,7 +120,18 @@ body {
   color: #333;                         /* Dark color for text */
   text-align: center;
   margin-top: 20px;
-  margin-bottom: 40px;                  /* Remove padding */    
+  margin-bottom: 40px;                 /* Space below the heading */
+  position: relative;                 /* Remove padding */    
+}
+.title-container h1::after {
+  content: "";                          /* Empty content for the pseudo-element */
+  position: absolute;                   /* Position it relative to the h1 */
+  left: 50%;                             /* Start the underline from the center of the h1 */
+  bottom: 0;                            /* Place it at the bottom of the h1 */
+  width: 4%;                            /* Set the width of the underline (adjust as needed) */
+  height: 4px;                          /* Set the thickness of the underline */
+  background-color: #ff0000;            /* Set the color of the underline */
+  transform: translateX(-113%);           /* Move the underline back by 50% of its own width to center it */
 }
 
 
