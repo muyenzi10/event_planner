@@ -1,0 +1,52 @@
+
+        /* Custom Styling */
+        #body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .gallery-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        .gallery-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            border-radius: 10px;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            padding: 2rem 1rem;
+        }
+
+        .modal-body img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        /* Card title text */
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Add some margin between card text */
+        .card-text {
+            font-size: 0.95rem;
+            color: #555;
+        }
+    

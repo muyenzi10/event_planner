@@ -1,0 +1,21 @@
+.navbar-nav{
+    margin-left: auto;
+    margin-right: 50px;
+  }
+  .nav-link {
+    position: relative; /* Positioning context for the pseudo-element */
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0; /* Position at the bottom of the link */
+    height: 2px; /* Adjust thickness of the underline */
+    background-color: white; /* Change to your desired color */
+    transform: scaleX(0); /* Start scaled down to 0 */
+    transition: transform 0.3s ease; /* Smooth transition */
+  }
+  .nav-link:hover::after {
+    transform: scaleX(1); /* Scale to full width on hover */
+  }
