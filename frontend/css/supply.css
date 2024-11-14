@@ -49,4 +49,83 @@
             font-size: 0.95rem;
             color: #555;
         }
-    
+/* General label styling */
+/* General label styling */
+/* Label styling for all form fields */
+label.form-label {
+    font-weight: 600;  /* Semi-bold font for clarity */
+    font-size: 1.1rem;  /* Slightly larger font size for better readability */
+    color: #444;      /* Darker gray color for better contrast */
+    margin-bottom: 8px;  /* Space below the labels */
+    display: block;  /* Block display for better alignment */
+}
+
+/* Form input fields */
+.form-control {
+    border-radius: 6px;  /* Slightly more rounded corners for a modern look */
+    padding: 12px 14px;   /* Increased padding for better spacing inside the fields */
+    border: 1px solid #ccc; /* Light border with a more neutral color */
+    font-size: 1.05rem;  /* Slightly larger font size for better readability */
+    width: 100%;         /* Full width for input fields */
+    margin-bottom: 20px; /* Increased space between input fields */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for focus state */
+}
+
+/* Focus state for inputs */
+.form-control:focus {
+    border-color: #007bff;  /* Blue border on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);  /* Subtle blue glow around the input */
+    outline: none;          /* Remove default outline */
+}
+
+/* Styling for the select dropdown */
+select.form-control {
+    background-color: #fafafa; /* Light background color for the select */
+    cursor: pointer;          /* Change cursor to pointer for dropdowns */
+}
+
+/* Label styling for the 'Supplier Service' dropdown */
+label[for="supplierService"] {
+    font-style: italic;   /* Italic font style for differentiation */
+    color: #007bff;       /* Blue color to make it stand out */
+}
+
+/* Textarea label styling */
+label[for="supplierDescription"] {
+    color: #28a745;  /* Green color for the description label */
+    font-weight: normal;  /* Regular font weight for the description */
+}
+
+/* Button Styling */
+button[type="submit"] {
+    background-color: #007bff;  /* Blue background for the button */
+    color: white;               /* White text color */
+    padding: 14px 24px;         /* Increased padding for a larger button */
+    font-size: 1.1rem;          /* Larger font size for buttons */
+    border: none;               /* Remove border */
+    border-radius: 6px;         /* Rounded corners for the button */
+    width: 50px;                /* Button takes full width */
+    cursor: pointer;           /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition on hover */
+}
+
+/* Button hover effect */
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px);  /* Slight lift effect on hover */
+}
+
+/* Responsive design for small screens */
+@media (max-width: 768px) {
+    /* Adjust label font size and padding for smaller screens */
+    label.form-label {
+        font-size: 1rem;  /* Slightly smaller font size */
+    }
+    .form-control {
+        font-size: 1rem; /* Adjust font size for inputs */
+        padding: 10px 12px; /* Adjust padding */
+    }
+    button[type="submit"] {
+        padding: 12px 20px; /* Adjust button padding */
+    }
+}
