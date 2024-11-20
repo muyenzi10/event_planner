@@ -1,15 +1,7 @@
-/* General body styles */
-
-/* General body styles */
-body {
-    margin: 0; /* Remove default margin */
-    overflow-x: hidden; /* Prevent horizontal scroll */
-}
-
-/* Navbar styles */
 .navbar {
-    margin-bottom: 0; /* No margin below the navbar */
+    margin-bottom: 0;
 }
+
 
 /* Video container styles */
 .video-container {
