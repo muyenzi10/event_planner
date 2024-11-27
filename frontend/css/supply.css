@@ -1,9 +1,4 @@
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+
   
   /* Body and General Styles */
   body {
@@ -110,11 +105,7 @@
     border-color: #0056b3;
   }
   
-  .w-100 {
-    width: 100% !important;
-  }
-  
-  
+
   
 
 /* Body and General Styles */
@@ -176,7 +167,8 @@ textarea {
     border-color: #0056b3;
 }
 
-.w-100 {
-    width: 100% !important;
-}
+.p{
+  position: relative;
+  bottom: 30px;
 
+}
