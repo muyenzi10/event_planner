@@ -1,118 +1,93 @@
-/* Classic Booking Form Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+
+/* Video container styles */
+.video-container {
+    width: 100%; /* Full width */
+    height: calc(100vh - 56px); /* Full height minus navbar height (56px is standard height for Bootstrap navbar) */
+    overflow: hidden; /* Hide overflow */
+}
+
+/* Video styles */
+video {
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    object-fit: cover; /* Cover the container without distortion */
+}
+/* Styling for Video Background */
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;  /* Ensures the video covers the entire background */
+    z-index: -1;        /* Keeps the video behind other content */
+    opacity: 0.6;       /* Optional: Reduces video opacity to improve readability */
+}
+
+/* Booking Form Styling */
+.container {
+    position: relative;
+    z-index: 1; /* Ensure form appears above the video */
+    padding: 60px 15px;  /* Add padding around the form */
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.8);  /* White background with opacity for the form */
+    border-radius: 10px;  /* Rounded corners for the form container */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Add some shadow for depth */
 }
 
 h2 {
-    font-size: 28px;
-    color: #2c3e50;
     text-align: center;
+    font-size: 2rem;
+    color: #333;
     margin-bottom: 30px;
 }
 
-.form-label {
+form .form-label {
     font-weight: bold;
-    color: #34495e;
+    color: #333;
 }
 
-.form-control {
-    border: 1px solid #ccc;
+form .form-control {
+    border-radius: 8px;
     padding: 12px;
-    font-size: 16px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    width: 100%;
-    box-sizing: border-box;
+    font-size: 1rem;
+    border: 1px solid #ccc;
 }
 
-.form-control:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-}
-
-textarea.form-control {
-    resize: vertical;
-}
-
-button[type="submit"] {
-    background-color: #3498db;
+form .btn {
+    background-color: #007bff;
+    color: white;
     border: none;
-    padding: 12px 20px;
-    font-size: 16px;
+    padding: 12px 25px;
     border-radius: 5px;
-    cursor: pointer;
-    color: #fff;
+    font-size: 1.1rem;
     transition: background-color 0.3s ease;
-    width: 100%;
 }
 
-button[type="submit"]:hover {
-    background-color: #2980b9;
+form .btn:hover {
+    background-color: #0056b3;  /* Darker blue on hover */
 }
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.col-md-6 {
-    width: 48%;
-    box-sizing: border-box;
-}
-
-@media (max-width: 767px) {
-    .col-md-6 {
-        width: 100%;
-    }
-}
-
-.mb-3 {
+form .mb-3 {
     margin-bottom: 1.5rem;
 }
 
-/* Optional: Styling for inputs to make them cleaner and sharper */
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="date"],
-select {
-    border: 1px solid #ddd;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    width: 100%;
+/* Add responsiveness for small screens */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    form .btn {
+        font-size: 1rem;
+    }
+
+    form .form-control {
+        font-size: 0.9rem;
+    }
 }
-
-input[type="number"] {
-    border: 1px solid #ddd;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    width: 100%;
-}
-
-select {
-    border: 1px solid #ddd;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    width: 100%;
-}
-
-textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-    border: 1px solid #ddd;
-}
-
-input, select, textarea {
-    margin-bottom: 1rem;
-}
-
-
