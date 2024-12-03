@@ -1,182 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supplier Registration - Wedding Planner</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/frontend/css/supply.css">
-    <link rel="stylesheet" href="/frontend/css/footer.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand logo-margin" href="#">Logo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/frontend/home_packages/home.htm">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Service</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/frontend/home_packages/index.html">Packages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/frontend/supliers/suply.html">Suppliers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container py-5">
-        <!-- Welcome Message -->
-        <div class="row">
-          <div class="col-12">
-            <h2 class="text-center text-primary mb-4">Welcome Wedding Suppliers!</h2>
-            <p class="lead text-center">
-              We're thrilled that you're interested in becoming a part of our exclusive network of wedding service providers. Our platform is designed to help connect trusted suppliers with couples planning their dream weddings. Whether you specialize in catering, photography, floral arrangements, or other wedding services, we want to showcase your expertise and help you grow your business.
-            </p>
+<!-- About Section -->
+<section id="about" class="container my-5">
+  <div class="row align-items-center">
+      <!-- Text Content -->
+      <div class="col-lg-6">
+          <h2 class="display-4 text-center text-lg-start mb-4">Your Dream Wedding Awaits</h2>
+          <p class="lead text-center text-lg-start mb-3">
+              At [Your Wedding Planner Name], we specialize in creating beautiful, personalized weddings that reflect your unique love story. Our team is here to help you design a day that's as beautiful and meaningful as your relationship.
+          </p>
+          <p class="text-center text-lg-start mb-3">
+              With years of experience in event planning, we know how to handle every detail, from finding the perfect venue to coordinating with trusted vendors. We work closely with you every step of the way, ensuring your wedding day is as seamless and memorable as possible.
+          </p>
+          <p class="text-center text-lg-start mb-4">
+              Let us turn your wedding dreams into reality. Contact us today, and let's start planning your perfect day!
+          </p>
+          <div class="text-center text-lg-start mt-4">
+              <a href="#contact" class="btn btn-primary btn-lg shadow-sm">Get Started</a>
           </div>
-        </div>
-        </div>
-
-    <!-- Supplier Registration Form -->
-    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-        <div class="row w-100 justify-content-center">
-            <div class="col-md-8">
-                <h4 class="text-center">Supplier Registration Form</h4>
-                <form>
-                    <div class="mb-3">
-                        <label for="firstName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="lastName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="contactEmail" class="form-label">Contact Email</label>
-                        <input type="email" class="form-control" id="contactEmail" placeholder="Email Address" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="contactNumber" class="form-label">Contact Number</label>
-                        <input type="text" class="form-control" id="contactNumber" placeholder="Phone Number" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="location" class="form-label">Location</label>
-                        <input type="text" class="form-control" id="location" placeholder="Location" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="serviceCategory" class="form-label">Service Category</label>
-                        <select class="form-select" id="serviceCategory" required>
-                            <option value="" disabled selected>Select Service Category</option>
-                            <option value="1">Catering</option>
-                            <option value="2">Photography</option>
-                            <option value="3">Venue</option>
-                            <option value="4">Florists</option>
-                            <option value="5">Wedding Planner</option>
-                            <option value="6">Decor</option>
-                            <option value="7">Cars</option>
-                            <option value="8">Invitation Cards</option>
-                            <option value="9">Beauty</option>
-                            <option value="10">Style</option>
-                            <option value="11">M.C</option>
-                            <option value="12">Sound & Light</option>
-                            <option value="13">Entertainment</option>
-                            <option value="14">Other</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="yearsExperience" class="form-label">Years of Experience</label>
-                        <input type="number" class="form-control" id="yearsExperience" placeholder="Enter Years of Experience" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="portfolioLink" class="form-label">Portfolio/Instagram Profile Link</label>
-                        <input type="url" class="form-control" id="portfolioLink" placeholder="Instagram or Portfolio Link">
-                    </div>
-                    <div class="mb-3">
-                        <label for="shortDescription" class="form-label">Short Description or Message</label>
-                        <textarea class="form-control" id="shortDescription" rows="3" placeholder="Tell us about your services" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Register as Supplier</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-<!-- Footer -->
-<footer class="bg-dark text-light py-4 footer-animated">
-    <div class="container-sm py-4">
-      <div class="row">
-        <div class="col-md-4">
-          <h5>About Us</h5>
-          <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
-        </div>
-        <div class="col-md-4">
-          <h5>Quick Links</h5>
-          <ul class="list-unstyled footer-content">
-            <li><a href="home.htm" class="text-light">Home</a></li>
-            <li><a href="#" class="text-light">About</a></li>
-            <li><a href="#" class="text-light">Services</a></li>
-            <li><a href="index.html" class="text-light">Packages</a></li>
-            <li><a href="#" class="text-light">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h5>Contact Us</h5>
-          <p class="footer-content">Email: info@eventplanner.com</p>
-          <p class="footer-content">Phone: +250785300707</p>
-          <p class="footer-content">Address: 123 Event St, City, Country</p>
-        </div>
       </div>
-      <div class="row">
-        <div class="col text-center mt-4">
-          <ul class="list-inline footer-content">
-            <li class="list-inline-item">
-              <a href="#" class="text-light social-icon"><i class="fab fa-facebook"></i></a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#" class="text-light social-icon"><i class="fab fa-twitter"></i></a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://www.instagram.com/muyenzi_jacques/" class="text-light social-icon"><i class="fab fa-instagram"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col text-center mt-3">
-          <p>&copy; 2024 Event Planner. All rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-    crossorigin="anonymous"></script>
-</body>
-</html>
+      <!-- Image Content -->
+      <div class="col-lg-6 mt-4 mt-lg-0">
+          <img src="/assethome/1.jpg" alt="Wedding Planner Team" class="img-fluid rounded shadow-lg">
+      </div>
+  </div>
+
+  <!-- Our Values Section -->
+  <div class="row my-5">
+      <div class="col-lg-12 text-center">
+          <h3 class="display-5 mb-4">Our Values</h3>
+          <p class="lead mb-4">
+              We believe in delivering a wedding experience that's as unique as you are. Our approach is built around the following core values:
+          </p>
+          <div class="row">
+              <div class="col-md-4 mb-4">
+                  <h5><i class="fas fa-heart mb-2"></i> Passion</h5>
+                  <p>We love what we do and pour our hearts into every wedding we plan. Your special day is our priority, and we take pride in making it perfect.</p>
+              </div>
+              <div class="col-md-4 mb-4">
+                  <h5><i class="fas fa-gift mb-2"></i> Attention to Detail</h5>
+                  <p>No detail is too small. From the flowers to the music, we make sure every part of your wedding aligns with your vision.</p>
+              </div>
+              <div class="col-md-4 mb-4">
+                  <h5><i class="fas fa-users mb-2"></i> Collaboration</h5>
+                  <p>We work closely with you, your family, and trusted vendors to ensure everything goes smoothly on the big day. Your vision is our blueprint.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Team Introduction Section -->
+  <div class="row my-5">
+      <div class="col-lg-12 text-center">
+          <h3 class="display-5 mb-4">Meet Our Team</h3>
+          <p class="lead mb-4">
+              We are a passionate team of planners, designers, and coordinators who specialize in crafting memorable weddings. Each of us brings something unique to the table to make your day special.
+          </p>
+          <div class="row">
+              <!-- Team Member 1 -->
+              <div class="col-md-4 mb-4">
+                  <div class="card">
+                      <img src="/assethome/team1.jpg" class="card-img-top" alt="Team Member 1">
+                      <div class="card-body text-center">
+                          <h5 class="card-title">Emma Smith</h5>
+                          <p class="card-text">Lead Planner</p>
+                      </div>
+                  </div>
+              </div>
+              <!-- Team Member 2 -->
+              <div class="col-md-4 mb-4">
+                  <div class="card">
+                      <img src="/assethome/team2.jpg" class="card-img-top" alt="Team Member 2">
+                      <div class="card-body text-center">
+                          <h5 class="card-title">John Doe</h5>
+                          <p class="card-text">Design Expert</p>
+                      </div>
+                  </div>
+              </div>
+              <!-- Team Member 3 -->
+              <div class="col-md-4 mb-4">
+                  <div class="card">
+                      <img src="/assethome/team3.jpg" class="card-img-top" alt="Team Member 3">
+                      <div class="card-body text-center">
+                          <h5 class="card-title">Sophia Lee</h5>
+                          <p class="card-text">Coordinator</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <div class="row my-5">
+      <div class="col-lg-12 text-center">
+          <h3 class="display-5 mb-4">What Our Clients Say</h3>
+          <p class="lead mb-4">Here's what our past clients have said about working with us!</p>
+          <div class="row">
+              <!-- Testimonial 1 -->
+              <div class="col-md-4 mb-4">
+                  <div class="card">
+                      <div class="card-body">
+                          <p class="card-text">"The team at [Your Wedding Planner Name] exceeded our expectations! Every detail was perfect, and they made our wedding day stress-free and unforgettable!"</p>
+                          <footer class="blockquote-footer">Anna & Mark</footer>
+                      </div>
+                  </div>
+              </div>
+              <!-- Testimonial 2 -->
+              <div class="col-md-4 mb-4">
+                  <div class="card">
+                      <div class="card-body">
+                          <p class="card-text">"They really listened to what we wanted, and the result was a wedding that truly reflected us. Thank you for making our dream wedding come true!"</p>
+                          <footer class="blockquote-footer">Lucy & James</footer>
+                      </div>
+                  </div>
+              </div>
+              <!-- Testimonial 3 -->
+              <div class="col-md-4 mb-4">
+                  <div class="card">
+                      <div class="card-body">
+                          <p class="card-text">"From the first consultation to the final dance, the team was with us every step of the way. They made our wedding day magical!"</p>
+                          <footer class="blockquote-footer">Sarah & Tom</footer>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
