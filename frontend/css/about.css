@@ -1,0 +1,90 @@
+/* 1. Fade-In Animation for About Section */
+#about {
+    opacity: 0;
+    animation: fadeIn 5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 2;
+    }
+}
+
+/* 2. Fade-In Effect for Text Content */
+#about .col-lg-6 {
+    opacity: 0;
+    animation: fadeInText 5s forwards;
+}
+
+@keyframes fadeInText {
+    to {
+        opacity: 2;
+    }
+}
+
+/* 3. Fade-In Animation for Image Content */
+#about .col-lg-6 img {
+    opacity: 0;
+    animation: fadeInImage 5s forwards;
+}
+
+@keyframes fadeInImage {
+    to {
+        opacity: 2;
+    }
+}
+
+/* 4. Slide-In Effect for "Our Values" Section */
+#about .row.my-5 {
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInFromLeft 1s forwards;
+}
+
+@keyframes slideInFromLeft {
+    to {
+        opacity: 2;
+        transform: translateX(0);
+    }
+}
+
+/* 5. Slide-In for Individual Values */
+#about .row .col-md-4 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 5s forwards;
+}
+
+#about .row .col-md-4:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+#about .row .col-md-4:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+#about .row .col-md-4:nth-child(3) {
+    animation-delay: 0.7s;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 6. Hover Effects for Icons */
+#about .fa-heart, #about .fa-gift, #about .fa-users {
+    transition: transform 0.3s ease-in-out;
+}
+
+#about .fa-heart:hover,
+#about .fa-gift:hover,
+#about .fa-users:hover {
+    transform: scale(1.2);
+}
