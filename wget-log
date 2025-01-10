@@ -1,0 +1,24 @@
+Retrying.
+
+--2025-01-09 23:04:18--  (try:15)  http://download.utorrent.com/linux/utorrent-server-3.3-ubuntu-32.tar.gz
+Connecting to download.utorrent.com (download.utorrent.com)|67.215.233.132|:80... failed: Connection timed out.
+Retrying.
+
+--2025-01-09 23:06:41--  (try:16)  http://download.utorrent.com/linux/utorrent-server-3.3-ubuntu-32.tar.gz
+Connecting to download.utorrent.com (download.utorrent.com)|67.215.233.132|:80... failed: Connection timed out.
+Retrying.
+
+--2025-01-09 23:09:04--  (try:17)  http://download.utorrent.com/linux/utorrent-server-3.3-ubuntu-32.tar.gz
+Connecting to download.utorrent.com (download.utorrent.com)|67.215.233.132|:80... failed: Connection timed out.
+Retrying.
+
+--2025-01-09 23:11:28--  (try:18)  http://download.utorrent.com/linux/utorrent-server-3.3-ubuntu-32.tar.gz
+Connecting to download.utorrent.com (download.utorrent.com)|67.215.233.132|:80... failed: Connection timed out.
+Retrying.
+
+--2025-01-09 23:13:51--  (try:19)  http://download.utorrent.com/linux/utorrent-server-3.3-ubuntu-32.tar.gz
+Connecting to download.utorrent.com (download.utorrent.com)|67.215.233.132|:80... failed: Connection timed out.
+Retrying.
+
+--2025-01-09 23:16:15--  (try:20)  http://download.utorrent.com/linux/utorrent-server-3.3-ubuntu-32.tar.gz
+Connecting to download.utorrent.com (download.utorrent.com)|67.215.233.132|:80... 
