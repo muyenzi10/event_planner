@@ -26,8 +26,8 @@
 /* Style for the anchor links */
 .item a {
   text-decoration: none; /* Remove default underline */
-  font-size: 18px; /* Set a good font size */
-  color: #000; /* Set the text color */
+  font-size: 22px; /* Set a good font size */
+  color: orangered; /* Set the text color */
   position: relative; /* Required for the pseudo-element */
   transition: color 0.3s ease; /* Smooth transition on color change */
 }
@@ -51,5 +51,5 @@
 
 /* Change text color on hover */
 .item a:hover {
-  color: #007BFF; /* Change text color when hovered */
+  color: #ff1e00; /* Change text color when hovered */
 }
