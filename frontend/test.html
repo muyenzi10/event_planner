@@ -1,41 +1,56 @@
-.item {
-    display: flex; /* Align items in a row */
-    margin-left: 70%; /* Align text 50px from the left */
-    gap: 20px; /* Space between links */
-    position: relative; /* Required for positioning */
-    /* Position the container 10px from the top */
-     /* Ensure it stays above any overlapping content */
-    padding-bottom: 40px; /* Added padding to ensure content isn't hidden */
-  }
-  
-  /* Style for the anchor links */
-  .item a {
-    text-decoration: none; /* Remove default underline */
-    font-size: 22px; /* Set a good font size */
-    color: orangered; /* Set the text color */
-    position: relative; /* Required for the pseudo-element */
-    transition: color 0.3s ease; /* Smooth transition on color change */
-  }
-  
-  /* Add animation for underline */
-  .item a::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 2px;
-    background-color: #000;
-    bottom: -5px; /* Position the underline below the text */
-    left: 0;
-    transition: width 0.3s ease;
-  }
-  
-  /* Underline animation on hover */
-  .item a:hover::after {
-    width: 100%; /* Expand the underline to the full width of the link */
-  }
-  
-  /* Change text color on hover */
-  .item a:hover {
-    color: #ff1e00; /* Change text color when hovered */
-  }
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Planner - Bootstrap</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Wedding Planner Section -->
+  <section class="container py-5">
+    <div class="row">
+      <!-- Wedding Planner Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Wedding Planner">
+          <div class="card-body">
+            <h5 class="card-title">Wedding Planner</h5>
+            <p class="card-text">Our expert wedding planners will guide you every step of the way, ensuring your wedding is organized and stress-free.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wedding Planner Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Wedding Planner">
+          <div class="card-body">
+            <h5 class="card-title">Event Coordination</h5>
+            <p class="card-text">From ceremony to reception, we ensure everything runs smoothly, so you can focus on enjoying your big day.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wedding Planner Card -->
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="https://via.placeholder.com/500x300" class="card-img-top" alt="Wedding Planner">
+          <div class="card-body">
+            <h5 class="card-title">Vendor Selection</h5>
+            <p class="card-text">We have an extensive network of trusted vendors, from florists to photographers, making sure you get the best for your wedding.</p>
+            <a href="#" class="btn btn-primary">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS (Optional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

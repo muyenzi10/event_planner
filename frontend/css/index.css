@@ -87,6 +87,7 @@
   padding: 20px; /* Ensure card body has sufficient padding */
   height: 100%; /* Make sure the body area spans the full height of the card */
 }
+
 .title-containe{
   text-align: 30px;
 }
@@ -105,10 +106,8 @@
   position: absolute;                   /* Position it relative to the h1 */
   left: 50%;                             /* Start the underline from the center of the h1 */
   bottom: 0;                            /* Place it at the bottom of the h1 */
-  width: 4%;                            /* Set the width of the underline (adjust as needed) */
-  height: 4px;                          /* Set the thickness of the underline */
+  width: 3%;                            /* Set the width of the underline (adjust as needed) */
+  height: 2px;                          /* Set the thickness of the underline */
   background-color: #ff0000;            /* Set the color of the underline */
   transform: translateX(-113%);           /* Move the underline back by 50% of its own width to center it */
 }
-
-
