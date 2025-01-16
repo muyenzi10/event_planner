@@ -71,6 +71,37 @@
         .video-container:hover .play-button {
             opacity: 1;
         }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .video-container {
+                width: 100%; /* Make video containers take full width */
+                margin-bottom: 20px; /* Add spacing between videos */
+            }
+
+            .video-row {
+                flex-direction: column; /* Stack videos vertically on small screens */
+                gap: 10px; /* Reduced gap between videos */
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .video-container video {
+                height: auto; /* Adjust video height to maintain aspect ratio */
+            }
+        }
+
+        /* Media query for tablets (screen widths between 768px and 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .video-container {
+                width: 45%; /* Set each video container to 45% width */
+            }
+
+            .video-row {
+                flex-wrap: wrap; /* Allow videos to wrap to a new line on tablets */
+                justify-content: space-around; /* Space out videos evenly */
+            }
+        }
     </style>
 </head>
 <body>
