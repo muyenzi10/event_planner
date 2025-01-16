@@ -3,131 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Gallery</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Wedding Planner Video Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Arial', sans-serif;
+            color: #ff6f61;
+        }
+
+        .video-row {
+            display: flex; /* Align video containers in a row */
+            overflow-x: auto; /* Enable horizontal scroll */
+            gap: 20px; /* Add spacing between the videos */
+            padding-bottom: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 300px; /* Set fixed width for video containers */
+            text-align: center;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .video-container h5 {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-container:hover .play-button {
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
-    <div class="container my-5">
-        <div class="row">
-            <!-- Video 1 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/20.jpg" class="card-img-top" alt="Video thumbnail">
-                    <div class="card-body">
-                        <h5 class="card-title">Video 1</h5>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#videoModal1">Watch Video</button>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Video 2 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Video thumbnail">
-                    <div class="card-body">
-                        <h5 class="card-title">Video 2</h5>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#videoModal2">Watch Video</button>
-                    </div>
-                </div>
-            </div>
+<div class="container">
+    <h2>Wedding Planner Video Gallery</h2>
+    <div class="video-row">
+        <div class="video-container">
+            <video src="/frontend/allpack/indinzi/video_asset/SaveClip.App_AQMKsW2n14Qbkw96Kr5jP4mQyYdIqodWPbuSdjhUu41ggSO_Ujr_DgcYnAJ7xCMvh-4xXRLLFyxZJDeb-fmF86nXdegytu0oScqPx5s.mp4" alt="Wedding Video 1" controls></video>
+            <div class="play-button">▶</div>
+            <h5>Wedding Highlights</h5>
+        </div>
 
-            <!-- Video 3 -->
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Video thumbnail">
-                    <div class="card-body">
-                        <h5 class="card-title">Video 3</h5>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#videoModal3">Watch Video</button>
-                    </div>
-                </div>
-            </div>
+        <div class="video-container">
+            <video src="/frontend/allpack/indinzi/video_asset/SaveClip.App_AQONndWlgChec4dZFafZMrSu8JZ1TqNPM-_4E4myhpBm_gUOG0Untg0ag1nD1hTLJxqlSp7dTMz6NOVPo9askgO0mBZwqQCqNP_6S5g.mp4" alt="Wedding Video 2" controls></video>
+            <div class="play-button">▶</div>
+            <h5>Client Testimonials</h5>
+        </div>
+
+        <div class="video-container">
+            <video src="/frontend/allpack/indinzi/video_asset/Snapinst.app_video_AQM1i_OWVLa7hV54QDXhrp0fBXvYbCKG0d91rGD2fiYT64BMSyHOQUykhQ8u8Navs30Dr3lqaA-aCYPNvwndC0MT1fE9lp1veu5eQnE.mp4" alt="Wedding Video 3" controls></video>
+            <div class="play-button">▶</div>
+            <h5>Venue Tour</h5>
+        </div>
+
+        <div class="video-container">
+            <video src="/frontend/allpack/indinzi/video_asset/SaveClip.App_AQMmu6Sfw5HPOJLQqbiDOkiex8ryiCzxxv1KCJAUoqaoCIC6Tu_yNKswj6LMwJD0B29AjRYYIWzycQB1zxESggp7PfvPfFAMYPoRo7o.mp4" alt="Wedding Video 4" controls></video>
+            <div class="play-button">▶</div>
+            <h5>Planning Tips</h5>
+        </div>
+
+        <div class="video-container">
+            <video src="/frontend/allpack/indinzi/video_asset/SaveClip.App_AQNDoaFQ6HERxByWQhiD023zCHAvOAN1sWpuKQeDe5NgU-gKFMvzG5cRPsBeXYka5oZwLB7GrURFQeb25bUhq1xFPKGFtZM5x4Fo5W0.mp4" alt="Wedding Video 5" controls></video>
+            <div class="play-button">▶</div>
+            <h5>Real Weddings</h5>
         </div>
     </div>
+</div>
 
-    <!-- Video Modal 1 (HTML5 Video) -->
-    <div class="modal fade" id="videoModal1" tabindex="-1" role="dialog" aria-labelledby="videoModal1Label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="videoModal1Label">Video 1</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Direct .mp4 File Video -->
-                    <video id="video1" width="100%" controls>
-                        <source src="/frontend/allpack/indinzi/video_asset/SaveClip.App_AQMKsW2n14Qbkw96Kr5jP4mQyYdIqodWPbuSdjhUu41ggSO_Ujr_DgcYnAJ7xCMvh-4xXRLLFyxZJDeb-fmF86nXdegytu0oScqPx5s.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Video Modal 2 (YouTube Video) -->
-    <div class="modal fade" id="videoModal2" tabindex="-1" role="dialog" aria-labelledby="videoModal2Label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="videoModal2Label">Video 2</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <iframe id="youtubeVideo2" width="100%" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Video Modal 3 (YouTube Video) -->
-    <div class="modal fade" id="videoModal3" tabindex="-1" role="dialog" aria-labelledby="videoModal3Label" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="videoModal3Label">Video 3</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <iframe id="youtubeVideo3" width="100%" height="315" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Stop and reset the video when the modal is closed (for HTML5 video)
-        $('#videoModal1').on('hidden.bs.modal', function () {
-            var video = document.getElementById('video1');
-            if (video) {
-                video.pause();  // Pause the video
-                video.currentTime = 0;  // Reset the video to the start
-            }
-        });
-
-        // Stop YouTube videos by removing and restoring the iframe's src (for Video Modal 2)
-        $('#videoModal2').on('hidden.bs.modal', function () {
-            var iframe = document.getElementById('youtubeVideo2');
-            var iframeSrc = iframe.src;
-            iframe.src = '';  // Remove the src to stop the video and audio
-            iframe.src = iframeSrc;  // Restore the original src to restart the video when opened again
-        });
-
-        // Stop YouTube videos by removing and restoring the iframe's src (for Video Modal 3)
-        $('#videoModal3').on('hidden.bs.modal', function () {
-            var iframe = document.getElementById('youtubeVideo3');
-            var iframeSrc = iframe.src;
-            iframe.src = '';  // Remove the src to stop the video and audio
-            iframe.src = iframeSrc;  // Restore the original src to restart the video when opened again
-        });
-    </script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
