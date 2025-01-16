@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planner Video Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Arial', sans-serif;
+            color: #ff6f61;
+        }
+
+        .video-row {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 300px;
+            text-align: center;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .video-container img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .video-container h5 {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .video-container {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .video-row {
+                flex-direction: column;
+                gap: 10px;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .video-container img {
+                height: auto;
+            }
+        }
+
+        /* Media query for tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .video-container {
+                width: 45%;
+            }
+
+            .video-row {
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Wedding Planner Video Gallery</h2>
+    <div class="video-row">
+        <div class="video-container">
+            <img src="/frontend/allpack/indinzi/assetindinzi/20.jpg" alt="Wedding Highlights" data-video-id="video1">
+            <h5>Wedding Highlights</h5>
+        </div>
+        <div class="video-container">
+            <img src="https://via.placeholder.com/300x200?text=Client+Testimonials" alt="Client Testimonials" data-video-id="video2">
+            <h5>Client Testimonials</h5>
+        </div>
+        <div class="video-container">
+            <img src="https://via.placeholder.com/300x200?text=Venue+Tour" alt="Venue Tour" data-video-id="video3">
+            <h5>Venue Tour</h5>
+        </div>
+        <div class="video-container">
+            <img src="https://via.placeholder.com/300x200?text=Planning+Tips" alt="Planning Tips" data-video-id="video4">
+            <h5>Planning Tips</h5>
+        </div>
+        <div class="video-container">
+            <img src="https://via.placeholder.com/300x200?text=Real+Weddings" alt="Real Weddings" data-video-id="video5">
+            <h5>Real Weddings</h5>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for video playback -->
+<div class="modal" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true" data-bs-backdrop="true" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close-button" id="closeButton" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <video id="videoPlayer" style="width: 100%;" controls>
+                    <source id="videoSource" src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Video sources - make sure the video files exist on your server or are accessible from the URLs.
+    const videoSources = {
+        video1: '/frontend/allpack/indinzi/video_asset/SaveClip.App_AQMKsW2n14Qbkw96Kr5jP4mQyYdIqodWPbuSdjhUu41ggSO_Ujr_DgcYnAJ7xCMvh-4xXRLLFyxZJDeb-fmF86nXdegytu0oScqPx5s.mp4',
+        video2: '/path/to/your/video2.mp4',
+        video3: '/path/to/your/video3.mp4',
+        video4: '/path/to/your/video4.mp4',
+        video5: '/path/to/your/video5.mp4'
+    };
+
+    // Add event listener to image click to show the video in the modal
+    document.querySelectorAll('.video-container img').forEach(image => {
+        image.addEventListener('click', function () {
+            const videoId = this.getAttribute('data-video-id');
+            const video = document.getElementById("videoPlayer");
+            const videoSource = document.getElementById("videoSource");
+
+            // Set the video source based on the clicked image's video ID
+            videoSource.src = videoSources[videoId];
+            document.getElementById("videoPlayer").load(); // Reload video with the new source
+
+            // Disable PiP for the video
+            video.disablePictureInPicture = true;
+
+            // Open the modal
+            const modal = new bootstrap.Modal(document.getElementById('videoModal'));
+            modal.show();
+
+            // Play the video
+            video.play();
+        });
+    });
+
+    // Pause and close the video when the close button is clicked
+    document.getElementById("closeButton").addEventListener('click', function () {
+        const video = document.getElementById("videoPlayer");
+        video.pause(); // Pause the video
+        video.currentTime = 0; // Reset to the beginning
+        const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
+        modal.hide(); // Hide the modal
+    });
+
+    // Close the modal and stop video when video ends
+    document.getElementById("videoPlayer").addEventListener('ended', function () {
+        const video = document.getElementById("videoPlayer");
+        video.pause(); // Pause the video
+        video.currentTime = 0; // Reset to the beginning
+        const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
+        modal.hide(); // Hide the modal
+    });
+
+    // Close the modal when clicking outside the modal (on the backdrop)
+    document.getElementById('videoModal').addEventListener('click', function (e) {
+        // Check if the click is outside the modal content (backdrop)
+        if (e.target === this) {
+            const video = document.getElementById("videoPlayer");
+            video.pause(); // Pause the video
+            video.currentTime = 0; // Reset to the beginning
+            const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
+            modal.hide(); // Hide the modal
+        }
+    });
+</script>
+
+</body>
+</html>
