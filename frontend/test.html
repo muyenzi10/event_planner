@@ -24,15 +24,16 @@
         }
 
         .video-row {
-            display: flex;
-            overflow-x: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
             padding-bottom: 20px;
+            justify-items: center; /* Centers the items */
         }
 
         .video-container {
             position: relative;
-            width: 300px;
+            width: 100%;
             text-align: center;
             border-radius: 8px;
             overflow: hidden;
@@ -98,6 +99,23 @@
             transform: rotate(90deg);
         }
 
+        @media (max-width: 1200px) {
+            .video-container {
+                width: 90%; /* Adjust for medium-sized screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-container {
+                width: 90%; /* Adjust for smaller tablets */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .video-container {
+                width: 100%; /* Full width for small mobile screens */
+            }
+        }
     </style>
 </head>
 <body>
@@ -158,15 +176,9 @@
         video3: '/frontend/allpack/indinzi/video_asset/queen.mp4',
         video4: '/frontend/allpack/indinzi/video_asset/nyaruguru.mp4',
         video5: '/frontend/allpack/indinzi/video_asset/serenabeby.mp4',
-        video6: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
-        video7: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
-        video8: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
-        video9: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
-        video10: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
-        video1: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
-        video1: '/frontend/allpack/indinzi/video_asset/mucyo.mp4'
     };
 
+    // Function to open the modal and play the video
     document.querySelectorAll('.video-container').forEach(container => {
         container.addEventListener('click', function () {
             const videoId = this.getAttribute('data-video-id');
@@ -191,7 +203,27 @@
         });
     });
 
+    // Function to reset the modal after closing
     document.getElementById("closeButton").addEventListener('click', function () {
+        const video = document.getElementById("videoPlayer");
+        video.pause();
+        video.currentTime = 0;
+        const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
+        modal.hide();
+
+        // Reset all video containers (images, play icons, and titles)
+        document.querySelectorAll('.video-container').forEach(container => {
+            const image = container.querySelector('img');
+            const playIcon = container.querySelector('.play-icon');
+            const title = container.querySelector('h5');
+            image.style.display = 'block';
+            playIcon.style.display = 'block';
+            title.style.display = 'block';
+        });
+    });
+
+    // Ensure the video stops and the modal resets after the video ends
+    document.getElementById("videoPlayer").addEventListener('ended', function () {
         const video = document.getElementById("videoPlayer");
         video.pause();
         video.currentTime = 0;
@@ -208,12 +240,12 @@
         });
     });
 
-    document.getElementById("videoPlayer").addEventListener('ended', function () {
+    // Optional: Reset when clicking outside the modal
+    const videoModal = document.getElementById("videoModal");
+    videoModal.addEventListener('hidden.bs.modal', function () {
         const video = document.getElementById("videoPlayer");
         video.pause();
         video.currentTime = 0;
-        const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
-        modal.hide();
 
         document.querySelectorAll('.video-container').forEach(container => {
             const image = container.querySelector('img');
