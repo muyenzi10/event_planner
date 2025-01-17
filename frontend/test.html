@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wedding Planner Video Gallery</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Add Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f4f4f4;
@@ -65,9 +65,24 @@
         }
 
         .video-container:hover .play-icon {
-            opacity: 1; /* Show the play icon on hover */
+            opacity: 1;
         }
 
+        /* Modal Body Video Styling */
+        .modal-body {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #videoPlayer {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+        }
+
+        /* Close button for better visibility and alignment */
         .close-button {
             position: absolute;
             top: 10px;
@@ -83,36 +98,6 @@
             transform: rotate(90deg);
         }
 
-        /* Media query for mobile devices */
-        @media (max-width: 768px) {
-            .video-container {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .video-row {
-                flex-direction: column;
-                gap: 10px;
-                padding-left: 0;
-                padding-right: 0;
-            }
-
-            .video-container img {
-                height: auto;
-            }
-        }
-
-        /* Media query for tablets */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .video-container {
-                width: 45%;
-            }
-
-            .video-row {
-                flex-wrap: wrap;
-                justify-content: space-around;
-            }
-        }
     </style>
 </head>
 <body>
@@ -123,27 +108,27 @@
         <div class="video-container" data-video-id="video1">
             <img src="/frontend/allpack/indinzi/assetindinzi/20.jpg" alt="Wedding Highlights">
             <h5>Wedding Highlights</h5>
-            <i class="fas fa-play play-icon"></i> <!-- Play icon -->
+            <i class="fas fa-play play-icon"></i>
         </div>
         <div class="video-container" data-video-id="video2">
             <img src="https://via.placeholder.com/300x200?text=Client+Testimonials" alt="Client Testimonials">
             <h5>Client Testimonials</h5>
-            <i class="fas fa-play play-icon"></i> <!-- Play icon -->
+            <i class="fas fa-play play-icon"></i>
         </div>
         <div class="video-container" data-video-id="video3">
             <img src="https://via.placeholder.com/300x200?text=Venue+Tour" alt="Venue Tour">
             <h5>Venue Tour</h5>
-            <i class="fas fa-play play-icon"></i> <!-- Play icon -->
+            <i class="fas fa-play play-icon"></i>
         </div>
         <div class="video-container" data-video-id="video4">
             <img src="https://via.placeholder.com/300x200?text=Planning+Tips" alt="Planning Tips">
             <h5>Planning Tips</h5>
-            <i class="fas fa-play play-icon"></i> <!-- Play icon -->
+            <i class="fas fa-play play-icon"></i>
         </div>
         <div class="video-container" data-video-id="video5">
             <img src="https://via.placeholder.com/300x200?text=Real+Weddings" alt="Real Weddings">
             <h5>Real Weddings</h5>
-            <i class="fas fa-play play-icon"></i> <!-- Play icon -->
+            <i class="fas fa-play play-icon"></i>
         </div>
     </div>
 </div>
@@ -156,7 +141,7 @@
                 <button type="button" class="close-button" id="closeButton" data-bs-dismiss="modal" aria-label="Close">X</button>
             </div>
             <div class="modal-body">
-                <video id="videoPlayer" style="width: 100%;" controls>
+                <video id="videoPlayer" controls>
                     <source id="videoSource" src="" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
@@ -167,104 +152,77 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Video sources - make sure the video files exist on your server or are accessible from the URLs.
     const videoSources = {
-        video1: '/frontend/allpack/indinzi/video_asset/SaveClip.App_AQMKsW2n14Qbkw96Kr5jP4mQyYdIqodWPbuSdjhUu41ggSO_Ujr_DgcYnAJ7xCMvh-4xXRLLFyxZJDeb-fmF86nXdegytu0oScqPx5s.mp4',
-        video2: '/path/to/your/video2.mp4',
-        video3: '/path/to/your/video3.mp4',
-        video4: '/path/to/your/video4.mp4',
-        video5: '/path/to/your/video5.mp4'
+        video1: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
+        video2: '/frontend/allpack/indinzi/video_asset/ikanombe.mp4',
+        video3: '/frontend/allpack/indinzi/video_asset/queen.mp4',
+        video4: '/frontend/allpack/indinzi/video_asset/nyaruguru.mp4',
+        video5: '/frontend/allpack/indinzi/video_asset/serenabeby.mp4',
+        video6: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
+        video7: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
+        video8: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
+        video9: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
+        video10: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
+        video1: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
+        video1: '/frontend/allpack/indinzi/video_asset/mucyo.mp4'
     };
 
-    // Add event listener to play icons and images to show the video in the modal
     document.querySelectorAll('.video-container').forEach(container => {
         container.addEventListener('click', function () {
             const videoId = this.getAttribute('data-video-id');
             const video = document.getElementById("videoPlayer");
             const videoSource = document.getElementById("videoSource");
-            const image = this.querySelector('img'); // Get the image inside the container
-            const playIcon = this.querySelector('.play-icon'); // Get the play icon
-            const title = this.querySelector('h5'); // Get the h5 title
+            const image = this.querySelector('img');
+            const playIcon = this.querySelector('.play-icon');
+            const title = this.querySelector('h5');
 
-            // Hide the image, play icon, and title when video is played
             image.style.display = 'none';
             playIcon.style.display = 'none';
             title.style.display = 'none';
 
-            // Set the video source based on the clicked image's video ID
             videoSource.src = videoSources[videoId];
-            video.load(); // Reload video with the new source
-
-            // Disable PiP for the video
+            video.load();
             video.disablePictureInPicture = true;
 
-            // Open the modal
             const modal = new bootstrap.Modal(document.getElementById('videoModal'));
             modal.show();
 
-            // Play the video
             video.play();
         });
     });
 
-    // Pause and close the video when the close button is clicked
     document.getElementById("closeButton").addEventListener('click', function () {
         const video = document.getElementById("videoPlayer");
-        video.pause(); // Pause the video
-        video.currentTime = 0; // Reset to the beginning
+        video.pause();
+        video.currentTime = 0;
         const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
-        modal.hide(); // Hide the modal
+        modal.hide();
 
-        // Show the image, play icon, and title again when closing the modal
         document.querySelectorAll('.video-container').forEach(container => {
             const image = container.querySelector('img');
             const playIcon = container.querySelector('.play-icon');
             const title = container.querySelector('h5');
-            image.style.display = 'block'; // Show the image again
-            playIcon.style.display = 'block'; // Show the play icon again
-            title.style.display = 'block'; // Show the title again
+            image.style.display = 'block';
+            playIcon.style.display = 'block';
+            title.style.display = 'block';
         });
     });
 
-    // Close the modal and stop video when video ends
     document.getElementById("videoPlayer").addEventListener('ended', function () {
         const video = document.getElementById("videoPlayer");
-        video.pause(); // Pause the video
-        video.currentTime = 0; // Reset to the beginning
+        video.pause();
+        video.currentTime = 0;
         const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
-        modal.hide(); // Hide the modal
+        modal.hide();
 
-        // Show the image, play icon, and title again when video ends
         document.querySelectorAll('.video-container').forEach(container => {
             const image = container.querySelector('img');
             const playIcon = container.querySelector('.play-icon');
             const title = container.querySelector('h5');
-            image.style.display = 'block'; // Show the image again
-            playIcon.style.display = 'block'; // Show the play icon again
-            title.style.display = 'block'; // Show the title again
+            image.style.display = 'block';
+            playIcon.style.display = 'block';
+            title.style.display = 'block';
         });
-    });
-
-    // Close the modal when clicking outside the modal (on the backdrop)
-    document.getElementById('videoModal').addEventListener('click', function (e) {
-        // Check if the click is outside the modal content (backdrop)
-        if (e.target === this) {
-            const video = document.getElementById("videoPlayer");
-            video.pause(); // Pause the video
-            video.currentTime = 0; // Reset to the beginning
-            const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
-            modal.hide(); // Hide the modal
-
-            // Show the image, play icon, and title again when modal is closed
-            document.querySelectorAll('.video-container').forEach(container => {
-                const image = container.querySelector('img');
-                const playIcon = container.querySelector('.play-icon');
-                const title = container.querySelector('h5');
-                image.style.display = 'block'; // Show the image again
-                playIcon.style.display = 'block'; // Show the play icon again
-                title.style.display = 'block'; // Show the title again
-            });
-        }
     });
 </script>
 
