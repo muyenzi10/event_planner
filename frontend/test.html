@@ -3,403 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Troupe - Event Planner</title>
+    <title>Wedding Planner Video Gallery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Add Font Awesome -->
+    <style>
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
 
-    <!-- Bootstrap CSS -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-        crossorigin="anonymous"
-    />
+        .container {
+            margin-top: 40px;
+        }
 
-    <!-- Font Awesome for icons -->
-    <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        rel="stylesheet"
-    />
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Arial', sans-serif;
+            color: #ff6f61;
+        }
 
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="/frontend/css/navbar.css">
-    <link rel="stylesheet" href="/frontend/css/footer.css">
-    <link rel="stylesheet" href="/frontend/allpack/css/indinzi.css">
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        .video-row {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
 
+        .video-container {
+            position: relative;
+            width: 300px;
+            text-align: center;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .video-container img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .video-container h5 {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        /* Play button styles */
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: rgb(3, 133, 255);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-container:hover .play-icon {
+            opacity: 1; /* Show the play icon on hover */
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* Media query for mobile devices */
+        @media (max-width: 768px) {
+            .video-container {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .video-row {
+                flex-direction: column;
+                gap: 10px;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .video-container img {
+                height: auto;
+            }
+        }
+
+        /* Media query for tablets */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .video-container {
+                width: 45%;
+            }
+
+            .video-row {
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand logo-margin" href="#">Logo</a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="home.htm">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="about.html">Service</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Packages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/frontend/suppliers/supply.html">Suppliers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="booking.html">Booking</a>
-                    </li>
-                </ul>
-            </div>
+<div class="container">
+    <h2>Wedding Planner Video Gallery</h2>
+    <div class="video-row">
+        <div class="video-container" data-video-id="video1">
+            <img src="/frontend/allpack/indinzi/assetindinzi/20.jpg" alt="Wedding Highlights">
+            <h5>Wedding Highlights</h5>
+            <i class="fas fa-play play-icon"></i> <!-- Play icon -->
         </div>
-    </nav>
-
-  <!-- Carousel Wrapper -->
-<div class="image-container">
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <div class="video-container" data-video-id="video2">
+            <img src="https://via.placeholder.com/300x200?text=Client+Testimonials" alt="Client Testimonials">
+            <h5>Client Testimonials</h5>
+            <i class="fas fa-play play-icon"></i> <!-- Play icon -->
         </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" class="img" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>First Slide Label</h5>
-                    <p>Some representative placeholder content for the first slide.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(3).jpg" class="img" alt="Second slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Second Slide Label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/frontend/allpack/indinzi/assetindinzi/pic9.jpg" class="img" alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Third Slide Label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/frontend/allpack/indinzi/assetindinzi/pic6.jpg" class="img" alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Third Slide Label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
-                </div>
-            </div>
+        <div class="video-container" data-video-id="video3">
+            <img src="https://via.placeholder.com/300x200?text=Venue+Tour" alt="Venue Tour">
+            <h5>Venue Tour</h5>
+            <i class="fas fa-play play-icon"></i> <!-- Play icon -->
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <div class="video-container" data-video-id="video4">
+            <img src="https://via.placeholder.com/300x200?text=Planning+Tips" alt="Planning Tips">
+            <h5>Planning Tips</h5>
+            <i class="fas fa-play play-icon"></i> <!-- Play icon -->
+        </div>
+        <div class="video-container" data-video-id="video5">
+            <img src="https://via.placeholder.com/300x200?text=Real+Weddings" alt="Real Weddings">
+            <h5>Real Weddings</h5>
+            <i class="fas fa-play play-icon"></i> <!-- Play icon -->
+        </div>
     </div>
 </div>
-<div class="item my-4">
-    <a href="#Images">Images</a>
-    
-    <a href="#">Hightlight</a>
-    </div>
 
-
-    <!-- Main Content -->
-  <div class="container py-5" id="Images">
-
-    <div class="row" >
-      <!-- Wedding Planner -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/pic18.jpg" class="card-img-top" alt="Wedding Planner">
-          <div class="card-body">
-            <h5 class="card-title">Wedding Planner</h5>
-            <p class="card-text">Our expert wedding planners will guide you every step of the way, ensuring your wedding is organized and stress-free.</p>
-          </div>
+<!-- Modal for video playback -->
+<div class="modal" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true" data-bs-backdrop="true" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close-button" id="closeButton" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <video id="videoPlayer" style="width: 100%;" controls>
+                    <source id="videoSource" src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </div>
-      </div>
-
-      <!-- Venue Manager -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/pic1.jpg" class="card-img-top" alt="Venue Manager">
-          <div class="card-body">
-            <h5 class="card-title">Venue Manager</h5>
-            <p class="card-text">The Venue Manager oversees the logistics and setup of the venue, ensuring everything runs smoothly on your big day.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Event Coordinator -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/noella.jpg" class="card-img-top" alt="Event Coordinator">
-          <div class="card-body">
-            <h5 class="card-title">Event Coordinator</h5>
-            <p class="card-text">Our Event Coordinators are responsible for ensuring the event unfolds as planned, managing the schedule and all moving parts.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Decor Specialist -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/patty.jpg" class="card-img-top" alt="Decor Specialist">
-          <div class="card-body">
-            <h5 class="card-title">Decor Specialist</h5>
-            <p class="card-text">Our Decor Specialists bring your vision to life with stunning floral arrangements, lighting, and unique styling.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Catering Manager -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/best.jpg" class="card-img-top" alt="Catering Manager">
-          <div class="card-body">
-            <h5 class="card-title">Catering Manager</h5>
-            <p class="card-text">The Catering Manager ensures a delicious and customized menu, providing your guests with exceptional food and service.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Photographer/Videographer -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/pic.jpg" class="card-img-top" alt="Photographer/Videographer">
-          <div class="card-body">
-            <h5 class="card-title">Photographer & Videographer</h5>
-            <p class="card-text">Our photographers and videographers capture every precious moment, creating beautiful memories that last a lifetime.</p>
-          </div>
-        </div>
-      </div>
-      <!-------------- addition1-->
-      <!-- Decor Specialist -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/pic15.jpg" class="card-img-top" alt="Decor Specialist">
-          <div class="card-body">
-            <h5 class="card-title">Decor Specialist</h5>
-            <p class="card-text">Our Decor Specialists bring your vision to life with stunning floral arrangements, lighting, and unique styling.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Catering Manager -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/pic13.jpg" class="card-img-top" alt="Catering Manager">
-          <div class="card-body">
-            <h5 class="card-title">Catering Manager</h5>
-            <p class="card-text">The Catering Manager ensures a delicious and customized menu, providing your guests with exceptional food and service.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Photographer/Videographer -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/pic16.jpg" class="card-img-top" alt="Photographer/Videographer">
-          <div class="card-body">
-            <h5 class="card-title">Photographer & Videographer</h5>
-            <p class="card-text">Our photographers and videographers capture every precious moment, creating beautiful memories that last a lifetime.</p>
-          </div>
-        </div>
-      </div>
-
-    
-  <!-- add 2 -->
-   <!-- Decor Specialist -->
-   <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/eunice.jpg" class="card-img-top" alt="Decor Specialist">
-      <div class="card-body">
-        <h5 class="card-title">Decor Specialist</h5>
-        <p class="card-text">Our Decor Specialists bring your vision to life with stunning floral arrangements, lighting, and unique styling.</p>
-      </div>
     </div>
-  </div>
-
-  <!-- Catering Manager -->
-  <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/oben2.jpg" class="card-img-top" alt="Catering Manager">
-      <div class="card-body">
-        <h5 class="card-title">Catering Manager</h5>
-        <p class="card-text">The Catering Manager ensures a delicious and customized menu, providing your guests with exceptional food and service.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Photographer/Videographer -->
-  <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/pic17.jpg" class="card-img-top" alt="Photographer/Videographer">
-      <div class="card-body">
-        <h5 class="card-title">Photographer & Videographer</h5>
-        <p class="card-text">Our photographers and videographers capture every precious moment, creating beautiful memories that last a lifetime.</p>
-      </div>
-    </div>
-  </div>
-<!--add3-->
-   <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/pic12.jpg" class="card-img-top" alt="Decor Specialist">
-      <div class="card-body">
-        <h5 class="card-title">Decor Specialist</h5>
-        <p class="card-text">Our Decor Specialists bring your vision to life with stunning floral arrangements, lighting, and unique styling.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Catering Manager -->
-  <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/pic22.jpg" class="card-img-top" alt="Catering Manager">
-      <div class="card-body">
-        <h5 class="card-title">Catering Manager</h5>
-        <p class="card-text">The Catering Manager ensures a delicious and customized menu, providing your guests with exceptional food and service.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Photographer/Videographer -->
-  <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/pic14.jpg" class="card-img-top" alt="Photographer/Videographer">
-      <div class="card-body">
-        <h5 class="card-title">Photographer & Videographer</h5>
-        <p class="card-text">Our photographers and videographers capture every precious moment, creating beautiful memories that last a lifetime.</p>
-      </div>
-    </div>
-  </div>
-<!--add4-->
-<div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/last3.jpg" class="card-img-top" alt="Decor Specialist">
-      <div class="card-body">
-        <h5 class="card-title">Decor Specialist</h5>
-        <p class="card-text">Our Decor Specialists bring your vision to life with stunning floral arrangements, lighting, and unique styling.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Catering Manager -->
-  <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" class="card-img-top" alt="Catering Manager">
-      <div class="card-body">
-        <h5 class="card-title">Catering Manager</h5>
-        <p class="card-text">The Catering Manager ensures a delicious and customized menu, providing your guests with exceptional food and service.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Photographer/Videographer -->
-  <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/last2.jpg" class="card-img-top" alt="Photographer/Videographer">
-      <div class="card-body">
-        <h5 class="card-title">Photographer</h5>
-        <p class="card-text">Our photographers and videographers capture every precious moment, creating beautiful memories that last a lifetime.</p>
-      </div>
-    </div>
-  </div>
-
 </div>
-</div>
-    <!-- Footer -->
-    <footer class="bg-dark text-light py-4 footer-animated">
-        <div class="container">
-            <div class="row">
-                <!-- About Us -->
-                <div class="col-md-4">
-                    <h5>About Us</h5>
-                    <p class="footer-content">
-                        We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.
-                    </p>
-                </div>
-                <!-- Quick Links -->
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled footer-content">
-                        <li><a href="home.htm" class="text-light">Home</a></li>
-                        <li><a href="#" class="text-light">About</a></li>
-                        <li><a href="#" class="text-light">Services</a></li>
-                        <li><a href="index.html" class="text-light">Packages</a></li>
-                        <li><a href="#" class="text-light">Contact</a></li>
-                    </ul>
-                </div>
-                <!-- Contact Information -->
-                <div class="col-md-4">
-                    <h5>Contact Us</h5>
-                    <p class="footer-content">Email: info@eventplanner.com</p>
-                    <p class="footer-content">Phone: +250785300707</p>
-                    <p class="footer-content">Address: 123 Event St, City, Country</p>
-                </div>
-            </div>
 
-            <!-- Social Links -->
-            <div class="row">
-                <div class="col text-center mt-4">
-                    <ul class="list-inline footer-content">
-                        <li class="list-inline-item">
-                            <a href="#" class="text-light social-icon"><i class="fab fa-facebook"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="text-light social-icon"><i class="fab fa-twitter"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="https://www.instagram.com/muyenzi_jacques/" class="text-light social-icon"><i class="fab fa-instagram"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Video sources - make sure the video files exist on your server or are accessible from the URLs.
+    const videoSources = {
+        video1: '/frontend/allpack/indinzi/video_asset/SaveClip.App_AQMKsW2n14Qbkw96Kr5jP4mQyYdIqodWPbuSdjhUu41ggSO_Ujr_DgcYnAJ7xCMvh-4xXRLLFyxZJDeb-fmF86nXdegytu0oScqPx5s.mp4',
+        video2: '/path/to/your/video2.mp4',
+        video3: '/path/to/your/video3.mp4',
+        video4: '/path/to/your/video4.mp4',
+        video5: '/path/to/your/video5.mp4'
+    };
 
-            <!-- Footer Copyright -->
-            <div class="row">
-                <div class="col text-center mt-3">
-                    <p>&copy; 2024 Event Planner. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-  <!-- AOS JS -->
-  <!-- AOS JS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-        AOS.init();
-      </script>
-    <!-- Bootstrap JS and Popper.js -->
-    <script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"
-    ></script>
+    // Add event listener to play icons and images to show the video in the modal
+    document.querySelectorAll('.video-container').forEach(container => {
+        container.addEventListener('click', function () {
+            const videoId = this.getAttribute('data-video-id');
+            const video = document.getElementById("videoPlayer");
+            const videoSource = document.getElementById("videoSource");
+            const image = this.querySelector('img'); // Get the image inside the container
+            const playIcon = this.querySelector('.play-icon'); // Get the play icon
+            const title = this.querySelector('h5'); // Get the h5 title
+
+            // Hide the image, play icon, and title when video is played
+            image.style.display = 'none';
+            playIcon.style.display = 'none';
+            title.style.display = 'none';
+
+            // Set the video source based on the clicked image's video ID
+            videoSource.src = videoSources[videoId];
+            video.load(); // Reload video with the new source
+
+            // Disable PiP for the video
+            video.disablePictureInPicture = true;
+
+            // Open the modal
+            const modal = new bootstrap.Modal(document.getElementById('videoModal'));
+            modal.show();
+
+            // Play the video
+            video.play();
+        });
+    });
+
+    // Pause and close the video when the close button is clicked
+    document.getElementById("closeButton").addEventListener('click', function () {
+        const video = document.getElementById("videoPlayer");
+        video.pause(); // Pause the video
+        video.currentTime = 0; // Reset to the beginning
+        const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
+        modal.hide(); // Hide the modal
+
+        // Show the image, play icon, and title again when closing the modal
+        document.querySelectorAll('.video-container').forEach(container => {
+            const image = container.querySelector('img');
+            const playIcon = container.querySelector('.play-icon');
+            const title = container.querySelector('h5');
+            image.style.display = 'block'; // Show the image again
+            playIcon.style.display = 'block'; // Show the play icon again
+            title.style.display = 'block'; // Show the title again
+        });
+    });
+
+    // Close the modal and stop video when video ends
+    document.getElementById("videoPlayer").addEventListener('ended', function () {
+        const video = document.getElementById("videoPlayer");
+        video.pause(); // Pause the video
+        video.currentTime = 0; // Reset to the beginning
+        const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
+        modal.hide(); // Hide the modal
+
+        // Show the image, play icon, and title again when video ends
+        document.querySelectorAll('.video-container').forEach(container => {
+            const image = container.querySelector('img');
+            const playIcon = container.querySelector('.play-icon');
+            const title = container.querySelector('h5');
+            image.style.display = 'block'; // Show the image again
+            playIcon.style.display = 'block'; // Show the play icon again
+            title.style.display = 'block'; // Show the title again
+        });
+    });
+
+    // Close the modal when clicking outside the modal (on the backdrop)
+    document.getElementById('videoModal').addEventListener('click', function (e) {
+        // Check if the click is outside the modal content (backdrop)
+        if (e.target === this) {
+            const video = document.getElementById("videoPlayer");
+            video.pause(); // Pause the video
+            video.currentTime = 0; // Reset to the beginning
+            const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
+            modal.hide(); // Hide the modal
+
+            // Show the image, play icon, and title again when modal is closed
+            document.querySelectorAll('.video-container').forEach(container => {
+                const image = container.querySelector('img');
+                const playIcon = container.querySelector('.play-icon');
+                const title = container.querySelector('h5');
+                image.style.display = 'block'; // Show the image again
+                playIcon.style.display = 'block'; // Show the play icon again
+                title.style.display = 'block'; // Show the title again
+            });
+        }
+    });
+</script>
+
 </body>
 </html>
