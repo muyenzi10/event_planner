@@ -72,7 +72,7 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            background-color: red;
+            background-color: rgb(0, 140, 255);
             color: white;
             border: none;
             padding: 10px;
@@ -80,6 +80,7 @@
             font-size: 16px;
             cursor: pointer;
             z-index: 10;
+            transform: rotate(90deg);
         }
 
         /* Media query for mobile devices */
@@ -182,9 +183,13 @@
             const video = document.getElementById("videoPlayer");
             const videoSource = document.getElementById("videoSource");
             const image = this.querySelector('img'); // Get the image inside the container
+            const playIcon = this.querySelector('.play-icon'); // Get the play icon
+            const title = this.querySelector('h5'); // Get the h5 title
 
-            // Hide the image when video is played
+            // Hide the image, play icon, and title when video is played
             image.style.display = 'none';
+            playIcon.style.display = 'none';
+            title.style.display = 'none';
 
             // Set the video source based on the clicked image's video ID
             videoSource.src = videoSources[videoId];
@@ -210,10 +215,14 @@
         const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
         modal.hide(); // Hide the modal
 
-        // Show the image again when closing the modal
+        // Show the image, play icon, and title again when closing the modal
         document.querySelectorAll('.video-container').forEach(container => {
             const image = container.querySelector('img');
+            const playIcon = container.querySelector('.play-icon');
+            const title = container.querySelector('h5');
             image.style.display = 'block'; // Show the image again
+            playIcon.style.display = 'block'; // Show the play icon again
+            title.style.display = 'block'; // Show the title again
         });
     });
 
@@ -225,10 +234,14 @@
         const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
         modal.hide(); // Hide the modal
 
-        // Show the image again when video ends
+        // Show the image, play icon, and title again when video ends
         document.querySelectorAll('.video-container').forEach(container => {
             const image = container.querySelector('img');
+            const playIcon = container.querySelector('.play-icon');
+            const title = container.querySelector('h5');
             image.style.display = 'block'; // Show the image again
+            playIcon.style.display = 'block'; // Show the play icon again
+            title.style.display = 'block'; // Show the title again
         });
     });
 
@@ -242,10 +255,14 @@
             const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
             modal.hide(); // Hide the modal
 
-            // Show the image again when modal is closed
+            // Show the image, play icon, and title again when modal is closed
             document.querySelectorAll('.video-container').forEach(container => {
                 const image = container.querySelector('img');
+                const playIcon = container.querySelector('.play-icon');
+                const title = container.querySelector('h5');
                 image.style.display = 'block'; // Show the image again
+                playIcon.style.display = 'block'; // Show the play icon again
+                title.style.display = 'block'; // Show the title again
             });
         }
     });
