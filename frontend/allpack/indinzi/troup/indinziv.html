@@ -1,21 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/frontend/css/footer.css">
     <link rel="stylesheet" href="/frontend/css/navbar.css">
+    <link rel="stylesheet" href="/frontend/allpack/css/indinzi.css">
     <title>Event</title>
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-        crossorigin="anonymous"
-    />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
     <style>
-        /* Style for the video wrapper */
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Arial', sans-serif;
+            color: #ff6f61;
+        }
+
+        .video-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding-bottom: 20px;
+            justify-items: center;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            text-align: center;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .video-container img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .video-container h5 {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: rgb(3, 133, 255);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-container:hover .play-icon {
+            opacity: 1;
+        }
+
+        .modal-body {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #videoPlayer {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgb(0, 140, 255);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 10;
+            transform: rotate(90deg);
+        }
+
+        @media (max-width: 768px) {
+            .video-container {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .video-container {
+                width: 100%;
+            }
+        }
+
         .video-container {
             position: relative;
             width: 100%;
@@ -23,60 +121,54 @@
             overflow: hidden;
         }
 
-        /* Ensure the video fits and covers the container while maintaining aspect ratio */
         video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* This ensures the video covers the container */
-            object-position: center; /* Keeps the video centered */
+            object-fit: cover;
+            object-position: center;
         }
 
-        /* Centering the heading text */
         .video-heading-container {
-            position: absolute; /* Allows us to position it relative to the video */
-            top: 70%; /* Center vertically */
-            left: 50%; /* Center horizontally */
-            transform: translate(-50%, -50%); /* Fine-tunes the centering */
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
-            z-index: 10; /* Ensure the text appears above the video */
+            z-index: 10;
         }
 
-        /* Heading style and animation */
         .video-heading-container p {
-                font-size: 2rem; /* Adjust font size as necessary (larger text) */
-                color: rgb(252, 252, 252); /* White color for visibility over the video */
-                opacity: 0; /* Start invisible */
-                animation: fadeInFromLeft 5s forwards; /* Animation for the heading */
+            font-size: 2rem;
+            color: rgb(252, 252, 252);
+            opacity: 0;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0);
+            font-family: 'Times New Roman', serif;
+            animation: fadeInFromLeft 5s forwards;
         }
 
-        /* Keyframes for sliding the text from the right */
         @keyframes fadeInFromLeft {
             0% {
-                transform: translateX(100%); /* Start from the right */
+                transform: translateX(100%);
                 opacity: 0;
             }
+
             100% {
-                transform: translateX(0); /* End at the center */
+                transform: translateX(0);
                 opacity: 1;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navbar Section -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand logo-margin" href="#">Logo</a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -109,7 +201,60 @@
     <div class="video-container">
         <video src="/frontend/allpack/indinzi/video_asset/agacyecuru.mp4" autoplay loop muted disablePictureInPicture></video>
         <div class="video-heading-container">
-            <p>Celebrating the Heart of Culture – Tradition Dancers, We're Here to Bring Your Event to Life!</p>
+            <p>Celebrating the Heart of Culture Tradition Dancers, We're Here to Bring Your Event to Life!</p>
+        </div>
+    </div>
+
+    <div class="item my-4">
+        <a href="#Images">Images</a>
+        <a href="#">Highlight</a>
+    </div>
+
+    <div class="container">
+        <div class="video-row">
+            <div class="video-container" data-video-id="video1">
+                <img src="/frontend/allpack/indinzi/video_asset/mucyo.png" alt="Wedding Highlights">
+                <h5>Wedding Highlights</h5>
+                <i class="fas fa-play play-icon"></i>
+            </div>
+            <div class="video-container" data-video-id="video2">
+                <img src="/frontend/allpack/indinzi/video_asset/oben1.png" alt="Client Testimonials">
+                <h5>Client Testimonials</h5>
+                <i class="fas fa-play play-icon"></i>
+            </div>
+            <div class="video-container" data-video-id="video3">
+                <img src="/frontend/allpack/indinzi/video_asset/olga.png" alt="Venue Tour">
+                <h5>Venue Tour</h5>
+                <i class="fas fa-play play-icon"></i>
+            </div>
+            <div class="video-container" data-video-id="video4">
+                <img src="/frontend/allpack/indinzi/video_asset/intore1.png" alt="Planning Tips">
+                <h5>Planning Tips</h5>
+                <i class="fas fa-play play-icon"></i>
+            </div>
+            <div class="video-container" data-video-id="video5">
+                <img src="/frontend/allpack/indinzi/video_asset/agacye.png" alt="Real Weddings">
+                <h5>Real Weddings</h5>
+                <i class="fas fa-play play-icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for video playback -->
+    <div class="modal" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true"
+        data-bs-backdrop="true" data-bs-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close-button" id="closeButton" data-bs-dismiss="modal" aria-label="Close">X</button>
+                </div>
+                <div class="modal-body">
+                    <video id="videoPlayer" controls>
+                        <source id="videoSource" src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -118,7 +263,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <h5>About Us</h5>
-                    <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+                    <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable
+                        experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
                 </div>
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
@@ -147,7 +293,8 @@
                             <a href="#" class="text-light social-icon"><i class="fab fa-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="https://www.instagram.com/muyenzi_jacques/" class="text-light social-icon"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/muyenzi_jacques/" class="text-light social-icon"><i
+                                    class="fab fa-instagram"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -160,12 +307,94 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS and Popper -->
+    <script>
+        const videoSources = {
+            video1: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
+            video2: '/frontend/allpack/indinzi/video_asset/ikanombe.mp4',
+            video3: '/frontend/allpack/indinzi/video_asset/queen.mp4',
+            video4: '/frontend/allpack/indinzi/video_asset/nyaruguru.mp4',
+            video5: '/frontend/allpack/indinzi/video_asset/serenabeby.mp4',
+        };
+
+        document.querySelectorAll('.video-container').forEach(container => {
+            container.addEventListener('click', function () {
+                const videoId = this.getAttribute('data-video-id');
+                const video = document.getElementById("videoPlayer");
+                const videoSource = document.getElementById("videoSource");
+                const image = this.querySelector('img');
+                const playIcon = this.querySelector('.play-icon');
+                const title = this.querySelector('h5');
+
+                image.style.display = 'none';
+                playIcon.style.display = 'none';
+                title.style.display = 'none';
+
+                videoSource.src = videoSources[videoId];
+                video.load();
+                video.disablePictureInPicture = true;
+
+                const modal = new bootstrap.Modal(document.getElementById('videoModal'));
+                modal.show();
+
+                video.play();
+            });
+        });
+
+        document.getElementById("closeButton").addEventListener('click', function () {
+            const video = document.getElementById("videoPlayer");
+            video.pause();
+            video.currentTime = 0;
+            const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
+            modal.hide();
+
+            document.querySelectorAll('.video-container').forEach(container => {
+                const image = container.querySelector('img');
+                const playIcon = container.querySelector('.play-icon');
+                const title = container.querySelector('h5');
+                image.style.display = 'block';
+                playIcon.style.display = 'block';
+                title.style.display = 'block';
+            });
+        });
+
+        document.getElementById("videoPlayer").addEventListener('ended', function () {
+            const video = document.getElementById("videoPlayer");
+            video.pause();
+            video.currentTime = 0;
+            const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
+            modal.hide();
+
+            document.querySelectorAll('.video-container').forEach(container => {
+                const image = container.querySelector('img');
+                const playIcon = container.querySelector('.play-icon');
+                const title = container.querySelector('h5');
+                image.style.display = 'block';
+                playIcon.style.display = 'block';
+                title.style.display = 'block';
+            });
+        });
+
+        const videoModal = document.getElementById("videoModal");
+        videoModal.addEventListener('hidden.bs.modal', function () {
+            const video = document.getElementById("videoPlayer");
+            video.pause();
+            video.currentTime = 0;
+
+            document.querySelectorAll('.video-container').forEach(container => {
+                const image = container.querySelector('img');
+                const playIcon = container.querySelector('.play-icon');
+                const title = container.querySelector('h5');
+                image.style.display = 'block';
+                playIcon.style.display = 'block';
+                title.style.display = 'block';
+            });
+        });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-            crossorigin="anonymous"></script>
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-            crossorigin="anonymous"></script>
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
+
 </html>
