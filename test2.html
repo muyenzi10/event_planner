@@ -297,6 +297,13 @@
                 video.play();
 
                 modal.show();
+
+                // Add event listener for when the video ends
+                video.addEventListener('ended', function () {
+                    // Close the modal when the video ends
+                    const modalInstance = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
+                    modalInstance.hide();
+                });
             });
         });
 
@@ -306,6 +313,19 @@
             video.currentTime = 0;
             const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
             modal.hide();
+        });
+
+        // Close the modal if the user clicks outside the video (on the modal background)
+        document.getElementById('videoModal').addEventListener('click', function (event) {
+            const modalContent = document.querySelector('.modal-content');
+            if (!modalContent.contains(event.target)) {
+                // The user clicked outside the modal content
+                const video = document.getElementById("videoPlayer");
+                video.pause();
+                video.currentTime = 0;
+                const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
+                modal.hide();
+            }
         });
     </script>
 
