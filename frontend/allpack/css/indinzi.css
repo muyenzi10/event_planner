@@ -17,8 +17,6 @@
   margin-left: 55%; /* Align text 50px from the left */
   gap: 20px; /* Space between links */
   position: relative; /* Required for positioning */
-  /* Position the container 10px from the top */
-   /* Ensure it stays above any overlapping content */
   padding-bottom: 0; /* Added padding to ensure content isn't hidden */
 }
 
@@ -44,11 +42,13 @@
 }
 
 /* Underline animation on hover, only for the "Highlight" link */
-.item a:hover::after {
+.item a:hover::after,
+.item a.active::after {  /* Add an "active" class for persistent underline */
   width: 100%; /* Expand the underline to the full width of the link */
 }
 
 /* Change text color on hover */
-.item a:hover {
+.item a:hover,
+.item a.active { /* Change color on hover and when the link is active */
   color: #ff1e00; /* Change text color when hovered */
 }
