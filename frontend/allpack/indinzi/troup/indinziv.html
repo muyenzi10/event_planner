@@ -46,7 +46,7 @@
             font-weight: bold;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
             opacity: 0; /* Initially hide the text */
-            animation: slideInLeft 3s ease-in-out forwards; /
+            animation: slideInLeft 3s ease-in-out forwards;
         }
 
         /* Keyframes for the animation */
@@ -310,6 +310,7 @@
     </footer>
 
     <script>
+        // Video sources for different video IDs
         const videoSources = {
             video1: '/frontend/allpack/indinzi/video_asset/mucyo.mp4',
             video2: '/frontend/allpack/indinzi/video_asset/umuzungu.mp4',
@@ -321,13 +322,26 @@
             video8: '/frontend/allpack/indinzi/video_asset/angel.mp4',
         };
 
+        // Function to exit full-screen if the video is in full-screen mode
+        function exitFullScreen() {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else if (document.mozFullScreenElement) { // Firefox
+                document.mozCancelFullScreen();
+            } else if (document.webkitFullscreenElement) { // Chrome, Safari, Opera
+                document.webkitExitFullscreen();
+            } else if (document.msFullscreenElement) { // IE/Edge
+                document.msExitFullscreen();
+            }
+        }
+
         document.querySelectorAll('.video-container').forEach(container => {
             container.addEventListener('click', function () {
                 const videoId = this.getAttribute('data-video-id');
                 const video = document.getElementById("videoPlayer");
                 const videoSource = document.getElementById("videoSource");
                 const modal = new bootstrap.Modal(document.getElementById('videoModal'));
-                
+
                 videoSource.src = videoSources[videoId];
                 video.load();
                 video.play();
@@ -336,9 +350,9 @@
 
                 // Add event listener for when the video ends
                 video.addEventListener('ended', function () {
-                    // Close the modal when the video ends
                     const modalInstance = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
                     modalInstance.hide();
+                    exitFullScreen(); // Ensure to exit full-screen when video ends
                 });
             });
         });
@@ -349,18 +363,19 @@
             video.currentTime = 0;
             const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
             modal.hide();
+            exitFullScreen(); // Ensure to exit full-screen when closing the modal
         });
 
         // Close the modal if the user clicks outside the video (on the modal background)
         document.getElementById('videoModal').addEventListener('click', function (event) {
             const modalContent = document.querySelector('.modal-content');
             if (!modalContent.contains(event.target)) {
-                // The user clicked outside the modal content
                 const video = document.getElementById("videoPlayer");
                 video.pause();
                 video.currentTime = 0;
                 const modal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
                 modal.hide();
+                exitFullScreen(); // Ensure to exit full-screen when closing the modal
             }
         });
     </script>
