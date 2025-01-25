@@ -35,15 +35,30 @@
             /* Disable Picture-in-Picture */
         }
 
+        /* Animation for paragraph */
         .hero-video-container p {
             position: absolute;
             top: 70%;
             left: 50%;
             transform: translate(-50%, -50%);
-            color: #ff6f61;
+            color: #f0f0f0;
             font-size: 30px;
             font-weight: bold;
             text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            opacity: 0; /* Initially hide the text */
+            animation: slideInLeft 3s ease-in-out forwards; /
+        }
+
+        /* Keyframes for the animation */
+        @keyframes slideInLeft {
+            0% {
+                transform: translate(-150%, -50%); /* Start off-screen to the left */
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%); /* End at the centered position */
+                opacity: 1;
+            }
         }
 
         /* Section Heading */
@@ -304,7 +319,6 @@
             video6: '/frontend/allpack/indinzi/video_asset/umushagiriro.mp4',
             video7: '/frontend/allpack/indinzi/video_asset/burnvan.mp4',
             video8: '/frontend/allpack/indinzi/video_asset/angel.mp4',
-            
         };
 
         document.querySelectorAll('.video-container').forEach(container => {
