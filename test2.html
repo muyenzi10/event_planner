@@ -77,6 +77,27 @@
                 height: 250px;
             }
         }
+
+        /* Custom Modal Styling */
+        .modal-dialog {
+            max-width: 90%;
+        }
+
+        .modal-content {
+            background: #fff;
+        }
+
+        .modal-body {
+            padding: 0;
+        }
+
+        .modal-body img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
     </style>
 </head>
 
@@ -96,8 +117,8 @@
 
             <!-- Venue 2 -->
             <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="https://via.placeholder.com/600x400" data-bs-title="Garden Paradise">
-                    <img src="https://via.placeholder.com/600x400" alt="Venue 2">
+                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor3.jpg" data-bs-title="Garden Paradise">
+                    <img src="/frontend/allpack/venues/venuesdata/decor3.jpg" alt="Venue 2">
                     <div class="venue-overlay">
                         <div class="venue-info">Garden Paradise</div>
                     </div>
@@ -116,8 +137,8 @@
 
             <!-- Venue 4 -->
             <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="https://via.placeholder.com/600x400" data-bs-title="Charming Chateau">
-                    <img src="https://via.placeholder.com/600x400" alt="Venue 4">
+                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor5.jpg" data-bs-title="Charming Chateau">
+                    <img src="/frontend/allpack/venues/venuesdata/decor5.jpg" alt="Venue 4">
                     <div class="venue-overlay">
                         <div class="venue-info">Charming Chateau</div>
                     </div>
@@ -126,8 +147,8 @@
 
             <!-- Venue 5 -->
             <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="https://via.placeholder.com/600x400" data-bs-title="Modern Loft">
-                    <img src="https://via.placeholder.com/600x400" alt="Venue 5">
+                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/6.jpg" data-bs-title="Modern Loft">
+                    <img src="/frontend/allpack/venues/venuesdata/6.jpg" alt="Venue 5">
                     <div class="venue-overlay">
                         <div class="venue-info">Modern Loft</div>
                     </div>
@@ -136,8 +157,8 @@
 
             <!-- Venue 6 -->
             <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="https://via.placeholder.com/600x400" data-bs-title="Rustic Barn">
-                    <img src="https://via.placeholder.com/600x400" alt="Venue 6">
+                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor3.jpg" data-bs-title="Rustic Barn">
+                    <img src="/frontend/allpack/venues/venuesdata/decor3.jpg" alt="Venue 6">
                     <div class="venue-overlay">
                         <div class="venue-info">Rustic Barn</div>
                     </div>
@@ -155,7 +176,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <img src="" alt="Venue" class="img-fluid" id="modalImage">
+                    <img src="" alt="Venue" id="modalImage" class="img-fluid">
                 </div>
             </div>
         </div>
