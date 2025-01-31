@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wedding Venues</title>
+    <title>Wedding Decor Planner</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@400&display=swap" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
-        /* Custom styles */
         body {
-            font-family: 'Georgia', serif;
+            font-family: 'Raleway', sans-serif;
+            background-color: #f8f9fa;
         }
+
         .hero-section {
             position: relative;
-            height: 60vh;
+            height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -24,6 +28,7 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             overflow: hidden;
         }
+
         .hero-section video {
             position: absolute;
             top: 0;
@@ -33,36 +38,100 @@
             object-fit: cover;
             z-index: -1;
         }
+
         .hero-section h1 {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: bold;
+            text-transform: uppercase;
         }
-        .venue-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        .btn-light {
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.7);
+            color: #000;
+            padding: 10px 20px;
+            font-size: 18px;
         }
-        .venue-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        .footer {
-            background: #343a40;
+
+        .btn-light:hover {
+            background-color: #ffad33;
             color: white;
         }
+
+        .decor-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .decor-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-img-top {
+            border-radius: 10px 10px 0 0;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .footer .social-icons i {
+            font-size: 1.5rem;
+            margin: 0 15px;
+            color: #fff;
+        }
+
+        .footer .social-icons i:hover {
+            color: #ffad33;
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #ffad33;
+        }
+
+        .card-body ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .card-body ul li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 767px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+        }
+
     </style>
 </head>
+
 <body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Wedding Planner</a>
+            <a class="navbar-brand" href="#">Wedding Decor Planner</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Venues</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#decor-themes">Decor Themes</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                 </ul>
@@ -72,65 +141,63 @@
 
     <!-- Hero Section with Video Background -->
     <section class="hero-section">
-        <!-- Video Background -->
         <video autoplay muted loop>
-            <source src="/assethome/booking.mp4" type="video/mp4">
+            <source src="/frontend/allpack/venues/venuesdata/Ugandan Wedding Decor Of H V.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <!-- Hero Content -->
         <div class="text-center">
-            <h1>Find Your Dream Wedding Venue</h1>
-            <p class="lead">Explore our curated list of stunning venues for your special day.</p>
-            <a href="#venues" class="btn btn-light btn-lg">View Venues</a>
+            <h1>Design Your Dream Wedding Decor</h1>
+            <p class="lead">Explore our stunning decor themes to make your special day unforgettable.</p>
+            <a href="#decor-themes" class="btn btn-light btn-lg">View Themes</a>
         </div>
     </section>
 
-    <!-- Venues Section -->
-    <section id="venues" class="container my-5">
-        <h2 class="text-center mb-4">Our Venues</h2>
+    <!-- Decor Themes Section -->
+    <section id="decor-themes" class="container my-5">
+        <h2 class="text-center mb-4">Our Decor Themes</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Venue Card 1 -->
+            <!-- Decor Theme Card 1 -->
             <div class="col">
-                <div class="card h-100 venue-card">
-                    <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Venue 1">
+                <div class="card h-100 decor-card">
+                    <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Decor Theme 1">
                     <div class="card-body">
-                        <h5 class="card-title">Luxury Garden</h5>
-                        <p class="card-text">A beautiful outdoor garden venue perfect for a romantic wedding.</p>
-                        <ul class="list-unstyled">
-                            <li><i class="fas fa-users"></i> Capacity: 200 guests</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Location: New York</li>
+                        <h5 class="card-title">Romantic Garden</h5>
+                        <p class="card-text">A lush garden theme with floral arches and fairy lights.</p>
+                        <ul>
+                            <li><i class="fas fa-palette"></i> Colors: Pastel shades</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Best for: Outdoor weddings</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Book Now</a>
+                        <a href="#" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>
-            <!-- Venue Card 2 -->
+            <!-- Decor Theme Card 2 -->
             <div class="col">
-                <div class="card h-100 venue-card">
-                    <img src="https://via.placeholder.com/400x300" alt="Venue 2" class="card-img-top">
+                <div class="card h-100 decor-card">
+                    <img src="https://via.placeholder.com/400x300" alt="Decor Theme 2" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Grand Ballroom</h5>
-                        <p class="card-text">An elegant ballroom with chandeliers and a spacious dance floor.</p>
-                        <ul class="list-unstyled">
-                            <li><i class="fas fa-users"></i> Capacity: 300 guests</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Location: Los Angeles</li>
+                        <h5 class="card-title">Elegant Ballroom</h5>
+                        <p class="card-text">A sophisticated theme with crystal chandeliers and silk drapes.</p>
+                        <ul>
+                            <li><i class="fas fa-palette"></i> Colors: Gold and ivory</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Best for: Indoor weddings</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Book Now</a>
+                        <a href="#" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>
-            <!-- Venue Card 3 -->
+            <!-- Decor Theme Card 3 -->
             <div class="col">
-                <div class="card h-100 venue-card">
-                    <img src="/assethome/1.jpg" alt="Venue 3" class="card-img-top">
+                <div class="card h-100 decor-card">
+                    <img src="/assethome/1.jpg" alt="Decor Theme 3" class="card-img-top">
                     <div class="card-body">
-                        <h5 class="card-title">Beachfront Resort</h5>
-                        <p class="card-text">A stunning beachfront venue with ocean views and a tropical vibe.</p>
-                        <ul class="list-unstyled">
-                            <li><i class="fas fa-users"></i> Capacity: 150 guests</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Location: Miami</li>
+                        <h5 class="card-title">Beach Bliss</h5>
+                        <p class="card-text">A tropical theme with seashells, lanterns, and ocean hues.</p>
+                        <ul>
+                            <li><i class="fas fa-palette"></i> Colors: Blue and white</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Best for: Beach weddings</li>
                         </ul>
-                        <a href="#" class="btn btn-primary">Book Now</a>
+                        <a href="#" class="btn btn-primary">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -140,8 +207,8 @@
     <!-- Footer -->
     <footer class="footer py-4">
         <div class="container text-center">
-            <p class="mb-0">&copy; 2025 Wedding Planner. All Rights Reserved.</p>
-            <div class="mt-2">
+            <p class="mb-0">&copy; 2025 Wedding Decor Planner. All Rights Reserved.</p>
+            <div class="social-icons mt-2">
                 <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
@@ -153,4 +220,5 @@
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
