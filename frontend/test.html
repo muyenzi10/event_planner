@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Decor</title>
+    <title>Wedding Decor Gallery</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/frontend/css/footer.css">
@@ -112,14 +112,13 @@
                 font-size: 2rem;
             }
         }
-
     </style>
 </head>
 
 <body>
 
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Logo</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -151,94 +150,189 @@
         </div>
     </section>
 
-    <!-- Decor Themes Section -->
-    <section id="decor-themes" class="container my-5">
-        <h2 class="text-center mb-4">Our Decor Themes</h2>
+       <!-- Card Section -->
+       <div class="container my-5" id="decor-themes">
+        <h2 class="text-center mb-5">
+            Our Decor Themes</h2>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            <!-- Decor Theme Card 1 -->
+            <!-- Card 1 -->
             <div class="col">
-                <div class="card h-100 decor-card">
-                    <img src="https://via.placeholder.com/400x300" class="card-img-top" alt="Decor Theme 1">
+                <div class="card">
+                    <img src="/frontend/allpack/iriza/irizadata/iriza0.jpg" class="card-img-top" alt="Professional Waiter Service" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/iriza/irizadata/iriza0.jpg')">
                     <div class="card-body">
-                        <h5 class="card-title">Romantic Garden</h5>
-                        <p class="card-text">A lush garden theme with floral arches and fairy lights.</p>
-                        <ul>
-                            <li><i class="fas fa-palette"></i> Colors: Pastel shades</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Best for: Outdoor weddings</li>
-                        </ul>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <h5 class="card-title">Dedicated Waitstaff</h5>
+                        <p class="card-text">Our team provides attentive, professional waitstaff that ensure your event runs smoothly and your guests are always taken care of.</p>
                     </div>
                 </div>
             </div>
-            <!-- Decor Theme Card 2 -->
+            <!-- Card 2 -->
             <div class="col">
-                <div class="card h-100 decor-card">
-                    <img src="https://via.placeholder.com/400x300" alt="Decor Theme 2" class="card-img-top">
+                <div class="card">
+                    <img src="/frontend/allpack/iriza/irizadata/iriza10.jpg" class="card-img-top" alt="Serving Guests with Style" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/iriza/irizadata/iriza10.jpg')">
                     <div class="card-body">
-                        <h5 class="card-title">Elegant Ballroom</h5>
-                        <p class="card-text">A sophisticated theme with crystal chandeliers and silk drapes.</p>
-                        <ul>
-                            <li><i class="fas fa-palette"></i> Colors: Gold and ivory</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Best for: Indoor weddings</li>
-                        </ul>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <h5 class="card-title">Elegance in Every Detail</h5>
+                        <p class="card-text">Our skilled staff delivers impeccable service with an emphasis on elegance, ensuring that your event leaves a lasting impression.</p>
                     </div>
                 </div>
             </div>
-            <!-- Decor Theme Card 3 -->
+            <!-- Card 3 -->
             <div class="col">
-                <div class="card h-100 decor-card">
-                    <img src="/assethome/1.jpg" alt="Decor Theme 3" class="card-img-top">
+                <div class="card">
+                    <img src="/frontend/allpack/iriza/irizadata/iriza11.jpg" class="card-img-top" alt="Exquisite Service at Every Event" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/iriza/irizadata/iriza11.jpg')">
                     <div class="card-body">
-                        <h5 class="card-title">Beach Bliss</h5>
-                        <p class="card-text">A tropical theme with seashells, lanterns, and ocean hues.</p>
-                        <ul>
-                            <li><i class="fas fa-palette"></i> Colors: Blue and white</li>
-                            <li><i class="fas fa-map-marker-alt"></i> Best for: Beach weddings</li>
-                        </ul>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <h5 class="card-title">Unforgettable Event Service</h5>
+                        <p class="card-text">We provide seamless service, ensuring every detail is meticulously planned to create an unforgettable experience for you and your guests.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
- <!-- Footer -->
- <footer class="bg-dark text-light py-4 footer-animated">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>About Us</h5>
-                <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+            <!-- Card 4 -->
+            <div class="col">
+                <div class="card">
+                    <img src="/frontend/allpack/iriza/irizadata/fiston1.jpg" class="card-img-top" alt="Elegant Presentation" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/iriza/irizadata/fiston.jpg')">
+                    <div class="card-body">
+                        <h5 class="card-title">Impressive Presentation</h5>
+                        <p class="card-text">Our presentation of food and service is designed to impress, ensuring your guests are wowed by both taste and style.</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled footer-content">
-                    <li><a href="home.htm" class="text-light">Home</a></li>
-                    <li><a href="#" class="text-light">About</a></li>
-                    <li><a href="#" class="text-light">Services</a></li>
-                    <li><a href="index.html" class="text-light">Packages</a></li>
-                    <li><a href="#" class="text-light">Contact</a></li>
-                </ul>
+            <!-- Card 5 -->
+            <div class="col">
+                <div class="card">
+                    <img src="/frontend/allpack/iriza/irizadata/iriza9.jpg" class="card-img-top" alt="Impeccable Attention to Detail" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/iriza/irizadata/iriza9.jpg')">
+                    <div class="card-body">
+                        <h5 class="card-title">Flawless Execution</h5>
+                        <p class="card-text">From the smallest details to the grandest gestures, we ensure everything is perfectly executed to match your vision.</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-                <h5>Connect With Us</h5>
-                <ul class="list-unstyled footer-content">
-                    <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                    <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
-                    <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                </ul>
+            <!-- Card 6 -->
+            <div class="col">
+                <div class="card">
+                    <img src="/frontend/allpack/iriza/irizadata/iriza14.jpg" class="card-img-top" alt="Providing Exceptional Service" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/iriza/irizadata/iriza14.jpg')">
+                    <div class="card-body">
+                        <h5 class="card-title">Top-Tier Service Excellence</h5>
+                        <p class="card-text">We prioritize delivering top-tier service that goes above and beyond expectations for an extraordinary event experience.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="text-center mt-4">
-            <p class="footer-content">&copy; 2025 Event Planner. All Rights Reserved.</p>
+            <!-- Card 7 -->
+            <div class="col">
+                <div class="card">
+                    <img src="/frontend/allpack/iriza/irizadata/iriza2.jpg" class="card-img-top" alt="Exclusive Event Support" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/iriza/irizadata/iriza2.jpg')">
+                    <div class="card-body">
+                        <h5 class="card-title">Exclusive Event Support</h5>
+                        <p class="card-text">Our dedicated team ensures every event is supported with the right resources, making it effortless for you to enjoy your special day.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="col">
+                <div class="card">
+                    <img src="/frontend/allpack/iriza/irizadata/iriza03.jpg" class="card-img-top" alt="Deluxe Event Solutions" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/iriza/irizadata/iriza03.jpg')">
+                    <div class="card-body">
+                        <h5 class="card-title">Tailored Event Solutions</h5>
+                        <p class="card-text">We offer tailored event solutions that meet your unique needs, ensuring that every aspect of your event is perfect.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 9 -->
+            <div class="col">
+                <div class="card">
+                    <img src="/frontend/allpack/iriza/irizadata/iriza4.jpg" class="card-img-top" alt="Unrivaled Event Service" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/iriza/irizadata/iriza4.jpg')">
+                    <div class="card-body">
+                        <h5 class="card-title">Unrivaled Event Service</h5>
+                        <p class="card-text">Our event service stands out for its professionalism, creativity, and attention to detail, ensuring your event is nothing short of extraordinary.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 10 -->
+            <div class="col">
+                <div class="card">
+                    <img src="/frontend/allpack/iriza/irizadata/iriza5.jpg" class="card-img-top" alt="Event Perfection" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/iriza/irizadata/iriza5.jpg')">
+                    <div class="card-body">
+                        <h5 class="card-title">Flawless Event Coordination</h5>
+                        <p class="card-text">Every event is seamlessly coordinated, with careful planning and professional execution to create a flawless experience for all.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 11 -->
+            <div class="col">
+                <div class="card">
+                    <img src="/frontend/allpack/iriza/irizadata/iriza6.jpg" class="card-img-top" alt="Elite Event Service" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/iriza/irizadata/iriza6.jpg')">
+                    <div class="card-body">
+                        <h5 class="card-title">Elite Event Service</h5>
+                        <p class="card-text">We deliver elite service, ensuring that each event is a memorable occasion that exceeds all expectations.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 12 -->
+            <div class="col">
+                <div class="card">
+                    <img src="/frontend/allpack/iriza/irizadata/iriza8.jpg" class="card-img-top" alt="Premium Event Solutions" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/iriza/irizadata/iriza8.jpg')">
+                    <div class="card-body">
+                        <h5 class="card-title">Premium Event Solutions</h5>
+                        <p class="card-text">Our premium event services are designed to elevate your experience, offering exceptional service, style, and care throughout the event.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</footer>
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Modal for Image -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" class="d-block w-100 modal-img" src="" alt="Modal Image">
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 footer-animated">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="home.htm" class="text-light">Home</a></li>
+                        <li><a href="#" class="text-light">About</a></li>
+                        <li><a href="#" class="text-light">Services</a></li>
+                        <li><a href="index.html" class="text-light">Packages</a></li>
+                        <li><a href="#" class="text-light">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="footer-content">&copy; 2025 Event Planner. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
