@@ -4,9 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Decor Inspiration & Venues Gallery</title>
+    <title>Wedding Decor</title>
     <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/footer.css">
+    <link rel="stylesheet" href="/frontend/css/navbar.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="/frontend/allpack/css/decor.css">
     <!-- Swiper.js CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <!-- Custom CSS -->
@@ -141,71 +146,105 @@
 </head>
 
 <body>
-    <!-- Venues Gallery Section -->
-    <div class="container-fluid venue-gallery">
-        <h1 class="text-center mb-4">Wedding Venues Gallery</h1>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <!-- Venue 1 -->
-            <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor1.jpeg" data-bs-title="Elegant Ballroom">
-                    <img src="/frontend/allpack/venues/venuesdata/decor1.jpeg" alt="Venue 1">
-                    <div class="venue-overlay">
-                        <div class="venue-info">Elegant Ballroom</div>
-                    </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Logo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Suppliers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Booking</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="hero-section">
+        <!-- Video Background -->
+        <video autoplay muted loop>
+            <source src="/frontend/allpack/venues/venuesdata/Reception Decor Tanzania Wedding Decor Stage Decor Lovely Wedding.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- Hero Content -->
+        <div class="text-center">
+            <h1>Transform Your Wedding with Stunning Decor</h1>
+            <p class="lead">Discover breathtaking decor themes and services for your special day.</p>
+            <a href="#decor-themes" class="btn btn-light btn-lg">Explore Themes</a>
+        </div>
+    </section>  
+  <!-- Wedding Decor Gallery Section -->
+<div class="container-fluid venue-gallery" id="decor-themes">
+    <h1 class="text-center mb-4">Wedding Decor Gallery</h1>
+    <p class="text-center">Enchanting Wedding Decor – Crafting Dreamy Moments with Elegant Details!</p>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <!-- Decor 1 -->
+        <div class="col">
+            <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor1.jpeg" data-bs-title="Elegant Ballroom">
+                <img src="/frontend/allpack/venues/venuesdata/decor1.jpeg" alt="Decor 1">
+                <div class="venue-overlay">
+                    <div class="venue-info">Elegant Ballroom</div>
                 </div>
             </div>
+        </div>
 
-            <!-- Venue 2 -->
-            <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor3.jpg" data-bs-title="Garden Paradise">
-                    <img src="/frontend/allpack/venues/venuesdata/decor3.jpg" alt="Venue 2">
-                    <div class="venue-overlay">
-                        <div class="venue-info">Garden Paradise</div>
-                    </div>
+        <!-- Decor 2 -->
+        <div class="col">
+            <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor3.jpg" data-bs-title="Garden Paradise">
+                <img src="/frontend/allpack/venues/venuesdata/decor3.jpg" alt="Decor 2">
+                <div class="venue-overlay">
+                    <div class="venue-info">Garden Paradise</div>
                 </div>
             </div>
+        </div>
 
-            <!-- Venue 3 -->
-            <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor2.jpg" data-bs-title="Riverside Retreat">
-                    <img src="/frontend/allpack/venues/venuesdata/decor2.jpg" alt="Venue 3">
-                    <div class="venue-overlay">
-                        <div class="venue-info">Riverside Retreat</div>
-                    </div>
+        <!-- Decor 3 -->
+        <div class="col">
+            <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor2.jpg" data-bs-title="Riverside Retreat">
+                <img src="/frontend/allpack/venues/venuesdata/decor2.jpg" alt="Decor 3">
+                <div class="venue-overlay">
+                    <div class="venue-info">Riverside Retreat</div>
                 </div>
             </div>
+        </div>
 
-            <!-- Venue 4 -->
-            <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor5.jpg" data-bs-title="Charming Chateau">
-                    <img src="/frontend/allpack/venues/venuesdata/decor5.jpg" alt="Venue 4">
-                    <div class="venue-overlay">
-                        <div class="venue-info">Charming Chateau</div>
-                    </div>
+        <!-- Decor 4 -->
+        <div class="col">
+            <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor5.jpg" data-bs-title="Charming Chateau">
+                <img src="/frontend/allpack/venues/venuesdata/decor5.jpg" alt="Decor 4">
+                <div class="venue-overlay">
+                    <div class="venue-info">Charming Chateau</div>
                 </div>
             </div>
+        </div>
 
-            <!-- Venue 5 -->
-            <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/6.jpg" data-bs-title="Modern Loft">
-                    <img src="/frontend/allpack/venues/venuesdata/6.jpg" alt="Venue 5">
-                    <div class="venue-overlay">
-                        <div class="venue-info">Modern Loft</div>
-                    </div>
+        <!-- Decor 5 -->
+        <div class="col">
+            <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/6.jpg" data-bs-title="Modern Loft">
+                <img src="/frontend/allpack/venues/venuesdata/6.jpg" alt="Decor 5">
+                <div class="venue-overlay">
+                    <div class="venue-info">Modern Loft</div>
                 </div>
             </div>
+        </div>
 
-            <!-- Venue 6 -->
-            <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor3.jpg" data-bs-title="Rustic Barn">
-                    <img src="/frontend/allpack/venues/venuesdata/decor3.jpg" alt="Venue 6">
-                    <div class="venue-overlay">
-                        <div class="venue-info">Rustic Barn</div>
-                    </div>
+        <!-- Decor 6 -->
+        <div class="col">
+            <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor3.jpg" data-bs-title="Rustic Barn">
+                <img src="/frontend/allpack/venues/venuesdata/decor3.jpg" alt="Decor 6">
+                <div class="venue-overlay">
+                    <div class="venue-info">Rustic Barn</div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
 
     <!-- Modal for Enlarged Image -->
     <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
@@ -323,6 +362,39 @@
             </div>
         </div>
     </div>
+       <!-- Footer -->
+       <footer class="bg-dark text-light py-4 footer-animated">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="home.htm" class="text-light">Home</a></li>
+                        <li><a href="#" class="text-light">About</a></li>
+                        <li><a href="#" class="text-light">Services</a></li>
+                        <li><a href="index.html" class="text-light">Packages</a></li>
+                        <li><a href="#" class="text-light">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="footer-content">&copy; 2025 Event Planner. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <!-- Swiper.js JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
