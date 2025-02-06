@@ -141,9 +141,89 @@
 </head>
 
 <body>
+    <!-- Venues Gallery Section -->
+    <div class="container-fluid venue-gallery">
+        <h1 class="text-center mb-4">Wedding Venues Gallery</h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <!-- Venue 1 -->
+            <div class="col">
+                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor1.jpeg" data-bs-title="Elegant Ballroom">
+                    <img src="/frontend/allpack/venues/venuesdata/decor1.jpeg" alt="Venue 1">
+                    <div class="venue-overlay">
+                        <div class="venue-info">Elegant Ballroom</div>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Slider Section -->
-    <div class="container my-5">
+            <!-- Venue 2 -->
+            <div class="col">
+                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor3.jpg" data-bs-title="Garden Paradise">
+                    <img src="/frontend/allpack/venues/venuesdata/decor3.jpg" alt="Venue 2">
+                    <div class="venue-overlay">
+                        <div class="venue-info">Garden Paradise</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Venue 3 -->
+            <div class="col">
+                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor2.jpg" data-bs-title="Riverside Retreat">
+                    <img src="/frontend/allpack/venues/venuesdata/decor2.jpg" alt="Venue 3">
+                    <div class="venue-overlay">
+                        <div class="venue-info">Riverside Retreat</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Venue 4 -->
+            <div class="col">
+                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor5.jpg" data-bs-title="Charming Chateau">
+                    <img src="/frontend/allpack/venues/venuesdata/decor5.jpg" alt="Venue 4">
+                    <div class="venue-overlay">
+                        <div class="venue-info">Charming Chateau</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Venue 5 -->
+            <div class="col">
+                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/6.jpg" data-bs-title="Modern Loft">
+                    <img src="/frontend/allpack/venues/venuesdata/6.jpg" alt="Venue 5">
+                    <div class="venue-overlay">
+                        <div class="venue-info">Modern Loft</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Venue 6 -->
+            <div class="col">
+                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor3.jpg" data-bs-title="Rustic Barn">
+                    <img src="/frontend/allpack/venues/venuesdata/decor3.jpg" alt="Venue 6">
+                    <div class="venue-overlay">
+                        <div class="venue-info">Rustic Barn</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Enlarged Image -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageModalLabel">Enlarged Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="enlargedImg" src="" class="img-fluid" alt="Enlarged Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+       <!-- Slider Section -->
+       <div class="container my-5">
         <h1 class="text-center mb-4">Wedding Decor Inspiration</h1>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
@@ -226,87 +306,6 @@
             <!-- Swiper Navigation -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
-        </div>
-    </div>
-
-    <!-- Venues Gallery Section -->
-    <div class="container-fluid venue-gallery">
-        <h1 class="text-center mb-4">Wedding Venues Gallery</h1>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <!-- Venue 1 -->
-            <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor1.jpeg" data-bs-title="Elegant Ballroom">
-                    <img src="/frontend/allpack/venues/venuesdata/decor1.jpeg" alt="Venue 1">
-                    <div class="venue-overlay">
-                        <div class="venue-info">Elegant Ballroom</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Venue 2 -->
-            <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor3.jpg" data-bs-title="Garden Paradise">
-                    <img src="/frontend/allpack/venues/venuesdata/decor3.jpg" alt="Venue 2">
-                    <div class="venue-overlay">
-                        <div class="venue-info">Garden Paradise</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Venue 3 -->
-            <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor2.jpg" data-bs-title="Riverside Retreat">
-                    <img src="/frontend/allpack/venues/venuesdata/decor2.jpg" alt="Venue 3">
-                    <div class="venue-overlay">
-                        <div class="venue-info">Riverside Retreat</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Venue 4 -->
-            <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor5.jpg" data-bs-title="Charming Chateau">
-                    <img src="/frontend/allpack/venues/venuesdata/decor5.jpg" alt="Venue 4">
-                    <div class="venue-overlay">
-                        <div class="venue-info">Charming Chateau</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Venue 5 -->
-            <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/6.jpg" data-bs-title="Modern Loft">
-                    <img src="/frontend/allpack/venues/venuesdata/6.jpg" alt="Venue 5">
-                    <div class="venue-overlay">
-                        <div class="venue-info">Modern Loft</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Venue 6 -->
-            <div class="col">
-                <div class="venue-card" data-bs-toggle="modal" data-bs-target="#venueModal" data-bs-image="/frontend/allpack/venues/venuesdata/decor3.jpg" data-bs-title="Rustic Barn">
-                    <img src="/frontend/allpack/venues/venuesdata/decor3.jpg" alt="Venue 6">
-                    <div class="venue-overlay">
-                        <div class="venue-info">Rustic Barn</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal for Enlarged Image -->
-    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="imageModalLabel">Enlarged Image</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img id="enlargedImg" src="" class="img-fluid" alt="Enlarged Image">
-                </div>
-            </div>
         </div>
     </div>
 
