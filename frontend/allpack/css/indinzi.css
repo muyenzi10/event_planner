@@ -52,3 +52,34 @@
 .item a.active { /* Change color on hover and when the link is active */
   color: #ff1e00; /* Change text color when hovered */
 }
+
+
+/* Add background color to the carousel item */
+.carousel-item {
+  position: relative;
+}
+
+/* Add background color and opacity to the carousel caption */
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with 50% opacity */
+  color: white; /* White text color */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Style the title of the caption */
+.carousel-caption h5 {
+  color: #ffcc00; /* Set color for the title */
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Style the text of the paragraph */
+.carousel-caption p {
+  color: #ffffff; /* Set color for the paragraph text */
+  font-size: 1rem;
+  font-style: italic;
+}
+
+
+
