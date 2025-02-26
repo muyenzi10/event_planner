@@ -20,11 +20,52 @@
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <title>Wedding Invitation</title>
     <style>
+        /* Hero Section Styling */
+        .hero-section {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-section video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-section h2 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-section .lead {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-section .btn {
+            font-size: 1.2rem;
+            padding: 10px 30px;
+            border-radius: 25px;
+            margin-top: 20px;
+        }
+
         /* Custom Styles for Invitation Cards */
         .invitation-section {
             padding: 50px 0;
             background: #f8f9fa;
         }
+
         .invitation-card {
             background: #fff;
             border-radius: 15px;
@@ -32,30 +73,36 @@
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .invitation-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
+
         .invitation-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
+
         .invitation-card .card-body {
             padding: 20px;
             text-align: center;
         }
+
         .invitation-card .card-title {
             font-family: 'Great Vibes', cursive;
             font-size: 2.5rem;
             color: #d4af37;
             margin-bottom: 10px;
         }
+
         .invitation-card .card-text {
             font-size: 1rem;
             color: #555;
             margin-bottom: 15px;
         }
+
         .invitation-card .btn {
             background: #d4af37;
             border: none;
@@ -66,6 +113,7 @@
             font-weight: bold;
             transition: background 0.3s ease;
         }
+
         .invitation-card .btn:hover {
             background: #b5942e;
         }
@@ -75,7 +123,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand logo-margin" href="#">Logo</a>
+            <a class="navbar-brand logo-margin" href="#">Wedding Planner</a>
             <button
                 class="navbar-toggler"
                 type="button"
@@ -96,7 +144,7 @@
                         <a class="nav-link active" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="about.html">Service</a>
+                        <a class="nav-link active" href="about.html">Services</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">Packages</a>
@@ -112,6 +160,21 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Video Background -->
+        <video autoplay muted loop>
+            <source src="/frontend/allpack/invitation/invdar/v2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- Hero Content -->
+        <div class="text-center">
+            <h2>Celebrate Love with Us</h2>
+            <p class="lead">Join us as we unite in love and joy on this special day.</p>
+            <a href="#" class="btn btn-primary btn-lg">RSVP Now</a>
+        </div>
+    </section>
+
     <!-- Invitation Cards Section -->
     <section class="invitation-section">
         <div class="container">
@@ -119,7 +182,7 @@
                 <!-- Invitation Card 1 -->
                 <div class="col-md-4 mb-4" data-aos="fade-up">
                     <div class="invitation-card">
-                        <img src="/frontend/allpack/invitation/inv1.jpg" class="card-img-top" alt="Invitation 1">
+                        <img src="/frontend/allpack/invitation/invdar/1.jpg" class="card-img-top" alt="Invitation 1">
                         <div class="card-body">
                             <h5 class="card-title">Elegant Design</h5>
                             <p class="card-text">A beautifully crafted invitation card for your special day. Perfect for weddings and formal events.</p>
@@ -130,7 +193,7 @@
                 <!-- Invitation Card 2 -->
                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="invitation-card">
-                        <img src="/frontend/allpack/invitation/inv2.jpg" class="card-img-top" alt="Invitation 2">
+                        <img src="/frontend/allpack/invitation/invdar/2.jpg" class="card-img-top" alt="Invitation 2">
                         <div class="card-body">
                             <h5 class="card-title">Modern Style</h5>
                             <p class="card-text">A contemporary design that blends elegance with modern aesthetics. Ideal for trendy weddings.</p>
@@ -141,7 +204,7 @@
                 <!-- Invitation Card 3 -->
                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="invitation-card">
-                        <img src="/frontend/allpack/invitation/inv3.jpg" class="card-img-top" alt="Invitation 3">
+                        <img src="/frontend/allpack/invitation/invdar/3.jpg" class="card-img-top" alt="Invitation 3">
                         <div class="card-body">
                             <h5 class="card-title">Classic Theme</h5>
                             <p class="card-text">A timeless design that exudes sophistication and grace. Perfect for traditional weddings.</p>
@@ -182,7 +245,7 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-                <p class="footer-content">&copy; 2025 Event Planner. All Rights Reserved.</p>
+                <p class="footer-content">&copy; 2025 Wedding Planner. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
