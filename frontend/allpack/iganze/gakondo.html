@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation</title>
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        rel="stylesheet"
+    />
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/navbar.css">
+    <link rel="stylesheet" href="/frontend/css/footer.css">
+    <link rel="stylesheet" href="/frontend/allpack/css/videos.css">
+    <style>
+        /* Hero Section Styling */
+        .hero-section {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-section video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-section h2 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-section .lead {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-section .btn {
+            font-size: 1.2rem;
+            padding: 10px 30px;
+            border-radius: 25px;
+            margin-top: 20px;
+        }
+
+        /* Singers Gallery Styling */
+        .singers-gallery {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .singers-gallery h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .singer-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .singer-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .singer-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .singer-card .card-body {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .singer-card h5 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .singer-card p {
+            font-size: 1rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand logo-margin" href="#">Wedding Planner</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home.htm">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/frontend/suppliers/supply.html">Suppliers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="booking.html">Booking</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Video Background -->
+        <video autoplay muted loop>
+            <source src="/frontend/allpack/iganze/gakondodata/v2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h2>Welcome to Our Wedding</h2>
+            <p class="lead">Join us in celebrating our special day!</p>
+            <a href="booking.html" class="btn btn-primary">RSVP Now</a>
+        </div>
+    </section>
+
+    <!-- Singers Gallery Section -->
+    <section class="singers-gallery">
+        <div class="container">
+            <h2 data-aos="fade-up">Our Wedding Singers</h2>
+            <div class="row">
+                <!-- Singer 1 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="singer-card">
+                        <img src="/frontend/allpack/singers/singer1.jpg" alt="Singer 1">
+                        <div class="card-body">
+                            <h5>John Doe</h5>
+                            <p>Professional wedding singer with 10+ years of experience. Specializes in romantic ballads and classic hits.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Singer 2 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="singer-card">
+                        <img src="/frontend/allpack/singers/singer2.jpg" alt="Singer 2">
+                        <div class="card-body">
+                            <h5>Jane Smith</h5>
+                            <p>Versatile singer with a soulful voice. Perfect for creating a magical atmosphere at your wedding.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Singer 3 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="singer-card">
+                        <img src="/frontend/allpack/singers/singer3.jpg" alt="Singer 3">
+                        <div class="card-body">
+                            <h5>Michael Johnson</h5>
+                            <p>Known for his powerful voice and energetic performances. Ideal for lively wedding celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 footer-animated">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="home.htm" class="text-light">Home</a></li>
+                        <li><a href="#" class="text-light">About</a></li>
+                        <li><a href="#" class="text-light">Services</a></li>
+                        <li><a href="index.html" class="text-light">Packages</a></li>
+                        <li><a href="#" class="text-light">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="footer-content">&copy; 2025 Wedding Planner. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"
+    ></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+    </script>
+</body>
+</html>
