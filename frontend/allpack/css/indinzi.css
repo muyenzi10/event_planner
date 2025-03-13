@@ -10,6 +10,7 @@
   width: 100%; /* Full width */
   object-fit: cover; /* Ensures the image covers the container without distortion */
   object-position: center center; /* Optional: to ensure the image is centered */
+  overflow: hidden;
 }
 
 .item {
