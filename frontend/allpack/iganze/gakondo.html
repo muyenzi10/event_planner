@@ -44,6 +44,23 @@
             z-index: -1;
         }
 
+        /* Video Overlay */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+            z-index: 0;
+        }
+
+        .hero-section .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
         .hero-section h2 {
             font-size: 3.5rem;
             font-weight: bold;
@@ -81,6 +98,9 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Ensure the card takes full height */
         }
 
         .singer-card:hover {
@@ -89,13 +109,15 @@
 
         .singer-card img {
             width: 100%;
-            height: 200px;
-            object-fit: cover;
+            height: auto; /* Make the image responsive */
+            aspect-ratio: 1 / 1; /* Ensure a square aspect ratio */
+            object-fit: cover; /* Crop the image to fit */
         }
 
         .singer-card .card-body {
             padding: 20px;
             text-align: center;
+            flex-grow: 1; /* Allow the card body to grow and fill space */
         }
 
         .singer-card h5 {
@@ -174,7 +196,9 @@
                 <!-- Singer 1 -->
                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="singer-card">
-                        <img src="/frontend/allpack/singers/singer1.jpg" alt="Singer 1">
+                        <a href="/frontend/allpack/iganze/gakondodata/i1.jpg">
+                        <img src="/frontend/allpack/iganze/gakondodata/i1.jpg" alt="Singer 1">
+                        </a>
                         <div class="card-body">
                             <h5>John Doe</h5>
                             <p>Professional wedding singer with 10+ years of experience. Specializes in romantic ballads and classic hits.</p>
@@ -184,7 +208,9 @@
                 <!-- Singer 2 -->
                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="singer-card">
-                        <img src="/frontend/allpack/singers/singer2.jpg" alt="Singer 2">
+                        <a href="/frontend/allpack/iganze/gakondodata/i2.jpg">
+                        <img src="/frontend/allpack/iganze/gakondodata/i2.jpg" alt="Singer 2">
+                        </a>
                         <div class="card-body">
                             <h5>Jane Smith</h5>
                             <p>Versatile singer with a soulful voice. Perfect for creating a magical atmosphere at your wedding.</p>
@@ -194,7 +220,117 @@
                 <!-- Singer 3 -->
                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="singer-card">
-                        <img src="/frontend/allpack/singers/singer3.jpg" alt="Singer 3">
+                        <a href="/frontend/allpack/iganze/gakondodata/i3.jpg">
+                        <img src="/frontend/allpack/iganze/gakondodata/i3.jpg" alt="Singer 3">
+                        </a>
+                        <div class="card-body">
+                            <h5>Michael Johnson</h5>
+                            <p>Known for his powerful voice and energetic performances. Ideal for lively wedding celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Singer 4 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="singer-card">
+                        <a href="/frontend/allpack/iganze/gakondodata/i4.jpg">
+                        <img src="/frontend/allpack/iganze/gakondodata/i4.jpg" alt="Singer 4">
+                        </a>
+                        <div class="card-body">
+                            <h5>Michael Johnson</h5>
+                            <p>Known for his powerful voice and energetic performances. Ideal for lively wedding celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Singer 5 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="singer-card">
+                        <a href="/frontend/allpack/iganze/gakondodata/i5.jpg">
+                        <img src="/frontend/allpack/iganze/gakondodata/i5.jpg" alt="Singer 5">
+                        </a>
+                        <div class="card-body">
+                            <h5>Michael Johnson</h5>
+                            <p>Known for his powerful voice and energetic performances. Ideal for lively wedding celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Singer 6 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="singer-card">
+                        <a href="/frontend/allpack/iganze/gakondodata/i6.jpg">
+                        <img src="/frontend/allpack/iganze/gakondodata/i6.jpg" alt="Singer 6">
+                        </a>
+                        <div class="card-body">
+                            <h5>Michael Johnson</h5>
+                            <p>Known for his powerful voice and energetic performances. Ideal for lively wedding celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Singer 7 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="singer-card">
+                        <a href="/frontend/allpack/iganze/gakondodata/odira.jpg">
+                        <img src="/frontend/allpack/iganze/gakondodata/odira.jpg" alt="Singer 7">
+                        </a>
+                        <div class="card-body">
+                            <h5>Michael Johnson</h5>
+                            <p>Known for his powerful voice and energetic performances. Ideal for lively wedding celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Singer 8 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="singer-card">
+                        <a href="/frontend/allpack/iganze/gakondodata/odera2.jpg">
+                        <img src="/frontend/allpack/iganze/gakondodata/Webp.net-resizeimage(18).jpg" alt="Singer 8">
+                        </a>
+                        <div class="card-body">
+                            <h5>Michael Johnson</h5>
+                            <p>Known for his powerful voice and energetic performances. Ideal for lively wedding celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Singer 9 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="singer-card">
+                        <a href="/frontend/allpack/iganze/gakondodata/alouette_munganyinka_yakumbuje_abataramyi_cecile_kayirebwa_binyuze_mu_ndirimbo_ze_yaririmbye-4430e.jpg">
+                            <img src="/frontend/allpack/iganze/gakondodata/aloite.jpg" alt="Singer 9">
+                        </a>
+                        <div class="card-body">
+                            <h5>Michael Johnson</h5>
+                            <p>Known for his powerful voice and energetic performances. Ideal for lively wedding celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Singer 10 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="singer-card">
+                        <a href="/frontend/allpack/iganze/gakondodata/impanga.jpg">
+                        <img src="/frontend/allpack/iganze/gakondodata/impanga.jpg" alt="Singer 10">
+                        </a>
+                        <div class="card-body">
+                            <h5>Michael Johnson</h5>
+                            <p>Known for his powerful voice and energetic performances. Ideal for lively wedding celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Singer 11 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="singer-card">
+                        <a href="/frontend/allpack/iganze/gakondodata/francis.jpeg">
+                        <img src="/frontend/allpack/iganze/gakondodata/francis.jpeg" alt="Singer 11">
+                        </a>
+                        <div class="card-body">
+                            <h5>Michael Johnson</h5>
+                            <p>Known for his powerful voice and energetic performances. Ideal for lively wedding celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Singer 12 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="singer-card">
+                        <a href="/frontend/allpack/iganze/gakondodata/icumu.jpg">
+                        <img src="/frontend/allpack/iganze/gakondodata/icumu.jpg" alt="Singer 12">
+                        </a>
                         <div class="card-body">
                             <h5>Michael Johnson</h5>
                             <p>Known for his powerful voice and energetic performances. Ideal for lively wedding celebrations.</p>
