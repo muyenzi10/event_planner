@@ -15,6 +15,34 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
     <!-- AOS Animation Library -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS for Gallery -->
+    <style>
+        .card-slider .carousel-item {
+            padding: 20px; /* Add padding around cards */
+        }
+        .card-slider .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            transition: transform 0.3s ease;
+        }
+        .card-slider .card:hover {
+            transform: scale(1.05); /* Add hover effect */
+        }
+        .card-slider .card img {
+            height: 200px; /* Fixed height for images */
+            object-fit: cover; /* Ensure images cover the area */
+        }
+        .card-slider .carousel-control-prev,
+        .card-slider .carousel-control-next {
+            width: 5%; /* Adjust control width */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            border-radius: 50%; /* Rounded controls */
+        }
+        .card-slider .carousel-control-prev-icon,
+        .card-slider .carousel-control-next-icon {
+            filter: invert(1); /* Make arrows white */
+        }
+    </style>
 </head>
 <body>
     <!-- Navbar -->
@@ -73,11 +101,104 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Card-Style Gallery Slider -->
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <h2 data-aos="fade-up">Our Work in Action</h2>
+                <p class="lead" data-aos="fade-up" data-aos-delay="100">Check out some of our recent projects.</p>
+            </div>
+            <div class="col-md-12 card-slider" data-aos="fade-up">
+                <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <!-- Carousel Indicators -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <!-- Carousel Items -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <img src="/frontend/allpack/sound/sounddata/sound1.jpg" class="card-img-top" alt="Gallery Image 1">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Wedding Sound Setup</h5>
+                                            <p class="card-text">Perfect audio for your special day.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <img src="/frontend/allpack/sound/sounddata/sound2.jpg" class="card-img-top" alt="Gallery Image 2">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Event Lighting Design</h5>
+                                            <p class="card-text">Creating the perfect ambiance.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <img src="/frontend/allpack/sound/sounddata/sound3.jpg" class="card-img-top" alt="Gallery Image 3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Corporate Event Setup</h5>
+                                            <p class="card-text">Professional sound and lighting for corporate events.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row justify-content-center">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <img src="/frontend/allpack/sound/sounddata/sound4.jpg" class="card-img-top" alt="Gallery Image 4">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Outdoor Event Setup</h5>
+                                            <p class="card-text">Perfect sound and lighting for outdoor events.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <img src="/frontend/allpack/sound/sounddata/sound5.jpg" class="card-img-top" alt="Gallery Image 5">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Stage Lighting</h5>
+                                            <p class="card-text">Dynamic lighting for stage performances.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <img src="/frontend/allpack/sound/sounddata/sound6.jpg" class="card-img-top" alt="Gallery Image 6">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Concert Setup</h5>
+                                            <p class="card-text">Professional sound and lighting for concerts.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Carousel Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <div class="row mt-5">
             <div class="col-md-12 text-center" data-aos="fade-up">
                 <h2>Why Choose Us?</h2>
                 <p>We combine cutting-edge technology with expert craftsmanship to deliver unforgettable experiences. Our team is dedicated to making your event seamless and spectacular.</p>
-          
+                <a href="booking.html" class="btn btn-primary btn-lg">Book Now</a>
             </div>
         </div>
     </section>
