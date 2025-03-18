@@ -1,0 +1,40 @@
+.item {
+    display: flex; /* Align items in a row */
+    margin-left: 55%; /* Align text 50px from the left */
+    gap: 20px; /* Space between links */
+    position: relative; /* Required for positioning */
+    padding-bottom: 0; /* Added padding to ensure content isn't hidden */
+  }
+  
+  /* Style for the anchor links */
+  .item a {
+    text-decoration: none; /* Remove the default underline */
+    font-size: 22px; /* Set a good font size */
+    color: orangered; /* Set the text color */
+    position: relative; /* Required for positioning */
+    transition: color 0.3s ease; /* Smooth transition on color change */
+  }
+  
+  /* Make the underline appear only when hovering over "Highlight" */
+  .item a::after {
+    content: "";
+    position: absolute;
+    width: 0; /* Start with no underline */
+    height: 2px;
+    background-color: #000;
+    bottom: -5px; /* Position the underline below the text */
+    left: 0;
+    transition: width 0.3s ease; /* Smooth transition for the underline */
+  }
+  
+  /* Underline animation on hover, only for the "Highlight" link */
+  .item a:hover::after,
+  .item a.active::after {  /* Add an "active" class for persistent underline */
+    width: 100%; /* Expand the underline to the full width of the link */
+  }
+  
+  /* Change text color on hover */
+  .item a:hover,
+  .item a.active { /* Change color on hover and when the link is active */
+    color: #ff1e00; /* Change text color when hovered */
+  }
