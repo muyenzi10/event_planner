@@ -37,44 +37,64 @@
             color: #7f8c8d;
         }
 
-        /* Card Slider */
-        .card-slider .carousel-item {
-            padding: 20px;
+        /* Custom Image Styling */
+        .custom-image {
+            width: 100%; /* Ensure the image takes the full width of its container */
+            height: 300px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensure the image covers the entire area */
+            border-radius: 15px; /* Rounded corners for a modern look */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
         }
-        .card-slider .card {
+
+        .custom-image:hover {
+            transform: scale(1.05); /* Slight zoom effect on hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+        }
+
+        /* Custom Card Styling */
+        .custom-card {
+            width: 100%; /* Ensure the card takes full width of its container */
+            height: auto; /* Allow height to adjust based on content */
             border: none;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
             border-radius: 10px;
-            margin: 0 10px;
-            width: 300px;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
+            margin: 10px;
+            overflow: hidden; /* Ensure content doesn't overflow */
         }
-        .card-slider .card:hover {
-            transform: scale(1.05);
-        }
-        .card-slider .card img {
+
+        .custom-card img {
             height: 200px;
             object-fit: cover;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
         }
-        .card-slider .card-body {
+
+        .custom-card .card-body {
             padding: 20px;
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .card-slider .card-title {
-            font-size: clamp(1rem, 2vw, 1.25rem);
+
+        .custom-card .card-title {
+            font-size: 1.25rem;
             font-weight: bold;
             color: #2c3e50;
+            margin-bottom: 10px; /* Add spacing below the title */
         }
-        .card-slider .card-text {
+
+        .custom-card .card-text {
             color: #7f8c8d;
+            font-size: 0.9rem; /* Adjust font size for better readability */
+            line-height: 1.5; /* Improve line spacing */
+            margin-bottom: 15px; /* Add spacing below the text */
+        }
+
+        .custom-card:hover {
+            transform: scale(1.05); /* Add hover effect */
         }
 
         /* Dark Mode Toggle */
@@ -93,7 +113,10 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .card-slider .card {
+            .custom-image {
+                height: 200px; /* Adjust height for smaller screens */
+            }
+            .custom-card {
                 width: 100%;
                 margin: 10px 0;
             }
@@ -116,14 +139,6 @@
             justify-content: center;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Custom Image Size */
-        .custom-image {
-            width: 500px;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 10px;
         }
 
         /* Custom Carousel Controls */
@@ -155,7 +170,6 @@
             width: 30px;
             height: 30px;
         }
-
     </style>
 </head>
 <body>
@@ -248,22 +262,22 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="d-flex justify-content-center">
-                                <div class="card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound1.jpg" class="card-img-top custom-image" alt="Gallery Image 1">
+                                <div class="card custom-card">
+                                    <img src="/frontend/allpack/sound/sounddata/sound1.jpg" class="card-img-top" alt="Gallery Image 1">
                                     <div class="card-body">
                                         <h5 class="card-title">Wedding Sound Setup</h5>
                                         <p class="card-text">Perfect audio for your special day.</p>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound2.jpg" class="card-img-top custom-image" alt="Gallery Image 2">
+                                <div class="card custom-card">
+                                    <img src="/frontend/allpack/sound/sounddata/sound2.jpg" class="card-img-top" alt="Gallery Image 2">
                                     <div class="card-body">
                                         <h5 class="card-title">Event Lighting Design</h5>
                                         <p class="card-text">Creating the perfect ambiance.</p>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound3.jpg" class="card-img-top custom-image" alt="Gallery Image 3">
+                                <div class="card custom-card">
+                                    <img src="/frontend/allpack/sound/sounddata/sound3.jpg" class="card-img-top" alt="Gallery Image 3">
                                     <div class="card-body">
                                         <h5 class="card-title">Corporate Event Setup</h5>
                                         <p class="card-text">Professional sound and lighting for corporate events.</p>
@@ -273,22 +287,22 @@
                         </div>
                         <div class="carousel-item">
                             <div class="d-flex justify-content-center">
-                                <div class="card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound4.jpg" class="card-img-top custom-image" alt="Gallery Image 4">
+                                <div class="card custom-card">
+                                    <img src="/frontend/allpack/sound/sounddata/sound4.jpg" class="card-img-top" alt="Gallery Image 4">
                                     <div class="card-body">
                                         <h5 class="card-title">Outdoor Event Setup</h5>
                                         <p class="card-text">Perfect sound and lighting for outdoor events.</p>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound5.jpg" class="card-img-top custom-image" alt="Gallery Image 5">
+                                <div class="card custom-card">
+                                    <img src="/frontend/allpack/sound/sounddata/sound5.jpg" class="card-img-top" alt="Gallery Image 5">
                                     <div class="card-body">
                                         <h5 class="card-title">Stage Lighting</h5>
                                         <p class="card-text">Dynamic lighting for stage performances.</p>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound6.jpg" class="card-img-top custom-image" alt="Gallery Image 6">
+                                <div class="card custom-card">
+                                    <img src="/frontend/allpack/sound/sounddata/sound6.jpg" class="card-img-top" alt="Gallery Image 6">
                                     <div class="card-body">
                                         <h5 class="card-title">Concert Setup</h5>
                                         <p class="card-text">Professional sound and lighting for concerts.</p>
