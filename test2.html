@@ -2,14 +2,272 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width= <div class="card h-100">
-        <video controls>
-            <source src="" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional sound and lighting services for weddings and events. Elevate your event with our state-of-the-art equipment and expert technicians.">
+    <meta name="keywords" content="wedding sound, event lighting, sound systems, lighting design, professional event services">
+    <meta name="author" content="Wedding Planner">
+    <link rel="stylesheet" href="/frontend/css/navbar.css">
+    <link rel="stylesheet" href="/frontend/css/footer.css">
+    <title>Sound & Lighting Services - Wedding Planner</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark-mode {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+        }
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .display-4 {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .lead {
+            color: #7f8c8d;
+        }
+
+        /* Card Slider */
+        .card-slider .carousel-item {
+            padding: 20px;
+        }
+        .card-slider .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+            margin: 0 10px;
+            width: 300px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+        .card-slider .card:hover {
+            transform: scale(1.05);
+        }
+        .card-slider .card img {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .card-slider .card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-slider .card-title {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .card-slider .card-text {
+            color: #7f8c8d;
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .card-slider .card {
+                width: 100%;
+                margin: 10px 0;
+            }
+            .carousel-control-prev,
+            .carousel-control-next {
+                display: none;
+            }
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            background-image: url('/frontend/allpack/sound/sounddata/sound1.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
 </head>
 <body>
-    
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i> Dark Mode
+    </button>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand logo-margin" href="#">Wedding Planner</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.htm">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/frontend/suppliers/supply.html">Suppliers</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="booking.html">Booking</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Parallax Section -->
+    <div class="parallax" data-aos="fade-up">
+        <h1 class="display-4">Transform Your Event</h1>
+    </div>
+
+    <!-- Sound & Lighting Section -->
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="display-4" data-aos="fade-up">Sound & Lighting Services</h1>
+                <p class="lead" data-aos="fade-up" data-aos-delay="100">Transform your event with our professional sound and lighting solutions.</p>
+            </div>
+        </div>
+
+        <!-- Card-Style Gallery Slider -->
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <h2 data-aos="fade-up">Our Work in Action</h2>
+                <p class="lead" data-aos="fade-up" data-aos-delay="100">Check out some of our recent projects.</p>
+            </div>
+            <div class="col-md-12 card-slider" data-aos="fade-up">
+                <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <!-- Carousel Indicators -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <!-- Carousel Items -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="d-flex justify-content-center">
+                                <div class="card">
+                                    <img src="/frontend/allpack/sound/sounddata/sound1.jpg" class="card-img-top" alt="Gallery Image 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Wedding Sound Setup</h5>
+                                        <p class="card-text">Perfect audio for your special day.</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img src="/frontend/allpack/sound/sounddata/sound2.jpg" class="card-img-top" alt="Gallery Image 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Event Lighting Design</h5>
+                                        <p class="card-text">Creating the perfect ambiance.</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img src="/frontend/allpack/sound/sounddata/sound3.jpg" class="card-img-top" alt="Gallery Image 3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Corporate Event Setup</h5>
+                                        <p class="card-text">Professional sound and lighting for corporate events.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="d-flex justify-content-center">
+                                <div class="card">
+                                    <img src="/frontend/allpack/sound/sounddata/sound4.jpg" class="card-img-top" alt="Gallery Image 4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Outdoor Event Setup</h5>
+                                        <p class="card-text">Perfect sound and lighting for outdoor events.</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img src="/frontend/allpack/sound/sounddata/sound5.jpg" class="card-img-top" alt="Gallery Image 5">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Stage Lighting</h5>
+                                        <p class="card-text">Dynamic lighting for stage performances.</p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img src="/frontend/allpack/sound/sounddata/sound6.jpg" class="card-img-top" alt="Gallery Image 6">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Concert Setup</h5>
+                                        <p class="card-text">Professional sound and lighting for concerts.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Custom Carousel Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12 text-center" data-aos="fade-up">
+                <h2>Why Choose Us?</h2>
+                <p>We combine cutting-edge technology with expert craftsmanship to deliver unforgettable experiences. Our team is dedicated to making your event seamless and spectacular.</p>
+                <a href="booking.html" class="btn btn-primary btn-lg">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 footer-animated">
+        <div class="container">
+            <!-- ... Footer content ... -->
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 </html>
