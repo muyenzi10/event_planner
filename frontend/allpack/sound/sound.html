@@ -17,104 +17,28 @@
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <!-- Custom CSS -->
     <style>
+        /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
         }
-        .navbar {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        .dark-mode {
+            background-color: #1a1a1a;
+            color: #f0f0f0;
         }
+       
         .display-4 {
             font-weight: bold;
-            color: #2c3e50;
+            color: #fdfeff;
         }
         .lead {
             color: #7f8c8d;
         }
-        .card-slider .carousel-item {
-            padding: 20px;
-        }
-        .card-slider .card {
-            border: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            border-radius: 10px;
-            margin: 0 10px; /* Add spacing between cards */
-        }
-        .card-slider .card:hover {
-            transform: scale(1.05);
-        }
-        .card-slider .card img {
-            height: 200px;
-            object-fit: cover;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-        .card-slider .card-body {
-            padding: 20px;
-        }
-        .card-slider .card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        .card-slider .card-text {
-            color: #7f8c8d;
-        }
-        /* Custom Carousel Controls */
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 50px; /* Larger buttons */
-            height: 50px;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-            border-radius: 50%; /* Rounded buttons */
-            top: 50%; /* Center vertically */
-            transform: translateY(-50%);
-            opacity: 0.8; /* Slightly transparent */
-            transition: opacity 0.3s ease;
-        }
-        .carousel-control-prev:hover,
-        .carousel-control-next:hover {
-            opacity: 1; /* Fully visible on hover */
-            background-color: rgba(0, 0, 0, 0.9); /* Darker on hover */
-        }
-        .carousel-control-prev {
-            left: -25px; /* Position outside the slider */
-        }
-        .carousel-control-next {
-            right: -25px; /* Position outside the slider */
-        }
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            filter: invert(1); /* White arrows */
-            width: 30px; /* Larger icons */
-            height: 30px;
-        }
-        .btn-primary {
-            background-color: #3498db;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: #2980b9;
-        }
-        footer {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-        }
-        footer h5 {
-            color: #3498db;
-        }
-        footer a {
-            color: #ecf0f1;
-            text-decoration: none;
-        }
-        footer a:hover {
-            color: #3498db;
-        }
-              /* Custom Image Styling */
-            .custom-image {
+
+        /* Custom Image Styling */
+        .custom-image {
             width: 100%; /* Ensure the image takes the full width of its container */
             height: 300px; /* Fixed height for consistency */
             object-fit: cover; /* Ensure the image covers the entire area */
@@ -127,9 +51,133 @@
             transform: scale(1.05); /* Slight zoom effect on hover */
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
         }
+
+        /* Custom Card Styling */
+        .custom-card {
+            width: 100%; /* Ensure the card takes full width of its container */
+            height: auto; /* Allow height to adjust based on content */
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border-radius: 10px;
+            margin: 10px;
+            overflow: hidden; /* Ensure content doesn't overflow */
+        }
+
+        .custom-card img {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .custom-card .card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .custom-card .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px; /* Add spacing below the title */
+        }
+
+        .custom-card .card-text {
+            color: #7f8c8d;
+            font-size: 0.9rem; /* Adjust font size for better readability */
+            line-height: 1.5; /* Improve line spacing */
+            margin-bottom: 15px; /* Add spacing below the text */
+        }
+
+        .custom-card:hover {
+            transform: scale(1.05); /* Add hover effect */
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .custom-image {
+                height: 200px; /* Adjust height for smaller screens */
+            }
+            .custom-card {
+                width: 100%;
+                margin: 10px 0;
+            }
+            .carousel-control-prev,
+            .carousel-control-next {
+                display: none;
+            }
+        }
+
+        /* Parallax Effect */
+        .parallax {
+            background-image: url('/frontend/allpack/sound/sounddata/sound1.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Custom Carousel Controls */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(253, 0, 0);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            opacity: 1;
+            background-color: rgba(172, 67, 67, 0.9);
+        }
+        .carousel-control-prev {
+            left: -25px;
+        }
+        .carousel-control-next {
+            right: -25px;
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            filter: invert(1);
+            width: 30px;
+            height: 30px;
+        }
     </style>
 </head>
 <body>
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i> Dark Mode
+    </button>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -150,14 +198,21 @@
         </div>
     </nav>
 
+    <!-- Parallax Section -->
+    <div class="parallax" data-aos="fade-up">
+        <h1 class="display-4">Transform Your Event</h1>
+    </div>
+
     <!-- Sound & Lighting Section -->
     <section class="container my-5">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h1 class="display-4" data-aos="fade-up">Sound & Lighting Services</h1>
+                <h1 class="display-5" data-aos="fade-up">Sound & Lighting Services</h1>
                 <p class="lead" data-aos="fade-up" data-aos-delay="100">Transform your event with our professional sound and lighting solutions.</p>
             </div>
         </div>
+
+        <!-- Sound Systems -->
         <div class="row mt-5">
             <div class="col-md-6" data-aos="fade-right">
                 <img src="/frontend/allpack/sound/sounddata/sound1.jpg" alt="Sound System" class="img-fluid rounded custom-image">
@@ -172,6 +227,8 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Lighting Design -->
         <div class="row mt-5">
             <div class="col-md-6 order-md-2" data-aos="fade-left">
                 <img src="/frontend/allpack/sound/sounddata/sound2.jpg" alt="Lighting Design" class="img-fluid rounded custom-image">
@@ -195,32 +252,32 @@
             </div>
             <div class="col-md-12 card-slider" data-aos="fade-up">
                 <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <!-- Carousel Indicators -->
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
                     <!-- Carousel Items -->
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="d-flex justify-content-center">
-                                <div class="card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound1.jpg" class="card-img-top custom-image" alt="Gallery Image 1">
+                                <div class="card custom-card">
+                                    <a href="/frontend/allpack/sound/sounddata/sound3.jpg">
+                                        <img src="/frontend/allpack/sound/sounddata/sound3.jpg" class="card-img-top" alt="Gallery Image 1">
+                                    </a>
                                     <div class="card-body">
                                         <h5 class="card-title">Wedding Sound Setup</h5>
                                         <p class="card-text">Perfect audio for your special day.</p>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound2.jpg" class="card-img-top custom-image" alt="Gallery Image 2">
+                                <div class="card custom-card">
+                                    <a href="/frontend/allpack/sound/sounddata/sound11.jpg">
+                                        <img src="/frontend/allpack/sound/sounddata/sound11.jpg" class="card-img-top" alt="Gallery Image 2">
+                                    </a>
                                     <div class="card-body">
                                         <h5 class="card-title">Event Lighting Design</h5>
                                         <p class="card-text">Creating the perfect ambiance.</p>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound3.jpg" class="card-img-top custom-image" alt="Gallery Image 3">
+                                <div class="card custom-card">
+                                    <a href="/frontend/allpack/sound/sounddata/sound5.jpg">
+                                        <img src="/frontend/allpack/sound/sounddata/sound5.jpg" class="card-img-top" alt="Gallery Image 3">
+                                    </a>
                                     <div class="card-body">
                                         <h5 class="card-title">Corporate Event Setup</h5>
                                         <p class="card-text">Professional sound and lighting for corporate events.</p>
@@ -230,22 +287,46 @@
                         </div>
                         <div class="carousel-item">
                             <div class="d-flex justify-content-center">
-                                <div class="card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound4.jpg" class="card-img-top custom-image" alt="Gallery Image 4">
+                                <div class="card custom-card">
+                                    <a href="/frontend/allpack/sound/sounddata/sound6.jpg">
+                                        <img src="/frontend/allpack/sound/sounddata/sound6.jpg" class="card-img-top" alt="Gallery Image 4">
+                                    </a>
                                     <div class="card-body">
                                         <h5 class="card-title">Outdoor Event Setup</h5>
                                         <p class="card-text">Perfect sound and lighting for outdoor events.</p>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound5.jpg" class="card-img-top custom-image" alt="Gallery Image 5">
+                                <div class="card custom-card">
+                                    <a href="/frontend/allpack/sound/sounddata/sound7.jpg">
+                                        <img src="/frontend/allpack/sound/sounddata/sound7.jpg" class="card-img-top" alt="Gallery Image 5">
+                                    </a>
                                     <div class="card-body">
                                         <h5 class="card-title">Stage Lighting</h5>
                                         <p class="card-text">Dynamic lighting for stage performances.</p>
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound6.jpg" class="card-img-top custom-image" alt="Gallery Image 6">
+                                <div class="card custom-card">
+                                    <a href="/frontend/allpack/sound/sounddata/sound8.jpg">
+                                        <img src="/frontend/allpack/sound/sounddata/sound8.jpg" class="card-img-top" alt="Gallery Image 6">
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Concert Setup</h5>
+                                        <p class="card-text">Professional sound and lighting for concerts.</p>
+                                    </div>
+                                </div>
+                                <div class="card custom-card">
+                                    <a href="/frontend/allpack/sound/sounddata/sound9.jpg">
+                                        <img src="/frontend/allpack/sound/sounddata/sound9.jpg" class="card-img-top" alt="Gallery Image 6">
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Concert Setup</h5>
+                                        <p class="card-text">Professional sound and lighting for concerts.</p>
+                                    </div>
+                                </div>
+                                <div class="card custom-card">
+                                    <a href="/frontend/allpack/sound/sounddata/sound10.jpg">
+                                        <img src="/frontend/allpack/sound/sounddata/sound10.jpg" class="card-img-top" alt="Gallery Image 6">
+                                    </a>
                                     <div class="card-body">
                                         <h5 class="card-title">Concert Setup</h5>
                                         <p class="card-text">Professional sound and lighting for concerts.</p>
@@ -267,6 +348,7 @@
             </div>
         </div>
 
+        <!-- Why Choose Us Section -->
         <div class="row mt-5">
             <div class="col-md-12 text-center" data-aos="fade-up">
                 <h2>Why Choose Us?</h2>
@@ -314,6 +396,11 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
         AOS.init();
+
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
