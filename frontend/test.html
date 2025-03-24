@@ -3,172 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional sound and lighting services for weddings and events. Elevate your event with our state-of-the-art equipment and expert technicians.">
-    <meta name="keywords" content="wedding sound, event lighting, sound systems, lighting design, professional event services">
+    <meta name="description" content="Professional wedding planning services to make your special day unforgettable. From full planning to day-of coordination, we handle every detail.">
+    <meta name="keywords" content="wedding planner, wedding coordinator, event planning, wedding services, wedding organizer">
     <meta name="author" content="Wedding Planner">
-    <link rel="stylesheet" href="/frontend/css/navbar.css">
-    <link rel="stylesheet" href="/frontend/css/footer.css">
-    <title>Sound & Lighting Services - Wedding Planner</title>
+    <title>Wedding Planning Services - Wedding Planner</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
     <!-- AOS Animation Library -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <style>
-        /* General Styles */
+        :root {
+            --primary-color: #d4af37;
+            --secondary-color: #333;
+        }
+        
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Playfair Display', serif;
+            background-color: #f9f9f9;
+            color: #333;
         }
+        
         .dark-mode {
-            background-color: #1a1a1a;
-            color: #f0f0f0;
+            background-color: #121212;
+            color: #f1f1f1;
         }
-       
-        .display-4 {
-            font-weight: bold;
-            color: #fdfeff;
-        }
-        .lead {
-            color: #7f8c8d;
-        }
-
-        /* Custom Image Styling */
-        .custom-image {
-            width: 100%; /* Ensure the image takes the full width of its container */
-            height: 300px; /* Fixed height for consistency */
-            object-fit: cover; /* Ensure the image covers the entire area */
-            border-radius: 15px; /* Rounded corners for a modern look */
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-        }
-
-        .custom-image:hover {
-            transform: scale(1.05); /* Slight zoom effect on hover */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
-        }
-
-        /* Custom Card Styling */
-        .custom-card {
-            width: 100%; /* Ensure the card takes full width of its container */
-            height: auto; /* Allow height to adjust based on content */
-            border: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            border-radius: 10px;
-            margin: 10px;
-            overflow: hidden; /* Ensure content doesn't overflow */
-        }
-
-        .custom-card img {
-            height: 200px;
-            object-fit: cover;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-
-        .custom-card .card-body {
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .custom-card .card-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 10px; /* Add spacing below the title */
-        }
-
-        .custom-card .card-text {
-            color: #7f8c8d;
-            font-size: 0.9rem; /* Adjust font size for better readability */
-            line-height: 1.5; /* Improve line spacing */
-            margin-bottom: 15px; /* Add spacing below the text */
-        }
-
-        .custom-card:hover {
-            transform: scale(1.05); /* Add hover effect */
-        }
-
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .custom-image {
-                height: 200px; /* Adjust height for smaller screens */
-            }
-            .custom-card {
-                width: 100%;
-                margin: 10px 0;
-            }
-            .carousel-control-prev,
-            .carousel-control-next {
-                display: none;
-            }
-        }
-
-        /* Parallax Effect */
-        .parallax {
-            background-image: url('/frontend/allpack/sound/sounddata/sound1.jpg');
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
-            height: 400px;
+            background-position: center;
+            height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
         }
-
-        /* Custom Carousel Controls */
-        .carousel-control-prev,
-        .carousel-control-next {
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        .service-card {
+            transition: transform 0.3s ease;
+            margin-bottom: 30px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .btn-gold {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            transition: all 0.3s;
+        }
+        
+        .btn-gold:hover {
+            background-color: #c19b2c;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .dark-mode .testimonial-card {
+            background-color: #1e1e1e;
+            color: #f1f1f1;
+        }
+        
+        .footer-animated {
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .footer-content {
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-content:hover {
+            opacity: 1;
+        }
+        
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .process-number {
             width: 50px;
             height: 50px;
-            background-color: rgb(253, 0, 0);
+            background: var(--primary-color);
+            color: white;
             border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-        .carousel-control-prev:hover,
-        .carousel-control-next:hover {
-            opacity: 1;
-            background-color: rgba(172, 67, 67, 0.9);
-        }
-        .carousel-control-prev {
-            left: -25px;
-        }
-        .carousel-control-next {
-            right: -25px;
-        }
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            filter: invert(1);
-            width: 30px;
-            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -179,7 +167,7 @@
     </button>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand logo-margin" href="#">Wedding Planner</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -187,150 +175,230 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.htm">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="about.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">Packages</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/frontend/suppliers/supply.html">Suppliers</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="booking.html">Booking</a></li>
+                    <li class="nav-item"><a class="nav-link" href="home.htm">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="#">Wedding Planning</a></li>
+                            <li><a class="dropdown-item" href="photographers.html">Photography/Videography</a></li>
+                            <li><a class="dropdown-item" href="#">Venue Selection</a></li>
+                            <li><a class="dropdown-item" href="#">Vendor Coordination</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/frontend/suppliers/supply.html">Suppliers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Parallax Section -->
-    <div class="parallax" data-aos="fade-up">
-        <h1 class="display-4">Transform Your Event</h1>
-    </div>
-
-    <!-- Sound & Lighting Section -->
-    <section class="container my-5">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1 class="display-5" data-aos="fade-up">Sound & Lighting Services</h1>
-                <p class="lead" data-aos="fade-up" data-aos-delay="100">Transform your event with our professional sound and lighting solutions.</p>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container" data-aos="fade-up">
+            <h1 class="display-3 fw-bold">Your Dream Wedding Starts Here</h1>
+            <p class="lead">Let us handle the details while you enjoy the journey to your perfect day</p>
         </div>
+    </section>
 
-        <!-- Sound Systems -->
-        <div class="row mt-5">
-            <div class="col-md-6" data-aos="fade-right">
-                <img src="/frontend/allpack/sound/sounddata/sound1.jpg" alt="Sound System" class="img-fluid rounded custom-image">
-            </div>
-            <div class="col-md-6" data-aos="fade-left" data-aos-delay="100">
-                <h2>Sound Systems</h2>
-                <p>Our state-of-the-art sound systems ensure crystal-clear audio for every moment of your event. Whether it's a wedding ceremony, reception, or corporate event, we provide tailored solutions to meet your needs.</p>
-                <ul class="list-unstyled">
-                    <li><i class="fas fa-check-circle text-primary"></i> High-quality speakers and microphones</li>
-                    <li><i class="fas fa-check-circle text-primary"></i> Wireless and wired setups</li>
-                    <li><i class="fas fa-check-circle text-primary"></i> Expert sound technicians</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Lighting Design -->
-        <div class="row mt-5">
-            <div class="col-md-6 order-md-2" data-aos="fade-left">
-                <img src="/frontend/allpack/sound/sounddata/sound2.jpg" alt="Lighting Design" class="img-fluid rounded custom-image">
-            </div>
-            <div class="col-md-6 order-md-1" data-aos="fade-right" data-aos-delay="100">
-                <h2>Lighting Design</h2>
-                <p>Create the perfect ambiance with our professional lighting services. From elegant uplighting to dynamic stage lighting, we bring your vision to life.</p>
-                <ul class="list-unstyled">
-                    <li><i class="fas fa-check-circle text-primary"></i> Custom lighting designs</li>
-                    <li><i class="fas fa-check-circle text-primary"></i> LED and intelligent lighting</li>
-                    <li><i class="fas fa-check-circle text-primary"></i> Energy-efficient solutions</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Card-Style Gallery Slider -->
-        <div class="row mt-5">
-            <div class="col-md-12 text-center">
-                <h2 data-aos="fade-up">Our Work in Action</h2>
-                <p class="lead" data-aos="fade-up" data-aos-delay="100">Check out some of our recent projects.</p>
-            </div>
-            <div class="col-md-12 card-slider" data-aos="fade-up">
-                <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <!-- Carousel Indicators -->
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <!-- Carousel Items -->
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="d-flex justify-content-center">
-                                <div class="card custom-card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound1.jpg" class="card-img-top" alt="Gallery Image 1">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Wedding Sound Setup</h5>
-                                        <p class="card-text">Perfect audio for your special day.</p>
-                                    </div>
-                                </div>
-                                <div class="card custom-card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound2.jpg" class="card-img-top" alt="Gallery Image 2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Event Lighting Design</h5>
-                                        <p class="card-text">Creating the perfect ambiance.</p>
-                                    </div>
-                                </div>
-                                <div class="card custom-card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound3.jpg" class="card-img-top" alt="Gallery Image 3">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Corporate Event Setup</h5>
-                                        <p class="card-text">Professional sound and lighting for corporate events.</p>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- Services Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title" data-aos="fade-up">Our Planning Services</h2>
+            <div class="row">
+                <!-- Service 1 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card service-card p-4 text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-calendar-check"></i>
                         </div>
-                        <div class="carousel-item">
-                            <div class="d-flex justify-content-center">
-                                <div class="card custom-card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound4.jpg" class="card-img-top" alt="Gallery Image 4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Outdoor Event Setup</h5>
-                                        <p class="card-text">Perfect sound and lighting for outdoor events.</p>
-                                    </div>
-                                </div>
-                                <div class="card custom-card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound5.jpg" class="card-img-top" alt="Gallery Image 5">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Stage Lighting</h5>
-                                        <p class="card-text">Dynamic lighting for stage performances.</p>
-                                    </div>
-                                </div>
-                                <div class="card custom-card">
-                                    <img src="/frontend/allpack/sound/sounddata/sound6.jpg" class="card-img-top" alt="Gallery Image 6">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Concert Setup</h5>
-                                        <p class="card-text">Professional sound and lighting for concerts.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <h4>Full Planning</h4>
+                        <p>Comprehensive service handling every detail from initial concept to wedding day execution.</p>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li><i class="fas fa-check text-success me-2"></i> Venue selection</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Vendor coordination</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Budget management</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Timeline creation</li>
+                        </ul>
+                        <a href="#" class="btn btn-gold">Learn More</a>
                     </div>
-                    <!-- Custom Carousel Controls -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card service-card p-4 text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h4>Partial Planning</h4>
+                        <p>For couples who have started planning but need professional guidance for specific elements.</p>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li><i class="fas fa-check text-success me-2"></i> Vendor recommendations</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Design consultation</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Logistics planning</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Month-of coordination</li>
+                        </ul>
+                        <a href="#" class="btn btn-gold">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card service-card p-4 text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h4>Day-of Coordination</h4>
+                        <p>Professional coordination to ensure your wedding day runs smoothly and stress-free.</p>
+                        <ul class="list-unstyled text-start mb-4">
+                            <li><i class="fas fa-check text-success me-2"></i> Vendor management</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Timeline execution</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Problem solving</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Guest coordination</li>
+                        </ul>
+                        <a href="#" class="btn btn-gold">Learn More</a>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Why Choose Us Section -->
-        <div class="row mt-5">
-            <div class="col-md-12 text-center" data-aos="fade-up">
-                <h2>Why Choose Us?</h2>
-                <p>We combine cutting-edge technology with expert craftsmanship to deliver unforgettable experiences. Our team is dedicated to making your event seamless and spectacular.</p>
-                <a href="booking.html" class="btn btn-primary btn-lg">Book Now</a>
+    <!-- Planning Process Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title" data-aos="fade-up">Our Planning Process</h2>
+            <div class="row">
+                <!-- Step 1 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="process-step">
+                        <div class="process-number">1</div>
+                        <h4>Initial Consultation</h4>
+                        <p>We'll discuss your vision, budget, and expectations to understand your perfect wedding day.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="process-step">
+                        <div class="process-number">2</div>
+                        <h4>Design & Planning</h4>
+                        <p>Our team creates a customized plan including venue selection, theme, and vendor coordination.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="process-step">
+                        <div class="process-number">3</div>
+                        <h4>Vendor Selection</h4>
+                        <p>We connect you with our trusted network of vendors that match your style and budget.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="process-step">
+                        <div class="process-number">4</div>
+                        <h4>Detailed Coordination</h4>
+                        <p>We handle all logistics, contracts, and communications with your vendors.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 5 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="process-step">
+                        <div class="process-number">5</div>
+                        <h4>Final Preparations</h4>
+                        <p>We create comprehensive timelines and confirm all details as your wedding approaches.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 6 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="process-step">
+                        <div class="process-number">6</div>
+                        <h4>Wedding Day</h4>
+                        <p>Our team executes your vision flawlessly so you can relax and enjoy your special day.</p>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title" data-aos="fade-up">What Couples Say</h2>
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="d-flex mb-3">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="rounded-circle me-3" width="60" height="60" alt="Client">
+                            <div>
+                                <h5>Amanda & David</h5>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p>"The wedding planners made our dream day come true without any stress on our part. Every detail was perfect and exceeded our expectations!"</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="d-flex mb-3">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="rounded-circle me-3" width="60" height="60" alt="Client">
+                            <div>
+                                <h5>Jennifer & Mark</h5>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p>"Sophia's coordination on our wedding day was flawless. We didn't worry about a thing and could fully enjoy every moment with our guests."</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-card">
+                        <div class="d-flex mb-3">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="rounded-circle me-3" width="60" height="60" alt="Client">
+                            <div>
+                                <h5>Lisa & Robert</h5>
+                                <div class="text-warning">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p>"David's design transformed our venue into something out of a fairy tale. Our guests are still talking about how beautiful everything was!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-dark text-light">
+        <div class="container text-center" data-aos="fade-up">
+            <h2 class="mb-4">Ready to Plan Your Dream Wedding?</h2>
+            <p class="lead mb-4">Contact us today for a complimentary consultation to discuss your vision.</p>
+            <a href="booking.html" class="btn btn-gold btn-lg">Schedule Consultation</a>
         </div>
     </section>
 
@@ -340,7 +408,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <h5>About Us</h5>
-                    <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+                    <p class="footer-content">We are a dedicated team of wedding planners, committed to creating unforgettable experiences. From ceremonies to receptions, we handle every detail with care and expertise.</p>
                 </div>
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
@@ -370,15 +438,31 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"
+    ></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"
+    ></script>
     <script>
         AOS.init();
 
-        // Dark Mode Toggle
+        // Dark Mode Toggle Function
         function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+
+            const darkModeToggle = document.querySelector('.dark-mode-toggle');
+            if (body.classList.contains('dark-mode')) {
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+            } else {
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+            }
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 </body>
 </html>
