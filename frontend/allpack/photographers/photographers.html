@@ -3,69 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional wedding photography and videography services to capture your special day beautifully. Browse our portfolio of stunning wedding moments.">
-    <meta name="keywords" content="wedding photographer, wedding videographer, wedding photos, wedding videos, professional wedding photography">
-    <meta name="author" content="Wedding Planner">
-    <title>Wedding Photography & Videography - Wedding Planner</title>
+    <meta name="description" content="Professional wedding photography and videography services - Capturing your special moments beautifully">
+    <meta name="keywords" content="wedding photographer, wedding videographer, wedding gallery, wedding films">
+    <title>Wedding Photography & Videography | Wedding Visuals</title>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <!-- Font Awesome for icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- AOS Animation -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="/frontend/css/navbar.css">
     <link rel="stylesheet" href="/frontend/css/footer.css">
+    <link rel="stylesheet" href="/frontend/css/navbar.css">
     <style>
-        /* Custom styles for this page */
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
-            background-size: cover;
-            color: white;
-            padding: 120px 0;
-            text-align: center;
+        :root {
+            --primary-color: #dc3545;
+            --secondary-color: #f8f9fa;
+            --dark-color: #343a40;
         }
         
-        .photographer-card, .videographer-card {
-            transition: transform 0.3s;
-            margin-bottom: 30px;
+        body {
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden;
         }
         
-        .photographer-card:hover, .videographer-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .gallery-img {
-            margin-bottom: 20px;
-            transition: transform 0.3s;
-            cursor: pointer;
-        }
-        
-        .gallery-img:hover {
-            transform: scale(1.03);
-        }
-        
-        .section-title {
-            position: relative;
-            margin-bottom: 50px;
-            padding-bottom: 15px;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: #dc3545;
-        }
-        
-        .dark-mode .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
-            background-size: cover;
-        }
-        
+        /* Dark Mode Styles */
         .dark-mode {
             background-color: #121212;
             color: #f8f9fa;
@@ -73,13 +34,206 @@
         
         .dark-mode .card {
             background-color: #1e1e1e;
-            color: #f8f9fa;
+            border-color: #333;
         }
         
-        .dark-mode .section-title:after {
-            background: #ff6b6b;
+        .dark-mode .testimonial-card {
+            background-color: #1e1e1e;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+        
+        /* Media Type Badges */
+        .media-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .photo-badge {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        .video-badge {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        /* Gallery Styles */
+        .gallery-section {
+            padding: 80px 0;
+        }
+        
+        .gallery-img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-img-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-img-container:hover .gallery-img {
+            transform: scale(1.05);
+        }
+        
+        .img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-img-container:hover .img-overlay {
+            opacity: 1;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .dark-mode .testimonials-section {
+            background-color: #1a1a1a;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-left: 4px solid var(--primary-color);
+            padding: 30px;
+            margin-bottom: 30px;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text:before {
+            content: '"';
+            font-size: 60px;
+            color: rgba(220, 53, 69, 0.1);
+            position: absolute;
+            left: -15px;
+            top: -25px;
+        }
+        
+        .client-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .stars {
+            color: #ffc107;
+            margin-bottom: 5px;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--dark-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .dark-mode-toggle i {
+            margin-right: 5px;
+        }
+        
+        /* Video Play Button */
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-img-container:hover .video-play-btn {
+            background: rgba(220, 53, 69, 0.9);
+            color: white;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Dark Mode Toggle -->
@@ -87,8 +241,8 @@
         <i class="fas fa-moon"></i> Dark Mode
     </button>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <a class="navbar-brand logo-margin" href="#">Wedding Planner</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,351 +262,305 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <h1 class="display-3 fw-bold mb-4">Capture Your Special Day</h1>
-            <p class="lead mb-5">Professional photography and videography services to preserve your wedding memories forever</p>
-            <a href="#contact" class="btn btn-danger btn-lg px-4 me-2">Book Now</a>
-            <a href="#gallery" class="btn btn-outline-light btn-lg px-4">View Gallery</a>
-        </div>
-    </section>
-
-    <!-- Photography Section -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="text-center section-title" data-aos="fade-up">Our Photographers</h2>
-            <div class="row">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card photographer-card h-100">
-                        <img src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="Photographer 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Sarah Johnson</h5>
-                            <p class="card-text">With over 10 years of experience, Sarah specializes in natural, candid wedding photography that tells your unique love story.</p>
-                            <div class="mb-3">
-                                <span class="badge bg-primary me-1">Portrait</span>
-                                <span class="badge bg-primary me-1">Candid</span>
-                                <span class="badge bg-primary">Fine Art</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-danger">View Portfolio</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card photographer-card h-100">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="Photographer 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Michael Chen</h5>
-                            <p class="card-text">Michael brings a documentary-style approach to wedding photography, capturing authentic moments with artistic flair.</p>
-                            <div class="mb-3">
-                                <span class="badge bg-primary me-1">Documentary</span>
-                                <span class="badge bg-primary me-1">Black & White</span>
-                                <span class="badge bg-primary">Editorial</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-danger">View Portfolio</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card photographer-card h-100">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="Photographer 3">
-                        <div class="card-body">
-                            <h5 class="card-title">Emma Rodriguez</h5>
-                            <p class="card-text">Emma creates romantic, timeless images with a focus on natural light and emotional connections between couples.</p>
-                            <div class="mb-3">
-                                <span class="badge bg-primary me-1">Romantic</span>
-                                <span class="badge bg-primary me-1">Natural Light</span>
-                                <span class="badge bg-primary">Fine Art</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-danger">View Portfolio</a>
-                        </div>
-                    </div>
-                </div>
+    <header class="hero-section">
+        <div class="container text-center py-5">
+            <h1 class="display-3 fw-bold mb-4">Capturing Your Love Story</h1>
+            <p class="lead mb-4">Professional wedding photography and videography that preserves your most precious moments</p>
+            <div>
+                <a href="#gallery" class="btn btn-danger btn-lg px-4 me-2">View Gallery</a>
+                <a href="#testimonials" class="btn btn-outline-light btn-lg px-4">See Testimonials</a>
             </div>
         </div>
-    </section>
-
-    <!-- Videography Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center section-title" data-aos="fade-up">Our Videographers</h2>
-            <div class="row">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card videographer-card h-100">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="Videographer 1">
-                        <div class="card-body">
-                            <h5 class="card-title">David Wilson</h5>
-                            <p class="card-text">David creates cinematic wedding films that tell your love story with emotion and artistry, blending documentary and storytelling techniques.</p>
-                            <div class="mb-3">
-                                <span class="badge bg-primary me-1">Cinematic</span>
-                                <span class="badge bg-primary me-1">Documentary</span>
-                                <span class="badge bg-primary">Storytelling</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-danger">View Showreel</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card videographer-card h-100">
-                        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="Videographer 2">
-                        <div class="card-body">
-                            <h5 class="card-title">Lisa Park</h5>
-                            <p class="card-text">Lisa specializes in creating elegant, timeless wedding films with a focus on capturing the genuine emotions of your special day.</p>
-                            <div class="mb-3">
-                                <span class="badge bg-primary me-1">Timeless</span>
-                                <span class="badge bg-primary me-1">Emotional</span>
-                                <span class="badge bg-primary">Elegant</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-danger">View Showreel</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card videographer-card h-100">
-                        <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="card-img-top" alt="Videographer 3">
-                        <div class="card-body">
-                            <h5 class="card-title">James Taylor</h5>
-                            <p class="card-text">James combines technical expertise with creative vision to produce wedding films that are both beautiful and authentic.</p>
-                            <div class="mb-3">
-                                <span class="badge bg-primary me-1">Creative</span>
-                                <span class="badge bg-primary me-1">Technical</span>
-                                <span class="badge bg-primary">Authentic</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-danger">View Showreel</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </header>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-5">
+    <section id="gallery" class="gallery-section">
         <div class="container">
-            <h2 class="text-center section-title" data-aos="fade-up">Our Gallery</h2>
-            <p class="text-center mb-5" data-aos="fade-up">Browse through some of our favorite moments captured at weddings we've had the honor to document.</p>
-            
             <div class="row">
-                <div class="col-md-4 col-sm-6" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="img-fluid rounded gallery-img" alt="Wedding photo 1">
-                </div>
-                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="img-fluid rounded gallery-img" alt="Wedding photo 2">
-                </div>
-                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="img-fluid rounded gallery-img" alt="Wedding photo 3">
-                </div>
-                <div class="col-md-4 col-sm-6" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="img-fluid rounded gallery-img" alt="Wedding photo 4">
-                </div>
-                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="img-fluid rounded gallery-img" alt="Wedding photo 5">
-                </div>
-                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="img-fluid rounded gallery-img" alt="Wedding photo 6">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Our Work</h2>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="100">A collection of our favorite moments from real weddings</p>
                 </div>
             </div>
             
-            <div class="text-center mt-4" data-aos="fade-up">
-                <a href="#" class="btn btn-danger btn-lg">View Full Gallery</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Packages Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center section-title" data-aos="fade-up">Packages & Pricing</h2>
             <div class="row">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card mb-4 h-100">
-                        <div class="card-header bg-danger text-white text-center py-3">
-                            <h4>Basic</h4>
-                            <h2>$1,200</h2>
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> 6 hours coverage</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> 1 photographer</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> 300+ edited photos</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Online gallery</li>
-                                <li class="list-group-item"><i class="fas fa-times text-danger me-2"></i> No videography</li>
-                                <li class="list-group-item"><i class="fas fa-times text-danger me-2"></i> No prints</li>
-                            </ul>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="booking.html" class="btn btn-outline-danger">Book Now</a>
+                <!-- Photo 1 -->
+                <div class="col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="gallery-img-container">
+                        <span class="media-badge photo-badge">Photo</span>
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wedding couple dancing" class="gallery-img">
+                        <div class="img-overlay">
+                            <h5>Sarah & Michael</h5>
+                            <p class="mb-0">First Dance Moments</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card mb-4 h-100 border-danger border-2">
-                        <div class="card-header bg-danger text-white text-center py-3">
-                            <h4>Premium</h4>
-                            <h2>$2,500</h2>
-                            <span class="badge bg-warning text-dark">Most Popular</span>
+                
+                <!-- Video 1 -->
+                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-img-container">
+                        <span class="media-badge video-badge">Video</span>
+                        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wedding video still" class="gallery-img">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
                         </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Full day coverage</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> 2 photographers</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> 600+ edited photos</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Online gallery</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> 5-minute highlight video</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> 10 printed photos</li>
-                            </ul>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="booking.html" class="btn btn-danger">Book Now</a>
+                        <div class="img-overlay">
+                            <h5>Jessica & David</h5>
+                            <p class="mb-0">Ceremony Highlights</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card mb-4 h-100">
-                        <div class="card-header bg-danger text-white text-center py-3">
-                            <h4>Platinum</h4>
-                            <h2>$4,000</h2>
+                
+                <!-- Photo 2 -->
+                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-img-container">
+                        <span class="media-badge photo-badge">Photo</span>
+                        <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wedding reception" class="gallery-img">
+                        <div class="img-overlay">
+                            <h5>Emily & James</h5>
+                            <p class="mb-0">Reception Decor</p>
                         </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Full day coverage</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> 2 photographers + assistant</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> 800+ edited photos</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Premium online gallery</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> Full wedding film + highlights</li>
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i> 30 printed photos + album</li>
-                            </ul>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="gallery-img-container">
+                        <span class="media-badge video-badge">Video</span>
+                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Bride preparing video" class="gallery-img">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
                         </div>
-                        <div class="card-footer text-center">
-                            <a href="booking.html" class="btn btn-outline-danger">Book Now</a>
+                        <div class="img-overlay">
+                            <h5>Olivia & Ryan</h5>
+                            <p class="mb-0">Getting Ready Film</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Photo 3 -->
+                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-img-container">
+                        <span class="media-badge photo-badge">Photo</span>
+                        <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="First dance" class="gallery-img">
+                        <div class="img-overlay">
+                            <h5>Sophia & William</h5>
+                            <p class="mb-0">Sunset Portraits</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-img-container">
+                        <span class="media-badge video-badge">Video</span>
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wedding party video" class="gallery-img">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="img-overlay">
+                            <h5>Ava & Benjamin</h5>
+                            <p class="mb-0">Reception Party</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Photo 4 -->
+                <div class="col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="gallery-img-container">
+                        <span class="media-badge photo-badge">Photo</span>
+                        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ceremony details" class="gallery-img">
+                        <div class="img-overlay">
+                            <h5>Isabella & Henry</h5>
+                            <p class="mb-0">Ceremony Details</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 4 -->
+                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-img-container">
+                        <span class="media-badge video-badge">Video</span>
+                        <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Couple portrait video" class="gallery-img">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="img-overlay">
+                            <h5>Mia & Alexander</h5>
+                            <p class="mb-0">Love Story Film</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Photo 5 -->
+                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-img-container">
+                        <span class="media-badge photo-badge">Photo</span>
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Reception details" class="gallery-img">
+                        <div class="img-overlay">
+                            <h5>Charlotte & Daniel</h5>
+                            <p class="mb-0">Candlelit Reception</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="text-center section-title" data-aos="fade-up">Contact Our Team</h2>
-            <div class="row">
-                <div class="col-md-6" data-aos="fade-up">
-                    <form>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Your Name</label>
-                            <input type="text" class="form-control" id="name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="wedding-date" class="form-label">Wedding Date</label>
-                            <input type="date" class="form-control" id="wedding-date">
-                        </div>
-                        <div class="mb-3">
-                            <label for="service" class="form-label">Service Interested In</label>
-                            <select class="form-select" id="service">
-                                <option selected>Select a service</option>
-                                <option value="photography">Photography Only</option>
-                                <option value="videography">Videography Only</option>
-                                <option value="both">Photography & Videography</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label for="message" class="form-label">Your Message</label>
-                            <textarea class="form-control" id="message" rows="4"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-danger">Send Message</button>
-                    </form>
-                </div>
-                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Get in Touch</h5>
-                            <p class="card-text">Have questions about our photography or videography services? Reach out to our team and we'll be happy to help you plan the perfect way to capture your special day.</p>
-                            <hr>
-                            <h6><i class="fas fa-phone me-2"></i> Phone</h6>
-                            <p>(555) 123-4567</p>
-                            <h6><i class="fas fa-envelope me-2"></i> Email</h6>
-                            <p>photos@weddingplanner.com</p>
-                            <h6><i class="fas fa-clock me-2"></i> Office Hours</h6>
-                            <p>Monday - Friday: 9am - 6pm<br>Saturday: 10am - 4pm<br>Sunday: Closed</p>
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="text-center mt-5" data-aos="fade-up">
+                <a href="#" class="btn btn-outline-dark btn-lg px-5 me-3">View Photos</a>
+                <a href="#" class="btn btn-danger btn-lg px-5">View Videos</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-5 bg-light">
+    <section id="testimonials" class="testimonials-section">
         <div class="container">
-            <h2 class="text-center section-title" data-aos="fade-up">What Our Clients Say</h2>
             <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Client Love</h2>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="100">What couples say about working with us</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Photography Testimonial 1 -->
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Our wedding photos are absolutely stunning! The photographer captured every emotion and detail perfectly. We'll cherish these forever."</p>
+                        <div class="client-info">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Sarah & Michael" class="client-img">
+                            <div>
+                                <h6>Sarah & Michael</h6>
+                                <small>Photography Clients</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Videography Testimonial 1 -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="mb-3 text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text">"Sarah captured our wedding day so beautifully. The photos are stunning and really tell the story of our day. We'll treasure them forever!"</p>
-                            <div class="d-flex align-items-center">
-                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="rounded-circle me-3" width="50" alt="Client 1">
-                                <div>
-                                    <h6 class="mb-0">Jessica & Mark</h6>
-                                    <small class="text-muted">June 2024 Wedding</small>
-                                </div>
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The wedding film brought us to tears! It perfectly captured the emotions of our day. We've watched it at least 20 times already!"</p>
+                        <div class="client-info">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Jessica & David" class="client-img">
+                            <div>
+                                <h6>Jessica & David</h6>
+                                <small>Videography Clients</small>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Combined Service Testimonial -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="mb-3 text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text">"The video James created for us is incredible. It perfectly captures all the emotions of our wedding day. We've watched it at least 20 times already!"</p>
-                            <div class="d-flex align-items-center">
-                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="rounded-circle me-3" width="50" alt="Client 2">
-                                <div>
-                                    <h6 class="mb-0">Alex & Taylor</h6>
-                                    <small class="text-muted">August 2024 Wedding</small>
-                                </div>
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Booking both photography and videography was the best decision! The team worked seamlessly together to capture every angle of our day."</p>
+                        <div class="client-info">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Emily & James" class="client-img">
+                            <div>
+                                <h6>Emily & James</h6>
+                                <small>Photo + Video Clients</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <div class="mb-3 text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text">"We booked both photography and videography and couldn't be happier. The team was professional, unobtrusive, and the results are breathtaking."</p>
-                            <div class="d-flex align-items-center">
-                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="rounded-circle me-3" width="50" alt="Client 3">
-                                <div>
-                                    <h6 class="mb-0">Emily & Ryan</h6>
-                                    <small class="text-muted">May 2024 Wedding</small>
-                                </div>
+                
+                <!-- Photography Testimonial 2 -->
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The attention to detail in our wedding album is incredible. They captured moments we didn't even realize were happening."</p>
+                        <div class="client-info">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Olivia & Ryan" class="client-img">
+                            <div>
+                                <h6>Olivia & Ryan</h6>
+                                <small>Photography Clients</small>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <!-- Videography Testimonial 2 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Our highlight video is a masterpiece! It tells our love story beautifully and makes us relive the day every time we watch it."</p>
+                        <div class="client-info">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Sophia & William" class="client-img">
+                            <div>
+                                <h6>Sophia & William</h6>
+                                <small>Videography Clients</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Combined Service Testimonial 2 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The team made us feel so comfortable while capturing both photos and video. The results are natural, authentic and breathtaking!"</p>
+                        <div class="client-info">
+                            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Ava & Benjamin" class="client-img">
+                            <div>
+                                <h6>Ava & Benjamin</h6>
+                                <small>Photo + Video Clients</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="mb-4">Preserve Your Wedding Memories</h2>
+                    <p class="lead mb-4">Contact us to discuss photography, videography, or both for your special day</p>
+                    <a href="booking.html" class="btn btn-danger btn-lg px-5 me-3">Book Photography</a>
+                    <a href="booking.html" class="btn btn-outline-light btn-lg px-5">Book Videography</a>
                 </div>
             </div>
         </div>
@@ -492,21 +600,18 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"
-    ></script>
-    <script>
-        AOS.init();
 
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
         // Dark Mode Toggle Function
         function toggleDarkMode() {
             const body = document.body;
@@ -515,10 +620,30 @@
             const darkModeToggle = document.querySelector('.dark-mode-toggle');
             if (body.classList.contains('dark-mode')) {
                 darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+                darkModeToggle.setAttribute('aria-label', 'Switch to light mode');
             } else {
                 darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+                darkModeToggle.setAttribute('aria-label', 'Switch to dark mode');
             }
+            
+            // Save preference to localStorage
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
         }
+        
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            document.querySelector('.dark-mode-toggle').innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+            document.querySelector('.dark-mode-toggle').setAttribute('aria-label', 'Switch to light mode');
+        }
+        
+        // Video play button functionality
+        document.querySelectorAll('.video-play-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // This would normally open a video modal or link to video
+                alert('This would play the wedding video in a lightbox or modal');
+            });
+        });
     </script>
 </body>
 </html>
