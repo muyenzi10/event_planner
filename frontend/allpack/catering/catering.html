@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional wedding catering services with exquisite menus. Book now for unforgettable dining experience.">
+    <meta name="keywords" content="wedding catering, event catering, wedding food, catering services">
+    <meta name="author" content="Wedding Planner">
+    <link rel="stylesheet" href="/frontend/css/navbar.css">
+    <link rel="stylesheet" href="/frontend/css/footer.css">
+    <title>Wedding Catering Services | Exquisite Menus</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- AOS Animation -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #dc3545;
+            --secondary-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+        
+        body {
+            font-family: 'Playfair Display', serif;
+            overflow-x: hidden;
+        
+        }
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/frontend/allpack/catering/cateringdata/476897231_18214600720293633_4334456607636259024_n.jpg') no-repeat center center/cover;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+        
+        /* Menu Cards */
+        .menu-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .menu-img {
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .menu-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 50px;
+            font-weight: 700;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
+        /* Testimonials */
+        .testimonial-card {
+            background: white;
+            border-left: 4px solid var(--primary-color);
+            padding: 30px;
+            margin-bottom: 30px;
+            height: 100%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        /* Gallery */
+        .gallery-img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            height: 250px;
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-img-container:hover .gallery-img {
+            transform: scale(1.05);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand logo-margin" href="#">Wedding Planner</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.htm">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Packages</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/frontend/suppliers/supply.html">Suppliers</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="booking.html">Booking</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container text-center py-5">
+            <h1 class="display-3 fw-bold mb-4">Exquisite Wedding Catering</h1>
+            <p class="lead mb-4">Culinary excellence tailored to your special day</p>
+            <div>
+                <a href="#menus" class="btn btn-danger btn-lg px-4 me-2">View Menus</a>
+                <a href="#contact" class="btn btn-outline-light btn-lg px-4">Get a Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Catering Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                    <img src="/frontend/allpack/catering/cateringdata/image1.jpeg" alt="Wedding catering setup" class="img-fluid rounded">
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h2 class="section-title">Our Catering Philosophy</h2>
+                    <p>We believe wedding catering should be an unforgettable experience that delights all senses. Our team of award-winning chefs crafts each menu with seasonal, locally-sourced ingredients to create dishes that are as beautiful as they are delicious.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> Customized menus for every couple</li>
+                        <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> Farm-to-table fresh ingredients</li>
+                        <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> Accommodates all dietary needs</li>
+                        <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> Professional serving staff included</li>
+                        <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> Full bar service available</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menus" class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Our Signature Menus</h2>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Customizable options for every taste and budget</p>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Menu 1 -->
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="menu-card">
+                        <div class="position-relative">
+                            <img src="/frontend/allpack/catering/cateringdata/476897231_18214600720293633_4334456607636259024_n.jpg" class="menu-img w-100" alt="Classic Wedding Menu">
+                           
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Classic Elegance</h4>
+                            <p class="card-text">Traditional favorites with modern presentation</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-utensils text-danger me-2"></i> Starter: Seasonal salad</li>
+                                <li><i class="fas fa-utensils text-danger me-2"></i> Main: Beef tenderloin or salmon</li>
+                                <li><i class="fas fa-utensils text-danger me-2"></i> Dessert: Trio of mini desserts</li>
+                            </ul>
+                            <a href="#" class="btn btn-outline-danger">Customize This Menu</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu 2 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="menu-card">
+                        <div class="position-relative">
+                            <img src="/frontend/allpack/catering/menu2.jpg" class="menu-img w-100" alt="Global Flavors Menu">
+                            <span class="menu-badge">From $55/pp</span>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Global Flavors</h4>
+                            <p class="card-text">International cuisine with bold flavors</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-utensils text-danger me-2"></i> Starter: Asian-inspired appetizers</li>
+                                <li><i class="fas fa-utensils text-danger me-2"></i> Main: Moroccan lamb or Thai curry</li>
+                                <li><i class="fas fa-utensils text-danger me-2"></i> Dessert: Chocolate fondue station</li>
+                            </ul>
+                            <a href="#" class="btn btn-outline-danger">Customize This Menu</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Menu 3 -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="menu-card">
+                        <div class="position-relative">
+                            <img src="/frontend/allpack/catering/menu3.jpg" class="menu-img w-100" alt="Rustic Farmhouse Menu">
+                            <span class="menu-badge">From $65/pp</span>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Rustic Farmhouse</h4>
+                            <p class="card-text">Hearty, seasonal dishes with artisanal flair</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-utensils text-danger me-2"></i> Starter: Charcuterie display</li>
+                                <li><i class="fas fa-utensils text-danger me-2"></i> Main: Braised short ribs or stuffed squash</li>
+                                <li><i class="fas fa-utensils text-danger me-2"></i> Dessert: Pie bar with local fruits</li>
+                            </ul>
+                            <a href="#" class="btn btn-outline-danger">Customize This Menu</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Our Work</h2>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Beautiful presentations from recent weddings</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-6" data-aos="fade-up">
+                    <div class="gallery-img-container">
+                        <img src="/frontend/allpack/catering/gallery1.jpg" class="gallery-img" alt="Wedding buffet">
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-img-container">
+                        <img src="/frontend/allpack/catering/gallery2.jpg" class="gallery-img" alt="Plated dinner">
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-img-container">
+                        <img src="/frontend/allpack/catering/gallery3.jpg" class="gallery-img" alt="Dessert table">
+                    </div>
+                </div>
+                <div class="col-md-3 col-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="gallery-img-container">
+                        <img src="/frontend/allpack/catering/gallery4.jpg" class="gallery-img" alt="Cocktail hour">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Client Testimonials</h2>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="100">What couples say about our catering</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="testimonial-card">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="testimonial-text">"The food was absolutely incredible! Our guests are still talking about the braised short ribs months later. The presentation was stunning and the service was flawless."</p>
+                        <div class="client-info">
+                            <div>
+                                <h6>Jennifer & Mark</h6>
+                                <small>June 2024 Wedding</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="testimonial-text">"We had several guests with dietary restrictions and the team handled everything perfectly. The vegan options were so good that even non-vegans were raving about them!"</p>
+                        <div class="client-info">
+                            <div>
+                                <h6>Sarah & David</h6>
+                                <small>August 2024 Wedding</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="stars mb-3">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="testimonial-text">"From our initial tasting to the wedding day, the attention to detail was remarkable. The chef even recreated my grandmother's recipe as a surprise for us!"</p>
+                        <div class="client-info">
+                            <div>
+                                <h6>Emily & James</h6>
+                                <small>September 2024 Wedding</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-5 bg-dark text-white">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="mb-4">Let's Create Your Perfect Wedding Menu</h2>
+                    <p class="lead mb-4">Contact us for a complimentary tasting and consultation</p>
+                    <a href="booking.html" class="btn btn-danger btn-lg px-5 me-3">Book a Tasting</a>
+                    <a href="tel:+1234567890" class="btn btn-outline-light btn-lg px-5">Call Us Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 footer-animated">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="home.htm" class="text-light">Home</a></li>
+                        <li><a href="#" class="text-light">About</a></li>
+                        <li><a href="#" class="text-light">Services</a></li>
+                        <li><a href="index.html" class="text-light">Packages</a></li>
+                        <li><a href="#" class="text-light">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="footer-content">&copy; 2025 Wedding Planner. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+    </script>
+</body>
+</html>
