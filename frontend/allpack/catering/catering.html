@@ -15,33 +15,24 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- AOS Animation -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Lightbox CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <!-- Fancybox CSS for video support -->
+    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.min.css" rel="stylesheet">
     <style>
         :root {
             --primary-color: #dc3545;
-            --secondary-color: #f8f9fa;
-            --dark-color: #343a40;
-            --text-color: #212529;
-            --bg-color: #ffffff;
-            --card-bg: #ffffff;
-            --footer-bg: #343a40;
-            --hero-text: #ffffff;
-            --section-bg: #f8f9fa;
-            --testimonial-bg: #ffffff;
-            --border-color: #dee2e6;
-        }
-
-        .dark-mode {
-            --primary-color: #dc3545;
             --secondary-color: #343a40;
-            --dark-color: #f8f9fa;
+            --dark-color: #212529;
             --text-color: #f8f9fa;
             --bg-color: #121212;
             --card-bg: #1e1e1e;
-            --footer-bg: #1a1a1a;
+            --footer-bg: #121212;
             --hero-text: #ffffff;
             --section-bg: #1e1e1e;
             --testimonial-bg: #252525;
-            --border-color: #444;
+            --border-color: #343a40;
+            --philosophy-bg: #252525;
         }
         
         body {
@@ -49,11 +40,10 @@
             overflow-x: hidden;
             background-color: var(--bg-color);
             color: var(--text-color);
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/frontend/allpack/catering/cateringdata/wall.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/frontend/allpack/catering/cateringdata/11.png') no-repeat center center/cover;
             min-height: 80vh;
             display: flex;
             align-items: center;
@@ -65,15 +55,16 @@
             border: none;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
             margin-bottom: 30px;
             background-color: var(--card-bg);
+            color: var(--text-color);
         }
         
         .menu-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
         }
         
         .menu-img {
@@ -119,7 +110,7 @@
             padding: 30px;
             margin-bottom: 30px;
             height: 100%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             color: var(--text-color);
         }
         
@@ -169,7 +160,7 @@
             height: 250px;
             object-fit: cover;
             border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
             transition: transform 0.8s ease;
         }
         
@@ -200,7 +191,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #ccc;
+            background: #555;
             margin: 0 5px;
             cursor: pointer;
             transition: background 0.8s ease;
@@ -232,30 +223,6 @@
             transform: scale(1);
         }
 
-        /* Dark mode toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-        }
-
         /* Menu section background */
         .bg-light {
             background-color: var(--section-bg) !important;
@@ -265,11 +232,13 @@
         footer {
             background-color: var(--footer-bg) !important;
             color: var(--hero-text);
+            border-top: 1px solid var(--border-color);
         }
 
         /* Navbar */
         .navbar {
             background-color: var(--footer-bg) !important;
+            border-bottom: 1px solid var(--border-color);
         }
 
         /* Links */
@@ -278,7 +247,7 @@
         }
 
         a:hover {
-            color: #c82333;
+            color: #ff6b6b;
         }
 
         /* Text colors */
@@ -304,16 +273,304 @@
             background-color: var(--card-bg);
             color: var(--text-color);
             border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+        }
+
+        /* Video Gallery Section */
+        .video-gallery {
+            padding: 60px 0;
+            background-color: var(--section-bg);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .video-thumbnail:hover img {
+            transform: scale(1.05);
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(220, 53, 69, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail:hover .play-button {
+            background-color: rgba(220, 53, 69, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-caption {
+            padding: 15px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+        
+        .video-caption h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .video-caption p {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 0;
+        }
+        
+        /* Fancybox Overrides */
+        .fancybox__container {
+            --fancybox-bg: var(--bg-color);
+            --fancybox-color: var(--text-color);
+        }
+        
+        .fancybox__toolbar {
+            background: var(--card-bg);
+        }
+        
+        .fancybox__nav {
+            --fancybox-nav-color: var(--text-color);
+        }
+        
+        .fancybox__thumbs {
+            --fancybox-thumbs-bg: var(--card-bg);
+        }
+
+        /* New Catering Philosophy Section Styles */
+        .philosophy-section {
+            position: relative;
+            padding: 80px 0;
+            background-color: var(--philosophy-bg);
+            overflow: hidden;
+        }
+        
+        .philosophy-section::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(220, 53, 69, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .philosophy-section::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: rgba(220, 53, 69, 0.05);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        
+        .philosophy-image-container {
+            position: relative;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+            transform: rotate(-2deg);
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+        
+        .philosophy-image-container:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+        
+        .philosophy-image {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            height: 450px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+        
+        .philosophy-badge {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 10px 15px -3px rgba(220, 53, 69, 0.3);
+            z-index: 2;
+        }
+        
+        .philosophy-content {
+            position: relative;
+            z-index: 1;
+            padding-left: 40px;
+        }
+        
+        .philosophy-content .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            color: var(--text-color);
+            display: block;
+        }
+        
+        .philosophy-content .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            transform: none;
+        }
+        
+        .philosophy-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+        
+        .philosophy-list {
+            margin-bottom: 30px;
+        }
+        
+        .philosophy-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            color: var(--text-color);
+        }
+        
+        .philosophy-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--primary-color);
+            background: rgba(220, 53, 69, 0.1);
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .philosophy-quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 30px;
+            opacity: 0.9;
+        }
+        
+        .philosophy-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: rgba(220, 53, 69, 0.2);
+        }
+        
+        @media (max-width: 991.98px) {
+            .philosophy-section {
+                padding: 60px 0;
+            }
+            
+            .philosophy-content {
+                padding-left: 15px;
+                padding-top: 40px;
+            }
+            
+            .philosophy-image-container {
+                transform: none;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .philosophy-image-container:hover {
+                transform: none;
+            }
+            
+            .philosophy-content .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Additional dark mode adjustments */
+        .btn-outline-light {
+            color: var(--text-color);
+            border-color: var(--text-color);
+        }
+        
+        .btn-outline-light:hover {
+            background-color: var(--text-color);
+            color: var(--dark-color);
+        }
+        
+        .lead {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .card-text, .client-info small {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        .testimonial-text {
+            opacity: 0.9;
+        }
+        
+        .bg-dark {
+            background-color: var(--dark-color) !important;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Dark Mode Toggle Button -->
-    <button class="dark-mode-toggle" id="darkModeToggle">
-        <i class="fas fa-moon" id="modeIcon"></i>
-    </button>
-
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
@@ -346,24 +603,146 @@
         </div>
     </header>
 
-    <!-- About Catering Section -->
-    <section class="py-5">
+    <!-- About Catering Section - Redesigned -->
+    <section class="philosophy-section">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
-                    <img src="/frontend/allpack/catering/cateringdata/image1.jpeg" alt="Wedding catering setup" class="img-fluid rounded">
+                    <div class="philosophy-image-container">
+                        <img src="/frontend/allpack/catering/cateringdata/image1.jpeg" alt="Wedding catering setup" class="philosophy-image">
+                        <div class="philosophy-badge">
+                            <i class="fas fa-award me-2"></i>Award Winning
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <h2 class="section-title">Our Catering Philosophy</h2>
-                    <p>We believe wedding catering should be an unforgettable experience that delights all senses. Our team of award-winning chefs crafts each menu with seasonal, locally-sourced ingredients to create dishes that are as beautiful as they are delicious.</p>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> Customized menus for every couple</li>
-                        <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> Farm-to-table fresh ingredients</li>
-                        <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> Accommodates all dietary needs</li>
-                        <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> Professional serving staff included</li>
-                        <li class="mb-2"><i class="fas fa-check text-danger me-2"></i> Full bar service available</li>
-                    </ul>
+                    <div class="philosophy-content">
+                        <span class="text-danger fw-bold d-block mb-2">OUR PHILOSOPHY</span>
+                        <h2 class="section-title">Crafting Culinary <span class="text-danger">Memories</span></h2>
+                        <p class="philosophy-quote">"We don't just serve food - we create unforgettable dining experiences that become cherished memories."</p>
+                        <p>Our team of passionate chefs combines artistry with culinary expertise to design menus that reflect your unique love story, using only the freshest seasonal ingredients sourced from local producers.</p>
+                        <ul class="philosophy-list list-unstyled">
+                            <li>Customized menus for every couple</li>
+                            <li>Farm-to-table fresh ingredients</li>
+                            <li>Accommodates all dietary needs</li>
+                            <li>Professional serving staff included</li>
+                            <li>Full bar service available</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-danger btn-lg px-4">Schedule a Consultation</a>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery Section -->
+    <section id="video-gallery" class="video-gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Our Catering Videos</h2>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Watch our catering services in action</p>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Video 1 - Local MP4 -->
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v2.mp4" data-fancybox="video-gallery" data-caption="Wedding Buffet Service">
+                            <img src="/frontend/allpack/catering/cataringvideos/im1.png" alt="Wedding Buffet Service">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Wedding Buffet Service</h4>
+                            <p>See our elegant buffet setup in action</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 2 - YouTube -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v3.mp4" data-fancybox="video-gallery" data-caption="Plated Dinner Service">
+                            <img src="/frontend/allpack/catering/cataringvideos/im2.png" alt="Plated Dinner Service">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Plated Dinner Service</h4>
+                            <p>Our professional serving staff in action</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 3 - YouTube -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v4.mp4" data-fancybox="video-gallery" data-caption="Cocktail Hour">
+                            <img src="/frontend/allpack/catering/cataringvideos/im3.png" alt="Cocktail Hour">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Cocktail Hour</h4>
+                            <p>Signature drinks and hors d'oeuvres service</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 4 - Local MP4 -->
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v5.mp4" data-fancybox="video-gallery" data-caption="Dessert Presentation">
+                            <img src="/frontend/allpack/catering/cataringvideos/im4.png" alt="Dessert Presentation">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Dessert Presentation</h4>
+                            <p>Beautiful dessert table setups</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 5 - YouTube -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v7.mp4" data-fancybox="video-gallery" data-caption="Chef's Special">
+                            <img src="/frontend/allpack/catering/cataringvideos/im7.png" alt="Chef's Special">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Chef's Special</h4>
+                            <p>Our chefs preparing signature dishes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 6 - YouTube -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v8.mp4" data-fancybox="video-gallery" data-caption="Client Testimonials">
+                            <img src="/frontend/allpack/catering/cataringvideos/im8.png" alt="Client Testimonials">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Client Testimonials</h4>
+                            <p>What our clients say about our service</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="#image" class="btn btn-outline-danger">View  Images</a>
             </div>
         </div>
     </section>
@@ -439,7 +818,7 @@
     </section>
 
     <!-- Gallery Section -->
-    <section class="py-5">
+    <section class="py-5" id="image">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
@@ -452,48 +831,66 @@
                 <!-- Slide 1 (3 images) -->
                 <div class="gallery-slide active">
                     <div class="gallery-slide-item">
+                        <a href="/frontend/allpack/catering/cateringdata/9.jpg">
                         <img src="/frontend/allpack/catering/cateringdata/9.jpg" alt="Wedding buffet setup">
                         <p class="gallery-slide-caption">Elegant buffet presentation</p>
+                    </a>
                     </div>
                     <div class="gallery-slide-item">
+                        <a href="/frontend/allpack/catering/cateringdata/10.png">
                         <img src="/frontend/allpack/catering/cateringdata/10.png" alt="Plated dinner service">
                         <p class="gallery-slide-caption">Plated dinner service</p>
+                        </a>
                     </div>
                     <div class="gallery-slide-item">
-                        <img src="/frontend/allpack/catering/cateringdata/11.png" alt="Dessert table">
+                        <a href="/frontend/allpack/catering/cateringdata/wall.jpg">
+                        <img src="/frontend/allpack/catering/cateringdata/wall.jpg" alt="Dessert table">
                         <p class="gallery-slide-caption">Custom dessert table</p>
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Slide 2 (3 images) -->
                 <div class="gallery-slide">
                     <div class="gallery-slide-item">
+                        <a href="/frontend/allpack/catering/cateringdata/4.jpg">
                         <img src="/frontend/allpack/catering/cateringdata/4.jpg" alt="Cocktail hour">
                         <p class="gallery-slide-caption">Signature cocktails</p>
+                        </a>
                     </div>
                     <div class="gallery-slide-item">
+                        <a href="/frontend/allpack/catering/cateringdata/5.jpg">
                         <img src="/frontend/allpack/catering/cateringdata/5.jpg" alt="Classic menu">
                         <p class="gallery-slide-caption">Classic menu options</p>
+                        </a>
                     </div>
                     <div class="gallery-slide-item">
+                        <a href="/frontend/allpack/catering/cateringdata/6.png">
                         <img src="/frontend/allpack/catering/cateringdata/6.png" alt="Global flavors">
                         <p class="gallery-slide-caption">International cuisine</p>
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Slide 3 (3 images) -->
                 <div class="gallery-slide">
                     <div class="gallery-slide-item">
+                        <a href="frontend/allpack/catering/cateringdata/7.png">
                         <img src="/frontend/allpack/catering/cateringdata/7.png" alt="Rustic farmhouse">
                         <p class="gallery-slide-caption">Rustic farmhouse style</p>
+                        </a>
                     </div>
                     <div class="gallery-slide-item">
+                        <a href="frontend/allpack/catering/cateringdata/8.png">
                         <img src="/frontend/allpack/catering/cateringdata/8.png" alt="Catering setup">
                         <p class="gallery-slide-caption">Professional setup</p>
+                        </a>
                     </div>
                     <div class="gallery-slide-item">
+                        <a href="/frontend/allpack/catering/cateringdata/12.jpg">
                         <img src="/frontend/allpack/catering/cateringdata/12.jpg" alt="Wedding feast">
                         <p class="gallery-slide-caption">Grand wedding feast</p>
+                        </a>
                     </div>
                 </div>
                 
@@ -630,11 +1027,28 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Fancybox JS for video support -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <script>
         // Initialize AOS
         AOS.init({
             duration: 1000,
             once: true,
+        });
+        
+        // Initialize Fancybox for video gallery
+        Fancybox.bind("[data-fancybox]", {
+            // Options can be set here
+            Thumbs: {
+                type: "classic",
+            },
+            Toolbar: {
+                display: {
+                    left: [],
+                    middle: [],
+                    right: ["close"],
+                },
+            },
         });
         
         // Gallery Slideshow with slow motion
@@ -732,44 +1146,6 @@
             
             // Initialize button states
             showSlide(0);
-            
-            // Dark mode toggle functionality
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            const modeIcon = document.getElementById('modeIcon');
-            const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-            
-            // Check for saved user preference or use system preference
-            if (localStorage.getItem('darkMode') === 'enabled' || 
-                (localStorage.getItem('darkMode') !== 'disabled' && prefersDarkScheme.matches)) {
-                document.body.classList.add('dark-mode');
-                modeIcon.classList.replace('fa-moon', 'fa-sun');
-            }
-            
-            darkModeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('dark-mode');
-                const isDarkMode = document.body.classList.contains('dark-mode');
-                
-                if (isDarkMode) {
-                    modeIcon.classList.replace('fa-moon', 'fa-sun');
-                    localStorage.setItem('darkMode', 'enabled');
-                } else {
-                    modeIcon.classList.replace('fa-sun', 'fa-moon');
-                    localStorage.setItem('darkMode', 'disabled');
-                }
-            });
-            
-            // Listen for system theme changes
-            prefersDarkScheme.addEventListener('change', e => {
-                if (localStorage.getItem('darkMode') === null) {
-                    if (e.matches) {
-                        document.body.classList.add('dark-mode');
-                        modeIcon.classList.replace('fa-moon', 'fa-sun');
-                    } else {
-                        document.body.classList.remove('dark-mode');
-                        modeIcon.classList.replace('fa-sun', 'fa-moon');
-                    }
-                }
-            });
         });
     </script>
 </body>
