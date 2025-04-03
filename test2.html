@@ -3,988 +3,953 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional wedding catering services with exquisite menus. Book now for unforgettable dining experience.">
-    <meta name="keywords" content="wedding catering, event catering, wedding food, catering services">
-    <meta name="author" content="Wedding Planner">
-    <link rel="stylesheet" href="/frontend/css/navbar.css">
-    <link rel="stylesheet" href="/frontend/css/footer.css">
-    <title>Wedding Catering Services | Exquisite Menus</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Supplier Registration | WeddingPlanner</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <!-- AOS Animation -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <!-- Lightbox CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
-    <!-- Fancybox CSS for video support -->
-    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/footer.css">
+    <link rel="stylesheet" href="/frontend/css/navbar.css">
     <style>
         :root {
-            --primary-color: #dc3545;
-            --secondary-color: #343a40;
-            --dark-color: #212529;
-            --text-color: #f8f9fa;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --footer-bg: #121212;
-            --hero-text: #ffffff;
-            --section-bg: #1e1e1e;
-            --testimonial-bg: #252525;
-            --border-color: #343a40;
-            --philosophy-bg: #252525;
+            --primary: #d4afb9;
+            --primary-dark: #b38e99;
+            --primary-light: #f0d8dd;
+            --secondary: #1a1a1a;
+            --accent: #3a2e39;
+            --dark: #121212;
+            --light: #ffffff;
+            --text: #e0e0e0;
+            --text-light: #a0a0a0;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        
+
         body {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            background-color: #121212;
+            line-height: 1.7;
             overflow-x: hidden;
-            background-color: var(--bg-color);
-            color: var(--text-color);
         }
-        
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/frontend/allpack/catering/cateringdata/wall.jpg') no-repeat center center/cover;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            color: var(--hero-text);
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-weight: 600;
         }
-        
-        /* Menu Cards */
-        .menu-card {
-            border: none;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
+
+        .navbar {
+            background-color: var(--dark);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
-        .menu-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-        }
-        
-        .menu-img {
-            height: 250px;
-            object-fit: cover;
-        }
-        
-        .menu-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-        }
-        
-        /* Section Titles */
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 50px;
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
-            color: var(--text-color);
+            font-size: 1.8rem;
+            color: var(--primary) !important;
         }
-        
-        .section-title:after {
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1.25rem !important;
+            color: var(--text-light) !important;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary) !important;
+        }
+
+        .nav-link.active:after {
             content: '';
             position: absolute;
+            bottom: 0;
+            left: 1.25rem;
+            width: calc(100% - 2.5rem);
+            height: 2px;
+            background: var(--primary);
+        }
+
+        /* Enhanced Hero Section Styles */
+        .hero-section {
+            background: linear-gradient(135deg, rgba(42, 32, 40, 0.95) 0%, rgba(42, 32, 40, 0.85) 100%), 
+                        url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0 6rem;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
+        }
+
+        .hero-section p.lead {
+            font-size: 1.4rem;
+            max-width: 600px;
+            margin: 0 auto 2rem 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-outline-light {
+            border: 2px solid rgba(255,255,255,0.3);
+            background-color: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+        }
+
+        .btn-outline-light:hover {
+            background-color: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .hero-image-container {
+            position: relative;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: var(--transition);
+        }
+
+        .hero-image-container:hover {
+            transform: perspective(1000px) rotateY(-5deg) translateY(-10px);
+        }
+
+        .hero-image {
+            border: 8px solid rgba(255,255,255,0.1);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        .floating-badge {
+            position: absolute;
             bottom: -15px;
+            right: 30px;
+            background: var(--dark);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-weight: 600;
+            border: 2px solid var(--primary);
+        }
+
+        .avatar-group {
+            display: flex;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            margin-right: -15px;
+            transition: var(--transition);
+        }
+
+        .avatar:hover {
+            transform: translateY(-5px);
+            z-index: 1;
+        }
+
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-down {
+            display: block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .scroll-down:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(5px);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        .form-container {
+            background-color: #1e1e1e;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .form-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .form-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .form-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background: var(--primary-color);
-        }
-        
-        /* Testimonials */
-        .testimonial-card {
-            background: var(--testimonial-bg);
-            border-left: 4px solid var(--primary-color);
-            padding: 30px;
-            margin-bottom: 30px;
-            height: 100%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            color: var(--text-color);
-        }
-        
-        /* Gallery Slideshow */
-        .gallery-slideshow {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        
-        .gallery-slide {
-            display: none;
-            text-align: center;
-            animation-duration: 1.5s;
-            animation-fill-mode: both;
-        }
-        
-        .gallery-slide.active {
-            display: flex;
-            justify-content: space-between;
-            animation-name: fadeIn;
-        }
-        
-        .gallery-slide.fade-out {
-            animation-name: fadeOut;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateX(0); }
-            to { opacity: 0; transform: translateX(-30px); }
-        }
-        
-        .gallery-slide-item {
-            flex: 0 0 32%;
-            margin: 0 0.5%;
-            transition: all 0.8s ease;
-        }
-        
-        .gallery-slide img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            transition: transform 0.8s ease;
-        }
-        
-        .gallery-slide img:hover {
-            transform: scale(1.03);
-        }
-        
-        .gallery-slide-caption {
-            margin-top: 10px;
-            font-style: italic;
-            color: var(--text-color);
-            font-size: 0.9rem;
-            transition: all 0.8s ease;
-        }
-        
-        .gallery-controls {
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        .gallery-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        
-        .gallery-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #555;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background 0.8s ease;
-        }
-        
-        .gallery-dot.active {
-            background: var(--primary-color);
-        }
-        
-        .gallery-btn {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 0 10px;
-            transition: all 0.8s ease;
-        }
-        
-        .gallery-btn:hover {
-            background: #c82333;
-            transform: scale(1.05);
-        }
-        
-        .gallery-btn:disabled {
-            background: #6c757d;
-            cursor: not-allowed;
-            transform: scale(1);
+            background: var(--primary-light);
         }
 
-        /* Menu section background */
-        .bg-light {
-            background-color: var(--section-bg) !important;
+        .form-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--footer-bg) !important;
-            color: var(--hero-text);
-            border-top: 1px solid var(--border-color);
-        }
-
-        /* Navbar */
-        .navbar {
-            background-color: var(--footer-bg) !important;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        /* Links */
-        a {
-            color: var(--primary-color);
-        }
-
-        a:hover {
-            color: #ff6b6b;
-        }
-
-        /* Text colors */
-        .text-light {
-            color: var(--hero-text) !important;
-        }
-
-        /* Cards */
-        .card {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border-color: var(--border-color);
-        }
-
-        /* Form controls */
-        .form-control {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border-color: var(--border-color);
-        }
-
-        .form-control:focus {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
-        }
-
-        /* Video Gallery Section */
-        .video-gallery {
-            padding: 60px 0;
-            background-color: var(--section-bg);
-        }
-        
-        .video-thumbnail {
-            position: relative;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .video-thumbnail:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-        }
-        
-        .video-thumbnail img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .video-thumbnail:hover img {
-            transform: scale(1.05);
-        }
-        
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background-color: rgba(220, 53, 69, 0.8);
-            border-radius: 50%;
+        .form-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            transition: all 0.3s ease;
-        }
-        
-        .video-thumbnail:hover .play-button {
-            background-color: rgba(220, 53, 69, 1);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        
-        .video-caption {
-            padding: 15px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-        }
-        
-        .video-caption h4 {
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-        
-        .video-caption p {
-            font-size: 0.9rem;
-            color: var(--text-color);
-            opacity: 0.8;
-            margin-bottom: 0;
-        }
-        
-        /* Fancybox Overrides */
-        .fancybox__container {
-            --fancybox-bg: var(--bg-color);
-            --fancybox-color: var(--text-color);
-        }
-        
-        .fancybox__toolbar {
-            background: var(--card-bg);
-        }
-        
-        .fancybox__nav {
-            --fancybox-nav-color: var(--text-color);
-        }
-        
-        .fancybox__thumbs {
-            --fancybox-thumbs-bg: var(--card-bg);
         }
 
-        /* New Catering Philosophy Section Styles */
-        .philosophy-section {
-            position: relative;
-            padding: 80px 0;
-            background-color: var(--philosophy-bg);
-            overflow: hidden;
+        .form-control {
+            border-radius: var(--border-radius);
+            padding: 1rem 1.25rem;
+            border: 1px solid #333;
+            transition: var(--transition);
+            font-size: 1rem;
+            background-color: #252525;
+            color: var(--text);
         }
-        
-        .philosophy-section::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: rgba(220, 53, 69, 0.1);
-            border-radius: 50%;
-            z-index: 0;
+
+        /* Enhanced Select Dropdown Styles */
+        .form-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23d4afb9' fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1.25rem center;
+            background-size: 16px 12px;
+            padding-right: 3rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+            padding: 1rem 1.25rem;
+            border: 1px solid #333;
+            font-size: 1rem;
+            background-color: #252525;
+            color: var(--text);
         }
-        
-        .philosophy-section::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: rgba(220, 53, 69, 0.05);
-            border-radius: 50%;
-            z-index: 0;
+
+        .form-select:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 185, 0.15);
+            background-color: #252525;
+            color: var(--text);
         }
-        
-        .philosophy-image-container {
-            position: relative;
-            padding: 15px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
-            transform: rotate(-2deg);
-            transition: all 0.3s ease;
-            z-index: 1;
+
+        /* Custom styling for options */
+        .form-select option {
+            background-color: #252525;
+            color: var(--text);
+            padding: 10px;
         }
-        
-        .philosophy-image-container:hover {
-            transform: rotate(0deg) scale(1.02);
+
+        /* Hover state for options */
+        .form-select option:hover {
+            background-color: var(--primary);
+            color: var(--dark);
         }
-        
-        .philosophy-image {
-            width: 100%;
-            border-radius: 8px;
-            object-fit: cover;
-            height: 450px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+
+        /* Selected option styling */
+        .form-select option:checked {
+            background-color: var(--primary-dark);
+            color: var(--dark);
         }
-        
-        .philosophy-badge {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
+
+        /* Disabled option styling */
+        .form-select option:disabled {
+            color: #666;
+            background-color: #252525;
+        }
+
+        /* Group headers */
+        .form-select optgroup {
+            color: var(--primary-light);
             font-weight: 600;
-            box-shadow: 0 10px 15px -3px rgba(220, 53, 69, 0.3);
-            z-index: 2;
+            background-color: #1a1a1a;
         }
-        
-        .philosophy-content {
+
+        /* Scrollbar styling for dropdown (webkit browsers) */
+        .form-select::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .form-select::-webkit-scrollbar-track {
+            background: #252525;
+        }
+
+        .form-select::-webkit-scrollbar-thumb {
+            background-color: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Focus state for the select when opened */
+        .form-select:focus-visible {
+            outline: none;
+        }
+
+        /* Custom wrapper for select to add icon */
+        .select-wrapper {
             position: relative;
-            z-index: 1;
-            padding-left: 40px;
         }
-        
-        .philosophy-content .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            position: relative;
-            color: var(--text-color);
-            display: block;
-        }
-        
-        .philosophy-content .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-color);
-            transform: none;
-        }
-        
-        .philosophy-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            color: var(--text-color);
-            opacity: 0.9;
-        }
-        
-        .philosophy-list {
-            margin-bottom: 30px;
-        }
-        
-        .philosophy-list li {
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-            color: var(--text-color);
-        }
-        
-        .philosophy-list li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 5 Free';
+
+        .select-wrapper::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             position: absolute;
-            left: 0;
-            top: 2px;
-            color: var(--primary-color);
-            background: rgba(220, 53, 69, 0.1);
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            pointer-events: none;
+            z-index: 2;
         }
-        
-        .philosophy-quote {
-            font-style: italic;
-            font-size: 1.2rem;
-            color: var(--text-color);
-            margin-bottom: 30px;
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 185, 0.15);
+            background-color: #252525;
+            color: var(--text);
+        }
+
+        .form-control::placeholder {
+            color: #666;
+        }
+
+        .input-group-text {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            border-radius: var(--border-radius) 0 0 var(--border-radius) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 1rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 185, 0.3);
+            color: var(--dark);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .service-icon {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-right: 0.75rem;
+        }
+
+        .benefits-section {
+            padding: 5rem 0;
+            background-color: #1a1a1a;
             position: relative;
-            padding-left: 30px;
-            opacity: 0.9;
         }
-        
-        .philosophy-quote::before {
-            content: '"';
+
+        .benefits-section:before {
+            content: '';
             position: absolute;
+            top: 0;
             left: 0;
-            top: -10px;
-            font-size: 3rem;
-            color: rgba(220, 53, 69, 0.2);
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyMTIsMTc1LDE4NSwgMC4wMykiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IGZpbGw9InVybCgjcGF0dGVybikiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiLz48L3N2Zz4=');
         }
-        
-        @media (max-width: 991.98px) {
-            .philosophy-section {
-                padding: 60px 0;
+
+        .benefit-card {
+            background-color: #252525;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            height: 100%;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .benefit-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-light);
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background-color: #252525;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            
-            .philosophy-content {
-                padding-left: 15px;
-                padding-top: 40px;
-            }
-            
-            .philosophy-image-container {
-                transform: none;
-                max-width: 600px;
-                margin: 0 auto;
-            }
-            
-            .philosophy-image-container:hover {
-                transform: none;
-            }
-            
-            .philosophy-content .section-title {
-                font-size: 2rem;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* Additional dark mode adjustments */
-        .btn-outline-light {
-            color: var(--text-color);
-            border-color: var(--text-color);
+        .animated {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
         }
-        
-        .btn-outline-light:hover {
-            background-color: var(--text-color);
-            color: var(--dark-color);
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero-section {
+                padding: 6rem 0;
+                text-align: center;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-section p.lead {
+                margin: 0 auto 2rem;
+            }
+            
+            .d-flex.justify-content-start {
+                justify-content: center!important;
+            }
+            
+            .avatar-group {
+                justify-content: center;
+            }
+            
+            .form-container {
+                padding: 2rem;
+            }
         }
-        
-        .lead {
-            color: var(--text-color);
-            opacity: 0.8;
-        }
-        
-        .card-text, .client-info small {
-            color: var(--text-color);
-            opacity: 0.8;
-        }
-        
-        .testimonial-text {
-            opacity: 0.9;
-        }
-        
-        .bg-dark {
-            background-color: var(--dark-color) !important;
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 5rem 0;
+                background-attachment: scroll;
+                min-height: auto;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-section p.lead {
+                font-size: 1.2rem;
+            }
+            
+            .form-header h2 {
+                font-size: 1.75rem;
+            }
+            
+            .benefit-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            footer {
+                padding: 3rem 0 0;
+            }
+            
+            .footer-col {
+                margin-bottom: 2rem;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand logo-margin" href="#">Wedding Planner</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.htm">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="about.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">Packages</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/frontend/suppliers/supply.html">Suppliers</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="booking.html">Booking</a></li>
-                </ul>
-            </div>
-        </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+          <a class="navbar-brand logo-margin" href="#">Wedding Planner</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mb-2 mb-lg-0">
+                  <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.htm">Home</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#">About</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="about.html">Services</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#">Packages</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="/frontend/suppliers/supply.html">Suppliers</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="booking.html">Booking</a></li>
+              </ul>
+          </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-section">
-        <div class="container text-center py-5">
-            <h1 class="display-3 fw-bold mb-4">Exquisite Wedding Catering</h1>
-            <p class="lead mb-4">Culinary excellence tailored to your special day</p>
-            <div>
-                <a href="#menus" class="btn btn-danger btn-lg px-4 me-2">View Menus</a>
-                <a href="#contact" class="btn btn-outline-light btn-lg px-4">Get a Quote</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- About Catering Section - Redesigned -->
-    <section class="philosophy-section">
+    <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
-                    <div class="philosophy-image-container">
-                        <img src="/frontend/allpack/catering/cateringdata/image1.jpeg" alt="Wedding catering setup" class="philosophy-image">
-                        <div class="philosophy-badge">
-                            <i class="fas fa-award me-2"></i>Award Winning
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="philosophy-content">
-                        <span class="text-danger fw-bold d-block mb-2">OUR PHILOSOPHY</span>
-                        <h2 class="section-title">Crafting Culinary <span class="text-danger">Memories</span></h2>
-                        <p class="philosophy-quote">"We don't just serve food - we create unforgettable dining experiences that become cherished memories."</p>
-                        <p>Our team of passionate chefs combines artistry with culinary expertise to design menus that reflect your unique love story, using only the freshest seasonal ingredients sourced from local producers.</p>
-                        <ul class="philosophy-list list-unstyled">
-                            <li>Customized menus for every couple</li>
-                            <li>Farm-to-table fresh ingredients</li>
-                            <li>Accommodates all dietary needs</li>
-                            <li>Professional serving staff included</li>
-                            <li>Full bar service available</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-danger btn-lg px-4">Schedule a Consultation</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Gallery Section -->
-    <section id="video-gallery" class="video-gallery">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Our Catering Videos</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Watch our catering services in action</p>
-                </div>
-            </div>
-            <div class="row">
-                <!-- Video 1 - Local MP4 -->
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v2.mp4" data-fancybox="video-gallery" data-caption="Wedding Buffet Service">
-                            <img src="/frontend/allpack/catering/cataringvideos/im1.png" alt="Wedding Buffet Service">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
+                <div class="col-lg-7">
+                    <h1 class="animated">Join Our Exclusive Network of Wedding Professionals</h1>
+                    <p class="lead animated delay-1">Showcase your services to thousands of couples planning their perfect day. Get premium exposure, quality leads, and grow your business with WeddingPlanner.</p>
+                    
+                    <div class="d-flex flex-wrap gap-3 mt-4 animated delay-2">
+                        <a href="#registration" class="btn btn-primary btn-lg px-4 py-3">
+                            <i class="fas fa-user-plus me-2"></i>Register Now
                         </a>
-                        <div class="video-caption">
-                            <h4>Wedding Buffet Service</h4>
-                            <p>See our elegant buffet setup in action</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 2 - YouTube -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v3.mp4" data-fancybox="video-gallery" data-caption="Plated Dinner Service">
-                            <img src="/frontend/allpack/catering/cataringvideos/im2.png" alt="Plated Dinner Service">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
+                        <a href="#benefits" class="btn btn-outline-light btn-lg px-4 py-3">
+                            <i class="fas fa-star me-2"></i>Why Join?
                         </a>
-                        <div class="video-caption">
-                            <h4>Plated Dinner Service</h4>
-                            <p>Our professional serving staff in action</p>
-                        </div>
                     </div>
-                </div>
-                
-                <!-- Video 3 - YouTube -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v4.mp4" data-fancybox="video-gallery" data-caption="Cocktail Hour">
-                            <img src="/frontend/allpack/catering/cataringvideos/im3.png" alt="Cocktail Hour">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
+                    
+                    <div class="d-flex align-items-center mt-5 animated delay-3">
+                        <div class="avatar-group me-3">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar" alt="Supplier">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar" alt="Supplier">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="avatar" alt="Supplier">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" class="avatar" alt="Supplier">
+                        </div>
+                        <div>
+                            <p class="mb-0 small text-white-50">Trusted by 500+ wedding professionals</p>
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="ms-1 text-white">4.8/5</span>
                             </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Cocktail Hour</h4>
-                            <p>Signature drinks and hors d'oeuvres service</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Video 4 - Local MP4 -->
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v5.mp4" data-fancybox="video-gallery" data-caption="Dessert Presentation">
-                            <img src="/frontend/allpack/catering/cataringvideos/im4.png" alt="Dessert Presentation">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Dessert Presentation</h4>
-                            <p>Beautiful dessert table setups</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 5 - YouTube -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v7.mp4" data-fancybox="video-gallery" data-caption="Chef's Special">
-                            <img src="/frontend/allpack/catering/cataringvideos/im7.png" alt="Chef's Special">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Chef's Special</h4>
-                            <p>Our chefs preparing signature dishes</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 6 - YouTube -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v8.mp4" data-fancybox="video-gallery" data-caption="Client Testimonials">
-                            <img src="/frontend/allpack/catering/cataringvideos/im8.png" alt="Client Testimonials">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Client Testimonials</h4>
-                            <p>What our clients say about our service</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-4">
-                <a href="#image" class="btn btn-outline-danger">View  Images</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section id="menus" class="py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Our Signature Menus</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Customizable options for every taste and budget</p>
-                </div>
-            </div>
-            <div class="row">
-                <!-- Menu 1 -->
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="menu-card">
-                        <div class="position-relative">
-                            <img src="/frontend/allpack/catering/cateringdata/1.jpg" class="menu-img w-100" alt="Classic Wedding Menu">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Classic Elegance</h4>
-                            <p class="card-text">Traditional favorites with modern presentation</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Starter: Seasonal salad</li>
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Main: Beef tenderloin or salmon</li>
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Dessert: Trio of mini desserts</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-danger">Customize This Menu</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Menu 2 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="menu-card">
-                        <div class="position-relative">
-                            <img src="/frontend/allpack/catering/cateringdata/2.jpg" class="menu-img w-100" alt="Global Flavors Menu">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Global Flavors</h4>
-                            <p class="card-text">International cuisine with bold flavors</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Starter: Asian-inspired appetizers</li>
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Main: Moroccan lamb or Thai curry</li>
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Dessert: Chocolate fondue station</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-danger">Customize This Menu</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Menu 3 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="menu-card">
-                        <div class="position-relative">
-                            <img src="/frontend/allpack/catering/cateringdata/3.jpg" class="menu-img w-100" alt="Rustic Farmhouse Menu">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Rustic Farmhouse</h4>
-                            <p class="card-text">Hearty, seasonal dishes with artisanal flair</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Starter: Charcuterie display</li>
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Main: Braised short ribs or stuffed squash</li>
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Dessert: Pie bar with local fruits</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-danger">Customize This Menu</a>
+                <div class="col-lg-5 d-none d-lg-block animated delay-1">
+                    <div class="hero-image-container">
+                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="hero-image img-fluid rounded" alt="Wedding Supplier">
+                        <div class="floating-badge">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Verified Supplier</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <div class="hero-scroll-indicator">
+            <a href="#registration" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section class="py-5" id="image">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Our Work</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Beautiful presentations from recent weddings</p>
+    <!-- Registration Form -->
+    <div class="container" id="registration">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="form-container animated delay-1">
+                    <div class="form-header">
+                        <h2 class="animated">Supplier Registration</h2>
+                        <p class="animated delay-1">Complete this form to join our network of premium wedding suppliers</p>
+                    </div>
+                    
+                    <form class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-4 animated delay-2">
+                                <label for="firstName" class="form-label">
+                                    <i class="fas fa-user service-icon"></i>First Name
+                                </label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Your first name" required>
+                                <div class="invalid-feedback">
+                                    Please provide your first name.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4 animated delay-2">
+                                <label for="lastName" class="form-label">
+                                    <i class="fas fa-user service-icon"></i>Last Name
+                                </label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Your last name" required>
+                                <div class="invalid-feedback">
+                                    Please provide your last name.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4 animated delay-3">
+                                <label for="contactEmail" class="form-label">
+                                    <i class="fas fa-envelope service-icon"></i>Email Address
+                                </label>
+                                <input type="email" class="form-control" id="contactEmail" placeholder="your@email.com" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid email address.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4 animated delay-3">
+                                <label for="contactNumber" class="form-label">
+                                    <i class="fas fa-phone service-icon"></i>Phone Number
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">+250</span>
+                                    <input type="tel" class="form-control" id="contactNumber" placeholder="78 123 4567" required>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please provide a valid phone number.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 animated delay-4">
+                            <label for="companyName" class="form-label">
+                                <i class="fas fa-building service-icon"></i>Business Name (if applicable)
+                            </label>
+                            <input type="text" class="form-control" id="companyName" placeholder="Your business name">
+                        </div>
+                        
+                        <div class="mb-4 animated delay-4">
+                            <label for="companyAddress" class="form-label">
+                                <i class="fas fa-map-marker-alt service-icon"></i>Business Location
+                            </label>
+                            <input type="text" class="form-control" id="companyAddress" placeholder="Where you operate from" required>
+                            <div class="invalid-feedback">
+                                Please provide your business location.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 animated delay-1">
+                            <label for="serviceCategory" class="form-label">
+                                <i class="fas fa-tags service-icon"></i>Service Category
+                            </label>
+                            <div class="select-wrapper">
+                                <select class="form-select" id="serviceCategory" required>
+                                    <option value="" disabled selected>Select your primary service category</option>
+                                    <option value="1">Catering</option>
+                                    <option value="2">Videography & Photography</option>
+                                    <option value="3">Venue</option>
+                                    <option value="4">Florists</option>
+                                    <option value="5">Troupe</option>
+                                    <option value="6">Decor</option>
+                                    <option value="7">Transportation (Cars)</option>
+                                    <option value="8">Invitation Cards</option>
+                                    <option value="9">Beauty & Makeup</option>
+                                    <option value="10">Bridal Style & Attire</option>
+                                    <option value="11">Master of Ceremonies (MC)</option>
+                                    <option value="12">Sound & Lighting</option>
+                                    <option value="13">Gakondo</option>
+                                    <option value="13">Amahamba</option>
+                                    <option value="14">Other Wedding Services</option>
+                                </select>
+                            </div>
+                            <div class="invalid-feedback">
+                                Please select your service category.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 animated delay-2">
+                            <label for="experience" class="form-label">
+                                <i class="fas fa-briefcase service-icon"></i>Years of Experience
+                            </label>
+                            <input type="number" class="form-control" id="experience" placeholder="How many years in business?" min="0" required>
+                            <div class="invalid-feedback">
+                                Please provide your years of experience.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 animated delay-3">
+                            <label for="portfolioLink" class="form-label">
+                                <i class="fas fa-link service-icon"></i>Portfolio Link
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-globe"></i></span>
+                                <input type="url" class="form-control" id="portfolioLink" placeholder="https://yourportfolio.com">
+                            </div>
+                            <small class="text-muted">Website, Instagram, Facebook, or other portfolio link</small>
+                        </div>
+                        
+                        <div class="mb-4 animated delay-4">
+                            <label for="description" class="form-label">
+                                <i class="fas fa-edit service-icon"></i>Tell Us About Your Services
+                            </label>
+                            <textarea class="form-control" id="description" rows="5" placeholder="Describe your services, specialties, and what makes you unique..." required></textarea>
+                            <div class="invalid-feedback">
+                                Please tell us about your services.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 animated delay-1">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                <label class="form-check-label" for="termsCheck">
+                                    I agree to the <a href="#" style="color: var(--primary);">Terms of Service</a> and <a href="#" style="color: var(--primary);">Privacy Policy</a>
+                                </label>
+                                <div class="invalid-feedback">
+                                    You must agree before submitting.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid mt-5 animated delay-2">
+                            <button type="submit" class="btn btn-primary btn-lg py-3">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Application
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            
-            <div class="gallery-slideshow" data-aos="fade-up">
-                <!-- Slide 1 (3 images) -->
-                <div class="gallery-slide active">
-                    <div class="gallery-slide-item">
-                        <a href="/frontend/allpack/catering/cateringdata/9.jpg">
-                        <img src="/frontend/allpack/catering/cateringdata/9.jpg" alt="Wedding buffet setup">
-                        <p class="gallery-slide-caption">Elegant buffet presentation</p>
-                    </a>
-                    </div>
-                    <div class="gallery-slide-item">
-                        <a href="/frontend/allpack/catering/cateringdata/10.png">
-                        <img src="/frontend/allpack/catering/cateringdata/10.png" alt="Plated dinner service">
-                        <p class="gallery-slide-caption">Plated dinner service</p>
-                        </a>
-                    </div>
-                    <div class="gallery-slide-item">
-                        <a href="/frontend/allpack/catering/cateringdata/11.png">
-                        <img src="/frontend/allpack/catering/cateringdata/11.png" alt="Dessert table">
-                        <p class="gallery-slide-caption">Custom dessert table</p>
-                        </a>
+        </div>
+    </div>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" id="benefits">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-3 animated">Why Join Our Network?</h2>
+                    <p class="lead animated delay-1">Discover the advantages of becoming a preferred WeddingPlanner supplier</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 animated delay-1">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Premium Exposure</h4>
+                        <p>Get featured in our exclusive directory seen by thousands of couples planning their weddings each month.</p>
                     </div>
                 </div>
-                
-                <!-- Slide 2 (3 images) -->
-                <div class="gallery-slide">
-                    <div class="gallery-slide-item">
-                        <a href="/frontend/allpack/catering/cateringdata/4.jpg">
-                        <img src="/frontend/allpack/catering/cateringdata/4.jpg" alt="Cocktail hour">
-                        <p class="gallery-slide-caption">Signature cocktails</p>
-                        </a>
-                    </div>
-                    <div class="gallery-slide-item">
-                        <a href="/frontend/allpack/catering/cateringdata/5.jpg">
-                        <img src="/frontend/allpack/catering/cateringdata/5.jpg" alt="Classic menu">
-                        <p class="gallery-slide-caption">Classic menu options</p>
-                        </a>
-                    </div>
-                    <div class="gallery-slide-item">
-                        <a href="/frontend/allpack/catering/cateringdata/6.png">
-                        <img src="/frontend/allpack/catering/cateringdata/6.png" alt="Global flavors">
-                        <p class="gallery-slide-caption">International cuisine</p>
-                        </a>
+                <div class="col-md-4 animated delay-2">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h4>Quality Leads</h4>
+                        <p>Receive direct inquiries from serious couples who value quality and professionalism.</p>
                     </div>
                 </div>
-                
-                <!-- Slide 3 (3 images) -->
-                <div class="gallery-slide">
-                    <div class="gallery-slide-item">
-                        <a href="frontend/allpack/catering/cateringdata/7.png">
-                        <img src="/frontend/allpack/catering/cateringdata/7.png" alt="Rustic farmhouse">
-                        <p class="gallery-slide-caption">Rustic farmhouse style</p>
-                        </a>
-                    </div>
-                    <div class="gallery-slide-item">
-                        <a href="frontend/allpack/catering/cateringdata/8.png">
-                        <img src="/frontend/allpack/catering/cateringdata/8.png" alt="Catering setup">
-                        <p class="gallery-slide-caption">Professional setup</p>
-                        </a>
-                    </div>
-                    <div class="gallery-slide-item">
-                        <a href="/frontend/allpack/catering/cateringdata/12.jpg">
-                        <img src="/frontend/allpack/catering/cateringdata/12.jpg" alt="Wedding feast">
-                        <p class="gallery-slide-caption">Grand wedding feast</p>
-                        </a>
+                <div class="col-md-4 animated delay-3">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Business Growth</h4>
+                        <p>Expand your client base and grow your business through our marketing channels.</p>
                     </div>
                 </div>
-                
-                <div class="gallery-controls">
-                    <button class="gallery-btn" id="prevBtn"><i class="fas fa-chevron-left"></i> Previous</button>
-                    <button class="gallery-btn" id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4 animated delay-2">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>Reputation Boost</h4>
+                        <p>Being a vetted supplier enhances your credibility in the wedding industry.</p>
+                    </div>
                 </div>
-                
-                <div class="gallery-dots">
-                    <span class="gallery-dot active" data-slide="0"></span>
-                    <span class="gallery-dot" data-slide="1"></span>
-                    <span class="gallery-dot" data-slide="2"></span>
+                <div class="col-md-4 animated delay-3">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Networking</h4>
+                        <p>Connect with other top wedding professionals for collaborations and referrals.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 animated delay-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h4>Premium Listings</h4>
+                        <p>Upgrade to featured listings for even greater visibility and more bookings.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-5 bg-light">
+    <section class="py-5" style="background-color: #1e1e1e;">
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Client Testimonials</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">What couples say about our catering</p>
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-3 animated">What Our Suppliers Say</h2>
+                    <p class="lead animated delay-1">Hear from wedding professionals who've grown their business with us</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4" data-aos="fade-up">
+                <div class="col-md-4 mb-4 animated delay-2">
                     <div class="testimonial-card">
-                        <div class="stars mb-3">
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"The food was absolutely incredible! Our guests are still talking about the braised short ribs months later. The presentation was stunning and the service was flawless."</p>
-                        <div class="client-info">
+                        <p class="card-text">"Since joining WeddingPlanner, our bookings have increased by 40%. The quality of leads is exceptional compared to other platforms."</p>
+                        <div class="d-flex align-items-center mt-4">
                             <div>
-                                <h6>Jennifer & Mark</h6>
-                                <small>June 2024 Wedding</small>
+                                <h6 class="mb-0">Sarah K.</h6>
+                                <small class="text-muted">Florist | 5 years experience</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-4 mb-4 animated delay-3">
                     <div class="testimonial-card">
-                        <div class="stars mb-3">
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"We had several guests with dietary restrictions and the team handled everything perfectly. The vegan options were so good that even non-vegans were raving about them!"</p>
-                        <div class="client-info">
+                        <p class="card-text">"The professionalism of WeddingPlanner sets them apart. We've formed lasting relationships with couples who truly value our work."</p>
+                        <div class="d-flex align-items-center mt-4">
                             <div>
-                                <h6>Sarah & David</h6>
-                                <small>August 2024 Wedding</small>
+                                <h6 class="mb-0">James T.</h6>
+                                <small class="text-muted">Photographer | 8 years experience</small>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-4 mb-4 animated delay-4">
                     <div class="testimonial-card">
-                        <div class="stars mb-3">
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"From our initial tasting to the wedding day, the attention to detail was remarkable. The chef even recreated my grandmother's recipe as a surprise for us!"</p>
-                        <div class="client-info">
+                        <p class="card-text">"As a new caterer, WeddingPlanner helped me establish my reputation. Now I'm booked months in advance thanks to their network."</p>
+                        <div class="d-flex align-items-center mt-4">
                             <div>
-                                <h6>Emily & James</h6>
-                                <small>September 2024 Wedding</small>
+                                <h6 class="mb-0">Amina R.</h6>
+                                <small class="text-muted">Caterer | 3 years experience</small>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="contact" class="py-5 bg-dark text-white">
-        <div class="container py-4">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="mb-4">Let's Create Your Perfect Wedding Menu</h2>
-                    <p class="lead mb-4">Contact us for a complimentary tasting and consultation</p>
-                    <a href="booking.html" class="btn btn-danger btn-lg px-5 me-3">Book a Tasting</a>
-                    <a href="tel:+1234567890" class="btn btn-outline-light btn-lg px-5">Call Us Now</a>
                 </div>
             </div>
         </div>
@@ -992,160 +957,99 @@
 
     <!-- Footer -->
     <footer class="bg-dark text-light py-4 footer-animated">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>About Us</h5>
-                    <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled footer-content">
-                        <li><a href="home.htm" class="text-light">Home</a></li>
-                        <li><a href="#" class="text-light">About</a></li>
-                        <li><a href="#" class="text-light">Services</a></li>
-                        <li><a href="index.html" class="text-light">Packages</a></li>
-                        <li><a href="#" class="text-light">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Connect With Us</h5>
-                    <ul class="list-unstyled footer-content">
-                        <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="text-center mt-4">
-                <p class="footer-content">&copy; 2025 Wedding Planner. All Rights Reserved.</p>
-            </div>
-        </div>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4">
+                  <h5>About Us</h5>
+                  <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+              </div>
+              <div class="col-md-4">
+                  <h5>Quick Links</h5>
+                  <ul class="list-unstyled footer-content">
+                      <li><a href="home.htm" class="text-light">Home</a></li>
+                      <li><a href="#" class="text-light">About</a></li>
+                      <li><a href="#" class="text-light">Services</a></li>
+                      <li><a href="index.html" class="text-light">Packages</a></li>
+                      <li><a href="#" class="text-light">Contact</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-4">
+                  <h5>Connect With Us</h5>
+                  <ul class="list-unstyled footer-content">
+                      <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                      <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
+                      <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
+                      <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="text-center mt-4">
+              <p class="footer-content">&copy; 2025 Wedding Planner. All Rights Reserved.</p>
+          </div>
+      </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Fancybox JS for video support -->
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-        });
-        
-        // Initialize Fancybox for video gallery
-        Fancybox.bind("[data-fancybox]", {
-            // Options can be set here
-            Thumbs: {
-                type: "classic",
-            },
-            Toolbar: {
-                display: {
-                    left: [],
-                    middle: [],
-                    right: ["close"],
-                },
-            },
-        });
-        
-        // Gallery Slideshow with slow motion
+        // Animation trigger
         document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.gallery-slide');
-            const dots = document.querySelectorAll('.gallery-dot');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            let currentSlide = 0;
-            const totalSlides = slides.length;
-            let isAnimating = false;
-            const slideDuration = 3000; // Longer duration between slides (8 seconds)
+            const animatedElements = document.querySelectorAll('.animated');
             
-            function showSlide(n, direction = 1) {
-                if (isAnimating) return;
-                isAnimating = true;
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Form validation
+            (function() {
+                'use strict';
                 
-                // Add fade-out class to current slide
-                const currentActive = document.querySelector('.gallery-slide.active');
-                if (currentActive) {
-                    currentActive.classList.add('fade-out');
-                }
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation');
                 
-                // Handle wrap-around for slide index
-                if (n >= totalSlides) {
-                    n = 0;
-                } else if (n < 0) {
-                    n = totalSlides - 1;
-                }
-                
-                // After fade-out completes, switch slides
-                setTimeout(() => {
-                    // Remove all active classes
-                    slides.forEach(slide => {
-                        slide.classList.remove('active', 'fade-out');
+                // Loop over them and prevent submission
+                Array.prototype.slice.call(forms)
+                    .forEach(function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            
+                            form.classList.add('was-validated');
+                        }, false);
                     });
-                    dots.forEach(dot => dot.classList.remove('active'));
-                    
-                    // Show new slide and activate corresponding dot
-                    slides[n].classList.add('active');
-                    dots[n].classList.add('active');
-                    
-                    currentSlide = n;
-                    
-                    // Update button states
-                    prevBtn.disabled = currentSlide === 0;
-                    nextBtn.disabled = currentSlide === totalSlides - 1;
-                    
-                    isAnimating = false;
-                }, 1500); // Match this with the CSS animation duration
-            }
+            })();
             
-            // Next/previous controls
-            nextBtn.addEventListener('click', () => {
-                showSlide(currentSlide + 1, 1);
-            });
-            
-            prevBtn.addEventListener('click', () => {
-                showSlide(currentSlide - 1, -1);
-            });
-            
-            // Dot controls
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    const direction = index > currentSlide ? 1 : -1;
-                    showSlide(index, direction);
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
-            
-            // Auto-advance slides
-            let slideInterval = setInterval(() => {
-                showSlide(currentSlide + 1, 1);
-            }, slideDuration);
-            
-            // Pause auto-advance on hover
-            const slideshow = document.querySelector('.gallery-slideshow');
-            slideshow.addEventListener('mouseenter', () => {
-                clearInterval(slideInterval);
-            });
-            
-            slideshow.addEventListener('mouseleave', () => {
-                slideInterval = setInterval(() => {
-                    showSlide(currentSlide + 1, 1);
-                }, slideDuration);
-            });
-            
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    showSlide(currentSlide - 1, -1);
-                } else if (e.key === 'ArrowRight') {
-                    showSlide(currentSlide + 1, 1);
-                }
-            });
-            
-            // Initialize button states
-            showSlide(0);
         });
     </script>
 </body>

@@ -10,6 +10,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/footer.css">
+    <link rel="stylesheet" href="/frontend/css/navbar.css">
     <style>
         :root {
             --primary: #d4afb9;
@@ -76,18 +78,20 @@
             background: var(--primary);
         }
 
+        /* Enhanced Hero Section Styles */
         .hero-section {
-            background: linear-gradient(135deg, rgba(42, 32, 40, 0.9) 0%, rgba(42, 32, 40, 0.7) 100%), 
+            background: linear-gradient(135deg, rgba(42, 32, 40, 0.95) 0%, rgba(42, 32, 40, 0.85) 100%), 
                         url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
             color: white;
-            padding: 6rem 0;
+            padding: 8rem 0 6rem;
             margin-bottom: 4rem;
-            text-align: center;
             position: relative;
             overflow: hidden;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
         }
 
         .hero-section:before {
@@ -105,14 +109,114 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: white;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            line-height: 1.2;
         }
 
         .hero-section p.lead {
-            font-size: 1.5rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
+            font-size: 1.4rem;
+            max-width: 600px;
+            margin: 0 auto 2rem 0;
             color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-outline-light {
+            border: 2px solid rgba(255,255,255,0.3);
+            background-color: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            transition: var(--transition);
+        }
+
+        .btn-outline-light:hover {
+            background-color: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .hero-image-container {
+            position: relative;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: var(--transition);
+        }
+
+        .hero-image-container:hover {
+            transform: perspective(1000px) rotateY(-5deg) translateY(-10px);
+        }
+
+        .hero-image {
+            border: 8px solid rgba(255,255,255,0.1);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        .floating-badge {
+            position: absolute;
+            bottom: -15px;
+            right: 30px;
+            background: var(--dark);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-weight: 600;
+            border: 2px solid var(--primary);
+        }
+
+        .avatar-group {
+            display: flex;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            margin-right: -15px;
+            transition: var(--transition);
+        }
+
+        .avatar:hover {
+            transform: translateY(-5px);
+            z-index: 1;
+        }
+
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-down {
+            display: block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.25rem;
+            transition: var(--transition);
+        }
+
+        .scroll-down:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(5px);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
         }
 
         .form-container {
@@ -387,160 +491,13 @@
             color: var(--text-light);
         }
 
-        footer {
-            background-color: #0d0d0d;
-            color: var(--light);
-            padding: 5rem 0 0;
-            position: relative;
-        }
-
-        .footer-heading {
-            font-family: 'Playfair Display', serif;
-            color: var(--light);
-            margin-bottom: 1.75rem;
-            font-size: 1.5rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .footer-heading:after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 50px;
-            height: 2px;
-            background: var(--primary-light);
-        }
-
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--light);
-            margin-bottom: 1.5rem;
-            display: inline-block;
-        }
-
-        .footer-about p {
-            color: #adb5bd;
-            margin-bottom: 2rem;
-        }
-
-        .footer-link {
-            color: #adb5bd;
-            transition: var(--transition);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.75rem;
-            position: relative;
-            padding-left: 1rem;
-        }
-
-        .footer-link:hover {
-            color: var(--primary-light);
-            padding-left: 1.5rem;
-            text-decoration: none;
-        }
-
-        .footer-link:before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .footer-link:hover:before {
-            opacity: 1;
-            left: -5px;
-        }
-
-        .contact-info {
-            margin-bottom: 1.5rem;
-            color: #adb5bd;
-        }
-
-        .contact-info i {
-            color: var(--primary-light);
-            width: 20px;
-            margin-right: 0.75rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            transition: var(--transition);
-        }
-
-        .social-icon:hover {
-            background-color: var(--primary);
-            color: var(--dark);
-            transform: translateY(-3px);
-        }
-
-        .newsletter-form {
-            position: relative;
-            margin-top: 1.5rem;
-        }
-
-        .newsletter-form .form-control {
-            background-color: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            padding-right: 120px;
-        }
-
-        .newsletter-form .form-control::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .newsletter-form .btn {
-            position: absolute;
-            right: 5px;
-            top: 5px;
-            bottom: 5px;
-            background-color: var(--primary);
-            border: none;
-            padding: 0 1.5rem;
-            color: var(--dark);
-        }
-
-        .copyright {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            margin-top: 3rem;
-            text-align: center;
-            color: #6c757d;
-        }
-
-        /* Testimonial Cards */
-        .card {
+        /* Testimonials */
+        .testimonial-card {
             background-color: #252525;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            height: 100%;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            color: var(--text);
-        }
-
-        .text-warning {
-            color: #d4afb9 !important;
-        }
-
-        /* CTA Section */
-        .bg-primary {
-            background-color: var(--primary-dark) !important;
         }
 
         /* Animations */
@@ -568,15 +525,24 @@
         /* Responsive adjustments */
         @media (max-width: 992px) {
             .hero-section {
-                padding: 4rem 0;
+                padding: 6rem 0;
+                text-align: center;
             }
             
             .hero-section h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             
             .hero-section p.lead {
-                font-size: 1.25rem;
+                margin: 0 auto 2rem;
+            }
+            
+            .d-flex.justify-content-start {
+                justify-content: center!important;
+            }
+            
+            .avatar-group {
+                justify-content: center;
             }
             
             .form-container {
@@ -586,12 +552,17 @@
 
         @media (max-width: 768px) {
             .hero-section {
-                padding: 3rem 0;
+                padding: 5rem 0;
                 background-attachment: scroll;
+                min-height: auto;
             }
             
             .hero-section h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            
+            .hero-section p.lead {
+                font-size: 1.2rem;
             }
             
             .form-header h2 {
@@ -614,46 +585,78 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <span style="color: var(--primary);">Wedding</span><span style="color: var(--light);">Planner</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/frontend/home_packages/home.htm">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/frontend/home_packages/about.html">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/frontend/home_packages/index.html">Packages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/frontend/supliers/suply.html">Suppliers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/frontend/home_packages/booking.html">Booking</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+          <a class="navbar-brand logo-margin" href="#">Wedding Planner</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mb-2 mb-lg-0">
+                  <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.htm">Home</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#">About</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="about.html">Services</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#">Packages</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="/frontend/suppliers/supply.html">Suppliers</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="booking.html">Booking</a></li>
+              </ul>
+          </div>
+      </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <h1 class="animated">Become a Preferred Wedding Supplier</h1>
-            <p class="lead animated delay-1">Join our exclusive network of trusted wedding professionals and connect with couples planning their special day</p>
-            <a href="#registration" class="btn btn-light btn-lg mt-3 animated delay-2" style="background-color: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3);">
-                Register Now <i class="fas fa-arrow-right ms-2"></i>
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h1 class="animated">Join Our Exclusive Network of Wedding Professionals</h1>
+                    <p class="lead animated delay-1">Showcase your services to thousands of couples planning their perfect day. Get premium exposure, quality leads, and grow your business with WeddingPlanner.</p>
+                    
+                    <div class="d-flex flex-wrap gap-3 mt-4 animated delay-2">
+                        <a href="#registration" class="btn btn-primary btn-lg px-4 py-3">
+                            <i class="fas fa-user-plus me-2"></i>Register Now
+                        </a>
+                        <a href="#benefits" class="btn btn-outline-light btn-lg px-4 py-3">
+                            <i class="fas fa-star me-2"></i>Why Join?
+                        </a>
+                    </div>
+                    
+                    <div class="d-flex align-items-center mt-5 animated delay-3">
+                        <div class="avatar-group me-3">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar" alt="Supplier">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar" alt="Supplier">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="avatar" alt="Supplier">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" class="avatar" alt="Supplier">
+                        </div>
+                        <div>
+                            <p class="mb-0 small text-white-50">Trusted by 500+ wedding professionals</p>
+                            <div class="text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="ms-1 text-white">4.8/5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5 d-none d-lg-block animated delay-1">
+                    <div class="hero-image-container">
+                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="hero-image img-fluid rounded" alt="Wedding Supplier">
+                        <div class="floating-badge">
+                            <i class="fas fa-check-circle text-success me-2"></i>
+                            <span>Verified Supplier</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-scroll-indicator">
+            <a href="#registration" class="scroll-down">
+                <i class="fas fa-chevron-down"></i>
             </a>
         </div>
     </section>
@@ -815,7 +818,7 @@
     </div>
 
     <!-- Benefits Section -->
-    <section class="benefits-section">
+    <section class="benefits-section" id="benefits">
         <div class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-8 text-center">
@@ -895,131 +898,95 @@
             </div>
             <div class="row">
                 <div class="col-md-4 mb-4 animated delay-2">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="mb-3 text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text">"Since joining WeddingPlanner, our bookings have increased by 40%. The quality of leads is exceptional compared to other platforms."</p>
-                            <div class="d-flex align-items-center mt-4">
-                              
-                                <div>
-                                    <h6 class="mb-0">Sarah K.</h6>
-                                    <small class="text-muted">Florist | 5 years experience</small>
-                                </div>
+                    <div class="testimonial-card">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text">"Since joining WeddingPlanner, our bookings have increased by 40%. The quality of leads is exceptional compared to other platforms."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <div>
+                                <h6 class="mb-0">Sarah K.</h6>
+                                <small class="text-muted">Florist | 5 years experience</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4 animated delay-3">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="mb-3 text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text">"The professionalism of WeddingPlanner sets them apart. We've formed lasting relationships with couples who truly value our work."</p>
-                            <div class="d-flex align-items-center mt-4">
-                                <div>
-                                    <h6 class="mb-0">James T.</h6>
-                                    <small class="text-muted">Photographer | 8 years experience</small>
-                                </div>
+                    <div class="testimonial-card">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text">"The professionalism of WeddingPlanner sets them apart. We've formed lasting relationships with couples who truly value our work."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <div>
+                                <h6 class="mb-0">James T.</h6>
+                                <small class="text-muted">Photographer | 8 years experience</small>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 mb-4 animated delay-4">
-                    <div class="card h-100 border-0 shadow-sm">
-                        <div class="card-body">
-                            <div class="mb-3 text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="card-text">"As a new caterer, WeddingPlanner helped me establish my reputation. Now I'm booked months in advance thanks to their network."</p>
-                            <div class="d-flex align-items-center mt-4">
-                                    <h6 class="mb-0">Amina R.</h6>
-                                    <small class="text-muted">Caterer | 3 years experience</small>
-                                </div>
+                    <div class="testimonial-card">
+                        <div class="mb-3 text-warning">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="card-text">"As a new caterer, WeddingPlanner helped me establish my reputation. Now I'm booked months in advance thanks to their network."</p>
+                        <div class="d-flex align-items-center mt-4">
+                            <div>
+                                <h6 class="mb-0">Amina R.</h6>
+                                <small class="text-muted">Caterer | 3 years experience</small>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-5" style="background-color: var(--primary-dark);">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center text-white">
-                    <h2 class="mb-4 animated">Ready to Grow Your Wedding Business?</h2>
-                    <p class="lead mb-5 animated delay-1">Join our network today and start connecting with couples looking for your services</p>
-                    <a href="#registration" class="btn btn-light btn-lg px-5 py-3 animated delay-2" style="color: var(--primary-dark);">
-                        Register Now <i class="fas fa-arrow-right ms-2"></i>
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <a href="#" class="footer-logo">WeddingPlanner</a>
-                    <div class="footer-about">
-                        <p>Creating magical wedding experiences by connecting couples with the finest suppliers in the industry.</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/muyenzi_jacques/" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h5 class="footer-heading">Quick Links</h5>
-                    <a href="/frontend/home_packages/home.htm" class="footer-link">Home</a>
-                    <a href="/frontend/home_packages/about.html" class="footer-link">About Us</a>
-                    <a href="#" class="footer-link">Services</a>
-                    <a href="/frontend/home_packages/index.html" class="footer-link">Packages</a>
-                    <a href="/frontend/supliers/suply.html" class="footer-link">For Suppliers</a>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                    <h5 class="footer-heading">Contact Info</h5>
-                    <div class="contact-info">
-                        <p><i class="fas fa-map-marker-alt"></i> 123 Wedding Avenue, Kigali, Rwanda</p>
-                        <p><i class="fas fa-phone"></i> +250 785 300 707</p>
-                        <p><i class="fas fa-envelope"></i> info@weddingplanner.com</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5 class="footer-heading">Newsletter</h5>
-                    <p style="color: #adb5bd;">Subscribe for wedding tips and supplier updates</p>
-                    <form class="newsletter-form">
-                        <input type="email" class="form-control" placeholder="Your email address" required>
-                        <button class="btn btn-primary" type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="row copyright">
-                <div class="col text-center">
-                    <p class="mb-0">&copy; 2024 WeddingPlanner. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
+    <footer class="bg-dark text-light py-4 footer-animated">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4">
+                  <h5>About Us</h5>
+                  <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+              </div>
+              <div class="col-md-4">
+                  <h5>Quick Links</h5>
+                  <ul class="list-unstyled footer-content">
+                      <li><a href="home.htm" class="text-light">Home</a></li>
+                      <li><a href="#" class="text-light">About</a></li>
+                      <li><a href="#" class="text-light">Services</a></li>
+                      <li><a href="index.html" class="text-light">Packages</a></li>
+                      <li><a href="#" class="text-light">Contact</a></li>
+                  </ul>
+              </div>
+              <div class="col-md-4">
+                  <h5>Connect With Us</h5>
+                  <ul class="list-unstyled footer-content">
+                      <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                      <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
+                      <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
+                      <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                  </ul>
+              </div>
+          </div>
+          <div class="text-center mt-4">
+              <p class="footer-content">&copy; 2025 Wedding Planner. All Rights Reserved.</p>
+          </div>
+      </div>
     </footer>
 
     <!-- Bootstrap JS -->
