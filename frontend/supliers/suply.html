@@ -3,193 +3,991 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supplier Registration - Wedding Planner</title>
+    <title>Supplier Registration | WeddingPlanner</title>
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/frontend/css/supply.css">
-    <link rel="stylesheet" href="/frontend/css/footer.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #d4afb9;
+            --primary-dark: #b38e99;
+            --primary-light: #f0d8dd;
+            --secondary: #1a1a1a;
+            --accent: #3a2e39;
+            --dark: #121212;
+            --light: #ffffff;
+            --text: #e0e0e0;
+            --text-light: #a0a0a0;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            background-color: #121212;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .navbar {
+            background-color: var(--dark);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1.25rem !important;
+            color: var(--text-light) !important;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary) !important;
+        }
+
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 1.25rem;
+            width: calc(100% - 2.5rem);
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(42, 32, 40, 0.9) 0%, rgba(42, 32, 40, 0.7) 100%), 
+                        url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 6rem 0;
+            margin-bottom: 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section p.lead {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-container {
+            background-color: #1e1e1e;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 3rem;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .form-container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .form-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .form-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--primary-light);
+        }
+
+        .form-header p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-control, .form-select {
+            border-radius: var(--border-radius);
+            padding: 1rem 1.25rem;
+            border: 1px solid #333;
+            transition: var(--transition);
+            font-size: 1rem;
+            background-color: #252525;
+            color: var(--text);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 185, 0.15);
+            background-color: #252525;
+            color: var(--text);
+        }
+
+        .form-control::placeholder {
+            color: #666;
+        }
+
+        .input-group-text {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            border-radius: var(--border-radius) 0 0 var(--border-radius) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 1rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(212, 175, 185, 0.3);
+            color: var(--dark);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-1px);
+        }
+
+        .service-icon {
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-right: 0.75rem;
+        }
+
+        .benefits-section {
+            padding: 5rem 0;
+            background-color: #1a1a1a;
+            position: relative;
+        }
+
+        .benefits-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyMTIsMTc1LDE4NSwgMC4wMykiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IGZpbGw9InVybCgjcGF0dGVybikiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiLz48L3N2Zz4=');
+        }
+
+        .benefit-card {
+            background-color: #252525;
+            border-radius: var(--border-radius);
+            padding: 2.5rem;
+            height: 100%;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .benefit-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--primary-light));
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-light);
+        }
+
+        footer {
+            background-color: #0d0d0d;
+            color: var(--light);
+            padding: 5rem 0 0;
+            position: relative;
+        }
+
+        .footer-heading {
+            font-family: 'Playfair Display', serif;
+            color: var(--light);
+            margin-bottom: 1.75rem;
+            font-size: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary-light);
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            color: #adb5bd;
+            margin-bottom: 2rem;
+        }
+
+        .footer-link {
+            color: #adb5bd;
+            transition: var(--transition);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-light);
+            padding-left: 1.5rem;
+            text-decoration: none;
+        }
+
+        .footer-link:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover:before {
+            opacity: 1;
+            left: -5px;
+        }
+
+        .contact-info {
+            margin-bottom: 1.5rem;
+            color: #adb5bd;
+        }
+
+        .contact-info i {
+            color: var(--primary-light);
+            width: 20px;
+            margin-right: 0.75rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form {
+            position: relative;
+            margin-top: 1.5rem;
+        }
+
+        .newsletter-form .form-control {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding-right: 120px;
+        }
+
+        .newsletter-form .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter-form .btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            bottom: 5px;
+            background-color: var(--primary);
+            border: none;
+            padding: 0 1.5rem;
+            color: var(--dark);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: #6c757d;
+        }
+
+        /* Testimonial Cards */
+        .card {
+            background-color: #252525;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text);
+        }
+
+        .text-warning {
+            color: #d4afb9 !important;
+        }
+
+        /* CTA Section */
+        .bg-primary {
+            background-color: var(--primary-dark) !important;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .hero-section {
+                padding: 4rem 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section p.lead {
+                font-size: 1.25rem;
+            }
+            
+            .form-container {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 3rem 0;
+                background-attachment: scroll;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .form-header h2 {
+                font-size: 1.75rem;
+            }
+            
+            .benefit-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            footer {
+                padding: 3rem 0 0;
+            }
+            
+            .footer-col {
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-   
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand logo-margin" href="#">Logo</a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span style="color: var(--primary);">Wedding</span><span style="color: var(--light);">Planner</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/frontend/home_packages/home.htm">Home</a>
+                        <a class="nav-link" href="/frontend/home_packages/home.htm">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/frontend/home_packages/about.html">About</a>
+                        <a class="nav-link" href="/frontend/home_packages/about.html">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Service</a>
+                        <a class="nav-link" href="#">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/frontend/home_packages/index.html">Packages</a>
+                        <a class="nav-link" href="/frontend/home_packages/index.html">Packages</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="/frontend/supliers/suply.html">Suppliers</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/frontend/home_packages/booking.html">Booking</a>
+                        <a class="nav-link" href="/frontend/home_packages/booking.html">Booking</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container py-5">
-        <!-- Welcome Message -->
-        <div class="row">
-          <div class="col-12">
-            <h2 class="text-center text-primary mb-4">Welcome Wedding Suppliers!</h2>
-            <p class="lead text-center">
-              We're thrilled that you're interested in becoming a part of our exclusive network of wedding service providers. Our platform is designed to help connect trusted suppliers with couples planning their dream weddings. Whether you specialize in catering, photography, floral arrangements, or other wedding services, we want to showcase your expertise and help you grow your business.
-            </p>
-          </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="animated">Become a Preferred Wedding Supplier</h1>
+            <p class="lead animated delay-1">Join our exclusive network of trusted wedding professionals and connect with couples planning their special day</p>
+            <a href="#registration" class="btn btn-light btn-lg mt-3 animated delay-2" style="background-color: rgba(255,255,255,0.2); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3);">
+                Register Now <i class="fas fa-arrow-right ms-2"></i>
+            </a>
         </div>
-        </div>
-    <div class="p container min-vh-100 d-flex justify-content-center align-items-center">
-        <div class="row w-100 justify-content-center">
-            <div class="col-md-8">
-                <h4 class="text-center text-white">Supplier Registration Form</h4>
-                <form>
-                    <!-- Supplier Name -->
-                    <div class="mb-3">
-                        <label for="companyName" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="companyName" placeholder="First Name" required>
+    </section>
+
+    <!-- Registration Form -->
+    <div class="container" id="registration">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="form-container animated delay-1">
+                    <div class="form-header">
+                        <h2 class="animated">Supplier Registration</h2>
+                        <p class="animated delay-1">Complete this form to join our network of premium wedding suppliers</p>
                     </div>
-                    <!-- Supplier Contact Information --> 
-                    <div class="mb-3">
-                        <label for="contactName" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="contactName" placeholder="Last Name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="contactEmail" class="form-label">Contact Email</label>
-                        <input type="email" class="form-control" id="contactEmail" placeholder="Email address" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="contactNumber" class="form-label">Contact Number</label>
-                        <input type="text" class="form-control" id="contactNumber" placeholder="Phone number" required>
-                    </div>
-                    <!-- Address Information -->
-                    <div class="mb-3">
-                        <label for="companyAddress" class="form-label">Location</label>
-                        <input type="text" class="form-control" id="companyAddress" placeholder="Location" required>
-                    </div>
-                    <!-- Service Category -->
-                    <div class="mb-3">
-                        <label for="serviceCategory" class="form-label">Service Category</label>
-                        <select class="form-select" id="serviceCategory" required>
-                            <option value="" disabled selected>Select service category</option>
-                            <option value="1">Catering</option>
-                            <option value="2">Videography & Photography</option>
-                            <option value="3">Venue</option>
-                            <option value="4">Florists</option>
-                            <option value="5">Wedding Planner</option>
-                            <option value="6">Decor</option>
-                            <option value="7">Cars</option>
-                            <option value="8">Invitation Card</option>
-                            <option value="9">Beauty</option>
-                            <option value="10">Style</option>
-                            <option value="11">M.C</option>
-                            <option value="12">Sound & Light</option>
-                            <option value="13">Type of Entertainment</option>
-                            <option value="14">Other..</option>
-                        </select>
-                    </div>
-                    <!-- Experience -->
-                    <div class="mb-3">
-                        <label for="experience" class="form-label">Years of Experience</label>
-                        <input type="number" class="form-control" id="experience" placeholder="Enter years of experience" required>
-                    </div>
-                    <!-- Portfolio or Website -->
-                    <div class="mb-3">
-                        <label for="portfolioLink" class="form-label">Instagram Profile Link or other Platform</label> 
-                        <input type="url" class="form-control" id="portfolioLink" placeholder="Platform Link">
-                    </div>
-                    <!-- Short Message or Description -->
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Short Description or Message</label>
-                        <textarea class="form-control" id="description" rows="3" placeholder="Tell us about your services" required></textarea>
-                    </div>
-                    <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary w-100">Register as Supplier</button>
-                </form>
+                    
+                    <form class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-4 animated delay-2">
+                                <label for="firstName" class="form-label">
+                                    <i class="fas fa-user service-icon"></i>First Name
+                                </label>
+                                <input type="text" class="form-control" id="firstName" placeholder="Your first name" required>
+                                <div class="invalid-feedback">
+                                    Please provide your first name.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4 animated delay-2">
+                                <label for="lastName" class="form-label">
+                                    <i class="fas fa-user service-icon"></i>Last Name
+                                </label>
+                                <input type="text" class="form-control" id="lastName" placeholder="Your last name" required>
+                                <div class="invalid-feedback">
+                                    Please provide your last name.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4 animated delay-3">
+                                <label for="contactEmail" class="form-label">
+                                    <i class="fas fa-envelope service-icon"></i>Email Address
+                                </label>
+                                <input type="email" class="form-control" id="contactEmail" placeholder="your@email.com" required>
+                                <div class="invalid-feedback">
+                                    Please provide a valid email address.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4 animated delay-3">
+                                <label for="contactNumber" class="form-label">
+                                    <i class="fas fa-phone service-icon"></i>Phone Number
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">+250</span>
+                                    <input type="tel" class="form-control" id="contactNumber" placeholder="78 123 4567" required>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please provide a valid phone number.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 animated delay-4">
+                            <label for="companyName" class="form-label">
+                                <i class="fas fa-building service-icon"></i>Business Name (if applicable)
+                            </label>
+                            <input type="text" class="form-control" id="companyName" placeholder="Your business name">
+                        </div>
+                        
+                        <div class="mb-4 animated delay-4">
+                            <label for="companyAddress" class="form-label">
+                                <i class="fas fa-map-marker-alt service-icon"></i>Business Location
+                            </label>
+                            <input type="text" class="form-control" id="companyAddress" placeholder="Where you operate from" required>
+                            <div class="invalid-feedback">
+                                Please provide your business location.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 animated delay-1">
+                            <label for="serviceCategory" class="form-label">
+                                <i class="fas fa-tags service-icon"></i>Service Category
+                            </label>
+                            <select class="form-select" id="serviceCategory" required>
+                                <option value="" disabled selected>Select your primary service category</option>
+                                <option value="1">Catering</option>
+                                <option value="2">Videography & Photography</option>
+                                <option value="3">Venue</option>
+                                <option value="4">Florists</option>
+                                <option value="5">Wedding Planner</option>
+                                <option value="6">Decor</option>
+                                <option value="7">Transportation (Cars)</option>
+                                <option value="8">Invitation Cards</option>
+                                <option value="9">Beauty & Makeup</option>
+                                <option value="10">Bridal Style & Attire</option>
+                                <option value="11">Master of Ceremonies (MC)</option>
+                                <option value="12">Sound & Lighting</option>
+                                <option value="13">Entertainment</option>
+                                <option value="14">Other Wedding Services</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Please select your service category.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 animated delay-2">
+                            <label for="experience" class="form-label">
+                                <i class="fas fa-briefcase service-icon"></i>Years of Experience
+                            </label>
+                            <input type="number" class="form-control" id="experience" placeholder="How many years in business?" min="0" required>
+                            <div class="invalid-feedback">
+                                Please provide your years of experience.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 animated delay-3">
+                            <label for="portfolioLink" class="form-label">
+                                <i class="fas fa-link service-icon"></i>Portfolio Link
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-globe"></i></span>
+                                <input type="url" class="form-control" id="portfolioLink" placeholder="https://yourportfolio.com">
+                            </div>
+                            <small class="text-muted">Website, Instagram, Facebook, or other portfolio link</small>
+                        </div>
+                        
+                        <div class="mb-4 animated delay-4">
+                            <label for="description" class="form-label">
+                                <i class="fas fa-edit service-icon"></i>Tell Us About Your Services
+                            </label>
+                            <textarea class="form-control" id="description" rows="5" placeholder="Describe your services, specialties, and what makes you unique..." required></textarea>
+                            <div class="invalid-feedback">
+                                Please tell us about your services.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4 animated delay-1">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                                <label class="form-check-label" for="termsCheck">
+                                    I agree to the <a href="#" style="color: var(--primary);">Terms of Service</a> and <a href="#" style="color: var(--primary);">Privacy Policy</a>
+                                </label>
+                                <div class="invalid-feedback">
+                                    You must agree before submitting.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid mt-5 animated delay-2">
+                            <button type="submit" class="btn btn-primary btn-lg py-3">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Application
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    
-<!-- Footer -->
-<!-- Footer -->
-<footer class="bg-dark text-light py-4 footer-animated">
-    <div class="container-sm">
-      <div class="row">
-        <div class="col-md-4">
-          <h5>About Us</h5>
-          <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
-        </div>
-        <div class="col-md-4">
-          <h5>Quick Links</h5>
-          <ul class="list-unstyled footer-content">
-            <li><a href="home.htm" class="text-light">Home</a></li>
-            <li><a href="#" class="text-light">About</a></li>
-            <li><a href="#" class="text-light">Services</a></li>
-            <li><a href="index.html" class="text-light">Packages</a></li>
-            <li><a href="#" class="text-light">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-md-4">
-          <h5>Contact Us</h5>
-          <p class="footer-content">Email: info@eventplanner.com</p>
-          <p class="footer-content">Phone: +250785300707</p>
-          <p class="footer-content">Address: 123 Event St, City, Country</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col text-center mt-4">
-          <ul class="list-inline footer-content">
-            <li class="list-inline-item">
-              <a href="#" class="text-light social-icon"><i class="fab fa-facebook"></i></a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#" class="text-light social-icon"><i class="fab fa-twitter"></i></a>
-            </li>
-            <li class="list-inline-item">
-              <a href="https://www.instagram.com/muyenzi_jacques/" class="text-light social-icon"><i class="fab fa-instagram"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col text-center mt-3">
-          <p>&copy; 2024 Event Planner. All rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-  
-  
 
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-3 animated">Why Join Our Network?</h2>
+                    <p class="lead animated delay-1">Discover the advantages of becoming a preferred WeddingPlanner supplier</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 animated delay-1">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Premium Exposure</h4>
+                        <p>Get featured in our exclusive directory seen by thousands of couples planning their weddings each month.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 animated delay-2">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h4>Quality Leads</h4>
+                        <p>Receive direct inquiries from serious couples who value quality and professionalism.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 animated delay-3">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Business Growth</h4>
+                        <p>Expand your client base and grow your business through our marketing channels.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4 animated delay-2">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>Reputation Boost</h4>
+                        <p>Being a vetted supplier enhances your credibility in the wedding industry.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 animated delay-3">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>Networking</h4>
+                        <p>Connect with other top wedding professionals for collaborations and referrals.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 animated delay-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h4>Premium Listings</h4>
+                        <p>Upgrade to featured listings for even greater visibility and more bookings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Testimonials Section -->
+    <section class="py-5" style="background-color: #1e1e1e;">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mb-3 animated">What Our Suppliers Say</h2>
+                    <p class="lead animated delay-1">Hear from wedding professionals who've grown their business with us</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4 animated delay-2">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="mb-3 text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-text">"Since joining WeddingPlanner, our bookings have increased by 40%. The quality of leads is exceptional compared to other platforms."</p>
+                            <div class="d-flex align-items-center mt-4">
+                                <img src="https://randomuser.me/api/portraits/women/43.jpg" class="rounded-circle me-3" width="50" height="50" alt="Sarah K.">
+                                <div>
+                                    <h6 class="mb-0">Sarah K.</h6>
+                                    <small class="text-muted">Florist | 5 years experience</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animated delay-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="mb-3 text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-text">"The professionalism of WeddingPlanner sets them apart. We've formed lasting relationships with couples who truly value our work."</p>
+                            <div class="d-flex align-items-center mt-4">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="50" height="50" alt="James T.">
+                                <div>
+                                    <h6 class="mb-0">James T.</h6>
+                                    <small class="text-muted">Photographer | 8 years experience</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 animated delay-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <div class="mb-3 text-warning">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="card-text">"As a new caterer, WeddingPlanner helped me establish my reputation. Now I'm booked months in advance thanks to their network."</p>
+                            <div class="d-flex align-items-center mt-4">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-3" width="50" height="50" alt="Amina R.">
+                                <div>
+                                    <h6 class="mb-0">Amina R.</h6>
+                                    <small class="text-muted">Caterer | 3 years experience</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  
-    <!-- Bootstrap 5 JS (needs Popper.js for the navbar toggle) -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+    <!-- CTA Section -->
+    <section class="py-5" style="background-color: var(--primary-dark);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center text-white">
+                    <h2 class="mb-4 animated">Ready to Grow Your Wedding Business?</h2>
+                    <p class="lead mb-5 animated delay-1">Join our network today and start connecting with couples looking for your services</p>
+                    <a href="#registration" class="btn btn-light btn-lg px-5 py-3 animated delay-2" style="color: var(--primary-dark);">
+                        Register Now <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <a href="#" class="footer-logo">WeddingPlanner</a>
+                    <div class="footer-about">
+                        <p>Creating magical wedding experiences by connecting couples with the finest suppliers in the industry.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/muyenzi_jacques/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <a href="/frontend/home_packages/home.htm" class="footer-link">Home</a>
+                    <a href="/frontend/home_packages/about.html" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Services</a>
+                    <a href="/frontend/home_packages/index.html" class="footer-link">Packages</a>
+                    <a href="/frontend/supliers/suply.html" class="footer-link">For Suppliers</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="footer-heading">Contact Info</h5>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Wedding Avenue, Kigali, Rwanda</p>
+                        <p><i class="fas fa-phone"></i> +250 785 300 707</p>
+                        <p><i class="fas fa-envelope"></i> info@weddingplanner.com</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-heading">Newsletter</h5>
+                    <p style="color: #adb5bd;">Subscribe for wedding tips and supplier updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="form-control" placeholder="Your email address" required>
+                        <button class="btn btn-primary" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row copyright">
+                <div class="col text-center">
+                    <p class="mb-0">&copy; 2024 WeddingPlanner. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animation trigger
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Form validation
+            (function() {
+                'use strict';
+                
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.querySelectorAll('.needs-validation');
+                
+                // Loop over them and prevent submission
+                Array.prototype.slice.call(forms)
+                    .forEach(function(form) {
+                        form.addEventListener('submit', function(event) {
+                            if (!form.checkValidity()) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+            })();
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
