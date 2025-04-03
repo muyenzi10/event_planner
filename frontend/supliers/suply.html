@@ -173,7 +173,7 @@
             align-items: center;
         }
 
-        .form-control, .form-select {
+        .form-control {
             border-radius: var(--border-radius);
             padding: 1rem 1.25rem;
             border: 1px solid #333;
@@ -181,6 +181,102 @@
             font-size: 1rem;
             background-color: #252525;
             color: var(--text);
+        }
+
+        /* Enhanced Select Dropdown Styles */
+        .form-select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23d4afb9' fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 1.25rem center;
+            background-size: 16px 12px;
+            padding-right: 3rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: var(--border-radius);
+            padding: 1rem 1.25rem;
+            border: 1px solid #333;
+            font-size: 1rem;
+            background-color: #252525;
+            color: var(--text);
+        }
+
+        .form-select:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 185, 0.15);
+            background-color: #252525;
+            color: var(--text);
+        }
+
+        /* Custom styling for options */
+        .form-select option {
+            background-color: #252525;
+            color: var(--text);
+            padding: 10px;
+        }
+
+        /* Hover state for options */
+        .form-select option:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+        }
+
+        /* Selected option styling */
+        .form-select option:checked {
+            background-color: var(--primary-dark);
+            color: var(--dark);
+        }
+
+        /* Disabled option styling */
+        .form-select option:disabled {
+            color: #666;
+            background-color: #252525;
+        }
+
+        /* Group headers */
+        .form-select optgroup {
+            color: var(--primary-light);
+            font-weight: 600;
+            background-color: #1a1a1a;
+        }
+
+        /* Scrollbar styling for dropdown (webkit browsers) */
+        .form-select::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .form-select::-webkit-scrollbar-track {
+            background: #252525;
+        }
+
+        .form-select::-webkit-scrollbar-thumb {
+            background-color: var(--primary);
+            border-radius: 4px;
+        }
+
+        /* Focus state for the select when opened */
+        .form-select:focus-visible {
+            outline: none;
+        }
+
+        /* Custom wrapper for select to add icon */
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            pointer-events: none;
+            z-index: 2;
         }
 
         .form-control:focus, .form-select:focus {
@@ -639,23 +735,26 @@
                             <label for="serviceCategory" class="form-label">
                                 <i class="fas fa-tags service-icon"></i>Service Category
                             </label>
-                            <select class="form-select" id="serviceCategory" required>
-                                <option value="" disabled selected>Select your primary service category</option>
-                                <option value="1">Catering</option>
-                                <option value="2">Videography & Photography</option>
-                                <option value="3">Venue</option>
-                                <option value="4">Florists</option>
-                                <option value="5">Wedding Planner</option>
-                                <option value="6">Decor</option>
-                                <option value="7">Transportation (Cars)</option>
-                                <option value="8">Invitation Cards</option>
-                                <option value="9">Beauty & Makeup</option>
-                                <option value="10">Bridal Style & Attire</option>
-                                <option value="11">Master of Ceremonies (MC)</option>
-                                <option value="12">Sound & Lighting</option>
-                                <option value="13">Entertainment</option>
-                                <option value="14">Other Wedding Services</option>
-                            </select>
+                            <div class="select-wrapper">
+                                <select class="form-select" id="serviceCategory" required>
+                                    <option value="" disabled selected>Select your primary service category</option>
+                                    <option value="1">Catering</option>
+                                    <option value="2">Videography & Photography</option>
+                                    <option value="3">Venue</option>
+                                    <option value="4">Florists</option>
+                                    <option value="5">Troupe</option>
+                                    <option value="6">Decor</option>
+                                    <option value="7">Transportation (Cars)</option>
+                                    <option value="8">Invitation Cards</option>
+                                    <option value="9">Beauty & Makeup</option>
+                                    <option value="10">Bridal Style & Attire</option>
+                                    <option value="11">Master of Ceremonies (MC)</option>
+                                    <option value="12">Sound & Lighting</option>
+                                    <option value="13">Gakondo</option>
+                                    <option value="13">Amahamba</option>
+                                    <option value="14">Other Wedding Services</option>
+                                </select>
+                            </div>
                             <div class="invalid-feedback">
                                 Please select your service category.
                             </div>
@@ -807,7 +906,7 @@
                             </div>
                             <p class="card-text">"Since joining WeddingPlanner, our bookings have increased by 40%. The quality of leads is exceptional compared to other platforms."</p>
                             <div class="d-flex align-items-center mt-4">
-                                <img src="https://randomuser.me/api/portraits/women/43.jpg" class="rounded-circle me-3" width="50" height="50" alt="Sarah K.">
+                              
                                 <div>
                                     <h6 class="mb-0">Sarah K.</h6>
                                     <small class="text-muted">Florist | 5 years experience</small>
@@ -828,7 +927,6 @@
                             </div>
                             <p class="card-text">"The professionalism of WeddingPlanner sets them apart. We've formed lasting relationships with couples who truly value our work."</p>
                             <div class="d-flex align-items-center mt-4">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="50" height="50" alt="James T.">
                                 <div>
                                     <h6 class="mb-0">James T.</h6>
                                     <small class="text-muted">Photographer | 8 years experience</small>
@@ -849,8 +947,6 @@
                             </div>
                             <p class="card-text">"As a new caterer, WeddingPlanner helped me establish my reputation. Now I'm booked months in advance thanks to their network."</p>
                             <div class="d-flex align-items-center mt-4">
-                                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-3" width="50" height="50" alt="Amina R.">
-                                <div>
                                     <h6 class="mb-0">Amina R.</h6>
                                     <small class="text-muted">Caterer | 3 years experience</small>
                                 </div>
