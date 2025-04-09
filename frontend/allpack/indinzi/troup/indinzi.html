@@ -3,382 +3,476 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Troupe - Event Planner</title>
+    <title>Troupe</title>
 
     <!-- Bootstrap CSS -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-        crossorigin="anonymous"
-    />
-
-    <!-- Font Awesome for icons -->
-    <link
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        rel="stylesheet"
-    />
-
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="/frontend/css/navbar.css">
-    <link rel="stylesheet" href="/frontend/css/footer.css">
-    <link rel="stylesheet" href="/frontend/allpack/css/indinzi.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="/frontend/css/navbar.css">
+    <link rel="stylesheet" href="/frontend/css/footer.css">    
+    <style>
+        :root {
+            --primary: #e4002b; /* Rwanda flag red */
+            --secondary: #007a3d; /* Rwanda flag green */
+            --accent: #f9d423; /* Rwanda flag yellow */
+            --dark: #222;
+            --light: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fefefe;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark);
+        }
+        
+        /* Enhanced Hero Section */
+        .hero-section {
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('/frontend/allpack/indinzi/assetindinzi/pic9.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 180px 0;
+            margin-bottom: 60px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-section h1 {
+            font-size: 4rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .hero-section .lead {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2.5rem;
+        }
+        
+        .hero-buttons .btn {
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-buttons .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .hero-buttons .btn-primary:hover {
+            background-color: #c10024;
+            border-color: #c10024;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-buttons .btn-outline-light:hover {
+            background-color: rgba(100, 66, 66, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .scroll-link {
+            color: white;
+            font-size: 2rem;
+            display: inline-block;
+            animation: bounce 2s infinite;
+            text-decoration: none;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* Video Section */
+        .video-container {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('/frontend/allpack/indinzi/assetindinzi/pic15.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            margin: 60px 0;
+        }
+        
+        /* Card Styles */
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .card-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 15px auto;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 120px 0;
+                min-height: auto;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section .lead {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons .btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+                display: block;
+                width: 80%;
+                margin: 0 auto 10px;
+            }
+            
+            .hero-buttons .btn.me-3 {
+                margin-right: auto !important;
+            }
+            
+            .video-container {
+                padding: 60px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand logo-margin" href="#">Logo</a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="home.htm">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="about.html">Service</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Packages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/frontend/suppliers/supply.html">Suppliers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="booking.html">Booking</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-  <!-- Carousel Wrapper -->
-<div class="image-container">
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" class="img" alt="First slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Body as a Storyteller </h5>
-                    <p>Showcases how the human body becomes the medium of storytelling, conveying complex cultural narratives through dance.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(3).jpg" class="img" alt="Second slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Dances of Resilience </h5>
-                    <p>Focuses on how traditional dance represents resilience, depicting the strength and perseverance of communities throughout history</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/frontend/allpack/indinzi/assetindinzi/pic9.jpg" class="img" alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Closing Dance</h5>
-                    <p>n some cultures, the wedding celebration ends with a traditional dance to mark the completion of the ceremony, bringing closure and joy to the event.</p>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="/frontend/allpack/indinzi/assetindinzi/pic6.jpg" class="img" alt="Third slide">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5> Living Traditions </h5>
-                    <p>Captures how traditional dance continues to evolve while staying true to its cultural roots, making it a living tradition.</p>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand logo-margin" href="#">Logo</a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-</div>
-<div class="item my-4">
-    <a href="#Images">Images</a>
-    
-    <a href="/frontend/allpack/indinzi/troup/indinziv.html">Short Videos</a>
-    </div>
 
-
-    <!-- Main Content -->
-  <div class="container py-5" id="Images">
-
-    <div class="row" >
-      <!-- Wedding Planner -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/pic18.jpg" class="card-img-top" alt="Wedding Planner">
-          <div class="card-body">
-            <h5 class="card-title">Traditional Dance Performance</h5>
-            <p class="card-text">Highlights the elegance and cultural richness of traditional dance.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Venue Manager -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/pic1.jpg" class="card-img-top" alt="Venue Manager">
-          <div class="card-body">
-            <h5 class="card-title">Cultural Dance Display </h5>
-            <p class="card-text">Describes how every dance movement is a part of the cultural storytelling tradition.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Event Coordinator -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/noella.jpg" class="card-img-top" alt="Event Coordinator">
-          <div class="card-body">
-            <h5 class="card-title">Grace in Tradition</h5>
-            <p class="card-text">Focuses on the balance of grace and power in traditional dance.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Decor Specialist -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/patty.jpg" class="card-img-top" alt="Decor Specialist">
-          <div class="card-body">
-            <h5 class="card-title">Ritual Dance Movements</h5>
-            <p class="card-text"> Talks about the deeper spiritual significance of ritualistic dances.</p>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
            
-          </div>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/frontend/home_packages/home.htm">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/frontend/home_packages/index.html">Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/frontend/supliers/suply.html">Suppliers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Booking</a>
+                </li>
+            </ul>
         </div>
-      </div>
+    </div>
+</nav>
 
-      <!-- Catering Manager -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/best.jpg" class="card-img-top" alt="Catering Manager">
-          <div class="card-body">
-            <h5 class="card-title">Celebration Through Dance </h5>
-            <p class="card-text">Emphasizes the celebratory aspect of dance as a communal expression.</p>
-          </div>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="display-3 fw-bold mb-4">Rwandan Traditional Dance</h1>
+                <p class="lead mb-5" data-aos="fade-up" data-aos-delay="200">
+                    Experience the rhythm, grace and storytelling of Rwanda's cultural heritage
+                </p>
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#dances" class="btn btn-primary btn-lg me-3">Our Images</a>
+                    <a href="#booking" class="btn btn-outline-light btn-lg">Short Videos</a>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="hero-scroll-down">
+            <a href="#dances" class="scroll-link" data-aos="fade-up" data-aos-delay="600">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
 
-      <!-- Photographer/Videographer -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/pic.jpg" class="card-img-top" alt="Photographer/Videographer">
-          <div class="card-body">
-            <h5 class="card-title">Dance of the Ancestors</h5>
-            <p class="card-text"> Describes how traditional dance connects us to our ancestors' wisdom.</p>
-          </div>
+    <!-- Dance Styles Section -->
+    <section class="container" id="dances">
+        <h2 class="section-title" data-aos="fade-up">Our Traditional Dance Styles</h2>
+        
+        <div class="row">
+            <!-- Intore Dance -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic18.jpg">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage18.jpg" class="card-img-top" alt="Intore Dance">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Intore Dance</h5>
+                        <p class="card-text">The warrior's dance - celebrating Rwanda's bravery and heritage through powerful movements.</p>
+                       
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Umushayayo -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic1.jpg">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/pic1.jpg" class="card-img-top" alt="Umushayayo">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Umushayayo</h5>
+                        <p class="card-text">Graceful movements that tell stories of Rwandan traditions and daily life.</p>
+                     
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ikinyemera -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/noella.jpg">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(noella).jpg" class="card-img-top" alt="Ikinyemera">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Ikinyemera</h5>
+                        <p class="card-text">Celebratory dance marking harvest seasons and community achievements.</p>
+                       
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ritual Dances -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/patty.jpg">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(patty).jpg" class="card-img-top" alt="Ritual Dances">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Ritual Dances</h5>
+                        <p class="card-text">Sacred movements connecting us to ancestors and spiritual traditions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ingoma -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic15.jpg">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(15).jpg" class="card-img-top" alt="Ingoma">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Ingoma</h5>
+                        <p class="card-text">The drum dance - where rhythm and movement become one powerful expression.</p>
+                       
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Royal Dances -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic.jpg">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/pic.jpg" class="card-img-top" alt="Royal Dances">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Royal Dances</h5>
+                        <p class="card-text">Elegant performances that once graced the courts of Rwandan kings.</p>
+                   
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <!-------------- addition1-->
-      <!-- Decor Specialist -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/pic15.jpg" class="card-img-top" alt="Decor Specialist">
-          <div class="card-body">
-            <h5 class="card-title">Ceremonial Dance Expressions</h5>
-            <p class="card-text">Highlights the profound meaning of gestures in ceremonial dances.</p>
-          </div>
+    
+        <div class="row">
+            <!-- Dance of Unity -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic13.jpg">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(13).jpg" class="card-img-top" alt="Dance of Unity">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Dance of Unity</h5>
+                        <p class="card-text">Celebrating Rwanda's spirit of togetherness through synchronized movements.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Celebration Dance -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/oben.jpg">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/oben.jpg" class="card-img-top" alt="Celebration Dance">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Celebration Dance</h5>
+                        <p class="card-text">Joyful expressions marking life's milestones in Rwandan culture.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Living History -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic12.jpg">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/pic12.jpg" class="card-img-top" alt="Living History">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Living History</h5>
+                        <p class="card-text">Every step connects us to Rwanda's past while dancing toward the future.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Catering Manager -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/pic13.jpg" class="card-img-top" alt="Catering Manager">
-          <div class="card-body">
-            <h5 class="card-title">Rhythms of Tradition </h5>
-            <p class="card-text">Captures the essence of cultural rhythm and the heartbeat of the</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Photographer/Videographer -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
-        <div class="card">
-          <img src="/frontend/allpack/indinzi/assetindinzi/pic16.jpg" class="card-img-top" alt="Photographer/Videographer">
-          <div class="card-body">
-            <h5 class="card-title">Dance as Storytelling </h5>
-            <p class="card-text">Describes traditional dance as a medium to tell stories and myths.</p>
-          </div>
-        </div>
-      </div>
+    </section>
 
     
-  <!-- add 2 -->
-   <!-- Decor Specialist -->
-   <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/eunice.jpg" class="card-img-top" alt="Decor Specialist">
-      <div class="card-body">
-        <h5 class="card-title">Dance of Unity</h5>
-        <p class="card-text">ocuses on dance as a unifying force within a community or culture.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Catering Manager -->
-  <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/oben2.jpg" class="card-img-top" alt="Catering Manager">
-      <div class="card-body">
-        <h5 class="card-title">Expression Through Dance </h5>
-        <p class="card-text">Emphasizes how dance communicates emotion and cultural identity.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Photographer/Videographer -->
-  <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/pic17.jpg" class="card-img-top" alt="Photographer/Videographer">
-      <div class="card-body">
-        <h5 class="card-title">Elegance in Motion</h5>
-        <p class="card-text">Describes the graceful, flowing nature of traditional dance.</p>
-      </div>
-    </div>
-  </div>
-<!--add3-->
-   <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/pic12.jpg" class="card-img-top" alt="Decor Specialist">
-      <div class="card-body">
-        <h5 class="card-title">Where Dance Meets History</h5>
-        <p class="card-text">Experience the seamless blend of rhythm, costume, and dance that honors the past while inspiring the future</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Catering Manager -->
-  <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/pic22.jpg" class="card-img-top" alt="Catering Manager">
-      <div class="card-body">
-        <h5 class="card-title">Movement as Expression</h5>
-        <p class="card-text">Every gesture reflects the deep emotions, values, and stories that define our heritage.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Photographer/Videographer -->
-  <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/pic14.jpg" class="card-img-top" alt="Photographer/Videographer">
-      <div class="card-body">
-        <h5 class="card-title">Stories in Motion </h5>
-        <p class="card-text">Talks about how traditional dances convey oral histories, legends, and stories that have been passed down over centuries.</p>
-      </div>
-    </div>
-  </div>
-<!--add4-->
-<div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/last3.jpg" class="card-img-top" alt="Decor Specialist">
-      <div class="card-body">
-        <h5 class="card-title">Sacred Movement</h5>
-        <p class="card-text">Describes the reverence in traditional dance, where every step is a sacred expression of culture, devotion, and spiritualit</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Catering Manager -->
-  <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" class="card-img-top" alt="Catering Manager">
-      <div class="card-body">
-        <h5 class="card-title">Preserving Cultural Identity </h5>
-        <p class="card-text">Focuses on how traditional dance helps preserve and reinforce cultural identity in an ever-changing world.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Photographer/Videographer -->
-  <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1000">
-    <div class="card">
-      <img src="/frontend/allpack/indinzi/assetindinzi/last2.jpg" class="card-img-top" alt="Photographer/Videographer">
-      <div class="card-body">
-        <h5 class="card-title">Vibrance in Every Step</h5>
-        <p class="card-text">Highlights how every traditional dance is a dynamic display of life, energy, and cultural expression through movement.</p>
-      </div>
-    </div>
-  </div>
-
-</div>
-</div>
-   
-   <!-- Footer -->
-   <footer class="bg-dark text-light py-4 footer-animated">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>About Us</h5>
-                <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 footer-animated">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p class="footer-content">We are a dedicated team of cultural performers, committed to preserving and sharing Rwanda's rich dance heritage through authentic and captivating performances.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="/frontend/home_packages/home.htm" class="text-light">Home</a></li>
+                        <li><a href="about.html" class="text-light">About</a></li>
+                        <li><a href="#" class="text-light">Services</a></li>
+                        <li><a href="/frontend/home_packages/index.html" class="text-light">Packages</a></li>
+                        <li><a href="/frontend/supliers/suply.html" class="text-light">Suppliers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#" class="text-light"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-4">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled footer-content">
-                    <li><a href="home.htm" class="text-light">Home</a></li>
-                    <li><a href="#" class="text-light">About</a></li>
-                    <li><a href="#" class="text-light">Services</a></li>
-                    <li><a href="index.html" class="text-light">Packages</a></li>
-                    <li><a href="#" class="text-light">Contact</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>Connect With Us</h5>
-                <ul class="list-unstyled footer-content">
-                    <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                    <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
-                    <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                </ul>
+            <div class="text-center mt-4">
+                <p class="footer-content">&copy; 2025 Rwandan Traditional Dance Troupe. All Rights Reserved.</p>
             </div>
         </div>
-        <div class="text-center mt-4">
-            <p class="footer-content">&copy; 2025 Event Planner. All Rights Reserved.</p>
-        </div>
-    </div>
-</footer>
-  <!-- AOS JS -->
-  <!-- AOS JS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init();
-      </script>
-    <!-- Bootstrap JS and Popper.js -->
-    <script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"
-    ></script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
