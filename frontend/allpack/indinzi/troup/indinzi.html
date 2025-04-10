@@ -26,18 +26,67 @@
             --primary: #e4002b; /* Rwanda flag red */
             --secondary: #007a3d; /* Rwanda flag green */
             --accent: #f9d423; /* Rwanda flag yellow */
-            --dark: #222;
-            --light: #f8f9fa;
+            
+            /* Light mode colors */
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --section-bg: #e9ecef;
+            --footer-bg: #343a40;
+            --border-color: #dee2e6;
+            
+            /* Dark mode colors */
+            --bg-color-dark: #121212;
+            --text-color-dark: #f8f9fa;
+            --card-bg-dark: #1e1e1e;
+            --section-bg-dark: #1a1a1a;
+            --footer-bg-dark: #121212;
+            --border-color-dark: #333;
         }
         
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #fefefe;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        body.dark-mode {
+            --bg-color: var(--bg-color-dark);
+            --text-color: var(--text-color-dark);
+            --card-bg: var(--card-bg-dark);
+            --section-bg: var(--section-bg-dark);
+            --footer-bg: var(--footer-bg-dark);
+            --border-color: var(--border-color-dark);
         }
         
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
-            color: var(--dark);
+            color: var(--text-color);
+        }
+        
+        /* Theme toggle button */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
         }
         
         /* Enhanced Hero Section */
@@ -76,6 +125,7 @@
             font-size: 1.5rem;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
             margin-bottom: 2.5rem;
+            color: #e0e0e0;
         }
         
         .hero-buttons .btn {
@@ -149,6 +199,7 @@
             transition: transform 0.3s, box-shadow 0.3s;
             height: 100%;
             margin-bottom: 0;
+            background-color: var(--card-bg);
         }
         
         .card:hover {
@@ -169,6 +220,7 @@
         
         .card-body {
             padding: 25px;
+            color: var(--text-color);
         }
         
         .card-title {
@@ -177,11 +229,17 @@
             margin-bottom: 15px;
         }
         
+        .card-text {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
         /* Section Titles */
         .section-title {
             position: relative;
             margin-bottom: 70px;
             text-align: center;
+            color: var(--text-color);
         }
         
         .section-title:after {
@@ -196,6 +254,7 @@
         /* Dance Section Container */
         .dance-section {
             padding: 100px 0;
+            background-color: var(--bg-color);
         }
         
         /* Card spacing */
@@ -211,7 +270,7 @@
         /* Video Gallery Section */
         .video-gallery {
             padding: 60px 0;
-            background-color: var(--light);
+            background-color: var(--section-bg);
         }
         
         .video-thumbnail {
@@ -219,13 +278,14 @@
             margin-bottom: 30px;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            background-color: var(--card-bg);
         }
         
         .video-thumbnail:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
         
         .video-thumbnail img {
@@ -265,8 +325,8 @@
         
         .video-caption {
             padding: 15px;
-            background-color: white;
-            color: var(--dark);
+            background-color: var(--card-bg);
+            color: var(--text-color);
         }
         
         .video-caption h4 {
@@ -276,14 +336,14 @@
         
         .video-caption p {
             font-size: 0.9rem;
-            color: var(--dark);
+            color: var(--text-color);
             opacity: 0.8;
             margin-bottom: 0;
         }
         
         /* Lightbox Overrides */
         .lightbox .lb-image {
-            border: 5px solid white;
+            border: 5px solid var(--card-bg);
             border-radius: 3px;
         }
         
@@ -335,6 +395,27 @@
             text-align: center;
             margin-top: 15px;
             font-size: 1.2rem;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--text-color-dark);
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer-content {
+            color: #b1b1b1;
+        }
+        
+        footer a {
+            color: #b1b1b1;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: var(--primary);
+            text-decoration: none;
         }
         
         /* Responsive Adjustments */
@@ -394,6 +475,10 @@
     </style>
 </head>
 <body>
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand logo-margin" href="#">Logo</a>
@@ -433,7 +518,7 @@
             </ul>
         </div>
     </div>
-</nav>
+  </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -566,52 +651,41 @@
                 </div>
             </div>
             
-            <!-- Living History -->
+            <!-- Cultural Preservation -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/pic12.jpg" data-lightbox="dance-gallery" data-title="Living History - Connecting past and future">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/pic12.jpg" class="card-img-top" alt="Living History">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/last3.jpg" data-lightbox="dance-gallery" data-title="Cultural Preservation - Passing traditions to new generations">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(last3).jpg" class="card-img-top" alt="Cultural Preservation">
                   </a>
                     <div class="card-body">
-                        <h5 class="card-title">Living History</h5>
-                        <p class="card-text">Every step connects us to Rwanda's past while dancing toward the future.</p>
+                        <h5 class="card-title">Cultural Preservation</h5>
+                        <p class="card-text">Teaching traditional dances to ensure Rwanda's heritage continues.</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Living History -->
+            <!-- Women's Dance -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/last3.jpg" data-lightbox="dance-gallery" data-title="Living History - Cultural preservation">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(last3).jpg" class="card-img-top" alt="Living History">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" data-lightbox="dance-gallery" data-title="Women's Dance - Traditional performances by female dancers">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" class="card-img-top" alt="Women's Dance">
                   </a>
                     <div class="card-body">
-                        <h5 class="card-title">Living History</h5>
-                        <p class="card-text">Every step connects us to Rwanda's past while dancing toward the future.</p>
+                        <h5 class="card-title">Women's Dance</h5>
+                        <p class="card-text">Traditional performances showcasing the grace of Rwandan women.</p>
                     </div>
                 </div>
             </div>
             
+            <!-- Community Dance -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" data-lightbox="dance-gallery" data-title="Living History - Traditional performances">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" class="card-img-top" alt="Living History">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" data-lightbox="dance-gallery" data-title="Community Dance - Bringing people together">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" class="card-img-top" alt="Community Dance">
                   </a>
                     <div class="card-body">
-                        <h5 class="card-title">Living History</h5>
-                        <p class="card-text">Every step connects us to Rwanda's past while dancing toward the future.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" data-lightbox="dance-gallery" data-title="Living History - Cultural heritage">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" class="card-img-top" alt="Living History">
-                  </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Living History</h5>
-                        <p class="card-text">Every step connects us to Rwanda's past while dancing toward the future.</p>
+                        <h5 class="card-title">Community Dance</h5>
+                        <p class="card-text">Traditional dances that strengthen community bonds and celebrations.</p>
                     </div>
                 </div>
             </div>
@@ -751,7 +825,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light py-4 footer-animated">
+    <footer class="py-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -761,20 +835,20 @@
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled footer-content">
-                        <li><a href="/frontend/home_packages/home.htm" class="text-light">Home</a></li>
-                        <li><a href="about.html" class="text-light">About</a></li>
-                        <li><a href="#" class="text-light">Services</a></li>
-                        <li><a href="/frontend/home_packages/index.html" class="text-light">Packages</a></li>
-                        <li><a href="/frontend/supliers/suply.html" class="text-light">Suppliers</a></li>
+                        <li><a href="/frontend/home_packages/home.htm">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="/frontend/home_packages/index.html">Packages</a></li>
+                        <li><a href="/frontend/supliers/suply.html">Suppliers</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <h5>Connect With Us</h5>
                     <ul class="list-unstyled footer-content">
-                        <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-youtube"></i> YouTube</a></li>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
                     </ul>
                 </div>
             </div>
@@ -800,6 +874,40 @@
             easing: 'ease-in-out',
             once: true
         });
+        
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved user preference, if any
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            updateToggleIcon(currentTheme);
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', '');
+                updateToggleIcon('');
+            } else {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark-mode');
+                updateToggleIcon('dark-mode');
+            }
+        });
+        
+        function updateToggleIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            if (theme === 'dark-mode') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
