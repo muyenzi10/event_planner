@@ -16,8 +16,11 @@
     
     <!-- AOS Animation -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <link rel="stylesheet" href="/frontend/css/footer.css">
     <link rel="stylesheet" href="/frontend/css/navbar.css">
-    <link rel="stylesheet" href="/frontend/css/footer.css">    
     <style>
         :root {
             --primary: #e4002b; /* Rwanda flag red */
@@ -32,7 +35,7 @@
             background-color: #fefefe;
         }
         
-        h1, h2, h3, h4, h5 {
+        h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
             color: var(--dark);
         }
@@ -157,6 +160,7 @@
             height: 250px;
             object-fit: cover;
             transition: transform 0.5s;
+            cursor: pointer;
         }
         
         .card:hover .card-img-top {
@@ -203,10 +207,11 @@
             padding: 20px !important;
             margin-bottom: 30px;
         }
+        
         /* Video Gallery Section */
         .video-gallery {
             padding: 60px 0;
-            background-color: var(--section-bg);
+            background-color: var(--light);
         }
         
         .video-thumbnail {
@@ -228,6 +233,7 @@
             height: 300px;
             object-fit: cover;
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
         
         .video-thumbnail:hover img {
@@ -249,6 +255,7 @@
             color: white;
             font-size: 24px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .video-thumbnail:hover .play-button {
@@ -258,8 +265,8 @@
         
         .video-caption {
             padding: 15px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
+            background-color: white;
+            color: var(--dark);
         }
         
         .video-caption h4 {
@@ -269,11 +276,66 @@
         
         .video-caption p {
             font-size: 0.9rem;
-            color: var(--text-color);
+            color: var(--dark);
             opacity: 0.8;
             margin-bottom: 0;
         }
         
+        /* Lightbox Overrides */
+        .lightbox .lb-image {
+            border: 5px solid white;
+            border-radius: 3px;
+        }
+        
+        .lightbox .lb-nav a.lb-prev,
+        .lightbox .lb-nav a.lb-next {
+            opacity: 1;
+        }
+        
+        .lightbox .lb-close {
+            opacity: 1;
+        }
+        
+        /* Custom Video Lightbox Styles */
+        .video-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .video-lightbox-content {
+            position: relative;
+            width: 80%;
+            max-width: 900px;
+        }
+        
+        .video-lightbox-content video {
+            width: 100%;
+            outline: none;
+        }
+        
+        .close-video {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        
+        .video-title {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
         
         /* Responsive Adjustments */
         @media (max-width: 768px) {
@@ -313,6 +375,20 @@
             .dance-section [class*="col-"] {
                 padding: 15px !important;
                 margin-bottom: 20px;
+            }
+            
+            .video-thumbnail img {
+                height: 200px;
+            }
+            
+            .play-button {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .video-lightbox-content {
+                width: 95%;
             }
         }
     </style>
@@ -370,7 +446,7 @@
                 </p>
                 <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
                     <a href="#dances" class="btn btn-primary btn-lg me-3">Our Images</a>
-                    <a href="#booking" class="btn btn-outline-light btn-lg">Short Videos</a>
+                    <a href="#video-gallery" class="btn btn-outline-light btn-lg">Short Videos</a>
                 </div>
             </div>
         </div>
@@ -389,7 +465,7 @@
             <!-- Intore Dance -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/pic18.jpg">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic18.jpg" data-lightbox="dance-gallery" data-title="Intore Dance - The warrior's dance celebrating Rwanda's heritage">
                     <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage18.jpg" class="card-img-top" alt="Intore Dance">
                   </a>
                     <div class="card-body">
@@ -402,7 +478,7 @@
             <!-- Umushayayo -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/pic1.jpg">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic1.jpg" data-lightbox="dance-gallery" data-title="Umushayayo - Graceful Rwandan dance">
                     <img src="/frontend/allpack/indinzi/assetindinzi/pic1.jpg" class="card-img-top" alt="Umushayayo">
                   </a>
                     <div class="card-body">
@@ -415,7 +491,7 @@
             <!-- Ikinyemera -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/noella.jpg">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/noella.jpg" data-lightbox="dance-gallery" data-title="Ikinyemera - Celebratory harvest dance">
                     <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(noella).jpg" class="card-img-top" alt="Ikinyemera">
                     </a>
                     <div class="card-body">
@@ -428,7 +504,7 @@
             <!-- Ritual Dances -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/patty.jpg">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/patty.jpg" data-lightbox="dance-gallery" data-title="Ritual Dances - Sacred ancestral dances">
                     <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(patty).jpg" class="card-img-top" alt="Ritual Dances">
                   </a>
                     <div class="card-body">
@@ -441,7 +517,7 @@
             <!-- Ingoma -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/pic15.jpg">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic15.jpg" data-lightbox="dance-gallery" data-title="Ingoma - The powerful drum dance">
                     <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(15).jpg" class="card-img-top" alt="Ingoma">
                     </a>
                     <div class="card-body">
@@ -454,7 +530,7 @@
             <!-- Royal Dances -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/pic.jpg">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic.jpg" data-lightbox="dance-gallery" data-title="Royal Dances - Elegant court performances">
                     <img src="/frontend/allpack/indinzi/assetindinzi/pic.jpg" class="card-img-top" alt="Royal Dances">
                   </a>
                     <div class="card-body">
@@ -467,7 +543,7 @@
             <!-- Dance of Unity -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/pic13.jpg">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic13.jpg" data-lightbox="dance-gallery" data-title="Dance of Unity - Celebrating togetherness">
                     <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(13).jpg" class="card-img-top" alt="Dance of Unity">
                   </a>
                     <div class="card-body">
@@ -480,7 +556,7 @@
             <!-- Celebration Dance -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/oben.jpg">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/oben.jpg" data-lightbox="dance-gallery" data-title="Celebration Dance - Joyful expressions">
                     <img src="/frontend/allpack/indinzi/assetindinzi/oben.jpg" class="card-img-top" alt="Celebration Dance">
                   </a>
                     <div class="card-body">
@@ -493,7 +569,7 @@
             <!-- Living History -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/pic12.jpg">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic12.jpg" data-lightbox="dance-gallery" data-title="Living History - Connecting past and future">
                     <img src="/frontend/allpack/indinzi/assetindinzi/pic12.jpg" class="card-img-top" alt="Living History">
                   </a>
                     <div class="card-body">
@@ -506,7 +582,7 @@
             <!-- Living History -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/last3.jpg">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/last3.jpg" data-lightbox="dance-gallery" data-title="Living History - Cultural preservation">
                     <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(last3).jpg" class="card-img-top" alt="Living History">
                   </a>
                     <div class="card-body">
@@ -518,7 +594,7 @@
             
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" data-lightbox="dance-gallery" data-title="Living History - Traditional performances">
                     <img src="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" class="card-img-top" alt="Living History">
                   </a>
                     <div class="card-body">
@@ -530,7 +606,7 @@
             
             <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" data-lightbox="dance-gallery" data-title="Living History - Cultural heritage">
                     <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" class="card-img-top" alt="Living History">
                   </a>
                     <div class="card-body">
@@ -541,112 +617,138 @@
             </div>
         </div>
     </section>
+    
     <!-- Video Gallery Section -->
     <section id="video-gallery" class="video-gallery">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Our Catering Videos</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Watch our catering services in action</p>
+                    <h2 class="section-title" data-aos="fade-up">Our Dance Videos</h2>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Watch our traditional dances in action</p>
                 </div>
             </div>
             <div class="row">
-                <!-- Video 1 - Local MP4 -->
+                <!-- Video 1 -->
                 <div class="col-md-4" data-aos="fade-up">
                     <div class="video-thumbnail">
-                        <a href="/frontend/allpack/indinzi/video_asset/mucyo.mp4" data-fancybox="video-gallery" data-caption="Wedding Buffet Service">
-                            <img src="/frontend/allpack/indinzi/video_asset/Webp.net-resizeimage(mucyo).png" alt="Wedding Buffet Service">
+                        <div class="video-play-trigger" 
+                             data-video-src="/frontend/allpack/indinzi/video_asset/mucyo.mp4"
+                             data-video-title="Wedding Dance Performance">
+                            <img src="/frontend/allpack/indinzi/video_asset/Webp.net-resizeimage(mucyo).png" alt="Wedding Dance Performance">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
-                        </a>
+                        </div>
                         <div class="video-caption">
-                            <h4>Wedding Buffet Service</h4>
-                            <p>See our elegant buffet setup in action</p>
+                            <h4>Wedding Dance</h4>
+                            <p>Traditional performance at a Rwandan wedding</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Video 2 - YouTube -->
+                <!-- Video 2 -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="video-thumbnail">
-                        <a href="/frontend/allpack/indinzi/video_asset/queen.mp4" data-fancybox="video-gallery" data-caption="Plated Dinner Service">
-                            <img src="/frontend/allpack/indinzi/video_asset/Webp.net-resizeimage(olga).png" alt="Plated Dinner Service">
+                        <div class="video-play-trigger" 
+                             data-video-src="/frontend/allpack/indinzi/video_asset/queen.mp4"
+                             data-video-title="Intore Warrior Dance">
+                            <img src="/frontend/allpack/indinzi/video_asset/Webp.net-resizeimage(olga).png" alt="Intore Warrior Dance">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
-                        </a>
+                        </div>
                         <div class="video-caption">
-                            <h4>Plated Dinner Service</h4>
-                            <p>Our professional serving staff in action</p>
+                            <h4>Intore Warrior Dance</h4>
+                            <p>Powerful traditional warrior performance</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Video 3 - YouTube -->
+                <!-- Video 3 -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="video-thumbnail">
-                        <a href="/frontend/allpack/indinzi/video_asset/ikanombe.mp4" data-fancybox="video-gallery" data-caption="Cocktail Hour">
-                            <img src="/frontend/allpack/indinzi/video_asset/webamayugi.png" alt="Cocktail Hour">
+                        <div class="video-play-trigger" 
+                             data-video-src="/frontend/allpack/indinzi/video_asset/ikanombe.mp4"
+                             data-video-title="Celebration Dance">
+                            <img src="/frontend/allpack/indinzi/video_asset/webamayugi.png" alt="Celebration Dance">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
-                        </a>
+                        </div>
                         <div class="video-caption">
-                            <h4>Cocktail Hour</h4>
-                            <p>Signature drinks and hors d'oeuvres service</p>
+                            <h4>Celebration Dance</h4>
+                            <p>Joyful community celebration</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Video 4 - Local MP4 -->
+                <!-- Video 4 -->
                 <div class="col-md-4" data-aos="fade-up">
                     <div class="video-thumbnail">
-                        <a href="/frontend/allpack/indinzi/video_asset/umuzungu.mp4" data-fancybox="video-gallery" data-caption="Dessert Presentation">
-                            <img src="/frontend/allpack/indinzi/video_asset/umuzungu.png" alt="Dessert Presentation">
+                        <div class="video-play-trigger" 
+                             data-video-src="/frontend/allpack/indinzi/video_asset/umuzungu.mp4"
+                             data-video-title="Traditional Drum Performance">
+                            <img src="/frontend/allpack/indinzi/video_asset/umuzungu.png" alt="Traditional Drum Performance">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
-                        </a>
+                        </div>
                         <div class="video-caption">
-                            <h4>Dessert Presentation</h4>
-                            <p>Beautiful dessert table setups</p>
+                            <h4>Drum Performance</h4>
+                            <p>Traditional Rwandan drumming</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Video 5 - YouTube -->
+                <!-- Video 5 -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="video-thumbnail">
-                        <a href="/frontend/allpack/indinzi/video_asset/umushagiriro.mp4" data-fancybox="video-gallery" data-caption="Chef's Special">
-                            <img src="/frontend/allpack/indinzi/video_asset/umushagiriro.png" alt="Chef's Special">
+                        <div class="video-play-trigger" 
+                             data-video-src="/frontend/allpack/indinzi/video_asset/umushagiriro.mp4"
+                             data-video-title="Cultural Festival Dance">
+                            <img src="/frontend/allpack/indinzi/video_asset/umushagiriro.png" alt="Cultural Festival Dance">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
-                        </a>
+                        </div>
                         <div class="video-caption">
-                            <h4>Chef's Special</h4>
-                            <p>Our chefs preparing signature dishes</p>
+                            <h4>Festival Dance</h4>
+                            <p>Performance at cultural festival</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Video 6 - YouTube -->
+                <!-- Video 6 -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v8.mp4" data-fancybox="video-gallery" data-caption="Client Testimonials">
-                            <img src="/frontend/allpack/catering/cataringvideos/im8.png" alt="Client Testimonials">
+                        <div class="video-play-trigger" 
+                             data-video-src="/frontend/allpack/catering/cataringvideos/v8.mp4"
+                             data-video-title="Traditional Storytelling Dance">
+                            <img src="/frontend/allpack/catering/cataringvideos/im8.png" alt="Traditional Storytelling Dance">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
-                        </a>
+                        </div>
                         <div class="video-caption">
-                            <h4>Client Testimonials</h4>
-                            <p>What our clients say about our service</p>
+                            <h4>Storytelling Dance</h4>
+                            <p>Dance that tells traditional stories</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Video Lightbox Container -->
+    <div class="video-lightbox" id="videoLightbox">
+        <div class="video-lightbox-content">
+            <span class="close-video">&times;</span>
+            <video controls id="lightboxVideo">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-title" id="videoLightboxTitle"></div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-dark text-light py-4 footer-animated">
@@ -687,7 +789,12 @@
     
     <!-- AOS Animation -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    
     <script>
+        // Initialize AOS animation
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
@@ -701,6 +808,63 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+        
+        // Configure Lightbox for images
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'alwaysShowNavOnTouchDevices': true,
+            'disableScrolling': true,
+            'albumLabel': 'Image %1 of %2'
+        });
+        
+        // Video Lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoLightbox = document.getElementById('videoLightbox');
+            const lightboxVideo = document.getElementById('lightboxVideo');
+            const videoTitle = document.getElementById('videoLightboxTitle');
+            const closeBtn = document.querySelector('.close-video');
+            
+            // Handle video play triggers
+            document.querySelectorAll('.video-play-trigger').forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    const videoSrc = this.getAttribute('data-video-src');
+                    const title = this.getAttribute('data-video-title');
+                    
+                    lightboxVideo.src = videoSrc;
+                    videoTitle.textContent = title;
+                    videoLightbox.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Play video automatically when lightbox opens
+                    setTimeout(() => {
+                        lightboxVideo.play();
+                    }, 300);
+                });
+            });
+            
+            // Close lightbox
+            closeBtn.addEventListener('click', closeVideoLightbox);
+            videoLightbox.addEventListener('click', function(e) {
+                if (e.target === videoLightbox) {
+                    closeVideoLightbox();
+                }
+            });
+            
+            function closeVideoLightbox() {
+                lightboxVideo.pause();
+                lightboxVideo.currentTime = 0;
+                videoLightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Close with ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && videoLightbox.style.display === 'flex') {
+                    closeVideoLightbox();
+                }
             });
         });
     </script>

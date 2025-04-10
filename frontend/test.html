@@ -3,466 +3,408 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional wedding planning services to make your special day unforgettable. From full planning to day-of coordination, we handle every detail.">
-    <meta name="keywords" content="wedding planner, wedding coordinator, event planning, wedding services, wedding organizer">
-    <meta name="author" content="Wedding Planner">
-    <title>Wedding Planning Services - Wedding Planner</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <!-- Font Awesome for icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-    <!-- AOS Animation Library -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <title>Perfect Day Wedding Planners</title>
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add Google Font for Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #d4af37;
-            --secondary-color: #333;
-        }
-        
-        body {
+        /* Wedding Footer Styles */
+        .wedding-footer {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 60px 0 20px;
             font-family: 'Playfair Display', serif;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        
-        .dark-mode {
-            background-color: #121212;
-            color: #f1f1f1;
-        }
-        
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-        }
-        
-        .section-title {
             position: relative;
-            margin-bottom: 40px;
-            color: var(--secondary-color);
+            overflow: hidden;
         }
-        
-        .section-title:after {
+
+        .wedding-footer::before {
             content: '';
             position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 3px;
-            background: var(--primary-color);
+            background: linear-gradient(90deg, #d4af37 0%, #e8d9b5 50%, #d4af37 100%);
         }
-        
-        .service-card {
-            transition: transform 0.3s ease;
-            margin-bottom: 30px;
-            border: none;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
         }
-        
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 15px;
+
+        .col-lg-4, .col-lg-2, .col-lg-5, .col-lg-7, 
+        .col-md-6, .col-md-12 {
+            padding: 0 15px;
+            box-sizing: border-box;
         }
-        
-        .btn-gold {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            transition: all 0.3s;
+
+        .col-lg-4 { width: 33.33%; }
+        .col-lg-5 { width: 41.66%; }
+        .col-lg-7 { width: 58.33%; }
+        .col-lg-2 { width: 16.66%; }
+        .col-md-6 { width: 50%; }
+        .col-md-12 { width: 100%; }
+
+        .g-4 { gap: 1.5rem; }
+        .align-items-center { align-items: center; }
+        .text-md-end { text-align: right; }
+
+        .footer-logo {
+            max-width: 180px;
+            margin-bottom: 20px;
+            filter: brightness(0) invert(1);
         }
-        
-        .btn-gold:hover {
-            background-color: #c19b2c;
-            color: white;
-            transform: scale(1.05);
+
+        .footer-heading {
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+            letter-spacing: 1px;
         }
-        
-        .testimonial-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #d4af37;
+        }
+
+        .footer-about-text {
+            color: #b1b1b1;
+            line-height: 1.8;
+            font-size: 0.95rem;
             margin-bottom: 20px;
         }
-        
-        .dark-mode .testimonial-card {
-            background-color: #1e1e1e;
-            color: #f1f1f1;
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
-        
-        .footer-animated {
-            animation: fadeInUp 1s ease;
+
+        .footer-links li {
+            margin-bottom: 12px;
         }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        .footer-links a {
+            color: #b1b1b1;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            position: relative;
+            display: inline-block;
         }
-        
-        .footer-content {
-            opacity: 0.8;
-            transition: opacity 0.3s;
+
+        .footer-links a:hover {
+            color: #d4af37;
+            padding-left: 5px;
         }
-        
-        .footer-content:hover {
+
+        .footer-links a::before {
+            content: '•';
+            color: #d4af37;
+            position: absolute;
+            left: -15px;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover::before {
             opacity: 1;
+            left: -10px;
         }
-        
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
+
+        .contact-info {
+            color: #b1b1b1;
         }
-        
-        .process-step {
-            text-align: center;
-            padding: 20px;
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
         }
-        
-        .process-number {
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
+
+        .contact-item i {
+            color: #d4af37;
+            margin-right: 12px;
+            margin-top: 3px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 1.5rem;
-            font-weight: bold;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: #d4af37;
+            transform: translateY(-3px);
+        }
+
+        .footer-newsletter {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 30px;
+            border-radius: 5px;
+            margin: 40px 0;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-newsletter h4 {
+            color: #ffffff;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-newsletter p {
+            color: #b1b1b1;
+            margin-bottom: 0;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            background: rgba(255,255,255,0.1);
+            color: #ffffff;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .newsletter-form button {
+            background: #d4af37;
+            color: #000000;
+            border: none;
+            padding: 0 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .newsletter-form button:hover {
+            background: #e8d9b5;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .footer-bottom p {
+            color: #b1b1b1;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+        }
+
+        .legal-links a {
+            color: #b1b1b1;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .legal-links a:hover {
+            color: #d4af37;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .col-lg-4, .col-lg-2, .col-lg-5, .col-lg-7 {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wedding-footer {
+                padding: 40px 0 20px;
+            }
+            
+            .col-lg-4, .col-lg-2, .col-lg-5, .col-lg-7,
+            .col-md-6 {
+                width: 100%;
+            }
+            
+            .footer-heading {
+                margin-top: 30px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                margin-top: 15px;
+            }
+            
+            .footer-bottom .row > div {
+                text-align: center !important;
+            }
+            
+            .legal-links {
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            .trust-badges {
+                justify-content: center;
+            }
+
+            .text-md-end {
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle -->
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
-        <i class="fas fa-moon"></i> Dark Mode
-    </button>
+    
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand logo-margin" href="#">Wedding Planner</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="home.htm">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown">
-                            Services
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item active" href="#">Wedding Planning</a></li>
-                            <li><a class="dropdown-item" href="photographers.html">Photography/Videography</a></li>
-                            <li><a class="dropdown-item" href="#">Venue Selection</a></li>
-                            <li><a class="dropdown-item" href="#">Vendor Coordination</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/frontend/suppliers/supply.html">Suppliers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="booking.html">Booking</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container" data-aos="fade-up">
-            <h1 class="display-3 fw-bold">Your Dream Wedding Starts Here</h1>
-            <p class="lead">Let us handle the details while you enjoy the journey to your perfect day</p>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="text-center section-title" data-aos="fade-up">Our Planning Services</h2>
-            <div class="row">
-                <!-- Service 1 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card service-card p-4 text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-calendar-check"></i>
+<footer class="wedding-footer">
+    <div class="container">
+        <!-- Main Footer Content -->
+        <div class="footer-main">
+            <div class="row g-4">
+                <!-- About Column -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-brand">
+                        <img src="images/wedding-logo.png" alt="Perfect Day Wedding Planners" class="footer-logo">
+                        <p class="footer-about-text">Creating unforgettable moments and flawless weddings since 2010. Let us turn your dream wedding into reality with our expert planning and attention to detail.</p>
+                        <div class="trust-badges">
+                            <img src="images/wedding-award.png" alt="Best Wedding Planners 2023" width="80">
+                            <img src="images/bbb-accredited.png" alt="BBB Accredited" width="80">
                         </div>
-                        <h4>Full Planning</h4>
-                        <p>Comprehensive service handling every detail from initial concept to wedding day execution.</p>
-                        <ul class="list-unstyled text-start mb-4">
-                            <li><i class="fas fa-check text-success me-2"></i> Venue selection</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Vendor coordination</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Budget management</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Timeline creation</li>
-                        </ul>
-                        <a href="#" class="btn btn-gold">Learn More</a>
                     </div>
                 </div>
-                
-                <!-- Service 2 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card service-card p-4 text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-clipboard-list"></i>
-                        </div>
-                        <h4>Partial Planning</h4>
-                        <p>For couples who have started planning but need professional guidance for specific elements.</p>
-                        <ul class="list-unstyled text-start mb-4">
-                            <li><i class="fas fa-check text-success me-2"></i> Vendor recommendations</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Design consultation</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Logistics planning</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Month-of coordination</li>
-                        </ul>
-                        <a href="#" class="btn btn-gold">Learn More</a>
-                    </div>
-                </div>
-                
-                <!-- Service 3 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card service-card p-4 text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-bell"></i>
-                        </div>
-                        <h4>Day-of Coordination</h4>
-                        <p>Professional coordination to ensure your wedding day runs smoothly and stress-free.</p>
-                        <ul class="list-unstyled text-start mb-4">
-                            <li><i class="fas fa-check text-success me-2"></i> Vendor management</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Timeline execution</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Problem solving</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Guest coordination</li>
-                        </ul>
-                        <a href="#" class="btn btn-gold">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Planning Process Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center section-title" data-aos="fade-up">Our Planning Process</h2>
-            <div class="row">
-                <!-- Step 1 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="process-step">
-                        <div class="process-number">1</div>
-                        <h4>Initial Consultation</h4>
-                        <p>We'll discuss your vision, budget, and expectations to understand your perfect wedding day.</p>
-                    </div>
-                </div>
-                
-                <!-- Step 2 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="process-step">
-                        <div class="process-number">2</div>
-                        <h4>Design & Planning</h4>
-                        <p>Our team creates a customized plan including venue selection, theme, and vendor coordination.</p>
-                    </div>
-                </div>
-                
-                <!-- Step 3 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="process-step">
-                        <div class="process-number">3</div>
-                        <h4>Vendor Selection</h4>
-                        <p>We connect you with our trusted network of vendors that match your style and budget.</p>
-                    </div>
-                </div>
-                
-                <!-- Step 4 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="process-step">
-                        <div class="process-number">4</div>
-                        <h4>Detailed Coordination</h4>
-                        <p>We handle all logistics, contracts, and communications with your vendors.</p>
-                    </div>
-                </div>
-                
-                <!-- Step 5 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="500">
-                    <div class="process-step">
-                        <div class="process-number">5</div>
-                        <h4>Final Preparations</h4>
-                        <p>We create comprehensive timelines and confirm all details as your wedding approaches.</p>
-                    </div>
-                </div>
-                
-                <!-- Step 6 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="600">
-                    <div class="process-step">
-                        <div class="process-number">6</div>
-                        <h4>Wedding Day</h4>
-                        <p>Our team executes your vision flawlessly so you can relax and enjoy your special day.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="text-center section-title" data-aos="fade-up">What Couples Say</h2>
-            <div class="row">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-card">
-                        <div class="d-flex mb-3">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="rounded-circle me-3" width="60" height="60" alt="Client">
-                            <div>
-                                <h5>Amanda & David</h5>
-                                <div class="text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p>"The wedding planners made our dream day come true without any stress on our part. Every detail was perfect and exceeded our expectations!"</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-card">
-                        <div class="d-flex mb-3">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="rounded-circle me-3" width="60" height="60" alt="Client">
-                            <div>
-                                <h5>Jennifer & Mark</h5>
-                                <div class="text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p>"Sophia's coordination on our wedding day was flawless. We didn't worry about a thing and could fully enjoy every moment with our guests."</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="testimonial-card">
-                        <div class="d-flex mb-3">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="rounded-circle me-3" width="60" height="60" alt="Client">
-                            <div>
-                                <h5>Lisa & Robert</h5>
-                                <div class="text-warning">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p>"David's design transformed our venue into something out of a fairy tale. Our guests are still talking about how beautiful everything was!"</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-5 bg-dark text-light">
-        <div class="container text-center" data-aos="fade-up">
-            <h2 class="mb-4">Ready to Plan Your Dream Wedding?</h2>
-            <p class="lead mb-4">Contact us today for a complimentary consultation to discuss your vision.</p>
-            <a href="booking.html" class="btn btn-gold btn-lg">Schedule Consultation</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-light py-4 footer-animated">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>About Us</h5>
-                    <p class="footer-content">We are a dedicated team of wedding planners, committed to creating unforgettable experiences. From ceremonies to receptions, we handle every detail with care and expertise.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled footer-content">
-                        <li><a href="home.htm" class="text-light">Home</a></li>
-                        <li><a href="#" class="text-light">About</a></li>
-                        <li><a href="#" class="text-light">Services</a></li>
-                        <li><a href="index.html" class="text-light">Packages</a></li>
-                        <li><a href="#" class="text-light">Contact</a></li>
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="/full-planning">Full Planning</a></li>
+                        <li><a href="/partial-planning">Partial Planning</a></li>
+                        <li><a href="/day-coordination">Day-Of Coordination</a></li>
+                        <li><a href="/design-services">Design Services</a></li>
+                        <li><a href="/destination-weddings">Destination Weddings</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5>Connect With Us</h5>
-                    <ul class="list-unstyled footer-content">
-                        <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+
+                <!-- Vendor Resources -->
+                <div class="col-lg-2 col-md-6">
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="/blog">Wedding Blog</a></li>
+                        <li><a href="/checklist">Planning Checklist</a></li>
+                        <li><a href="/timeline">Timeline Guide</a></li>
+                        <li><a href="/vendors">Preferred Vendors</a></li>
+                        <li><a href="/faq">FAQ</a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="text-center mt-4">
-                <p class="footer-content">&copy; 2025 Wedding Planner. All Rights Reserved.</p>
+
+                <!-- Contact Info -->
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="footer-heading">Get In Touch</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Wedding Lane, Suite 100<br>New York, NY 10001</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>(555) 123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>hello@perfectday.com</span>
+                        </div>
+                        <div class="social-links">
+                            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-        crossorigin="anonymous"
-    ></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"
-    ></script>
-    <script>
-        AOS.init();
+        <!-- Newsletter -->
+        <div class="footer-newsletter">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <h4>Get Wedding Tips & Special Offers</h4>
+                    <p>Subscribe to our newsletter for planning advice and exclusive deals</p>
+                </div>
+                <div class="col-lg-7">
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
-        // Dark Mode Toggle Function
-        function toggleDarkMode() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
+        <!-- Copyright -->
+        <div class="footer-bottom">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2023 Perfect Day Wedding Planners. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="legal-links">
+                        <a href="/privacy">Privacy Policy</a>
+                        <a href="/terms">Terms of Service</a>
+                        <a href="/sitemap">Sitemap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
-            const darkModeToggle = document.querySelector('.dark-mode-toggle');
-            if (body.classList.contains('dark-mode')) {
-                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
-            } else {
-                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
-            }
-        }
-    </script>
 </body>
 </html>
