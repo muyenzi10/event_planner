@@ -144,8 +144,8 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
-            margin-bottom: 30px;
             height: 100%;
+            margin-bottom: 0;
         }
         
         .card:hover {
@@ -176,7 +176,7 @@
         /* Section Titles */
         .section-title {
             position: relative;
-            margin-bottom: 50px;
+            margin-bottom: 70px;
             text-align: center;
         }
         
@@ -188,6 +188,92 @@
             background: var(--accent);
             margin: 15px auto;
         }
+        
+        /* Dance Section Container */
+        .dance-section {
+            padding: 100px 0;
+        }
+        
+        /* Card spacing */
+        .dance-section .row {
+            margin: 0 -20px;
+        }
+        
+        .dance-section [class*="col-"] {
+            padding: 20px !important;
+            margin-bottom: 30px;
+        }
+        /* Video Gallery Section */
+        .video-gallery {
+            padding: 60px 0;
+            background-color: var(--section-bg);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .video-thumbnail:hover img {
+            transform: scale(1.05);
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(220, 53, 69, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail:hover .play-button {
+            background-color: rgba(220, 53, 69, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-caption {
+            padding: 15px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+        
+        .video-caption h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .video-caption p {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 0;
+        }
+        
         
         /* Responsive Adjustments */
         @media (max-width: 768px) {
@@ -218,6 +304,15 @@
             
             .video-container {
                 padding: 60px 0;
+            }
+            
+            .dance-section {
+                padding: 60px 0;
+            }
+            
+            .dance-section [class*="col-"] {
+                padding: 15px !important;
+                margin-bottom: 20px;
             }
         }
     </style>
@@ -287,7 +382,7 @@
     </section>
 
     <!-- Dance Styles Section -->
-    <section class="container" id="dances">
+    <section class="dance-section container" id="dances">
         <h2 class="section-title" data-aos="fade-up">Our Traditional Dance Styles</h2>
         
         <div class="row">
@@ -300,7 +395,6 @@
                     <div class="card-body">
                         <h5 class="card-title">Intore Dance</h5>
                         <p class="card-text">The warrior's dance - celebrating Rwanda's bravery and heritage through powerful movements.</p>
-                       
                     </div>
                 </div>
             </div>
@@ -314,7 +408,6 @@
                     <div class="card-body">
                         <h5 class="card-title">Umushayayo</h5>
                         <p class="card-text">Graceful movements that tell stories of Rwandan traditions and daily life.</p>
-                     
                     </div>
                 </div>
             </div>
@@ -328,7 +421,6 @@
                     <div class="card-body">
                         <h5 class="card-title">Ikinyemera</h5>
                         <p class="card-text">Celebratory dance marking harvest seasons and community achievements.</p>
-                       
                     </div>
                 </div>
             </div>
@@ -355,7 +447,6 @@
                     <div class="card-body">
                         <h5 class="card-title">Ingoma</h5>
                         <p class="card-text">The drum dance - where rhythm and movement become one powerful expression.</p>
-                       
                     </div>
                 </div>
             </div>
@@ -369,13 +460,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Royal Dances</h5>
                         <p class="card-text">Elegant performances that once graced the courts of Rwandan kings.</p>
-                   
                     </div>
                 </div>
             </div>
-        </div>
-    
-        <div class="row">
+            
             <!-- Dance of Unity -->
             <div class="col-lg-4 col-md-6" data-aos="fade-up">
                 <div class="card">
@@ -414,10 +502,152 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Living History -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/last3.jpg">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(last3).jpg" class="card-img-top" alt="Living History">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Living History</h5>
+                        <p class="card-text">Every step connects us to Rwanda's past while dancing toward the future.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" class="card-img-top" alt="Living History">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Living History</h5>
+                        <p class="card-text">Every step connects us to Rwanda's past while dancing toward the future.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" class="card-img-top" alt="Living History">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Living History</h5>
+                        <p class="card-text">Every step connects us to Rwanda's past while dancing toward the future.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+    <!-- Video Gallery Section -->
+    <section id="video-gallery" class="video-gallery">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Our Catering Videos</h2>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Watch our catering services in action</p>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Video 1 - Local MP4 -->
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/indinzi/video_asset/mucyo.mp4" data-fancybox="video-gallery" data-caption="Wedding Buffet Service">
+                            <img src="/frontend/allpack/indinzi/video_asset/Webp.net-resizeimage(mucyo).png" alt="Wedding Buffet Service">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Wedding Buffet Service</h4>
+                            <p>See our elegant buffet setup in action</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 2 - YouTube -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/indinzi/video_asset/queen.mp4" data-fancybox="video-gallery" data-caption="Plated Dinner Service">
+                            <img src="/frontend/allpack/indinzi/video_asset/Webp.net-resizeimage(olga).png" alt="Plated Dinner Service">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Plated Dinner Service</h4>
+                            <p>Our professional serving staff in action</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 3 - YouTube -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/indinzi/video_asset/ikanombe.mp4" data-fancybox="video-gallery" data-caption="Cocktail Hour">
+                            <img src="/frontend/allpack/indinzi/video_asset/webamayugi.png" alt="Cocktail Hour">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Cocktail Hour</h4>
+                            <p>Signature drinks and hors d'oeuvres service</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 4 - Local MP4 -->
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/indinzi/video_asset/umuzungu.mp4" data-fancybox="video-gallery" data-caption="Dessert Presentation">
+                            <img src="/frontend/allpack/indinzi/video_asset/umuzungu.png" alt="Dessert Presentation">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Dessert Presentation</h4>
+                            <p>Beautiful dessert table setups</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 5 - YouTube -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/indinzi/video_asset/umushagiriro.mp4" data-fancybox="video-gallery" data-caption="Chef's Special">
+                            <img src="/frontend/allpack/indinzi/video_asset/umushagiriro.png" alt="Chef's Special">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Chef's Special</h4>
+                            <p>Our chefs preparing signature dishes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 6 - YouTube -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v8.mp4" data-fancybox="video-gallery" data-caption="Client Testimonials">
+                            <img src="/frontend/allpack/catering/cataringvideos/im8.png" alt="Client Testimonials">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Client Testimonials</h4>
+                            <p>What our clients say about our service</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    
     <!-- Footer -->
     <footer class="bg-dark text-light py-4 footer-animated">
         <div class="container">
