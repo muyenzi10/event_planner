@@ -23,3 +23,4 @@ git push -u origin main
 git remote add origin https://github.com/muyenzi10/event_planner.git
 git branch -M main
 git push -u origin main
+https://ww1.goojara.to/mRzlQX

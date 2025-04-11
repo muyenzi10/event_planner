@@ -642,8 +642,8 @@
                 <!-- Video 1 - Local MP4 -->
                 <div class="col-md-4" data-aos="fade-up">
                     <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v2.mp4" data-fancybox="video-gallery" data-caption="Wedding Buffet Service">
-                            <img src="/frontend/allpack/catering/cataringvideos/im1.png" alt="Wedding Buffet Service">
+                        <a href="/frontend/allpack/indinzi/video_asset/mucyo.mp4" data-fancybox="video-gallery" data-caption="Wedding Buffet Service">
+                            <img src="/frontend/allpack/indinzi/video_asset/mucyo.png" alt="Wedding Buffet Service">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -658,8 +658,8 @@
                 <!-- Video 2 - YouTube -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v3.mp4" data-fancybox="video-gallery" data-caption="Plated Dinner Service">
-                            <img src="/frontend/allpack/catering/cataringvideos/im2.png" alt="Plated Dinner Service">
+                        <a href="/frontend/allpack/indinzi/video_asset/queen.mp4" data-fancybox="video-gallery" data-caption="Plated Dinner Service">
+                            <img src="/frontend/allpack/indinzi/video_asset/Webp.net-resizeimage(olga).png" alt="Plated Dinner Service">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -674,8 +674,8 @@
                 <!-- Video 3 - YouTube -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v4.mp4" data-fancybox="video-gallery" data-caption="Cocktail Hour">
-                            <img src="/frontend/allpack/catering/cataringvideos/im3.png" alt="Cocktail Hour">
+                        <a href="/frontend/allpack/indinzi/video_asset/ikanombe.mp4" data-fancybox="video-gallery" data-caption="Cocktail Hour">
+                            <img src="/frontend/allpack/indinzi/video_asset/webamayugi.png" alt="Cocktail Hour">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -690,8 +690,8 @@
                 <!-- Video 4 - Local MP4 -->
                 <div class="col-md-4" data-aos="fade-up">
                     <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v5.mp4" data-fancybox="video-gallery" data-caption="Dessert Presentation">
-                            <img src="/frontend/allpack/catering/cataringvideos/im4.png" alt="Dessert Presentation">
+                        <a href="/frontend/allpack/indinzi/video_asset/umushagiriro.mp4" data-fancybox="video-gallery" data-caption="Dessert Presentation">
+                            <img src="/frontend/allpack/indinzi/video_asset/umushagiriro.png" alt="Dessert Presentation">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -706,8 +706,8 @@
                 <!-- Video 5 - YouTube -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v7.mp4" data-fancybox="video-gallery" data-caption="Chef's Special">
-                            <img src="/frontend/allpack/catering/cataringvideos/im7.png" alt="Chef's Special">
+                        <a href="/frontend/allpack/indinzi/video_asset/umuzungu.mp4" data-fancybox="video-gallery" data-caption="Chef's Special">
+                            <img src="/frontend/allpack/indinzi/video_asset/umuzungu.png" alt="Chef's Special">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -722,8 +722,8 @@
                 <!-- Video 6 - YouTube -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v8.mp4" data-fancybox="video-gallery" data-caption="Client Testimonials">
-                            <img src="/frontend/allpack/catering/cataringvideos/im8.png" alt="Client Testimonials">
+                        <a href="/frontend/allpack/indinzi/video_asset/burnvan.mp4" data-fancybox="video-gallery" data-caption="Client Testimonials">
+                            <img src="/frontend/allpack/indinzi/video_asset/ntwali.jpg" alt="Client Testimonials">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
@@ -791,9 +791,18 @@
             once: true
         });
         
-        // Initialize Fancybox for video gallery
+        // Initialize Fancybox for video gallery with autoplay
         Fancybox.bind("[data-fancybox]", {
-            // Options can be set here
+            // Enable HTML5 video autoplay
+            Html: {
+                videoAutoplay: true
+            },
+            // Video-specific settings
+            Video: {
+                autoplay: true,
+                hideControls: false
+            },
+            // Other options
             Thumbs: {
                 type: "classic",
             },
