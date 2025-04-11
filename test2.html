@@ -3,1255 +3,860 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supplier Registration | WeddingPlanner</title>
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Troupe</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
+    
     <link rel="stylesheet" href="/frontend/css/footer.css">
     <link rel="stylesheet" href="/frontend/css/navbar.css">
     <style>
         :root {
-            --primary: #d4afb9;
-            --primary-dark: #b38e99;
-            --primary-light: #f0d8dd;
-            --secondary: #1a1a1a;
-            --accent: #3a2e39;
-            --dark: #121212;
-            --light: #ffffff;
-            --text: #e0e0e0;
-            --text-light: #a0a0a0;
-            --border-radius: 12px;
-            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --primary: #e4002b; /* Rwanda flag red */
+            --secondary: #007a3d; /* Rwanda flag green */
+            --accent: #f9d423; /* Rwanda flag yellow */
+            
+            /* Light mode colors */
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --card-bg: #ffffff;
+            --section-bg: #e9ecef;
+            --footer-bg: #343a40;
+            --border-color: #dee2e6;
+            
+            /* Dark mode colors */
+            --bg-color-dark: #121212;
+            --text-color-dark: #f8f9fa;
+            --card-bg-dark: #1e1e1e;
+            --section-bg-dark: #1a1a1a;
+            --footer-bg-dark: #121212;
+            --border-color-dark: #333;
         }
-
+        
         body {
-            font-family: 'Montserrat', sans-serif;
-            color: var(--text);
-            background-color: #121212;
-            line-height: 1.7;
-            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
         }
-
-        h1, h2, h3, h4, h5, h6 {
+        
+        body.dark-mode {
+            --bg-color: var(--bg-color-dark);
+            --text-color: var(--text-color-dark);
+            --card-bg: var(--card-bg-dark);
+            --section-bg: var(--section-bg-dark);
+            --footer-bg: var(--footer-bg-dark);
+            --border-color: var(--border-color-dark);
+        }
+        
+        h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
-            color: var(--primary);
-            font-weight: 600;
+            color: var(--text-color);
         }
-
-        .navbar {
-            background-color: var(--dark);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-            padding: 1rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .navbar-brand {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            font-size: 1.8rem;
-            color: var(--primary) !important;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            padding: 0.5rem 1.25rem !important;
-            color: var(--text-light) !important;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary) !important;
-        }
-
-        .nav-link.active:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 1.25rem;
-            width: calc(100% - 2.5rem);
-            height: 2px;
-            background: var(--primary);
-        }
-
-        /* Enhanced Hero Section Styles */
-        .hero-section {
-            background: linear-gradient(135deg, rgba(42, 32, 40, 0.95) 0%, rgba(42, 32, 40, 0.85) 100%), 
-                        url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+        
+        /* Theme toggle button */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
             color: white;
-            padding: 8rem 0 6rem;
-            margin-bottom: 4rem;
-            position: relative;
-            overflow: hidden;
-            min-height: 90vh;
+            border: none;
             display: flex;
             align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
         }
-
-        .hero-section:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjAzKSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgZmlsbD0idXJsKCNwYXR0ZXJuKSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIvPjwvc3ZnPg==');
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
         }
-
+        
+        /* Enhanced Hero Section */
+        .hero-section {
+            position: relative;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
+                        url('/frontend/allpack/indinzi/assetindinzi/pic9.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 180px 0;
+            margin-bottom: 60px;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
         .hero-section h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 4rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
             margin-bottom: 1.5rem;
             color: white;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            line-height: 1.2;
         }
-
-        .hero-section p.lead {
-            font-size: 1.4rem;
-            max-width: 600px;
-            margin: 0 auto 2rem 0;
-            color: rgba(255, 255, 255, 0.9);
+        
+        .hero-section .lead {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 2.5rem;
+            color: #e0e0e0;
         }
-
-        .btn-outline-light {
-            border: 2px solid rgba(255,255,255,0.3);
-            background-color: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            transition: var(--transition);
-        }
-
-        .btn-outline-light:hover {
-            background-color: rgba(255,255,255,0.2);
-            border-color: rgba(255,255,255,0.5);
-        }
-
-        .hero-image-container {
-            position: relative;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            transform: perspective(1000px) rotateY(-10deg);
-            transition: var(--transition);
-        }
-
-        .hero-image-container:hover {
-            transform: perspective(1000px) rotateY(-5deg) translateY(-10px);
-        }
-
-        .hero-image {
-            border: 8px solid rgba(255,255,255,0.1);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
-        }
-
-        .floating-badge {
-            position: absolute;
-            bottom: -15px;
-            right: 30px;
-            background: var(--dark);
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        
+        .hero-buttons .btn {
+            padding: 12px 30px;
             font-weight: 600;
-            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s ease;
         }
-
-        .avatar-group {
-            display: flex;
+        
+        .hero-buttons .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
         }
-
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid var(--primary);
-            margin-right: -15px;
-            transition: var(--transition);
+        
+        .hero-buttons .btn-primary:hover {
+            background-color: #c10024;
+            border-color: #c10024;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-
-        .avatar:hover {
-            transform: translateY(-5px);
-            z-index: 1;
+        
+        .hero-buttons .btn-outline-light:hover {
+            background-color: rgba(100, 66, 66, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-
-        .hero-scroll-indicator {
+        
+        .hero-scroll-down {
             position: absolute;
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            animation: bounce 2s infinite;
         }
-
-        .scroll-down {
-            display: block;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
+        
+        .scroll-link {
             color: white;
-            text-align: center;
-            line-height: 50px;
-            font-size: 1.25rem;
-            transition: var(--transition);
+            font-size: 2rem;
+            display: inline-block;
+            animation: bounce 2s infinite;
+            text-decoration: none;
         }
-
-        .scroll-down:hover {
-            background: var(--primary);
-            color: var(--dark);
-            transform: translateY(5px);
-        }
-
+        
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0) translateX(-50%);
-            }
-            40% {
-                transform: translateY(-20px) translateX(-50%);
-            }
-            60% {
-                transform: translateY(-10px) translateX(-50%);
-            }
-        }
-
-        .form-container {
-            background-color: #1e1e1e;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 3rem;
-            margin-bottom: 4rem;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .form-container:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
-        }
-
-        .form-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .form-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .form-header h2:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary-light);
-        }
-
-        .form-header p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-
-        .form-label {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .form-control {
-            border-radius: var(--border-radius);
-            padding: 1rem 1.25rem;
-            border: 1px solid #333;
-            transition: var(--transition);
-            font-size: 1rem;
-            background-color: #252525;
-            color: var(--text);
-        }
-
-        /* Enhanced Select Dropdown Styles */
-        .form-select {
-            appearance: none;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='%23d4afb9' fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 1.25rem center;
-            background-size: 16px 12px;
-            padding-right: 3rem;
-            cursor: pointer;
-            transition: var(--transition);
-            border-radius: var(--border-radius);
-            padding: 1rem 1.25rem;
-            border: 1px solid #333;
-            font-size: 1rem;
-            background-color: #252525;
-            color: var(--text);
-        }
-
-        .form-select:focus {
-            border-color: var(--primary-light);
-            box-shadow: 0 0 0 0.25rem rgba(212, 175, 185, 0.15);
-            background-color: #252525;
-            color: var(--text);
-        }
-
-        /* Custom styling for options */
-        .form-select option {
-            background-color: #252525;
-            color: var(--text);
-            padding: 10px;
-        }
-
-        /* Hover state for options */
-        .form-select option:hover {
-            background-color: var(--primary);
-            color: var(--dark);
-        }
-
-        /* Selected option styling */
-        .form-select option:checked {
-            background-color: var(--primary-dark);
-            color: var(--dark);
-        }
-
-        /* Disabled option styling */
-        .form-select option:disabled {
-            color: #666;
-            background-color: #252525;
-        }
-
-        /* Group headers */
-        .form-select optgroup {
-            color: var(--primary-light);
-            font-weight: 600;
-            background-color: #1a1a1a;
-        }
-
-        /* Scrollbar styling for dropdown (webkit browsers) */
-        .form-select::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .form-select::-webkit-scrollbar-track {
-            background: #252525;
-        }
-
-        .form-select::-webkit-scrollbar-thumb {
-            background-color: var(--primary);
-            border-radius: 4px;
-        }
-
-        /* Focus state for the select when opened */
-        .form-select:focus-visible {
-            outline: none;
-        }
-
-        /* Custom wrapper for select to add icon */
-        .select-wrapper {
-            position: relative;
-        }
-
-        .select-wrapper::after {
-            content: '\f078';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            right: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary);
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .form-control:focus, .form-select:focus {
-            border-color: var(--primary-light);
-            box-shadow: 0 0 0 0.25rem rgba(212, 175, 185, 0.15);
-            background-color: #252525;
-            color: var(--text);
-        }
-
-        .form-control::placeholder {
-            color: #666;
-        }
-
-        .input-group-text {
-            background-color: var(--primary);
-            color: var(--dark);
-            border: none;
-            border-radius: var(--border-radius) 0 0 var(--border-radius) !important;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            padding: 1rem 2rem;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            color: var(--dark);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(212, 175, 185, 0.3);
-            color: var(--dark);
-        }
-
-        .btn-primary:active {
-            transform: translateY(-1px);
-        }
-
-        .service-icon {
-            font-size: 1.25rem;
-            color: var(--primary);
-            margin-right: 0.75rem;
-        }
-
-        .benefits-section {
-            padding: 5rem 0;
-            background-color: #1a1a1a;
-            position: relative;
-        }
-
-        .benefits-section:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyMTIsMTc1LDE4NSwgMC4wMykiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IGZpbGw9InVybCgjcGF0dGVybikiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiLz48L3N2Zz4=');
-        }
-
-        .benefit-card {
-            background-color: #252525;
-            border-radius: var(--border-radius);
-            padding: 2.5rem;
-            height: 100%;
-            transition: var(--transition);
-            box-shadow: var(--box-shadow);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-
-        .benefit-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--primary-light));
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        .benefit-card h4 {
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .benefit-card p {
-            color: var(--text-light);
-        }
-
-        /* Testimonials */
-        .testimonial-card {
-            background-color: #252525;
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            height: 100%;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Supplier Logs Section */
-        .supplier-logs-section {
-            padding: 5rem 0;
-            background-color: #1a1a1a;
-            position: relative;
-        }
-
-        .supplier-logs-section:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyMTIsMTc1LDE4NSwgMC4wMykiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IGZpbGw9InVybCgjcGF0dGVybikiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiLz48L3N2Zz4=');
-        }
-
-        .log-card {
-            background-color: #252525;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .log-card-header {
-            background-color: #1e1e1e;
-            padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .log-table {
-            margin-bottom: 0;
-        }
-
-        .log-table th {
-            border-bottom-width: 1px;
-            border-color: rgba(255, 255, 255, 0.05);
-            padding: 1rem 1.5rem;
-        }
-
-        .log-table td {
-            padding: 1rem 1.5rem;
-            vertical-align: middle;
-        }
-
-        .log-table tr:not(:last-child) {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .log-card-footer {
-            background-color: #1e1e1e;
-            padding: 1rem 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
                 transform: translateY(0);
             }
-        }
-
-        .animated {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-        }
-
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
-        .delay-4 { animation-delay: 0.8s; }
-
-        /* Responsive adjustments */
-        @media (max-width: 992px) {
-            .hero-section {
-                padding: 6rem 0;
-                text-align: center;
+            40% {
+                transform: translateY(-20px);
             }
-            
-            .hero-section h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero-section p.lead {
-                margin: 0 auto 2rem;
-            }
-            
-            .d-flex.justify-content-start {
-                justify-content: center!important;
-            }
-            
-            .avatar-group {
-                justify-content: center;
-            }
-            
-            .form-container {
-                padding: 2rem;
+            60% {
+                transform: translateY(-10px);
             }
         }
-
+        
+        /* Video Section */
+        .video-container {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('/frontend/allpack/indinzi/assetindinzi/pic15.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            margin: 60px 0;
+        }
+        
+        /* Card Styles */
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            margin-bottom: 0;
+            background-color: var(--card-bg);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+            cursor: pointer;
+        }
+        
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        
+        .card-body {
+            padding: 25px;
+            color: var(--text-color);
+        }
+        
+        .card-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .card-text {
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            position: relative;
+            margin-bottom: 70px;
+            text-align: center;
+            color: var(--text-color);
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin: 15px auto;
+        }
+        
+        /* Dance Section Container */
+        .dance-section {
+            padding: 100px 0;
+            background-color: var(--bg-color);
+        }
+        
+        /* Card spacing */
+        .dance-section .row {
+            margin: 0 -20px;
+        }
+        
+        .dance-section [class*="col-"] {
+            padding: 20px !important;
+            margin-bottom: 30px;
+        }
+        
+        /* Video Gallery Section */
+        .video-gallery {
+            padding: 60px 0;
+            background-color: var(--section-bg);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background-color: var(--card-bg);
+        }
+        
+        .video-thumbnail:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .video-thumbnail:hover img {
+            transform: scale(1.05);
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(220, 53, 69, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail:hover .play-button {
+            background-color: rgba(220, 53, 69, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .video-caption {
+            padding: 15px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+        }
+        
+        .video-caption h4 {
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .video-caption p {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            margin-bottom: 0;
+        }
+        
+        /* Lightbox Overrides */
+        .lightbox .lb-image {
+            border: 5px solid var(--card-bg);
+            border-radius: 3px;
+        }
+        
+        .lightbox .lb-nav a.lb-prev,
+        .lightbox .lb-nav a.lb-next {
+            opacity: 1;
+        }
+        
+        .lightbox .lb-close {
+            opacity: 1;
+        }
+        
+        /* Responsive Adjustments */
         @media (max-width: 768px) {
             .hero-section {
-                padding: 5rem 0;
-                background-attachment: scroll;
+                padding: 120px 0;
                 min-height: auto;
             }
             
             .hero-section h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
-            .hero-section p.lead {
+            .hero-section .lead {
                 font-size: 1.2rem;
             }
             
-            .form-header h2 {
-                font-size: 1.75rem;
-            }
-            
-            .benefit-card {
-                margin-bottom: 1.5rem;
-            }
-            
-            footer {
-                padding: 3rem 0 0;
-            }
-            
-            .footer-col {
-                margin-bottom: 2rem;
-            }
-            
-            .log-table {
+            .hero-buttons .btn {
+                padding: 10px 20px;
+                font-size: 1rem;
                 display: block;
-                overflow-x: auto;
-                white-space: nowrap;
+                width: 80%;
+                margin: 0 auto 10px;
+            }
+            
+            .hero-buttons .btn.me-3 {
+                margin-right: auto !important;
+            }
+            
+            .video-container {
+                padding: 60px 0;
+            }
+            
+            .dance-section {
+                padding: 60px 0;
+            }
+            
+            .dance-section [class*="col-"] {
+                padding: 15px !important;
+                margin-bottom: 20px;
+            }
+            
+            .video-thumbnail img {
+                height: 200px;
+            }
+            
+            .play-button {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-          <a class="navbar-brand logo-margin" href="#">Wedding Planner</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mb-2 mb-lg-0">
-                  <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.htm">Home</a></li>
-                  <li class="nav-item"><a class="nav-link active" href="#">About</a></li>
-                  <li class="nav-item"><a class="nav-link active" href="about.html">Services</a></li>
-                  <li class="nav-item"><a class="nav-link active" href="#">Packages</a></li>
-                  <li class="nav-item"><a class="nav-link active" href="/frontend/suppliers/supply.html">Suppliers</a></li>
-                  <li class="nav-item"><a class="nav-link active" href="booking.html">Booking</a></li>
-              </ul>
-          </div>
-      </div>
-    </nav>
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand logo-margin" href="#">Logo</a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/frontend/home_packages/home.htm">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/frontend/home_packages/index.html">Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/frontend/supliers/suply.html">Suppliers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Booking</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>
 
     <!-- Hero Section -->
     <section class="hero-section">
+        <div class="overlay"></div>
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <h1 class="animated">Join Our Exclusive Network of Wedding Professionals</h1>
-                    <p class="lead animated delay-1">Showcase your services to thousands of couples planning their perfect day. Get premium exposure, quality leads, and grow your business with WeddingPlanner.</p>
-                    
-                    <div class="d-flex flex-wrap gap-3 mt-4 animated delay-2">
-                        <a href="#registration" class="btn btn-primary btn-lg px-4 py-3">
-                            <i class="fas fa-user-plus me-2"></i>Register Now
-                        </a>
-                        <a href="#benefits" class="btn btn-outline-light btn-lg px-4 py-3">
-                            <i class="fas fa-star me-2"></i>Why Join?
-                        </a>
-                    </div>
-                    
-                    <div class="d-flex align-items-center mt-5 animated delay-3">
-                        <div class="avatar-group me-3">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="avatar" alt="Supplier">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="avatar" alt="Supplier">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="avatar" alt="Supplier">
-                            <img src="https://randomuser.me/api/portraits/men/75.jpg" class="avatar" alt="Supplier">
-                        </div>
-                        <div>
-                            <p class="mb-0 small text-white-50">Trusted by 500+ wedding professionals</p>
-                            <div class="text-warning">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span class="ms-1 text-white">4.8/5</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-5 d-none d-lg-block animated delay-1">
-                    <div class="hero-image-container">
-                        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="hero-image img-fluid rounded" alt="Wedding Supplier">
-                        <div class="floating-badge">
-                            <i class="fas fa-check-circle text-success me-2"></i>
-                            <span>Verified Supplier</span>
-                        </div>
-                    </div>
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="display-3 fw-bold mb-4">Rwandan Traditional Dance</h1>
+                <p class="lead mb-5" data-aos="fade-up" data-aos-delay="200">
+                    Experience the rhythm, grace and storytelling of Rwanda's cultural heritage
+                </p>
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#dances" class="btn btn-primary btn-lg me-3">Our Images</a>
+                    <a href="#video-gallery" class="btn btn-outline-light btn-lg">Short Videos</a>
                 </div>
             </div>
         </div>
-        
-        <div class="hero-scroll-indicator">
-            <a href="#registration" class="scroll-down">
+        <div class="hero-scroll-down">
+            <a href="#dances" class="scroll-link" data-aos="fade-up" data-aos-delay="600">
                 <i class="fas fa-chevron-down"></i>
             </a>
         </div>
     </section>
 
-    <!-- Registration Form -->
-    <div class="container" id="registration">
-        <div class="row justify-content-center">
-            <div class="col-lg-10">
-                <div class="form-container animated delay-1">
-                    <div class="form-header">
-                        <h2 class="animated">Supplier Registration</h2>
-                        <p class="animated delay-1">Complete this form to join our network of premium wedding suppliers</p>
+    <!-- Dance Styles Section -->
+    <section class="dance-section container" id="dances">
+        <h2 class="section-title" data-aos="fade-up">Our Traditional Dance Styles</h2>
+        
+        <div class="row">
+            <!-- Intore Dance -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic18.jpg" data-lightbox="dance-gallery" data-title="Intore Dance - The warrior's dance celebrating Rwanda's heritage">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage18.jpg" class="card-img-top" alt="Intore Dance">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Intore Dance</h5>
+                        <p class="card-text">The warrior's dance - celebrating Rwanda's bravery and heritage through powerful movements.</p>
                     </div>
-                    
-                    <form class="needs-validation" novalidate>
-                        <div class="row">
-                            <div class="col-md-6 mb-4 animated delay-2">
-                                <label for="firstName" class="form-label">
-                                    <i class="fas fa-user service-icon"></i>First Name
-                                </label>
-                                <input type="text" class="form-control" id="firstName" placeholder="Your first name" required>
-                                <div class="invalid-feedback">
-                                    Please provide your first name.
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-4 animated delay-2">
-                                <label for="lastName" class="form-label">
-                                    <i class="fas fa-user service-icon"></i>Last Name
-                                </label>
-                                <input type="text" class="form-control" id="lastName" placeholder="Your last name" required>
-                                <div class="invalid-feedback">
-                                    Please provide your last name.
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-6 mb-4 animated delay-3">
-                                <label for="contactEmail" class="form-label">
-                                    <i class="fas fa-envelope service-icon"></i>Email Address
-                                </label>
-                                <input type="email" class="form-control" id="contactEmail" placeholder="your@email.com" required>
-                                <div class="invalid-feedback">
-                                    Please provide a valid email address.
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-4 animated delay-3">
-                                <label for="contactNumber" class="form-label">
-                                    <i class="fas fa-phone service-icon"></i>Phone Number
-                                </label>
-                                <div class="input-group">
-                                    <span class="input-group-text">+250</span>
-                                    <input type="tel" class="form-control" id="contactNumber" placeholder="78 123 4567" required>
-                                </div>
-                                <div class="invalid-feedback">
-                                    Please provide a valid phone number.
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-4 animated delay-4">
-                            <label for="companyName" class="form-label">
-                                <i class="fas fa-building service-icon"></i>Business Name (if applicable)
-                            </label>
-                            <input type="text" class="form-control" id="companyName" placeholder="Your business name">
-                        </div>
-                        
-                        <div class="mb-4 animated delay-4">
-                            <label for="companyAddress" class="form-label">
-                                <i class="fas fa-map-marker-alt service-icon"></i>Business Location
-                            </label>
-                            <input type="text" class="form-control" id="companyAddress" placeholder="Where you operate from" required>
-                            <div class="invalid-feedback">
-                                Please provide your business location.
-                            </div>
-                        </div>
-                        
-                        <div class="mb-4 animated delay-1">
-                            <label for="serviceCategory" class="form-label">
-                                <i class="fas fa-tags service-icon"></i>Service Category
-                            </label>
-                            <div class="select-wrapper">
-                                <select class="form-select" id="serviceCategory" required>
-                                    <option value="" disabled selected>Select your primary service category</option>
-                                    <option value="1">Catering</option>
-                                    <option value="2">Videography & Photography</option>
-                                    <option value="3">Venue</option>
-                                    <option value="4">Florists</option>
-                                    <option value="5">Troupe</option>
-                                    <option value="6">Decor</option>
-                                    <option value="7">Transportation (Cars)</option>
-                                    <option value="8">Invitation Cards</option>
-                                    <option value="9">Beauty & Makeup</option>
-                                    <option value="10">Bridal Style & Attire</option>
-                                    <option value="11">Master of Ceremonies (MC)</option>
-                                    <option value="12">Sound & Lighting</option>
-                                    <option value="13">Gakondo</option>
-                                    <option value="13">Amahamba</option>
-                                    <option value="14">Other Wedding Services</option>
-                                </select>
-                            </div>
-                            <div class="invalid-feedback">
-                                Please select your service category.
-                            </div>
-                        </div>
-                        
-                        <div class="mb-4 animated delay-2">
-                            <label for="experience" class="form-label">
-                                <i class="fas fa-briefcase service-icon"></i>Years of Experience
-                            </label>
-                            <input type="number" class="form-control" id="experience" placeholder="How many years in business?" min="0" required>
-                            <div class="invalid-feedback">
-                                Please provide your years of experience.
-                            </div>
-                        </div>
-                        
-                        <div class="mb-4 animated delay-3">
-                            <label for="portfolioLink" class="form-label">
-                                <i class="fas fa-link service-icon"></i>Portfolio Link
-                            </label>
-                            <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-globe"></i></span>
-                                <input type="url" class="form-control" id="portfolioLink" placeholder="https://yourportfolio.com">
-                            </div>
-                            <small class="text-muted">Website, Instagram, Facebook, or other portfolio link</small>
-                        </div>
-                        
-                        <div class="mb-4 animated delay-4">
-                            <label for="description" class="form-label">
-                                <i class="fas fa-edit service-icon"></i>Tell Us About Your Services
-                            </label>
-                            <textarea class="form-control" id="description" rows="5" placeholder="Describe your services, specialties, and what makes you unique..." required></textarea>
-                            <div class="invalid-feedback">
-                                Please tell us about your services.
-                            </div>
-                        </div>
-                        
-                        <div class="mb-4 animated delay-1">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="termsCheck" required>
-                                <label class="form-check-label" for="termsCheck">
-                                    I agree to the <a href="#" style="color: var(--primary);">Terms of Service</a> and <a href="#" style="color: var(--primary);">Privacy Policy</a>
-                                </label>
-                                <div class="invalid-feedback">
-                                    You must agree before submitting.
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="d-grid mt-5 animated delay-2">
-                            <button type="submit" class="btn btn-primary btn-lg py-3">
-                                <i class="fas fa-paper-plane me-2"></i>Submit Application
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Benefits Section -->
-    <section class="benefits-section" id="benefits">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mb-3 animated">Why Join Our Network?</h2>
-                    <p class="lead animated delay-1">Discover the advantages of becoming a preferred WeddingPlanner supplier</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 animated delay-1">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h4>Premium Exposure</h4>
-                        <p>Get featured in our exclusive directory seen by thousands of couples planning their weddings each month.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 animated delay-2">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <h4>Quality Leads</h4>
-                        <p>Receive direct inquiries from serious couples who value quality and professionalism.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 animated delay-3">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h4>Business Growth</h4>
-                        <p>Expand your client base and grow your business through our marketing channels.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-4 animated delay-2">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h4>Reputation Boost</h4>
-                        <p>Being a vetted supplier enhances your credibility in the wedding industry.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 animated delay-3">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h4>Networking</h4>
-                        <p>Connect with other top wedding professionals for collaborations and referrals.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 animated delay-4">
-                    <div class="benefit-card">
-                        <div class="benefit-icon">
-                            <i class="fas fa-gem"></i>
-                        </div>
-                        <h4>Premium Listings</h4>
-                        <p>Upgrade to featured listings for even greater visibility and more bookings.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Supplier Logs Section -->
-    <section class="supplier-logs-section" id="logs">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mb-3 animated">Supplier Activity Logs</h2>
-                    <p class="lead animated delay-1">Recent activities from our network of wedding professionals</p>
                 </div>
             </div>
             
-            <div class="row">
-                <div class="col-12">
-                    <div class="log-card animated delay-1">
-                        <div class="log-card-header">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0"><i class="fas fa-history me-2" style="color: var(--primary);"></i>Recent Activities</h5>
-                                <div class="dropdown">
-                                    <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fas fa-filter me-1"></i>Filter
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="filterDropdown">
-                                        <li><a class="dropdown-item" href="#">All Activities</a></li>
-                                        <li><a class="dropdown-item" href="#">New Registrations</a></li>
-                                        <li><a class="dropdown-item" href="#">Profile Updates</a></li>
-                                        <li><a class="dropdown-item" href="#">Booking Requests</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-dark log-table mb-0">
-                                <thead>
-                                    <tr>
-                                        <th class="border-0 ps-4"><i class="fas fa-calendar me-2"></i>Date</th>
-                                        <th class="border-0"><i class="fas fa-user-tie me-2"></i>Supplier</th>
-                                        <th class="border-0"><i class="fas fa-tags me-2"></i>Category</th>
-                                        <th class="border-0"><i class="fas fa-bolt me-2"></i>Activity</th>
-                                        <th class="border-0 pe-4 text-end"><i class="fas fa-info-circle me-2"></i>Details</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="animated delay-2">
-                                        <td class="ps-4">2025-06-15</td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle me-2" width="30" height="30" alt="Supplier">
-                                                Elegant Blooms
-                                            </div>
-                                        </td>
-                                        <td>Florist</td>
-                                        <td><span class="badge bg-primary">Profile Updated</span></td>
-                                        <td class="pe-4 text-end">
-                                            <button class="btn btn-sm btn-outline-primary">View Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="animated delay-3">
-                                        <td class="ps-4">2025-06-14</td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-2" width="30" height="30" alt="Supplier">
-                                                Golden Lens
-                                            </div>
-                                        </td>
-                                        <td>Photography</td>
-                                        <td><span class="badge bg-success">New Booking</span></td>
-                                        <td class="pe-4 text-end">
-                                            <button class="btn btn-sm btn-outline-primary">View Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="animated delay-4">
-                                        <td class="ps-4">2025-06-13</td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-2" width="30" height="30" alt="Supplier">
-                                                Savory Delights
-                                            </div>
-                                        </td>
-                                        <td>Catering</td>
-                                        <td><span class="badge bg-primary">Menu Updated</span></td>
-                                        <td class="pe-4 text-end">
-                                            <button class="btn btn-sm btn-outline-primary">View Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="animated delay-1">
-                                        <td class="ps-4">2025-06-12</td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <img src="https://randomuser.me/api/portraits/men/75.jpg" class="rounded-circle me-2" width="30" height="30" alt="Supplier">
-                                                Dream Venues
-                                            </div>
-                                        </td>
-                                        <td>Venue</td>
-                                        <td><span class="badge bg-info">New Supplier</span></td>
-                                        <td class="pe-4 text-end">
-                                            <button class="btn btn-sm btn-outline-primary">View Details</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="animated delay-2">
-                                        <td class="ps-4">2025-06-11</td>
-                                        <td>
-                                            <div class="d-flex align-items-center">
-                                                <img src="https://randomuser.me/api/portraits/women/33.jpg" class="rounded-circle me-2" width="30" height="30" alt="Supplier">
-                                                Luxe Decor
-                                            </div>
-                                        </td>
-                                        <td>Decor</td>
-                                        <td><span class="badge bg-primary">Portfolio Added</span></td>
-                                        <td class="pe-4 text-end">
-                                            <button class="btn btn-sm btn-outline-primary">View Details</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="log-card-footer">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="text-muted small">
-                                    Showing 1 to 5 of 28 activities
-                                </div>
-                                <nav>
-                                    <ul class="pagination pagination-sm mb-0">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+            <!-- Umushayayo -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic1.jpg" data-lightbox="dance-gallery" data-title="Umushayayo - Graceful Rwandan dance">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/pic1.jpg" class="card-img-top" alt="Umushayayo">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Umushayayo</h5>
+                        <p class="card-text">Graceful movements that tell stories of Rwandan traditions and daily life.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ikinyemera -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/noella.jpg" data-lightbox="dance-gallery" data-title="Ikinyemera - Celebratory harvest dance">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(noella).jpg" class="card-img-top" alt="Ikinyemera">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Ikinyemera</h5>
+                        <p class="card-text">Celebratory dance marking harvest seasons and community achievements.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ritual Dances -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/patty.jpg" data-lightbox="dance-gallery" data-title="Ritual Dances - Sacred ancestral dances">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(patty).jpg" class="card-img-top" alt="Ritual Dances">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Ritual Dances</h5>
+                        <p class="card-text">Sacred movements connecting us to ancestors and spiritual traditions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ingoma -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic15.jpg" data-lightbox="dance-gallery" data-title="Ingoma - The powerful drum dance">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(15).jpg" class="card-img-top" alt="Ingoma">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Ingoma</h5>
+                        <p class="card-text">The drum dance - where rhythm and movement become one powerful expression.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Royal Dances -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic.jpg" data-lightbox="dance-gallery" data-title="Royal Dances - Elegant court performances">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/pic.jpg" class="card-img-top" alt="Royal Dances">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Royal Dances</h5>
+                        <p class="card-text">Elegant performances that once graced the courts of Rwandan kings.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dance of Unity -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/pic13.jpg" data-lightbox="dance-gallery" data-title="Dance of Unity - Celebrating togetherness">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(13).jpg" class="card-img-top" alt="Dance of Unity">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Dance of Unity</h5>
+                        <p class="card-text">Celebrating Rwanda's spirit of togetherness through synchronized movements.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Celebration Dance -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/oben.jpg" data-lightbox="dance-gallery" data-title="Celebration Dance - Joyful expressions">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/oben.jpg" class="card-img-top" alt="Celebration Dance">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Celebration Dance</h5>
+                        <p class="card-text">Joyful expressions marking life's milestones in Rwandan culture.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Cultural Preservation -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/last3.jpg" data-lightbox="dance-gallery" data-title="Cultural Preservation - Passing traditions to new generations">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(last3).jpg" class="card-img-top" alt="Cultural Preservation">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Cultural Preservation</h5>
+                        <p class="card-text">Teaching traditional dances to ensure Rwanda's heritage continues.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Women's Dance -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" data-lightbox="dance-gallery" data-title="Women's Dance - Traditional performances by female dancers">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" class="card-img-top" alt="Women's Dance">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Women's Dance</h5>
+                        <p class="card-text">Traditional performances showcasing the grace of Rwandan women.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Community Dance -->
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="card">
+                  <a href="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" data-lightbox="dance-gallery" data-title="Community Dance - Bringing people together">
+                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" class="card-img-top" alt="Community Dance">
+                  </a>
+                    <div class="card-body">
+                        <h5 class="card-title">Community Dance</h5>
+                        <p class="card-text">Traditional dances that strengthen community bonds and celebrations.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Testimonials Section -->
-    <section class="py-5" style="background-color: #1e1e1e;">
+    
+      <!-- Video Gallery Section -->
+      <section id="video-gallery" class="video-gallery">
         <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 text-center">
-                    <h2 class="mb-3 animated">What Our Suppliers Say</h2>
-                    <p class="lead animated delay-1">Hear from wedding professionals who've grown their business with us</p>
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title" data-aos="fade-up">Our Catering Videos</h2>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Watch our catering services in action</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4 mb-4 animated delay-2">
-                    <div class="testimonial-card">
-                        <div class="mb-3 text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="card-text">"Since joining WeddingPlanner, our bookings have increased by 40%. The quality of leads is exceptional compared to other platforms."</p>
-                        <div class="d-flex align-items-center mt-4">
-                            <div>
-                                <h6 class="mb-0">Sarah K.</h6>
-                                <small class="text-muted">Florist | 5 years experience</small>
+                <!-- Video 1 - Local MP4 -->
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v2.mp4" data-fancybox="video-gallery" data-caption="Wedding Buffet Service">
+                            <img src="/frontend/allpack/catering/cataringvideos/im1.png" alt="Wedding Buffet Service">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
                             </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Wedding Buffet Service</h4>
+                            <p>See our elegant buffet setup in action</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4 animated delay-3">
-                    <div class="testimonial-card">
-                        <div class="mb-3 text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="card-text">"The professionalism of WeddingPlanner sets them apart. We've formed lasting relationships with couples who truly value our work."</p>
-                        <div class="d-flex align-items-center mt-4">
-                            <div>
-                                <h6 class="mb-0">James T.</h6>
-                                <small class="text-muted">Photographer | 8 years experience</small>
+                
+                <!-- Video 2 - YouTube -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v3.mp4" data-fancybox="video-gallery" data-caption="Plated Dinner Service">
+                            <img src="/frontend/allpack/catering/cataringvideos/im2.png" alt="Plated Dinner Service">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
                             </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Plated Dinner Service</h4>
+                            <p>Our professional serving staff in action</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4 animated delay-4">
-                    <div class="testimonial-card">
-                        <div class="mb-3 text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="card-text">"As a new caterer, WeddingPlanner helped me establish my reputation. Now I'm booked months in advance thanks to their network."</p>
-                        <div class="d-flex align-items-center mt-4">
-                            <div>
-                                <h6 class="mb-0">Amina R.</h6>
-                                <small class="text-muted">Caterer | 3 years experience</small>
+                
+                <!-- Video 3 - YouTube -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v4.mp4" data-fancybox="video-gallery" data-caption="Cocktail Hour">
+                            <img src="/frontend/allpack/catering/cataringvideos/im3.png" alt="Cocktail Hour">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
                             </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Cocktail Hour</h4>
+                            <p>Signature drinks and hors d'oeuvres service</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 4 - Local MP4 -->
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v5.mp4" data-fancybox="video-gallery" data-caption="Dessert Presentation">
+                            <img src="/frontend/allpack/catering/cataringvideos/im4.png" alt="Dessert Presentation">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Dessert Presentation</h4>
+                            <p>Beautiful dessert table setups</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 5 - YouTube -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v7.mp4" data-fancybox="video-gallery" data-caption="Chef's Special">
+                            <img src="/frontend/allpack/catering/cataringvideos/im7.png" alt="Chef's Special">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Chef's Special</h4>
+                            <p>Our chefs preparing signature dishes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 6 - YouTube -->
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-thumbnail">
+                        <a href="/frontend/allpack/catering/cataringvideos/v8.mp4" data-fancybox="video-gallery" data-caption="Client Testimonials">
+                            <img src="/frontend/allpack/catering/cataringvideos/im8.png" alt="Client Testimonials">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </a>
+                        <div class="video-caption">
+                            <h4>Client Testimonials</h4>
+                            <p>What our clients say about our service</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
+            </div>
+      </section>
     <!-- Footer -->
-    <footer class="bg-dark text-light py-4 footer-animated">
-      <div class="container">
-          <div class="row">
-              <div class="col-md-4">
-                  <h5>About Us</h5>
-                  <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
-              </div>
-              <div class="col-md-4">
-                  <h5>Quick Links</h5>
-                  <ul class="list-unstyled footer-content">
-                      <li><a href="home.htm" class="text-light">Home</a></li>
-                      <li><a href="#" class="text-light">About</a></li>
-                      <li><a href="#" class="text-light">Services</a></li>
-                      <li><a href="index.html" class="text-light">Packages</a></li>
-                      <li><a href="#" class="text-light">Contact</a></li>
-                  </ul>
-              </div>
-              <div class="col-md-4">
-                  <h5>Connect With Us</h5>
-                  <ul class="list-unstyled footer-content">
-                      <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                      <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
-                      <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
-                      <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                  </ul>
-              </div>
-          </div>
-          <div class="text-center mt-4">
-              <p class="footer-content">&copy; 2025 Wedding Planner. All Rights Reserved.</p>
-          </div>
-      </div>
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p class="footer-content">We are a dedicated team of cultural performers, committed to preserving and sharing Rwanda's rich dance heritage through authentic and captivating performances.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="/frontend/home_packages/home.htm">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="/frontend/home_packages/index.html">Packages</a></li>
+                        <li><a href="/frontend/supliers/suply.html">Suppliers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <ul class="list-unstyled footer-content">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="footer-content">&copy; 2025 Rwandan Traditional Dance Troupe. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    
     <script>
-        // Animation trigger
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.animated');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Initialize Fancybox for video gallery
+        Fancybox.bind("[data-fancybox]", {
+            // Options can be set here
+            Thumbs: {
+                type: "classic",
+            },
+            Toolbar: {
+                display: {
+                    left: [],
+                    middle: [],
+                    right: ["close"],
+                },
+            },
+        });
+        
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Check for saved user preference, if any
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            updateToggleIcon(currentTheme);
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', '');
+                updateToggleIcon('');
+            } else {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark-mode');
+                updateToggleIcon('dark-mode');
+            }
+        });
+        
+        function updateToggleIcon(theme) {
+            const icon = themeToggle.querySelector('i');
+            if (theme === 'dark-mode') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
                 });
-            }, { 
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
             });
-            
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-            
-            // Form validation
-            (function() {
-                'use strict';
-                
-                // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                var forms = document.querySelectorAll('.needs-validation');
-                
-                // Loop over them and prevent submission
-                Array.prototype.slice.call(forms)
-                    .forEach(function(form) {
-                        form.addEventListener('submit', function(event) {
-                            if (!form.checkValidity()) {
-                                event.preventDefault();
-                                event.stopPropagation();
-                            }
-                            
-                            form.classList.add('was-validated');
-                        }, false);
-                    });
-            })();
-            
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+        });
+        
+        // Configure Lightbox for images
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            'alwaysShowNavOnTouchDevices': true,
+            'disableScrolling': true,
+            'albumLabel': 'Image %1 of %2'
         });
     </script>
 </body>

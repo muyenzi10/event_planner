@@ -315,7 +315,6 @@
             color: white;
             font-size: 24px;
             transition: all 0.3s ease;
-            cursor: pointer;
         }
         
         .video-thumbnail:hover .play-button {
@@ -354,68 +353,6 @@
         
         .lightbox .lb-close {
             opacity: 1;
-        }
-        
-        /* Custom Video Lightbox Styles */
-        .video-lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .video-lightbox-content {
-            position: relative;
-            width: 80%;
-            max-width: 900px;
-        }
-        
-        .video-lightbox-content video {
-            width: 100%;
-            outline: none;
-        }
-        
-        .close-video {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            color: white;
-            font-size: 30px;
-            cursor: pointer;
-        }
-        
-        .video-title {
-            color: white;
-            text-align: center;
-            margin-top: 15px;
-            font-size: 1.2rem;
-        }
-        
-        /* Footer Styles */
-        footer {
-            background-color: var(--footer-bg);
-            color: var(--text-color-dark);
-            border-top: 1px solid var(--border-color);
-        }
-        
-        .footer-content {
-            color: #b1b1b1;
-        }
-        
-        footer a {
-            color: #b1b1b1;
-            transition: color 0.3s;
-        }
-        
-        footer a:hover {
-            color: var(--primary);
-            text-decoration: none;
         }
         
         /* Responsive Adjustments */
@@ -466,10 +403,6 @@
                 width: 50px;
                 height: 50px;
                 font-size: 20px;
-            }
-            
-            .video-lightbox-content {
-                width: 95%;
             }
         }
     </style>
@@ -705,14 +638,12 @@
                 <!-- Video 1 -->
                 <div class="col-md-4" data-aos="fade-up">
                     <div class="video-thumbnail">
-                        <div class="video-play-trigger" 
-                             data-video-src="/frontend/allpack/indinzi/video_asset/mucyo.mp4"
-                             data-video-title="Wedding Dance Performance">
+                        <a href="/frontend/allpack/indinzi/video_asset/mucyo.mp4" target="_blank">
                             <img src="/frontend/allpack/indinzi/video_asset/Webp.net-resizeimage(mucyo).png" alt="Wedding Dance Performance">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
-                        </div>
+                        </a>
                         <div class="video-caption">
                             <h4>Wedding Dance</h4>
                             <p>Traditional performance at a Rwandan wedding</p>
@@ -723,14 +654,12 @@
                 <!-- Video 2 -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="video-thumbnail">
-                        <div class="video-play-trigger" 
-                             data-video-src="/frontend/allpack/indinzi/video_asset/queen.mp4"
-                             data-video-title="Intore Warrior Dance">
+                        <a href="/frontend/allpack/indinzi/video_asset/queen.mp4" target="_blank">
                             <img src="/frontend/allpack/indinzi/video_asset/Webp.net-resizeimage(olga).png" alt="Intore Warrior Dance">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
-                        </div>
+                        </a>
                         <div class="video-caption">
                             <h4>Intore Warrior Dance</h4>
                             <p>Powerful traditional warrior performance</p>
@@ -741,14 +670,12 @@
                 <!-- Video 3 -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="video-thumbnail">
-                        <div class="video-play-trigger" 
-                             data-video-src="/frontend/allpack/indinzi/video_asset/ikanombe.mp4"
-                             data-video-title="Celebration Dance">
+                        <a href="/frontend/allpack/indinzi/video_asset/ikanombe.mp4" target="_blank">
                             <img src="/frontend/allpack/indinzi/video_asset/webamayugi.png" alt="Celebration Dance">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
-                        </div>
+                        </a>
                         <div class="video-caption">
                             <h4>Celebration Dance</h4>
                             <p>Joyful community celebration</p>
@@ -759,14 +686,12 @@
                 <!-- Video 4 -->
                 <div class="col-md-4" data-aos="fade-up">
                     <div class="video-thumbnail">
-                        <div class="video-play-trigger" 
-                             data-video-src="/frontend/allpack/indinzi/video_asset/umuzungu.mp4"
-                             data-video-title="Traditional Drum Performance">
+                        <a href="/frontend/allpack/indinzi/video_asset/umuzungu.mp4" target="_blank">
                             <img src="/frontend/allpack/indinzi/video_asset/umuzungu.png" alt="Traditional Drum Performance">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
-                        </div>
+                        </a>
                         <div class="video-caption">
                             <h4>Drum Performance</h4>
                             <p>Traditional Rwandan drumming</p>
@@ -777,14 +702,13 @@
                 <!-- Video 5 -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="video-thumbnail">
-                        <div class="video-play-trigger" 
-                             data-video-src="/frontend/allpack/indinzi/video_asset/umushagiriro.mp4"
-                             data-video-title="Cultural Festival Dance">
+                        <a href="/frontend/allpack/indinzi/video_asset/umushagiriro.mp4">
                             <img src="/frontend/allpack/indinzi/video_asset/umushagiriro.png" alt="Cultural Festival Dance">
+                       
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
-                        </div>
+                        </a>
                         <div class="video-caption">
                             <h4>Festival Dance</h4>
                             <p>Performance at cultural festival</p>
@@ -795,14 +719,12 @@
                 <!-- Video 6 -->
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="video-thumbnail">
-                        <div class="video-play-trigger" 
-                             data-video-src="/frontend/allpack/catering/cataringvideos/v8.mp4"
-                             data-video-title="Traditional Storytelling Dance">
+                        <a href="/frontend/allpack/catering/cataringvideos/v8.mp4" target="_blank">
                             <img src="/frontend/allpack/catering/cataringvideos/im8.png" alt="Traditional Storytelling Dance">
                             <div class="play-button">
                                 <i class="fas fa-play"></i>
                             </div>
-                        </div>
+                        </a>
                         <div class="video-caption">
                             <h4>Storytelling Dance</h4>
                             <p>Dance that tells traditional stories</p>
@@ -812,17 +734,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Video Lightbox Container -->
-    <div class="video-lightbox" id="videoLightbox">
-        <div class="video-lightbox-content">
-            <span class="close-video">&times;</span>
-            <video controls id="lightboxVideo">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-title" id="videoLightboxTitle"></div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="py-4">
@@ -926,54 +837,6 @@
             'alwaysShowNavOnTouchDevices': true,
             'disableScrolling': true,
             'albumLabel': 'Image %1 of %2'
-        });
-        
-        // Video Lightbox functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const videoLightbox = document.getElementById('videoLightbox');
-            const lightboxVideo = document.getElementById('lightboxVideo');
-            const videoTitle = document.getElementById('videoLightboxTitle');
-            const closeBtn = document.querySelector('.close-video');
-            
-            // Handle video play triggers
-            document.querySelectorAll('.video-play-trigger').forEach(trigger => {
-                trigger.addEventListener('click', function() {
-                    const videoSrc = this.getAttribute('data-video-src');
-                    const title = this.getAttribute('data-video-title');
-                    
-                    lightboxVideo.src = videoSrc;
-                    videoTitle.textContent = title;
-                    videoLightbox.style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                    
-                    // Play video automatically when lightbox opens
-                    setTimeout(() => {
-                        lightboxVideo.play();
-                    }, 300);
-                });
-            });
-            
-            // Close lightbox
-            closeBtn.addEventListener('click', closeVideoLightbox);
-            videoLightbox.addEventListener('click', function(e) {
-                if (e.target === videoLightbox) {
-                    closeVideoLightbox();
-                }
-            });
-            
-            function closeVideoLightbox() {
-                lightboxVideo.pause();
-                lightboxVideo.currentTime = 0;
-                videoLightbox.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-            
-            // Close with ESC key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && videoLightbox.style.display === 'flex') {
-                    closeVideoLightbox();
-                }
-            });
         });
     </script>
 </body>
