@@ -3,732 +3,545 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Troupe</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    
-    <!-- AOS Animation -->
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    
-    <!-- Lightbox CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-    <link rel="stylesheet" href="/frontend/css/footer.css">
-    <link rel="stylesheet" href="/frontend/css/navbar.css">
+    <title>Wedding Planning | Dream Day Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #e4002b; /* Rwanda flag red */
-            --secondary: #007a3d; /* Rwanda flag green */
-            --accent: #f9d423; /* Rwanda flag yellow */
-            
-            /* Light mode colors */
-            --bg-color: #f8f9fa;
-            --text-color: #212529;
-            --card-bg: #ffffff;
-            --section-bg: #e9ecef;
-            --footer-bg: #343a40;
-            --border-color: #dee2e6;
-            
-            /* Dark mode colors */
-            --bg-color-dark: #121212;
-            --text-color-dark: #f8f9fa;
-            --card-bg-dark: #1e1e1e;
-            --section-bg-dark: #1a1a1a;
-            --footer-bg-dark: #121212;
-            --border-color-dark: #333;
+            --primary-color: #d4af37; /* Gold */
+            --secondary-color: #f8f4f0; /* Cream */
+            --accent-color: #e8c4c4; /* Blush */
+            --dark-color: #333333; /* Dark gray */
+            --light-color: #ffffff; /* White */
+            --text-color: #4a4a4a; /* Soft black */
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
             color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-        }
-        
-        body.dark-mode {
-            --bg-color: var(--bg-color-dark);
-            --text-color: var(--text-color-dark);
-            --card-bg: var(--card-bg-dark);
-            --section-bg: var(--section-bg-dark);
-            --footer-bg: var(--footer-bg-dark);
-            --border-color: var(--border-color-dark);
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--text-color);
-        }
-        
-        /* Theme toggle button */
-        .theme-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 999;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-        
-        /* Enhanced Hero Section */
-        .hero-section {
-            position: relative;
-            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), 
-                        url('/frontend/allpack/indinzi/assetindinzi/pic9.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
-            padding: 180px 0;
-            margin-bottom: 60px;
-            text-align: center;
+            background-color: var(--secondary-color);
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+            line-height: 1.6;
         }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-color);
         }
-        
-        .hero-section h1 {
-            font-size: 4rem;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-            margin-bottom: 1.5rem;
-            color: white;
+
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--light-color) !important;
+            padding: 15px 0;
         }
-        
-        .hero-section .lead {
-            font-size: 1.5rem;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-            margin-bottom: 2.5rem;
-            color: #e0e0e0;
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
         }
-        
-        .hero-buttons .btn {
-            padding: 12px 30px;
-            font-weight: 600;
-            border-radius: 50px;
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark-color) !important;
             transition: all 0.3s ease;
+            margin: 0 10px;
         }
-        
-        .hero-buttons .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
         }
-        
-        .hero-buttons .btn-primary:hover {
-            background-color: #c10024;
-            border-color: #c10024;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .hero-buttons .btn-outline-light:hover {
-            background-color: rgba(100, 66, 66, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .hero-scroll-down {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .scroll-link {
-            color: white;
-            font-size: 2rem;
-            display: inline-block;
-            animation: bounce 2s infinite;
-            text-decoration: none;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-20px);
-            }
-            60% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        /* Video Section */
-        .video-container {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('/frontend/allpack/indinzi/assetindinzi/pic15.jpg');
-            background-size: cover;
-            background-position: center;
-            padding: 100px 0;
-            margin: 60px 0;
-        }
-        
-        /* Card Styles */
-        .card {
-            border: none;
-            border-radius: 10px;
+
+        .hero-section {
+            position: relative;
+            height: 80vh;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 76px;
+            z-index: 1;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            margin-bottom: 0;
-            background-color: var(--card-bg);
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-        
-        .card-img-top {
-            height: 250px;
             object-fit: cover;
-            transition: transform 0.5s;
-            cursor: pointer;
+            z-index: -1;
+            filter: brightness(0.6);
+            background: var(--dark-color); /* Fallback color */
         }
-        
-        .card:hover .card-img-top {
-            transform: scale(1.05);
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+            z-index: 2;
         }
-        
-        .card-body {
-            padding: 25px;
-            color: var(--text-color);
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
         }
-        
-        .card-title {
-            color: var(--primary);
+
+        .hero-content p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .booking-container {
+            max-width: 1200px;
+            margin: -100px auto 50px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .booking-card {
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            background: var(--light-color);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .booking-header {
+            background: linear-gradient(135deg, var(--primary-color), #f1d27a);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .booking-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .booking-body {
+            padding: 40px;
+        }
+
+        .form-label {
             font-weight: 600;
-            margin-bottom: 15px;
+            color: var(--dark-color);
+            margin-bottom: 8px;
         }
-        
-        .card-text {
-            color: var(--text-color);
-            opacity: 0.8;
+
+        .form-control, .form-select {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            transition: all 0.3s;
+            background-color: var(--secondary-color);
         }
-        
-        /* Section Titles */
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 15px 30px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            background-color: #c19b2c;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            border-radius: 10px;
+            background: var(--light-color);
+            height: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .why-choose-us {
+            background: var(--secondary-color);
+            padding: 80px 0;
+        }
+
         .section-title {
             position: relative;
-            margin-bottom: 70px;
+            margin-bottom: 50px;
             text-align: center;
-            color: var(--text-color);
         }
-        
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--dark-color);
+        }
+
         .section-title:after {
             content: '';
             display: block;
-            width: 80px;
+            width: 100px;
             height: 4px;
-            background: var(--accent);
-            margin: 15px auto;
+            background: var(--primary-color);
+            margin: 20px auto;
+            border-radius: 2px;
         }
-        
-        /* Dance Section Container */
-        .dance-section {
-            padding: 100px 0;
-            background-color: var(--bg-color);
-        }
-        
-        /* Card spacing */
-        .dance-section .row {
-            margin: 0 -20px;
-        }
-        
-        .dance-section [class*="col-"] {
-            padding: 20px !important;
-            margin-bottom: 30px;
-        }
-        
-        /* Video Gallery Section */
-        .video-gallery {
-            padding: 60px 0;
-            background-color: var(--section-bg);
-        }
-        
-        .video-thumbnail {
-            position: relative;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            background-color: var(--card-bg);
-        }
-        
-        .video-thumbnail:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        
-        .video-thumbnail img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .video-thumbnail:hover img {
-            transform: scale(1.05);
-        }
-        
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background-color: rgba(220, 53, 69, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        footer {
+            background: var(--dark-color);
             color: white;
-            font-size: 24px;
-            transition: all 0.3s ease;
+            padding: 60px 0 30px;
+            margin-top: auto;
         }
-        
-        .video-thumbnail:hover .play-button {
-            background-color: rgba(220, 53, 69, 1);
-            transform: translate(-50%, -50%) scale(1.1);
+
+        .form-section-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
-        
-        .video-caption {
-            padding: 15px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
+
+        .wedding-details {
+            background-color: rgba(232, 196, 196, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-color);
         }
-        
-        .video-caption h4 {
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-        
-        .video-caption p {
-            font-size: 0.9rem;
-            color: var(--text-color);
-            opacity: 0.8;
-            margin-bottom: 0;
-        }
-        
-        /* Lightbox Overrides */
-        .lightbox .lb-image {
-            border: 5px solid var(--card-bg);
-            border-radius: 3px;
-        }
-        
-        .lightbox .lb-nav a.lb-prev,
-        .lightbox .lb-nav a.lb-next {
+
+        /* Placeholder styling */
+        ::placeholder {
+            color: #999;
             opacity: 1;
         }
-        
-        .lightbox .lb-close {
-            opacity: 1;
-        }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .hero-section {
-                padding: 120px 0;
-                min-height: auto;
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3rem;
             }
             
-            .hero-section h1 {
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 60vh;
+            }
+            
+            .booking-container {
+                margin-top: -50px;
+            }
+            
+            .hero-content h1 {
                 font-size: 2.5rem;
             }
             
-            .hero-section .lead {
-                font-size: 1.2rem;
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .navbar {
+                padding: 10px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                height: 50vh;
             }
             
-            .hero-buttons .btn {
-                padding: 10px 20px;
-                font-size: 1rem;
-                display: block;
-                width: 80%;
-                margin: 0 auto 10px;
+            .hero-content h1 {
+                font-size: 2rem;
             }
             
-            .hero-buttons .btn.me-3 {
-                margin-right: auto !important;
+            .booking-body {
+                padding: 25px;
             }
-            
-            .video-container {
-                padding: 60px 0;
-            }
-            
-            .dance-section {
-                padding: 60px 0;
-            }
-            
-            .dance-section [class*="col-"] {
-                padding: 15px !important;
-                margin-bottom: 20px;
-            }
-            
-            .video-thumbnail img {
-                height: 200px;
-            }
-            
-            .play-button {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
+
+            .booking-header h2 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-  <button class="theme-toggle" id="themeToggle">
-    <i class="fas fa-moon"></i>
-  </button>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-heart me-2"></i>Dream Day
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.htm"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html"><i class="fas fa-info-circle me-1"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-ring me-1"></i> Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"><i class="fas fa-gift me-1"></i> Packages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/frontend/supliers/suply.html"><i class="fas fa-camera me-1"></i> Vendors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="booking.html"><i class="fas fa-bookmark me-1"></i> Book Consultation</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand logo-margin" href="#">Logo</a>
-        <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- Hero Section with Video Background -->
+    <section class="hero-section">
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="/assethome/booking.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="fw-bold mb-4">Your Dream Wedding Starts Here</h1>
+                <p class="lead mb-5">Let us craft the perfect celebration of your love story with personalized planning and exquisite attention to detail</p>
+                <a href="#booking-form" class="btn btn-primary btn-lg px-4 py-3">
+                    <i class="fas fa-calendar-plus me-2"></i> Book Your Consultation
+                </a>
+            </div>
+        </div>
+    </section>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-           
-            <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/frontend/home_packages/home.htm">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="about.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Service</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/frontend/home_packages/index.html">Packages</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/frontend/supliers/suply.html">Suppliers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">Booking</a>
-                </li>
-            </ul>
+    <!-- Booking Form Section -->
+    <div class="booking-container" id="booking-form">
+        <div class="booking-card">
+            <div class="booking-header">
+                <h2><i class="fas fa-heart me-2"></i> Wedding Planning Consultation</h2>
+                <p class="mb-0">Begin your journey to the perfect wedding day</p>
+            </div>
+            <div class="booking-body">
+                <form id="weddingBookingForm" action="/submit-wedding-booking" method="POST">
+                    <!-- Couple's Information -->
+                    <div class="wedding-details">
+                        <h5 class="form-section-title"><i class="fas fa-user-friends me-2"></i> Couple's Information</h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="brideName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="brideName" name="brideName" required placeholder="Kirenga">
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="groomName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="groomName" name="groomName" required placeholder="Pamella">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" name="email" required placeholder="couple@example.com">
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="+250 785300707">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wedding Details -->
+                    <div class="wedding-details">
+                        <h5 class="form-section-title"><i class="fas fa-calendar-heart me-2"></i> Wedding Details</h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="weddingDate" class="form-label">Wedding Date</label>
+                                <input type="date" class="form-control" id="weddingDate" name="weddingDate" required min="<?php echo date('Y-m-d'); ?>">
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="weddingType" class="form-label">Wedding Style</label>
+                                <select class="form-select" id="weddingType" name="weddingType" required>
+                                    <option value="" disabled selected>Select Wedding Style</option>
+                                    <option value="Traditional">Traditional</option>
+                                    <option value="Modern">Modern</option>
+                                    <option value="Rustic">Rustic</option>
+                                    <option value="Beach">Beach</option>
+                                    <option value="Destination">Destination</option>
+                                    <option value="Cultural">Cultural/Religious</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="guestsNumber" class="form-label">Estimated Number of Guests</label>
+                                <input type="number" class="form-control" id="guestsNumber" name="guestsNumber" required min="1" placeholder="150">
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="budgetRange" class="form-label">Estimated Budget Range</label>
+                                <select class="form-select" id="budgetRange" name="budgetRange" required>
+                                    <option value="" disabled selected>Select Budget Range</option>
+                                    <option value="Under 10k">Under $10,000</option>
+                                    <option value="10k-25k">$10,000 - $25,000</option>
+                                    <option value="25k-50k">$25,000 - $50,000</option>
+                                    <option value="50k-100k">$50,000 - $100,000</option>
+                                    <option value="Over 100k">Over $100,000</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="weddingLocation" class="form-label">Wedding Location (if known)</label>
+                            <input type="text" class="form-control" id="weddingLocation" name="weddingLocation" placeholder="Venue name or city">
+                        </div>
+                    </div>
+
+                    <!-- Services Needed -->
+                    <div class="wedding-details">
+                        <h5 class="form-section-title"><i class="fas fa-clipboard-list me-2"></i> Services Needed</h5>
+                        <div class="mb-3">
+                            <p class="form-label">Which services are you interested in? (Select all that apply)</p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="fullPlanning" name="services[]" value="Full Planning">
+                                        <label class="form-check-label" for="fullPlanning">Full Wedding Planning</label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="partialPlanning" name="services[]" value="Partial Planning">
+                                        <label class="form-check-label" for="partialPlanning">Partial Planning</label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="dayCoordination" name="services[]" value="Day Coordination">
+                                        <label class="form-check-label" for="dayCoordination">Day-of Coordination</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="venueSelection" name="services[]" value="Venue Selection">
+                                        <label class="form-check-label" for="venueSelection">Venue Selection</label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="vendorCoordination" name="services[]" value="Vendor Coordination">
+                                        <label class="form-check-label" for="vendorCoordination">Vendor Coordination</label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="designDecor" name="services[]" value="Design & Decor">
+                                        <label class="form-check-label" for="designDecor">Design & Decor</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="rehearsalDinner" name="services[]" value="Rehearsal Dinner">
+                                        <label class="form-check-label" for="rehearsalDinner">Rehearsal Dinner</label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="bridalShower" name="services[]" value="Bridal Shower">
+                                        <label class="form-check-label" for="bridalShower">Bridal Shower</label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="otherService" name="services[]" value="Other">
+                                        <label class="form-check-label" for="otherService">Other</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Information -->
+                    <div class="mb-4">
+                        <label for="weddingVision" class="form-label">Tell Us About Your Wedding Vision</label>
+                        <textarea class="form-control" id="weddingVision" name="weddingVision" rows="4" placeholder="Describe your dream wedding..."></textarea>
+                    </div>
+                    
+                    <div class="form-check mb-4">
+                        <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter" checked>
+                        <label class="form-check-label" for="newsletter">
+                            Subscribe to our wedding planning newsletter for tips and inspiration
+                        </label>
+                    </div>
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary py-3">
+                            <i class="fas fa-paper-plane me-2"></i> Request Consultation
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-  </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="overlay"></div>
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
         <div class="container">
-            <div class="hero-content" data-aos="fade-up">
-                <h1 class="display-3 fw-bold mb-4">Rwandan Traditional Dance</h1>
-                <p class="lead mb-5" data-aos="fade-up" data-aos-delay="200">
-                    Experience the rhythm, grace and storytelling of Rwanda's cultural heritage
-                </p>
-                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="400">
-                    <a href="#dances" class="btn btn-primary btn-lg me-3">Our Images</a>
-                    <a href="#video-gallery" class="btn btn-outline-light btn-lg">Short Videos</a>
-                </div>
+            <div class="section-title">
+                <h2>Why Couples Choose Us</h2>
             </div>
-        </div>
-        <div class="hero-scroll-down">
-            <a href="#dances" class="scroll-link" data-aos="fade-up" data-aos-delay="600">
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </div>
-    </section>
-
-    <!-- Dance Styles Section -->
-    <section class="dance-section container" id="dances">
-        <h2 class="section-title" data-aos="fade-up">Our Traditional Dance Styles</h2>
-        
-        <div class="row">
-            <!-- Intore Dance -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/pic18.jpg" data-lightbox="dance-gallery" data-title="Intore Dance - The warrior's dance celebrating Rwanda's heritage">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage18.jpg" class="card-img-top" alt="Intore Dance">
-                  </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Intore Dance</h5>
-                        <p class="card-text">The warrior's dance - celebrating Rwanda's bravery and heritage through powerful movements.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Umushayayo -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/pic1.jpg" data-lightbox="dance-gallery" data-title="Umushayayo - Graceful Rwandan dance">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/pic1.jpg" class="card-img-top" alt="Umushayayo">
-                  </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Umushayayo</h5>
-                        <p class="card-text">Graceful movements that tell stories of Rwandan traditions and daily life.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Ikinyemera -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/noella.jpg" data-lightbox="dance-gallery" data-title="Ikinyemera - Celebratory harvest dance">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(noella).jpg" class="card-img-top" alt="Ikinyemera">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Ikinyemera</h5>
-                        <p class="card-text">Celebratory dance marking harvest seasons and community achievements.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Ritual Dances -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/patty.jpg" data-lightbox="dance-gallery" data-title="Ritual Dances - Sacred ancestral dances">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(patty).jpg" class="card-img-top" alt="Ritual Dances">
-                  </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Ritual Dances</h5>
-                        <p class="card-text">Sacred movements connecting us to ancestors and spiritual traditions.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Ingoma -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/pic15.jpg" data-lightbox="dance-gallery" data-title="Ingoma - The powerful drum dance">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(15).jpg" class="card-img-top" alt="Ingoma">
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Ingoma</h5>
-                        <p class="card-text">The drum dance - where rhythm and movement become one powerful expression.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Royal Dances -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/pic.jpg" data-lightbox="dance-gallery" data-title="Royal Dances - Elegant court performances">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/pic.jpg" class="card-img-top" alt="Royal Dances">
-                  </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Royal Dances</h5>
-                        <p class="card-text">Elegant performances that once graced the courts of Rwandan kings.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Dance of Unity -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up">
-                <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/pic13.jpg" data-lightbox="dance-gallery" data-title="Dance of Unity - Celebrating togetherness">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(13).jpg" class="card-img-top" alt="Dance of Unity">
-                  </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Dance of Unity</h5>
-                        <p class="card-text">Celebrating Rwanda's spirit of togetherness through synchronized movements.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Celebration Dance -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/oben.jpg" data-lightbox="dance-gallery" data-title="Celebration Dance - Joyful expressions">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/oben.jpg" class="card-img-top" alt="Celebration Dance">
-                  </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Celebration Dance</h5>
-                        <p class="card-text">Joyful expressions marking life's milestones in Rwandan culture.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Cultural Preservation -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/last3.jpg" data-lightbox="dance-gallery" data-title="Cultural Preservation - Passing traditions to new generations">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(last3).jpg" class="card-img-top" alt="Cultural Preservation">
-                  </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Cultural Preservation</h5>
-                        <p class="card-text">Teaching traditional dances to ensure Rwanda's heritage continues.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Women's Dance -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" data-lightbox="dance-gallery" data-title="Women's Dance - Traditional performances by female dancers">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/abakobwa.jpg" class="card-img-top" alt="Women's Dance">
-                  </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Women's Dance</h5>
-                        <p class="card-text">Traditional performances showcasing the grace of Rwandan women.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Community Dance -->
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="card">
-                  <a href="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" data-lightbox="dance-gallery" data-title="Community Dance - Bringing people together">
-                    <img src="/frontend/allpack/indinzi/assetindinzi/Webp.net-resizeimage(1) (copy).jpg" class="card-img-top" alt="Community Dance">
-                  </a>
-                    <div class="card-body">
-                        <h5 class="card-title">Community Dance</h5>
-                        <p class="card-text">Traditional dances that strengthen community bonds and celebrations.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Video Gallery Section -->
-    <section id="video-gallery" class="video-gallery">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Our Dance Videos</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Watch our traditional dances in action</p>
-                </div>
-            </div>
-            <div class="row">
-                <!-- Video 1 -->
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="video-thumbnail">
-                        <a href="/frontend/allpack/indinzi/video_asset/mucyo.mp4" target="_blank">
-                            <img src="/frontend/allpack/indinzi/video_asset/Webp.net-resizeimage(mucyo).png" alt="Wedding Dance Performance">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Wedding Dance</h4>
-                            <p>Traditional performance at a Rwandan wedding</p>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-gem"></i>
                         </div>
+                        <h4>Luxury Experience</h4>
+                        <p>We specialize in creating luxurious, stress-free wedding experiences with attention to every detail.</p>
                     </div>
                 </div>
-                
-                <!-- Video 2 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="video-thumbnail">
-                        <a href="/frontend/allpack/indinzi/video_asset/queen.mp4" target="_blank">
-                            <img src="/frontend/allpack/indinzi/video_asset/Webp.net-resizeimage(olga).png" alt="Intore Warrior Dance">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Intore Warrior Dance</h4>
-                            <p>Powerful traditional warrior performance</p>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
                         </div>
+                        <h4>Personalized Service</h4>
+                        <p>Your wedding is unique, and we tailor our services to reflect your personal love story.</p>
                     </div>
                 </div>
-                
-                <!-- Video 3 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="video-thumbnail">
-                        <a href="/frontend/allpack/indinzi/video_asset/ikanombe.mp4" target="_blank">
-                            <img src="/frontend/allpack/indinzi/video_asset/webamayugi.png" alt="Celebration Dance">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Celebration Dance</h4>
-                            <p>Joyful community celebration</p>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-network-wired"></i>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Video 4 -->
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="video-thumbnail">
-                        <a href="/frontend/allpack/indinzi/video_asset/umuzungu.mp4" target="_blank">
-                            <img src="/frontend/allpack/indinzi/video_asset/umuzungu.png" alt="Traditional Drum Performance">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Drum Performance</h4>
-                            <p>Traditional Rwandan drumming</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 5 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="video-thumbnail">
-                        <a href="/frontend/allpack/indinzi/video_asset/umushagiriro.mp4">
-                            <img src="/frontend/allpack/indinzi/video_asset/umushagiriro.png" alt="Cultural Festival Dance">
-                       
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Festival Dance</h4>
-                            <p>Performance at cultural festival</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 6 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="video-thumbnail">
-                        <a href="/frontend/allpack/catering/cataringvideos/v8.mp4" target="_blank">
-                            <img src="/frontend/allpack/catering/cataringvideos/im8.png" alt="Traditional Storytelling Dance">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Storytelling Dance</h4>
-                            <p>Dance that tells traditional stories</p>
-                        </div>
+                        <h4>Vendor Network</h4>
+                        <p>Access to our exclusive network of top-tier wedding vendors and venues.</p>
                     </div>
                 </div>
             </div>
@@ -736,107 +549,84 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-4">
+    <footer class="bg-dark text-white">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <h5>About Us</h5>
-                    <p class="footer-content">We are a dedicated team of cultural performers, committed to preserving and sharing Rwanda's rich dance heritage through authentic and captivating performances.</p>
+                <div class="col-md-4 mb-4">
+                    <h5><i class="fas fa-heart me-2"></i> Dream Day Weddings</h5>
+                    <p>Crafting unforgettable wedding experiences since 2008.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-3"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-tiktok"></i></a>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled footer-content">
-                        <li><a href="/frontend/home_packages/home.htm">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="/frontend/home_packages/index.html">Packages</a></li>
-                        <li><a href="/frontend/supliers/suply.html">Suppliers</a></li>
+                <div class="col-md-4 mb-4">
+                    <h5>Wedding Resources</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Planning Checklist</a></li>
+                        <li><a href="#" class="text-white">Vendor Directory</a></li>
+                        <li><a href="#" class="text-white">Wedding Inspiration</a></li>
+                        <li><a href="#" class="text-white">Budget Calculator</a></li>
+                        <li><a href="#" class="text-white">FAQ</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5>Connect With Us</h5>
-                    <ul class="list-unstyled footer-content">
-                        <li><a href="#"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                <div class="col-md-4 mb-4">
+                    <h5>Contact Our Planners</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> 456 Wedding Lane, Beverly Hills, CA</li>
+                        <li><i class="fas fa-phone me-2"></i> (310) 555-1212</li>
+                        <li><i class="fas fa-envelope me-2"></i> hello@dreamday.com</li>
+                        <li><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM-6PM</li>
                     </ul>
                 </div>
             </div>
-            <div class="text-center mt-4">
-                <p class="footer-content">&copy; 2025 Rwandan Traditional Dance Troupe. All Rights Reserved.</p>
+            <hr class="my-4 bg-light">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 Dream Day Weddings. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- AOS Animation -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    
-    <!-- Lightbox JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Initialize AOS animation
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-        
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        
-        // Check for saved user preference, if any
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme) {
-            body.classList.add(currentTheme);
-            updateToggleIcon(currentTheme);
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            if (body.classList.contains('dark-mode')) {
-                body.classList.remove('dark-mode');
-                localStorage.setItem('theme', '');
-                updateToggleIcon('');
-            } else {
-                body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark-mode');
-                updateToggleIcon('dark-mode');
-            }
-        });
-        
-        function updateToggleIcon(theme) {
-            const icon = themeToggle.querySelector('i');
-            if (theme === 'dark-mode') {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        }
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('weddingBookingForm');
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('weddingDate').min = today;
+            
+            // Add date validation to ensure it's at least 3 months from today
+            const weddingDateInput = document.getElementById('weddingDate');
+            weddingDateInput.addEventListener('change', function() {
+                const selectedDate = new Date(this.value);
+                const minDate = new Date();
+                minDate.setMonth(minDate.getMonth() + 3);
+                
+                if (selectedDate < minDate) {
+                    alert('Please select a date at least 3 months from today to allow proper planning time.');
+                    this.value = '';
+                }
+            });
+            
+            // Add animations for feature cards
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
                 });
             });
-        });
-        
-        // Configure Lightbox for images
-        lightbox.option({
-            'resizeDuration': 200,
-            'wrapAround': true,
-            'alwaysShowNavOnTouchDevices': true,
-            'disableScrolling': true,
-            'albumLabel': 'Image %1 of %2'
+            
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would normally submit the form
+                alert('Thank you for your wedding consultation request! We will contact you within 24 hours.');
+                form.reset();
+            });
         });
     </script>
 </body>
