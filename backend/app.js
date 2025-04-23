@@ -2,12 +2,14 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const router = require('./routers/routers');
+const decorouter = require("./routers/packagerouter");
 
 // Serve static files
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Use the router
 app.use(router);
+app.use(decorouter);
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
