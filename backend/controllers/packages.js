@@ -19,4 +19,19 @@ exports.getdecor = (req,res) =>{
     }
 exports.gettroupe = (req,res) =>{
     res.sendFile(path.join(__dirname,"../../frontend/allpack/indinzi/troup/indinzi.html"));
-    }         
+    }
+exports.getgakondo = (req,res) =>{
+    res.sendFile(path.join(__dirname,"../../frontend/allpack/iganze/gakondo.html"));
+    }       
+exports.getsound = (req,res) =>{
+    res.sendFile(path.join(__dirname,"../../frontend/allpack/sound/sound.html"));
+    }
+exports.getphotographers= (req,res)=>{
+    res.sendFile(path.join(__dirname,"../../frontend/allpack/photographers/photographers.html"))
+    catering}         
+exports.getcatering= (req,res)=>{
+    res.sendFile(path.join(__dirname,"../../frontend/allpack/catering/catering.html"));
+  }
+exports.getservice= (req,res)=>{
+    res.sendFile(path.join(__dirname,"../../frontend/allpack/iriza/iriza.html"));
+}      

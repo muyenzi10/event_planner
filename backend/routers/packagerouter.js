@@ -8,5 +8,11 @@ routerpack.get("/styles", packages.getstyle);
 routerpack.get("/beauty", packages.getbeauty);
 routerpack.get("/troupe", packages.gettroupe);
 routerpack.get("/mc", packages.getmc);
+routerpack.get("/gakondo", packages.getgakondo);
+routerpack.get("/sound", packages.getsound);
+routerpack.get("/photographers", packages.getphotographers);
+routerpack.get("/catering", packages.getcatering);
+routerpack.get("/service", packages.getservice);
+
 
 module.exports = routerpack;
