@@ -3,14 +3,17 @@ const app = express();
 const path = require('path');
 const router = require('./routers/routers');
 const decorouter = require("./routers/packagerouter");
-const mongoose = require('mongoose'); // Use raw mongoose here
+const mongoose = require('mongoose');
+const booking = require('./models/mydb');
+const bookingdbrpouter = require("./routers/bookingrouter");
 
 // Serve static files
 app.use(express.static(path.join(__dirname, '../frontend')));
-
+app.use(express.json());
 // Use the router
 app.use(router);
 app.use(decorouter);
+app.use(bookingdbrpouter);
 
 // 404 handler
 app.use((req, res, next) => {
@@ -24,10 +27,7 @@ app.use((err, req, res, next) => {
 });
 
 // Connect to MongoDB and then start server
-mongoose.connect("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.0", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect("mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.5.0")
 .then(() => {
     console.log("MongoDB connected");
     const PORT = 8000;
