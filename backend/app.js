@@ -6,6 +6,7 @@ const decorouter = require("./routers/packagerouter");
 const mongoose = require('mongoose');
 const booking = require('./models/mydb');
 const bookingdbrpouter = require("./routers/bookingrouter");
+const supplierdb = require("./routers/supplierrouter");
 
 // Serve static files
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(router);
 app.use(decorouter);
 app.use(bookingdbrpouter);
+app.use(supplierdb);
 
 // 404 handler
 app.use((req, res, next) => {
