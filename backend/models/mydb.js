@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const booking = mongoose.Schema({
   couple: {
     firstname: {

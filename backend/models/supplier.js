@@ -66,5 +66,4 @@ const SupplierSchema = new mongoose.Schema({
     respondedAt: Date
   }
 });
-
 module.exports = mongoose.model("Supplier", SupplierSchema);
