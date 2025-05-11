@@ -24,7 +24,7 @@ const SupplierSchema = new mongoose.Schema({
   },
   business: {
     type: String,
-    required: [true, "Business name is required"],
+    required: false,
     trim: true
   },
   location: {

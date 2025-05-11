@@ -32,6 +32,11 @@ const adminSchema = new mongoose.Schema({
             },
             message: "Passwords do not match!"
         }
+    },
+    role: {
+        type: String,
+        enum: ['admin', 'user'],
+        default: 'admin'
     }
 });
 
@@ -39,8 +44,8 @@ adminSchema.pre('save', async function(next) {
     if (!this.isModified('password')) return next();
 
     this.password = await bcrypt.hash(this.password, 12);
-    this.passwordconfirm = undefined; // Don't store confirmation
+    this.passwordconfirm = undefined;
     next();
 });
 
-module.exports = mongoose.model("admin", adminSchema);
+module.exports = mongoose.model("Admin", adminSchema);

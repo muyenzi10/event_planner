@@ -8,11 +8,12 @@ const bookingdbrpouter = require("./routers/bookingrouter");
 const supplierdb = require("./routers/supplierrouter");
 const routersautor = require("./routers/signuprouter");
 const login = require("./routers/login");
+const bodyParser = require('body-parser');
 // Serve static files
 app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(express.json());
 require('dotenv').config({ path: "./config.env" });
-
+app.use(bodyParser.urlencoded({ extended: false }));
 // Use the router
 app.use(router);
 app.use(decorouter);
@@ -25,7 +26,11 @@ app.use(login);
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, '../frontend/error.html'));
 });
+app.use((req, res, next)=>{
+    console.log(req.headers);
+    next();
 
+});
 // General error handler
 app.use((err, req, res, next) => {
     console.error(err.stack);
@@ -36,7 +41,7 @@ app.use((err, req, res, next) => {
 mongoose.connect("mongodb://127.0.0.1:27017/wedding_planner?directConnection=true")
 .then(() => {
     console.log("MongoDB connected");
-    const PORT = 8000;
+    const PORT = 7000;
     app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
     });
