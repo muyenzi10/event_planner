@@ -508,84 +508,79 @@
                     </div>
                 </div>
                 
-                <form id="weddingBookingForm" action="/submit-wedding-booking" method="POST">
+                <form id="weddingBookingForm" action="/booking/submit" method="POST">
                     <!-- Couple's Information -->
                     <div class="wedding-details">
-                        <h5 class="form-section-title"><i class="fas fa-user-friends me-2"></i> Couple's Information</h5>
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <label for="brideName" class="form-label">First Name <span class="required">*</span></label>
-                                <input type="text" class="form-control" id="brideName" name="brideName" required placeholder="Kirenga">
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <label for="groomName" class="form-label">Last Name <span class="required">*</span></label>
-                                <input type="text" class="form-control" id="groomName" name="groomName" required placeholder="Pamella">
-                            </div>
+                      <h5 class="form-section-title"><i class="fas fa-user-friends me-2"></i> Couple's Information</h5>
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+                          <label for="brideName" class="form-label">First Name <span class="required">*</span></label>
+                          <input type="text" class="form-control" id="brideName" name="couple[firstname]" required>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <label for="email" class="form-label">Email Address <span class="required">*</span></label>
-                                <input type="email" class="form-control" id="email" name="email" required placeholder="couple@example.com">
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <label for="phone" class="form-label">Phone Number</label>
-                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="+250 785300707">
-                            </div>
+                        <div class="col-md-6 mb-4">
+                          <label for="groomName" class="form-label">Last Name <span class="required">*</span></label>
+                          <input type="text" class="form-control" id="groomName" name="couple[lastname]" required>
                         </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+                          <label for="email" class="form-label">Email Address <span class="required">*</span></label>
+                          <input type="email" class="form-control" id="email" name="couple[email]" required placeholder="couple@example.com">
+                        </div>
+                        <div class="col-md-6 mb-4">
+                          <label for="phone" class="form-label">Phone Number</label>
+                          <input type="tel" class="form-control" id="phone" name="couple[phone]" required placeholder="+250 785300707">
+                        </div>
+                      </div>
                     </div>
-
+                  
                     <!-- Wedding Details -->
                     <div class="wedding-details">
-                        <h5 class="form-section-title"><i class="fas fa-calendar-heart me-2"></i> Wedding Details</h5>
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <label for="weddingDate" class="form-label">Wedding Date <span class="required">*</span></label>
-                                <input type="date" class="form-control" id="weddingDate" name="weddingDate" required min="<?php echo date('Y-m-d'); ?>">
-                                <small class="text-muted">Please select a date at least 3 months from today</small>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <label for="guestsNumber" class="form-label">Estimated Number of Guests <span class="required">*</span></label>
-                                <input type="number" class="form-control" id="guestsNumber" name="guestsNumber" required min="1" placeholder="150">
-                            </div>
-                        </div>
-                        <div class="row">
+                      <h5 class="form-section-title"><i class="fas fa-calendar-heart me-2"></i> Wedding Details</h5>
+                      <div class="row">
                         <div class="col-md-6 mb-4">
-                            <label for="weddingType" class="form-label">Wedding Style</label>
-                            <select class="form-select" id="weddingType" name="weddingType" required>
-                                <option value="" disabled selected>Select Wedding Style</option>
-                                <option value="Traditional">Gusaba no Gukwa</option>
-                                <option value="Modern">Reception</option>
-                                <option value="Rustic">Both</option>
-                                <option value="Beach">Other</option>
-                            </select>
+                          <label for="weddingDate" class="form-label">Wedding Date <span class="required">*</span></label>
+                          <input type="date" class="form-control" id="weddingDate" name="weddingDate" required min="<?php echo date('Y-m-d'); ?>">
+                          <small class="text-muted">Please select a date at least 3 months from today</small>
                         </div>
                         <div class="col-md-6 mb-4">
-                            <label for="weddingLocation" class="form-label">Wedding Location (if known)</label>
-                            <input type="text" class="form-control" id="weddingLocation" name="weddingLocation" placeholder="Venue name or city">
+                          <label for="guestsNumber" class="form-label">Estimated Number of Guests <span class="required">*</span></label>
+                          <input type="number" class="form-control" id="guestsNumber" name="guestsNumber" required min="1" placeholder="150">
                         </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6 mb-4">
+                          <label for="weddingType" class="form-label">Wedding Style</label>
+                          <select class="form-select" id="weddingType" name="weddingType" required>
+                            <option value="" disabled selected>Select Wedding Style</option>
+                            <option value="Traditional">Gusaba no Gukwa</option>
+                            <option value="Modern">Reception</option>
+                            <option value="Rustic">Both</option>
+                            <option value="Beach">Other</option>
+                          </select>
                         </div>
+                        <div class="col-md-6 mb-4">
+                          <label for="weddingLocation" class="form-label">Wedding Location (if known)</label>
+                          <input type="text" class="form-control" id="weddingLocation" name="weddingLocation" placeholder="Venue name or city">
+                        </div>
+                      </div>
                     </div>
-
-            
+                  
                     <!-- Additional Information -->
                     <div class="mb-4">
-                        <label for="weddingVision" class="form-label">Tell Us About Your Wedding Vision</label>
-                        <textarea class="form-control" id="weddingVision" name="weddingVision" rows="4" placeholder="Describe your dream wedding theme, colors, special requirements..."></textarea>
+                      <label for="weddingVision" class="form-label">Tell Us About Your Wedding Vision</label>
+                      <textarea class="form-control" id="weddingVision" name="weddingVision" rows="4" placeholder="Describe your dream wedding theme, colors, special requirements..."></textarea>
                     </div>
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter" checked>
-                        <label class="form-check-label" for="newsletter">
-                            Subscribe to our wedding planning newsletter for tips and inspiration
-                        </label>
-                    </div>
-                    
+                  
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary py-3" id="submitButton">
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                            <i class="fas fa-paper-plane me-2"></i> Request Consultation
-                        </button>
+                      <button type="submit" class="btn btn-primary py-3" id="submitButton">
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        <i class="fas fa-paper-plane me-2"></i> Request Consultation
+                      </button>
                     </div>
-                </form>
+                  </form>
+                  
+                  
             </div>
         </div>
     </div>
@@ -768,5 +763,41 @@
             });
         });
     </script>
+   <script>
+    document.getElementById('weddingBookingForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const formData = {
+    couple: {
+      firstname: this.elements['couple.firstname'].value,
+      lastname: this.elements['couple.lastname'].value,
+      email: this.elements['couple.email'].value,
+      phone: this.elements['couple.phone'].value
+    },
+    weddingDate: this.elements.weddingDate.value,
+    guestsNumber: this.elements.guestsNumber.value,
+    weddingType: this.elements.weddingType.value,
+    weddingLocation: this.elements.weddingLocation.value,
+    weddingVision: this.elements.weddingVision.value
+  };
+
+  fetch('/booking/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    console.log('Success:', data);
+    // Show success message
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    // Show error message
+  });
+});
+   </script>
 </body>
 </html>
