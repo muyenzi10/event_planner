@@ -548,9 +548,21 @@
                                 <input type="number" class="form-control" id="guestsNumber" name="guestsNumber" required min="1" placeholder="150">
                             </div>
                         </div>
-                        <div class="mb-4">
+                        <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label for="weddingType" class="form-label">Wedding Style</label>
+                            <select class="form-select" id="weddingType" name="weddingType" required>
+                                <option value="" disabled selected>Select Wedding Style</option>
+                                <option value="Traditional">Gusaba no Gukwa</option>
+                                <option value="Modern">Reception</option>
+                                <option value="Rustic">Both</option>
+                                <option value="Beach">Other</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-4">
                             <label for="weddingLocation" class="form-label">Wedding Location (if known)</label>
                             <input type="text" class="form-control" id="weddingLocation" name="weddingLocation" placeholder="Venue name or city">
+                        </div>
                         </div>
                     </div>
 

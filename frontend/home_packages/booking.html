@@ -17,6 +17,7 @@
             --dark-color: #333333; /* Dark gray */
             --light-color: #ffffff; /* White */
             --text-color: #4a4a4a; /* Soft black */
+            --success-color: #28a745; /* Green */
         }
         
         body {
@@ -40,6 +41,12 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             background-color: var(--light-color) !important;
             padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .navbar-brand {
@@ -47,6 +54,8 @@
             color: var(--primary-color) !important;
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
+            display: flex;
+            align-items: center;
         }
 
         .nav-link {
@@ -54,10 +63,22 @@
             color: var(--dark-color) !important;
             transition: all 0.3s ease;
             margin: 0 10px;
+            position: relative;
         }
 
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary-color) !important;
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
         }
 
         .hero-section {
@@ -90,12 +111,19 @@
             text-align: center;
             padding: 0 20px;
             z-index: 2;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-content h1 {
             font-size: 4rem;
             margin-bottom: 20px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1s ease 0.2s both;
         }
 
         .hero-content p {
@@ -103,6 +131,11 @@
             max-width: 800px;
             margin-bottom: 30px;
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease 0.4s both;
+        }
+
+        .hero-content .btn {
+            animation: fadeIn 1s ease 0.6s both;
         }
 
         .booking-container {
@@ -119,6 +152,11 @@
             overflow: hidden;
             background: var(--light-color);
             border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .booking-card:hover {
+            transform: translateY(-5px);
         }
 
         .booking-header {
@@ -126,11 +164,29 @@
             color: white;
             padding: 30px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-header:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255,255,255,0.3) 0%,
+                rgba(255,255,255,0) 60%
+            );
+            transform: rotate(30deg);
         }
 
         .booking-header h2 {
             font-size: 2.5rem;
             margin-bottom: 10px;
+            position: relative;
         }
 
         .booking-body {
@@ -141,6 +197,13 @@
             font-weight: 600;
             color: var(--dark-color);
             margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-label .required {
+            color: var(--primary-color);
+            margin-left: 4px;
         }
 
         .form-control, .form-select {
@@ -167,6 +230,25 @@
             transition: all 0.3s;
             font-size: 1.1rem;
             letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255,255,255,0.3) 0%,
+                rgba(255,255,255,0) 60%
+            );
+            transform: rotate(30deg);
+            transition: all 0.3s;
+            opacity: 0;
         }
 
         .btn-primary:hover {
@@ -175,10 +257,15 @@
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
         }
 
+        .btn-primary:hover:after {
+            opacity: 1;
+        }
+
         .feature-icon {
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 20px;
+            transition: transform 0.3s ease;
         }
 
         .feature-card {
@@ -189,12 +276,17 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
             border: 1px solid rgba(212, 175, 55, 0.1);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            cursor: default;
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
         }
 
         .why-choose-us {
@@ -236,6 +328,8 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
         }
 
         .wedding-details {
@@ -244,12 +338,49 @@
             border-radius: 10px;
             margin-bottom: 25px;
             border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .wedding-details:hover {
+            transform: translateX(5px);
+        }
+
+        /* Custom checkbox styling */
+        .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
         }
 
         /* Placeholder styling */
         ::placeholder {
             color: #999;
             opacity: 1;
+        }
+
+        /* Success message styling */
+        .success-message {
+            display: none;
+            background-color: rgba(40, 167, 69, 0.1);
+            border-left: 4px solid var(--success-color);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .success-message i {
+            color: var(--success-color);
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+
+        /* Loading spinner */
+        .spinner-border {
+            display: none;
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 10px;
+            border-width: 0.2em;
         }
 
         /* Responsive styles */
@@ -283,6 +414,10 @@
             .navbar {
                 padding: 10px 0;
             }
+
+            .booking-body {
+                padding: 25px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -294,12 +429,12 @@
                 font-size: 2rem;
             }
             
-            .booking-body {
-                padding: 25px;
-            }
-
             .booking-header h2 {
                 font-size: 2rem;
+            }
+
+            .form-section-title {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -364,23 +499,32 @@
                 <p class="mb-0">Begin your journey to the perfect wedding day</p>
             </div>
             <div class="booking-body">
-                <form id="weddingBookingForm">
+                <!-- Success Message (hidden by default) -->
+                <div class="success-message d-flex align-items-center" id="successMessage">
+                    <i class="fas fa-check-circle"></i>
+                    <div>
+                        <h5>Thank you for your request!</h5>
+                        <p class="mb-0">We've received your wedding consultation request and will contact you within 24 hours.</p>
+                    </div>
+                </div>
+                
+                <form id="weddingBookingForm" action="/submit-wedding-booking" method="POST">
                     <!-- Couple's Information -->
                     <div class="wedding-details">
                         <h5 class="form-section-title"><i class="fas fa-user-friends me-2"></i> Couple's Information</h5>
                         <div class="row">
                             <div class="col-md-6 mb-4">
-                                <label for="brideName" class="form-label">First Name</label>
+                                <label for="brideName" class="form-label">First Name <span class="required">*</span></label>
                                 <input type="text" class="form-control" id="brideName" name="brideName" required placeholder="Kirenga">
                             </div>
                             <div class="col-md-6 mb-4">
-                                <label for="groomName" class="form-label">Last Name</label>
+                                <label for="groomName" class="form-label">Last Name <span class="required">*</span></label>
                                 <input type="text" class="form-control" id="groomName" name="groomName" required placeholder="Pamella">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-4">
-                                <label for="email" class="form-label">Email Address</label>
+                                <label for="email" class="form-label">Email Address <span class="required">*</span></label>
                                 <input type="email" class="form-control" id="email" name="email" required placeholder="couple@example.com">
                             </div>
                             <div class="col-md-6 mb-4">
@@ -395,104 +539,39 @@
                         <h5 class="form-section-title"><i class="fas fa-calendar-heart me-2"></i> Wedding Details</h5>
                         <div class="row">
                             <div class="col-md-6 mb-4">
-                                <label for="weddingDate" class="form-label">Wedding Date</label>
+                                <label for="weddingDate" class="form-label">Wedding Date <span class="required">*</span></label>
                                 <input type="date" class="form-control" id="weddingDate" name="weddingDate" required min="<?php echo date('Y-m-d'); ?>">
+                                <small class="text-muted">Please select a date at least 3 months from today</small>
                             </div>
                             <div class="col-md-6 mb-4">
-                                <label for="weddingType" class="form-label">Wedding Style</label>
-                                <select class="form-select" id="weddingType" name="weddingType" required>
-                                    <option value="" disabled selected>Select Wedding Style</option>
-                                    <option value="Traditional">Traditional</option>
-                                    <option value="Modern">Modern</option>
-                                    <option value="Rustic">Rustic</option>
-                                    <option value="Beach">Beach</option>
-                                    <option value="Destination">Destination</option>
-                                    <option value="Cultural">Cultural/Religious</option>
-                                    <option value="Other">Other</option>
-                                </select>
+                                <label for="guestsNumber" class="form-label">Estimated Number of Guests <span class="required">*</span></label>
+                                <input type="number" class="form-control" id="guestsNumber" name="guestsNumber" required min="1" placeholder="150">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <label for="guestsNumber" class="form-label">Estimated Number of Guests</label>
-                                <input type="number" class="form-control" id="guestsNumber" name="guestsNumber" required min="1" placeholder="150">
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <label for="budgetRange" class="form-label">Estimated Budget Range</label>
-                                <select class="form-select" id="budgetRange" name="budgetRange" required>
-                                    <option value="" disabled selected>Select Budget Range</option>
-                                    <option value="Under 10k">Under $10,000</option>
-                                    <option value="10k-25k">$10,000 - $25,000</option>
-                                    <option value="25k-50k">$25,000 - $50,000</option>
-                                    <option value="50k-100k">$50,000 - $100,000</option>
-                                    <option value="Over 100k">Over $100,000</option>
-                                </select>
-                            </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="weddingType" class="form-label">Wedding Style</label>
+                            <select class="form-select" id="weddingType" name="weddingType" required>
+                                <option value="" disabled selected>Select Wedding Style</option>
+                                <option value="Traditional">Gusaba no Gukwa</option>
+                                <option value="Modern">Reception</option>
+                                <option value="Rustic">Both</option>
+                                <option value="Beach">Other</option>
+                            </select>
                         </div>
-                        <div class="mb-4">
+                        <div class="col-md-6 mb-4">
                             <label for="weddingLocation" class="form-label">Wedding Location (if known)</label>
                             <input type="text" class="form-control" id="weddingLocation" name="weddingLocation" placeholder="Venue name or city">
                         </div>
-                    </div>
-
-                    <!-- Services Needed -->
-                    <div class="wedding-details">
-                        <h5 class="form-section-title"><i class="fas fa-clipboard-list me-2"></i> Services Needed</h5>
-                        <div class="mb-3">
-                            <p class="form-label">Which services are you interested in? (Select all that apply)</p>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" id="fullPlanning" name="services[]" value="Full Planning">
-                                        <label class="form-check-label" for="fullPlanning">Full Wedding Planning</label>
-                                    </div>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" id="partialPlanning" name="services[]" value="Partial Planning">
-                                        <label class="form-check-label" for="partialPlanning">Partial Planning</label>
-                                    </div>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" id="dayCoordination" name="services[]" value="Day Coordination">
-                                        <label class="form-check-label" for="dayCoordination">Day-of Coordination</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" id="venueSelection" name="services[]" value="Venue Selection">
-                                        <label class="form-check-label" for="venueSelection">Venue Selection</label>
-                                    </div>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" id="vendorCoordination" name="services[]" value="Vendor Coordination">
-                                        <label class="form-check-label" for="vendorCoordination">Vendor Coordination</label>
-                                    </div>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" id="designDecor" name="services[]" value="Design & Decor">
-                                        <label class="form-check-label" for="designDecor">Design & Decor</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" id="rehearsalDinner" name="services[]" value="Rehearsal Dinner">
-                                        <label class="form-check-label" for="rehearsalDinner">Rehearsal Dinner</label>
-                                    </div>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" id="bridalShower" name="services[]" value="Bridal Shower">
-                                        <label class="form-check-label" for="bridalShower">Bridal Shower</label>
-                                    </div>
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" id="otherService" name="services[]" value="Other">
-                                        <label class="form-check-label" for="otherService">Other</label>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
+            
                     <!-- Additional Information -->
                     <div class="mb-4">
                         <label for="weddingVision" class="form-label">Tell Us About Your Wedding Vision</label>
-                        <textarea class="form-control" id="weddingVision" name="weddingVision" rows="4" placeholder="Describe your dream wedding..."></textarea>
+                        <textarea class="form-control" id="weddingVision" name="weddingVision" rows="4" placeholder="Describe your dream wedding theme, colors, special requirements..."></textarea>
                     </div>
-                    
                     <div class="form-check mb-4">
                         <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter" checked>
                         <label class="form-check-label" for="newsletter">
@@ -501,7 +580,8 @@
                     </div>
                     
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary py-3">
+                        <button type="submit" class="btn btn-primary py-3" id="submitButton">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             <i class="fas fa-paper-plane me-2"></i> Request Consultation
                         </button>
                     </div>
@@ -592,7 +672,24 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Form validation and submission
             const form = document.getElementById('weddingBookingForm');
+            const successMessage = document.getElementById('successMessage');
+            const submitButton = document.getElementById('submitButton');
+            const spinner = submitButton.querySelector('.spinner-border');
+            const submitIcon = submitButton.querySelector('.fa-paper-plane');
+            
+            // Set minimum date to today
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('weddingDate').min = today;
             
@@ -609,6 +706,38 @@
                 }
             });
             
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show loading spinner
+                spinner.style.display = 'inline-block';
+                submitIcon.style.display = 'none';
+                submitButton.disabled = true;
+                
+                // Simulate form submission (replace with actual AJAX call)
+                setTimeout(function() {
+                    // Hide form and show success message
+                    form.style.display = 'none';
+                    successMessage.style.display = 'flex';
+                    
+                    // Reset button state
+                    spinner.style.display = 'none';
+                    submitIcon.style.display = 'inline-block';
+                    submitButton.disabled = false;
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Reset form after showing success message
+                    setTimeout(function() {
+                        form.reset();
+                        form.style.display = 'block';
+                        successMessage.style.display = 'none';
+                    }, 5000); // Keep success message visible for 5 seconds
+                }, 1500); // Simulate 1.5 second processing time
+            });
+            
             // Add animations for feature cards
             const featureCards = document.querySelectorAll('.feature-card');
             featureCards.forEach(card => {
@@ -620,12 +749,22 @@
                 });
             });
             
-            // Form submission
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                // Here you would normally submit the form
-                alert('Thank you for your wedding consultation request! We will contact you within 24 hours.');
-                form.reset();
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
             });
         });
     </script>
