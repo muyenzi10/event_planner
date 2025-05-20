@@ -90,16 +90,18 @@
         }
 
         .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-            filter: brightness(0.6);
-            background: var(--dark-color); /* Fallback color */
-        }
+    /* Existing styles */
+    background: var(--dark-color);
+}
+
+/* Add modern video styling */
+video::-webkit-media-controls {
+    display: none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+    display: none !important;
+}
 
         .hero-content {
             display: flex;
@@ -120,20 +122,42 @@
         }
 
         .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-            animation: fadeIn 1s ease 0.2s both;
-        }
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Increased shadow opacity */
+    animation: fadeIn 1s ease 0.2s both;
+    color: var(--light-color); /* Changed to white */
+    position: relative;
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.3); /* Add semi-transparent background */
+    padding: 15px 30px;
+    border-radius: 10px;
+}
+.hero-content h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.5); /* Brighter line */
+}
 
-        .hero-content p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 1s ease 0.4s both;
-        }
-
+.hero-content p {
+    font-size: 1.5rem;
+    max-width: 800px;
+    margin-bottom: 30px;
+    animation: fadeIn 1s ease 0.4s both;
+    color: var(--light-color); /* Pure white */
+    font-weight: 400; /* Increased from 300 */
+    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Stronger shadow */
+    background: rgba(0, 0, 0, 0.2); /* Subtle background */
+    padding: 10px 20px;
+    border-radius: 8px;
+    backdrop-filter: blur(2px); /* Soft blur effect */
+}
         .hero-content .btn {
             animation: fadeIn 1s ease 0.6s both;
         }
@@ -553,10 +577,9 @@
                           <label for="weddingType" class="form-label">Wedding Style</label>
                           <select class="form-select" id="weddingType" name="weddingType" required>
                             <option value="" disabled selected>Select Wedding Style</option>
-                            <option value="Traditional">Gusaba no Gukwa</option>
-                            <option value="Modern">Reception</option>
-                            <option value="Rustic">Both</option>
-                            <option value="Beach">Other</option>
+                            <option value="Gusaba no Gukwa">Gusaba no Gukwa</option>
+                            <option value="Reception">Reception</option>
+                            <option value="Other">Other</option>
                           </select>
                         </div>
                         <div class="col-md-6 mb-4">
@@ -676,19 +699,17 @@
                     navbar.classList.remove('scrolled');
                 }
             });
-
-            // Form validation and submission
+        
+            // Form elements
             const form = document.getElementById('weddingBookingForm');
             const successMessage = document.getElementById('successMessage');
             const submitButton = document.getElementById('submitButton');
-            const spinner = submitButton.querySelector('.spinner-border');
-            const submitIcon = submitButton.querySelector('.fa-paper-plane');
             
             // Set minimum date to today
             const today = new Date().toISOString().split('T')[0];
             document.getElementById('weddingDate').min = today;
             
-            // Add date validation to ensure it's at least 3 months from today
+            // Date validation
             const weddingDateInput = document.getElementById('weddingDate');
             weddingDateInput.addEventListener('change', function() {
                 const selectedDate = new Date(this.value);
@@ -702,38 +723,68 @@
             });
             
             // Form submission
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
-                // Show loading spinner
+                // Show loading state
+                const spinner = submitButton.querySelector('.spinner-border');
+                const submitIcon = submitButton.querySelector('.fa-paper-plane');
                 spinner.style.display = 'inline-block';
                 submitIcon.style.display = 'none';
                 submitButton.disabled = true;
                 
-                // Simulate form submission (replace with actual AJAX call)
-                setTimeout(function() {
-                    // Hide form and show success message
-                    form.style.display = 'none';
-                    successMessage.style.display = 'flex';
+                try {
+                    // Collect form data - matching your schema
+                    const formData = {
+                        firstname: this.elements['couple[firstname]'].value,
+                        lastname: this.elements['couple[lastname]'].value,
+                        email: this.elements['couple[email]'].value,
+                        phone: this.elements['couple[phone]'].value,
+                        weddingDate: this.elements.weddingDate.value,
+                        guestsNumber: this.elements.guestsNumber.value,
+                        weddingType: this.elements.weddingType.value,
+                        weddingLocation: this.elements.weddingLocation.value,
+                        weddingVision: this.elements.weddingVision.value
+                    };
+        
+                    // Send to server
+                    const response = await fetch('/booking/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
                     
+                    const result = await response.json();
+                    
+                    if (response.ok) {
+                        // Show success message
+                        form.style.display = 'none';
+                        successMessage.style.display = 'flex';
+                        successMessage.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // Reset form after delay
+                        setTimeout(() => {
+                            form.reset();
+                            form.style.display = 'block';
+                            successMessage.style.display = 'none';
+                        }, 5000);
+                    } else {
+                        alert('Error: ' + (result.message || 'Failed to submit form'));
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred while submitting the form');
+                } finally {
                     // Reset button state
                     spinner.style.display = 'none';
                     submitIcon.style.display = 'inline-block';
                     submitButton.disabled = false;
-                    
-                    // Scroll to success message
-                    successMessage.scrollIntoView({ behavior: 'smooth' });
-                    
-                    // Reset form after showing success message
-                    setTimeout(function() {
-                        form.reset();
-                        form.style.display = 'block';
-                        successMessage.style.display = 'none';
-                    }, 5000); // Keep success message visible for 5 seconds
-                }, 1500); // Simulate 1.5 second processing time
+                }
             });
-            
-            // Add animations for feature cards
+        
+            // Feature card animations
             const featureCards = document.querySelectorAll('.feature-card');
             featureCards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
@@ -762,42 +813,6 @@
                 });
             });
         });
-    </script>
-   <script>
-    document.getElementById('weddingBookingForm').addEventListener('submit', function (e) {
-  e.preventDefault();
-
-  const formData = {
-    couple: {
-      firstname: this.elements['couple.firstname'].value,
-      lastname: this.elements['couple.lastname'].value,
-      email: this.elements['couple.email'].value,
-      phone: this.elements['couple.phone'].value
-    },
-    weddingDate: this.elements.weddingDate.value,
-    guestsNumber: this.elements.guestsNumber.value,
-    weddingType: this.elements.weddingType.value,
-    weddingLocation: this.elements.weddingLocation.value,
-    weddingVision: this.elements.weddingVision.value
-  };
-
-  fetch('/booking/submit', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(formData)
-  })
-  .then(response => response.json())
-  .then(data => {
-    console.log('Success:', data);
-    // Show success message
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    // Show error message
-  });
-});
-   </script>
+        </script>
 </body>
 </html>

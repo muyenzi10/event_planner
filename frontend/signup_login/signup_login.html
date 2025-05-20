@@ -194,14 +194,14 @@
     <!-- Signup Form -->
     <div class="auth-card" id="signupCard">
         <h1>Create Account</h1>
-        <form id="signupForm">
+        <form id="signupForm" action="/direct/signup" method="POST">
             <div class="name-group" style="display: grid; gap: 1rem; grid-template-columns: 1fr 1fr;">
                 <div class="form-group">
-                    <input type="text" class="input-field" placeholder=" " name="firstName" required>
+                    <input type="text" class="input-field" placeholder=" " name="f1name" required>
                     <label class="input-label">First Name</label>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="input-field" placeholder=" " name="lastName" required>
+                    <input type="text" class="input-field" placeholder=" " name="f2name" required>
                     <label class="input-label">Last Name</label>
                 </div>
             </div>
@@ -234,7 +234,7 @@
     <!-- Login Form -->
     <div class="auth-card hidden" id="loginCard">
         <h1>Welcome Back</h1>
-        <form id="loginForm">
+        <form id="loginForm" action="/direct/myacount/login" method="POST">
             <div class="form-group">
                 <input type="email" class="input-field" placeholder=" " name="email" required>
                 <label class="input-label">Email</label>
@@ -262,7 +262,7 @@
             try {
                 const formData = Object.fromEntries(new FormData(form));
                 
-                if (endpoint === '/api/signup' && formData.password !== formData.passwordConfirm) {
+                if (endpoint === '/direct/signup' && formData.password !== formData.passwordConfirm) {
                     throw new Error('Passwords do not match');
                 }
 
@@ -293,7 +293,7 @@
 
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            handleFormSubmit(e.target, '/api/login');
+            handleFormSubmit(e.target, '/direct/myacount/login');
         });
 
         // Toggle Forms
