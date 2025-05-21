@@ -12,4 +12,6 @@ router.get("/packages", nav.getpack);
 router.get("/suppliers", nav.getsupply);
 // booking
 router.get('/booking', nav.getbook);
+router.get('/signup', nav.signup);
+router.get('/login', nav.login);
 module.exports = router;

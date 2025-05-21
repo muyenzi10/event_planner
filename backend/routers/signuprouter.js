@@ -1,5 +1,6 @@
-const autosignup = require("../controllers/autoconrtoller");
 const express = require("express");
-const routersauto = express.Router();
-routersauto.post("/direct/signup",autosignup.postsignup);
-module.exports=  routersauto;
+const routersign = express.Router();
+const signup = require("../controllers/autoconrtoller");
+// POST route for booking submission
+routersign.post("/direct/signup", signup.postsignup);
+module.exports = routersign;

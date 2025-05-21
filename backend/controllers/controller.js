@@ -14,3 +14,9 @@ exports.getpack = (req, res)=>{
 exports.getbook = (req, res)=>{
     res.sendFile(path.join(__dirname,"../../frontend/home_packages/booking.html"));
         };
+exports.signup = (req, res)=>{
+    res.sendFile(path.join(__dirname,"../../frontend/signup_login/signup.html"));
+    };
+exports.login = (req, res)=>{
+    res.sendFile(path.join(__dirname,"../../frontend/signup_login/login.html"));
+    };      
