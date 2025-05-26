@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Planner - Sign Up</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --primary: #7C3AED;
+      --primary-hover: #6D28D9;
+      --success: #10B981;
+      --error: #EF4444;
+      --text-muted: #64748B;
+      --surface: #FFFFFF;
+      --background: #F8FAFC;
+      --border: #E2E8F0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --radius-lg: 1rem;
+      --radius-md: 0.75rem;
+      --radius-sm: 0.5rem;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--background);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 1.5rem;
+      color: #1E293B;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .auth-card {
+      background: var(--surface);
+      padding: 2.5rem;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      width: 100%;
+      max-width: 480px;
+      transform-origin: center;
+      animation: cardEnter 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    @keyframes cardEnter {
+      0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.875rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #7C3AED, #6D28D9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes textFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      transition: var(--transition);
+      background: var(--background);
+    }
+
+    .input-field:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+    }
+
+    .input-label {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94A3B8;
+      pointer-events: none;
+      transition: var(--transition);
+      background: var(--surface);
+      padding: 0 0.25rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .input-field:focus + .input-label,
+    .input-field:not(:placeholder-shown) + .input-label {
+      top: -0.5rem;
+      left: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--primary);
+      transform: translateY(0);
+      background: var(--surface);
+      padding: 0 0.5rem;
+    }
+
+    .strength-meter {
+      height: 4px;
+      background: var(--border);
+      border-radius: var(--radius-sm);
+      margin-top: 0.5rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .strength-progress {
+      height: 100%;
+      width: 0;
+      transition: var(--transition);
+      transform-origin: left;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .submit-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .submit-btn.loading::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 50%;
+      left: 50%;
+      margin: -10px 0 0 -10px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .auth-links {
+      text-align: center;
+      margin-top: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    .auth-links a {
+      color: var(--primary);
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .auth-links a:hover {
+      color: var(--primary-hover);
+    }
+
+    .auth-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+
+    .auth-links a:hover::after {
+      width: 100%;
+    }
+
+    .error-message {
+      color: var(--error);
+      background: #FEE2E2;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+      animation: errorEnter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes errorEnter {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      .auth-card {
+        padding: 1.5rem;
+        border-radius: var(--radius-md);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-card">
+    <h1>Create Account</h1>
+    <form id="signupForm" action="/direct/signup" method="POST">
+      <div class="name-group" style="display: grid; gap: 1rem; grid-template-columns: 1fr 1fr;">
+        <div class="form-group">
+          <input type="text" class="input-field" placeholder=" " name="firstName" required>
+          <label class="input-label">First Name</label>
+        </div>
+        <div class="form-group">
+          <input type="text" class="input-field" placeholder=" " name="lastName" required>
+          <label class="input-label">Last Name</label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="email" class="input-field" placeholder=" " name="email" required>
+        <label class="input-label">Email</label>
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="input-field" placeholder=" " name="password" required>
+        <label class="input-label">Password</label>
+        <div class="strength-meter"><div class="strength-progress"></div></div>
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="input-field" placeholder=" " name="passwordConfirm" required>
+        <label class="input-label">Confirm Password</label>
+      </div>
+
+      <button type="submit" class="submit-btn">Sign Up</button>
+      <div class="auth-links">
+        <p>Already have an account? <a href="/login">Sign In</a></p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.querySelectorAll('input[type="password"]').forEach(input => {
+      input.addEventListener('input', (e) => {
+        const strength = calculatePasswordStrength(e.target.value);
+        const progress = e.target.closest('.form-group').querySelector('.strength-progress');
+        if (progress) {
+          progress.style.width = `${strength.percentage}%`;
+          progress.style.backgroundColor = strength.color;
+        }
+      });
+    });
+
+    function calculatePasswordStrength(password) {
+      let strength = 0;
+      if (password.length >= 8) strength += 25;
+      if (/[A-Z]/.test(password)) strength += 25;
+      if (/[0-9]/.test(password)) strength += 25;
+      if (/[^A-Za-z0-9]/.test(password)) strength += 25;
+      return {
+        percentage: strength,
+        color: strength < 50 ? '#EF4444' : strength < 75 ? '#EAB308' : '#10B981'
+      };
+    }
+
+    document.getElementById('signupForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const submitBtn = form.querySelector('.submit-btn');
+      submitBtn.classList.add('loading');
+      submitBtn.innerHTML = '<span style="visibility: hidden;">Sign Up</span>';
+
+      document.querySelectorAll('.error-message').forEach(el => el.remove());
+
+      try {
+        const formData = Object.fromEntries(new FormData(form));
+
+        if (formData.password !== formData.passwordConfirm) {
+          throw new Error('Passwords do not match');
+        }
+
+        const response = await fetch('/direct/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.message || 'Something went wrong');
+
+        localStorage.setItem('token', data.token);
+        window.location.href = '/home.html';
+      } catch (error) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message';
+        errorDiv.textContent = error.message;
+        form.prepend(errorDiv);
+        setTimeout(() => errorDiv.remove(), 5000);
+      } finally {
+        submitBtn.classList.remove('loading');
+        submitBtn.innerHTML = 'Sign Up';
+      }
+    });
+  </script>
+</body>
+</html>
