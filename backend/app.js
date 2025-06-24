@@ -5,6 +5,9 @@ const path = require('path');
 const router = require('./routers/routers');
 const decorouter = require("./routers/packagerouter");
 const mongoose = require('mongoose');
+// ejs
+const expressLayout = require("express-ejs-layouts");
+
 const bookingdbrpouter = require("./routers/bookingrouter");
 const supplierdb = require("./routers/supplierrouter");
 const routersautor = require("./routers/signuprouter");
@@ -16,14 +19,19 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(express.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
+// view
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, '../frontend'));
+//app.set('layout', 'home_packages/booking');
+//app.use(expressLayout);
+
 // Routes
 app.use(router);
 app.use(decorouter);
-app.use(bookingdbrpouter);
 app.use(supplierdb);
 app.use(routersautor);
 app.use(login);
-
+app.use(bookingdbrpouter);
 // Error handling middleware
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, '../frontend/error.html'));

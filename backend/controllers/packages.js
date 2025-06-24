@@ -27,8 +27,8 @@ exports.getsound = (req,res) =>{
     res.sendFile(path.join(__dirname,"../../frontend/allpack/sound/sound.html"));
     }
 exports.getphotographers= (req,res)=>{
-    res.sendFile(path.join(__dirname,"../../frontend/allpack/photographers/photographers.html"))
-    catering}         
+    res.sendFile(path.join(__dirname,"../../frontend/allpack/photographers/photographers.html"));
+}      
 exports.getcatering= (req,res)=>{
     res.sendFile(path.join(__dirname,"../../frontend/allpack/catering/catering.html"));
   }

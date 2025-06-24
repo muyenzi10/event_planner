@@ -8,11 +8,11 @@ exports.getabout = (req, res)=>{
 exports.getpack = (req, res)=>{
     res.sendFile(path.join(__dirname,"../../frontend/home_packages/index.html"));
     };
-    exports.getsupply = (req, res)=>{
-        res.sendFile(path.join(__dirname,"../../frontend/home_packages/suply.html"));
-        };     
+exports.getsupply = (req, res)=>{
+    res.render('home_packages/suply');
+    };       
 exports.getbook = (req, res)=>{
-    res.sendFile(path.join(__dirname,"../../frontend/home_packages/booking.html"));
+    res.render('home_packages/booking');
         };
 exports.signup = (req, res)=>{
     res.sendFile(path.join(__dirname,"../../frontend/signup_login/signup.html"));
