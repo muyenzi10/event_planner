@@ -4,6 +4,7 @@ const app = express();
 const path = require('path');
 const router = require('./routers/routers');
 const decorouter = require("./routers/packagerouter");
+const bookingformat = require("./routers/bookingformat");
 const mongoose = require('mongoose');
 // ejs
 const expressLayout = require("express-ejs-layouts");
@@ -18,6 +19,8 @@ const bodyParser = require('body-parser');
 app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(express.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
+//app.use('/static', express.static(path.join(__dirname, '../frontend/home_packages/public')));
+app.use(express.static('home_packages/public'));
 
 // view
 app.set('view engine', 'ejs');
@@ -32,6 +35,7 @@ app.use(supplierdb);
 app.use(routersautor);
 app.use(login);
 app.use(bookingdbrpouter);
+app.use(bookingformat);
 // Error handling middleware
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, '../frontend/error.html'));

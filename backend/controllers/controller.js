@@ -12,8 +12,12 @@ exports.getsupply = (req, res)=>{
     res.render('home_packages/suply');
     };       
 exports.getbook = (req, res)=>{
-    res.render('home_packages/booking');
-        };
+        res.render('home_packages/booking');
+            };
+
+exports.getsuppliersformat = (req, res)=>{
+    res.render('home_packages/suplyformat');
+        };             
 exports.signup = (req, res)=>{
     res.sendFile(path.join(__dirname,"../../frontend/signup_login/signup.html"));
     };
