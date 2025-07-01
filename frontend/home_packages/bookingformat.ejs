@@ -75,14 +75,21 @@
             </tr>
           </thead>
           <tbody>
-            <div class="d-flex align-items-center">
-              <div class="avatar me-3">
-                <div style="width:40px; height:40px; background:linear-gradient(45deg, #6a11cb, #2575fc); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;"></div>
-              </div>
             <% bookings.forEach(booking => { %>
               <tr>
-                <td><%= booking.firstname %> <%= booking.lastname %></td>
-                </div>
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div class="avatar me-3">
+                      <div style="width:40px; height:40px; background:linear-gradient(45deg, #6a11cb, #2575fc); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">
+                        <%= booking.firstname.charAt(0).toUpperCase() + booking.lastname.charAt(0).toUpperCase() %>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="fw-bold"><%= booking.firstname %> <%= booking.lastname %></div>
+                    </div>
+                  </div>
+                </td>
+                
                 <td><%= booking.email %> <br> <%= booking.phone %></td>
                 <td><%= new Date(booking.weddingDate).toDateString() %></td>
                 <td><%= booking.guestsNumber %></td>
