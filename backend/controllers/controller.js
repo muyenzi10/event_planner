@@ -21,6 +21,9 @@ exports.getsuppliersformat = (req, res)=>{
 exports.signup = (req, res)=>{
     res.sendFile(path.join(__dirname,"../../frontend/signup_login/signup.html"));
     };
-exports.login = (req, res)=>{
-    res.sendFile(path.join(__dirname,"../../frontend/signup_login/login.html"));
-    };      
+exports.login = (req, res) => {
+    res.render('signup_login/login', {
+        error: req.flash('error'),
+        success: req.flash('success')
+        });
+      };

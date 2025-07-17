@@ -8,20 +8,25 @@ const bookingformat = require("./routers/bookingformat");
 const mongoose = require('mongoose');
 // ejs
 const expressLayout = require("express-ejs-layouts");
-
+const session = require("express-session");
+const flash = require("express-flash");
 const bookingdbrpouter = require("./routers/bookingrouter");
 const supplierdb = require("./routers/supplierrouter");
 const routersautor = require("./routers/signuprouter");
 const login = require("./routers/login");
 const bodyParser = require('body-parser');
-
 // Middleware setup
 app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(express.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 //app.use('/static', express.static(path.join(__dirname, '../frontend/home_packages/public')));
 app.use(express.static('home_packages/public'));
-
+app.use(session({
+    secret: 'yourSecretKey',
+    resave: false,
+    saveUninitialized: true
+  }));
+app.use(flash());
 // view
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../frontend'));

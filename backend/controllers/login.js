@@ -6,50 +6,42 @@ exports.postlogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // ✅ Select password explicitly (it's hidden by default in schema)
+    // Validate empty fields
+    if (!email || !password) {
+      req.flash("error", "Email and password are required");
+      return res.redirect("/direct/myaccount/login");
+    }
+    // Find user and select password
     const user = await signup.findOne({ email }).select("+password");
 
     if (!user) {
-      return res.status(404).json({
-        success: false,
-        message: "User not found",
-      });
+      req.flash("error", "User not found");
+      return res.redirect("/direct/myaccount/login");
     }
 
-    // ✅ Compare hashed password
+    // Compare password
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res.status(401).json({
-        success: false,
-        message: "Invalid credentials",
-      });
+      req.flash("error", "Invalid email or password");
+      return res.redirect("/direct/myaccount/login");
     }
 
-    // ✅ Create JWT token
+    // Generate token (optional if using sessions instead)
     const token = jwt.sign(
       { id: user._id },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
 
-    res.status(200).json({
-      success: true,
-      message: "Logged in successfully",
-      token,
-      user: {
-        _id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-      },
-    });
+    // Set session or cookie (optional if using sessions)
+    // req.session.user = user;
+
+    req.flash("success", "Logged in successfully");
+    return res.redirect("/direct/myaccount/login"); // or wherever you want to redirect
   } catch (error) {
     console.error("Login error:", error);
-    res.status(500).json({
-      success: false,
-      message: "Login failed",
-      error: error.message,
-    });
+    req.flash("error", "An error occurred during login");
+    return res.redirect("/direct/myaccount/login");
   }
 };
