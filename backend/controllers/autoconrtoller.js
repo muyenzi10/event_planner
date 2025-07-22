@@ -3,36 +3,44 @@ const signup = require("../models/admin");
 
 exports.postsignup = async (req, res) => {
   try {
+    const { firstName, lastName, email, password, passwordConfirm } = req.body;
+
+    // Simple validation
+    if (!firstName || !lastName || !email || !password || !passwordConfirm) {
+      req.flash("error", "All fields are required");
+      return res.redirect("/direct/api/signup");
+    }
+
+    if (password !== passwordConfirm) {
+      req.flash("error", "Passwords do not match");
+      return res.redirect("/direct/api/signup");
+    }
+
+    // Create user
     const userad = await signup.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
-      password: req.body.password,
-      passwordConfirm: req.body.passwordConfirm,
+      firstName,
+      lastName,
+      email,
+      password,
+      passwordConfirm,
     });
 
+    // Optional: generate JWT
     const token = jwt.sign(
       { id: userad._id },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
 
-    res.status(201).json({
-      success: true,
-      message: "User created successfully",
-      token,
-      user: {
-        _id: userad._id,
-        firstName: userad.firstName,
-        lastName: userad.lastName,
-        email: userad.email,
-      },
-    });
+    req.flash("success", "Account created successfully");
+    return res.redirect("/direct/api/signup");
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "User creation failed",
-      error: error.message,
-    });
+    // Handle duplicate email or other Mongoose errors
+    if (error.code === 11000) {
+      req.flash("error", "Email already exists");
+    } else {
+      req.flash("error", "Signup failed: " + error.message);
+    }
+    return res.redirect("/direct/api/signup");
   }
 };

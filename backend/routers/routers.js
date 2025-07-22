@@ -14,6 +14,6 @@ router.get("/suppliers", nav.getsupply);
 router.get('/booking', nav.getbook);
 router.get('/Dashboard/suppliers', nav.getsuppliersformat);
 //router.get('/Dashboard/booking',nav.getbookformat);
-router.get('/signup', nav.signup);
+//router.get('/signup', nav.signup);
 //router.get('/direct/myaccount/login', nav.login);
 module.exports = router;

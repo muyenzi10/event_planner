@@ -17,10 +17,13 @@ exports.getbook = (req, res)=>{
 
 exports.getsuppliersformat = (req, res)=>{
     res.render('home_packages/suplyformat');
-        };             
-exports.signup = (req, res)=>{
-    res.sendFile(path.join(__dirname,"../../frontend/signup_login/signup.html"));
-    };
+        }; 
+exports.getsignup = (req,res)=>{                
+res.render('signup_login/signup', {
+            error: req.flash('error'),
+            success: req.flash('success')
+          });
+        };
 exports.login = (req, res) => {
     res.render('signup_login/login', {
         error: req.flash('error'),
