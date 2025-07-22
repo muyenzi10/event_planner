@@ -12,7 +12,7 @@ router.get("/packages", nav.getpack);
 router.get("/suppliers", nav.getsupply);
 // booking
 router.get('/booking', nav.getbook);
-router.get('/Dashboard/suppliers', nav.getsuppliersformat);
+//router.get('/Dashboard/suppliers', nav.getsuppliersformat);
 //router.get('/Dashboard/booking',nav.getbookformat);
 //router.get('/signup', nav.signup);
 //router.get('/direct/myaccount/login', nav.login);

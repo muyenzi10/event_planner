@@ -6,12 +6,13 @@ exports.postlogin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Validate empty fields
+    // 1. Validate input fields
     if (!email || !password) {
       req.flash("error", "Email and password are required");
       return res.redirect("/direct/myaccount/login");
     }
-    // Find user and select password
+
+    // 2. Find user by email and select password explicitly
     const user = await signup.findOne({ email }).select("+password");
 
     if (!user) {
@@ -19,26 +20,32 @@ exports.postlogin = async (req, res) => {
       return res.redirect("/direct/myaccount/login");
     }
 
-    // Compare password
+    // 3. Compare provided password with stored hash
     const isMatch = await bcrypt.compare(password, user.password);
-
     if (!isMatch) {
       req.flash("error", "Invalid email or password");
       return res.redirect("/direct/myaccount/login");
     }
 
-    // Generate token (optional if using sessions instead)
+    // 4. Generate JWT token
     const token = jwt.sign(
       { id: user._id },
       process.env.JWT_SECRET,
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
 
-    // Set session or cookie (optional if using sessions)
-    // req.session.user = user;
+    // 5. Set JWT token as HTTP-only cookie (secure recommended for production)
+    res.cookie("token", token, {
+      httpOnly: true,
+      maxAge: 1000 * 60 * 60, // 1 hour
+      // secure: true, // uncomment if using HTTPS
+      // sameSite: "strict" // adjust based on your needs
+    });
 
+    // 6. Successful login flash message and redirect
     req.flash("success", "Logged in successfully");
-    return res.redirect("/direct/myaccount/login"); // or wherever you want to redirect
+    return res.redirect("/Dashboard/booking");
+
   } catch (error) {
     console.error("Login error:", error);
     req.flash("error", "An error occurred during login");

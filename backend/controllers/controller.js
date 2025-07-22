@@ -13,7 +13,7 @@ exports.getsupply = (req, res)=>{
     };       
 exports.getbook = (req, res)=>{
         res.render('home_packages/booking');
-            };
+        };
 
 exports.getsuppliersformat = (req, res)=>{
     res.render('home_packages/suplyformat');

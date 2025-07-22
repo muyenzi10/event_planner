@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const router = require('./routers/routers');
+const cookieParser = require("cookie-parser");
 const decorouter = require("./routers/packagerouter");
 const bookingformat = require("./routers/bookingformat");
 const mongoose = require('mongoose');
@@ -18,6 +19,7 @@ const bodyParser = require('body-parser');
 // Middleware setup
 app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(express.json()); // Parse JSON bodies
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 //app.use('/static', express.static(path.join(__dirname, '../frontend/home_packages/public')));
 app.use(express.static('home_packages/public'));
