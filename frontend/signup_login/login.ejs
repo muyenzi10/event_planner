@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wedding Planner - Sign Up</title>
+  <title>Wedding Planner - Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
+    /* [Your existing CSS styles are unchanged] */
+    /* ... (keep all your styles here as-is) ... */
     :root {
       --primary: #7C3AED;
       --primary-hover: #6D28D9;
@@ -121,20 +123,23 @@
       padding: 0 0.5rem;
     }
 
-    .strength-meter {
-      height: 4px;
-      background: var(--border);
-      border-radius: var(--radius-sm);
-      margin-top: 0.5rem;
-      overflow: hidden;
+    .password-container {
       position: relative;
     }
 
-    .strength-progress {
-      height: 100%;
-      width: 0;
-      transition: var(--transition);
-      transform-origin: left;
+    .password-toggle {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: color 0.3s ease;
+      user-select: none;
+    }
+
+    .password-toggle:hover {
+      color: var(--primary);
     }
 
     .submit-btn {
@@ -231,108 +236,47 @@
         border-radius: var(--radius-md);
       }
     }
+    .success-message {
+      color: #065F46;
+      background: #D1FAE5;
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+      animation: errorEnter 0.4s ease;
+    }
   </style>
 </head>
 <body>
   <div class="auth-card">
-    <h1>Create Account</h1>
-    <form id="signupForm" action="/direct/signup" method="POST">
-      <div class="name-group" style="display: grid; gap: 1rem; grid-template-columns: 1fr 1fr;">
-        <div class="form-group">
-          <input type="text" class="input-field" placeholder=" " name="firstName" required>
-          <label class="input-label">First Name</label>
-        </div>
-        <div class="form-group">
-          <input type="text" class="input-field" placeholder=" " name="lastName" required>
-          <label class="input-label">Last Name</label>
-        </div>
-      </div>
+    <h1>Welcome Back</h1>
+
+    <form id="loginForm" action="/direct/myaccount/login" method="POST">
+      <!-- Flash Messages -->
+      <% if (error && error.length > 0) { %>
+        <div class="error-message"><%= error[0] %></div>
+      <% } %>
+
+      <% if (success && success.length > 0) { %>
+        <div class="success-message"><%= success[0] %></div>
+      <% } %>
 
       <div class="form-group">
         <input type="email" class="input-field" placeholder=" " name="email" required>
         <label class="input-label">Email</label>
       </div>
 
-      <div class="form-group">
+      <div class="form-group password-container">
         <input type="password" class="input-field" placeholder=" " name="password" required>
         <label class="input-label">Password</label>
-        <div class="strength-meter"><div class="strength-progress"></div></div>
+        <span class="password-toggle">👁</span>
       </div>
 
-      <div class="form-group">
-        <input type="password" class="input-field" placeholder=" " name="passwordConfirm" required>
-        <label class="input-label">Confirm Password</label>
-      </div>
+      <button type="submit" class="submit-btn">Sign In</button>
 
-      <button type="submit" class="submit-btn">Sign Up</button>
       <div class="auth-links">
-        <p>Already have an account? <a href="/login">Sign In</a></p>
+        <p>Don't have an account? <a href="/direct/api/signup">Sign Up</a></p>
       </div>
     </form>
   </div>
-
-  <script>
-    document.querySelectorAll('input[type="password"]').forEach(input => {
-      input.addEventListener('input', (e) => {
-        const strength = calculatePasswordStrength(e.target.value);
-        const progress = e.target.closest('.form-group').querySelector('.strength-progress');
-        if (progress) {
-          progress.style.width = `${strength.percentage}%`;
-          progress.style.backgroundColor = strength.color;
-        }
-      });
-    });
-
-    function calculatePasswordStrength(password) {
-      let strength = 0;
-      if (password.length >= 8) strength += 25;
-      if (/[A-Z]/.test(password)) strength += 25;
-      if (/[0-9]/.test(password)) strength += 25;
-      if (/[^A-Za-z0-9]/.test(password)) strength += 25;
-      return {
-        percentage: strength,
-        color: strength < 50 ? '#EF4444' : strength < 75 ? '#EAB308' : '#10B981'
-      };
-    }
-
-    document.getElementById('signupForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const submitBtn = form.querySelector('.submit-btn');
-      submitBtn.classList.add('loading');
-      submitBtn.innerHTML = '<span style="visibility: hidden;">Sign Up</span>';
-
-      document.querySelectorAll('.error-message').forEach(el => el.remove());
-
-      try {
-        const formData = Object.fromEntries(new FormData(form));
-
-        if (formData.password !== formData.passwordConfirm) {
-          throw new Error('Passwords do not match');
-        }
-
-        const response = await fetch('/direct/signup', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
-
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.message || 'Something went wrong');
-
-        localStorage.setItem('token', data.token);
-        window.location.href = '/home.html';
-      } catch (error) {
-        const errorDiv = document.createElement('div');
-        errorDiv.className = 'error-message';
-        errorDiv.textContent = error.message;
-        form.prepend(errorDiv);
-        setTimeout(() => errorDiv.remove(), 5000);
-      } finally {
-        submitBtn.classList.remove('loading');
-        submitBtn.innerHTML = 'Sign Up';
-      }
-    });
-  </script>
 </body>
 </html>
