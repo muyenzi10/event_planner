@@ -20,7 +20,8 @@ const bodyParser = require('body-parser');
 app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(express.json()); // Parse JSON bodies
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
+//app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
+app.use(express.urlencoded({extends:true}));
 //app.use('/static', express.static(path.join(__dirname, '../frontend/home_packages/public')));
 app.use(express.static('home_packages/public'));
 app.use(session({
