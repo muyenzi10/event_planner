@@ -2,6 +2,7 @@ require('dotenv').config({ path: 'config.env' });
 const express = require('express');
 const app = express();
 const path = require('path');
+const methodOverride = require('method-override');
 const router = require('./routers/routers');
 const cookieParser = require("cookie-parser");
 const decorouter = require("./routers/packagerouter");
@@ -20,6 +21,7 @@ const bodyParser = require('body-parser');
 app.use(express.static(path.join(__dirname, '../frontend')));
 app.use(express.json()); // Parse JSON bodies
 app.use(cookieParser());
+app.use(methodOverride('_method'));
 //app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.use(express.urlencoded({extends:true}));
 //app.use('/static', express.static(path.join(__dirname, '../frontend/home_packages/public')));

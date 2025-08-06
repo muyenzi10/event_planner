@@ -45,7 +45,7 @@ exports.readdata = async (req, res) => {
         if (!booking) {
             return res.status(404).json({ message: "Booking not found" });
         }
-        res.status(200).json(booking);
+        res.render('home_packages/edit', { booking });
     } catch (error) {
         console.error("Error fetching booking:", error);
         res.status(500).json({ message: "Server Error", error: error.message });
@@ -55,17 +55,13 @@ exports.readdata = async (req, res) => {
 // UPDATE by ID
 exports.updatedata = async (req, res) => {
     try {
-        const booking = await bookingdb.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true
-        });
+        const booking = await bookingdb.findByIdAndUpdate(req.params.id, req.body);
         if (!booking) {
             return res.status(404).json({ message: "Booking not found" });
         }
-        res.status(200).json({
-            message: "Booking updated successfully",
-            booking
-        });
+        
+        res.render('home_packages/edit', { booking });
+        
     } catch (error) {
         console.error("Error updating booking:", error);
         res.status(500).json({ message: "Server Error", error: error.message });
