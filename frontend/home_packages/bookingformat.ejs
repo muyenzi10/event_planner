@@ -6,7 +6,134 @@
   <title>Wedding Planner - Bookings</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/home_packages/pablic/dashboard.css">
+
+  <style>
+    /* Layout */
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .dashboard-container {
+      display: flex;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: linear-gradient(180deg, #6a11cb, #2575fc);
+      color: #fff;
+      min-height: 100vh;
+      position: fixed;
+      transition: all 0.3s;
+      padding-top: 20px;
+    }
+
+    .sidebar-header h2 {
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-link {
+      padding: 12px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: rgba(255, 255, 255, 0.15);
+      border-left: 4px solid #fff;
+    }
+
+    .sidebar-toggle {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #6a11cb;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 240px;
+      padding: 30px;
+      width: 100%;
+      transition: margin-left 0.3s;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .header .btn {
+      border-radius: 8px;
+    }
+
+    /* Table */
+    .table-container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 20px;
+      overflow-x: auto;
+    }
+
+    .table thead {
+      background: #f3f4f6;
+      color: #333;
+      font-weight: bold;
+    }
+
+    .table tbody tr:hover {
+      background: #f9f9ff;
+      transition: 0.3s;
+    }
+
+    .avatar div {
+      font-size: 0.9rem;
+    }
+
+    /* Pagination */
+    .pagination .page-link {
+      border-radius: 6px;
+      color: #2575fc;
+    }
+
+    .pagination .page-item.active .page-link {
+      background-color: #2575fc;
+      border-color: #2575fc;
+    }
+
+    /* Footer */
+    .table-footer {
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -39,15 +166,11 @@
     <main class="main-content">
       <div class="header">
         <h1><i class="fas fa-users"></i> All Bookings</h1>
-        <a href="/add" class="btn btn-primary">Add New Booking</a>
+        <a href="/add" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Booking</a>
       </div>
 
       <div class="table-container">
-        <div class="scroll-hint">
-          <i class="fas fa-arrow-down"></i> Scroll to view all data
-        </div>
-
-        <table class="table table-hover">
+        <table class="table table-hover align-middle">
           <thead>
             <tr>
               <th>Couple</th>
@@ -58,7 +181,7 @@
               <th>Location</th>
               <th>Wedding Vision</th>
               <th>Status</th>
-              <th>Actions</th>
+              <th class="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -82,13 +205,13 @@
                 <td><%= booking.guestsNumber %></td>
                 <td><%= booking.weddingType %></td>
                 <td><%= booking.weddingLocation %></td>
-                <td style="min-width: 240px;">
-                  <textarea class="form-control" rows="4" readonly style="resize: vertical; font-size: 1rem; padding: 10px; border-radius: 10px;"><%= booking.weddingVision || 'No notes provided.' %></textarea>
+                <td style="min-width: 200px;">
+                  <textarea class="form-control" rows="2" readonly><%= booking.weddingVision || 'No notes provided.' %></textarea>
                 </td>
                 <td><span class="badge bg-success">Confirmed</span></td>
-                <td>
+                <td class="text-center">
                   <!-- Edit -->
-                  <a href="/Dashboard/booking/edit/<%= booking._id %>" class="btn btn-sm btn-outline-warning" title="Edit">
+                  <a href="/Dashboard/booking/edit/<%= booking._id %>" class="btn btn-sm btn-outline-warning me-1" title="Edit">
                     <i class="fas fa-pen"></i>
                   </a>
 
@@ -112,28 +235,18 @@
           to <%= Math.min(currentPage * 5, totalBookings) %> 
           of <%= totalBookings %> bookings
         </div>
-
         <nav>
           <ul class="pagination mb-0">
-            <!-- Previous Button -->
             <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
-              <a class="page-link" href="?page=<%= currentPage - 1 %>&limit=5">
-                <i class="fas fa-chevron-left"></i>
-              </a>
+              <a class="page-link" href="?page=<%= currentPage - 1 %>&limit=5"><i class="fas fa-chevron-left"></i></a>
             </li>
-
-            <!-- Page Numbers -->
             <% for (let i = 1; i <= totalPages; i++) { %>
               <li class="page-item <%= currentPage === i ? 'active' : '' %>">
                 <a class="page-link" href="?page=<%= i %>&limit=5"><%= i %></a>
               </li>
             <% } %>
-
-            <!-- Next Button -->
             <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
-              <a class="page-link" href="?page=<%= currentPage + 1 %>&limit=5">
-                <i class="fas fa-chevron-right"></i>
-              </a>
+              <a class="page-link" href="?page=<%= currentPage + 1 %>&limit=5"><i class="fas fa-chevron-right"></i></a>
             </li>
           </ul>
         </nav>
@@ -144,16 +257,16 @@
   <script>
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
+      const main = document.querySelector('.main-content');
       sidebar.classList.toggle('active');
-    }
-
-    setTimeout(() => {
-      const hint = document.querySelector('.scroll-hint');
-      if (hint) {
-        hint.style.opacity = '0';
-        setTimeout(() => hint.remove(), 1000);
+      if (sidebar.classList.contains('active')) {
+        sidebar.style.marginLeft = "-240px";
+        main.style.marginLeft = "0";
+      } else {
+        sidebar.style.marginLeft = "0";
+        main.style.marginLeft = "240px";
       }
-    }, 5000);
+    }
   </script>
 
 </body>
