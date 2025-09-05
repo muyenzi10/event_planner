@@ -27,16 +27,41 @@ exports.postbook = async (req, res) => {
     }
 };
 
-// READ ALL (for view rendering)
+// READ ALL with Pagination (for view rendering)
 exports.getbookformat = async (req, res) => {
     try {
-        const bookings = await bookingdb.find();
-        res.render('home_packages/bookingformat', { bookings });
+        // Default page = 1, default limit = 5
+        let { page = 1, limit = 5 } = req.query;
+
+        // Convert to numbers
+        page = parseInt(page);
+        limit = parseInt(limit);
+
+        // Skip calculation
+        const skip = (page - 1) * limit;
+
+        // Fetch data
+        const bookings = await bookingdb.find()
+            .skip(skip)
+            .limit(limit)
+            .sort({ createdAt: -1 }); // newest first if you use timestamps
+
+        // Count total docs for pagination UI
+        const totalBookings = await bookingdb.countDocuments();
+        const totalPages = Math.ceil(totalBookings / limit);
+
+        res.render('home_packages/bookingformat', {
+            bookings,
+            currentPage: page,
+            totalPages,
+            totalBookings
+        });
     } catch (error) {
         console.error("Error fetching bookings:", error);
         res.status(500).send("Server Error");
     }
 };
+
 
 // READ ONE by ID
 exports.readdata = async (req, res) => {
