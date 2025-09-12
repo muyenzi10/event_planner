@@ -21,10 +21,16 @@
     }
     .navbar-brand,
     .navbar-nav .nav-link,
-    .navbar-toggler,
-    .btn-outline-light {
-      color: #fff !important;
+    .navbar-toggle{
+      color: #ffffff !important;
     }
+    .btn-outline-light{
+      color: #000000;
+    }
+
+/* Default hamburger color */
+
+
 
     /* Sidebar */
     .sidebar {
@@ -56,7 +62,7 @@
     .nav-link:hover,
     .nav-link.active {
       background: rgba(255, 255, 255, 0.15);
-      border-left: 4px solid #fff;
+      border-left: 4px solid #0e7ee7;
     }
 
     /* Main content */
@@ -95,6 +101,42 @@
       background-color: #2575fc;
       border-color: #2575fc;
     }
+ 
+    
+    table {
+    margin-bottom: 0;
+    min-width: 100%;
+    width: 100%;
+  }
+  
+  .table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .table thead th {
+    background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+    color: #2c3e50;
+    font-weight: 700;
+    padding: 18px 20px;
+    border-bottom: 2px solid #dee2e6;
+    vertical-align: middle;
+    position: relative;
+    white-space: nowrap;
+  }
+  
+  .table thead th::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    opacity: 0.3;
+  }
+     
   </style>
 </head>
 <body>
