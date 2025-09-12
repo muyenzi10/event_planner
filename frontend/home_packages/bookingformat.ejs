@@ -182,7 +182,10 @@
   <main class="main-content">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h1><i class="fas fa-users"></i> All Bookings</h1>
-      <a href="/add" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Booking</a>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
     </div>
 
     <div class="table-container">
@@ -206,7 +209,7 @@
               <td>
                 <div class="d-flex align-items-center">
                   <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #6a11cb, #2575fc); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">
+                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #00c9ff, #92fe9d); border-radius:50%; display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;">
                       <%= booking.firstname.charAt(0).toUpperCase() + booking.lastname.charAt(0).toUpperCase() %>
                     </div>
                   </div>
