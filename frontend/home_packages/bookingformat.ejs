@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Layout */
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background: #f9f9f9;
@@ -16,8 +15,15 @@
       padding: 0;
     }
 
-    .dashboard-container {
-      display: flex;
+    /* Top navbar */
+    .navbar {
+      background: linear-gradient(90deg, #6a11cb, #2575fc);
+    }
+    .navbar-brand,
+    .navbar-nav .nav-link,
+    .navbar-toggler,
+    .btn-outline-light {
+      color: #fff !important;
     }
 
     /* Sidebar */
@@ -27,73 +33,41 @@
       color: #fff;
       min-height: 100vh;
       position: fixed;
-      transition: all 0.3s;
+      top: 56px;           /* below navbar */
+      left: 0;
+      transition: margin-left 0.3s;
       padding-top: 20px;
     }
-
     .sidebar-header h2 {
       font-size: 1.4rem;
       text-align: center;
       margin-bottom: 20px;
     }
-
     .nav-links {
       display: flex;
       flex-direction: column;
     }
-
     .nav-link {
       padding: 12px 20px;
       color: #fff;
       text-decoration: none;
       transition: background 0.3s;
     }
-
     .nav-link:hover,
     .nav-link.active {
       background: rgba(255, 255, 255, 0.15);
       border-left: 4px solid #fff;
     }
 
-    .sidebar-toggle {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: #6a11cb;
-      color: #fff;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-    /* Main Content */
+    /* Main content */
     .main-content {
       margin-left: 240px;
+      margin-top: 56px;
       padding: 30px;
-      width: 100%;
       transition: margin-left 0.3s;
     }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 25px;
-    }
-
-    .header h1 {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .header .btn {
-      border-radius: 8px;
-    }
-
-    /* Table */
+    /* Table styling */
     .table-container {
       background: #fff;
       border-radius: 12px;
@@ -101,202 +75,184 @@
       padding: 20px;
       overflow-x: auto;
     }
-
     .table thead {
       background: #f3f4f6;
       color: #333;
       font-weight: bold;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-
     .table tbody tr:hover {
       background: #f9f9ff;
       transition: 0.3s;
     }
-
-    .avatar div {
-      font-size: 0.9rem;
-    }
-
-    /* Pagination */
     .pagination .page-link {
       border-radius: 6px;
-      color: #2575fc;
+      color: #0b0d11;
     }
-
     .pagination .page-item.active .page-link {
       background-color: #2575fc;
       border-color: #2575fc;
     }
-
-    /* Footer */
-    .table-footer {
-      margin-top: 20px;
-      font-size: 0.9rem;
-    }
-    table thead {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  
-  .table thead th {
-    background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
-    color: #2c3e50;
-    font-weight: 700;
-    padding: 18px 20px;
-    border-bottom: 2px solid #dee2e6;
-    vertical-align: middle;
-    position: relative;
-    white-space: nowrap;
-  }
-  
-  .table thead th::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right, #6a11cb, #2575fc);
-    opacity: 0.3;
-  }
-  
-  
-     
   </style>
 </head>
 <body>
 
-  <!-- Sidebar Toggle -->
-  <button class="sidebar-toggle" onclick="toggleSidebar()">
-    <i class="fas fa-bars"></i>
-  </button>
+  <!-- Top Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <button class="btn btn-outline-light me-3" id="sidebarToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      <a class="navbar-brand" href="#"><i class="fas fa-heart"></i> Wedding Planner</a>
 
-  <div class="dashboard-container">
-    <!-- Sidebar -->
-    <nav class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <h2><i class="fas fa-heart"></i> Wedding Planner</h2>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-user"></i> Profile</a>
+          </li>
+        </ul>
       </div>
-      <div class="nav-links">
-        <a href="#" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
-        <a href="#" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendar</a>
-        <a href="/Dashboard/suppliers" class="nav-link"><i class="fas fa-users"></i> Suppliers</a>
-        <a href="/Dashboard/booking" class="nav-link active"><i class="fas fa-bookmark"></i> Bookings</a>
-        <a href="#" class="nav-link"><i class="fas fa-clipboard-list"></i> Tasks</a>
-        <a href="#" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Invoices</a>
-        <a href="#" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
-      </div>
-      <div class="mt-auto text-center text-white-50 p-3" style="font-size: 13px;">
-        &copy; 2023 Wedding Planner Pro
-      </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Main Content -->
-    <main class="main-content">
-      <div class="header">
-        <h1><i class="fas fa-users"></i> All Bookings</h1>
-        <a href="/add" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Booking</a>
-      </div>
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2>Menu</h2>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+      <a href="#" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendar</a>
+      <a href="/Dashboard/suppliers" class="nav-link"><i class="fas fa-users"></i> Suppliers</a>
+      <a href="/Dashboard/booking" class="nav-link active"><i class="fas fa-bookmark"></i> Bookings</a>
+      <a href="#" class="nav-link"><i class="fas fa-clipboard-list"></i> Tasks</a>
+      <a href="#" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Invoices</a>
+      <a href="#" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+    </div>
+    <div class="mt-auto text-center text-white-50 p-3" style="font-size: 13px;">
+      &copy; 2025 Wedding Planner Pro
+    </div>
+  </nav>
 
-      <div class="table-container">
-        <table class="table table-hover align-middle">
-          <thead>
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1><i class="fas fa-users"></i> All Bookings</h1>
+      <a href="/add" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Booking</a>
+    </div>
+
+    <div class="table-container">
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th>Couple</th>
+            <th>Contact</th>
+            <th>Wedding Date</th>
+            <th>Guests</th>
+            <th>Wedding Style</th>
+            <th>Location</th>
+            <th>Wedding Vision</th>
+            <th>Status</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% bookings.forEach(booking => { %>
             <tr>
-              <th>Couple</th>
-              <th>Contact</th>
-              <th>Wedding Date</th>
-              <th>Guests</th>
-              <th>Wedding Style</th>
-              <th>Location</th>
-              <th>Wedding Vision</th>
-              <th>Status</th>
-              <th class="text-center">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% bookings.forEach(booking => { %>
-              <tr>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <div class="avatar me-3">
-                      <div style="width:40px; height:40px; background:linear-gradient(45deg, #6a11cb, #2575fc); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">
-                        <%= booking.firstname.charAt(0).toUpperCase() + booking.lastname.charAt(0).toUpperCase() %>
-                      </div>
-                    </div>
-                    <div>
-                      <div class="fw-bold"><%= booking.firstname %> <%= booking.lastname %></div>
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="avatar me-3">
+                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #6a11cb, #2575fc); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">
+                      <%= booking.firstname.charAt(0).toUpperCase() + booking.lastname.charAt(0).toUpperCase() %>
                     </div>
                   </div>
-                </td>
+                  <div>
+                    <div class="fw-bold"><%= booking.firstname %> <%= booking.lastname %></div>
+                  </div>
+                </div>
+              </td>
 
-                <td><%= booking.email %> <br> <%= booking.phone %></td>
-                <td><%= new Date(booking.weddingDate).toDateString() %></td>
-                <td><%= booking.guestsNumber %></td>
-                <td><%= booking.weddingType %></td>
-                <td><%= booking.weddingLocation %></td>
-                <td style="min-width: 200px;">
-                  <textarea class="form-control" rows="2" readonly><%= booking.weddingVision || 'No notes provided.' %></textarea>
-                </td>
-                <td><span class="badge bg-success">Confirmed</span></td>
-                <td class="text-center">
-                  <!-- Edit -->
-                  <a href="/Dashboard/booking/edit/<%= booking._id %>" class="btn btn-sm btn-outline-warning me-1" title="Edit">
-                    <i class="fas fa-pen"></i>
-                  </a>
+              <td><%= booking.email %> <br> <%= booking.phone %></td>
+              <td><%= new Date(booking.weddingDate).toDateString() %></td>
+              <td><%= booking.guestsNumber %></td>
+              <td><%= booking.weddingType %></td>
+              <td><%= booking.weddingLocation %></td>
+              <td style="min-width: 200px;">
+                <textarea class="form-control" rows="2" readonly><%= booking.weddingVision || 'No notes provided.' %></textarea>
+              </td>
+              <td><span class="badge bg-success">Confirmed</span></td>
+              <td class="text-center">
+                <!-- Edit -->
+                <a href="/Dashboard/booking/edit/<%= booking._id %>" class="btn btn-sm btn-outline-warning me-1" title="Edit">
+                  <i class="fas fa-pen"></i>
+                </a>
 
-                  <!-- Delete -->
-                  <form action="/Dashboard/booking/delete/<%= booking._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this booking?');">
-                    <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </form>
-                </td>
-              </tr>
-            <% }) %>
-          </tbody>
-        </table>
-      </div>
+                <!-- Delete -->
+                <form action="/Dashboard/booking/delete/<%= booking._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this booking?');">
+                  <button type="submit" class="btn btn-sm btn-outline-danger" title="Delete">
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
 
-      <!-- Pagination Footer -->
-      <div class="table-footer d-flex justify-content-between align-items-center">
-        <div class="text-muted">
-          Showing <%= ((currentPage - 1) * 5) + 1 %> 
-          to <%= Math.min(currentPage * 5, totalBookings) %> 
-          of <%= totalBookings %> bookings
-        </div>
-        <nav>
-          <ul class="pagination mb-0">
-            <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
-              <a class="page-link" href="?page=<%= currentPage - 1 %>&limit=5"><i class="fas fa-chevron-left"></i></a>
-            </li>
-            <% for (let i = 1; i <= totalPages; i++) { %>
-              <li class="page-item <%= currentPage === i ? 'active' : '' %>">
-                <a class="page-link" href="?page=<%= i %>&limit=5"><%= i %></a>
-              </li>
-            <% } %>
-            <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
-              <a class="page-link" href="?page=<%= currentPage + 1 %>&limit=5"><i class="fas fa-chevron-right"></i></a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </main>
+    <!-- Pagination Footer -->
+  <!-- Pagination Footer -->
+<div class="d-flex justify-content-between align-items-center mt-3">
+  <div class="text-muted">
+    Showing <%= ((currentPage - 1) * 5) + 1 %>
+    to <%= Math.min(currentPage * 5, totalBookings) %>
+    of <%= totalBookings %> bookings
   </div>
+  <nav>
+    <ul class="pagination mb-0">
+      <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
+        <a class="page-link"
+           href="/Dashboard/booking?page=<%= currentPage - 1 %>&limit=5">
+          <i class="fas fa-chevron-left"></i>
+        </a>
+      </li>
+  
+      <% for (let i = 1; i <= totalPages; i++) { %>
+        <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+          <a class="page-link"
+             href="/Dashboard/booking?page=<%= i %>&limit=5"><%= i %></a>
+        </li>
+      <% } %>
+  
+      <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
+        <a class="page-link"
+           href="/Dashboard/booking?page=<%= currentPage + 1 %>&limit=5">
+          <i class="fas fa-chevron-right"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  
+</div>
+  
+  </main>
 
   <script>
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      const main = document.querySelector('.main-content');
-      sidebar.classList.toggle('active');
-      if (sidebar.classList.contains('active')) {
-        sidebar.style.marginLeft = "-240px";
-        main.style.marginLeft = "0";
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    const main = document.querySelector('.main-content');
+
+    sidebarToggle.addEventListener('click', () => {
+      if (sidebar.style.marginLeft === '-240px') {
+        sidebar.style.marginLeft = '0';
+        main.style.marginLeft = '240px';
       } else {
-        sidebar.style.marginLeft = "0";
-        main.style.marginLeft = "240px";
+        sidebar.style.marginLeft = '-240px';
+        main.style.marginLeft = '0';
       }
-    }
+    });
   </script>
 
 </body>
