@@ -91,11 +91,13 @@ exports.deletedata = async (req, res) => {
     try {
         const booking = await bookingdb.findByIdAndDelete(req.params.id);
         if (!booking) {
-            return res.status(404).json({ message: "Booking not found" });
+            return res.status(404).send("Booking not found");
         }
-        res.status(200).json({ message: "Booking deleted successfully" });
+        req.flash("success_msg", "Booking deleted successfully");
+        // Redirect back to the bookings dashboard
+        res.redirect("/Dashboard/booking");
     } catch (error) {
         console.error("Error deleting booking:", error);
-        res.status(500).json({ message: "Server Error", error: error.message });
+        res.status(500).send("Server Error");
     }
 };
