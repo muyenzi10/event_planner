@@ -98,10 +98,14 @@
 
                   <!-- Actions -->
                   <td>
-                    <a href="#" class="btn btn-sm btn-outline-warning">
+                    <a href="/Dashboard/suppliers/edit/<%=s._id%>" class="btn btn-sm btn-outline-warning">
               <i class="fas fa-pen"></i>
             </a>
-                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                    <form action="/Dashboard/suppliers/delete/<%= s._id %>?_method=DELETE"
+                  method="POST" style="display:inline;" 
+                  onsubmit="return confirm('Delete this booking?');">
+              <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+            </form>
                   </td>
                 </tr>
               <% }) %>
