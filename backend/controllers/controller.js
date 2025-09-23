@@ -14,10 +14,6 @@ exports.getsupply = (req, res)=>{
 exports.getbook = (req, res)=>{
         res.render('home_packages/booking');
         };
-
-exports.getsuppliersformat = (req, res)=>{
-    res.render('home_packages/suplyformat');
-        }; 
 exports.getsignup = (req,res)=>{                
 res.render('signup_login/signup', {
             error: req.flash('error'),

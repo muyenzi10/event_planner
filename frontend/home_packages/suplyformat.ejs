@@ -1,69 +1,51 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wedding Planner Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <link rel="stylesheet" href="/home_packages/pablic/dashboard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/home_packages/pablic/dashboard.css">
 </head>
 <body>
-  <!-- Sidebar Toggle Button -->
   <button class="sidebar-toggle" onclick="toggleSidebar()">
     <i class="fas fa-bars"></i>
   </button>
-  
+
   <div class="dashboard-container">
-    <!-- Sidebar -->
     <nav class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <h2><i class="fas fa-heart"></i> Wedding Planner</h2>
       </div>
-      
+
       <div class="nav-links">
-        <a href="#" class="nav-link">
-          <i class="fas fa-home"></i> Dashboard
-        </a>
-        <a href="#" class="nav-link">
-          <i class="fas fa-calendar-alt"></i> Calendar
-        </a>
-        <a href="/Dashboard/suppliers" class="nav-link active">
-          <i class="fas fa-users"></i> Suppliers
-        </a>
-        <a href="/Dashboard/booking" class="nav-link">
-          <i class="fas fa-bookmark"></i> Bookings
-        </a>
-        <a href="#" class="nav-link">
-          <i class="fas fa-clipboard-list"></i> Tasks
-        </a>
-        <a href="#" class="nav-link">
-          <i class="fas fa-file-invoice-dollar"></i> Invoices
-        </a>
-        <a href="#" class="nav-link">
-          <i class="fas fa-cog"></i> Settings
-        </a>
+        <a href="#" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+        <a href="#" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendar</a>
+        <a href="/Dashboard/view/suppliers" class="nav-link active"><i class="fas fa-users"></i> Suppliers</a>
+        <a href="/Dashboard/booking" class="nav-link"><i class="fas fa-bookmark"></i> Bookings</a>
+        <a href="#" class="nav-link"><i class="fas fa-clipboard-list"></i> Tasks</a>
+        <a href="#" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Invoices</a>
+        <a href="#" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
       </div>
-      
+
       <div class="mt-auto text-center text-white-50 p-3" style="font-size: 13px;">
-        &copy; 2023 Wedding Planner Pro
+        &copy; <%= new Date().getFullYear() %> Wedding Planner Pro
       </div>
     </nav>
-    
-    <!-- Main Content -->
+
     <main class="main-content">
-      <div class="header">
+      <div class="header d-flex justify-content-between align-items-center">
         <h1><i class="fas fa-users"></i> All Suppliers</h1>
-        <button class="btn-primary">
-          <i class="fas fa-plus"></i> Add New Supplier
-        </button>
+        <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Supplier</a>
       </div>
-      
-      <div class="table-container">
+
+      <div class="table-container mt-4">
         <div class="scroll-hint">
           <i class="fas fa-arrow-down"></i> Scroll to view all data
         </div>
-        
-        <table class="table table-hover">
+
+        <table class="table table-hover align-middle">
           <thead>
             <tr>
               <th>Supplier</th>
@@ -73,378 +55,71 @@
               <th>Service</th>
               <th>Experience</th>
               <th>Portfolio</th>
-              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #6a11cb, #2575fc); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">AS</div>
-                  </div>
-                  <div>
-                    <div class="fw-bold">Alice Smith</div>
-                    <div class="text-muted small">Florist</div>
-                  </div>
-                </div>
-              </td>
-              <td>Elegant Blooms</td>
-              <td>
-                <div>alice@elegantblooms.rw</div>
-                <div class="text-muted small">+250 788 123 456</div>
-              </td>
-              <td>Kigali</td>
-              <td>Florist</td>
-              <td>5 years</td>
-              <td><a href="#" class="portfolio-link">elegantblooms.rw</a></td>
-              <td><span class="status-badge status-active">Active</span></td>
-              <td>
-                <button class="btn-action btn-view"><i class="fas fa-eye"></i></button>
-                <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #ff9a9e, #fad0c4); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">JD</div>
-                  </div>
-                  <div>
-                    <div class="fw-bold">John Doe</div>
-                    <div class="text-muted small">Catering</div>
-                  </div>
-                </div>
-              </td>
-              <td>Classic Catering</td>
-              <td>
-                <div>john@classiccatering.rw</div>
-                <div class="text-muted small">+250 788 234 567</div>
-              </td>
-              <td>Kigali</td>
-              <td>Catering</td>
-              <td>8 years</td>
-              <td><a href="#" class="portfolio-link">classiccatering.rw</a></td>
-              <td><span class="status-badge status-pending">Pending</span></td>
-              <td>
-                <button class="btn-action btn-view"><i class="fas fa-eye"></i></button>
-                <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #42e695, #3bb2b8); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">MU</div>
-                  </div>
-                  <div>
-                    <div class="fw-bold">Marie Uwimana</div>
-                    <div class="text-muted small">Event Planning</div>
-                  </div>
-                </div>
-              </td>
-              <td>Premier Events</td>
-              <td>
-                <div>marie@premierevents.rw</div>
-                <div class="text-muted small">+250 788 345 678</div>
-              </td>
-              <td>Kigali</td>
-              <td>Event Planning</td>
-              <td>10 years</td>
-              <td><a href="#" class="portfolio-link">premierevents.rw</a></td>
-              <td><span class="status-badge status-active">Active</span></td>
-              <td>
-                <button class="btn-action btn-view"><i class="fas fa-eye"></i></button>
-                <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #ff5858, #f09819); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">RJ</div>
-                  </div>
-                  <div>
-                    <div class="fw-bold">Robert Johnson</div>
-                    <div class="text-muted small">Venue Provider</div>
-                  </div>
-                </div>
-              </td>
-              <td>Dream Venues</td>
-              <td>
-                <div>robert@dreamvenues.rw</div>
-                <div class="text-muted small">+250 788 456 789</div>
-              </td>
-              <td>Kigali</td>
-              <td>Venue Provider</td>
-              <td>7 years</td>
-              <td><a href="#" class="portfolio-link">dreamvenues.rw</a></td>
-              <td><span class="status-badge status-cancelled">Cancelled</span></td>
-              <td>
-                <button class="btn-action btn-view"><i class="fas fa-eye"></i></button>
-                <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #654ea3, #da98b4); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">SW</div>
-                  </div>
-                  <div>
-                    <div class="fw-bold">Sarah Williams</div>
-                    <div class="text-muted small">Photography</div>
-                  </div>
-                </div>
-              </td>
-              <td>Captured Moments</td>
-              <td>
-                <div>sarah@capturedmoments.rw</div>
-                <div class="text-muted small">+250 788 567 890</div>
-              </td>
-              <td>Kigali</td>
-              <td>Photography</td>
-              <td>6 years</td>
-              <td><a href="#" class="portfolio-link">capturedmoments.rw</a></td>
-              <td><span class="status-badge status-active">Active</span></td>
-              <td>
-                <button class="btn-action btn-view"><i class="fas fa-eye"></i></button>
-                <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #2193b0, #6dd5ed); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">DB</div>
-                  </div>
-                  <div>
-                    <div class="fw-bold">David Brown</div>
-                    <div class="text-muted small">Bakery</div>
-                  </div>
-                </div>
-              </td>
-              <td>Exquisite Cakes</td>
-              <td>
-                <div>david@exquisitecakes.rw</div>
-                <div class="text-muted small">+250 788 678 901</div>
-              </td>
-              <td>Kigali</td>
-              <td>Bakery</td>
-              <td>9 years</td>
-              <td><a href="#" class="portfolio-link">exquisitecakes.rw</a></td>
-              <td><span class="status-badge status-active">Active</span></td>
-              <td>
-                <button class="btn-action btn-view"><i class="fas fa-eye"></i></button>
-                <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #cc2b5e, #753a88); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">GM</div>
-                  </div>
-                  <div>
-                    <div class="fw-bold">Grace Miller</div>
-                    <div class="text-muted small">Decorations</div>
-                  </div>
-                </div>
-              </td>
-              <td>Harmony Decor</td>
-              <td>
-                <div>grace@harmonydecor.rw</div>
-                <div class="text-muted small">+250 788 789 012</div>
-              </td>
-              <td>Kigali</td>
-              <td>Decorations</td>
-              <td>4 years</td>
-              <td><a href="#" class="portfolio-link">harmonydecor.rw</a></td>
-              <td><span class="status-badge status-pending">Pending</span></td>
-              <td>
-                <button class="btn-action btn-view"><i class="fas fa-eye"></i></button>
-                <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #141e30, #243b55); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">TD</div>
-                  </div>
-                  <div>
-                    <div class="fw-bold">Thomas Davis</div>
-                    <div class="text-muted small">Transportation</div>
-                  </div>
-                </div>
-              </td>
-              <td>Luxury Limos</td>
-              <td>
-                <div>thomas@luxurylimos.rw</div>
-                <div class="text-muted small">+250 788 890 123</div>
-              </td>
-              <td>Kigali</td>
-              <td>Transportation</td>
-              <td>12 years</td>
-              <td><a href="#" class="portfolio-link">luxurylimos.rw</a></td>
-              <td><span class="status-badge status-active">Active</span></td>
-              <td>
-                <button class="btn-action btn-view"><i class="fas fa-eye"></i></button>
-                <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #f857a6, #ff5858); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">EW</div>
-                  </div>
-                  <div>
-                    <div class="fw-bold">Elizabeth Wilson</div>
-                    <div class="text-muted small">Stationery</div>
-                  </div>
-                </div>
-              </td>
-              <td>Perfect Invites</td>
-              <td>
-                <div>elizabeth@perfectinvites.rw</div>
-                <div class="text-muted small">+250 788 901 234</div>
-              </td>
-              <td>Kigali</td>
-              <td>Stationery</td>
-              <td>5 years</td>
-              <td><a href="#" class="portfolio-link">perfectinvites.rw</a></td>
-              <td><span class="status-badge status-cancelled">Cancelled</span></td>
-              <td>
-                <button class="btn-action btn-view"><i class="fas fa-eye"></i></button>
-                <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #00c9ff, #92fe9d); border-radius:50%; display:flex; align-items:center; justify-content:center; color:black; font-weight:bold;">MT</div>
-                  </div>
-                  <div>
-                    <div class="fw-bold">Michael Taylor</div>
-                    <div class="text-muted small">Entertainment</div>
-                  </div>
-                </div>
-              </td>
-              <td>DJ Sound Master</td>
-              <td>
-                <div>michael@djsound.rw</div>
-                <div class="text-muted small">+250 788 012 345</div>
-              </td>
-              <td>Kigali</td>
-              <td>Entertainment</td>
-              <td>15 years</td>
-              <td><a href="#" class="portfolio-link">djsound.rw</a></td>
-              <td><span class="status-badge status-active">Active</span></td>
-              <td>
-                <button class="btn-action btn-view"><i class="fas fa-eye"></i></button>
-                <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #f46b45, #eea849); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">SR</div>
-                  </div>
-                  <div>
-                    <div class="fw-bold">Sophia Rodriguez</div>
-                    <div class="text-muted small">Makeup Artist</div>
-                  </div>
-                </div>
-              </td>
-              <td>Glamour Studio</td>
-              <td>
-                <div>sophia@glamourstudio.rw</div>
-                <div class="text-muted small">+250 788 112 233</div>
-              </td>
-              <td>Kigali</td>
-              <td>Makeup</td>
-              <td>7 years</td>
-              <td><a href="#" class="portfolio-link">glamourstudio.rw</a></td>
-              <td><span class="status-badge status-active">Active</span></td>
-              <td>
-                <button class="btn-action btn-view"><i class="fas fa-eye"></i></button>
-                <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
-            
-            <tr>
-              <td>
-                <div class="d-flex align-items-center">
-                  <div class="avatar me-3">
-                    <div style="width:40px; height:40px; background:linear-gradient(45deg, #834d9b, #d04ed6); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold;">JL</div>
-                  </div>
-                  <div>
-                    <div class="fw-bold">James Lee</div>
-                    <div class="text-muted small">Lighting Specialist</div>
-                  </div>
-                </div>
-              </td>
-              <td>Light Magic</td>
-              <td>
-                <div>james@lightmagic.rw</div>
-                <div class="text-muted small">+250 788 223 344</div>
-              </td>
-              <td>Kigali</td>
-              <td>Lighting</td>
-              <td>6 years</td>
-              <td><a href="#" class="portfolio-link">lightmagic.rw</a></td>
-              <td><span class="status-badge status-pending">Pending</span></td>
-              <td>
-                <button class="btn-action btn-view"><i class="fas fa-eye"></i></button>
-                <button class="btn-action btn-delete"><i class="fas fa-trash"></i></button>
-              </td>
-            </tr>
+            <% if (!suppliers || suppliers.length === 0) { %>
+              <tr>
+                <td colspan="8" class="text-center text-muted">No suppliers found.</td>
+              </tr>
+            <% } else { %>
+              <% suppliers.forEach(s => { %>
+                <tr>
+                  <!-- Full Name -->
+                  <td><%= s.firstname %> <%= s.lastname %></td>
+
+                  <!-- Business -->
+                  <td><%= s.business || '—' %></td>
+
+                  <!-- Contact -->
+                  <td>
+                    <div><%= s.email %></div>
+                    <div class="text-muted small"><%= s.phone %></div>
+                  </td>
+
+                  <!-- Location -->
+                  <td><%= s.location %></td>
+
+                  <!-- Service -->
+                  <td><%= s.service %></td>
+
+                  <!-- Experience -->
+                  <td><%= s.experience != null ? s.experience + ' yrs' : '—' %></td>
+
+                  <!-- Portfolio -->
+                  <td>
+                    <% if (s.link) { %>
+                      <a href="<%= s.link %>" target="_blank">View</a>
+                    <% } else { %>
+                      —
+                    <% } %>
+                  </td>
+
+                  <!-- Actions -->
+                  <td>
+                    <a href="#" class="btn btn-sm btn-outline-warning">
+              <i class="fas fa-pen"></i>
+            </a>
+                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                  </td>
+                </tr>
+              <% }) %>
+            <% } %>
           </tbody>
         </table>
       </div>
-      
-      <div class="table-footer">
-        <div class="text-muted">Showing 1 to 12 of 24 suppliers</div>
-        <nav>
-          <ul class="pagination mb-0">
-            <li class="page-item disabled"><a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a></li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a></li>
-          </ul>
-        </nav>
-      </div>
     </main>
   </div>
-  
+
   <script>
     function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('active');
+      document.getElementById('sidebar').classList.toggle('active');
     }
-    
-    // Auto-hide scroll hint after 5 seconds
+
     setTimeout(() => {
       const hint = document.querySelector('.scroll-hint');
-      if (hint) {
-        hint.style.opacity = '0';
-        setTimeout(() => hint.remove(), 1000);
-      }
+      if (hint) { hint.style.opacity = '0'; setTimeout(() => hint.remove(), 1000); }
     }, 5000);
   </script>
 </body>

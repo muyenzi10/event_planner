@@ -5,5 +5,5 @@ const {requireAuth} = require("../middleware/jwtaut")
 const supplierrouter = express.Router();
 
 supplierrouter.post("/submit", routersupplier.postsupplier);
-supplierrouter.get("/Dashboard/suppliers",supplierformat.getsuppliersformat);
+supplierrouter.get("/Dashboard/view/supliers",routersupplier.getsuppliers);
 module.exports = supplierrouter;
