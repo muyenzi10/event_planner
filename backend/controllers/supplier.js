@@ -10,8 +10,20 @@ exports.postsupplier = async (req,res)=>{
 }
 exports.getsuppliers = async(req,res)=>{
     try{
-    const suppliers = await supplier.find();
-    res.render("home_packages/suplyformat", {suppliers});
+     let page = parseInt(req.query.page) || 1;
+     let limit = parseInt(req.query.limit) || 5;
+     const skip = (page -1) * limit;
+
+    const suppliers = await supplier.find().skip(skip).limit(limit);
+    const totalSuppliers = await supplier.countDocuments();
+    const totalpage = Math.ceil(totalSuppliers / limit);
+    res.render("home_packages/suplyformat", {suppliers,
+      currentpage:page,
+      totalpage,
+      totalSuppliers,
+      limit,
+      query: req.query 
+    });
 }catch(err){
   res.status(500).json({message:err.message});
 }

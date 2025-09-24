@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Edit Booking | Event Planner Pro</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
       --primary: #6a11cb;
       --secondary: #4361ee;
       --accent: #f72585;
-      --light: #f8f9fa;
       --dark: #212529;
-      --success: #4cc9f0;
     }
 
     body {
@@ -22,57 +20,94 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    /* Animations */
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* ===== Sidebar & Toggle ===== */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 240px;
+      height: 100%;
+      background: var(--dark);
+      padding-top: 70px;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+    .sidebar.active { transform: translateX(0); }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #fff;
+      text-decoration: none;
+      transition: background .3s;
+    }
+    .sidebar a:hover,
+    .sidebar a.active { background: rgba(255,255,255,0.1); }
+
+    .sidebar-toggle {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 1100;
+      background: var(--primary);
+      border: none;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
-    @keyframes scaleFadeIn {
-      0% { transform: scale(0.95); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s ease;
+      z-index: 900;
+    }
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
     }
 
-    @keyframes fadeInUp {
-      0% { transform: translateY(20px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
+    @media (min-width: 768px) {
+      .sidebar { transform: translateX(0); }
+      .overlay { display: none; }
+      body { margin-left: 240px; }
     }
 
-    /* Card styling */
+    /* ===== Booking Card & Animations ===== */
+    @keyframes fadeInDown { from{opacity:0;transform:translateY(-10px);} to{opacity:1;transform:translateY(0);} }
+    @keyframes scaleFadeIn { 0%{transform:scale(0.95);opacity:0;} 100%{transform:scale(1);opacity:1;} }
+    @keyframes fadeInUp { 0%{transform:translateY(20px);opacity:0;} 100%{transform:translateY(0);opacity:1;} }
+
     .booking-card {
       background: white;
       border-radius: 18px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
       overflow: hidden;
       transition: all 0.3s ease-in-out;
       animation: scaleFadeIn 0.7s ease forwards;
+      margin-top: 30px;
     }
-
     .booking-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.12);
     }
 
-    /* Header */
     .form-header {
       background: linear-gradient(270deg, var(--primary), var(--secondary));
-      background-size: 400% 400%;
-      animation: fadeInDown 0.6s ease, gradientShift 8s ease infinite;
       color: white;
       padding: 30px;
       border-radius: 18px 18px 0 0;
+      animation: fadeInDown 0.6s ease;
     }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Section styling */
-    .form-section {
-      padding: 30px;
-    }
+    .form-section { padding: 30px; }
 
     .section-title {
       position: relative;
@@ -82,7 +117,6 @@
       color: var(--dark);
       animation: fadeInUp 0.6s ease both;
     }
-
     .section-title:after {
       content: '';
       position: absolute;
@@ -94,17 +128,6 @@
       border-radius: 3px;
     }
 
-    /* Inputs */
-    .form-control:focus,
-    .form-select:focus {
-      border-color: var(--secondary);
-      box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
-    }
-
-    input, textarea, select {
-      animation: fadeInUp 0.6s ease both;
-    }
-
     .form-label {
       font-weight: 600;
       color: #495057;
@@ -112,95 +135,57 @@
       display: flex;
       align-items: center;
     }
+    .form-label i { margin-right: 10px; color: var(--secondary); width: 20px; }
 
-    .form-label i {
-      margin-right: 10px;
-      color: var(--secondary);
-      width: 20px;
-    }
-
-    /* Buttons with ripple effect - UPDATED FOR MOBILE */
-    .btn-primary,
-    .btn-outline-secondary {
-      position: relative;
-      overflow: hidden;
-      padding: 10px 20px; /* Reduced padding for better mobile fit */
-      font-weight: 600;
-      border-radius: 8px;
-      font-size: 1rem; /* Adjusted font size */
-    }
-
-    @media (min-width: 768px) {
-      .btn-primary,
-      .btn-outline-secondary {
-        padding: 12px 26px; /* Original padding for larger screens */
-        font-size: 1.05rem; /* Original font size for larger screens */
-      }
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
     }
 
     .btn-primary {
       background: linear-gradient(to right, var(--primary), var(--secondary));
       border: none;
+      font-weight: 600;
+      border-radius: 8px;
+      padding: 10px 20px;
       transition: all 0.3s ease;
     }
-
     .btn-primary:hover {
       background: linear-gradient(to right, #5a0db9, #3250d8);
       transform: translateY(-2px);
     }
+    .btn-outline-secondary { border-radius: 8px; }
 
-    .btn-primary::after,
-    .btn-outline-secondary::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%) scale(0);
-      width: 300%;
-      height: 300%;
-      background: rgba(255,255,255,0.2);
-      border-radius: 50%;
-      transition: transform 0.5s ease;
-    }
-
-    .btn-primary:hover::after,
-    .btn-outline-secondary:hover::after {
-      transform: translate(-50%, -50%) scale(1);
-    }
-
-    .required-star {
-      color: var(--accent);
-      margin-left: 3px;
-    }
-
-    /* Button container - UPDATED FOR MOBILE */
     .form-actions {
       display: flex;
-      flex-direction: column; /* Stack buttons vertically on mobile */
-      gap: 15px; /* Space between buttons */
+      flex-direction: column;
+      gap: 15px;
       align-items: stretch;
       margin-top: 30px;
       padding-top: 25px;
       border-top: 1px solid #eee;
     }
-
     @media (min-width: 768px) {
-      .form-actions {
-        flex-direction: row; /* Side by side on larger screens */
-        justify-content: space-between;
-        align-items: center;
-      }
+      .form-actions { flex-direction: row; justify-content: space-between; }
     }
 
-    @media (max-width: 768px) {
-      .booking-card { margin-top: 20px; }
-      .form-header { text-align: center; padding: 20px; }
-      .form-section { padding: 20px; }
-    }
+    .required-star { color: var(--accent); margin-left: 3px; }
   </style>
 </head>
 <body>
-  <div class="container py-4"> <!-- Reduced padding for mobile -->
+
+  <!-- Sidebar -->
+  <button class="sidebar-toggle" aria-label="Toggle sidebar"><i class="fas fa-bars"></i></button>
+  <nav class="sidebar">
+    <a href="/Dashboard/booking" class="active"><i class="fas fa-calendar-alt me-2"></i>Bookings</a>
+    <a href="/Dashboard/view/suppliers"><i class="fas fa-users me-2"></i>Suppliers</a>
+    <!-- add more nav links if needed -->
+  </nav>
+  <div class="overlay"></div>
+
+  <!-- Main Content -->
+  <div class="container py-4">
     <div class="row justify-content-center">
       <div class="col-lg-10">
         <div class="booking-card">
@@ -212,7 +197,7 @@
           <div class="form-section">
             <form action="/Dashboard/booking/update/<%= booking._id %>?_method=PUT" method="POST">
               <div class="row">
-                <div class="col-md-6" style="animation: fadeInUp 0.6s ease both; animation-delay: 0.2s;">
+                <div class="col-md-6">
                   <h5 class="section-title">Personal Information</h5>
 
                   <div class="mb-4">
@@ -226,65 +211,74 @@
                   </div>
 
                   <div class="mb-4">
-                    <label class="form-label"><i class="fas fa-envelope"></i>Email Address<span class="required-star">*</span></label>
+                    <label class="form-label"><i class="fas fa-envelope"></i>Email<span class="required-star">*</span></label>
                     <input type="email" name="email" class="form-control form-control-lg" value="<%= booking.email %>" required>
                   </div>
 
                   <div class="mb-4">
-                    <label class="form-label"><i class="fas fa-phone"></i>Phone Number<span class="required-star">*</span></label>
+                    <label class="form-label"><i class="fas fa-phone"></i>Phone<span class="required-star">*</span></label>
                     <input type="text" name="phone" class="form-control form-control-lg" value="<%= booking.phone %>" required>
                   </div>
                 </div>
 
-                <div class="col-md-6" style="animation: fadeInUp 0.6s ease both; animation-delay: 0.4s;">
+                <div class="col-md-6">
                   <h5 class="section-title">Wedding Details</h5>
 
                   <div class="mb-4">
-                    <label class="form-label"><i class="fas fa-calendar-day"></i>Wedding Date<span class="required-star">*</span></label>
+                    <label class="form-label"><i class="fas fa-calendar-day"></i>Date<span class="required-star">*</span></label>
                     <input type="date" name="weddingDate" class="form-control form-control-lg" value="<%= booking.weddingDate.toISOString().slice(0,10) %>" required>
                   </div>
 
                   <div class="mb-4">
-                    <label class="form-label"><i class="fas fa-users"></i>Number of Guests<span class="required-star">*</span></label>
+                    <label class="form-label"><i class="fas fa-users"></i>Guests<span class="required-star">*</span></label>
                     <input type="number" name="guestsNumber" class="form-control form-control-lg" value="<%= booking.guestsNumber %>" min="1" required>
                   </div>
 
                   <div class="mb-4">
-                    <label class="form-label"><i class="fas fa-ring"></i>Wedding Type<span class="required-star">*</span></label>
+                    <label class="form-label"><i class="fas fa-ring"></i>Type<span class="required-star">*</span></label>
                     <input type="text" name="weddingType" class="form-control form-control-lg" value="<%= booking.weddingType %>" required>
                   </div>
 
                   <div class="mb-4">
-                    <label class="form-label"><i class="fas fa-map-marker-alt"></i>Wedding Location<span class="required-star">*</span></label>
+                    <label class="form-label"><i class="fas fa-map-marker-alt"></i>Location<span class="required-star">*</span></label>
                     <input type="text" name="weddingLocation" class="form-control form-control-lg" value="<%= booking.weddingLocation %>" required>
                   </div>
                 </div>
               </div>
 
-              <h5 class="section-title" style="animation-delay: 0.6s;">Vision & Preferences</h5>
-              <div class="mb-4" style="animation: fadeInUp 0.6s ease both; animation-delay: 0.7s;">
+              <h5 class="section-title">Vision & Preferences</h5>
+              <div class="mb-4">
                 <label class="form-label"><i class="fas fa-palette"></i>Wedding Vision & Theme</label>
-                <textarea name="weddingVision" class="form-control form-control-lg" rows="5" placeholder="Describe your dream wedding..."><%= booking.weddingVision %></textarea>
+                <textarea name="weddingVision" class="form-control form-control-lg" rows="5"><%= booking.weddingVision %></textarea>
               </div>
 
-              <!-- UPDATED BUTTON SECTION FOR MOBILE -->
-              <div class="form-actions" style="animation: fadeInUp 0.6s ease both; animation-delay: 0.9s;">
-                <a href="/Dashboard/booking" class="btn btn-outline-secondary">
-                  <i class="fas fa-times me-2"></i> Go back
-                </a>
-                <button type="submit" class="btn btn-primary">
-                  <i class="fas fa-save me-2"></i>Update Booking
-                </button>
+              <div class="form-actions">
+                <a href="/Dashboard/booking" class="btn btn-outline-secondary"><i class="fas fa-times me-2"></i>Go back</a>
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save me-2"></i>Update Booking</button>
               </div>
             </form>
           </div>
         </div>
 
         <div class="mt-4 text-center text-muted">
-          <p class="mb-0">© 2023 Event Planner Pro | Your Dream Wedding Starts Here</p>
+          © <%= new Date().getFullYear() %> Event Planner Pro
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    const toggleBtn = document.querySelector('.sidebar-toggle');
+    const sidebar  = document.querySelector('.sidebar');
+    const overlay  = document.querySelector('.overlay');
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    });
+  </script>
 </body>
 </html>

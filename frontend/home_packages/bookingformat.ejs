@@ -2,172 +2,227 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Wedding Planner - Bookings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Planner Dashboard - Bookings</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
- <style> body {font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
- background:#f9f9f9;margin:0;} 
- .navbar {background:linear-gradient(90deg,#6a11cb,#2575fc);} 
- .navbar-brand,.navbar-nav .nav-link {color:#ffffff!important;} 
- .sidebar {width:240px;background:linear-gradient(180deg,#6a11cb,#2575fc);color:#fff;min-height:100vh;position:fixed;top:56px;left:0;padding-top:20px;} 
- /* Sidebar link base */
-.nav-link {
-    position: relative;
-    padding: 12px 20px;
-    color: #fff;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease;
-    border-left: 4px solid transparent;
-}
+  <style>
+    body {
+      font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+      background:#f9f9f9;
+      margin:0;
+    }
 
-/* Hover & Active Effect */
-.nav-link:hover,
-.nav-link.active {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateX(5px);
-    border-left-color: #0e7ee7;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-}
+    /* Sidebar */
+    .sidebar {
+      width:240px;
+      background:linear-gradient(180deg,#6a11cb,#2575fc);
+      color:hsl(0, 12%, 82%);
+      min-height:100vh;
+      position:fixed;
+      top:0;
+      left:0;
+      padding-top:20px;
+      transition: margin-left 0.3s ease, transform 0.3s ease;
+      z-index:1000;
+    }
 
-/* Optional: Sliding border using ::before for extra smoothness */
-.nav-link::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 0;
-    background-color: #0e7ee7;
-    border-radius: 0 4px 4px 0;
-    transition: width 0.3s ease;
-}
+    .sidebar-header h2 {
+      text-align:center;
+      margin-bottom:20px;
+      color:#fff;
+    }
 
-.nav-link:hover::before,
-.nav-link.active::before {
-    width: 4px;
-}
+    .nav-link {
+      position:relative;
+      padding:12px 20px;
+      color:#fff;
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      transition:all 0.3s ease;
+      border-left:4px solid transparent;
+    }
 
-/* Sidebar main content spacing */
-.main-content {
-    margin-left: 240px;
-    margin-top: 56px;
-    padding: 30px;
-    transition: margin-left 0.3s ease;
-}
+    .nav-link:hover, .nav-link.active {
+      background:rgba(255,255,255,0.15);
+      transform:translateX(5px);
+      border-left-color:#0e7ee7;
+      box-shadow:2px 2px 8px rgba(0,0,0,0.1);
+    }
 
+    .nav-link::before {
+      content:"";
+      position:absolute;
+      left:0; top:0;
+      height:100%;
+      width:0;
+      background-color:#0e7ee7;
+      border-radius:0 4px 4px 0;
+      transition:width 0.3s ease;
+    }
 
- .main-content {margin-left:240px;margin-top:56px;padding:30px;} 
- .table-container {background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.05);padding:20px;overflow-x:auto;} 
- .table thead th {background:linear-gradient(to bottom,#f8f9fa,#e9ecef);color:#2c3e50;font-weight:700;} 
- .table tbody tr:hover {background:#f9f9ff;transition:0.3s;} 
- .pagination .page-item.active .page-link {background-color:#2575fc;border-color:#2575fc;}
+    .nav-link:hover::before, .nav-link.active::before { width:4px; }
+
+    .sidebar .mt-auto {
+      text-align:center;
+      font-size:13px;
+      color:rgba(255,255,255,0.5);
+      padding:10px 0;
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left:240px;
+      margin-top:56px;
+      padding:30px;
+      transition:margin-left 0.3s ease;
+    }
+
+    .table-container {
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 4px 12px rgba(0,0,0,0.05);
+      padding:20px;
+      overflow-x:auto;
+    }
+
+    .table thead th {
+      background:linear-gradient(to bottom,#f8f9fa,#e9ecef);
+      color:#2c3e50;
+      font-weight:700;
+    }
+
+    .table tbody tr:hover { background:#f9f9ff; transition:0.3s; }
+
+    .pagination .page-item.active .page-link {
+      background-color:#2575fc;
+      border-color:#2575fc;
+    }
+
+    .search-form { margin-bottom:20px; }
+    .scroll-hint { text-align:center; font-size:0.85rem; color:#6c757d; margin-bottom:10px; transition:opacity 0.5s ease; }
+
+    .btn-outline-warning { color:#ffc107; border-color:#ffc107; }
+    .btn-outline-danger { color:#dc3545; border-color:#dc3545; }
+
+    /* Mobile & Toggle */
+    @media (max-width:768px){
+      .sidebar {
+        transform: translateX(-100%);
+         margin-left:0 !important;
+         top: 150px;
+      }
+      .sidebar.active { transform: translateX(0); }
+      .main-content { margin-left:0 !important; }
+    }
+
+    /* Overlay for mobile */
+    #overlay {
+      position:fixed;
+      top:0; left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.4);
+      z-index:900;
+      display:none;
+      opacity:0;
+      transition:opacity 0.3s ease;
+    }
   </style>
- 
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container-fluid">
-      <button class="btn btn-outline-light me-3" id="sidebarToggle"><i class="fas fa-bars"></i></button>
-      <a class="navbar-brand" href="#"><i class="fas fa-heart"></i> Wedding Planner</a>
-    </div>
-  </nav>
+
+  <!-- Sidebar Toggle -->
+  <button class="sidebar-toggle btn btn-light position-fixed top-0 start-0 m-2" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Overlay -->
+  <div id="overlay" onclick="toggleSidebar()"></div>
 
   <!-- Sidebar -->
   <nav class="sidebar" id="sidebar">
-    <div class="sidebar-header text-center"><h2>Menu</h2></div>
+    <div class="sidebar-header">
+      <h2><i class="fas fa-heart"></i> Wedding Planner</h2>
+    </div>
     <div class="nav-links">
-      
-       <a href="/Dashboard/view/supliers" class="nav-link active">
-          <i class="fas fa-users"></i> Suppliers
-        </a>
+      <a href="/Dashboard/view/suppliers" class="nav-link"><i class="fas fa-users"></i> Suppliers</a>
       <a href="/Dashboard/booking" class="nav-link active"><i class="fas fa-bookmark"></i> Bookings</a>
     </div>
+    <div class="mt-auto">&copy; <%= new Date().getFullYear() %> Wedding Planner Pro</div>
   </nav>
 
-  <!-- Main -->
+  <!-- Main Content -->
   <main class="main-content">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1><i class="fas fa-users"></i> All Bookings</h1>
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1><i class="fas fa-bookmark"></i> All Bookings</h1>
     </div>
 
-    <!-- Search & Reset -->
-    <form class="d-flex flex-wrap align-items-center gap-2 mb-4" method="GET" action="/Dashboard/booking">
-      <input type="text" class="form-control" name="name" placeholder="Search by name"
-             value="<%= query.name || '' %>" style="width:250px;">
+    <form class="d-flex flex-wrap align-items-center gap-2 search-form" method="GET" action="/Dashboard/booking">
+      <input type="text" class="form-control" name="name" placeholder="Search by name" value="<%= query?.name || '' %>" style="width:250px;">
       <button type="submit" class="btn btn-success px-4">Filter</button>
       <a href="/Dashboard/booking" class="btn btn-secondary px-4">Reset</a>
     </form>
-<!-- Bookings Table -->
-<div class="table-container">
-  <table class="table table-hover align-middle">
-    <thead>
-      <tr>
-        <th>Couple</th>
-        <th>Contact</th>
-        <th>Date</th>
-        <th>Guests</th>
-        <th>Style</th>
-        <th>Location</th>
-        <th>comments</th>
-        <th class="text-center">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% bookings.forEach(booking => { %>
-        <tr>
-          <td><%= booking.firstname %> <%= booking.lastname %></td>
-          <td><%= booking.email %><br><%= booking.phone %></td>
-          <td><%= new Date(booking.weddingDate).toDateString() %></td>
-          <td><%= booking.guestsNumber %></td>
-          <td><%= booking.weddingType %></td>
-          <td><%= booking.weddingLocation %></td>
-          <td><%= booking.weddingVision || 'No notes' %></td>
-          <td class="text-center">
-            <a href="/Dashboard/booking/edit/<%= booking._id %>" class="btn btn-sm btn-outline-warning">
-              <i class="fas fa-pen"></i>
-            </a>
-            <form action="/Dashboard/booking/delete/<%= booking._id %>?_method=DELETE"
-                  method="POST" style="display:inline;" 
-                  onsubmit="return confirm('Delete this booking?');">
-              <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
-            </form>
-          </td>
-        </tr>
-      <% }) %>
-    </tbody>
-  </table>
-</div>
 
-    
-          
-    <!-- Pagination -->
+    <div class="scroll-hint"><i class="fas fa-arrow-down"></i> Scroll to view all data</div>
+
+    <div class="table-container">
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th>Couple</th>
+            <th>Contact</th>
+            <th>Date</th>
+            <th>Guests</th>
+            <th>Style</th>
+            <th>Location</th>
+            <th>Comments</th>
+            <th class="text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if(!bookings || bookings.length===0){ %>
+            <tr><td colspan="8" class="text-center text-muted">No bookings found.</td></tr>
+          <% } else { %>
+            <% bookings.forEach(b => { %>
+              <tr>
+                <td><%= b.firstname %> <%= b.lastname %></td>
+                <td><div><%= b.email %></div><div class="text-muted small"><%= b.phone %></div></td>
+                <td><%= new Date(b.weddingDate).toDateString() %></td>
+                <td><%= b.guestsNumber %></td>
+                <td><%= b.weddingType %></td>
+                <td><%= b.weddingLocation %></td>
+                <td><%= b.weddingVision || 'No notes' %></td>
+                <td class="text-center">
+                  <a href="/Dashboard/booking/edit/<%= b._id %>" class="btn btn-sm btn-outline-warning"><i class="fas fa-pen"></i></a>
+                  <form action="/Dashboard/booking/delete/<%= b._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('Delete this booking?');">
+                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+
     <div class="d-flex justify-content-between align-items-center mt-3">
       <div class="text-muted">
-        Showing <%= ((currentPage - 1) * limit) + 1 %>
-        to <%= Math.min(currentPage * limit, totalBookings) %>
-        of <%= totalBookings %>
+        Showing <%= ((currentPage - 1) * limit) + 1 %> to <%= Math.min(currentPage * limit, totalBookings) %> of <%= totalBookings %>
       </div>
       <nav>
         <ul class="pagination mb-0">
           <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
-            <a class="page-link"
-               href="/Dashboard/booking?page=<%= currentPage - 1 %>&limit=<%= limit %><%= query.name ? '&name=' + query.name : '' %>">
-               <i class="fas fa-chevron-left"></i></a>
+            <a class="page-link" href="/Dashboard/booking?page=<%= currentPage-1 %>&limit=<%= limit %><%= query?.name ? '&name=' + query.name : '' %>"><i class="fas fa-chevron-left"></i></a>
           </li>
-          <% for (let i = 1; i <= totalPages; i++) { %>
-            <li class="page-item <%= currentPage === i ? 'active' : '' %>">
-              <a class="page-link"
-                 href="/Dashboard/booking?page=<%= i %>&limit=<%= limit %><%= query.name ? '&name=' + query.name : '' %>"><%= i %></a>
+          <% for(let i=1;i<=totalPages;i++){ %>
+            <li class="page-item <%= currentPage===i?'active':'' %>">
+              <a class="page-link" href="/Dashboard/booking?page=<%= i %>&limit=<%= limit %><%= query?.name ? '&name=' + query.name : '' %>"><%= i %></a>
             </li>
           <% } %>
           <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
-            <a class="page-link"
-               href="/Dashboard/booking?page=<%= currentPage + 1 %>&limit=<%= limit %><%= query.name ? '&name=' + query.name : '' %>">
-               <i class="fas fa-chevron-right"></i></a>
+            <a class="page-link" href="/Dashboard/booking?page=<%= currentPage+1 %>&limit=<%= limit %><%= query?.name ? '&name=' + query.name : '' %>"><i class="fas fa-chevron-right"></i></a>
           </li>
         </ul>
       </nav>
@@ -175,11 +230,41 @@
   </main>
 
   <script>
-    document.getElementById('sidebarToggle').addEventListener('click',()=>{
-      const s=document.getElementById('sidebar');const m=document.querySelector('.main-content');
-      if(s.style.marginLeft==='-240px'){s.style.marginLeft='0';m.style.marginLeft='240px';}
-      else{s.style.marginLeft='-240px';m.style.marginLeft='0';}
+    const sidebar = document.getElementById('sidebar');
+    const main = document.querySelector('.main-content');
+    const overlay = document.getElementById('overlay');
+
+    function toggleSidebar(){
+      if(window.innerWidth <= 768){
+        if(sidebar.classList.contains('active')){
+          sidebar.classList.remove('active');
+          overlay.style.opacity = '0';
+          setTimeout(()=> overlay.style.display='none', 300);
+        } else {
+          sidebar.classList.add('active');
+          overlay.style.display = 'block';
+          setTimeout(()=> overlay.style.opacity='1', 10);
+        }
+      } else {
+        sidebar.classList.toggle('active');
+        main.classList.toggle('active');
+      }
+    }
+
+    // Hide scroll hint
+    setTimeout(()=>{
+      const hint = document.querySelector('.scroll-hint');
+      if(hint){ hint.style.opacity='0'; setTimeout(()=>hint.remove(),1000);}
+    },5000);
+
+    window.addEventListener('resize', ()=>{
+      if(window.innerWidth > 768){
+        sidebar.classList.remove('active');
+        overlay.style.opacity = '0';
+        overlay.style.display = 'none';
+      }
     });
   </script>
+
 </body>
 </html>

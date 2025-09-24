@@ -1,130 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Planner Dashboard</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Planner Dashboard – Suppliers</title>
+
+  <!-- Bootstrap & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="/home_packages/pablic/dashboard.css">
+
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+    }
+
+    /* Overlay (mobile) */
+   #overlay {
+      position:fixed;
+      top:0; left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.4);
+      z-index:900;
+      display:none;
+      opacity:0;
+      transition:opacity 0.3s ease;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: linear-gradient(180deg,#6a11cb,#2575fc);
+      color: #fff;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-top: 60px;
+      transform: translateX(0);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+    /* hidden by default on mobile */
+     @media (max-width:768px){
+      .sidebar {
+        transform: translateX(-100%);
+         margin-left:0 !important;
+         top: 150px;
+      }
+      .sidebar.active { transform: translateX(0); }
+      .main-content { margin-left:0 !important; }
+    }
+
+    .sidebar-header h2 { text-align: center; margin-bottom: 20px; }
+
+    .nav-link {
+      padding: 12px 20px;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      border-left: 4px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      background: rgba(255,255,255,0.15);
+      border-left-color: #0e7ee7;
+      transform: translateX(5px);
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Main content */
+    .main-content {
+      margin-left: 240px;
+      padding: 30px;
+      margin-top:56px;
+      transition: margin-left 0.3s ease;
+    }
+    @media (max-width:768px) {
+      .main-content { margin-left: 0; }
+    }
+
+    /* Table styling */
+    .table-container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 20px;
+      overflow-x: auto;
+    }
+    .table thead th {
+      background: linear-gradient(to bottom,#f8f9fa,#e9ecef);
+      color: #2c3e50;
+      font-weight: 700;
+    }
+    .table tbody tr:hover {
+      background: #f9f9ff;
+      transition: 0.3s;
+    }
+    .pagination .page-item.active .page-link {
+      background-color: #2575fc;
+      border-color: #2575fc;
+    }
+  </style>
 </head>
+
 <body>
-  <button class="sidebar-toggle" onclick="toggleSidebar()">
+  <!-- Sidebar Toggle Button -->
+  <button class="btn btn-light position-fixed top-0 start-0 m-2" onclick="toggleSidebar()">
     <i class="fas fa-bars"></i>
   </button>
 
-  <div class="dashboard-container">
-    <nav class="sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <h2><i class="fas fa-heart"></i> Wedding Planner</h2>
-      </div>
+  <!-- Overlay for mobile -->
+  <div id="overlay" onclick="toggleSidebar()"></div>
 
-      <div class="nav-links">
-        <a href="#" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
-        <a href="#" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendar</a>
-        <a href="/Dashboard/view/suppliers" class="nav-link active"><i class="fas fa-users"></i> Suppliers</a>
-        <a href="/Dashboard/booking" class="nav-link"><i class="fas fa-bookmark"></i> Bookings</a>
-        <a href="#" class="nav-link"><i class="fas fa-clipboard-list"></i> Tasks</a>
-        <a href="#" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Invoices</a>
-        <a href="#" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
-      </div>
+  <!-- Sidebar -->
+  <nav class="sidebar closed" id="sidebar">
+    <div class="sidebar-header">
+      <h2><i class="fas fa-heart"></i> Wedding Planner</h2>
+    </div>
+    <div class="nav-links">
+      <a href="#" class="nav-link"><i class="fas fa-home"></i> Dashboard</a>
+      <a href="#" class="nav-link"><i class="fas fa-calendar-alt"></i> Calendar</a>
+      <a href="/Dashboard/view/suppliers" class="nav-link active"><i class="fas fa-users"></i> Suppliers</a>
+      <a href="/Dashboard/booking" class="nav-link"><i class="fas fa-bookmark"></i> Bookings</a>
+      <a href="#" class="nav-link"><i class="fas fa-clipboard-list"></i> Tasks</a>
+      <a href="#" class="nav-link"><i class="fas fa-file-invoice-dollar"></i> Invoices</a>
+      <a href="#" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+    </div>
+    <div class="mt-auto text-center small text-white-50 py-3">
+      &copy; <%= new Date().getFullYear() %> Wedding Planner Pro
+    </div>
+  </nav>
 
-      <div class="mt-auto text-center text-white-50 p-3" style="font-size: 13px;">
-        &copy; <%= new Date().getFullYear() %> Wedding Planner Pro
-      </div>
-    </nav>
+  <!-- Main Content -->
+  <main class="main-content" id="main">
+    <h1><i class="fas fa-users"></i> All Suppliers</h1>
 
-    <main class="main-content">
-      <div class="header d-flex justify-content-between align-items-center">
-        <h1><i class="fas fa-users"></i> All Suppliers</h1>
-        <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Add New Supplier</a>
-      </div>
+    <!-- Search -->
+    <form class="d-flex flex-wrap align-items-center gap-2" method="GET" action="/Dashboard/view/suppliers">
+      <input type="text" class="form-control" name="name"
+             placeholder="Search by name"
+             value="<%= (query && query.name) ? query.name : '' %>"
+             style="width:250px;">
+      <button type="submit" class="btn btn-success px-4">Filter</button>
+      <a href="/Dashboard/view/suppliers" class="btn btn-secondary px-4">Reset</a>
+    </form>
 
-      <div class="table-container mt-4">
-        <div class="scroll-hint">
-          <i class="fas fa-arrow-down"></i> Scroll to view all data
-        </div>
-
-        <table class="table table-hover align-middle">
-          <thead>
-            <tr>
-              <th>Supplier</th>
-              <th>Business</th>
-              <th>Contact</th>
-              <th>Location</th>
-              <th>Service</th>
-              <th>Experience</th>
-              <th>Portfolio</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% if (!suppliers || suppliers.length === 0) { %>
+    <!-- Table -->
+    <div class="table-container mt-3">
+      <table class="table table-hover align-middle">
+        <thead>
+          <tr>
+            <th>Supplier</th>
+            <th>Business</th>
+            <th>Contact</th>
+            <th>Location</th>
+            <th>Service</th>
+            <th>Experience</th>
+            <th>Portfolio</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (!suppliers || suppliers.length === 0) { %>
+            <tr><td colspan="8" class="text-center text-muted">No suppliers found.</td></tr>
+          <% } else { %>
+            <% suppliers.forEach(s => { %>
               <tr>
-                <td colspan="8" class="text-center text-muted">No suppliers found.</td>
+                <td><%= s.firstname %> <%= s.lastname %></td>
+                <td><%= s.business || '—' %></td>
+                <td>
+                  <div><%= s.email %></div>
+                  <div class="text-muted small"><%= s.phone %></div>
+                </td>
+                <td><%= s.location %></td>
+                <td><%= s.service %></td>
+                <td><%= s.experience != null ? s.experience + ' yrs' : '—' %></td>
+                <td><% if(s.link){ %><a href="<%= s.link %>" target="_blank">View</a><% } else { %>—<% } %></td>
+                <td>
+                  <a href="/Dashboard/suppliers/edit/<%= s._id %>"
+                     class="btn btn-sm btn-outline-warning"><i class="fas fa-pen"></i></a>
+                  <form action="/Dashboard/suppliers/delete/<%= s._id %>?_method=DELETE"
+                        method="POST" style="display:inline;"
+                        onsubmit="return confirm('Delete this supplier?');">
+                    <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
+                  </form>
+                </td>
               </tr>
-            <% } else { %>
-              <% suppliers.forEach(s => { %>
-                <tr>
-                  <!-- Full Name -->
-                  <td><%= s.firstname %> <%= s.lastname %></td>
+            <% }) %>
+          <% } %>
+        </tbody>
+      </table>
 
-                  <!-- Business -->
-                  <td><%= s.business || '—' %></td>
-
-                  <!-- Contact -->
-                  <td>
-                    <div><%= s.email %></div>
-                    <div class="text-muted small"><%= s.phone %></div>
-                  </td>
-
-                  <!-- Location -->
-                  <td><%= s.location %></td>
-
-                  <!-- Service -->
-                  <td><%= s.service %></td>
-
-                  <!-- Experience -->
-                  <td><%= s.experience != null ? s.experience + ' yrs' : '—' %></td>
-
-                  <!-- Portfolio -->
-                  <td>
-                    <% if (s.link) { %>
-                      <a href="<%= s.link %>" target="_blank">View</a>
-                    <% } else { %>
-                      —
-                    <% } %>
-                  </td>
-
-                  <!-- Actions -->
-                  <td>
-                    <a href="/Dashboard/suppliers/edit/<%=s._id%>" class="btn btn-sm btn-outline-warning">
-              <i class="fas fa-pen"></i>
-            </a>
-                    <form action="/Dashboard/suppliers/delete/<%= s._id %>?_method=DELETE"
-                  method="POST" style="display:inline;" 
-                  onsubmit="return confirm('Delete this booking?');">
-              <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
-            </form>
-                  </td>
-                </tr>
-              <% }) %>
+      <!-- Pagination -->
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <div class="text-muted">
+          Showing <%= ((currentpage - 1) * limit) + 1 %>
+          to <%= Math.min(currentpage * limit, totalSuppliers) %>
+          of <%= totalSuppliers %>
+        </div>
+        <nav>
+          <ul class="pagination mb-0">
+            <li class="page-item <%= currentpage === 1 ? 'disabled' : '' %>">
+              <a class="page-link"
+                 href="/Dashboard/view/suppliers?page=<%= currentpage - 1 %>&limit=<%= limit %>">
+                 <i class="fas fa-chevron-left"></i>
+              </a>
+            </li>
+            <% for(let i=1; i<=totalpage; i++){ %>
+              <li class="page-item <%= currentpage === i ? 'active' : '' %>">
+                <a class="page-link"
+                   href="/Dashboard/view/suppliers?page=<%= i %>&limit=<%= limit %>"><%= i %></a>
+              </li>
             <% } %>
-          </tbody>
-        </table>
+            <li class="page-item <%= currentpage === totalpage ? 'disabled' : '' %>">
+              <a class="page-link"
+                 href="/Dashboard/view/suppliers?page=<%= currentpage + 1 %>&limit=<%= limit %>">
+                 <i class="fas fa-chevron-right"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
-    </main>
-  </div>
+    </div>
+  </main>
 
   <script>
-    function toggleSidebar() {
-      document.getElementById('sidebar').classList.toggle('active');
+   const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    function toggleSidebar(){
+      if(window.innerWidth <= 768){
+        const open = sidebar.classList.toggle('active');
+        if(open){
+          overlay.style.display = 'block';
+          requestAnimationFrame(()=> overlay.style.opacity = '1');
+        } else {
+          overlay.style.opacity = '0';
+          setTimeout(()=> overlay.style.display = 'none', 300);
+        }
+      }
     }
 
-    setTimeout(() => {
-      const hint = document.querySelector('.scroll-hint');
-      if (hint) { hint.style.opacity = '0'; setTimeout(() => hint.remove(), 1000); }
-    }, 5000);
+    window.addEventListener('resize', ()=>{
+      if(window.innerWidth > 768){
+        sidebar.classList.remove('active');
+        overlay.style.opacity = '0';
+        overlay.style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>
