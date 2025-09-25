@@ -10,101 +10,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-    }
-
-    /* Overlay (mobile) */
-   #overlay {
-      position:fixed;
-      top:0; left:0;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.4);
-      z-index:900;
-      display:none;
-      opacity:0;
-      transition:opacity 0.3s ease;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      width: 240px;
-      background: linear-gradient(180deg,#6a11cb,#2575fc);
-      color: #fff;
-      height: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      padding-top: 60px;
-      transform: translateX(0);
-      transition: transform 0.3s ease;
-      z-index: 1000;
-    }
-    /* hidden by default on mobile */
-     @media (max-width:768px){
-      .sidebar {
-        transform: translateX(-100%);
-         margin-left:0 !important;
-         top: 150px;
-      }
-      .sidebar.active { transform: translateX(0); }
-      .main-content { margin-left:0 !important; }
-    }
-
+    body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #f9f9f9; margin: 0; }
+    #overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:900; display:none; opacity:0; transition:opacity 0.3s ease; }
+    .sidebar { width: 240px; background: linear-gradient(180deg,#6a11cb,#2575fc); color: #fff; height: 100%; position: fixed; top: 0; left: 0; padding-top: 60px; transform: translateX(0); transition: transform 0.3s ease; z-index: 1000; }
+    @media (max-width:768px){ .sidebar { transform: translateX(-100%); margin-left:0 !important; top: 150px; } .sidebar.active { transform: translateX(0); } .main-content { margin-left:0 !important; } }
     .sidebar-header h2 { text-align: center; margin-bottom: 20px; }
-
-    .nav-link {
-      padding: 12px 20px;
-      color: #fff;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      border-left: 4px solid transparent;
-      transition: all 0.3s ease;
-    }
-    .nav-link:hover,
-    .nav-link.active {
-      background: rgba(255,255,255,0.15);
-      border-left-color: #0e7ee7;
-      transform: translateX(5px);
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-    }
-
-    /* Main content */
-    .main-content {
-      margin-left: 240px;
-      padding: 30px;
-      margin-top:56px;
-      transition: margin-left 0.3s ease;
-    }
-    @media (max-width:768px) {
-      .main-content { margin-left: 0; }
-    }
-
-    /* Table styling */
-    .table-container {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      padding: 20px;
-      overflow-x: auto;
-    }
-    .table thead th {
-      background: linear-gradient(to bottom,#f8f9fa,#e9ecef);
-      color: #2c3e50;
-      font-weight: 700;
-    }
-    .table tbody tr:hover {
-      background: #f9f9ff;
-      transition: 0.3s;
-    }
-    .pagination .page-item.active .page-link {
-      background-color: #2575fc;
-      border-color: #2575fc;
-    }
+    .nav-link { padding: 12px 20px; color: #fff; text-decoration: none; display: flex; align-items: center; border-left: 4px solid transparent; transition: all 0.3s ease; }
+    .nav-link:hover, .nav-link.active { background: rgba(255,255,255,0.15); border-left-color: #0e7ee7; transform: translateX(5px); box-shadow: 2px 2px 8px rgba(0,0,0,0.1); }
+    .main-content { margin-left: 240px; padding: 30px; margin-top:56px; transition: margin-left 0.3s ease; }
+    @media (max-width:768px) { .main-content { margin-left: 0; } }
+    .table-container { background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 20px; overflow-x: auto; }
+    .table thead th { background: linear-gradient(to bottom,#f8f9fa,#e9ecef); color: #2c3e50; font-weight: 700; }
+    .table tbody tr:hover { background: #f9f9ff; transition: 0.3s; }
+    .pagination .page-item.active .page-link { background-color: #2575fc; border-color: #2575fc; }
   </style>
 </head>
 
@@ -140,18 +58,18 @@
   <main class="main-content" id="main">
     <h1><i class="fas fa-users"></i> All Suppliers</h1>
 
-    <!-- Search -->
-    <form class="d-flex flex-wrap align-items-center gap-2" method="GET" action="/Dashboard/view/suppliers">
-      <input type="text" class="form-control" name="name"
-             placeholder="Search by name"
-             value="<%= (query && query.name) ? query.name : '' %>"
-             style="width:250px;">
-      <button type="submit" class="btn btn-success px-4">Filter</button>
-      <a href="/Dashboard/view/suppliers" class="btn btn-secondary px-4">Reset</a>
-    </form>
+    <form class="d-flex flex-wrap align-items-center gap-2 mb-3" method="GET" action="/Dashboard/view/suppliers">
+  <input type="text" class="form-control" name="name"
+         placeholder="Search by first or last name"
+         value="<%= query.name || '' %>"
+         style="width:250px;">
+  <button type="submit" class="btn btn-success px-4">Filter</button>
+  <a href="/Dashboard/view/suppliers" class="btn btn-secondary px-4">Reset</a>
+</form>
+
 
     <!-- Table -->
-    <div class="table-container mt-3">
+    <div class="table-container">
       <table class="table table-hover align-middle">
         <thead>
           <tr>
@@ -182,11 +100,8 @@
                 <td><%= s.experience != null ? s.experience + ' yrs' : '—' %></td>
                 <td><% if(s.link){ %><a href="<%= s.link %>" target="_blank">View</a><% } else { %>—<% } %></td>
                 <td>
-                  <a href="/Dashboard/suppliers/edit/<%= s._id %>"
-                     class="btn btn-sm btn-outline-warning"><i class="fas fa-pen"></i></a>
-                  <form action="/Dashboard/suppliers/delete/<%= s._id %>?_method=DELETE"
-                        method="POST" style="display:inline;"
-                        onsubmit="return confirm('Delete this supplier?');">
+                  <a href="/Dashboard/suppliers/edit/<%= s._id %>" class="btn btn-sm btn-outline-warning"><i class="fas fa-pen"></i></a>
+                  <form action="/Dashboard/suppliers/delete/<%= s._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('Delete this supplier?');">
                     <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
                   </form>
                 </td>
@@ -206,23 +121,21 @@
         <nav>
           <ul class="pagination mb-0">
             <li class="page-item <%= currentpage === 1 ? 'disabled' : '' %>">
-              <a class="page-link"
-                 href="/Dashboard/view/suppliers?page=<%= currentpage - 1 %>&limit=<%= limit %>">
+              <a class="page-link" href="/Dashboard/view/suppliers?page=<%= currentpage - 1 %>&limit=<%= limit %>">
                  <i class="fas fa-chevron-left"></i>
               </a>
             </li>
             <% for(let i=1; i<=totalpage; i++){ %>
               <li class="page-item <%= currentpage === i ? 'active' : '' %>">
-                <a class="page-link"
-                   href="/Dashboard/view/suppliers?page=<%= i %>&limit=<%= limit %>"><%= i %></a>
+                <a class="page-link" href="/Dashboard/view/suppliers?page=<%= i %>&limit=<%= limit %>"><%= i %></a>
               </li>
             <% } %>
             <li class="page-item <%= currentpage === totalpage ? 'disabled' : '' %>">
-              <a class="page-link"
-                 href="/Dashboard/view/suppliers?page=<%= currentpage + 1 %>&limit=<%= limit %>">
+              <a class="page-link" href="/Dashboard/view/suppliers?page=<%= currentpage + 1 %>&limit=<%= limit %>">
                  <i class="fas fa-chevron-right"></i>
               </a>
             </li>
+          
           </ul>
         </nav>
       </div>
@@ -230,24 +143,24 @@
   </main>
 
   <script>
-   const sidebar = document.getElementById('sidebar');
+    const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
 
-    function toggleSidebar(){
-      if(window.innerWidth <= 768){
+    function toggleSidebar() {
+      if (window.innerWidth <= 768) {
         const open = sidebar.classList.toggle('active');
-        if(open){
+        if (open) {
           overlay.style.display = 'block';
-          requestAnimationFrame(()=> overlay.style.opacity = '1');
+          requestAnimationFrame(() => overlay.style.opacity = '1');
         } else {
           overlay.style.opacity = '0';
-          setTimeout(()=> overlay.style.display = 'none', 300);
+          setTimeout(() => overlay.style.display = 'none', 300);
         }
       }
     }
 
-    window.addEventListener('resize', ()=>{
-      if(window.innerWidth > 768){
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
         sidebar.classList.remove('active');
         overlay.style.opacity = '0';
         overlay.style.display = 'none';
