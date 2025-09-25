@@ -13,9 +13,19 @@ exports.getsuppliers = async(req,res)=>{
      let page = parseInt(req.query.page) || 1;
      let limit = parseInt(req.query.limit) || 5;
      const skip = (page -1) * limit;
+     const filter ={};
+     const searchInput = req.query.name?.trim();
+     if(searchInput){
+      const regex = new RegExp(searchInput,"i");
+      filter.$or= [
+        {firstname:regex},
+        {lastname:regex},
+        {email:regex}
+      ];
+     };
 
-    const suppliers = await supplier.find().skip(skip).limit(limit);
-    const totalSuppliers = await supplier.countDocuments();
+    const suppliers = await supplier.find(filter).skip(skip).limit(limit);
+    const totalSuppliers = await supplier.countDocuments(filter);
     const totalpage = Math.ceil(totalSuppliers / limit);
     res.render("home_packages/suplyformat", {suppliers,
       currentpage:page,

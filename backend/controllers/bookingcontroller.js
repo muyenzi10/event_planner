@@ -39,9 +39,9 @@ exports.getbookformat = async (req, res) => {
     if (searchTerm) {
       const nameRegex = new RegExp(searchTerm, "i");
       filter.$or = [
-        { firstname: { $regex: nameRegex } },
-        { lastname: { $regex: nameRegex } },
-        { $expr: { $regexMatch: { input: { $concat: ["$firstname", " ", "$lastname"] }, regex: nameRegex } } }
+        { firstname:nameRegex },
+        { lastname:nameRegex },
+        { email:nameRegex }
       ];
     }
 
