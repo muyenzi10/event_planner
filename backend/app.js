@@ -16,6 +16,7 @@ const bookingdbrpouter = require("./routers/bookingrouter");
 const supplierdb = require("./routers/supplierrouter");
 const routersautor = require("./routers/signuprouter");
 const login = require("./routers/login");
+const decorupload =require("./routers/decorouter");
 const bodyParser = require('body-parser');
 // Middleware setup
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -37,7 +38,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../frontend'));
 //app.set('layout', 'home_packages/booking');
 //app.use(expressLayout);
-
+app.use("/decor_images", express.static(path.join(__dirname, "decor_images")));
 // Routes
 app.use(router);
 app.use(decorouter);
@@ -46,6 +47,7 @@ app.use(routersautor);
 app.use(login);
 app.use(bookingdbrpouter);
 app.use(bookingformat);
+app.use(decorupload);
 // Error handling middleware
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, '../frontend/error.html'));
