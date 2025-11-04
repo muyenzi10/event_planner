@@ -20,16 +20,33 @@ exports.postupload = async (req, res) => {
     }
 };
 // get format of decor
-exports.getDecorformat = async(req,res)=>{
-    try {
-         const files = await File.find().sort({uploadedAt: -1})
-         res.render("allpack/venues/decorformat", {files})
-    } catch (error) {
-        console.error(error)
-        res.status(404).send(" not find file")
-    }
-    
-}
+exports.getDecorformat = async (req, res) => {
+  try {
+    const itemsPerPage = 5; // number of items per page
+    const currentPage = parseInt(req.query.page) || 1; // current page from query, default 1
+
+    // total number of documents
+    const totalItems = await File.countDocuments();
+
+    // fetch paginated documents
+    const files = await File.find()
+      .sort({ createdAt: -1 }) // make sure your schema has timestamps
+      .skip((currentPage - 1) * itemsPerPage)
+      .limit(itemsPerPage);
+
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+
+    res.render("allpack/venues/decorformat", {
+      files,
+      currentPage,
+      totalPages,
+       itemsPerPage
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(404).send("Not found files");
+  }
+};
 // get add format
 exports.getDecoradd = async(req,res)=>{
     res.render("allpack/venues/add")
