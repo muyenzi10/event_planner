@@ -7,128 +7,19 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
-      background:#f9f9f9;
-      margin:0;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      width:240px;
-      background:linear-gradient(180deg,#6a11cb,#2575fc);
-      color:hsl(0, 12%, 82%);
-      min-height:100vh;
-      position:fixed;
-      top:0;
-      left:0;
-      padding-top:20px;
-      transition: margin-left 0.3s ease, transform 0.3s ease;
-      z-index:1000;
-    }
-
-    .sidebar-header h2 {
-      text-align:center;
-      margin-bottom:20px;
-      color:#fff;
-    }
-
-    .nav-link {
-      position:relative;
-      padding:12px 20px;
-      color:#fff;
-      text-decoration:none;
-      display:flex;
-      align-items:center;
-      transition:all 0.3s ease;
-      border-left:4px solid transparent;
-    }
-
-    .nav-link:hover, .nav-link.active {
-      background:rgba(255,255,255,0.15);
-      transform:translateX(5px);
-      border-left-color:#0e7ee7;
-      box-shadow:2px 2px 8px rgba(0,0,0,0.1);
-    }
-
-    .nav-link::before {
-      content:"";
-      position:absolute;
-      left:0; top:0;
-      height:100%;
-      width:0;
-      background-color:#0e7ee7;
-      border-radius:0 4px 4px 0;
-      transition:width 0.3s ease;
-    }
-
-    .nav-link:hover::before, .nav-link.active::before { width:4px; }
-
-    .sidebar .mt-auto {
-      text-align:center;
-      font-size:13px;
-      color:rgba(255,255,255,0.5);
-      padding:10px 0;
-    }
-
-    /* Main content */
-    .main-content {
-      margin-left:240px;
-      margin-top:56px;
-      padding:30px;
-      transition:margin-left 0.3s ease;
-    }
-
-    .table-container {
-      background:#fff;
-      border-radius:12px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.05);
-      padding:20px;
-      overflow-x:auto;
-    }
-
-    .table thead th {
-      background:linear-gradient(to bottom,#f8f9fa,#e9ecef);
-      color:#2c3e50;
-      font-weight:700;
-    }
-
-    .table tbody tr:hover { background:#f9f9ff; transition:0.3s; }
-
-    .pagination .page-item.active .page-link {
-      background-color:#2575fc;
-      border-color:#2575fc;
-    }
-
-    .search-form { margin-bottom:20px; }
-    .scroll-hint { text-align:center; font-size:0.85rem; color:#6c757d; margin-bottom:10px; transition:opacity 0.5s ease; }
-
-    .btn-outline-warning { color:#ffc107; border-color:#ffc107; }
-    .btn-outline-danger { color:#dc3545; border-color:#dc3545; }
-
-    /* Mobile & Toggle */
-    @media (max-width:768px){
-      .sidebar {
-        transform: translateX(-100%);
-         margin-left:0 !important;
-         top: 150px;
-      }
-      .sidebar.active { transform: translateX(0); }
-      .main-content { margin-left:0 !important; }
-    }
-
-    /* Overlay for mobile */
-    #overlay {
-      position:fixed;
-      top:0; left:0;
-      width:100%;
-      height:100%;
-      background:rgba(0,0,0,0.4);
-      z-index:900;
-      display:none;
-      opacity:0;
-      transition:opacity 0.3s ease;
-    }
+ body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #f9f9f9; margin: 0; }
+    #overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); z-index:900; display:none; opacity:0; transition:opacity 0.3s ease; }
+    .sidebar { width: 240px; background: linear-gradient(180deg,#6a11cb,#2575fc); color: #fff; height: 100%; position: fixed; top: 0; left: 0; padding-top: 60px; transform: translateX(0); transition: transform 0.3s ease; z-index: 1000; }
+    @media (max-width:768px){ .sidebar { transform: translateX(-100%); margin-left:0 !important; top: 150px; } .sidebar.active { transform: translateX(0); } .main-content { margin-left:0 !important; } }
+    .sidebar-header h2 { text-align: center; margin-bottom: 20px; }
+    .nav-link { padding: 12px 20px; color: #ffffff; text-decoration: none; display: flex; align-items: center; border-left: 4px solid transparent; transition: all 0.3s ease; }
+    .nav-link:hover, .nav-link.active { background: rgba(255,255,255,0.15); border-left-color: #0e7ee7; transform: translateX(5px); box-shadow: 2px 2px 8px rgba(0,0,0,0.1); }
+    .main-content { margin-left: 240px; padding: 30px; margin-top:56px; transition: margin-left 0.3s ease; }
+    @media (max-width:768px) { .main-content { margin-left: 0; } }
+    .table-container { background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 20px; overflow-x: auto; }
+    .table thead th { background: linear-gradient(to bottom,#f8f9fa,#e9ecef); color: #2c3e50; font-weight: 700; }
+    .table tbody tr:hover { background: #f9f9ff; transition: 0.3s; }
+    .pagination .page-item.active .page-link { background-color: #2575fc; border-color: #2575fc; }
   </style>
 </head>
 <body>
@@ -149,6 +40,7 @@
     <div class="nav-links">
       <a href="/Dashboard/view/suppliers" class="nav-link"><i class="fas fa-users"></i> Suppliers</a>
       <a href="/Dashboard/booking" class="nav-link active"><i class="fas fa-bookmark"></i> Bookings</a>
+       <a href="/dashboard/decor" class="nav-link "><i class="fas fa-image"></i> Decor</a>
     </div>
     <div class="mt-auto">&copy; <%= new Date().getFullYear() %> Wedding Planner Pro</div>
   </nav>

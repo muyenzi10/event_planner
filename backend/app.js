@@ -38,7 +38,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../frontend'));
 //app.set('layout', 'home_packages/booking');
 //app.use(expressLayout);
-app.use("/decor_images", express.static(path.join(__dirname, "decor_images")));
+app.use("/all_disk/decor_images", express.static(path.join(__dirname, "all_disk/decor_images")));
 // Routes
 app.use(router);
 app.use(decorouter);
