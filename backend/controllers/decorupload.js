@@ -30,7 +30,8 @@ exports.getDecorformat = async (req, res) => {
 
     // fetch paginated documents
     const files = await File.find()
-      .sort({ createdAt: -1 }) // make sure your schema has timestamps
+       // make sure your schema has timestamps
+      .sort({uploadedAt : -1 })
       .skip((currentPage - 1) * itemsPerPage)
       .limit(itemsPerPage);
 
@@ -116,3 +117,32 @@ exports.deletedecor = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
+// decor for client
+exports.getdecorclient = async(req, res)=>{
+  try {
+  const itemsP = 9; // number of items per page
+  const currentP = parseInt(req.query.page) || 1; // current page from query, default 1
+
+    // total number of documents
+    const totalI = await File.countDocuments();
+
+    // fetch paginated documents
+    const files = await File.find()
+      .sort({ uploadedAt: -1 }) // make sure your schema has timestamps
+      .skip((currentP - 1) * itemsP)
+      .limit(itemsP);
+
+    const totalP = Math.ceil(totalI / itemsP);
+
+    res.render("allpack/venues/venues", {
+      files,
+      currentP,
+      totalP,
+       itemsP
+    });
+  } catch (error) {
+    console.error(error)
+    res.status(500).send("Server Error");
+  }
+ 
+}

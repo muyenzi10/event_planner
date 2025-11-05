@@ -18,4 +18,6 @@ uploadrouter.get("/add/decor",uploadimage.getDecoradd);
 uploadrouter.get("/decor/edit/:id", uploadimage.getDecorEdit);
 uploadrouter.put("/update/decor/:id", upload.single("file"),uploadimage.updatedecor);
 uploadrouter.delete("/delete/file/:id", uploadimage.deletedecor);
+// router for client
+uploadrouter.get("/decor", uploadimage.getdecorclient);
 module.exports = uploadrouter;
