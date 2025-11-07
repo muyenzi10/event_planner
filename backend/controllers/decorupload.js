@@ -118,31 +118,32 @@ exports.deletedecor = async (req, res) => {
   }
 };
 // decor for client
-exports.getdecorclient = async(req, res)=>{
+exports.getdecorclient = async (req, res) => {
   try {
-  const itemsP = 9; // number of items per page
-  const currentP = parseInt(req.query.page) || 1; // current page from query, default 1
+    const itemsP = 9; // items per page
+    const currentP = parseInt(req.query.page) || 1; // current page from query
 
     // total number of documents
     const totalI = await File.countDocuments();
+    const totalP = Math.ceil(totalI / itemsP);
 
     // fetch paginated documents
     const files = await File.find()
-      .sort({ uploadedAt: -1 }) // make sure your schema has timestamps
+      .sort({ uploadedAt: -1 })
       .skip((currentP - 1) * itemsP)
       .limit(itemsP);
+   const allFiles = await File.find().sort({ uploadedAt: -1 });      
 
-    const totalP = Math.ceil(totalI / itemsP);
-
+    // ✅ Normal page render
     res.render("allpack/venues/venues", {
       files,
+      allFiles,
       currentP,
       totalP,
-       itemsP
+      itemsP
     });
   } catch (error) {
-    console.error(error)
+    console.error(error);
     res.status(500).send("Server Error");
   }
- 
-}
+};

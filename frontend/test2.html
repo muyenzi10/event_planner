@@ -20,35 +20,36 @@
 
     body { font-family: 'Poppins', sans-serif; background-color: var(--muted-color); color: var(--dark-color); margin:0; padding:0; }
 
-    /* Navbar */
+   /* 🌸 Navbar Styling */
     .navbar {
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       background-color: var(--light-color) !important;
       padding: 15px 0;
       transition: all 0.3s ease;
     }
+
     .navbar.scrolled {
       padding: 10px 0;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
+
     .navbar-brand {
       font-weight: 700;
       color: var(--primary-color) !important;
-      font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       display: flex;
       align-items: center;
-      text-shadow: 0 0 10px rgba(212,175,55,0.6);
-      transition: all 0.3s ease;
+      font-family: 'Playfair Display', serif;
     }
-    .navbar-brand:hover { text-shadow: 0 0 20px rgba(212,175,55,0.9); transform: scale(1.05); }
+
     .nav-link {
       font-weight: 500;
       color: var(--dark-color) !important;
-      transition: all 0.3s ease;
       margin: 0 10px;
       position: relative;
+      transition: all 0.3s ease;
     }
+
     .nav-link:after {
       content: '';
       position: absolute;
@@ -59,33 +60,59 @@
       background-color: var(--primary-color);
       transition: width 0.3s ease;
     }
-    .nav-link:hover:after, .nav-link.active:after { width: 100%; }
 
-    /* Mobile Navbar Center & Animation */
-    @media (max-width:991px) {
-      .navbar-collapse {
-        background-color: var(--light-color);
-        text-align: center;
-        transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-        overflow: hidden;
-      }
-      .navbar-nav {
-        flex-direction: column;
-        gap: 15px;
-        padding: 20px 0;
-        opacity: 0;
-        transform: translateY(-20px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
-      }
-      .navbar-collapse.show .navbar-nav {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      .nav-item { margin:0; }
-      .nav-link { display:block; font-size:1.2rem; font-weight:600; transition: all 0.4s ease; }
-      .nav-link:hover { color: var(--primary-color); transform:scale(1.05); }
+    .nav-link:hover:after, .nav-link.active:after {
+      width: 100%;
     }
 
+    /* ✨ Professional Centered Navbar for Mobile */
+    @media (max-width: 991px) {
+      .navbar-collapse {
+        background-color: var(--light-color);
+        border-radius: 12px;
+        padding: 15px 0;
+        margin-top: 10px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      }
+
+      .navbar-nav {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 0;
+      }
+
+      .nav-item {
+        width: 90%;
+      }
+
+      .nav-link {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        background-color: rgba(212,175,55,0.05);
+        color: var(--dark-color) !important;
+      }
+
+      .nav-link:hover, .nav-link.active {
+        background-color: var(--primary-color);
+        color: #fff !important;
+        box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+      }
+
+      .navbar-brand {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 1.6rem;
+      }
+    }
     /* Hero */
     .hero { position:relative; height:75vh; display:flex; justify-content:center; align-items:center; text-align:center; color:white; overflow:hidden; }
     .hero video { position:absolute; top:50%; left:50%; min-width:100%; min-height:100%; transform:translate(-50%, -50%) scale(1.05); object-fit:cover; filter:brightness(60%); transition: transform 0.5s ease; }
@@ -99,32 +126,467 @@
     @keyframes fadeInUp { from { opacity:0; transform:translateY(20px);} to { opacity:1; transform:translateY(0);} }
 
     /* Gallery */
-    .gallery-section { padding:80px 0; background:linear-gradient(to bottom, #fff8f5, #fff);}
-    .section-title { text-align:center; margin-bottom:50px;}
-    .section-title h2 { font-family:'Playfair Display', serif; color:var(--primary-color); font-size:2.5rem; margin-bottom:10px; }
-    .gallery-grid .gallery-item { border-radius:15px; overflow:hidden; box-shadow:0 8px 25px rgba(0,0,0,0.1); background:#fff; transition: transform 0.3s ease; display:flex; flex-direction:column; }
-    .gallery-grid .gallery-item:hover { transform: scale(1.04); box-shadow:0 12px 25px rgba(212,175,55,0.3); }
-    .media-wrap { width:100%; display:block; line-height:0; }
-    .media-wrap img, .media-wrap video { width:100%; height:250px; object-fit:cover; cursor:pointer; user-select:none; }
-    .gallery-item .card-body { width:100%; box-sizing:border-box; padding:16px; text-align:center; border-top:1px solid rgba(0,0,0,0.06); background:#fff; flex-shrink:0; }
-    .card-title { font-family:'Playfair Display', serif; font-size:1.2rem; color:var(--primary-color); margin-top:10px; font-weight:600; transition: color 0.3s ease; }
-    .gallery-item:hover .card-title { color: var(--primary-color); }
-    .card-text { font-size:0.95rem; color:#555; margin-bottom:0; min-height:40px; }
+    .gallery-section {
+  padding: 90px 0;
+  background: linear-gradient(to bottom, #fffdfb, #fff);
+}
 
-    /* Lightbox */
-    #lightboxModal .modal-dialog { max-width:900px; margin:1.5rem auto; }
-    #lightboxModal .modal-content { background:transparent; border:none; overflow:hidden; border-radius:20px; }
-    #lightboxMediaContainer img, #lightboxMediaContainer video { width:100%; max-height:90vh; object-fit:contain; display:block; border-radius:20px; }
-    .btn-close-custom {
-      position: absolute; top: 20px; right: 15px; width: 45px; height: 45px; border-radius: 50%;
-      background: rgb(0, 0, 0); color: #fff; border: none; display: flex; justify-content: center; align-items: center;
-      font-size: 22px; z-index: 20; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+/* Section Title */
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title h2 {
+  font-family: 'Playfair Display', serif;
+  color: var(--primary-color);
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+/* Gallery Grid Items */
+.gallery-grid .gallery-item {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: all 0.35s ease;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.gallery-grid .gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 35px rgba(212, 175, 55, 0.3);
+}
+
+/* Image & Video Wrapper */
+.media-wrap {
+  width: 100%;
+  display: block;
+  line-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.media-wrap img,
+.media-wrap video {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s ease;
+}
+
+.gallery-item:hover .media-wrap img,
+.gallery-item:hover .media-wrap video {
+  transform: scale(1.05);
+  filter: brightness(0.95);
+}
+
+/* Card Body */
+.gallery-item .card-body {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 20px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 0 0 16px 16px;
+  transition: all 0.3s ease-in-out;
+}
+
+.gallery-item:hover .card-body {
+  background: #fefaf5;
+  transform: translateY(-3px);
+}
+
+/* Card Title */
+.card-title {
+  font-family: 'Poppins', 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: #2c3e50;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 10px;
+  text-transform: capitalize;
+  transition: all 0.3s ease;
+}
+
+.gallery-item:hover .card-title {
+  color: #d4a373; /* soft gold accent */
+  transform: translateY(-2px);
+}
+
+/* Card Text */
+.card-text {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: 5px;
+  line-height: 1.5;
+  min-height: 40px;
+}
+
+    /* Media Type Badges */
+    .media-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      z-index: 5;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.3s ease;
     }
-    .btn-close-custom:hover { background: rgba(212,175,55,0.95); color: #000; transform: scale(1.1); }
-    .story-arrow { position:absolute; top:50%; transform:translateY(-50%); width:50px; height:50px; background:rgba(0,0,0,0.5); color:#fff; border:none; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; cursor:pointer; z-index:15; }
-    .story-arrow:hover { background:rgba(212,175,55,0.9); color:#000; }
-    .story-arrow.prev { left:10px; }
-    .story-arrow.next { right:10px; }
+
+    .photo-badge {
+      background: rgba(74, 144, 226, 0.9);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .video-badge {
+      background: rgba(212, 175, 55, 0.9);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .gallery-item:hover .media-badge {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Video Play Button Overlay */
+    .video-play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+      border-radius: 18px 18px 0 0;
+    }
+
+    .media-wrap:hover .video-play-overlay {
+      opacity: 1;
+    }
+
+    .play-icon {
+      width: 60px;
+      height: 60px;
+      background: rgba(212, 175, 55, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      transform: scale(0.9);
+    }
+
+    .media-wrap:hover .play-icon {
+      transform: scale(1);
+      background: rgba(212, 175, 55, 1);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    }
+
+    /* Mobile Style Lightbox - Natural Photo Size */
+    #lightboxModal .modal-dialog { 
+      max-width: 100%; 
+      margin: 0; 
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    #lightboxModal .modal-content { 
+      background: #000;
+      border: none;
+      border-radius: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    .lightbox-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      padding: 20px 15px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .lightbox-counter {
+      color: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+      background: rgba(255,255,255,0.15);
+      padding: 8px 16px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .btn-close-custom {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-close-custom:hover {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.1);
+    }
+    
+    .lightbox-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 60px 20px;
+    }
+    
+    #lightboxMediaContainer {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* Mobile-like image sizing */
+    .lightbox-image {
+      max-width: 90%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+    
+    .lightbox-image.zoomed {
+      max-width: none;
+      max-height: none;
+      width: auto;
+      height: auto;
+      cursor: grab;
+    }
+    
+    .lightbox-image.zoomed:active {
+      cursor: grabbing;
+    }
+    
+    /* Mobile-like video sizing */
+    .lightbox-video {
+      width: 90%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    
+    .lightbox-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      padding: 25px 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      color: white;
+      text-align: center;
+    }
+    
+    .lightbox-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .lightbox-description {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      margin: 0;
+      line-height: 1.5;
+    }
+    
+    /* Mobile-style navigation arrows */
+    .story-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 15;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .story-arrow:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .story-arrow.prev { left: 20px; }
+    .story-arrow.next { right: 20px; }
+    
+    /* Video controls styling */
+    .lightbox-video-controls {
+      position: absolute;
+      bottom: 100px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      z-index: 25;
+    }
+    
+    .video-control-btn {
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .video-control-btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.1);
+    }
+    
+    /* Zoom controls for images */
+    .lightbox-zoom-controls {
+      position: absolute;
+      bottom: 100px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 25;
+    }
+    
+    .zoom-control-btn {
+      width: 44px;
+      height: 44px;
+      background: rgba(255,255,255,0.15);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .zoom-control-btn:hover {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.1);
+    }
+
+ /* 🌸 Pagination Styling */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pagination .page-item {
+  list-style: none;
+}
+
+.pagination .page-link {
+  color: #222;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 10px 16px;
+  border-radius: 30px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.pagination .page-link:hover {
+  background-color: #d4af37;
+  color: #fff;
+  border-color: #d4af37;
+  box-shadow: 0 4px 10px rgba(212,175,55,0.3);
+  transform: translateY(-2px);
+}
+
+.pagination .active .page-link {
+  background-color: #4137d4;
+  color: #fff;
+  border-color: #375cd4;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(212,175,55,0.4);
+  pointer-events: none;
+}
 
     /* Footer */
     footer { background-color:#222; color:#eee; font-family:'Poppins', sans-serif; }
@@ -137,9 +599,55 @@
 
     @media (max-width:768px){
       .media-wrap img, .media-wrap video { height:200px; }
-      .story-arrow { width:40px; height:40px; font-size:18px; }
-      .btn-close-custom { top:10px; right:10px; width:40px; height:40px; font-size:18px; }
     }
+
+    /* Mobile optimizations */
+    @media (max-width: 576px) {
+      .story-arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+      }
+      
+      .story-arrow.prev { left: 15px; }
+      .story-arrow.next { right: 15px; }
+      
+      .lightbox-footer {
+        padding: 20px 15px;
+      }
+      
+      .lightbox-title {
+        font-size: 1.1rem;
+      }
+      
+      .lightbox-description {
+        font-size: 0.9rem;
+      }
+      
+      .lightbox-image {
+        max-width: 95%;
+        max-height: 65vh;
+      }
+      
+      .lightbox-video {
+        width: 95%;
+        max-height: 65vh;
+      }
+      
+      .video-control-btn,
+      .zoom-control-btn {
+        width: 44px;
+        height: 44px;
+      }
+      
+      .media-badge {
+        top: 8px;
+        right: 8px;
+        padding: 5px 10px;
+        font-size: 0.7rem;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -148,9 +656,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#"><i class="fas fa-heart me-2"></i>Dream Day</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="/home"><i class="fas fa-home me-1"></i> Home</a></li>
@@ -188,11 +697,25 @@
             <div class="card gallery-item">
               <div class="media-wrap">
                 <% if(file.fileType==='image'){ %>
-                  <img src="/decor_images/<%=file.filePath%>" alt="<%=file.title%>" class="card-media" data-index="<%=index%>">
+                  <img src="/all_disk/decor_images/<%=file.filePath%>" alt="<%=file.title%>" class="card-media" data-index="<%=index%>">
+                  <!-- Photo Badge -->
+                  <div class="media-badge photo-badge">
+                    <i class="fas fa-camera me-1"></i>PHOTO
+                  </div>
                 <% } else { %>
                   <video class="card-media" data-index="<%=index%>" preload="metadata" playsinline muted>
-                    <source src="/decor_images/<%=file.filePath%>" type="video/<%=file.filePath.split('.').pop()%>">
+                    <source src="/all_disk/decor_images/<%=file.filePath%>" type="video/<%=file.filePath.split('.').pop()%>">
                   </video>
+                  <!-- Video Badge -->
+                  <div class="media-badge video-badge">
+                    <i class="fas fa-play-circle me-1"></i>VIDEO
+                  </div>
+                  <!-- Video Play Overlay -->
+                  <div class="video-play-overlay">
+                    <div class="play-icon">
+                      <i class="fas fa-play"></i>
+                    </div>
+                  </div>
                 <% } %>
               </div>
               <div class="card-body">
@@ -213,15 +736,108 @@
 <div class="modal fade" id="lightboxModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-body position-relative">
-        <button type="button" class="btn-close-custom" data-bs-dismiss="modal">&times;</button>
-        <button class="story-arrow prev">&#10094;</button>
-        <button class="story-arrow next">&#10095;</button>
-        <div id="lightboxMediaContainer" style="display:flex; justify-content:center; align-items:center;"></div>
+      <!-- Header with counter and close button -->
+      <div class="lightbox-header">
+        <div class="lightbox-counter">
+          <span id="lightboxCounter">1 / 1</span>
+        </div>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <!-- Main content area -->
+      <div class="lightbox-body">
+        <button class="story-arrow prev">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div id="lightboxMediaContainer"></div>
+        
+        <button class="story-arrow next">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <!-- Video controls (only shown for videos) -->
+        <div class="lightbox-video-controls" id="videoControls" style="display: none;">
+          <button class="video-control-btn" id="playPauseBtn">
+            <i class="fas fa-pause"></i>
+          </button>
+          <button class="video-control-btn" id="muteBtn">
+            <i class="fas fa-volume-up"></i>
+          </button>
+        </div>
+        
+        <!-- Zoom controls (only shown for images) -->
+        <div class="lightbox-zoom-controls" id="zoomControls" style="display: none;">
+          <button class="zoom-control-btn" id="zoomInBtn">
+            <i class="fas fa-search-plus"></i>
+          </button>
+          <button class="zoom-control-btn" id="zoomOutBtn">
+            <i class="fas fa-search-minus"></i>
+          </button>
+          <button class="zoom-control-btn" id="resetZoomBtn">
+            <i class="fas fa-sync-alt"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Footer with title and description -->
+      <div class="lightbox-footer">
+        <div class="lightbox-title" id="lightboxTitle"></div>
+        <div class="lightbox-description" id="lightboxDescription"></div>
       </div>
     </div>
   </div>
 </div>
+
+ <!-- ✅ Pagination -->
+    <% if (totalP > 1) { %>
+      <nav>
+        <ul class="pagination">
+          <% if (currentP > 1) { %>
+            <li class="page-item">
+              <a class="page-link" href="/decor?page=<%= currentP - 1 %>">Previous</a>
+            </li>
+          <% } %>
+
+          <% for (let i = 1; i <= totalP; i++) { %>
+            <li class="page-item <%= currentP === i ? 'active' : '' %>">
+              <a class="page-link" href="/decor?page=<%= i %>"><%= i %></a>
+            </li>
+          <% } %>
+
+          <% if (currentP < totalP) { %>
+            <li class="page-item">
+
+              <a class="page-link" href="/decor?page=<%= currentP + 1 %>">Next</a>
+            </li>
+          <% } %>
+        </ul>
+      </nav>
+    <% } %>
+ <section class="section-header py-5">
+  <div class="container text-center">
+    
+    <!-- Decorative Divider -->
+    <div class="divider mx-auto mb-4" style="width: 80px; height: 3px; background: linear-gradient(90deg, #d4af37, #f0e1b8); border-radius: 2px;"></div>
+    
+    <!-- Intro Text -->
+    <p class="intro-text mx-auto" style="max-width: 700px; font-family: 'Playfair Display', serif; font-size: 1.2rem; line-height: 1.9; color: #222;">
+      Discover the <span class="accent-word" style="color: #d4af37; font-weight:600;">art</span> of extraordinary weddings in our curated decor gallery.  
+      Each creation reflects our commitment to <span class="accent-word" style="color: #d4af37; font-weight:600;">sophistication</span>, timeless elegance,  
+      and moments that leave a lasting <span class="accent-word" style="color: #d4af37; font-weight:600;">impression</span>.
+    </p>
+    
+    <!-- Floral Accent / SVG Decoration -->
+    <div class="floral-decoration mt-4" style="display:flex; justify-content:center; align-items:center;">
+      <svg width="50" height="50" viewBox="0 0 100 100" fill="#d4af37" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50,10 C60,10 70,15 70,25 C70,35 65,40 55,45 C65,50 70,55 70,65 C70,75 60,80 50,80 C40,80 30,75 30,65 C30,55 35,50 45,45 C35,40 30,35 30,25 C30,15 40,10 50,10 Z M50,30 C47,30 45,32 45,35 C45,38 47,40 50,40 C53,40 55,38 55,35 C55,32 53,30 50,30 Z"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
 
 <!-- Footer -->
 <footer class="bg-dark text-light pt-5 pb-3">
@@ -260,63 +876,283 @@
 <script>
   const lightboxFiles = <%- JSON.stringify(files || []) %>;
   let lbIndex = 0;
+  let currentVideo = null;
+  let currentImage = null;
+  let isZoomed = false;
+  let scale = 1;
+  
   const lbModalEl = document.getElementById('lightboxModal');
   const lbContainer = document.getElementById('lightboxMediaContainer');
   const bsLBModal = new bootstrap.Modal(lbModalEl, {keyboard:true});
+  
+  // Lightbox UI elements
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxDescription = document.getElementById('lightboxDescription');
+  const videoControls = document.getElementById('videoControls');
+  const zoomControls = document.getElementById('zoomControls');
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const muteBtn = document.getElementById('muteBtn');
+  const zoomInBtn = document.getElementById('zoomInBtn');
+  const zoomOutBtn = document.getElementById('zoomOutBtn');
+  const resetZoomBtn = document.getElementById('resetZoomBtn');
+
+  function updateLightboxUI() {
+    const file = lightboxFiles[lbIndex];
+    if (!file) return;
+    
+    // Update counter
+    lightboxCounter.textContent = `${lbIndex + 1} / ${lightboxFiles.length}`;
+    
+    // Update title and description
+    lightboxTitle.textContent = file.title;
+    lightboxDescription.textContent = file.description;
+    
+    // Show/hide controls based on media type
+    if (file.fileType === 'video') {
+      videoControls.style.display = 'flex';
+      zoomControls.style.display = 'none';
+    } else {
+      videoControls.style.display = 'none';
+      zoomControls.style.display = 'flex';
+    }
+  }
+
+  function resetZoom() {
+    if (currentImage) {
+      currentImage.classList.remove('zoomed');
+      currentImage.style.transform = 'scale(1)';
+      scale = 1;
+      isZoomed = false;
+    }
+  }
 
   function showLightbox(index){
     const file = lightboxFiles[index];
     if(!file) return;
+    
     lbContainer.innerHTML = '';
+    currentVideo = null;
+    currentImage = null;
+    resetZoom();
+    
     if(file.fileType==='image'){
       const img=document.createElement('img');
-      img.src='/decor_images/'+file.filePath;
+      img.src='/all_disk/decor_images/'+file.filePath;
+      img.alt=file.title;
+      img.className = 'lightbox-image';
       lbContainer.appendChild(img);
+      currentImage = img;
+      
+      // Add double-click to zoom
+      img.addEventListener('dblclick', () => {
+        if (!isZoomed) {
+          img.classList.add('zoomed');
+          img.style.transform = 'scale(2)';
+          scale = 2;
+          isZoomed = true;
+        } else {
+          resetZoom();
+        }
+      });
+      
+      // Add panning when zoomed
+      let isDragging = false;
+      let startX, startY, scrollLeft, scrollTop;
+      
+      img.addEventListener('mousedown', (e) => {
+        if (isZoomed) {
+          isDragging = true;
+          startX = e.pageX - img.offsetLeft;
+          startY = e.pageY - img.offsetTop;
+          scrollLeft = img.scrollLeft;
+          scrollTop = img.scrollTop;
+        }
+      });
+      
+      img.addEventListener('mouseleave', () => {
+        isDragging = false;
+      });
+      
+      img.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+      
+      img.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - img.offsetLeft;
+        const y = e.pageY - img.offsetTop;
+        const walkX = (x - startX) * 2;
+        const walkY = (y - startY) * 2;
+        img.scrollLeft = scrollLeft - walkX;
+        img.scrollTop = scrollTop - walkY;
+      });
+      
     } else {
       const video=document.createElement('video');
-      video.controls=true; video.autoplay=true; video.muted=true; video.playsInline=true;
+      video.controls = false; // We'll use custom controls
+      video.autoplay = true;
+      video.muted = false;
+      video.playsInline = true;
+      video.loop = true;
+      video.className = 'lightbox-video';
+      
       const src=document.createElement('source');
-      src.src='/decor_images/'+file.filePath;
+      src.src='/all_disk/decor_images/'+file.filePath;
       src.type='video/'+file.filePath.split('.').pop();
       video.appendChild(src);
       lbContainer.appendChild(video);
-      video.play().catch(()=>{});
+      
+      currentVideo = video;
+      
+      // Set up video event listeners
+      video.addEventListener('play', () => {
+        playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      });
+      
+      video.addEventListener('pause', () => {
+        playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+      });
+      
+      video.addEventListener('volumechange', () => {
+        muteBtn.innerHTML = video.muted ? 
+          '<i class="fas fa-volume-mute"></i>' : 
+          '<i class="fas fa-volume-up"></i>';
+      });
+      
+      // Try to play the video
+      video.play().catch(e => {
+        console.log('Video autoplay failed:', e);
+      });
     }
+    
+    updateLightboxUI();
   }
 
-  document.querySelectorAll('.card-media').forEach(el=>{
-    el.addEventListener('click', ()=>{
-      lbIndex = parseInt(el.dataset.index,10);
+  // Video control functions
+  playPauseBtn.addEventListener('click', () => {
+    if (currentVideo) {
+      if (currentVideo.paused) {
+        currentVideo.play();
+      } else {
+        currentVideo.pause();
+      }
+    }
+  });
+
+  muteBtn.addEventListener('click', () => {
+    if (currentVideo) {
+      currentVideo.muted = !currentVideo.muted;
+    }
+  });
+
+  // Zoom control functions
+  zoomInBtn.addEventListener('click', () => {
+    if (currentImage) {
+      scale *= 1.2;
+      currentImage.style.transform = `scale(${scale})`;
+      currentImage.classList.add('zoomed');
+      isZoomed = true;
+    }
+  });
+
+  zoomOutBtn.addEventListener('click', () => {
+    if (currentImage) {
+      scale /= 1.2;
+      if (scale <= 1) {
+        resetZoom();
+      } else {
+        currentImage.style.transform = `scale(${scale})`;
+        currentImage.classList.add('zoomed');
+        isZoomed = true;
+      }
+    }
+  });
+
+  resetZoomBtn.addEventListener('click', () => {
+    resetZoom();
+  });
+
+  // Add click event to all gallery items
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      const mediaElement = item.querySelector('.card-media');
+      lbIndex = parseInt(mediaElement.dataset.index, 10);
       showLightbox(lbIndex);
       bsLBModal.show();
     });
   });
 
-  document.querySelector('#lightboxModal .story-arrow.prev').addEventListener('click', ()=>{
-    lbIndex=(lbIndex-1+lightboxFiles.length)%lightboxFiles.length; showLightbox(lbIndex);
+  // Navigation arrows
+  document.querySelector('#lightboxModal .story-arrow.prev').addEventListener('click', () => {
+    lbIndex = (lbIndex - 1 + lightboxFiles.length) % lightboxFiles.length; 
+    showLightbox(lbIndex);
   });
-  document.querySelector('#lightboxModal .story-arrow.next').addEventListener('click', ()=>{
-    lbIndex=(lbIndex+1)%lightboxFiles.length; showLightbox(lbIndex);
+  
+  document.querySelector('#lightboxModal .story-arrow.next').addEventListener('click', () => {
+    lbIndex = (lbIndex + 1) % lightboxFiles.length; 
+    showLightbox(lbIndex);
   });
 
-  document.addEventListener('keydown', e=>{
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
     if(!lbModalEl.classList.contains('show')) return;
-    if(e.key==='ArrowRight') document.querySelector('#lightboxModal .story-arrow.next').click();
-    if(e.key==='ArrowLeft') document.querySelector('#lightboxModal .story-arrow.prev').click();
+    if(e.key === 'ArrowRight') document.querySelector('#lightboxModal .story-arrow.next').click();
+    if(e.key === 'ArrowLeft') document.querySelector('#lightboxModal .story-arrow.prev').click();
+    if(e.key === 'Escape') bsLBModal.hide();
+    
+    // Space bar for play/pause video
+    if(e.key === ' ' && currentVideo) {
+      e.preventDefault();
+      if (currentVideo.paused) {
+        currentVideo.play();
+      } else {
+        currentVideo.pause();
+      }
+    }
+    
+    // Zoom controls with keyboard
+    if(e.key === '+' || e.key === '=') {
+      e.preventDefault();
+      zoomInBtn.click();
+    }
+    
+    if(e.key === '-' || e.key === '_') {
+      e.preventDefault();
+      zoomOutBtn.click();
+    }
+    
+    if(e.key === '0') {
+      e.preventDefault();
+      resetZoomBtn.click();
+    }
   });
 
-  let startX=0;
-  lbContainer.addEventListener('touchstart', e=>{ startX=e.touches[0].clientX; }, {passive:true});
-  lbContainer.addEventListener('touchend', e=>{
-    const endX=e.changedTouches[0].clientX;
-    if(startX-endX>50) document.querySelector('#lightboxModal .story-arrow.next').click();
-    if(endX-startX>50) document.querySelector('#lightboxModal .story-arrow.prev').click();
+  // Touch/swipe navigation
+  let startX = 0;
+  lbContainer.addEventListener('touchstart', e => { 
+    startX = e.touches[0].clientX; 
+  }, {passive:true});
+  
+  lbContainer.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    if(startX - endX > 50) document.querySelector('#lightboxModal .story-arrow.next').click();
+    if(endX - startX > 50) document.querySelector('#lightboxModal .story-arrow.prev').click();
   });
 
-  lbModalEl.addEventListener('hidden.bs.modal', ()=>{
-    const v=lbContainer.querySelector('video');
-    if(v){ v.pause(); v.removeAttribute('src'); v.load(); }
-    lbContainer.innerHTML='';
+  // Clean up when modal is closed
+  lbModalEl.addEventListener('hidden.bs.modal', () => {
+    if(currentVideo){ 
+      currentVideo.pause(); 
+      currentVideo.currentTime = 0;
+      currentVideo.removeAttribute('src');
+      currentVideo.load(); 
+    }
+    lbContainer.innerHTML = '';
+    currentVideo = null;
+    currentImage = null;
+    resetZoom();
   });
 </script>
 </body>
