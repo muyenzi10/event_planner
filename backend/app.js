@@ -17,6 +17,8 @@ const supplierdb = require("./routers/supplierrouter");
 const routersautor = require("./routers/signuprouter");
 const login = require("./routers/login");
 const decorupload =require("./routers/decorouter");
+const indinzi = require("./routers/troup");
+const contact = require("./routers/contactrouter")
 const bodyParser = require('body-parser');
 // Middleware setup
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -38,16 +40,22 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../frontend'));
 //app.set('layout', 'home_packages/booking');
 //app.use(expressLayout);
+
+// 🟢 Make uploaded troupe images accessible
 app.use("/all_disk/decor_images", express.static(path.join(__dirname, "all_disk/decor_images")));
+app.use("/all_disk/troupe_images", express.static(path.join(__dirname, "all_disk/troupe_images")));
+
 // Routes
 app.use(router);
 app.use(decorouter);
 app.use(supplierdb);
+app.use(contact);
 app.use(routersautor);
 app.use(login);
 app.use(bookingdbrpouter);
 app.use(bookingformat);
 app.use(decorupload);
+app.use(indinzi);
 // Error handling middleware
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, '../frontend/error.html'));
@@ -64,7 +72,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/wedding_planner?directConnection=tru
         console.log("MongoDB connected successfully");
         const PORT = process.env.PORT || 7000;
         app.listen(PORT, () => {
-            console.log(`Server running on port ${PORT}`);
+            console.log(`Server running on http://localhost:${PORT}`);
         });
     })
     .catch((err) => {

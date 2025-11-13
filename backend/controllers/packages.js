@@ -13,9 +13,6 @@ exports.getmc = (req, res) =>{
     res.sendFile(path.join(__dirname, "../../frontend/allpack/mc/mc.html"));
 }
 
-exports.gettroupe = (req,res) =>{
-    res.sendFile(path.join(__dirname,"../../frontend/allpack/indinzi/troup/indinzi.html"));
-    }
 exports.getgakondo = (req,res) =>{
     res.sendFile(path.join(__dirname,"../../frontend/allpack/iganze/gakondo.html"));
     }       

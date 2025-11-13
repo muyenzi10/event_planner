@@ -5,7 +5,6 @@ const routerpack = express.Router();
 routerpack.get("/invetation", packages.getinvitation);
 routerpack.get("/styles", packages.getstyle);
 routerpack.get("/beauty", packages.getbeauty);
-routerpack.get("/troupe", packages.gettroupe);
 routerpack.get("/mc", packages.getmc);
 routerpack.get("/gakondo", packages.getgakondo);
 routerpack.get("/sound", packages.getsound);

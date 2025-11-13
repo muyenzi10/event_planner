@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Planner Dashboard - Troupe</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+    }
+    .sidebar {
+      width: 240px;
+      background: linear-gradient(180deg, #6a11cb, #2575fc);
+      color: #ddd;
+      min-height: 100vh;
+      position: fixed;
+      top: 0; left: 0;
+      padding-top: 20px;
+      transition: margin-left 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+    }
+    .sidebar-header h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .nav-link {
+      padding: 12px 20px;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      border-left: 4px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .nav-link:hover, .nav-link.active {
+      background: rgba(255,255,255,0.15);
+      border-left-color: #0e7ee7;
+    }
+    .main-content {
+      margin-left: 240px;
+      margin-top: 56px;
+      padding: 30px;
+    }
+    .table-container {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 20px;
+      overflow-x: auto;
+    }
+    .table thead th {
+      background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+      color: #2c3e50;
+      font-weight: 700;
+    }
+    .table tbody tr:hover { background: #f9f9ff; transition: 0.3s; }
+    .pagination {
+      justify-content: center;
+      margin-top: 25px;
+    }
+    .pagination .page-item.active .page-link {
+      background-color: #2575fc;
+      border-color: #2575fc;
+      color: #fff;
+    }
+    .pagination .page-link {
+      color: #2575fc;
+    }
+    .text-muted {
+      font-style: italic;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar Toggle Button -->
+<button class="sidebar-toggle btn btn-light position-fixed top-0 start-0 m-2" onclick="toggleSidebar()">
+  <i class="fas fa-bars"></i>
+</button>
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h2><i class="fas fa-heart"></i> Wedding Planner</h2>
+  </div>
+  <div class="nav-links">
+    <a href="/Dashboard/view/suppliers" class="nav-link"><i class="fas fa-users"></i> Suppliers</a>
+    <a href="/Dashboard/booking" class="nav-link"><i class="fas fa-bookmark"></i> Bookings</a>
+    <a href="/dashboard/decor" class="nav-link"><i class="fas fa-image"></i> Decor</a>
+    <a href="/dashboard/troupe" class="nav-link active"><i class="fas fa-drum"></i> Troupe</a>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h1><i class="fas fa-drum"></i> All Troupe Media</h1>
+    <a href="/add/media/troupe" class="btn btn-primary"><i class="fas fa-plus"></i> Add Troupe</a>
+  </div>
+
+  <div class="table-container">
+    <table class="table table-hover align-middle text-center">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Image / Video</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (files && files.length > 0) { %>
+          <% files.forEach((file, index) => { %>
+            <tr>
+              <td><%= (currentPage - 1) * itemsPerPage + index + 1 %></td>
+              <td><%= file.title %></td>
+              <td><%= file.description %></td>
+              <td>
+                <% if (file.filePath) { %>
+                  <% if (file.fileType === "image") { %>
+                    <img src="/all_disk/troupe_images/<%= file.filePath %>" width="100" class="img-thumbnail">
+                  <% } else { %>
+                    <video width="200" controls>
+                      <source src="/all_disk/troupe_images/<%= file.filePath %>">
+                    </video>
+                  <% } %>
+                <% } else { %>
+                  <span class="text-muted">Not Yet Uploaded</span>
+                <% } %>
+              </td>
+              <td>
+                <a href="/edit/media/troupe/<%= file._id %>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                <form action="/delete/troupe/<%= file._id  %>?_method=delete" method="POST" style="display:inline;">
+                  <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        <% } else { %>
+          <tr>
+            <td colspan="5" class="text-muted">No troupe media found.</td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+
+    <!-- ✅ Pagination -->
+    <% const totalPages = Math.ceil(totalitems / itemsPerPage); %>
+    <% if (totalPages > 1) { %>
+      <nav>
+        <ul class="pagination">
+          <!-- Previous Button -->
+          <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
+            <a class="page-link" href="/dashboard/troupe?page=<%= currentPage - 1 %>">Previous</a>
+          </li>
+
+          <!-- Page Numbers -->
+          <% for (let i = 1; i <= totalPages; i++) { %>
+            <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+              <a class="page-link" href="/dashboard/troupe?page=<%= i %>"><%= i %></a>
+            </li>
+          <% } %>
+
+          <!-- Next Button -->
+          <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
+            <a class="page-link" href="/dashboard/troupe?page=<%= currentPage + 1 %>">Next</a>
+          </li>
+        </ul>
+      </nav>
+    <% } %>
+
+  </div>
+</main>
+
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('active');
+}
+</script>
+
+</body>
+</html>
