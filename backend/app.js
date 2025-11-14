@@ -35,6 +35,11 @@ app.use(session({
     saveUninitialized: true
   }));
 app.use(flash());
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash("success_msg");
+    res.locals.error_msg = req.flash("error_msg");
+    next();
+});
 // view
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, '../frontend'));
@@ -61,10 +66,8 @@ app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, '../frontend/error.html'));
 });
 
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Internal Server Error');
-});
+
+// make flash available to all EJS pages
 
 // Database connection and server start
 mongoose.connect("mongodb://127.0.0.1:27017/wedding_planner?directConnection=true")
