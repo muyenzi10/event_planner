@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Planner Dashboard - Troupe</title>
+  <title>Wedding Planner Dashboard - Photographer & Videographer</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -288,7 +288,7 @@
       opacity: 1;
     }
 
-    /* Media type badge styling */
+    /* Special styling for photographer/videographer dashboard */
     .media-type-badge {
       font-size: 0.7rem;
       padding: 3px 8px;
@@ -304,17 +304,6 @@
     .badge-video {
       background: #6f42c1;
       color: white;
-    }
-
-    /* Inline action buttons */
-    .action-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 5px;
-    }
-
-    .action-buttons form {
-      margin: 0;
     }
   </style>
 </head>
@@ -334,22 +323,22 @@
       <h2><i class="fas fa-heart"></i> Wedding Planner</h2>
     </div>
     <div class="nav-links">
-      <a href="/home" class="nav-link"><i class="fas fa-home"></i> Back Home</a>
       <a href="/Dashboard/view/suppliers" class="nav-link"><i class="fas fa-users"></i> Suppliers</a>
       <a href="/Dashboard/booking" class="nav-link"><i class="fas fa-bookmark"></i> Bookings</a>
       <a href="/dashboard/decor" class="nav-link"><i class="fas fa-image"></i> Decor</a>
-      <a href="/dashboard/troupe" class="nav-link active"><i class="fas fa-drum"></i> Troupe</a>
+      <a href="/dashboard/troupe" class="nav-link"><i class="fas fa-drum"></i> Troupe</a>
+      <a href="/dashboard/photographer_videographer" class="nav-link active"><i class="fas fa-camera"></i> Photo & Video</a>
     </div>
     <div class="sidebar-footer">
-      &copy; <%= new Date().getFullYear() %> Wedding Planner Pro
+      &copy; 2024 Wedding Planner Pro
     </div>
   </nav>
 
   <!-- Main Content -->
   <main class="main-content">
     <div class="d-flex justify-content-between align-items-center mb-3">
-      <h1><i class="fas fa-drum"></i> All Troupe Media</h1>
-      <a href="/add/media/troupe" class="btn btn-primary"><i class="fas fa-plus"></i> Add Troupe</a>
+      <h1><i class="fas fa-camera"></i> All Photo & Video Media</h1>
+      <a href="#" class="btn btn-primary"><i class="fas fa-plus"></i> Add Media</a>
     </div>
 
     <div class="scroll-hint"><i class="fas fa-arrow-down"></i> Scroll to view all data</div>
@@ -367,84 +356,146 @@
           </tr>
         </thead>
         <tbody>
-          <% if (files && files.length > 0) { %>
-            <% files.forEach((file, index) => { %>
-              <tr>
-                <td><%= (currentPage - 1) * itemsPerPage + index + 1 %></td>
-                <td><%= file.title %></td>
-                <td><%= file.description %></td>
-                <td>
-                  <% if (file.fileType === "image") { %>
-                    <span class="badge badge-photo media-type-badge">Photo</span>
-                  <% } else { %>
-                    <span class="badge badge-video media-type-badge">Video</span>
-                  <% } %>
-                </td>
-                <td>
-                  <% if (file.filePath) { %>
-                    <% if (file.fileType === "image") { %>
-                      <div class="media-container">
-                        <img src="/all_disk/troupe_images/<%= file.filePath %>" class="media-thumbnail img-thumbnail">
-                      </div>
-                    <% } else { %>
-                      <div class="media-container video-container">
-                        <video class="media-thumbnail" controls>
-                          <source src="/all_disk/troupe_images/<%= file.filePath %>">
-                          Your browser does not support the video tag.
-                        </video>
-                      </div>
-                    <% } %>
-                  <% } else { %>
-                    <span class="text-muted">Not Yet Uploaded</span>
-                  <% } %>
-                </td>
-                <td>
-                  <div class="action-buttons">
-                    <a href="/edit/media/troupe/<%= file._id %>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                    <form action="/delete/troupe/<%= file._id  %>?_method=delete" method="POST">
-                      <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                    </form>
-                  </div>
-                </td>
-              </tr>
-            <% }) %>
-          <% } else { %>
-            <tr>
-              <td colspan="6" class="text-muted">No troupe media found.</td>
-            </tr>
-          <% } %>
+          <tr>
+            <td>1</td>
+            <td>Bridal Portraits</td>
+            <td>Elegant bridal portraits in garden setting</td>
+            <td>
+              <span class="badge badge-photo media-type-badge">Photo</span>
+            </td>
+            <td>
+              <div class="media-container">
+                <img src="https://via.placeholder.com/120x90" class="media-thumbnail img-thumbnail">
+              </div>
+            </td>
+            <td>
+              <a href="/edit/media/photo_video/1" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+              <form action="/delete/photo_video/1?_method=delete" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Wedding Ceremony</td>
+            <td>Full ceremony video with multiple angles</td>
+            <td>
+              <span class="badge badge-video media-type-badge">Video</span>
+            </td>
+            <td>
+              <div class="media-container video-container">
+                <video class="media-thumbnail" controls>
+                  <source src="#">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </td>
+            <td>
+              <a href="/edit/media/photo_video/2" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+              <form action="/delete/photo_video/2?_method=delete" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Reception Highlights</td>
+            <td>Candid moments from wedding reception</td>
+            <td>
+              <span class="badge badge-photo media-type-badge">Photo</span>
+            </td>
+            <td>
+              <div class="media-container">
+                <img src="https://via.placeholder.com/120x90" class="media-thumbnail img-thumbnail">
+              </div>
+            </td>
+            <td>
+              <a href="/edit/media/photo_video/3" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+              <form action="/delete/photo_video/3?_method=delete" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>First Dance</td>
+            <td>Beautiful first dance moments</td>
+            <td>
+              <span class="badge badge-video media-type-badge">Video</span>
+            </td>
+            <td>
+              <div class="media-container video-container">
+                <video class="media-thumbnail" controls>
+                  <source src="#">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </td>
+            <td>
+              <a href="/edit/media/photo_video/4" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+              <form action="/delete/photo_video/4?_method=delete" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </form>
+            </td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Family Portraits</td>
+            <td>Formal family portraits with bride and groom</td>
+            <td>
+              <span class="badge badge-photo media-type-badge">Photo</span>
+            </td>
+            <td>
+              <div class="media-container">
+                <img src="https://via.placeholder.com/120x90" class="media-thumbnail img-thumbnail">
+              </div>
+            </td>
+            <td>
+              <a href="/edit/media/photo_video/5" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+              <form action="/delete/photo_video/5?_method=delete" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+              </form>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
 
     <!-- ✅ Fixed Pagination - Now outside the scrollable table container -->
-    <% const totalPages = Math.ceil(totalitems / itemsPerPage); %>
-    <% if (totalPages > 1) { %>
-      <div class="pagination-wrapper">
-        <div class="pagination-container">
-          <nav>
-            <ul class="pagination">
-              <!-- Previous Button -->
-              <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
-                <a class="page-link" href="/dashboard/troupe?page=<%= currentPage - 1 %>">Previous</a>
-              </li>
+    <div class="pagination-wrapper">
+      <div class="pagination-container">
+        <nav>
+          <ul class="pagination">
+            <!-- Previous Button -->
+            <li class="page-item disabled">
+              <a class="page-link" href="/dashboard/photographer_videographer?page=1">Previous</a>
+            </li>
 
-              <!-- Page Numbers -->
-              <% for (let i = 1; i <= totalPages; i++) { %>
-                <li class="page-item <%= currentPage === i ? 'active' : '' %>">
-                  <a class="page-link" href="/dashboard/troupe?page=<%= i %>"><%= i %></a>
-                </li>
-              <% } %>
+            <!-- Page Numbers -->
+            <li class="page-item active">
+              <a class="page-link" href="/dashboard/photographer_videographer?page=1">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="/dashboard/photographer_videographer?page=2">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="/dashboard/photographer_videographer?page=3">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="/dashboard/photographer_videographer?page=4">4</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="/dashboard/photographer_videographer?page=5">5</a>
+            </li>
 
-              <!-- Next Button -->
-              <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
-                <a class="page-link" href="/dashboard/troupe?page=<%= currentPage + 1 %>">Next</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+            <!-- Next Button -->
+            <li class="page-item">
+              <a class="page-link" href="/dashboard/photographer_videographer?page=2">Next</a>
+            </li>
+          </ul>
+        </nav>
       </div>
-    <% } %>
+    </div>
   </main>
 
   <script>

@@ -12,25 +12,53 @@
       background: #f9f9f9;
       margin: 0;
     }
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 900;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
     .sidebar {
       width: 240px;
       background: linear-gradient(180deg, #6a11cb, #2575fc);
-      color: #ddd;
-      min-height: 100vh;
+      color: #fff;
+      height: 100%;
       position: fixed;
-      top: 0; left: 0;
-      padding-top: 20px;
-      transition: margin-left 0.3s ease, transform 0.3s ease;
+      top: 0;
+      left: 0;
+      padding-top: 60px;
+      transform: translateX(0);
+      transition: transform 0.3s ease;
       z-index: 1000;
+      display: flex;
+      flex-direction: column;
+    }
+    @media (max-width:768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        margin-left: 0 !important;
+        top: 0;
+      }
+      .sidebar.active {
+        transform: translateX(0);
+      }
+      .main-content {
+        margin-left: 0 !important;
+      }
     }
     .sidebar-header h2 {
       text-align: center;
       margin-bottom: 20px;
-      color: #fff;
     }
     .nav-link {
       padding: 12px 20px;
-      color: #fff;
+      color: #ffffff;
       text-decoration: none;
       display: flex;
       align-items: center;
@@ -40,17 +68,27 @@
     .nav-link:hover, .nav-link.active {
       background: rgba(255,255,255,0.15);
       border-left-color: #0e7ee7;
+      transform: translateX(5px);
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
     }
     .main-content {
       margin-left: 240px;
-      margin-top: 56px;
       padding: 30px;
+      margin-top: 56px;
+      transition: margin-left 0.3s ease;
+    }
+    @media (max-width:768px) {
+      .main-content {
+        margin-left: 0;
+        padding: 15px;
+      }
     }
     .table-container {
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       padding: 20px;
+      margin-bottom: 20px;
       overflow-x: auto;
     }
     .table thead th {
@@ -58,10 +96,21 @@
       color: #2c3e50;
       font-weight: 700;
     }
-    .table tbody tr:hover { background: #f9f9ff; transition: 0.3s; }
-    .pagination {
+    .table tbody tr:hover {
+      background: #f9f9ff;
+      transition: 0.3s;
+    }
+    .pagination-container {
+      display: flex;
       justify-content: center;
-      margin-top: 25px;
+      margin-top: 20px;
+      width: 100%;
+      overflow-x: auto;
+      padding: 10px 0;
+    }
+    .pagination {
+      flex-wrap: nowrap;
+      margin-bottom: 0;
     }
     .pagination .page-item.active .page-link {
       background-color: #2575fc;
@@ -70,108 +119,388 @@
     }
     .pagination .page-link {
       color: #2575fc;
+      white-space: nowrap;
+    }
+    .sidebar-footer {
+      margin-top: auto;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .scroll-hint {
+      text-align: center;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      color: #6c757d;
+      opacity: 1;
+      transition: opacity 1s ease;
+    }
+    @media (min-width: 992px) {
+      .scroll-hint {
+        display: none;
+      }
+    }
+    
+    /* Improved media sizing */
+    .media-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+    
+    .media-thumbnail {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .media-thumbnail:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* Consistent image sizing */
+    .img-thumbnail {
+      width: 120px;
+      height: 90px;
+      object-fit: cover;
+    }
+    
+    /* Improved video sizing */
+    video.media-thumbnail {
+      width: 180px;
+      height: 120px;
+      background: #000;
+    }
+    
+    /* Mobile-specific improvements */
+    @media (max-width: 768px) {
+      .img-thumbnail {
+        width: 80px;
+        height: 60px;
+      }
+      
+      video.media-thumbnail {
+        width: 140px;
+        height: 100px;
+      }
+      
+      .table-container {
+        padding: 15px 10px;
+      }
+      
+      .main-content {
+        padding: 15px;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .img-thumbnail {
+        width: 70px;
+        height: 50px;
+      }
+      
+      video.media-thumbnail {
+        width: 120px;
+        height: 80px;
+      }
+      
+      .pagination .page-link {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.875rem;
+      }
+    }
+    
+    /* Make sure pagination is always visible */
+    .pagination-wrapper {
+      position: sticky;
+      bottom: 0;
+      background: white;
+      padding: 15px 0;
+      border-top: 1px solid #dee2e6;
+      margin-top: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      .pagination-wrapper {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 15px 0;
+        border-top: 1px solid #dee2e6;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        z-index: 100;
+      }
+      
+      .main-content {
+        padding-bottom: 80px;
+      }
+      
+      .sidebar-toggle {
+        z-index: 101;
+      }
+    }
+    
+    .text-muted {
+      font-style: italic;
+      color: #888;
+    }
+    
+    /* Video play button overlay */
+    .video-container {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .video-container::after {
+      content: '\f04b';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    
+    .video-container:hover::after {
+      opacity: 1;
+    }
+
+    /* Media type badge styling */
+    .media-type-badge {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 12px;
+      margin-left: 5px;
+    }
+    
+    .badge-photo {
+      background: #17a2b8;
+      color: white;
+    }
+    
+    .badge-video {
+      background: #6f42c1;
+      color: white;
+    }
+
+    /* Inline action buttons */
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .action-buttons form {
+      margin: 0;
     }
   </style>
 </head>
 <body>
 
-<button class="sidebar-toggle btn btn-light position-fixed top-0 start-0 m-2" onclick="toggleSidebar()">
-  <i class="fas fa-bars"></i>
-</button>
+  <!-- Sidebar Toggle -->
+  <button class="sidebar-toggle btn btn-light position-fixed top-0 start-0 m-2" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+  </button>
 
-<nav class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <h2><i class="fas fa-heart"></i> Wedding Planner</h2>
-  </div>
-  <div class="nav-links">
-    <a href="/Dashboard/view/suppliers" class="nav-link"><i class="fas fa-users"></i> Suppliers</a>
-    <a href="/Dashboard/booking" class="nav-link"><i class="fas fa-bookmark"></i> Bookings</a>
-    <a href="/dashboard/decor" class="nav-link active"><i class="fas fa-image"></i> Decor</a>
-  </div>
-</nav>
+  <!-- Overlay -->
+  <div id="overlay" onclick="toggleSidebar()"></div>
 
-<main class="main-content">
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1><i class="fas fa-image"></i> All Decor</h1>
-    <a href="/add/decor" class="btn btn-primary"><i class="fas fa-plus"></i> Add Decor</a>
-  </div>
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <h2><i class="fas fa-heart"></i> Wedding Planner</h2>
+    </div>
+    <div class="nav-links">
+      <a href="/home" class="nav-link"><i class="fas fa-home"></i> Back Home</a>
+      <a href="/Dashboard/view/suppliers" class="nav-link"><i class="fas fa-users"></i> Suppliers</a>
+      <a href="/Dashboard/booking" class="nav-link"><i class="fas fa-bookmark"></i> Bookings</a>
+      <a href="/dashboard/decor" class="nav-link active"><i class="fas fa-image"></i> Decor</a>
+      <a href="/dashboard/troupe" class="nav-link"><i class="fas fa-drum"></i> Troupe</a>
+    </div>
+    <div class="sidebar-footer">
+      &copy; <%= new Date().getFullYear() %> Wedding Planner Pro
+    </div>
+  </nav>
 
-  <div class="table-container">
-    <table class="table table-hover align-middle text-center">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Image / Video</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if (files && files.length > 0) { %>
-          <% files.forEach((file, index) => { %>
-            <tr>
-              <td><%= index + 1 + ((currentPage - 1) * itemsPerPage) %></td>
-              <td><%= file.title %></td>
-              <td><%= file.description %></td>
-              <td>
-                <% if (file.fileType === "image") { %>
-                  <img src="/all_disk/decor_images/<%= file.filePath %>" width="100" class="img-thumbnail">
-                <% } else { %>
-                  <video width="200" controls>
-                    <source src="/all_disk/decor_images/<%= file.filePath %>">
-                  </video>
-                <% } %>
-              </td>
-              <td>
-                <a href="/decor/edit/<%= file._id %>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
-                <form action="/delete/file/<%= file._id %>?_method=DELETE" method="POST" style="display:inline;">
-                  <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                </form>
-              </td>
-            </tr>
-          <% }) %>
-        <% } else { %>
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1><i class="fas fa-image"></i> All Decor</h1>
+      <a href="/add/decor" class="btn btn-primary"><i class="fas fa-plus"></i> Add Decor</a>
+    </div>
+
+    <div class="scroll-hint"><i class="fas fa-arrow-down"></i> Scroll to view all data</div>
+
+    <div class="table-container">
+      <table class="table table-hover align-middle text-center">
+        <thead>
           <tr>
-            <td colspan="5" class="text-muted">No decor found.</td>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Image / Video</th>
+            <th>Action</th>
           </tr>
-        <% } %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% if (files && files.length > 0) { %>
+            <% files.forEach((file, index) => { %>
+              <tr>
+                <td><%= index + 1 + ((currentPage - 1) * itemsPerPage) %></td>
+                <td><%= file.title %></td>
+                <td><%= file.description %></td>
+                <td>
+                  <% if (file.fileType === "image") { %>
+                    <span class="badge badge-photo media-type-badge">Photo</span>
+                  <% } else { %>
+                    <span class="badge badge-video media-type-badge">Video</span>
+                  <% } %>
+                </td>
+                <td>
+                  <% if (file.fileType === "image") { %>
+                    <div class="media-container">
+                      <img src="/all_disk/decor_images/<%= file.filePath %>" class="media-thumbnail img-thumbnail">
+                    </div>
+                  <% } else { %>
+                    <div class="media-container video-container">
+                      <video class="media-thumbnail" controls>
+                        <source src="/all_disk/decor_images/<%= file.filePath %>">
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  <% } %>
+                </td>
+                <td>
+                  <div class="action-buttons">
+                    <a href="/decor/edit/<%= file._id %>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                    <form action="/delete/file/<%= file._id %>?_method=DELETE" method="POST">
+                      <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="6" class="text-muted">No decor found.</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
 
-    <!-- ✅ Pagination -->
+    <!-- ✅ Fixed Pagination - Now outside the scrollable table container -->
     <% if (totalPages > 1) { %>
-      <nav>
-        <ul class="pagination">
-          <% if (currentPage > 1) { %>
-            <li class="page-item">
-              <a class="page-link" href="/dashboard/decor?page=<%= currentPage - 1 %>">Previous</a>
-            </li>
-          <% } %>
+      <div class="pagination-wrapper">
+        <div class="pagination-container">
+          <nav>
+            <ul class="pagination">
+              <% if (currentPage > 1) { %>
+                <li class="page-item">
+                  <a class="page-link" href="/dashboard/decor?page=<%= currentPage - 1 %>">Previous</a>
+                </li>
+              <% } %>
 
-          <% for (let i = 1; i <= totalPages; i++) { %>
-            <li class="page-item <%= currentPage === i ? 'active' : '' %>">
-              <a class="page-link" href="/dashboard/decor?page=<%= i %>"><%= i %></a>
-            </li>
-          <% } %>
+              <% for (let i = 1; i <= totalPages; i++) { %>
+                <li class="page-item <%= currentPage === i ? 'active' : '' %>">
+                  <a class="page-link" href="/dashboard/decor?page=<%= i %>"><%= i %></a>
+                </li>
+              <% } %>
 
-          <% if (currentPage < totalPages) { %>
-            <li class="page-item">
-              <a class="page-link" href="/dashboard/decor?page=<%= currentPage + 1 %>">Next</a>
-            </li>
-          <% } %>
-        </ul>
-      </nav>
+              <% if (currentPage < totalPages) { %>
+                <li class="page-item">
+                  <a class="page-link" href="/dashboard/decor?page=<%= currentPage + 1 %>">Next</a>
+                </li>
+              <% } %>
+            </ul>
+          </nav>
+        </div>
+      </div>
     <% } %>
+  </main>
 
-  </div>
-</main>
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const main = document.querySelector('.main-content');
+    const overlay = document.getElementById('overlay');
 
-<script>
-function toggleSidebar(){
-  document.getElementById('sidebar').classList.toggle('active');
-}
-</script>
+    function toggleSidebar(){
+      if(window.innerWidth <= 768){
+        if(sidebar.classList.contains('active')){
+          sidebar.classList.remove('active');
+          overlay.style.opacity = '0';
+          setTimeout(()=> overlay.style.display='none', 300);
+        } else {
+          sidebar.classList.add('active');
+          overlay.style.display = 'block';
+          setTimeout(()=> overlay.style.opacity='1', 10);
+        }
+      } else {
+        sidebar.classList.toggle('active');
+        main.classList.toggle('active');
+      }
+    }
+
+    // Hide scroll hint
+    setTimeout(()=>{
+      const hint = document.querySelector('.scroll-hint');
+      if(hint){ hint.style.opacity='0'; setTimeout(()=>hint.remove(),1000);}
+    },5000);
+
+    // Improve video loading and interaction
+    document.addEventListener('DOMContentLoaded', function() {
+      const videos = document.querySelectorAll('video.media-thumbnail');
+      
+      videos.forEach(video => {
+        // Preload metadata for better performance
+        video.addEventListener('loadedmetadata', function() {
+          // Set the video to display the first frame
+          video.currentTime = 0.1;
+        });
+        
+        // Pause other videos when one starts playing
+        video.addEventListener('play', function() {
+          videos.forEach(otherVideo => {
+            if (otherVideo !== video && !otherVideo.paused) {
+              otherVideo.pause();
+            }
+          });
+        });
+      });
+    });
+
+    window.addEventListener('resize', ()=>{
+      if(window.innerWidth > 768){
+        sidebar.classList.remove('active');
+        overlay.style.opacity = '0';
+        overlay.style.display = 'none';
+      }
+    });
+  </script>
 
 </body>
 </html>

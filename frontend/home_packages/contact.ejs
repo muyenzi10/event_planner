@@ -69,7 +69,11 @@
             transition: width 0.3s ease;
         }
 
-        .nav-link:hover:after, .nav-link.active:after {
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .nav-link.active:after {
             width: 100%;
         }
 
@@ -470,7 +474,7 @@
                     <li class="nav-item"><a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a></li>
                     <li class="nav-item"><a class="nav-link" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a></li>
                     <li class="nav-item"><a class="nav-link" href="/suppliers"><i class="fas fa-camera me-1"></i> Suppliers</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="/booking"><i class="fas fa-bookmark me-1"></i> Book Consultation</a></li>
                 </ul>
             </div>
@@ -603,6 +607,33 @@
             });
             input.addEventListener('blur', () => {
                 input.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Active nav link highlighting
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname;
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                // Remove active class from all links
+                link.classList.remove('active');
+                
+                // Add active class to current page link
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Optional: Add click event to update active state when clicking links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
             });
         });
     </script>

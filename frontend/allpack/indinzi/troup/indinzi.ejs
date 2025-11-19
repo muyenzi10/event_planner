@@ -1171,6 +1171,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/suppliers"><i class="fas fa-camera me-1"></i>Suppliers</a>
                 </li>
+                 <li class="nav-item"><a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a></li>
                 <li class="nav-item">
                     <a class="nav-link " href="/booking"><i class="fas fa-bookmark me-1"></i> Book Consultation</a>
                 </li>
@@ -1750,6 +1751,16 @@
         document.querySelectorAll('img').forEach(img => {
             img.addEventListener('error', function() {
                 console.log('Image failed to load:', this.src);
+            });
+        });
+        // Optional: Add click event to update active state when clicking links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
             });
         });
     </script>
