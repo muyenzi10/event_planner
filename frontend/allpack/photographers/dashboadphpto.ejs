@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Planner Dashboard - Photo & Video</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #f9f9f9; margin: 0; }
+    .sidebar { width: 240px; background: linear-gradient(180deg, #6a11cb, #2575fc); color: #fff; height: 100vh; position: fixed; padding-top: 60px; display: flex; flex-direction: column; }
+    .nav-link { padding: 12px 20px; color: #fff; text-decoration: none; display: flex; align-items: center; border-left: 4px solid transparent; transition: all 0.3s ease; }
+    .nav-link.active, .nav-link:hover { background: rgba(255,255,255,0.15); border-left-color: #0e7ee7; }
+    .main-content { margin-left: 240px; padding: 30px; margin-top: 56px; }
+    .table-container { background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 20px; overflow-x: auto; }
+    .table thead th { background: linear-gradient(to bottom, #f8f9fa, #e9ecef); color: #2c3e50; font-weight: 700; }
+    .media-thumbnail { width: 120px; height: 90px; object-fit: cover; border-radius: 8px; }
+    .action-buttons { display: flex; justify-content: center; gap: 5px; }
+    @media (max-width:768px) { .main-content { margin-left: 0; padding: 15px; } }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-header text-center mb-4">
+      <h2><i class="fas fa-heart"></i> Wedding Planner</h2>
+    </div>
+    <a href="/home" class="nav-link"><i class="fas fa-home me-2"></i> Back Home</a>
+    <a href="/Dashboard/view/suppliers" class="nav-link"><i class="fas fa-users me-2"></i> Suppliers</a>
+    <a href="/Dashboard/booking" class="nav-link"><i class="fas fa-bookmark me-2"></i> Bookings</a>
+    <a href="/dashboard/decor" class="nav-link"><i class="fas fa-image me-2"></i> Decor</a>
+    <a href="/dashboard/troupe" class="nav-link"><i class="fas fa-drum me-2"></i> Troupe</a>
+    <a href="/dashboard/media" class="nav-link active"><i class="fas fa-camera me-2"></i> Photo & Video</a>
+    <div class="mt-auto text-center text-white-50 p-3">&copy; <%= new Date().getFullYear() %> Wedding Planner Pro</div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1><i class="fas fa-camera"></i> All Media</h1>
+      <a href="/add/media" class="btn btn-primary"><i class="fas fa-plus"></i> Add Media</a>
+    </div>
+
+    <div class="table-container">
+      <table class="table table-hover text-center align-middle">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Media</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (files && files.length > 0) { %>
+            <% files.forEach((f, idx) => { %>
+              <tr>
+                <td><%= (currentpage - 1) * itempage + idx + 1 %></td>
+                <td><%= f.title %></td>
+                <td><%= f.description %></td>
+                <td>
+                  <% if (f.fileType === 'image') { %>
+                    <span class="badge bg-info">Photo</span>
+                  <% } else { %>
+                    <span class="badge bg-secondary">Video</span>
+                  <% } %>
+                </td>
+                <td>
+                  <% if (f.fileType === 'image') { %>
+                    <img src="/all_disk/camera_images/<%= f.filePath %>" class="media-thumbnail">
+                  <% } else { %>
+                    <video class="media-thumbnail" controls>
+                      <source src="/all_disk/camera_images/<%= f.filePath %>">
+                    </video>
+                  <% } %>
+                </td>
+                <td>
+                  <div class="action-buttons">
+                    <a href="/edit/media/<%= f._id %>" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                    <form action="/delete/media/<%= f._id %>?_method=DELETE" method="POST">
+                      <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                    </form>
+                  </div>
+                </td>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="6" class="text-muted">No media found.</td>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <% if (totalpage > 1) { %>
+        <nav>
+          <ul class="pagination justify-content-center">
+            <li class="page-item <%= currentpage === 1 ? 'disabled' : '' %>">
+              <a class="page-link" href="?page=<%= currentpage - 1 %>">&laquo; Prev</a>
+            </li>
+
+            <% for (let i = 1; i <= totalpage; i++) { %>
+              <li class="page-item <%= currentpage === i ? 'active' : '' %>">
+                <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+              </li>
+            <% } %>
+
+            <li class="page-item <%= currentpage === totalpage ? 'disabled' : '' %>">
+              <a class="page-link" href="?page=<%= currentpage + 1 %>">Next &raquo;</a>
+            </li>
+          </ul>
+        </nav>
+      <% } %>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

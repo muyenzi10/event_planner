@@ -12,6 +12,11 @@ const storage = multer.diskStorage({
     }
     })
 const upload = multer({storage})
-photography.post("/media", upload.single("media"));
+photography.post("/upload/media", upload.single("media"),photography_video.postphotography);
 photography.get("/photographers", photography_video.getphotograph);
+photography.get("/dashboard/media",photography_video.getdashbord);
+photography.get("/add/media", photography_video.addmedia);
+photography.get("/edit/media/:id", photography_video.editmedia);
+photography.put("/update/media/:id", upload.single("media"), photography_video.updatemedia);
+photography.delete("/delete/media/:id", photography_video.deletemedia);
 module.exports = photography
