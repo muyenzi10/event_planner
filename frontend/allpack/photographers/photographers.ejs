@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Professional wedding photography and videography services - Capturing your special moments beautifully">
     <meta name="keywords" content="wedding photographer, wedding videographer, wedding gallery, wedding films">
-    <title>Wedding Photography & Videography | Wedding Visuals</title>
+    <title>Wedding Photography & Videography | Dream Day Visuals</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -19,22 +19,143 @@
             --dark-color: #222;
             --light-color: #fff;
             --muted-color: #f8f4f0;
-            --pink-primary: #e91e63;
-            --pink-dark: #c2185b;
-            --pink-light: #fffafc;
-            --success: #10B981;
-            --error: #EF4444;
+            
+            /* Light Theme Colors */
+            --primary-gold: #d4af37;
+            --primary-gold-light: #e6c869;
+            --primary-gold-dark: #b8941f;
+            --bg-light: #fefefe;
+            --bg-light-secondary: #f8f4f0;
+            --text-dark: #2c2c2c;
+            --text-muted: #6c757d;
+            --card-light: #ffffff;
+            --border-light: #e9ecef;
+            
+            /* Dark Theme Colors */
+            --bg-dark: #0f0f0f;
+            --bg-dark-secondary: #1a1a1a;
+            --bg-dark-tertiary: #2d2d2d;
+            --text-light: #f0f0f0;
+            --text-light-muted: #b0b0b0;
+            --card-dark: #1e1e1e;
+            --card-dark-hover: #2a2a2a;
+            --border-dark: #333333;
+            
+            /* Video Badge Colors for Button */
+            --video-red: #dc3545;
+            --video-red-dark: #c82333;
+        }
+        
+        /* Base Styles */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
         
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--muted-color);
-            color: var(--dark-color);
-            line-height: 1.6;
+            background-color: var(--bg-light-secondary);
+            color: var(--text-dark);
+            line-height: 1.7;
             overflow-x: hidden;
         }
         
-        /* 🌸 Navbar Styling */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--primary-gold-light));
+            border-radius: 2px;
+        }
+        
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+        
+        /* FIXED: Enhanced Dark Mode Toggle - VIDEO BADGE RED COLOR */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
+        }
+        
+        body.dark-mode .dark-mode-toggle {
+            background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
+        }
+        
+        body.dark-mode .dark-mode-toggle:hover {
+            box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
+        }
+
+        /* FIXED: Mobile responsive positioning for dark mode toggle */
+        @media (max-width: 768px) {
+            .dark-mode-toggle {
+                bottom: 80px; /* Moved higher to avoid mobile browser UI */
+                right: 15px;
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+            
+            .dark-mode-toggle .toggle-text {
+                display: none; /* Hide text on mobile for cleaner look */
+            }
+            
+            .dark-mode-toggle {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                justify-content: center;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .dark-mode-toggle {
+                bottom: 70px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* EXACT NAVBAR STYLING from provided code */
         .navbar {
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             background-color: var(--light-color) !important;
@@ -75,11 +196,7 @@
             transition: width 0.3s ease;
         }
 
-        .nav-link:hover:after {
-            width: 100%;
-        }
-
-        .nav-link.active:after {
+        .nav-link:hover:after, .nav-link.active:after {
             width: 100%;
         }
 
@@ -132,29 +249,149 @@
             }
         }
         
-        /* Dark Mode Styles */
-        .dark-mode {
-            background-color: #121212;
-            color: #f8f9fa;
-        }
-        
-        .dark-mode .card {
-            background-color: #1e1e1e;
-            border-color: #333;
-        }
-        
-        .dark-mode .testimonial-card {
-            background-color: #1e1e1e;
-            border-left: 4px solid var(--primary-color);
-        }
-        
         /* Hero Section */
         .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/allpack/photographers/photoimage/camera-7698836_1280.jpg') no-repeat center center/cover;
-            min-height: 80vh;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%), url('/allpack/photographers/wall/b.jpg') no-repeat center center/cover;
+            min-height: 90vh;
             display: flex;
             align-items: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.8) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #fff 0%, var(--primary-gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Button Styles */
+        .btn-gold {
+            background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            color: white;
+        }
+        
+        .btn-outline-gold {
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            background: transparent;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-gold:hover {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        body.dark-mode .btn-outline-gold {
+            color: var(--primary-gold-light);
+            border-color: var(--primary-gold-light);
+        }
+        
+        body.dark-mode .btn-outline-gold:hover {
+            background: var(--primary-gold-light);
+            color: var(--text-dark);
+        }
+        
+        /* Gallery Styles */
+        .gallery-section {
+            padding: 100px 0;
+            background-color: var(--bg-light-secondary);
+        }
+        
+        body.dark-mode .gallery-section {
+            background-color: var(--bg-dark);
+        }
+        
+        .gallery-img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            background: var(--card-light);
+        }
+        
+        body.dark-mode .gallery-img-container {
+            background: var(--card-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-img-container:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        body.dark-mode .gallery-img-container:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            background: var(--card-dark-hover);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-img-container:hover .gallery-img {
+            transform: scale(1.08);
         }
         
         /* Media Type Badges */
@@ -162,51 +399,23 @@
             position: absolute;
             top: 15px;
             right: 15px;
-            padding: 5px 10px;
+            padding: 6px 14px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: bold;
             text-transform: uppercase;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         
         .photo-badge {
-            background-color: #17a2b8;
+            background: linear-gradient(135deg, #17a2b8, #0d8aa0);
             color: white;
         }
         
         .video-badge {
-            background-color: #dc3545;
+            background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
             color: white;
-        }
-        
-        /* Gallery Styles */
-        .gallery-section {
-            padding: 80px 0;
-        }
-        
-        .gallery-img-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-img-container:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-        
-        .gallery-img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-img-container:hover .gallery-img {
-            transform: scale(1.05);
         }
         
         .img-overlay {
@@ -214,271 +423,618 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
             color: white;
-            padding: 20px;
+            padding: 25px;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
+            z-index: 5;
+            transform: translateY(10px);
         }
         
         .gallery-img-container:hover .img-overlay {
             opacity: 1;
+            transform: translateY(0);
         }
         
-        /* Testimonials Section */
-        .testimonials-section {
-            background-color: #f8f9fa;
-            padding: 80px 0;
-        }
-        
-        .dark-mode .testimonials-section {
-            background-color: #1a1a1a;
-        }
-        
-        .testimonial-card {
-            background: white;
-            border-left: 4px solid var(--primary-color);
-            padding: 30px;
-            margin-bottom: 30px;
-            height: 100%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .testimonial-text:before {
-            content: '"';
-            font-size: 60px;
-            color: rgba(220, 53, 69, 0.1);
-            position: absolute;
-            left: -15px;
-            top: -25px;
-        }
-        
-        .client-info {
-            display: flex;
-            align-items: center;
-        }
-        
-        .client-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 15px;
-        }
-        
-        .stars {
-            color: #ffc107;
-            margin-bottom: 5px;
-        }
-        
-        /* Section Titles */
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 50px;
-            font-weight: 700;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary-color);
-        }
-        
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: var(--dark-color);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-        
-        .dark-mode-toggle i {
-            margin-right: 5px;
-        }
-        
-        /* Video Play Button */
+        /* ENHANCED: Video Play Button with Controls */
         .video-play-btn {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: rgba(255,255,255,0.8);
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary-color);
-            font-size: 24px;
-            transition: all 0.3s ease;
+            color: var(--video-red);
+            font-size: 26px;
+            transition: all 0.4s ease;
             cursor: pointer;
+            z-index: 5;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
         
-        .gallery-img-container:hover .video-play-btn {
-            background: rgba(220, 53, 69, 0.9);
+        .video-play-btn:hover {
+            background: rgba(220, 53, 69, 0.95);
             color: white;
+            transform: translate(-50%, -50%) scale(1.1);
         }
-
-        /* Lightbox Styles */
-        .modal-content {
-            background-color: transparent !important;
-        }
-
-        .btn-close-white {
-            filter: invert(1) grayscale(100%) brightness(200%);
-            opacity: 1;
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            z-index: 1000;
-        }
-
-        #lightboxVideo {
-            border: none;
-            border-radius: 8px;
+        
+        /* Enhanced Video Hover Effects */
+        .gallery-img-container.video-item {
+            position: relative;
             overflow: hidden;
         }
 
-        .modal-backdrop {
-            background-color: rgba(0, 0, 0, 0.9);
+        .gallery-img-container.video-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 3;
+            border-radius: 12px;
         }
 
-        .modal-backdrop.show {
-            opacity: 0.9;
+        .gallery-img-container.video-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-img-container.video-item:hover .video-hover-play {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-hover-play {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(220, 53, 69, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            z-index: 4;
+            box-shadow: 0 8px 25px rgba(220, 53, 69, 0.4);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .video-hover-play i {
+            margin-left: 4px;
+        }
+
+        /* Pulse animation for video items */
+        @keyframes videoPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+            }
+        }
+
+        .gallery-img-container.video-item {
+            animation: videoPulse 2s infinite;
+        }
+
+        /* Remove pulse animation on hover */
+        .gallery-img-container.video-item:hover {
+            animation: none;
+        }
+
+        /* Enhanced video badge with icon */
+        .video-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 14px 6px 12px;
+        }
+
+        .video-badge i {
+            font-size: 10px;
         }
         
-        /* Footer */
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+            position: relative;
+        }
+        
+        body.dark-mode .testimonials-section {
+            background-color: var(--bg-dark-secondary);
+        }
+        
+        .testimonial-card {
+            background: var(--card-light);
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary-gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        body.dark-mode .testimonial-card {
+            background: var(--card-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+        
+        body.dark-mode .testimonial-card:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 80px;
+            color: rgba(212, 175, 55, 0.1);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+        
+        body.dark-mode .testimonial-card::before {
+            color: rgba(212, 175, 55, 0.08);
+        }
+        
+        .stars {
+            color: #ffc107;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+        
+        body.dark-mode .testimonial-text {
+            color: var(--text-light);
+        }
+        
+        .client-info h6 {
+            color: var(--primary-gold);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .client-info small {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        
+        body.dark-mode .client-info small {
+            color: var(--text-light-muted);
+        }
+
+        /* EXACT FOOTER STYLING from provided code */
         footer { 
-            background-color: var(--dark-color); 
-            color: #eee; 
-            font-family: 'Poppins', sans-serif; 
+            background-color:#222; 
+            color:#eee; 
+            font-family:'Poppins', sans-serif; 
         }
         
         footer h5 { 
-            font-family: 'Playfair Display', serif; 
-            color: var(--primary-color);
+            font-family:'Playfair Display', serif; 
         }
         
         footer .footer-link { 
-            text-decoration: none; 
-            display: inline-block; 
-            margin-bottom: 8px; 
+            text-decoration:none; 
+            display:inline-block; 
+            margin-bottom:8px; 
             transition: all 0.3s ease; 
-            color: #eee;
         }
         
         footer .footer-link:hover { 
             color: var(--primary-color); 
-            padding-left: 6px; 
+            padding-left:6px; 
         }
         
         footer .footer-social { 
-            font-size: 1.2rem; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            width: 36px; 
-            height: 36px; 
-            border-radius: 50%; 
+            font-size:1.2rem; 
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            width:36px; 
+            height:36px; 
+            border-radius:50%; 
             background-color: rgba(212,175,55,0.2); 
             transition: all 0.3s ease; 
-            color: #eee;
         }
         
         footer .footer-social:hover { 
             background-color: var(--primary-color); 
-            color: #fff !important; 
-            box-shadow: 0 0 10px rgba(212,175,55,0.6); 
-            transform: translateY(-3px); 
+            color:#fff !important; 
+            box-shadow:0 0 10px rgba(212,175,55,0.6); 
+            transform:translateY(-3px); 
         }
         
         footer hr.bg-secondary { 
-            border-top: 1px solid rgba(255,255,255,0.2); 
+            border-top:1px solid rgba(255,255,255,0.2); 
         }
 
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* Enhanced Lightbox Styles with Video Controls */
+        .lightbox-modal .modal-content {
+            background: transparent;
+            border: none;
+            position: relative;
         }
         
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .lightbox-modal .modal-header {
+            border: none;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1060;
+            padding: 0;
         }
         
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .lightbox-close-btn {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 1070;
+            backdrop-filter: blur(10px);
         }
         
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+        .lightbox-close-btn:hover {
+            background: rgba(255, 0, 0, 0.8);
+            transform: scale(1.1);
         }
         
-        @keyframes expandWidth {
-            from { transform: scaleX(0); }
-            to { transform: scaleX(1); }
+        .lightbox-modal .modal-body {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
         }
         
-        @keyframes ripple {
-            0% {
-                transform: scale(0, 0);
-                opacity: 0.5;
+        .lightbox-image-container {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 12px;
+            display: block;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        .lightbox-video-container {
+            position: relative;
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            background: #000;
+        }
+        
+        .lightbox-video {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        /* Enhanced Lightbox Video Controls */
+        .lightbox-video-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 20px;
+            z-index: 10;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        .lightbox-video-controls.hidden {
+            opacity: 0;
+        }
+        
+        .lightbox-controls-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .lightbox-progress-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .lightbox-progress {
+            height: 100%;
+            background: var(--primary-gold);
+            width: 0%;
+            border-radius: 3px;
+            transition: width 0.1s ease;
+        }
+        
+        .lightbox-controls-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .lightbox-control-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .lightbox-control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 16px;
+        }
+        
+        .lightbox-control-btn:hover {
+            background: var(--primary-gold);
+            transform: scale(1.1);
+        }
+        
+        .lightbox-time-display {
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            font-family: 'Poppins', monospace;
+            min-width: 100px;
+            text-align: center;
+        }
+        
+        .lightbox-volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .lightbox-volume-slider {
+            width: 80px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .lightbox-volume-level {
+            height: 100%;
+            background: var(--primary-gold);
+            width: 80%;
+            border-radius: 2px;
+        }
+        
+        .lightbox-navigation {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 1050;
+            pointer-events: none;
+        }
+        
+        .lightbox-nav-btn {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            pointer-events: all;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lightbox-nav-btn:hover {
+            background: rgba(212, 175, 55, 0.8);
+            transform: scale(1.1);
+        }
+        
+        .lightbox-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            padding: 30px 20px 20px;
+            text-align: center;
+            border-radius: 0 0 12px 12px;
+        }
+        
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.95) !important;
+        }
+        
+        .modal-backdrop.show {
+            opacity: 1 !important;
+        }
+        
+        /* Pagination Styles */
+        .pagination {
+            margin-top: 50px;
+            justify-content: center;
+        }
+        
+        .page-item.active .page-link {
+            background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
+            border-color: var(--primary-gold);
+        }
+        
+        .page-link {
+            color: var(--text-dark);
+            background-color: var(--card-light);
+            border: 1px solid var(--border-light);
+            padding: 10px 18px;
+            margin: 0 5px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .page-link:hover {
+            color: var(--primary-gold);
+            background-color: rgba(212, 175, 55, 0.1);
+            border-color: var(--primary-gold);
+        }
+        
+        body.dark-mode .page-link {
+            color: var(--text-light);
+            background-color: var(--card-dark);
+            border-color: var(--border-dark);
+        }
+        
+        body.dark-mode .page-link:hover {
+            color: var(--primary-gold-light);
+            background-color: rgba(212, 175, 55, 0.15);
+            border-color: var(--primary-gold-light);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .lightbox-nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
             }
-            100% {
-                transform: scale(20, 20);
-                opacity: 0;
+            
+            .lightbox-navigation {
+                padding: 0 15px;
+            }
+            
+            .lightbox-close-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+            
+            .lightbox-video-container {
+                max-width: 95%;
+                max-height: 70vh;
+            }
+            
+            .lightbox-video-controls {
+                padding: 15px;
+            }
+            
+            .lightbox-control-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
+            }
+            
+            .lightbox-time-display {
+                font-size: 12px;
+                min-width: 80px;
+            }
+            
+            .lightbox-volume-slider {
+                width: 60px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-img-container:hover {
+                transform: translateY(-5px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .lightbox-control-group {
+                gap: 10px;
+            }
+            
+            .lightbox-volume-control {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle -->
-    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
-        <i class="fas fa-moon"></i> Dark Mode
+    <!-- FIXED: Dark Mode Toggle with proper mobile positioning -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>
     </button>
 
-    <!-- Navbar -->
+    <!-- EXACT NAVBAR from provided code -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-heart me-2"></i>Dream Day</a>
@@ -490,7 +1046,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="/home"><i class="fas fa-home me-1"></i> Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a></li>
                     <li class="nav-item"><a class="nav-link" href="/suppliers"><i class="fas fa-camera me-1"></i> Suppliers</a></li>
                     <li class="nav-item"><a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a></li>
                     <li class="nav-item"><a class="nav-link" href="/booking"><i class="fas fa-bookmark me-1"></i> Book Consultation</a></li>
@@ -501,12 +1057,12 @@
 
     <!-- Hero Section -->
     <header class="hero-section">
-        <div class="container text-center py-5">
-            <h1 class="display-3 fw-bold mb-4">Capturing Your Love Story</h1>
-            <p class="lead mb-4">Professional wedding photography and videography that preserves your most precious moments</p>
+        <div class="container text-center py-5 hero-content">
+            <h1 class="hero-title">Capturing Your Love Story</h1>
+            <p class="hero-subtitle">Professional wedding photography and videography that preserves your most precious moments with artistry and emotion</p>
             <div>
-                <a href="#gallery" class="btn btn-danger btn-lg px-4 me-2">View Gallery</a>
-                <a href="#testimonials" class="btn btn-outline-light btn-lg px-4">See Testimonials</a>
+                <a href="#gallery" class="btn btn-gold btn-lg px-5 me-3">View Gallery</a>
+                <a href="#testimonials" class="btn btn-outline-gold btn-lg px-5">See Testimonials</a>
             </div>
         </div>
     </header>
@@ -516,170 +1072,96 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Our Work</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">A collection of our favorite moments from real weddings</p>
+                    <h2 class="section-title">Our Work</h2>
+                    <p class="lead">A collection of our favorite moments from real weddings</p>
                 </div>
             </div>
+            
             <div class="row">
-                <!-- Photo 1 -->
-                <div class="col-md-4 col-sm-6" data-aos="fade-up">
-                    <div class="gallery-img-container">
-                        <span class="media-badge photo-badge">Photo</span>
-                        <a href="/allpack/photographers/photoimage/1.jpeg">
-                        <img src="/allpack/photographers/photoimage/1.jpeg" alt="Wedding couple dancing" class="gallery-img">
-                        </a>
-                        <div class="img-overlay">
+                <% if (files && files.length > 0) { %>
+                    <% files.forEach((f, index) => { %>
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <div class="gallery-img-container <%= f.fileType === 'video' ? 'video-item' : '' %>">
+                                <% if (f.fileType === 'image') { %>
+                                    <span class="media-badge photo-badge">Photo</span>
+                                    <img src="/all_disk/camera_images/<%= f.filePath %>" 
+                                         alt="<%= f.title %>" 
+                                         class="gallery-img"
+                                         data-index="<%= index %>"
+                                         data-type="image"
+                                         onclick="openLightbox(<%= index %>)">
+                                <% } else { %>
+                                    <span class="media-badge video-badge">
+                                        <i class="fas fa-play"></i> Video
+                                    </span>
+                                    <video class="gallery-img portfolio-video" 
+                                           data-index="<%= index %>"
+                                           data-type="video"
+                                           onclick="openLightbox(<%= index %>)"
+                                           preload="auto"
+                                           muted
+                                           autoplay
+                                           loop
+                                           playsinline
+                                           poster="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgdmlld0JveD0iMCAwIDQwMCAzMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjIwMCIgY3k9IjE1MCIgcj0iMzAiIGZpbGw9IiNENEFGMzciIGZpbGwtb3BhY2l0eT0iMC4zIi8+CjxwYXRoIGQ9Ik0xODUgMTM1TDIxNSAxNTBMMTg1IDE2NVYxMzVaIiBmaWxsPSJ3aGl0ZSIvPgo8cmVjdCB4PSI1MCIgeT0iMTAwIiB3aWR0aD0iMzAwIiBoZWlnaHQ9IjEwMCIgcng9IjEwIiBmaWxsPSIjRDRBRjM3IiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8L3N2Zz4K">
+                                        <source src="/all_disk/camera_images/<%= f.filePath %>" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    
+                                    <!-- Hover Play Button -->
+                                    <div class="video-hover-play" onclick="openLightbox(<%= index %>)">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                    
+                                    <!-- Static Play Button -->
+                                    <div class="video-play-btn" onclick="openLightbox(<%= index %>)">
+                                        <i class="fas fa-play"></i>
+                                    </div>
+                                <% } %>
+                                <div class="img-overlay">
+                                    <h5 class="text-white">
+    <% if (f.fileType === 'video') { %>
+        <i class="fas fa-play-circle me-2"></i>
+    <% } %>
+    <%= f.title %>
+</h5>
+                                    <p class="text-white small mb-0"><%= f.description %></p>
+                                    <% if (f.fileType === 'video') { %>
+                                        <div class="mt-2">
+                                            <small class="text-warning">
+                                                <i class="fas fa-video me-1"></i>Click to watch with sound
+                                            </small>
+                                        </div>
+                                    <% } %>
+                                </div>
+                            </div>
                         </div>
+                    <% }) %>
+                <% } else { %>
+                    <div class="col-12 text-center">
+                        <p>No media found.</p>
                     </div>
-                </div>
-                
-                <!-- Video 1 -->
-                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-img-container">
-                        <span class="media-badge video-badge">Video</span>
-                        <video poster="/allpack/photographers/photoimage/Screenshot from 2025-03-26 14-42-55.png" class="gallery-img">
-                            <source src="/allpack/photographers/datavand/v2.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="img-overlay">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Photo 2 -->
-                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="gallery-img-container">
-                        <span class="media-badge photo-badge">Photo</span>
-                        <a href="/allpack/photographers/photoimage/2.jpg">
-                        <img src="/allpack/photographers/photoimage/2.jpg" alt="Wedding reception" class="gallery-img">
-                        </a>
-                        <div class="img-overlay">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 2 -->
-                <div class="col-md-4 col-sm-6" data-aos="fade-up">
-                    <div class="gallery-img-container">
-                        <span class="media-badge video-badge">Video</span>
-                        <video poster="/allpack/photographers/photoimage/Screenshot from 2025-03-25 14-17-21.png" class="gallery-img">
-                            <source src="/allpack/photographers/datavand/1v.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="img-overlay">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Photo 3 -->
-                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-img-container">
-                        <span class="media-badge photo-badge">Photo</span>
-                        <a href="/allpack/photographers/photoimage/3.jpeg">
-                        <img src="/allpack/photographers/photoimage/3.jpeg" alt="First dance" class="gallery-img">
-                        </a>
-                        <div class="img-overlay">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 3 -->
-                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="gallery-img-container">
-                        <span class="media-badge video-badge">Video</span>
-                        <video poster="/allpack/photographers/photoimage/img3.png" class="gallery-img">
-                            <source src="/allpack/photographers/datavand/v3.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="img-overlay">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Photo 4 -->
-                <div class="col-md-4 col-sm-6" data-aos="fade-up">
-                    <div class="gallery-img-container">
-                        <span class="media-badge photo-badge">Photo</span>
-                        <a href="/allpack/photographers/photoimage/5.jpg">
-                        <img src="/allpack/photographers/photoimage/5.jpg" alt="Ceremony details" class="gallery-img">
-                        </a>
-                        <div class="img-overlay">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 4 -->
-                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-img-container">
-                        <span class="media-badge video-badge">Video</span>
-                        <video poster="/allpack/photographers/datavand/iv4.png" class="gallery-img">
-                            <source src="/allpack/photographers/datavand/v4.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="img-overlay">
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Photo 5 -->
-                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="gallery-img-container">
-                        <span class="media-badge photo-badge">Photo</span>
-                        <a href="/allpack/photographers/photoimage/6.jpg">
-                        <img src="/allpack/photographers/photoimage/6.jpg" alt="Reception details" class="gallery-img">
-                        </a>
-                        <div class="img-overlay">
-                        </div>
-                    </div>
-                </div>
-                <!-- Video 6 -->
-                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-img-container">
-                        <span class="media-badge video-badge">Video</span>
-                        <video poster="/allpack/photographers/datavand/iv5.png" class="gallery-img">
-                            <source src="/allpack/photographers/datavand/v5.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="img-overlay">
-                        </div>
-                    </div>
-                </div>
-                <!-- Photo 6 -->
-                <div class="col-md-4 col-sm-6" data-aos="fade-up">
-                    <div class="gallery-img-container">
-                        <span class="media-badge photo-badge">Photo</span>
-                        <a href="/allpack/photographers/photoimage/7.jpg">
-                        <img src="/allpack/photographers/photoimage/7.jpg" alt="Ceremony details" class="gallery-img">
-                        </a>
-                        <div class="img-overlay">
-                        </div>
-                    </div>
-                </div>
-                <!-- Video 4 -->
-                <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="gallery-img-container">
-                        <span class="media-badge video-badge">Video</span>
-                        <video poster="/allpack/photographers/photoimage/iv8.png" class="gallery-img">
-                            <source src="/allpack/photographers/datavand/v6.mp4" type="video/mp4">
-                        </video>
-                        <div class="video-play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="img-overlay">
-                        </div>
-                    </div>
-                </div>
+                <% } %>
             </div>
+
+            <!-- Pagination -->
+            <% if (totalpage > 1) { %>
+                <nav class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item <%= currentpage === 1 ? 'disabled' : '' %>">
+                            <a class="page-link" href="?page=<%= currentpage - 1 %>&limit=<%= itempage %>">&laquo; Prev</a>
+                        </li>
+                        <% for (let i = 1; i <= totalpage; i++) { %>
+                            <li class="page-item <%= currentpage === i ? 'active' : '' %>">
+                                <a class="page-link" href="?page=<%= i %>&limit=<%= itempage %>"><%= i %></a>
+                            </li>
+                        <% } %>
+                        <li class="page-item <%= currentpage === totalpage ? 'disabled' : '' %>">
+                            <a class="page-link" href="?page=<%= currentpage + 1 %>&limit=<%= itempage %>">Next &raquo;</a>
+                        </li>
+                    </ul>
+                </nav>
+            <% } %>
         </div>
     </section>
 
@@ -688,144 +1170,64 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Client Love</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">What couples say about working with us</p>
+                    <h2 class="section-title">Client Love</h2>
+                    <p class="lead">What couples say about working with us</p>
                 </div>
             </div>
             
             <div class="row">
-                <!-- Photography Testimonial 1 -->
-                <div class="col-md-4" data-aos="fade-up">
+                <div class="col-md-4 mb-4">
                     <div class="testimonial-card">
                         <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                         <p class="testimonial-text">"Our wedding photos are absolutely stunning! The photographer captured every emotion and detail perfectly. We'll cherish these forever."</p>
                         <div class="client-info">
-                            <div>
-                                <h6>Sarah & Michael</h6>
-                                <small>Photography Clients</small>
-                            </div>
+                            <h6>Sarah & Michael</h6>
+                            <small>Photography Clients</small>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Videography Testimonial 1 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-md-4 mb-4">
                     <div class="testimonial-card">
                         <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                         <p class="testimonial-text">"The wedding film brought us to tears! It perfectly captured the emotions of our day. We've watched it at least 20 times already!"</p>
                         <div class="client-info">
-                            <div>
-                                <h6>Jessica & David</h6>
-                                <small>Videography Clients</small>
-                            </div>
+                            <h6>Jessica & David</h6>
+                            <small>Videography Clients</small>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Combined Service Testimonial -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-md-4 mb-4">
                     <div class="testimonial-card">
                         <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
                         <p class="testimonial-text">"Booking both photography and videography was the best decision! The team worked seamlessly together to capture every angle of our day."</p>
                         <div class="client-info">
-                            <div>
-                                <h6>Emily & James</h6>
-                                <small>Photo + Video Clients</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Photography Testimonial 2 -->
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"The attention to detail in our wedding album is incredible. They captured moments we didn't even realize were happening."</p>
-                        <div class="client-info">
-                            <div>
-                                <h6>Olivia & Ryan</h6>
-                                <small>Photography Clients</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Videography Testimonial 2 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"Our highlight video is a masterpiece! It tells our love story beautifully and makes us relive the day every time we watch it."</p>
-                        <div class="client-info">
-                            <div>
-                                <h6>Sophia & William</h6>
-                                <small>Videography Clients</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Combined Service Testimonial 2 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"The team made us feel so comfortable while capturing both photos and video. The results are natural, authentic and breathtaking!"</p>
-                        <div class="client-info">
-                            <div>
-                                <h6>Ava & Benjamin</h6>
-                                <small>Photo + Video Clients</small>
-                            </div>
+                            <h6>Emily & James</h6>
+                            <small>Photo + Video Clients</small>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Footer -->
+
+    <!-- EXACT FOOTER from provided code -->
     <footer class="bg-dark text-light pt-5 pb-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <h5 class="mb-3">About Us</h5>
-                    <p class="small text-light">We are a dedicated team of event planners, creating unforgettable wedding experiences that reflect your unique love story.</p>
+                    <h5 class="text-warning mb-3">About Us</h5>
+                    <p class="small text-light">We are a dedicated team of event planners, creating unforgettable experiences.</p>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <h5 class="mb-3">Quick Links</h5>
+                    <h5 class="text-warning mb-3">Quick Links</h5>
                     <ul class="list-unstyled">
                         <li><a href="/home" class="text-light footer-link">Home</a></li>
                         <li><a href="/about" class="text-light footer-link">About</a></li>
@@ -835,7 +1237,7 @@
                     </ul>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <h5 class="mb-3">Connect With Us</h5>
+                    <h5 class="text-warning mb-3">Connect With Us</h5>
                     <ul class="list-unstyled d-flex gap-3">
                         <li><a href="#" class="text-light footer-social"><i class="fab fa-facebook-f"></i></a></li>
                         <li><a href="#" class="text-light footer-social"><i class="fab fa-twitter"></i></a></li>
@@ -849,16 +1251,34 @@
         </div>
     </footer>
 
-    <!-- Video Lightbox Modal -->
-    <div class="modal fade" id="videoLightbox" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content bg-transparent border-0">
-                <div class="modal-header border-0">
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Single Lightbox Modal for both Images and Videos -->
+    <div class="modal fade lightbox-modal" id="mediaLightbox" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="lightbox-close-btn" data-bs-dismiss="modal" aria-label="Close" onclick="closeLightbox()">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
-                <div class="modal-body p-0">
-                    <div class="ratio ratio-16x9">
-                        <iframe id="lightboxVideo" src="" allowfullscreen></iframe>
+                <div class="modal-body">
+                    <!-- Navigation buttons positioned outside the image container -->
+                    <div class="lightbox-navigation">
+                        <button class="lightbox-nav-btn" id="prevBtn" onclick="changeMedia(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="lightbox-nav-btn" id="nextBtn" onclick="changeMedia(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="lightbox-image-container">
+                        <div id="lightboxMediaContent">
+                            <!-- Content will be dynamically inserted here -->
+                        </div>
+                        <div class="lightbox-caption">
+                            <h5 id="lightboxTitle"></h5>
+                            <p id="lightboxDescription"></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -879,91 +1299,283 @@
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
         
-        // Active nav link highlighting
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname;
-            const navLinks = document.querySelectorAll('.nav-link');
+        // FIXED: Enhanced Dark Mode Toggle Functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme') || '';
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            updateToggleIcon(currentTheme);
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', '');
+                updateToggleIcon('');
+            } else {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark-mode');
+                updateToggleIcon('dark-mode');
+            }
+        });
+        
+        function updateToggleIcon(theme) {
+            const icon = darkModeToggle.querySelector('i');
+            const toggleText = darkModeToggle.querySelector('.toggle-text');
             
-            navLinks.forEach(link => {
-                // Remove active class from all links
-                link.classList.remove('active');
-                
-                // Add active class to current page link
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
+            if (theme === 'dark-mode') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                toggleText.textContent = 'Light Mode';
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                toggleText.textContent = 'Dark Mode';
+            }
+        }
+        
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
         });
-        
-        // Dark Mode Toggle Function
-        function toggleDarkMode() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
 
-            const darkModeToggle = document.querySelector('.dark-mode-toggle');
-            if (body.classList.contains('dark-mode')) {
-                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
-                darkModeToggle.setAttribute('aria-label', 'Switch to light mode');
-            } else {
-                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
-                darkModeToggle.setAttribute('aria-label', 'Switch to dark mode');
+        // Initialize video gallery
+        function initVideoGallery() {
+            const videoItems = document.querySelectorAll('.video-item');
+            
+            // Set up intersection observer for videos
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target.querySelector('.portfolio-video');
+                    if (entry.isIntersecting) {
+                        // Video is in viewport - try to play
+                        video.play().catch(e => {
+                            console.log('Autoplay prevented, will play on hover:', e);
+                        });
+                    } else {
+                        // Video is out of viewport - pause to save resources
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            // Observe each video item
+            videoItems.forEach(item => {
+                videoObserver.observe(item);
+                
+                // Add hover play/pause for better UX
+                const video = item.querySelector('.portfolio-video');
+                
+                item.addEventListener('mouseenter', function() {
+                    if (video.paused) {
+                        video.play().catch(e => {
+                            console.log('Hover play prevented:', e);
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize video gallery on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initVideoGallery();
+        });
+
+        // FIXED LIGHTBOX WITH WORKING VIDEO FUNCTIONALITY
+        let currentIndex = 0;
+        let mediaFiles = [];
+        let currentVideoElement = null;
+
+        // Get all media files from EJS
+        function getMediaFiles() {
+            return <%- JSON.stringify(files || []) %>;
+        }
+
+        // Open lightbox
+        function openLightbox(index) {
+            mediaFiles = getMediaFiles();
+            if (mediaFiles.length === 0) return;
+            
+            currentIndex = index;
+            
+            // Pause all gallery videos before opening lightbox
+            document.querySelectorAll('.portfolio-video').forEach(video => {
+                video.pause();
+            });
+            
+            updateLightboxContent();
+            updateNavigationButtons();
+            
+            // Show the modal
+            const modal = new bootstrap.Modal(document.getElementById('mediaLightbox'));
+            modal.show();
+        }
+
+        // Close lightbox properly
+        function closeLightbox() {
+            // Stop any playing video
+            if (currentVideoElement) {
+                currentVideoElement.pause();
+                currentVideoElement.currentTime = 0;
+                currentVideoElement = null;
             }
             
-            // Save preference to localStorage
-            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
-        }
-        
-        // Check for saved dark mode preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-            document.querySelector('.dark-mode-toggle').innerHTML = '<i class="fas fa-sun"></i> Light Mode';
-            document.querySelector('.dark-mode-toggle').setAttribute('aria-label', 'Switch to light mode');
-        }
-        
-        // Video lightbox functionality
-        document.querySelectorAll('.video-play-btn').forEach((btn, index) => {
-            btn.addEventListener('click', function() {
-                const videoContainer = this.closest('.gallery-img-container');
-                const videoElement = videoContainer.querySelector('video');
-                const videoSrc = videoElement?.querySelector('source')?.src || '';
-                
-                // For demo purposes, we'll use some placeholder videos if no video src is found
-                const demoVideos = [
-                    'https://www.youtube.com/embed/dQw4w9WgXcQ',
-                    'https://www.youtube.com/embed/9bZkp7q19f0',
-                    'https://www.youtube.com/embed/JGwWNGJdvx8',
-                    'https://www.youtube.com/embed/kJQP7kiw5Fk'
-                ];
-                
-                const videoToPlay = videoSrc || demoVideos[index % demoVideos.length];
-                
-                const lightboxVideo = document.getElementById('lightboxVideo');
-                // Check if it's a YouTube URL
-                if (videoToPlay.includes('youtube.com') || videoToPlay.includes('youtu.be')) {
-                    // Extract video ID from URL
-                    let videoId = '';
-                    if (videoToPlay.includes('embed/')) {
-                        videoId = videoToPlay.split('embed/')[1].split('?')[0];
-                    } else {
-                        videoId = videoToPlay.split('v=')[1].split('&')[0];
-                    }
-                    lightboxVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-                } else {
-                    // For local videos
-                    lightboxVideo.src = videoToPlay;
+            // Resume gallery videos
+            document.querySelectorAll('.portfolio-video').forEach(video => {
+                const container = video.closest('.gallery-img-container');
+                if (isElementInViewport(container)) {
+                    video.play().catch(e => console.log('Could not resume video:', e));
                 }
-                
-                const lightbox = new bootstrap.Modal(document.getElementById('videoLightbox'));
-                lightbox.show();
             });
+        }
+
+        // Check if element is in viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Change media in lightbox
+        function changeMedia(direction) {
+            if (mediaFiles.length === 0) return;
+            
+            // Stop current video if playing
+            if (currentVideoElement) {
+                currentVideoElement.pause();
+                currentVideoElement.currentTime = 0;
+                currentVideoElement = null;
+            }
+            
+            currentIndex += direction;
+            
+            // Loop around if at ends
+            if (currentIndex < 0) {
+                currentIndex = mediaFiles.length - 1;
+            } else if (currentIndex >= mediaFiles.length) {
+                currentIndex = 0;
+            }
+            
+            updateLightboxContent();
+            updateNavigationButtons();
+        }
+
+        // SIMPLIFIED: Update lightbox content - FIXED VERSION
+        function updateLightboxContent() {
+            const file = mediaFiles[currentIndex];
+            if (!file) return;
+
+            const mediaContent = document.getElementById('lightboxMediaContent');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+            const lightboxDescription = document.getElementById('lightboxDescription');
+            
+            // Clear previous content
+            mediaContent.innerHTML = '';
+            
+            if (file.fileType === 'image') {
+                // Create image element
+                const img = document.createElement('img');
+                img.src = '/all_disk/camera_images/' + file.filePath;
+                img.alt = file.title;
+                img.className = 'lightbox-image';
+                mediaContent.appendChild(img);
+                
+            } else {
+                // Create video container
+                const videoContainer = document.createElement('div');
+                videoContainer.className = 'lightbox-video-container';
+                
+                // Create video element WITH DEFAULT CONTROLS (simpler approach)
+                const video = document.createElement('video');
+                video.className = 'lightbox-video';
+                video.controls = true; // Use default browser controls
+                video.autoplay = true;
+                
+                const source = document.createElement('source');
+                source.src = '/all_disk/camera_images/' + file.filePath;
+                source.type = 'video/mp4';
+                
+                video.appendChild(source);
+                videoContainer.appendChild(video);
+                mediaContent.appendChild(videoContainer);
+                
+                // Store reference to current video
+                currentVideoElement = video;
+            }
+            
+            // Update caption
+            lightboxTitle.textContent = file.title;
+            lightboxDescription.textContent = file.description;
+        }
+
+        // Update navigation buttons
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (prevBtn && nextBtn) {
+                if (mediaFiles.length <= 1) {
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                } else {
+                    prevBtn.style.display = 'flex';
+                    nextBtn.style.display = 'flex';
+                }
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('mediaLightbox');
+            if (modal.classList.contains('show')) {
+                if (e.key === 'ArrowLeft') {
+                    changeMedia(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeMedia(1);
+                } else if (e.key === 'Escape') {
+                    const modalInstance = bootstrap.Modal.getInstance(modal);
+                    if (modalInstance) {
+                        modalInstance.hide();
+                    }
+                }
+            }
         });
 
-        // Reset video when lightbox is closed
-        document.getElementById('videoLightbox').addEventListener('hidden.bs.modal', function () {
-            document.getElementById('lightboxVideo').src = '';
+        // Reset video when modal closes
+        document.getElementById('mediaLightbox').addEventListener('hidden.bs.modal', function() {
+            if (currentVideoElement) {
+                currentVideoElement.pause();
+                currentVideoElement.currentTime = 0;
+                currentVideoElement = null;
+            }
+        });
+
+        // Add event listeners when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("Video gallery initialized - lightbox should now work properly");
         });
     </script>
 </body>

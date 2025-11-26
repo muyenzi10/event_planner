@@ -25,7 +25,31 @@ exports.postphotography = async (req, res) => {
 };
 
 exports.getphotograph = async (req, res) => {
-    res.render("allpack/photographers/photographers");
+   try {
+    const itempage = 12;
+    const currentpage = parseInt(req.query.page) || 1;
+
+    const totalItems = await File.countDocuments();
+
+    const files = await File.find()
+      .sort({ uploadedAt: -1 })
+      .skip((currentpage - 1) * itempage)
+      .limit(itempage);
+
+    const totalpage = Math.ceil(totalItems / itempage);
+
+    res.render("allpack/photographers/photographers", {
+      files,
+      currentpage,
+      totalpage,
+      itempage,
+      totalItems
+    });
+
+  } catch (error) {
+    console.error("Error fetching files:", error);
+    res.status(500).send("Server Error");
+  }
 };
 exports.getdashbord = async (req, res) => {
   try {

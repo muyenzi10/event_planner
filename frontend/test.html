@@ -3,88 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Troupe - Rwandan Traditional Dance</title>
-
+    <meta name="description" content="Professional wedding photography and videography services - Capturing your special moments beautifully">
+    <meta name="keywords" content="wedding photographer, wedding videographer, wedding gallery, wedding films">
+    <title>Wedding Photography & Videography | Dream Day Visuals</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
     <!-- AOS Animation -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #d4af37; /* Gold */
-            --secondary-color: #f8f4f0; /* Cream */
-            --accent-color: #e8c4c4; /* Blush */
-            --dark-color: #333333; /* Dark gray */
-            --light-color: #ffffff; /* White */
-            --text-color: #4a4a4a; /* Soft black */
-            --success-color: #28a745; /* Green */
+            --primary-color: #d4af37;
+            --dark-color: #222;
+            --light-color: #fff;
+            --muted-color: #f8f4f0;
+            
+            /* Light Theme Colors */
+            --primary-gold: #d4af37;
+            --primary-gold-light: #e6c869;
+            --primary-gold-dark: #b8941f;
+            --bg-light: #fefefe;
+            --bg-light-secondary: #f8f4f0;
+            --text-dark: #2c2c2c;
+            --text-muted: #6c757d;
+            --card-light: #ffffff;
+            --border-light: #e9ecef;
+            
+            /* Dark Theme Colors */
+            --bg-dark: #0f0f0f;
+            --bg-dark-secondary: #1a1a1a;
+            --bg-dark-tertiary: #2d2d2d;
+            --text-light: #f0f0f0;
+            --text-light-muted: #b0b0b0;
+            --card-dark: #1e1e1e;
+            --card-dark-hover: #2a2a2a;
+            --border-dark: #333333;
+            
+            /* Video Badge Colors for Button */
+            --video-red: #dc3545;
+            --video-red-dark: #c82333;
         }
         
-        /* Media Type Badges */
-        .media-badge {
+        /* Base Styles */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light-secondary);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
             position: absolute;
-            top: 15px;
-            right: 15px;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            z-index: 10;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-gold), var(--primary-gold-light));
+            border-radius: 2px;
         }
         
-        .photo-badge {
-            background-color: #17a2b8;
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+        
+        /* Enhanced Dark Mode Toggle - VIDEO BADGE RED COLOR */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
             color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
         
-        .video-badge {
-            background-color: #dc3545;
-            color: white;
+        .dark-mode-toggle:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
         }
         
-        /* Gallery Styles */
-        .gallery-section {
-            padding: 80px 0;
+        body.dark-mode .dark-mode-toggle {
+            background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
+        }
+        
+        body.dark-mode .dark-mode-toggle:hover {
+            box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
         }
 
-        /* Rest of your existing CSS remains the same */
+        /* EXACT NAVBAR STYLING from provided code */
         .navbar {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             background-color: var(--light-color) !important;
             padding: 15px 0;
             transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
         }
 
         .navbar.scrolled {
             padding: 10px 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .navbar-brand {
             font-weight: 700;
             color: var(--primary-color) !important;
-            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             display: flex;
             align-items: center;
+            font-family: 'Playfair Display', serif;
         }
 
         .nav-link {
             font-weight: 500;
             color: var(--dark-color) !important;
-            transition: all 0.3s ease;
             margin: 0 10px;
             position: relative;
+            transition: all 0.3s ease;
         }
 
         .nav-link:after {
@@ -102,7 +169,7 @@
             width: 100%;
         }
 
-        /* Professional Centered Navbar for Mobile */
+        /* ✨ Professional Centered Navbar for Mobile */
         @media (max-width: 991px) {
             .navbar-collapse {
                 background-color: var(--light-color);
@@ -143,10 +210,6 @@
                 box-shadow: 0 4px 15px rgba(212,175,55,0.3);
             }
 
-            .nav-link:hover:after, .nav-link.active:after {
-                display: none;
-            }
-
             .navbar-brand {
                 width: 100%;
                 text-align: center;
@@ -154,1270 +217,726 @@
                 font-size: 1.6rem;
             }
         }
-
-        /* Enhanced Hero Section with Slider */
+        
+        /* Hero Section */
         .hero-section {
-            position: relative;
-            height: 80vh;
-            overflow: hidden;
-            margin-top: 76px;
-            z-index: 1;
-        }
-
-        .hero-slider {
-            position: relative;
-            height: 100%;
-            width: 100%;
-        }
-
-        .hero-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #4a4a4a; /* Fallback color */
-        }
-
-        .hero-slide.active {
-            opacity: 1;
-        }
-
-        .hero-slide::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1;
-        }
-
-        /* Slide Caption Styling - Right Side */
-        .slide-caption {
-            position: absolute;
-            right: 50px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
-            text-align: right;
-            z-index: 2;
-            max-width: 300px;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .slide-caption h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-            font-family: 'Playfair Display', serif;
-        }
-
-        .slide-caption p {
-            font-size: 0.9rem;
-            line-height: 1.4;
-            margin-bottom: 0;
-            color: #f8f8f8;
-        }
-
-        @media (max-width: 768px) {
-            .slide-caption {
-                right: 20px;
-                left: 20px;
-                max-width: none;
-                text-align: center;
-                padding: 15px;
-            }
-
-            .slide-caption h3 {
-                font-size: 1.2rem;
-            }
-
-            .slide-caption p {
-                font-size: 0.8rem;
-            }
-        }
-
-        /* Fixed Hero Content Section */
-        .hero-content-section {
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--light-color) 100%);
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .hero-content-section h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--dark-color);
-            font-family: 'Playfair Display', serif;
-            position: relative;
-            display: inline-block;
-        }
-
-        .hero-content-section h1::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--primary-color);
-        }
-
-        .hero-content-section .lead {
-            font-size: 1.4rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            color: var(--text-color);
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        /* Fixed Button Styles */
-        .hero-buttons {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%), url('/allpack/photographers/photoimage/camera-7698836_1280.jpg') no-repeat center center/cover;
+            min-height: 90vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .hero-buttons .btn {
-            padding: 14px 35px;
-            font-size: 1.1rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            min-width: 160px;
-            text-align: center;
-        }
-
-        /* Improved Primary Button with Better Color */
-        .hero-buttons .btn-primary {
-            background: linear-gradient(135deg, #e4002b 0%, #b30021 100%);
-            border-color: #e4002b;
             color: white;
-            box-shadow: 0 4px 15px rgba(228, 0, 43, 0.3);
+            position: relative;
+            overflow: hidden;
         }
-
-        .hero-buttons .btn-primary:hover {
-            background: linear-gradient(135deg, #b30021 0%, #8a0019 100%);
-            border-color: #b30021;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(228, 0, 43, 0.4);
-            color: white;
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.8) 100%);
         }
-
-        /* Improved Outline Button */
-        .hero-buttons .btn-outline-primary {
-            color: #e4002b;
-            border: 2px solid #e4002b;
-            background: transparent;
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
-
-        .hero-buttons .btn-outline-primary:hover {
-            background: #e4002b;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(228, 0, 43, 0.3);
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #fff 0%, var(--primary-gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        /* Fixed Mobile Responsiveness */
+        
         @media (max-width: 768px) {
-            .hero-content-section {
-                padding: 60px 0;
-            }
-
-            .hero-content-section h1 {
+            .hero-title {
                 font-size: 2.5rem;
             }
-
-            .hero-content-section .lead {
-                font-size: 1.2rem;
-                padding: 0 20px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 15px;
-                padding: 0 20px;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-                max-width: 280px;
-                margin: 0 !important;
-                display: block;
-            }
         }
-
-        @media (max-width: 576px) {
-            .hero-content-section h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content-section .lead {
-                font-size: 1.1rem;
-            }
-
-            .hero-buttons .btn {
-                padding: 12px 25px;
-                font-size: 1rem;
-            }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-        .slider-controls {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            z-index: 3;
-        }
-
-        .slider-dots {
-            display: flex;
-            gap: 10px;
-        }
-
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .slider-dot.active {
-            background: var(--primary-color);
-            transform: scale(1.2);
-        }
-
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
+        
+        /* Button Styles */
+        .btn-gold {
+            background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 3;
-            transition: all 0.3s ease;
-        }
-
-        .slider-arrow:hover {
-            background: var(--primary-color);
-        }
-
-        .slider-arrow.prev {
-            left: 20px;
-        }
-
-        .slider-arrow.next {
-            right: 20px;
-        }
-
-        /* FIXED: Gallery Container Spacing */
-        .gallery-section .container {
-            padding-top: 30px;
-            position: relative;
-        }
-
-        /* FIXED: Row Spacing - Override Bootstrap negative margins */
-        .gallery-section .row {
-            margin-top: 0;
-            margin-bottom: 20px;
-            --bs-gutter-x: 1.5rem;
-            --bs-gutter-y: 1.5rem;
-        }
-
-        /* Add decorative separator */
-        .image-gallery::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-            opacity: 0.3;
-        }
-
-        .video-gallery::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-            opacity: 0.3;
-        }
-
-        /* Pagination Styles */
-        .pagination-section {
-            padding: 60px 0 40px 0;
-            background-color: var(--section-bg);
-        }
-
-        .pagination {
-            margin-bottom: 0;
-        }
-
-        .page-link {
-            color: var(--primary-color);
-            border: 1px solid var(--border-color);
-            padding: 0.75rem 1rem;
-            margin: 0 0.25rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            background-color: var(--card-bg);
-        }
-
-        .page-link:hover {
-            background-color: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-        }
-
-        .page-item.active .page-link {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
-        }
-
-        .page-item.disabled .page-link {
-            color: #6c757d;
-            background-color: var(--card-bg);
-            border-color: var(--border-color);
-            opacity: 0.6;
-        }
-
-        /* Dark mode adjustments */
-        body.dark-mode .page-link {
-            background-color: var(--card-bg-dark);
-            border-color: var(--border-color-dark);
-            color: var(--text-color-dark);
-        }
-
-        body.dark-mode .page-item.disabled .page-link {
-            background-color: var(--card-bg-dark);
-            border-color: var(--border-color-dark);
-            color: #6c757d;
-        }
-
-        /* Responsive pagination */
-        @media (max-width: 768px) {
-            .page-link {
-                padding: 0.5rem 0.75rem;
-                margin: 0 0.125rem;
-                font-size: 0.875rem;
-            }
-            
-            .pagination {
-                flex-wrap: wrap;
-            }
-            
-            .page-item {
-                margin-bottom: 0.5rem;
-            }
-
-            /* Mobile spacing adjustments */
-            .gallery-section {
-                padding: 60px 0 40px 0;
-            }
-
-            .pagination-section {
-                padding: 40px 0 20px 0;
-            }
-
-            /* Mobile container adjustments */
-            .gallery-section .container {
-                padding-top: 20px;
-            }
-            
-            .gallery-section .row {
-                margin-bottom: 15px;
-            }
-        }
-
-        /* FIXED CARD STYLES - Proper spacing */
-        .card {
-            border: none;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            height: 100%;
-            margin-bottom: 30px;
-            margin-top: 20px; /* ADDED: Space from top for cards */
-            background-color: var(--card-bg);
-            position: relative;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .card-img-top {
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.5s;
-            cursor: pointer;
-        }
-
-        .card:hover .card-img-top {
-            transform: scale(1.05);
-        }
-
-        .card-body {
-            padding: 25px;
-            color: var(--text-color);
-        }
-
-        .card-title {
-            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 50px;
             font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .card-text {
-            color: var(--text-color);
-            opacity: 0.8;
-        }
-
-        /* Video Gallery Section */
-        .video-gallery {
-            background-color: var(--section-bg);
-        }
-        
-        .video-thumbnail {
-            position: relative;
-            margin-bottom: 30px;
-            margin-top: 20px; /* ADDED: Space from top for video thumbnails */
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
-            background-color: var(--card-bg);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
         
-        .video-thumbnail:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            color: white;
         }
         
-        .play-button {
+        .btn-outline-gold {
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            background: transparent;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-gold:hover {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        body.dark-mode .btn-outline-gold {
+            color: var(--primary-gold-light);
+            border-color: var(--primary-gold-light);
+        }
+        
+        body.dark-mode .btn-outline-gold:hover {
+            background: var(--primary-gold-light);
+            color: var(--text-dark);
+        }
+        
+        /* Gallery Styles */
+        .gallery-section {
+            padding: 100px 0;
+            background-color: var(--bg-light-secondary);
+        }
+        
+        body.dark-mode .gallery-section {
+            background-color: var(--bg-dark);
+        }
+        
+        .gallery-img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            background: var(--card-light);
+        }
+        
+        body.dark-mode .gallery-img-container {
+            background: var(--card-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-img-container:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        body.dark-mode .gallery-img-container:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            background: var(--card-dark-hover);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-img-container:hover .gallery-img {
+            transform: scale(1.08);
+        }
+        
+        /* Media Type Badges */
+        .media-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .photo-badge {
+            background: linear-gradient(135deg, #17a2b8, #0d8aa0);
+            color: white;
+        }
+        
+        .video-badge {
+            background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
+            color: white;
+        }
+        
+        .img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            color: white;
+            padding: 25px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 5;
+            transform: translateY(10px);
+        }
+        
+        .gallery-img-container:hover .img-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Video Play Button */
+        .video-play-btn {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background-color: rgba(220, 53, 69, 0.8);
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.9);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 24px;
-            transition: all 0.3s ease;
-        }
-        
-        .video-caption {
-            padding: 15px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-        }
-        
-        .video-caption h4 {
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-        
-        .video-caption p {
-            font-size: 0.9rem;
-            color: var(--text-color);
-            opacity: 0.8;
-            margin-bottom: 0;
-        }
-
-        /* Image Gallery Section */
-        .image-gallery {
-            /* Uses gallery-section padding */
-        }
-
-        /* Image click effect */
-        .image-clickable {
+            color: var(--video-red);
+            font-size: 26px;
+            transition: all 0.4s ease;
             cursor: pointer;
+            z-index: 5;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .video-play-btn:hover {
+            background: rgba(220, 53, 69, 0.95);
+            color: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+            position: relative;
+        }
+        
+        body.dark-mode .testimonials-section {
+            background-color: var(--bg-dark-secondary);
+        }
+        
+        .testimonial-card {
+            background: var(--card-light);
+            padding: 40px 30px;
+            margin-bottom: 30px;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 16px;
             transition: all 0.3s ease;
-        }
-
-        .image-clickable:hover {
-            opacity: 0.9;
-        }
-
-        /* Enhanced Section Title Spacing */
-        .section-title {
+            border-left: 5px solid var(--primary-gold);
             position: relative;
-            margin-bottom: 70px; /* Increased for more space */
-            text-align: center;
-            color: var(--text-color);
-            padding-top: 20px;
+            overflow: hidden;
         }
-
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--primary-color);
-            margin: 20px auto 0; /* Increased top margin */
+        
+        body.dark-mode .testimonial-card {
+            background: var(--card-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-
-        /* Fix for sticky navbar anchor links */
-        .gallery-section {
-            scroll-margin-top: 120px;
+        
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
         }
-
-        /* Custom Lightbox Styles */
-        .lightbox-modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            animation: fadeIn 0.3s ease;
+        
+        body.dark-mode .testimonial-card:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
         }
-
-        .lightbox-content {
-            position: relative;
-            margin: auto;
-            padding: 20px;
-            max-width: 95%;
-            max-height: 95vh;
-            top: 50%;
-            transform: translateY(-50%);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .lightbox-media-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-        }
-
-        .lightbox-media {
-            max-width: 85%;
-            max-height: 75vh;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .lightbox-video {
-            max-width: 85%;
-            max-height: 75vh;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            background: #000;
-        }
-
-        .lightbox-close {
+        
+        .testimonial-card::before {
+            content: '"';
             position: absolute;
             top: 20px;
             right: 30px;
-            color: #fff;
-            font-size: 35px;
-            font-weight: bold;
-            cursor: pointer;
-            z-index: 10001;
-            background: rgba(0, 0, 0, 0.6);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 80px;
+            color: rgba(212, 175, 55, 0.1);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+        
+        body.dark-mode .testimonial-card::before {
+            color: rgba(212, 175, 55, 0.08);
+        }
+        
+        .stars {
+            color: #ffc107;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+        
+        body.dark-mode .testimonial-text {
+            color: var(--text-light);
+        }
+        
+        .client-info h6 {
+            color: var(--primary-gold);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .client-info small {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        
+        body.dark-mode .client-info small {
+            color: var(--text-light-muted);
         }
 
-        .lightbox-close:hover {
-            background: rgba(220, 53, 69, 0.9);
-            transform: scale(1.1);
-            border-color: rgba(255, 255, 255, 0.6);
+        /* EXACT FOOTER STYLING from provided code */
+        footer { 
+            background-color:#222; 
+            color:#eee; 
+            font-family:'Poppins', sans-serif; 
+        }
+        
+        footer h5 { 
+            font-family:'Playfair Display', serif; 
+        }
+        
+        footer .footer-link { 
+            text-decoration:none; 
+            display:inline-block; 
+            margin-bottom:8px; 
+            transition: all 0.3s ease; 
+        }
+        
+        footer .footer-link:hover { 
+            color: var(--primary-color); 
+            padding-left:6px; 
+        }
+        
+        footer .footer-social { 
+            font-size:1.2rem; 
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            width:36px; 
+            height:36px; 
+            border-radius:50%; 
+            background-color: rgba(212,175,55,0.2); 
+            transition: all 0.3s ease; 
+        }
+        
+        footer .footer-social:hover { 
+            background-color: var(--primary-color); 
+            color:#fff !important; 
+            box-shadow:0 0 10px rgba(212,175,55,0.6); 
+            transform:translateY(-3px); 
+        }
+        
+        footer hr.bg-secondary { 
+            border-top:1px solid rgba(255,255,255,0.2); 
         }
 
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.6);
-            color: white;
+        /* Lightbox Styles */
+        .lightbox-modal .modal-content {
+            background: transparent;
             border: none;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            font-size: 22px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10001;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
         }
-
-        .lightbox-nav:hover {
-            background: rgba(220, 53, 69, 0.9);
-            transform: translateY(-50%) scale(1.1);
-            border-color: rgba(255, 255, 255, 0.6);
-        }
-
-        .lightbox-prev {
-            left: 20px;
-        }
-
-        .lightbox-next {
-            right: 20px;
-        }
-
-        .lightbox-counter {
+        
+        .lightbox-modal .modal-header {
+            border: none;
             position: absolute;
             top: 20px;
-            left: 30px;
-            color: white;
-            font-size: 16px;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 8px 16px;
-            border-radius: 20px;
-            z-index: 10001;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .lightbox-caption {
-            color: white;
-            text-align: center;
-            padding: 20px 10px;
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            margin-top: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .lightbox-title {
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .lightbox-description {
-            font-size: 1rem;
-            opacity: 0.9;
-            color: #e0e0e0;
-            line-height: 1.4;
-        }
-
-        @keyframes slideIn {
-            from { transform: scale(0.9); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        .lightbox-media.slide-in {
-            animation: slideIn 0.3s ease;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .lightbox-content {
-                max-width: 98%;
-                padding: 10px;
-            }
-
-            .lightbox-media {
-                max-width: 95%;
-                max-height: 65vh;
-            }
-
-            .lightbox-video {
-                max-width: 95%;
-                max-height: 60vh;
-            }
-
-            .lightbox-nav {
-                width: 50px;
-                height: 50px;
-                font-size: 18px;
-            }
-
-            .lightbox-prev {
-                left: 10px;
-            }
-
-            .lightbox-next {
-                right: 10px;
-            }
-
-            .lightbox-close {
-                top: 10px;
-                right: 15px;
-                width: 40px;
-                height: 40px;
-                font-size: 25px;
-            }
-
-            .lightbox-counter {
-                top: 10px;
-                left: 15px;
-                font-size: 14px;
-                padding: 6px 12px;
-            }
-
-            .lightbox-caption {
-                padding: 15px 8px;
-                margin-top: 15px;
-                max-width: 95%;
-            }
-
-            .lightbox-title {
-                font-size: 1.2rem;
-            }
-
-            .lightbox-description {
-                font-size: 0.9rem;
-            }
-
-            /* Hero slider mobile adjustments */
-            .hero-section {
-                height: 70vh;
-            }
-
-            .slider-arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-
-            .slider-arrow.prev {
-                left: 10px;
-            }
-
-            .slider-arrow.next {
-                right: 10px;
-            }
-
-            /* Mobile card adjustments */
-            .card {
-                margin-bottom: 25px;
-                margin-top: 15px; /* Adjusted for mobile */
-            }
-            
-            .video-thumbnail {
-                margin-bottom: 25px;
-                margin-top: 15px; /* Adjusted for mobile */
-            }
-
-            .section-title {
-                margin-bottom: 50px;
-                padding-top: 15px;
-            }
-            
-            .gallery-section {
-                scroll-margin-top: 100px;
-            }
-        }
-
-        /* Video thumbnail styles */
-        .video-thumbnail-wrapper {
-            position: relative;
-            cursor: pointer;
-        }
-
-        .video-thumbnail-wrapper:hover .play-button {
-            background-color: rgba(220, 53, 69, 1);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        .video-thumbnail-wrapper video {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-            border-radius: 8px;
-        }
-
-        .video-thumbnail-wrapper:hover video {
-            transform: scale(1.05);
-        }
-
-        /* Enhanced Footer Styles */
-        footer {
-            background-color: #222;
-            color: #eee;
-            font-family: 'Montserrat', sans-serif;
-            padding: 60px 0 30px;
-            margin-top: auto;
-        }
-
-        footer h5 {
-            font-family: 'Playfair Display', serif;
-            color: #d4af37;
-            margin-bottom: 20px;
-        }
-
-        footer .footer-link {
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 8px;
-            transition: all 0.3s ease;
-            color: #eee;
-        }
-
-        footer .footer-link:hover {
-            color: #d4af37;
-            padding-left: 6px;
-        }
-
-        footer .footer-social {
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: rgba(212,175,55,0.2);
-            transition: all 0.3s ease;
-            color: #eee;
-            text-decoration: none;
-        }
-
-        footer .footer-social:hover {
-            background-color: #d4af37;
-            color: #fff !important;
-            box-shadow: 0 0 10px rgba(212,175,55,0.6);
-            transform: translateY(-3px);
-        }
-
-        footer hr.bg-secondary {
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        /* Theme variables and styles */
-        :root {
-            --primary: #e4002b;
-            --secondary: #007a3d;
-            --accent: #f9d423;
-            
-            /* Light mode colors */
-            --bg-color: #f8f9fa;
-            --text-color: #212529;
-            --card-bg: #ffffff;
-            --section-bg: #e9ecef;
-            --footer-bg: #343a40;
-            --border-color: #dee2e6;
-            
-            /* Dark mode colors */
-            --bg-color-dark: #121212;
-            --text-color-dark: #f8f9fa;
-            --card-bg-dark: #1e1e1e;
-            --section-bg-dark: #1a1a1a;
-            --footer-bg-dark: #121212;
-            --border-color-dark: #333;
-        }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        
-        body.dark-mode {
-            --bg-color: var(--bg-color-dark);
-            --text-color: var(--text-color-dark);
-            --card-bg: var(--card-bg-dark);
-            --section-bg: var(--section-bg-dark);
-            --footer-bg: var(--footer-bg-dark);
-            --border-color: var(--border-color-dark);
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
-            color: var(--text-color);
-        }
-        
-        /* Theme toggle button */
-        .theme-toggle {
-            position: fixed;
-            bottom: 20px;
             right: 20px;
-            z-index: 999;
+            z-index: 1060;
+            padding: 0;
+        }
+        
+        .lightbox-close-btn {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
             width: 50px;
             height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
             cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1070;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lightbox-close-btn:hover {
+            background: rgba(255, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+        
+        .lightbox-modal .modal-body {
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .lightbox-image-container {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 12px;
+            display: block;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        .lightbox-video {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+        
+        .lightbox-navigation {
+            position: fixed;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 30px;
+            z-index: 1050;
+            pointer-events: none;
+        }
+        
+        .lightbox-nav-btn {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            pointer-events: all;
+            backdrop-filter: blur(10px);
+        }
+        
+        .lightbox-nav-btn:hover {
+            background: rgba(212, 175, 55, 0.8);
+            transform: scale(1.1);
+        }
+        
+        .lightbox-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            color: white;
+            padding: 30px 20px 20px;
+            text-align: center;
+            border-radius: 0 0 12px 12px;
+        }
+        
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.95) !important;
+        }
+        
+        .modal-backdrop.show {
+            opacity: 1 !important;
+        }
+        
+        /* Pagination Styles */
+        .pagination {
+            margin-top: 50px;
+            justify-content: center;
+        }
+        
+        .page-item.active .page-link {
+            background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
+            border-color: var(--primary-gold);
+        }
+        
+        .page-link {
+            color: var(--text-dark);
+            background-color: var(--card-light);
+            border: 1px solid var(--border-light);
+            padding: 10px 18px;
+            margin: 0 5px;
+            border-radius: 8px;
             transition: all 0.3s ease;
         }
         
-        .theme-toggle:hover {
-            transform: scale(1.1);
+        .page-link:hover {
+            color: var(--primary-gold);
+            background-color: rgba(212, 175, 55, 0.1);
+            border-color: var(--primary-gold);
+        }
+        
+        body.dark-mode .page-link {
+            color: var(--text-light);
+            background-color: var(--card-dark);
+            border-color: var(--border-dark);
+        }
+        
+        body.dark-mode .page-link:hover {
+            color: var(--primary-gold-light);
+            background-color: rgba(212, 175, 55, 0.15);
+            border-color: var(--primary-gold-light);
         }
         
         /* Responsive Adjustments */
         @media (max-width: 768px) {
-            .video-thumbnail-wrapper video {
-                height: 150px;
-            }
-            
-            .play-button {
+            .lightbox-nav-btn {
                 width: 50px;
                 height: 50px;
-                font-size: 20px;
+                font-size: 1.2rem;
             }
-        }
-
-        /* Fallback for missing images */
-        .image-fallback {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-top: 20px; /* ADDED: Space from top for fallback */
-        }
-
-        .image-fallback i {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            
+            .lightbox-navigation {
+                padding: 0 15px;
+            }
+            
+            .lightbox-close-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-img-container:hover {
+                transform: translateY(-5px);
+            }
         }
     </style>
 </head>
 <body>
-  <button class="theme-toggle" id="themeToggle">
-    <i class="fas fa-moon"></i>
-  </button>
+    <!-- Dark Mode Toggle - VIDEO BADGE RED COLOR -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>
+    </button>
 
-<!-- Enhanced Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <i class="fas fa-heart me-2"></i>Dream Day
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/home"><i class="fas fa-home me-1"></i> Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/suppliers"><i class="fas fa-camera me-1"></i>Suppliers</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/booking"><i class="fas fa-bookmark me-1"></i> Book Consultation</a>
-                </li>
-            </ul>
+    <!-- EXACT NAVBAR from provided code -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-heart me-2"></i>Dream Day</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/home"><i class="fas fa-home me-1"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/suppliers"><i class="fas fa-camera me-1"></i> Suppliers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/booking"><i class="fas fa-bookmark me-1"></i> Book Consultation</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-    <!-- Hero Section with Image Slider Only -->
-    <section class="hero-section">
-        <div class="hero-slider">
-            <!-- Slide 1 -->
-            <div class="hero-slide active" style="background-image: url('/allpack/indinzi/assetindinzi/pic9.jpg');">
-               
+    <!-- Hero Section -->
+    <header class="hero-section">
+        <div class="container text-center py-5 hero-content">
+            <h1 class="hero-title">Capturing Your Love Story</h1>
+            <p class="hero-subtitle">Professional wedding photography and videography that preserves your most precious moments with artistry and emotion</p>
+            <div>
+                <a href="#gallery" class="btn btn-gold btn-lg px-5 me-3">View Gallery</a>
+                <a href="#testimonials" class="btn btn-outline-gold btn-lg px-5">See Testimonials</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Our Work</h2>
+                    <p class="lead">A collection of our favorite moments from real weddings</p>
+                </div>
             </div>
             
-            <!-- Slide 2 -->
-            <div class="hero-slide" style="background-image: url('/allpack/indinzi/assetindinzi/pic10.jpg');">
-                
-            </div>
-            
-            <!-- Slide 3 -->
-            <div class="hero-slide" style="background-image: url('/allpack/indinzi/assetindinzi/a1.jpg');">
-               >
-            </div>
-        </div>
-        
-        <!-- Navigation Arrows -->
-        <button class="slider-arrow prev">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="slider-arrow next">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-        
-        <!-- Slider Dots -->
-        <div class="slider-controls">
-            <div class="slider-dots">
-                <div class="slider-dot active" data-slide="0"></div>
-                <div class="slider-dot" data-slide="1"></div>
-                <div class="slider-dot" data-slide="2"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hero Content Section Below Slider -->
-    <section class="hero-content-section">
-        <div class="container">
-            <h1 class="fw-bold mb-4">Rwandan Traditional Dance</h1>
-            <p class="lead mb-5">Experience the rhythm, grace and storytelling of Rwanda's cultural heritage</p>
-            <div class="hero-buttons">
-                <a href="#image-gallery" class="btn btn-primary btn-lg">Our Images</a>
-                <a href="#video-gallery" class="btn btn-outline-primary btn-lg">Short Videos</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Image Gallery Section -->
-    <section id="image-gallery" class="gallery-section image-gallery">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-images"></i> Dance Images
-            </h2>
             <div class="row">
-                <% 
-                // Filter only image files
-                const imageFiles = files ? files.filter(file => file.fileType === 'image') : [];
-                %>
-                <% if (imageFiles.length > 0) { %>
-                    <% imageFiles.forEach((file, index) => { %>
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
-                            <div class="card">
-                                <div class="position-relative">
-                                    <img src="/all_disk/troupe_images/<%= file.filePath %>" 
-                                         alt="<%= file.title %>" 
-                                         class="card-img-top image-clickable"
-                                         data-image-index="<%= index %>"
-                                         onclick="openLightbox(<%= index %>, 'image')"
-                                         onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgdmlld0JveD0iMCAwIDQwMCAyNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjUwIiBmaWxsPSIjRjVGNUY1Ii8+CjxwYXRoIGQ9Ik0xMjUgODVIMjc1VjE2NUgxMjVWODVaIiBmaWxsPSIjRDRBRjM3IiBmaWxsLW9wYWNpdHk9IjAuMiIvPgo8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxMDUiIHI9IjE1IiBmaWxsPSIjRDRBRjM3IiBmaWxsLW9wYWNpdHk9IjAuMyIvPgo8cmVjdCB4PSIxNTAiIHk9IjEzMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSI4IiByeD0iNCIgZmlsbD0iI0Q0QUYzNyIgZmlsbC1vcGFjaXR5PSIwLjMiLz4KPHJlY3QgeD0iMTMwIiB5PSIxNTAiIHdpZHRoPSIxNDAiIGhlaWdodD0iNiIgcng9IjMiIGZpbGw9IiNENEFGMzciIGZpbGwtb3BhY2l0eT0iMC4yIi8+CjxyZWN0IHg9IjE0MCIgeT0iMTYwIiB3aWR0aD0iMTIwIiBoZWlnaHQ9IjYiIHJ4PSIzIiBmaWxsPSIjRDRBRjM3IiBmaWxsLW9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4K'; this.alt='Image not available';">
-                                    <span class="media-badge photo-badge">
-                                        <i class="fas fa-camera me-1"></i>Photo
-                                    </span>
-                                </div>
-                                <div class="card-body text-center">
-                                    <h5 class="card-title"><%= file.title || 'Untitled' %></h5>
-                                    <p class="card-text"><%= file.description || 'Traditional dance image' %></p>
-                                </div>
-                            </div>
-                        </div>
-                    <% }) %>
-                <% } else { %>
-                    <div class="col-12 text-center text-muted py-5">
-                        <div class="image-fallback rounded-3 py-5 mb-4">
-                            <div>
-                                <i class="fas fa-images"></i>
-                                <p class="mt-3">No images available yet.</p>
-                                <p class="small">Check back later for dance images.</p>
-                            </div>
-                        </div>
-                    </div>
-                <% } %>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Gallery Section -->
-    <section id="video-gallery" class="gallery-section video-gallery">
-        <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-video"></i> Dance Videos
-            </h2>
-            <div class="row">
-                <% 
-                // Filter only video files
-                const videoFiles = files ? files.filter(file => file.fileType === 'video') : [];
-                %>
-                <% if (videoFiles.length > 0) { %>
-                    <% videoFiles.forEach((file, index) => { %>
-                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="<%= index * 100 %>">
-                            <div class="video-thumbnail">
-                                <div class="video-thumbnail-wrapper position-relative" onclick="openLightbox(<%= index %>, 'video')">
-                                    <video muted poster="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjVGNUY1Ii8+CjxjaXJjbGUgY3g9IjIwMCIgY3k9IjEwMCIgcj0iMzAiIGZpbGw9IiNENEFGMzciIGZpbGwtb3BhY2l0eT0iMC4zIi8+CjxwYXRoIGQ9Ik0xODUgOTVMMjE1IDExMEwxODUgMTI1Vjk1WiIgZmlsbD0id2hpdGUiLz4KPHJlY3QgeD0iMTUwIiB5PSIxNDAiIHdpZHRoPSIxMDAiIGhlaWdodD0iOCIgcng9IjQiIGZpbGw9IiNENEFGMzciIGZpbGwtb3BhY2l0eT0iMC4zIi8+CjxyZWN0IHg9IjEzMCIgeT0iMTU1IiB3aWR0aD0iMTQwIiBoZWlnaHQ9IjYiIHJ4PSIzIiBmaWxsPSIjRDRBRjM3IiBmaWxsLW9wYWNpdHk9IjAuMiIvPgo8L3N2Zz4K">
-                                        <source src="/all_disk/troupe_images/<%= file.filePath %>" type="video/mp4">
-                                        Your browser does not support the video tag.
+                <% if (files && files.length > 0) { %>
+                    <% files.forEach((f, index) => { %>
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <div class="gallery-img-container">
+                                <% if (f.fileType === 'image') { %>
+                                    <span class="media-badge photo-badge">Photo</span>
+                                    <img src="/all_disk/camera_images/<%= f.filePath %>" 
+                                         alt="<%= f.title %>" 
+                                         class="gallery-img"
+                                         data-index="<%= index %>"
+                                         data-type="image"
+                                         onclick="openLightbox(<%= index %>)">
+                                <% } else { %>
+                                    <span class="media-badge video-badge">Video</span>
+                                    <video class="gallery-img" 
+                                           data-index="<%= index %>"
+                                           data-type="video"
+                                           onclick="openLightbox(<%= index %>)">
+                                        <source src="/all_disk/camera_images/<%= f.filePath %>" type="video/mp4">
                                     </video>
-                                    <span class="media-badge video-badge">
-                                        <i class="fas fa-video me-1"></i>Video
-                                    </span>
-                                    <div class="play-button">
+                                    <div class="video-play-btn" onclick="openLightbox(<%= index %>)">
                                         <i class="fas fa-play"></i>
                                     </div>
-                                </div>
-                                <div class="video-caption">
-                                    <h4><%= file.title || 'Untitled Video' %></h4>
-                                    <p><%= file.description || 'Traditional dance performance' %></p>
+                                <% } %>
+                                <div class="img-overlay">
+                                    <h5 class="text-white"><%= f.title %></h5>
+                                    <p class="text-white small mb-0"><%= f.description %></p>
                                 </div>
                             </div>
                         </div>
                     <% }) %>
                 <% } else { %>
-                    <div class="col-12 text-center text-muted py-5">
-                        <div class="image-fallback rounded-3 py-5 mb-4">
-                            <div>
-                                <i class="fas fa-video-slash"></i>
-                                <p class="mt-3">No videos available yet.</p>
-                                <p class="small">Check back later for dance videos.</p>
-                            </div>
-                        </div>
+                    <div class="col-12 text-center">
+                        <p>No media found.</p>
                     </div>
                 <% } %>
             </div>
-        </div>
-    </section>
 
-    <!-- Pagination Section -->
-    <% if (totalPages > 1) { %>
-    <section class="pagination-section">
-        <div class="container">
-            <nav aria-label="Gallery pagination">
-                <ul class="pagination justify-content-center">
-                    <!-- Previous Button -->
-                    <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
-                        <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Previous">
-                            <i class="fas fa-chevron-left"></i>
-                            <span class="ms-1 d-none d-sm-inline">Previous</span>
-                        </a>
-                    </li>
-
-                    <!-- Page Numbers -->
-                    <% for (let i = 1; i <= totalPages; i++) { %>
-                        <% if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) { %>
-                            <li class="page-item <%= i === currentPage ? 'active' : '' %>">
-                                <a class="page-link" href="?page=<%= i %>"><%= i %></a>
-                            </li>
-                        <% } else if (i === currentPage - 3 || i === currentPage + 3) { %>
-                            <li class="page-item disabled">
-                                <span class="page-link">...</span>
+            <!-- Pagination -->
+            <% if (totalpage > 1) { %>
+                <nav class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item <%= currentpage === 1 ? 'disabled' : '' %>">
+                            <a class="page-link" href="?page=<%= currentpage - 1 %>&limit=<%= itempage %>">&laquo; Prev</a>
+                        </li>
+                        <% for (let i = 1; i <= totalpage; i++) { %>
+                            <li class="page-item <%= currentpage === i ? 'active' : '' %>">
+                                <a class="page-link" href="?page=<%= i %>&limit=<%= itempage %>"><%= i %></a>
                             </li>
                         <% } %>
-                    <% } %>
+                        <li class="page-item <%= currentpage === totalpage ? 'disabled' : '' %>">
+                            <a class="page-link" href="?page=<%= currentpage + 1 %>&limit=<%= itempage %>">Next &raquo;</a>
+                        </li>
+                    </ul>
+                </nav>
+            <% } %>
+        </div>
+    </section>
 
-                    <!-- Next Button -->
-                    <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
-                        <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Next">
-                            <span class="me-1 d-none d-sm-inline">Next</span>
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Client Love</h2>
+                    <p class="lead">What couples say about working with us</p>
+                </div>
+            </div>
             
-            <!-- Page Info -->
-            <div class="text-center mt-3">
-                <p class="text-muted mb-0">
-                    Showing page <strong><%= currentPage %></strong> of <strong><%= totalPages %></strong>
-                    <span class="mx-2">•</span>
-                    <strong><%= totalItems %></strong> total items
-                    <% if (imageFiles && videoFiles) { %>
-                    <span class="mx-2">•</span>
-                    <strong><%= imageFiles.length %></strong> images • <strong><%= videoFiles.length %></strong> videos on this page
-                    <% } %>
-                </p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Our wedding photos are absolutely stunning! The photographer captured every emotion and detail perfectly. We'll cherish these forever."</p>
+                        <div class="client-info">
+                            <h6>Sarah & Michael</h6>
+                            <small>Photography Clients</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"The wedding film brought us to tears! It perfectly captured the emotions of our day. We've watched it at least 20 times already!"</p>
+                        <div class="client-info">
+                            <h6>Jessica & David</h6>
+                            <small>Videography Clients</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">"Booking both photography and videography was the best decision! The team worked seamlessly together to capture every angle of our day."</p>
+                        <div class="client-info">
+                            <h6>Emily & James</h6>
+                            <small>Photo + Video Clients</small>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <% } %>
 
-    <!-- Custom Lightbox Modal -->
-    <div id="lightboxModal" class="lightbox-modal">
-        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-        <button class="lightbox-nav lightbox-prev" onclick="changeMedia(-1)">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="lightbox-nav lightbox-next" onclick="changeMedia(1)">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-        <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
-        <div class="lightbox-content">
-            <div class="lightbox-media-container">
-                <img id="lightboxImage" class="lightbox-media" src="" alt="" style="display: none;">
-                <video id="lightboxVideo" class="lightbox-video" controls style="display: none;"></video>
-            </div>
-            <div class="lightbox-caption">
-                <div class="lightbox-title" id="lightboxTitle"></div>
-                <div class="lightbox-description" id="lightboxDescription"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Enhanced Footer -->
+    <!-- EXACT FOOTER from provided code -->
     <footer class="bg-dark text-light pt-5 pb-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h5 class="text-warning mb-3">About Us</h5>
-                    <p class="small text-light">We are a dedicated team of cultural performers, committed to preserving and sharing Rwanda's rich dance heritage through authentic and captivating performances.</p>
+                    <p class="small text-light">We are a dedicated team of event planners, creating unforgettable experiences.</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5 class="text-warning mb-3">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="/frontend/home_packages/home.htm" class="text-light footer-link">Home</a></li>
-                        <li><a href="about.html" class="text-light footer-link">About</a></li>
-                        <li><a href="#" class="text-light footer-link">Services</a></li>
-                        <li><a href="/frontend/home_packages/index.html" class="text-light footer-link">Packages</a></li>
-                        <li><a href="/frontend/supliers/suply.html" class="text-light footer-link">Suppliers</a></li>
+                        <li><a href="/home" class="text-light footer-link">Home</a></li>
+                        <li><a href="/about" class="text-light footer-link">About</a></li>
+                        <li><a href="/services" class="text-light footer-link">Services</a></li>
+                        <li><a href="/packages" class="text-light footer-link">Packages</a></li>
+                        <li><a href="/contact" class="text-light footer-link">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -1431,16 +950,47 @@
                 </div>
             </div>
             <hr class="bg-secondary">
-            <div class="text-center pt-3 small">&copy; 2025 Rwandan Traditional Dance Troupe. All Rights Reserved.</div>
+            <div class="text-center pt-3 small">&copy; <script>document.write(new Date().getFullYear())</script> Dream Day Weddings. All Rights Reserved.</div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- Single Lightbox Modal for both Images and Videos -->
+    <div class="modal fade lightbox-modal" id="mediaLightbox" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="lightbox-close-btn" data-bs-dismiss="modal" aria-label="Close" onclick="closeLightbox()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Navigation buttons positioned outside the image container -->
+                    <div class="lightbox-navigation">
+                        <button class="lightbox-nav-btn" id="prevBtn" onclick="changeMedia(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="lightbox-nav-btn" id="nextBtn" onclick="changeMedia(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="lightbox-image-container">
+                        <div id="lightboxMediaContent">
+                            <!-- Content will be dynamically inserted here -->
+                        </div>
+                        <div class="lightbox-caption">
+                            <h5 id="lightboxTitle"></h5>
+                            <p id="lightboxDescription"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- AOS Animation -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    
     <script>
         // Initialize AOS animation
         AOS.init({
@@ -1448,310 +998,219 @@
             easing: 'ease-in-out',
             once: true
         });
-
+        
         // Navbar scroll effect
-        const navbar = document.querySelector('.navbar');
         window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
         });
-
-        // Hero Slider Functionality
-        const heroSlider = document.querySelector('.hero-slider');
-        const slides = document.querySelectorAll('.hero-slide');
-        const dots = document.querySelectorAll('.slider-dot');
-        const prevBtn = document.querySelector('.slider-arrow.prev');
-        const nextBtn = document.querySelector('.slider-arrow.next');
         
-        let currentSlide = 0;
-        const slideCount = slides.length;
-        let slideInterval;
-
-        // Function to show a specific slide
-        function showSlide(index) {
-            // Remove active class from all slides and dots
-            slides.forEach(slide => slide.classList.remove('active'));
-            dots.forEach(dot => dot.classList.remove('active'));
+        // Enhanced Dark Mode Toggle Function
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            const toggle = document.querySelector('.dark-mode-toggle');
+            const toggleText = document.querySelector('.toggle-text');
             
-            // Add active class to current slide and dot
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
+            if (body.classList.contains('dark-mode')) {
+                toggle.innerHTML = '<i class="fas fa-sun"></i> <span class="toggle-text">Light Mode</span>';
+            } else {
+                toggle.innerHTML = '<i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>';
+            }
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+        }
+        
+        // Check for saved dark mode preference
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.body.classList.add('dark-mode');
+                const toggle = document.querySelector('.dark-mode-toggle');
+                toggle.innerHTML = '<i class="fas fa-sun"></i> <span class="toggle-text">Light Mode</span>';
+            }
             
-            currentSlide = index;
-        }
-
-        // Function to show next slide
-        function nextSlide() {
-            let nextIndex = (currentSlide + 1) % slideCount;
-            showSlide(nextIndex);
-        }
-
-        // Function to show previous slide
-        function prevSlide() {
-            let prevIndex = (currentSlide - 1 + slideCount) % slideCount;
-            showSlide(prevIndex);
-        }
-
-        // Start auto slide
-        function startAutoSlide() {
-            slideInterval = setInterval(nextSlide, 5000);
-        }
-
-        // Stop auto slide
-        function stopAutoSlide() {
-            clearInterval(slideInterval);
-        }
-
-        // Event listeners for navigation
-        prevBtn.addEventListener('click', () => {
-            prevSlide();
-            stopAutoSlide();
-            startAutoSlide();
-        });
-
-        nextBtn.addEventListener('click', () => {
-            nextSlide();
-            stopAutoSlide();
-            startAutoSlide();
-        });
-
-        // Event listeners for dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-                stopAutoSlide();
-                startAutoSlide();
+            // Add smooth scrolling to all links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
             });
         });
 
-        // Pause auto slide when hovering over slider
-        heroSlider.addEventListener('mouseenter', stopAutoSlide);
-        heroSlider.addEventListener('mouseleave', startAutoSlide);
+        // SIMPLE AND WORKING LIGHTBOX
+        let currentIndex = 0;
+        let mediaFiles = [];
+        let currentVideoElement = null;
 
-        // Start the slider
-        startAutoSlide();
+        // Get all media files from EJS
+        function getMediaFiles() {
+            return <%- JSON.stringify(files || []) %>;
+        }
 
-        // Lightbox functionality
-        let currentMediaIndex = 0;
-        let currentMediaType = 'image';
-        const imageFiles = <%- JSON.stringify(imageFiles || []) %>;
-        const videoFiles = <%- JSON.stringify(videoFiles || []) %>;
-
-        function openLightbox(index, type) {
-            currentMediaIndex = index;
-            currentMediaType = type;
+        // Open lightbox
+        function openLightbox(index) {
+            mediaFiles = getMediaFiles();
+            if (mediaFiles.length === 0) return;
             
-            const lightbox = document.getElementById('lightboxModal');
-            const lightboxImage = document.getElementById('lightboxImage');
-            const lightboxVideo = document.getElementById('lightboxVideo');
-            const lightboxCounter = document.getElementById('lightboxCounter');
+            currentIndex = index;
+            updateLightboxContent();
+            updateNavigationButtons();
+            
+            // Show the modal
+            const modal = new bootstrap.Modal(document.getElementById('mediaLightbox'));
+            modal.show();
+        }
+
+        // Close lightbox properly
+        function closeLightbox() {
+            // Stop any playing video
+            if (currentVideoElement) {
+                currentVideoElement.pause();
+                currentVideoElement.currentTime = 0;
+                currentVideoElement = null;
+            }
+            
+            // Hide the modal
+            const modal = bootstrap.Modal.getInstance(document.getElementById('mediaLightbox'));
+            if (modal) {
+                modal.hide();
+            }
+        }
+
+        // Change media in lightbox
+        function changeMedia(direction) {
+            if (mediaFiles.length === 0) return;
+            
+            // Stop current video if playing
+            if (currentVideoElement) {
+                currentVideoElement.pause();
+                currentVideoElement.currentTime = 0;
+                currentVideoElement = null;
+            }
+            
+            currentIndex += direction;
+            
+            // Loop around if at ends
+            if (currentIndex < 0) {
+                currentIndex = mediaFiles.length - 1;
+            } else if (currentIndex >= mediaFiles.length) {
+                currentIndex = 0;
+            }
+            
+            updateLightboxContent();
+            updateNavigationButtons();
+        }
+
+        // Update lightbox content
+        function updateLightboxContent() {
+            const file = mediaFiles[currentIndex];
+            if (!file) return;
+
+            const mediaContent = document.getElementById('lightboxMediaContent');
             const lightboxTitle = document.getElementById('lightboxTitle');
             const lightboxDescription = document.getElementById('lightboxDescription');
-
-            // Hide both media types first
-            lightboxImage.style.display = 'none';
-            lightboxVideo.style.display = 'none';
-
-            if (type === 'image' && imageFiles[index]) {
-                const file = imageFiles[index];
-                lightboxImage.src = '/all_disk/troupe_images/' + file.filePath;
-                lightboxImage.alt = file.title || 'Dance Image';
-                lightboxImage.style.display = 'block';
-                lightboxTitle.textContent = file.title || 'Untitled';
-                lightboxDescription.textContent = file.description || '';
-                lightboxCounter.textContent = `${index + 1} / ${imageFiles.length}`;
-                
-                // Add slide-in animation
-                lightboxImage.classList.add('slide-in');
-                setTimeout(() => {
-                    lightboxImage.classList.remove('slide-in');
-                }, 300);
-            } 
-            else if (type === 'video' && videoFiles[index]) {
-                const file = videoFiles[index];
-                lightboxVideo.innerHTML = '';
-                const source = document.createElement('source');
-                source.src = '/all_disk/troupe_images/' + file.filePath;
-                source.type = 'video/mp4';
-                lightboxVideo.appendChild(source);
-                lightboxVideo.style.display = 'block';
-                lightboxTitle.textContent = file.title || 'Untitled Video';
-                lightboxDescription.textContent = file.description || '';
-                lightboxCounter.textContent = `${index + 1} / ${videoFiles.length}`;
-                
-                // Try to play the video
-                setTimeout(() => {
-                    lightboxVideo.play().catch(e => {
-                        console.log('Video autoplay failed:', e);
-                    });
-                }, 300);
-                
-                // Add slide-in animation
-                lightboxVideo.classList.add('slide-in');
-                setTimeout(() => {
-                    lightboxVideo.classList.remove('slide-in');
-                }, 300);
-            }
-
-            lightbox.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightboxModal');
-            const lightboxVideo = document.getElementById('lightboxVideo');
             
-            // Pause video when closing
-            if (lightboxVideo.style.display === 'block') {
-                lightboxVideo.pause();
-                lightboxVideo.currentTime = 0;
-            }
+            // Clear previous content
+            mediaContent.innerHTML = '';
             
-            lightbox.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function changeMedia(direction) {
-            let files;
-            if (currentMediaType === 'image') {
-                files = imageFiles;
+            if (file.fileType === 'image') {
+                const img = document.createElement('img');
+                img.src = '/all_disk/camera_images/' + file.filePath;
+                img.alt = file.title;
+                img.className = 'lightbox-image';
+                mediaContent.appendChild(img);
             } else {
-                files = videoFiles;
+                const videoContainer = document.createElement('div');
+                videoContainer.className = 'video-container';
+                
+                const video = document.createElement('video');
+                video.className = 'lightbox-video';
+                video.controls = true;
+                video.autoplay = true;
+                
+                const source = document.createElement('source');
+                source.src = '/all_disk/camera_images/' + file.filePath;
+                source.type = 'video/mp4';
+                
+                video.appendChild(source);
+                video.appendChild(document.createTextNode('Your browser does not support the video tag.'));
+                videoContainer.appendChild(video);
+                mediaContent.appendChild(videoContainer);
+                
+                // Store reference to current video
+                currentVideoElement = video;
             }
             
-            if (files && files.length > 0) {
-                currentMediaIndex += direction;
-                
-                // Loop around
-                if (currentMediaIndex >= files.length) {
-                    currentMediaIndex = 0;
-                } else if (currentMediaIndex < 0) {
-                    currentMediaIndex = files.length - 1;
+            // Update caption
+            lightboxTitle.textContent = file.title;
+            lightboxDescription.textContent = file.description;
+        }
+
+        // Update navigation buttons
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            if (prevBtn && nextBtn) {
+                if (mediaFiles.length <= 1) {
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                } else {
+                    prevBtn.style.display = 'flex';
+                    nextBtn.style.display = 'flex';
                 }
-                
-                openLightbox(currentMediaIndex, currentMediaType);
             }
         }
 
         // Keyboard navigation
         document.addEventListener('keydown', function(e) {
-            const lightbox = document.getElementById('lightboxModal');
-            if (lightbox.style.display === 'block') {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                } else if (e.key === 'ArrowLeft') {
+            const modal = document.getElementById('mediaLightbox');
+            if (modal.classList.contains('show')) {
+                if (e.key === 'ArrowLeft') {
                     changeMedia(-1);
                 } else if (e.key === 'ArrowRight') {
                     changeMedia(1);
-                } else if (e.key === ' ') {
-                    // Space bar to play/pause video
-                    e.preventDefault();
-                    const lightboxVideo = document.getElementById('lightboxVideo');
-                    if (lightboxVideo.style.display === 'block') {
-                        if (lightboxVideo.paused) {
-                            lightboxVideo.play();
-                        } else {
-                            lightboxVideo.pause();
-                        }
-                    }
+                } else if (e.key === 'Escape') {
+                    closeLightbox();
                 }
             }
         });
 
-        // Close lightbox when clicking outside the content
-        document.getElementById('lightboxModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
+        // Reset video when modal closes
+        document.getElementById('mediaLightbox').addEventListener('hidden.bs.modal', function() {
+            if (currentVideoElement) {
+                currentVideoElement.pause();
+                currentVideoElement.currentTime = 0;
+                currentVideoElement = null;
             }
         });
 
-        // Touch swipe support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        document.getElementById('lightboxModal').addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        document.getElementById('lightboxModal').addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            if (touchEndX < touchStartX - swipeThreshold) {
-                changeMedia(1); // Swipe left - next
-            } else if (touchEndX > touchStartX + swipeThreshold) {
-                changeMedia(-1); // Swipe right - previous
-            }
-        }
-        
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const body = document.body;
-        
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme) {
-            body.classList.add(currentTheme);
-            updateToggleIcon(currentTheme);
-        }
-        
-        themeToggle.addEventListener('click', () => {
-            if (body.classList.contains('dark-mode')) {
-                body.classList.remove('dark-mode');
-                localStorage.setItem('theme', '');
-                updateToggleIcon('');
-            } else {
-                body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark-mode');
-                updateToggleIcon('dark-mode');
-            }
-        });
-        
-        function updateToggleIcon(theme) {
-            const icon = themeToggle.querySelector('i');
-            if (theme === 'dark-mode') {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        }
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
+        // Add event listeners when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("Lightbox script loaded successfully!");
+            
+            // Make sure all gallery items are clickable
+            document.querySelectorAll('.gallery-img-container').forEach(container => {
+                // Images are already handled by onclick attribute
+                // Videos need additional handling for the play button
+                const videoPlayBtn = container.querySelector('.video-play-btn');
+                if (videoPlayBtn) {
+                    videoPlayBtn.addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        const index = parseInt(container.querySelector('video').dataset.index, 10);
+                        openLightbox(index);
                     });
                 }
-            });
-        });
-
-        // Video thumbnail hover play
-        document.querySelectorAll('.video-thumbnail-wrapper video').forEach(video => {
-            video.addEventListener('mouseenter', function() {
-                this.play();
-            });
-            
-            video.addEventListener('mouseleave', function() {
-                this.pause();
-                this.currentTime = 0;
-            });
-        });
-
-        // Image error handling
-        document.querySelectorAll('img').forEach(img => {
-            img.addEventListener('error', function() {
-                console.log('Image failed to load:', this.src);
             });
         });
     </script>

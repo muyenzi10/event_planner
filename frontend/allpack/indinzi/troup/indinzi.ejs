@@ -28,6 +28,73 @@
             --success-color: #28a745; /* Green */
         }
         
+        /* FIXED: Enhanced Dark Mode Toggle - VIDEO BADGE RED COLOR */
+        .theme-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .theme-toggle:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
+        }
+        
+        body.dark-mode .theme-toggle {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
+        }
+        
+        body.dark-mode .theme-toggle:hover {
+            box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
+        }
+
+        /* FIXED: Mobile responsive positioning for dark mode toggle */
+        @media (max-width: 768px) {
+            .theme-toggle {
+                bottom: 80px; /* Moved higher to avoid mobile browser UI */
+                right: 15px;
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+            
+            .theme-toggle .toggle-text {
+                display: none; /* Hide text on mobile for cleaner look */
+            }
+            
+            .theme-toggle {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                justify-content: center;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .theme-toggle {
+                bottom: 70px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
         /* Media Type Badges */
         .media-badge {
             position: absolute;
@@ -988,58 +1055,52 @@
             transform: scale(1.05);
         }
 
-        /* Enhanced Footer Styles */
-        footer {
-            background-color: #222;
-            color: #eee;
-            font-family: 'Montserrat', sans-serif;
-            padding: 60px 0 30px;
-            margin-top: auto;
+         /* EXACT FOOTER STYLING from provided code */
+        footer { 
+            background-color:#222; 
+            color:#eee; 
+            font-family:'Poppins', sans-serif; 
+        }
+        
+        footer h5 { 
+            font-family:'Playfair Display', serif; 
+        }
+        
+        footer .footer-link { 
+            text-decoration:none; 
+            display:inline-block; 
+            margin-bottom:8px; 
+            transition: all 0.3s ease; 
+        }
+        
+        footer .footer-link:hover { 
+            color: var(--primary-color); 
+            padding-left:6px; 
+        }
+        
+        footer .footer-social { 
+            font-size:1.2rem; 
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            width:36px; 
+            height:36px; 
+            border-radius:50%; 
+            background-color: rgba(212,175,55,0.2); 
+            transition: all 0.3s ease; 
+        }
+        
+        footer .footer-social:hover { 
+            background-color: var(--primary-color); 
+            color:#fff !important; 
+            box-shadow:0 0 10px rgba(212,175,55,0.6); 
+            transform:translateY(-3px); 
+        }
+        
+        footer hr.bg-secondary { 
+            border-top:1px solid rgba(255,255,255,0.2); 
         }
 
-        footer h5 {
-            font-family: 'Playfair Display', serif;
-            color: #d4af37;
-            margin-bottom: 20px;
-        }
-
-        footer .footer-link {
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 8px;
-            transition: all 0.3s ease;
-            color: #eee;
-        }
-
-        footer .footer-link:hover {
-            color: #d4af37;
-            padding-left: 6px;
-        }
-
-        footer .footer-social {
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background-color: rgba(212,175,55,0.2);
-            transition: all 0.3s ease;
-            color: #eee;
-            text-decoration: none;
-        }
-
-        footer .footer-social:hover {
-            background-color: #d4af37;
-            color: #fff !important;
-            box-shadow: 0 0 10px rgba(212,175,55,0.6);
-            transform: translateY(-3px);
-        }
-
-        footer hr.bg-secondary {
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
 
         /* Theme variables and styles */
         :root {
@@ -1088,43 +1149,6 @@
             color: var(--text-color);
         }
         
-        /* Theme toggle button */
-        .theme-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 999;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .theme-toggle:hover {
-            transform: scale(1.1);
-        }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .video-thumbnail-wrapper video {
-                height: 150px;
-            }
-            
-            .play-button {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-        }
-
         /* Fallback for missing images */
         .image-fallback {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
@@ -1144,8 +1168,9 @@
     </style>
 </head>
 <body>
+  <!-- FIXED: Dark Mode Toggle with proper mobile positioning -->
   <button class="theme-toggle" id="themeToggle">
-    <i class="fas fa-moon"></i>
+    <i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>
   </button>
 
 <!-- Enhanced Navbar -->
@@ -1166,7 +1191,7 @@
                     <a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a>
+                    <a class="nav-link active" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/suppliers"><i class="fas fa-camera me-1"></i>Suppliers</a>
@@ -1401,22 +1426,22 @@
         </div>
     </div>
 
-    <!-- Enhanced Footer -->
+    <!-- EXACT FOOTER from photographers code -->
     <footer class="bg-dark text-light pt-5 pb-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h5 class="text-warning mb-3">About Us</h5>
-                    <p class="small text-light">We are a dedicated team of cultural performers, committed to preserving and sharing Rwanda's rich dance heritage through authentic and captivating performances.</p>
+                    <p class="small text-light">We are a dedicated team of event planners, creating unforgettable experiences.</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5 class="text-warning mb-3">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="/frontend/home_packages/home.htm" class="text-light footer-link">Home</a></li>
-                        <li><a href="about.html" class="text-light footer-link">About</a></li>
-                        <li><a href="#" class="text-light footer-link">Services</a></li>
-                        <li><a href="/frontend/home_packages/index.html" class="text-light footer-link">Packages</a></li>
-                        <li><a href="/frontend/supliers/suply.html" class="text-light footer-link">Suppliers</a></li>
+                        <li><a href="/home" class="text-light footer-link">Home</a></li>
+                        <li><a href="/about" class="text-light footer-link">About</a></li>
+                        <li><a href="/services" class="text-light footer-link">Services</a></li>
+                        <li><a href="/packages" class="text-light footer-link">Packages</a></li>
+                        <li><a href="/contact" class="text-light footer-link">Contact</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4 mb-4">
@@ -1430,7 +1455,7 @@
                 </div>
             </div>
             <hr class="bg-secondary">
-            <div class="text-center pt-3 small">&copy; 2025 Rwandan Traditional Dance Troupe. All Rights Reserved.</div>
+            <div class="text-center pt-3 small">&copy; <script>document.write(new Date().getFullYear())</script> Rwandan Traditional Dance Troupe. All Rights Reserved.</div>
         </div>
     </footer>
 
@@ -1689,11 +1714,12 @@
             }
         }
         
-        // Theme toggle functionality
+        // FIXED: Enhanced Dark Mode Toggle Functionality
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
         
-        const currentTheme = localStorage.getItem('theme');
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme') || '';
         if (currentTheme) {
             body.classList.add(currentTheme);
             updateToggleIcon(currentTheme);
@@ -1713,12 +1739,16 @@
         
         function updateToggleIcon(theme) {
             const icon = themeToggle.querySelector('i');
+            const toggleText = themeToggle.querySelector('.toggle-text');
+            
             if (theme === 'dark-mode') {
                 icon.classList.remove('fa-moon');
                 icon.classList.add('fa-sun');
+                toggleText.textContent = 'Light Mode';
             } else {
                 icon.classList.remove('fa-sun');
                 icon.classList.add('fa-moon');
+                toggleText.textContent = 'Dark Mode';
             }
         }
         
@@ -1753,6 +1783,7 @@
                 console.log('Image failed to load:', this.src);
             });
         });
+        
         // Optional: Add click event to update active state when clicking links
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function() {
