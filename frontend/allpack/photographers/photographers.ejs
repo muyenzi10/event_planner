@@ -966,6 +966,24 @@
             border-color: var(--primary-gold-light);
         }
         
+        /* Loading spinner for videos */
+        .video-loading {
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Smooth transitions for lightbox media */
+        .lightbox-image, .lightbox-video {
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Optimize video rendering performance */
+        .lightbox-video {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000;
+        }
+        
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             .lightbox-nav-btn {
@@ -1459,31 +1477,7 @@
             );
         }
 
-        // Change media in lightbox
-        function changeMedia(direction) {
-            if (mediaFiles.length === 0) return;
-            
-            // Stop current video if playing
-            if (currentVideoElement) {
-                currentVideoElement.pause();
-                currentVideoElement.currentTime = 0;
-                currentVideoElement = null;
-            }
-            
-            currentIndex += direction;
-            
-            // Loop around if at ends
-            if (currentIndex < 0) {
-                currentIndex = mediaFiles.length - 1;
-            } else if (currentIndex >= mediaFiles.length) {
-                currentIndex = 0;
-            }
-            
-            updateLightboxContent();
-            updateNavigationButtons();
-        }
-
-        // SIMPLIFIED: Update lightbox content - FIXED VERSION
+        // OPTIMIZED: Update lightbox content with video preloading
         function updateLightboxContent() {
             const file = mediaFiles[currentIndex];
             if (!file) return;
@@ -1495,31 +1489,74 @@
             // Clear previous content
             mediaContent.innerHTML = '';
             
+            // Preload next and previous videos in the background
+            preloadAdjacentVideos();
+            
             if (file.fileType === 'image') {
                 // Create image element
                 const img = document.createElement('img');
                 img.src = '/all_disk/camera_images/' + file.filePath;
                 img.alt = file.title;
                 img.className = 'lightbox-image';
+                img.onload = () => {
+                    img.style.opacity = '0';
+                    setTimeout(() => img.style.opacity = '1', 10);
+                };
                 mediaContent.appendChild(img);
                 
             } else {
-                // Create video container
+                // Create video container with a loading indicator
                 const videoContainer = document.createElement('div');
                 videoContainer.className = 'lightbox-video-container';
+                videoContainer.innerHTML = `
+                    <div class="video-loading" style="
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        z-index: 5;
+                    ">
+                        <div class="spinner-border text-warning" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                `;
                 
-                // Create video element WITH DEFAULT CONTROLS (simpler approach)
+                // Create video element with native controls for better performance
                 const video = document.createElement('video');
                 video.className = 'lightbox-video';
-                video.controls = true; // Use default browser controls
-                video.autoplay = true;
+                video.controls = true;
+                video.preload = 'auto'; // Hint to the browser to load the video
+                video.playsinline = true;
                 
                 const source = document.createElement('source');
                 source.src = '/all_disk/camera_images/' + file.filePath;
-                source.type = 'video/mp4';
+                source.type = 'video/mp4'; // Specify the MIME type
                 
                 video.appendChild(source);
-                videoContainer.appendChild(video);
+                
+                // Handle video readiness
+                video.addEventListener('loadeddata', () => {
+                    const loadingSpinner = videoContainer.querySelector('.video-loading');
+                    if (loadingSpinner) loadingSpinner.style.display = 'none';
+                    video.play().catch(e => console.log("Autoplay prevented:", e));
+                });
+                
+                video.addEventListener('waiting', () => {
+                    const loadingSpinner = videoContainer.querySelector('.video-loading');
+                    if (loadingSpinner) loadingSpinner.style.display = 'block';
+                });
+                
+                video.addEventListener('playing', () => {
+                    const loadingSpinner = videoContainer.querySelector('.video-loading');
+                    if (loadingSpinner) loadingSpinner.style.display = 'none';
+                });
+                
+                // Add video to container
+                const videoWrapper = document.createElement('div');
+                videoWrapper.style.position = 'relative';
+                videoWrapper.appendChild(video);
+                videoContainer.appendChild(videoWrapper);
                 mediaContent.appendChild(videoContainer);
                 
                 // Store reference to current video
@@ -1529,6 +1566,58 @@
             // Update caption
             lightboxTitle.textContent = file.title;
             lightboxDescription.textContent = file.description;
+        }
+
+        // NEW FUNCTION: Preload adjacent videos for faster navigation
+        function preloadAdjacentVideos() {
+            if (!mediaFiles || mediaFiles.length === 0) return;
+            
+            // Helper function to create and discard a preload element
+            const preloadVideo = (index) => {
+                const targetFile = mediaFiles[index];
+                if (targetFile && targetFile.fileType === 'video') {
+                    const preloadEl = new Audio();
+                    preloadEl.preload = 'auto';
+                    preloadEl.src = '/all_disk/camera_images/' + targetFile.filePath;
+                }
+            };
+            
+            // Preload next video
+            const nextIndex = (currentIndex + 1) % mediaFiles.length;
+            preloadVideo(nextIndex);
+            
+            // Preload previous video
+            const prevIndex = (currentIndex - 1 + mediaFiles.length) % mediaFiles.length;
+            preloadVideo(prevIndex);
+        }
+
+        // OPTIMIZED: Change media function with proper cleanup
+        function changeMedia(direction) {
+            if (mediaFiles.length === 0) return;
+            
+            // Pause and reset current video if it exists
+            if (currentVideoElement) {
+                currentVideoElement.pause();
+                currentVideoElement.currentTime = 0; // Reset to start
+            }
+            
+            // Store reference for cleanup
+            const previousVideo = currentVideoElement;
+            
+            // Update index with loop
+            currentIndex = (currentIndex + direction + mediaFiles.length) % mediaFiles.length;
+            
+            // Clean up previous video from memory after a short delay
+            if (previousVideo && previousVideo.parentNode) {
+                setTimeout(() => {
+                    previousVideo.src = '';
+                    previousVideo.load();
+                }, 100);
+            }
+            
+            // Update the display
+            updateLightboxContent();
+            updateNavigationButtons();
         }
 
         // Update navigation buttons
