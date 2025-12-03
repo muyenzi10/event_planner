@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Planner Dashboard - Catering</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; background: #f9f9f9; margin: 0; }
+    .sidebar { width: 240px; background: linear-gradient(180deg, #6a11cb, #2575fc); color: #fff; height: 100vh; position: fixed; padding-top: 60px; display: flex; flex-direction: column; }
+    .nav-link { padding: 12px 20px; color: #fff; text-decoration: none; display: flex; align-items: center; border-left: 4px solid transparent; transition: all 0.3s ease; }
+    .nav-link.active, .nav-link:hover { background: rgba(255,255,255,0.15); border-left-color: #0e7ee7; }
+    .main-content { margin-left: 240px; padding: 30px; margin-top: 56px; }
+    .table-container { background: #fff; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); padding: 20px; overflow-x: auto; }
+    .table thead th { background: linear-gradient(to bottom, #f8f9fa, #e9ecef); color: #2c3e50; font-weight: 700; }
+    .food-thumbnail { width: 120px; height: 90px; object-fit: cover; border-radius: 8px; }
+    .action-buttons { display: flex; justify-content: center; gap: 5px; }
+    @media (max-width:768px) { .main-content { margin-left: 0; padding: 15px; } }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-header text-center mb-4">
+      <h2><i class="fas fa-heart"></i> Wedding Planner</h2>
+    </div>
+
+    <a href="/home" class="nav-link"><i class="fas fa-home me-2"></i> Back Home</a>
+    <a href="/Dashboard/view/suppliers" class="nav-link"><i class="fas fa-users me-2"></i> Suppliers</a>
+    <a href="/Dashboard/booking" class="nav-link"><i class="fas fa-bookmark me-2"></i> Bookings</a>
+    <a href="/dashboard/decor" class="nav-link"><i class="fas fa-image me-2"></i> Decor</a>
+    <a href="/dashboard/troupe" class="nav-link"><i class="fas fa-drum me-2"></i> Troupe</a>
+    <a href="/dashboard/media" class="nav-link"><i class="fas fa-camera me-2"></i> Photo & Video</a>
+    <a href="/dashboard/catering" class="nav-link active"><i class="fas fa-utensils me-2"></i> Catering</a>
+
+    <div class="mt-auto text-center text-white-50 p-3">&copy; 2025 Wedding Planner Pro</div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h1><i class="fas fa-utensils"></i> Catering Services</h1>
+      <a href="/add/catering" class="btn btn-primary"><i class="fas fa-plus"></i> Add Catering Item</a>
+    </div>
+
+    <div class="table-container">
+      <table class="table table-hover text-center align-middle">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Food Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="catering-table-body">
+          <!-- DATA WILL BE INSERTED HERE USING JAVASCRIPT -->
+          <tr>
+            <td colspan="6" class="text-muted">Loading catering items...</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Pagination Placeholder -->
+      <nav>
+        <ul class="pagination justify-content-center" id="pagination">
+          <!-- JS will insert pages -->
+        </ul>
+      </nav>
+
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

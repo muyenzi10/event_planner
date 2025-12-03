@@ -19,6 +19,7 @@ const login = require("./routers/login");
 const decorupload =require("./routers/decorouter");
 const indinzi = require("./routers/troup");
 const photographers = require("./routers/photographyrouter");
+const cateringrouters = require("./routers/catereing")
 const contact = require("./routers/contactrouter")
 const bodyParser = require('body-parser');
 // Middleware setup
@@ -63,6 +64,7 @@ app.use(bookingformat);
 app.use(decorupload);
 app.use(indinzi);
 app.use(photographers);
+app.use(cateringrouters);
 // Error handling middleware
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, '../frontend/error.html'));
