@@ -3,118 +3,586 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional wedding catering services with exquisite menus. Book now for unforgettable dining experience.">
-    <meta name="keywords" content="wedding catering, event catering, wedding food, catering services">
+    <!-- FIXED: Changed to wedding planner -->
+    <meta name="description" content="Professional wedding planning services with exquisite attention to detail. Book now for unforgettable wedding experience.">
+    <meta name="keywords" content="wedding planner, event planning, wedding coordinator, wedding services">
     <meta name="author" content="Wedding Planner">
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <title>Wedding Catering Services | Exquisite Menus</title>
+    <!-- FIXED: Changed to wedding planner -->
+    <title>Wedding Planning Services | Exquisite Weddings</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <!-- AOS Animation -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <!-- Lightbox CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
-    <!-- Fancybox CSS for video support -->
-    <link href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* EXACT SAME :root variables as first file */
         :root {
-            --primary-color: #dc3545;
-            --secondary-color: #343a40;
-            --dark-color: #212529;
-            --text-color: #f8f9fa;
-            --bg-color: #121212;
-            --card-bg: #1e1e1e;
-            --footer-bg: #121212;
-            --hero-text: #ffffff;
-            --section-bg: #1e1e1e;
-            --testimonial-bg: #252525;
-            --border-color: #343a40;
-            --philosophy-bg: #252525;
+            --primary-color: #d4af37;
+            --dark-color: #222;
+            --light-color: #fff;
+            --muted-color: #f8f4f0;
+            
+            /* Light Theme Colors - EXACTLY like first file */
+            --primary-gold: #d4af37;
+            --primary-gold-light: #e6c869;
+            --primary-gold-dark: #b8941f;
+            --bg-light: #fefefe;
+            --bg-light-secondary: #f8f4f0;
+            --text-dark: #2c2c2c;
+            --text-muted: #6c757d;
+            --card-light: #ffffff;
+            --border-light: #e9ecef;
+            
+            /* Dark Theme Colors - Fixed with lighter sections */
+            --bg-dark: #0f0f0f;
+            --bg-dark-secondary: #1a1a1a;
+            --bg-dark-section: #2d2d2d; /* NEW: Lighter for sections */
+            --bg-dark-tertiary: #2d2d2d;
+            --text-light: #f0f0f0;
+            --text-light-muted: #b0b0b0;
+            --card-dark: #1e1e1e;
+            --card-dark-hover: #2a2a2a;
+            --border-dark: #333333;
+            
+            /* Video Badge Colors for Button */
+            --video-red: #dc3545;
+            --video-red-dark: #c82333;
+        }
+        
+        /* EXACT Base Styles from first file */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
         
         body {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-light-secondary);
+            color: var(--text-dark);
+            line-height: 1.7;
             overflow-x: hidden;
-            background-color: var(--bg-color);
-            color: var(--text-color);
         }
         
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/allpack/catering/cateringdata/11.png') no-repeat center center/cover;
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            color: var(--hero-text);
+        /* Dark Mode Styles - FIXED with lighter sections */
+        body.dark-mode {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
         }
         
-        /* Menu Cards */
-        .menu-card {
-            border: none;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
         }
         
-        .menu-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-        }
-        
-        .menu-img {
-            height: 250px;
-            object-fit: cover;
-        }
-        
-        .menu-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-        }
-        
-        /* Section Titles */
         .section-title {
             position: relative;
             display: inline-block;
-            margin-bottom: 50px;
-            font-weight: 700;
-            color: var(--text-color);
+            margin-bottom: 2rem;
         }
         
-        .section-title:after {
+        .section-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background: var(--primary-color);
+            background: linear-gradient(90deg, var(--primary-gold), var(--primary-gold-light));
+            border-radius: 2px;
         }
         
-        /* Testimonials */
-        .testimonial-card {
-            background: var(--testimonial-bg);
-            border-left: 4px solid var(--primary-color);
-            padding: 30px;
-            margin-bottom: 30px;
-            height: 100%;
+        /* EXACT Dark Mode Toggle from first file */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dark-mode-toggle:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
+        }
+        
+        body.dark-mode .dark-mode-toggle {
+            background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
+        }
+        
+        body.dark-mode .dark-mode-toggle:hover {
+            box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
+        }
+
+        /* Mobile responsive positioning for dark mode toggle */
+        @media (max-width: 768px) {
+            .dark-mode-toggle {
+                bottom: 80px;
+                right: 15px;
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+            
+            .dark-mode-toggle .toggle-text {
+                display: none;
+            }
+            
+            .dark-mode-toggle {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                justify-content: center;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .dark-mode-toggle {
+                bottom: 70px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        /* FIXED: NAVBAR STYLING - Fixed dark mode issue */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background-color: var(--bg-light) !important; /* FIX: Changed from var(--light-color) */
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-dark) !important; /* FIX: Changed from var(--dark-color) */
+            margin: 0 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+
+        /* Dark Mode Navbar - NOW WORKS PROPERLY */
+        body.dark-mode .navbar {
+            background-color: var(--bg-dark-secondary) !important;
+        }
+
+        body.dark-mode .nav-link {
+            color: var(--text-light) !important;
+        }
+
+        body.dark-mode .navbar-brand {
+            color: var(--primary-gold-light) !important;
+        }
+
+        /* Professional Centered Navbar for Mobile - EXACT */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background-color: var(--bg-light);
+                border-radius: 12px;
+                padding: 15px 0;
+                margin-top: 10px;
+                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            }
+
+            .navbar-nav {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                padding: 0;
+            }
+
+            .nav-item {
+                width: 90%;
+            }
+
+            .nav-link {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 12px 0;
+                border-radius: 8px;
+                font-size: 1.1rem;
+                transition: all 0.3s ease;
+                background-color: rgba(212,175,55,0.05);
+                color: var(--text-dark) !important; /* FIX: Changed from var(--dark-color) */
+            }
+
+            .nav-link:hover, .nav-link.active {
+                background-color: var(--primary-color);
+                color: #fff !important;
+                box-shadow: 0 4px 15px rgba(212,175,55,0.3);
+            }
+
+            .navbar-brand {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+                font-size: 1.6rem;
+            }
+            
+            /* Dark Mode Mobile */
+            body.dark-mode .navbar-collapse {
+                background-color: var(--card-dark);
+            }
+            
+            body.dark-mode .nav-link {
+                background-color: rgba(212,175,55,0.1);
+                color: var(--text-light) !important;
+            }
+        }
+        
+        /* Hero Section - Wedding Planner Version */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/allpack/catering/cateringdata/11.png') no-repeat center center/cover;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.8) 100%);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #fff 0%, var(--primary-gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Button Styles - Using gold from first file */
+        .btn-gold {
+            background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            color: white;
+        }
+        
+        .btn-outline-gold {
+            border: 2px solid var(--primary-gold);
+            color: var(--primary-gold);
+            background: transparent;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-gold:hover {
+            background: var(--primary-gold);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        body.dark-mode .btn-outline-gold {
+            color: var(--primary-gold-light);
+            border-color: var(--primary-gold-light);
+        }
+        
+        body.dark-mode .btn-outline-gold:hover {
+            background: var(--primary-gold-light);
+            color: var(--text-dark);
+        }
+        
+        /* Menu Cards - Now "Wedding Packages" */
+        .menu-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            color: var(--text-color);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            background: var(--card-light);
         }
         
-        /* Gallery Slideshow */
+        body.dark-mode .menu-card {
+            background: var(--card-dark);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        body.dark-mode .menu-card:hover {
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            background: var(--card-dark-hover);
+        }
+        
+        .menu-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .menu-card:hover .menu-img {
+            transform: scale(1.05);
+        }
+        
+        /* Video Gallery Section */
+        .video-gallery-section {
+            padding: 100px 0;
+            background-color: var(--bg-light-secondary);
+        }
+        
+        body.dark-mode .video-gallery-section {
+            background-color: var(--bg-dark);
+        }
+        
+        .video-gallery-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            background: var(--card-light);
+        }
+        
+        body.dark-mode .video-gallery-container {
+            background: var(--card-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .video-gallery-container:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        body.dark-mode .video-gallery-container:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            background: var(--card-dark-hover);
+        }
+        
+        .video-thumbnail {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            cursor: pointer;
+        }
+        
+        .video-gallery-container:hover .video-thumbnail {
+            transform: scale(1.08);
+        }
+        
+        /* Media Type Badges */
+        .media-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .photo-badge {
+            background: linear-gradient(135deg, #17a2b8, #0d8aa0);
+            color: white;
+        }
+        
+        .video-badge {
+            background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 14px 6px 12px;
+        }
+        
+        .video-badge i {
+            font-size: 10px;
+        }
+        
+        .img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+            color: white;
+            padding: 25px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 5;
+            transform: translateY(10px);
+        }
+        
+        .video-gallery-container:hover .img-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Video Play Button */
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--video-red);
+            font-size: 26px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            z-index: 5;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .video-play-btn:hover {
+            background: rgba(220, 53, 69, 0.95);
+            color: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        /* Philosophy Section - Wedding Planner Version */
+        .philosophy-section {
+            position: relative;
+            padding: 100px 0;
+            background-color: var(--bg-light);
+            overflow: hidden;
+        }
+        
+        body.dark-mode .philosophy-section {
+            background-color: var(--bg-dark-section) !important;
+        }
+        
+        .philosophy-image-container {
+            position: relative;
+            padding: 15px;
+            background: var(--card-light);
+            border-radius: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+            
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+        
+        body.dark-mode .philosophy-image-container {
+            background: var(--card-dark);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+        }    
+        .philosophy-image {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            height: 450px;
+            box-shadow: 0 10px 15px  rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Packages Section */
+        .menu-section {
+            padding: 100px 0;
+            background-color: var(--bg-light-secondary);
+        }
+        
+        body.dark-mode .menu-section {
+            background-color: var(--bg-dark);
+        }
+        
+        /* SLIDER GALLERY SECTION */
         .gallery-slideshow {
             position: relative;
             max-width: 1200px;
@@ -171,9 +639,13 @@
         .gallery-slide-caption {
             margin-top: 10px;
             font-style: italic;
-            color: var(--text-color);
+            color: var(--text-dark);
             font-size: 0.9rem;
             transition: all 0.8s ease;
+        }
+        
+        body.dark-mode .gallery-slide-caption {
+            color: var(--text-light);
         }
         
         .gallery-controls {
@@ -213,7 +685,7 @@
         }
         
         .gallery-btn:hover {
-            background: #c82333;
+            background: var(--primary-gold-dark);
             transform: scale(1.05);
         }
         
@@ -223,593 +695,345 @@
             transform: scale(1);
         }
 
-        /* Menu section background */
-        .bg-light {
-            background-color: var(--section-bg) !important;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--footer-bg) !important;
-            color: var(--hero-text);
-            border-top: 1px solid var(--border-color);
-        }
-
-        /* Navbar */
-        .navbar {
-            background-color: var(--footer-bg) !important;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        /* Links */
-        a {
-            color: var(--primary-color);
-        }
-
-        a:hover {
-            color: #ff6b6b;
-        }
-
-        /* Text colors */
-        .text-light {
-            color: var(--hero-text) !important;
-        }
-
-        /* Cards */
-        .card {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border-color: var(--border-color);
-        }
-
-        /* Form controls */
-        .form-control {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border-color: var(--border-color);
-        }
-
-        .form-control:focus {
-            background-color: var(--card-bg);
-            color: var(--text-color);
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
-        }
-
-        /* Video Gallery Section */
-        .video-gallery {
-            padding: 60px 0;
-            background-color: var(--section-bg);
+        /* Testimonials */
+        .testimonials-section {
+            padding: 100px 0;
+            background-color: var(--bg-light);
+            position: relative;
         }
         
-        .video-thumbnail {
-            position: relative;
+        body.dark-mode .testimonials-section {
+            background-color: var(--bg-dark-section) !important;
+        }
+        
+        .testimonial-card {
+            background: var(--card-light);
+            padding: 40px 30px;
             margin-bottom: 30px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 16px;
             transition: all 0.3s ease;
-        }
-        
-        .video-thumbnail:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-        }
-        
-        .video-thumbnail img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .video-thumbnail:hover img {
-            transform: scale(1.05);
-        }
-        
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background-color: rgba(220, 53, 69, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            transition: all 0.3s ease;
-        }
-        
-        .video-thumbnail:hover .play-button {
-            background-color: rgba(220, 53, 69, 1);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        
-        .video-caption {
-            padding: 15px;
-            background-color: var(--card-bg);
-            color: var(--text-color);
-        }
-        
-        .video-caption h4 {
-            margin-bottom: 5px;
-            font-size: 1.1rem;
-        }
-        
-        .video-caption p {
-            font-size: 0.9rem;
-            color: var(--text-color);
-            opacity: 0.8;
-            margin-bottom: 0;
-        }
-        
-        /* Fancybox Overrides */
-        .fancybox__container {
-            --fancybox-bg: var(--bg-color);
-            --fancybox-color: var(--text-color);
-        }
-        
-        .fancybox__toolbar {
-            background: var(--card-bg);
-        }
-        
-        .fancybox__nav {
-            --fancybox-nav-color: var(--text-color);
-        }
-        
-        .fancybox__thumbs {
-            --fancybox-thumbs-bg: var(--card-bg);
-        }
-
-        /* New Catering Philosophy Section Styles */
-        .philosophy-section {
+            border-left: 5px solid var(--primary-gold);
             position: relative;
-            padding: 80px 0;
-            background-color: var(--philosophy-bg);
             overflow: hidden;
         }
         
-        .philosophy-section::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
-            background: rgba(220, 53, 69, 0.1);
-            border-radius: 50%;
-            z-index: 0;
+        body.dark-mode .testimonial-card {
+            background: var(--card-dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
-        .philosophy-section::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: rgba(220, 53, 69, 0.05);
-            border-radius: 50%;
-            z-index: 0;
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
         }
         
-        .philosophy-image-container {
-            position: relative;
-            padding: 15px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
-            transform: rotate(-2deg);
-            transition: all 0.3s ease;
-            z-index: 1;
+        body.dark-mode .testimonial-card:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
         }
         
-        .philosophy-image-container:hover {
-            transform: rotate(0deg) scale(1.02);
-        }
-        
-        .philosophy-image {
-            width: 100%;
-            border-radius: 8px;
-            object-fit: cover;
-            height: 450px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-        }
-        
-        .philosophy-badge {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background: var(--primary-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: 600;
-            box-shadow: 0 10px 15px -3px rgba(220, 53, 69, 0.3);
-            z-index: 2;
-        }
-        
-        .philosophy-content {
-            position: relative;
-            z-index: 1;
-            padding-left: 40px;
-        }
-        
-        .philosophy-content .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 25px;
-            position: relative;
-            color: var(--text-color);
-            display: block;
-        }
-        
-        .philosophy-content .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-color);
-            transform: none;
-        }
-        
-        .philosophy-content p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            color: var(--text-color);
-            opacity: 0.9;
-        }
-        
-        .philosophy-list {
-            margin-bottom: 30px;
-        }
-        
-        .philosophy-list li {
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-            color: var(--text-color);
-        }
-        
-        .philosophy-list li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            top: 2px;
-            color: var(--primary-color);
-            background: rgba(220, 53, 69, 0.1);
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .philosophy-quote {
-            font-style: italic;
-            font-size: 1.2rem;
-            color: var(--text-color);
-            margin-bottom: 30px;
-            position: relative;
-            padding-left: 30px;
-            opacity: 0.9;
-        }
-        
-        .philosophy-quote::before {
+        .testimonial-card::before {
             content: '"';
             position: absolute;
-            left: 0;
-            top: -10px;
-            font-size: 3rem;
-            color: rgba(220, 53, 69, 0.2);
+            top: 20px;
+            right: 30px;
+            font-size: 80px;
+            color: rgba(212, 175, 55, 0.1);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
         }
         
-        @media (max-width: 991.98px) {
-            .philosophy-section {
-                padding: 60px 0;
-            }
-            
-            .philosophy-content {
-                padding-left: 15px;
-                padding-top: 40px;
-            }
-            
-            .philosophy-image-container {
-                transform: none;
-                max-width: 600px;
-                margin: 0 auto;
-            }
-            
-            .philosophy-image-container:hover {
-                transform: none;
-            }
-            
-            .philosophy-content .section-title {
-                font-size: 2rem;
-            }
-        }
-
-        /* Additional dark mode adjustments */
-        .btn-outline-light {
-            color: var(--text-color);
-            border-color: var(--text-color);
+        body.dark-mode .testimonial-card::before {
+            color: rgba(212, 175, 55, 0.08);
         }
         
-        .btn-outline-light:hover {
-            background-color: var(--text-color);
-            color: var(--dark-color);
-        }
-        
-        .lead {
-            color: var(--text-color);
-            opacity: 0.8;
-        }
-        
-        .card-text, .client-info small {
-            color: var(--text-color);
-            opacity: 0.8;
+        .stars {
+            color: #ffc107;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
         }
         
         .testimonial-text {
-            opacity: 0.9;
+            font-style: italic;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+        
+        body.dark-mode .testimonial-text {
+            color: var(--text-light);
+        }
+        
+        .client-info h6 {
+            color: var(--primary-gold);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .client-info small {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        
+        body.dark-mode .client-info small {
+            color: var(--text-light-muted);
+        }
+
+        /* FOOTER */
+        footer { 
+            background-color:#222; 
+            color:#eee; 
+            font-family:'Poppins', sans-serif; 
+        }
+        
+        footer h5 { 
+            font-family:'Playfair Display', serif; 
+        }
+        
+        footer .footer-link { 
+            text-decoration:none; 
+            display:inline-block; 
+            margin-bottom:8px; 
+            transition: all 0.3s ease; 
+        }
+        
+        footer .footer-link:hover { 
+            color: var(--primary-color); 
+            padding-left:6px; 
+        }
+        
+        footer .footer-social { 
+            font-size:1.2rem; 
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            width:36px; 
+            height:36px; 
+            border-radius:50%; 
+            background-color: rgba(212,175,55,0.2); 
+            transition: all 0.3s ease; 
+        }
+        
+        footer .footer-social:hover { 
+            background-color: var(--primary-color); 
+            color:#fff !important; 
+            box-shadow:0 0 10px rgba(212,175,55,0.6); 
+            transform:translateY(-3px); 
+        }
+        
+        footer hr.bg-secondary { 
+            border-top:1px solid rgba(255,255,255,0.2); 
+        }
+
+        /* Additional styles */
+        .bg-light {
+            background-color: var(--bg-light) !important;
         }
         
         .bg-dark {
             background-color: var(--dark-color) !important;
         }
+        
+        .text-light {
+            color: #eee !important;
+        }
+        
+        .lead {
+            color: var(--text-dark);
+            opacity: 0.8;
+        }
+        
+        body.dark-mode .lead {
+            color: var(--text-light);
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .gallery-slide-item {
+                flex: 0 0 100%;
+                margin: 10px 0;
+            }
+            
+            .gallery-slide.active {
+                flex-direction: column;
+            }
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand logo-margin" href="#">Wedding Planner</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>
+    </button>
+
+    <!-- NAVBAR - FIXED for dark mode -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-heart me-2"></i>Dream Day</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/about">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">Services</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/packages">Packages</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/suppliers">Suppliers</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/booking">Booking</a></li>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/home"><i class="fas fa-home me-1"></i> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/suppliers"><i class="fas fa-camera me-1"></i> Suppliers</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/booking"><i class="fas fa-bookmark me-1"></i> Book Consultation</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - WEDDING PLANNER -->
     <header class="hero-section">
-        <div class="container text-center py-5">
-            <h1 class="display-3 fw-bold mb-4">Exquisite Wedding Catering</h1>
-            <p class="lead mb-4">Culinary excellence tailored to your special day</p>
+        <div class="container text-center py-5 hero-content">
+            <h1 class="hero-title">Exquisite Wedding Planning</h1>
+            <p class="hero-subtitle">Professional coordination tailored to your special day</p>
             <div>
-                <a href="#menus" class="btn btn-danger btn-lg px-4 me-2">View Menus</a>
-                <a href="#contact" class="btn btn-outline-light btn-lg px-4">Get a Quote</a>
+                <a href="#packages" class="btn btn-gold btn-lg px-5 me-3">View Packages</a>
+                <a href="#contact" class="btn btn-outline-gold btn-lg px-5">Get a Quote</a>
             </div>
         </div>
     </header>
 
-    <!-- About Catering Section - Redesigned -->
-    <section class="philosophy-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
-                    <div class="philosophy-image-container">
-                        <img src="/allpack/catering/cateringdata/image1.jpeg" alt="Wedding catering setup" class="philosophy-image">
-                        <div class="philosophy-badge">
-                            <i class="fas fa-award me-2"></i>Award Winning
-                        </div>
-                    </div>
+    <!-- About Wedding Planning Section - CORRECTED -->
+<!-- About Catering Section - WEDDING PLANNER PERSPECTIVE ON CATERING -->
+<!-- About Catering Section - CONCISE VERSION -->
+<section class="philosophy-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                <div class="philosophy-image-container">
+                    <img src="/allpack/catering/cateringdata/image1.jpeg" alt="Wedding catering setup" class="philosophy-image">
                 </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <div class="philosophy-content">
-                        <span class="text-danger fw-bold d-block mb-2">OUR PHILOSOPHY</span>
-                        <h2 class="section-title">Crafting Culinary <span class="text-danger">Memories</span></h2>
-                        <p class="philosophy-quote">"We don't just serve food - we create unforgettable dining experiences that become cherished memories."</p>
-                        <p>Our team of passionate chefs combines artistry with culinary expertise to design menus that reflect your unique love story, using only the freshest seasonal ingredients sourced from local producers.</p>
-                        <ul class="philosophy-list list-unstyled">
-                            <li>Customized menus for every couple</li>
-                            <li>Farm-to-table fresh ingredients</li>
-                            <li>Accommodates all dietary needs</li>
-                            <li>Professional serving staff included</li>
-                            <li>Full bar service available</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-danger btn-lg px-4">Schedule a Consultation</a>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="philosophy-content">
+                    <span class="text-warning fw-bold d-block mb-2">PLANNER'S PERSPECTIVE</span>
+                    <h2 class="section-title">Catering by <span class="text-warning">Wedding Experts</span></h2>
+                    <p class="philosophy-quote" style="font-style: italic; font-size: 1.2rem; margin-bottom: 25px;">"We design catering that flows perfectly with your wedding timeline."</p>
+                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px;">As wedding planners, we understand how food service impacts your entire event. Our catering integrates seamlessly with your celebration.</p>
+                    <ul class="list-unstyled" style="margin-bottom: 25px;">
+                        <!-- CONCISE POINTS -->
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1rem;">
+                            <i class="fas fa-check text-warning me-2"></i><strong>Event-Flow Menus:</strong> Designed by wedding planners
+                        </li>
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1rem;">
+                            <i class="fas fa-check text-warning me-2"></i><strong>Perfect Timing:</strong> Aligned with wedding schedule
+                        </li>
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1rem;">
+                            <i class="fas fa-check text-warning me-2"></i><strong>Vendor Harmony:</strong> Seamless teamwork
+                        </li>
+                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1rem;">
+                            <i class="fas fa-check text-warning me-2"></i><strong>Wedding-Focused Setup:</strong> Designed for celebration flow
+                        </li>
+                    </ul>
+                    <div class="planner-note p-3 mb-4" style="background: rgba(212, 175, 55, 0.08); border-left: 3px solid var(--primary-gold); border-radius: 6px;">
+                        <h6 class="text-warning mb-2" style="font-size: 1rem;">
+                            <i class="fas fa-heart me-2"></i>Wedding Planners Who Cater
+                        </h6>
+                        <p class="mb-0" style="font-size: 0.95rem; line-height: 1.5;">
+                            We create catering that enhances, not interrupts, your celebration.
+                        </p>
                     </div>
+                 
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Video Gallery Section -->
-    <section id="video-gallery" class="video-gallery">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Our Catering Videos</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Watch our catering services in action</p>
-                </div>
-            </div>
-            <div class="row">
-                <!-- Video 1 - Local MP4 -->
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="video-thumbnail">
-                        <a href="/allpack/catering/cataringvideos/v2.mp4" data-fancybox="video-gallery" data-caption="Wedding Buffet Service">
-                            <img src="/allpack/catering/cataringvideos/im1.png" alt="Wedding Buffet Service">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Wedding Buffet Service</h4>
-                            <p>See our elegant buffet setup in action</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 2 - YouTube -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="video-thumbnail">
-                        <a href="/allpack/catering/cataringvideos/v3.mp4" data-fancybox="video-gallery" data-caption="Plated Dinner Service">
-                            <img src="/allpack/catering/cataringvideos/im2.png" alt="Plated Dinner Service">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Plated Dinner Service</h4>
-                            <p>Our professional serving staff in action</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 3 - YouTube -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="video-thumbnail">
-                        <a href="/allpack/catering/cataringvideos/v4.mp4" data-fancybox="video-gallery" data-caption="Cocktail Hour">
-                            <img src="/allpack/catering/cataringvideos/im3.png" alt="Cocktail Hour">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Cocktail Hour</h4>
-                            <p>Signature drinks and hors d'oeuvres service</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 4 - Local MP4 -->
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="video-thumbnail">
-                        <a href="/allpack/catering/cataringvideos/v5.mp4" data-fancybox="video-gallery" data-caption="Dessert Presentation">
-                            <img src="/allpack/catering/cataringvideos/im4.png" alt="Dessert Presentation">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Dessert Presentation</h4>
-                            <p>Beautiful dessert table setups</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 5 - YouTube -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="video-thumbnail">
-                        <a href="/allpack/catering/cataringvideos/v7.mp4" data-fancybox="video-gallery" data-caption="Chef's Special">
-                            <img src="/allpack/catering/cataringvideos/im7.png" alt="Chef's Special">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Chef's Special</h4>
-                            <p>Our chefs preparing signature dishes</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Video 6 - YouTube -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="video-thumbnail">
-                        <a href="/allpack/catering/cataringvideos/v8.mp4" data-fancybox="video-gallery" data-caption="Client Testimonials">
-                            <img src="/allpack/catering/cataringvideos/im8.png" alt="Client Testimonials">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </a>
-                        <div class="video-caption">
-                            <h4>Client Testimonials</h4>
-                            <p>What our clients say about our service</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-4">
-                <a href="#image" class="btn btn-outline-danger">View  Images</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Menu Section -->
-    <section id="menus" class="py-5 bg-light">
+    </div>
+</section>
+    <section id="video-gallery" class="video-gallery-section">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Our Signature Menus</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Customizable options for every taste and budget</p>
+                    <h2 class="section-title">Our Wedding Planning Videos</h2>
+                    <p class="lead">See our wedding coordination in action</p>
                 </div>
             </div>
+            
             <div class="row">
-                <!-- Menu 1 -->
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="menu-card">
-                        <div class="position-relative">
-                            <img src="/allpack/catering/cateringdata/1.jpg" class="menu-img w-100" alt="Classic Wedding Menu">
+                <!-- Video 1 -->
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="video-gallery-container">
+                        <span class="media-badge video-badge">
+                            <i class="fas fa-play"></i> Video
+                        </span>
+                        <img src="/allpack/catering/cataringvideos/im1.png" 
+                             alt="Wedding Ceremony Coordination" 
+                             class="video-thumbnail">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
                         </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Classic Elegance</h4>
-                            <p class="card-text">Traditional favorites with modern presentation</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Starter: Seasonal salad</li>
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Main: Beef tenderloin or salmon</li>
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Dessert: Trio of mini desserts</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-danger">Customize This Menu</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Menu 2 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="menu-card">
-                        <div class="position-relative">
-                            <img src="/allpack/catering/cateringdata/2.jpg" class="menu-img w-100" alt="Global Flavors Menu">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Global Flavors</h4>
-                            <p class="card-text">International cuisine with bold flavors</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Starter: Asian-inspired appetizers</li>
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Main: Moroccan lamb or Thai curry</li>
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Dessert: Chocolate fondue station</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-danger">Customize This Menu</a>
+                        <div class="img-overlay">
+                            <h5 class="text-white">
+                                <i class="fas fa-play-circle me-2"></i>Wedding Ceremony Coordination
+                            </h5>
+                            <p class="text-white small mb-0">See our elegant ceremony setup in action</p>
+                            <div class="mt-2">
+                                <small class="text-warning">
+                                    <i class="fas fa-video me-1"></i>Click to watch
+                                </small>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Menu 3 -->
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="menu-card">
-                        <div class="position-relative">
-                            <img src="/allpack/catering/cateringdata/3.jpg" class="menu-img w-100" alt="Rustic Farmhouse Menu">
+                <!-- Video 2 -->
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="video-gallery-container">
+                        <span class="media-badge video-badge">
+                            <i class="fas fa-play"></i> Video
+                        </span>
+                        <img src="/allpack/catering/cataringvideos/im2.png" 
+                             alt="Reception Planning" 
+                             class="video-thumbnail">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
                         </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Rustic Farmhouse</h4>
-                            <p class="card-text">Hearty, seasonal dishes with artisanal flair</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Starter: Charcuterie display</li>
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Main: Braised short ribs or stuffed squash</li>
-                                <li><i class="fas fa-utensils text-danger me-2"></i> Dessert: Pie bar with local fruits</li>
-                            </ul>
-                            <a href="#" class="btn btn-outline-danger">Customize This Menu</a>
+                        <div class="img-overlay">
+                            <h5 class="text-white">
+                                <i class="fas fa-play-circle me-2"></i>Reception Planning
+                            </h5>
+                            <p class="text-white small mb-0">Our professional reception coordination</p>
+                            <div class="mt-2">
+                                <small class="text-warning">
+                                    <i class="fas fa-video me-1"></i>Click to watch
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="col-md-4 col-sm-6 mb-4">
+                    <div class="video-gallery-container">
+                        <span class="media-badge video-badge">
+                            <i class="fas fa-play"></i> Video
+                        </span>
+                        <img src="/allpack/catering/cataringvideos/im3.png" 
+                             alt="Wedding Timeline Management" 
+                             class="video-thumbnail">
+                        <div class="video-play-btn">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="img-overlay">
+                            <h5 class="text-white">
+                                <i class="fas fa-play-circle me-2"></i>Wedding Timeline Management
+                            </h5>
+                            <p class="text-white small mb-0">Perfect timing for your special moments</p>
+                            <div class="mt-2">
+                                <small class="text-warning">
+                                    <i class="fas fa-video me-1"></i>Click to watch
+                                </small>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -817,13 +1041,92 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Wedding Packages Section -->
+    <section id="packages" class="menu-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">Our Wedding Packages</h2>
+                    <p class="lead">Customizable planning services for every couple</p>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Package 1 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up">
+                    <div class="menu-card">
+                        <div class="position-relative">
+                            <img src="/allpack/catering/cateringdata/1.jpg" class="menu-img" alt="Day-of Coordination Package">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Day-of Coordination</h4>
+                            <p class="card-text">Perfect for couples who have planned but need execution</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-warning me-2"></i> Final vendor confirmations</li>
+                                <li><i class="fas fa-check text-warning me-2"></i> Wedding day timeline management</li>
+                                <li><i class="fas fa-check text-warning me-2"></i> On-site coordination (10 hours)</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="h5 text-warning mb-0">Starting at $1,500</span>
+                                <a href="#" class="btn btn-outline-gold">Customize</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="menu-card">
+                        <div class="position-relative">
+                            <img src="/allpack/catering/cateringdata/2.jpg" class="menu-img" alt="Partial Planning Package">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Partial Planning</h4>
+                            <p class="card-text">Guidance with key planning elements</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-warning me-2"></i> Vendor recommendations & management</li>
+                                <li><i class="fas fa-check text-warning me-2"></i> Design concept development</li>
+                                <li><i class="fas fa-check text-warning me-2"></i> Month-of coordination included</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="h5 text-warning mb-0">Starting at $3,500</span>
+                                <a href="#" class="btn btn-outline-gold">Customize</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="menu-card">
+                        <div class="position-relative">
+                            <img src="/allpack/catering/cateringdata/3.jpg" class="menu-img" alt="Full Wedding Planning">
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Full Wedding Planning</h4>
+                            <p class="card-text">Complete planning from start to finish</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-warning me-2"></i> Complete wedding design & execution</li>
+                                <li><i class="fas fa-check text-warning me-2"></i> Unlimited vendor meetings</li>
+                                <li><i class="fas fa-check text-warning me-2"></i> Budget management & full coordination</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="h5 text-warning mb-0">Starting at $6,500</span>
+                                <a href="#" class="btn btn-outline-gold">Customize</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section - WEDDING PLANNER -->
     <section class="py-5" id="image">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Our Work</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Beautiful presentations from recent weddings</p>
+                    <h2 class="section-title" data-aos="fade-up">Our Planned Weddings</h2>
+                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Beautiful weddings we've coordinated</p>
                 </div>
             </div>
             
@@ -832,20 +1135,20 @@
                 <div class="gallery-slide active">
                     <div class="gallery-slide-item">
                         <a href="/allpack/catering/cateringdata/9.jpg">
-                        <img src="/allpack/catering/cateringdata/9.jpg" alt="Wedding buffet setup">
-                        <p class="gallery-slide-caption">Elegant buffet presentation</p>
-                    </a>
+                            <img src="/allpack/catering/cateringdata/9.jpg" alt="Wedding ceremony coordination">
+                            <p class="gallery-slide-caption">Perfect ceremony setup</p>
+                        </a>
                     </div>
                     <div class="gallery-slide-item">
                         <a href="/allpack/catering/cateringdata/10.png">
-                        <img src="/allpack/catering/cateringdata/10.png" alt="Plated dinner service">
-                        <p class="gallery-slide-caption">Plated dinner service</p>
+                            <img src="/allpack/catering/cateringdata/10.png" alt="Reception planning">
+                            <p class="gallery-slide-caption">Elegant reception planning</p>
                         </a>
                     </div>
                     <div class="gallery-slide-item">
                         <a href="/allpack/catering/cateringdata/wall.jpg">
-                        <img src="/allpack/catering/cateringdata/wall.jpg" alt="Dessert table">
-                        <p class="gallery-slide-caption">Custom dessert table</p>
+                            <img src="/allpack/catering/cateringdata/wall.jpg" alt="Wedding decor coordination">
+                            <p class="gallery-slide-caption">Custom decor coordination</p>
                         </a>
                     </div>
                 </div>
@@ -854,20 +1157,20 @@
                 <div class="gallery-slide">
                     <div class="gallery-slide-item">
                         <a href="/allpack/catering/cateringdata/4.jpg">
-                        <img src="/allpack/catering/cateringdata/4.jpg" alt="Cocktail hour">
-                        <p class="gallery-slide-caption">Signature cocktails</p>
+                            <img src="/allpack/catering/cateringdata/4.jpg" alt="Cocktail hour planning">
+                            <p class="gallery-slide-caption">Cocktail hour coordination</p>
                         </a>
                     </div>
                     <div class="gallery-slide-item">
                         <a href="/allpack/catering/cateringdata/5.jpg">
-                        <img src="/allpack/catering/cateringdata/5.jpg" alt="Classic menu">
-                        <p class="gallery-slide-caption">Classic menu options</p>
+                            <img src="/allpack/catering/cateringdata/5.jpg" alt="Classic wedding planning">
+                            <p class="gallery-slide-caption">Classic wedding coordination</p>
                         </a>
                     </div>
                     <div class="gallery-slide-item">
                         <a href="/allpack/catering/cateringdata/6.png">
-                        <img src="/allpack/catering/cateringdata/6.png" alt="Global flavors">
-                        <p class="gallery-slide-caption">International cuisine</p>
+                            <img src="/allpack/catering/cateringdata/6.png" alt="Modern wedding planning">
+                            <p class="gallery-slide-caption">Modern wedding planning</p>
                         </a>
                     </div>
                 </div>
@@ -875,21 +1178,21 @@
                 <!-- Slide 3 (3 images) -->
                 <div class="gallery-slide">
                     <div class="gallery-slide-item">
-                        <a href="frontend/allpack/catering/cateringdata/7.png">
-                        <img src="/allpack/catering/cateringdata/7.png" alt="Rustic farmhouse">
-                        <p class="gallery-slide-caption">Rustic farmhouse style</p>
+                        <a href="/allpack/catering/cateringdata/7.png">
+                            <img src="/allpack/catering/cateringdata/7.png" alt="Rustic wedding coordination">
+                            <p class="gallery-slide-caption">Rustic wedding coordination</p>
                         </a>
                     </div>
                     <div class="gallery-slide-item">
-                        <a href="frontend/allpack/catering/cateringdata/8.png">
-                        <img src="/allpack/catering/cateringdata/8.png" alt="Catering setup">
-                        <p class="gallery-slide-caption">Professional setup</p>
+                        <a href="/allpack/catering/cateringdata/8.png">
+                            <img src="/allpack/catering/cateringdata/8.png" alt="Wedding setup coordination">
+                            <p class="gallery-slide-caption">Professional setup coordination</p>
                         </a>
                     </div>
                     <div class="gallery-slide-item">
                         <a href="/allpack/catering/cateringdata/12.jpg">
-                        <img src="/allpack/catering/cateringdata/12.jpg" alt="Wedding feast">
-                        <p class="gallery-slide-caption">Grand wedding feast</p>
+                            <img src="/allpack/catering/cateringdata/12.jpg" alt="Grand wedding planning">
+                            <p class="gallery-slide-caption">Grand wedding coordination</p>
                         </a>
                     </div>
                 </div>
@@ -908,67 +1211,52 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="py-5 bg-light" id="contact">
+    <!-- Testimonials Section - WEDDING PLANNER -->
+    <section id="testimonials" class="testimonials-section">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Client Testimonials</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">What couples say about our catering</p>
+                    <h2 class="section-title">Client Testimonials</h2>
+                    <p class="lead">What couples say about our wedding planning</p>
                 </div>
             </div>
+            
             <div class="row">
-                <div class="col-md-4" data-aos="fade-up">
+                <div class="col-md-4 mb-4">
                     <div class="testimonial-card">
-                        <div class="stars mb-3">
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"The food was absolutely incredible! Our guests are still talking about the braised short ribs months later. The presentation was stunning and the service was flawless."</p>
+                        <p class="testimonial-text">"Our wedding planner made our day absolutely perfect! Every detail was flawlessly executed, and we were able to truly enjoy our day without any stress. Worth every penny!"</p>
                         <div class="client-info">
-                            <div>
-                                <h6>Jennifer & Mark</h6>
-                                <small>June 2024 Wedding</small>
-                            </div>
+                            <h6>Jennifer & Mark</h6>
+                            <small>June 2024 Wedding</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                
+                <div class="col-md-4 mb-4">
                     <div class="testimonial-card">
-                        <div class="stars mb-3">
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"We had several guests with dietary restrictions and the team handled everything perfectly. The vegan options were so good that even non-vegans were raving about them!"</p>
+                        <p class="testimonial-text">"We had a destination wedding and our planner handled everything perfectly. She coordinated with vendors we'd never met and made sure everything ran smoothly from 2,000 miles away!"</p>
                         <div class="client-info">
-                            <div>
-                                <h6>Sarah & David</h6>
-                                <small>August 2024 Wedding</small>
-                            </div>
+                            <h6>Sarah & David</h6>
+                            <small>August 2024 Wedding</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                
+                <div class="col-md-4 mb-4">
                     <div class="testimonial-card">
-                        <div class="stars mb-3">
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
-                            <i class="fas fa-star text-warning"></i>
+                        <div class="stars">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                         </div>
-                        <p class="testimonial-text">"From our initial tasting to the wedding day, the attention to detail was remarkable. The chef even recreated my grandmother's recipe as a surprise for us!"</p>
+                        <p class="testimonial-text">"From our first consultation to the final dance, our planner was incredible. She anticipated needs we didn't even know we had and made our wedding truly magical."</p>
                         <div class="client-info">
-                            <div>
-                                <h6>Emily & James</h6>
-                                <small>September 2024 Wedding</small>
-                            </div>
+                            <h6>Emily & James</h6>
+                            <small>September 2024 Wedding</small>
                         </div>
                     </div>
                 </div>
@@ -976,82 +1264,127 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA Section - WEDDING PLANNER -->
     <section class="py-5 bg-dark text-white">
         <div class="container py-4">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="mb-4">Let's Create Your Perfect Wedding Menu</h2>
-                    <p class="lead mb-4">Contact us for a complimentary tasting and consultation</p>
-                    <a href="booking.html" class="btn btn-danger btn-lg px-5 me-3">Book a Tasting</a>
-                    <a href="tel:+1234567890" class="btn btn-outline-light btn-lg px-5">Call Us Now</a>
+                    <h2 class="mb-4">Let's Plan Your Perfect Wedding</h2>
+                    <p class="lead mb-4">Contact us for a complimentary wedding planning consultation</p>
+                    <a href="booking.html" class="btn btn-gold btn-lg px-5 me-3">Book a Consultation</a>
+                    <a href="tel:+1234567890" class="btn btn-outline-gold btn-lg px-5">Call Us Now</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-light py-4 footer-animated">
+    <!-- FOOTER -->
+    <footer class="bg-dark text-light pt-5 pb-3">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
-                    <h5>About Us</h5>
-                    <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-warning mb-3">About Us</h5>
+                    <p class="small text-light">We are professional wedding planners creating unforgettable wedding experiences.</p>
                 </div>
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled footer-content">
-                        <li><a href="home.htm" class="text-light">Home</a></li>
-                        <li><a href="#" class="text-light">About</a></li>
-                        <li><a href="#" class="text-light">Services</a></li>
-                        <li><a href="index.html" class="text-light">Packages</a></li>
-                        <li><a href="#" class="text-light">Contact</a></li>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-warning mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/home" class="text-light footer-link">Home</a></li>
+                        <li><a href="/about" class="text-light footer-link">About</a></li>
+                        <li><a href="/services" class="text-light footer-link">Services</a></li>
+                        <li><a href="/packages" class="text-light footer-link">Packages</a></li>
+                        <li><a href="/contact" class="text-light footer-link">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5>Connect With Us</h5>
-                    <ul class="list-unstyled footer-content">
-                        <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
-                        <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-warning mb-3">Connect With Us</h5>
+                    <ul class="list-unstyled d-flex gap-3">
+                        <li><a href="#" class="text-light footer-social"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" class="text-light footer-social"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" class="text-light footer-social"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" class="text-light footer-social"><i class="fab fa-linkedin"></i></a></li>
                     </ul>
                 </div>
             </div>
-            <div class="text-center mt-4">
-                <p class="footer-content">&copy; 2025 Wedding Planner. All Rights Reserved.</p>
-            </div>
+            <hr class="bg-secondary">
+            <div class="text-center pt-3 small">&copy; <script>document.write(new Date().getFullYear())</script> Dream Day Weddings. All Rights Reserved.</div>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Fancybox JS for video support -->
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        // Initialize AOS
+        // Initialize AOS animation
         AOS.init({
-            duration: 1000,
-            once: true,
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
         });
         
-        // Initialize Fancybox for video gallery
-        Fancybox.bind("[data-fancybox]", {
-            // Options can be set here
-            Thumbs: {
-                type: "classic",
-            },
-            Toolbar: {
-                display: {
-                    left: [],
-                    middle: [],
-                    right: ["close"],
-                },
-            },
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
         
-        // Gallery Slideshow with slow motion
+        // Dark Mode Toggle Functionality - FIXED: Navbar now changes properly
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme') || '';
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            updateToggleIcon(currentTheme);
+        }
+        
+        darkModeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', '');
+                updateToggleIcon('');
+            } else {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark-mode');
+                updateToggleIcon('dark-mode');
+            }
+        });
+        
+        function updateToggleIcon(theme) {
+            const icon = darkModeToggle.querySelector('i');
+            const toggleText = darkModeToggle.querySelector('.toggle-text');
+            
+            if (theme === 'dark-mode') {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                toggleText.textContent = 'Light Mode';
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                toggleText.textContent = 'Dark Mode';
+            }
+        }
+        
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // SLIDER GALLERY JAVASCRIPT
         document.addEventListener('DOMContentLoaded', function() {
             const slides = document.querySelectorAll('.gallery-slide');
             const dots = document.querySelectorAll('.gallery-dot');
@@ -1060,48 +1393,41 @@
             let currentSlide = 0;
             const totalSlides = slides.length;
             let isAnimating = false;
-            const slideDuration = 3000; // Longer duration between slides (8 seconds)
+            const slideDuration = 3000;
             
             function showSlide(n, direction = 1) {
                 if (isAnimating) return;
                 isAnimating = true;
                 
-                // Add fade-out class to current slide
                 const currentActive = document.querySelector('.gallery-slide.active');
                 if (currentActive) {
                     currentActive.classList.add('fade-out');
                 }
                 
-                // Handle wrap-around for slide index
                 if (n >= totalSlides) {
                     n = 0;
                 } else if (n < 0) {
                     n = totalSlides - 1;
                 }
                 
-                // After fade-out completes, switch slides
                 setTimeout(() => {
-                    // Remove all active classes
                     slides.forEach(slide => {
                         slide.classList.remove('active', 'fade-out');
                     });
                     dots.forEach(dot => dot.classList.remove('active'));
                     
-                    // Show new slide and activate corresponding dot
                     slides[n].classList.add('active');
                     dots[n].classList.add('active');
                     
                     currentSlide = n;
                     
-                    // Update button states
                     prevBtn.disabled = currentSlide === 0;
                     nextBtn.disabled = currentSlide === totalSlides - 1;
                     
                     isAnimating = false;
-                }, 1500); // Match this with the CSS animation duration
+                }, 1500);
             }
             
-            // Next/previous controls
             nextBtn.addEventListener('click', () => {
                 showSlide(currentSlide + 1, 1);
             });
@@ -1110,7 +1436,6 @@
                 showSlide(currentSlide - 1, -1);
             });
             
-            // Dot controls
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => {
                     const direction = index > currentSlide ? 1 : -1;
@@ -1118,12 +1443,10 @@
                 });
             });
             
-            // Auto-advance slides
             let slideInterval = setInterval(() => {
                 showSlide(currentSlide + 1, 1);
             }, slideDuration);
             
-            // Pause auto-advance on hover
             const slideshow = document.querySelector('.gallery-slideshow');
             slideshow.addEventListener('mouseenter', () => {
                 clearInterval(slideInterval);
@@ -1135,7 +1458,6 @@
                 }, slideDuration);
             });
             
-            // Keyboard navigation
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowLeft') {
                     showSlide(currentSlide - 1, -1);
@@ -1144,8 +1466,21 @@
                 }
             });
             
-            // Initialize button states
             showSlide(0);
+            
+            // Video Gallery functionality
+            const videoItems = document.querySelectorAll('.video-gallery-container');
+            
+            videoItems.forEach((item, index) => {
+                const playBtn = item.querySelector('.video-play-btn');
+                
+                playBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    alert('Video ' + (index + 1) + ' would play here. In real site, this would open a video player.');
+                });
+            });
+            
+            console.log("Wedding Planner site fully loaded!");
         });
     </script>
 </body>

@@ -1,4 +1,3 @@
-const { existsSync } = require("fs");
 const File = require("../models/photography");
 const path = require("path");
 const fs = require("fs");

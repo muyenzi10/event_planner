@@ -83,34 +83,38 @@
 <div class="card">
   <h3>Edit Media</h3>
 
-  <form action="#" method="POST" enctype="multipart/form-data">
+  <form action="/update/catering/<%= file._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
 
     <div class="mb-3">
       <label class="form-label required">Title</label>
-      <input type="text" name="title" value="{{TITLE_HERE}}" class="form-control" required>
+      <input type="text" name="title" value= <%= file.title  %> class="form-control" required>
     </div>
 
     <div class="mb-3">
       <label class="form-label required">Description</label>
-      <textarea name="description" rows="3" class="form-control">{{DESCRIPTION_HERE}}</textarea>
+      <textarea name="description" rows="3" class="form-control"><%= file.description %></textarea>
     </div>
 
     <div class="mb-3">
       <label class="form-label">Replace file (optional)</label>
       <input type="file" name="media" accept="image/*,video/*" class="form-control">
     </div>
-
-    <div class="mb-4">
+   <div class="mb-4">
       <label class="form-label">Current Preview</label>
       <div class="preview-media mt-2">
-        <!-- Replace this with your own static preview -->
-        {{MEDIA_PREVIEW_HERE}}
+        <% if (file.fileType && file.fileType.startsWith('image')) { %>
+          <img src="/all_disk/catering/<%= file.filePath %>" alt="Preview">
+        <% } else if (file.fileType && file.fileType.startsWith('video')) { %>
+          <video src="/all_disk/catering/<%= file.filePath %>" controls></video>
+        <% } else { %>
+          <p class="text-muted">No preview available</p>
+        <% } %>
       </div>
     </div>
 
     <div class="d-grid gap-2">
       <button type="submit" class="btn btn-save btn-lg">Save Changes</button>
-      <a href="#" class="btn btn-secondary btn-lg">Go Back</a>
+      <a href="/dashboard/catering" class="btn btn-secondary btn-lg">Go Back</a>
     </div>
 
   </form>

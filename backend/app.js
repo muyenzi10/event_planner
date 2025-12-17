@@ -52,6 +52,7 @@ app.set('views', path.join(__dirname, '../frontend'));
 app.use("/all_disk/decor_images", express.static(path.join(__dirname, "all_disk/decor_images")));
 app.use("/all_disk/troupe_images", express.static(path.join(__dirname, "all_disk/troupe_images")));
 app.use("/all_disk/camera_images", express.static(path.join(__dirname, "all_disk/camera_images")));
+app.use("/all_disk/catering", express.static(path.join(__dirname, "all_disk/catering")));
 // Routes
 app.use(router);
 app.use(decorouter);
