@@ -21,7 +21,7 @@ exports.postupload = async (req, res) => {
 };
 exports.getcatering = async(req,res)=>{
   try {
-        const itemsPerPage = 5; // number of items per page
+        const itemsPerPage = 18; // number of items per page
         const currentPage = parseInt(req.query.page) || 1; // current page from query, default 1
     
         // total number of documents
@@ -40,14 +40,28 @@ exports.getcatering = async(req,res)=>{
           files,
           currentPage,
           totalPages,
-          itemsPerPage,
-          totalItems
+           itemsPerPage,
+           totalItems
         });
       } catch (error) {
         console.error(error);
         res.status(404).send("Not found files");
       }
     };
+exports.getedit= async(req,res)=>{
+    try {
+      const file = await File.findById(req.params.id); // ✅ 'params' not 'paramas'
+  
+      if (!file) {
+        return res.status(404).send("File not found");
+      }
+  
+       res.render("allpack/catering/edit", {file}) 
+    } catch (error) {
+      console.error(error);
+      res.status(500).send("Server error");
+    }
+  };
 exports.getdash= async(req,res)=>{
      try {
         const itemsPerPage = 5; // number of items per page

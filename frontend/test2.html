@@ -3,191 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- FIXED: Changed to wedding planner -->
-    <meta name="description" content="Professional wedding planning services with exquisite attention to detail. Book now for unforgettable wedding experience.">
-    <meta name="keywords" content="wedding planner, event planning, wedding coordinator, wedding services">
-    <meta name="author" content="Wedding Planner">
-    <!-- FIXED: Changed to wedding planner -->
-    <title>Wedding Planning Services | Exquisite Weddings</title>
+    <meta name="description" content="Professional wedding catering services with exquisite cuisine. Book now for unforgettable wedding dining experience.">
+    <meta name="keywords" content="wedding catering, event catering, wedding food, catering services">
+    <meta name="author" content="Wedding Catering">
+    <title>Wedding Catering Services | Dream Day Catering</title>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <!-- AOS Animation -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* EXACT SAME :root variables as first file */
         :root {
-            --primary-color: #d4af37;
-            --dark-color: #222;
-            --light-color: #fff;
-            --muted-color: #f8f4f0;
-            
-            /* Light Theme Colors - EXACTLY like first file */
-            --primary-gold: #d4af37;
-            --primary-gold-light: #e6c869;
-            --primary-gold-dark: #b8941f;
-            --bg-light: #fefefe;
-            --bg-light-secondary: #f8f4f0;
-            --text-dark: #2c2c2c;
-            --text-muted: #6c757d;
-            --card-light: #ffffff;
-            --border-light: #e9ecef;
-            
-            /* Dark Theme Colors - Fixed with lighter sections */
-            --bg-dark: #0f0f0f;
-            --bg-dark-secondary: #1a1a1a;
-            --bg-dark-section: #2d2d2d; /* NEW: Lighter for sections */
-            --bg-dark-tertiary: #2d2d2d;
-            --text-light: #f0f0f0;
-            --text-light-muted: #b0b0b0;
-            --card-dark: #1e1e1e;
-            --card-dark-hover: #2a2a2a;
-            --border-dark: #333333;
-            
-            /* Video Badge Colors for Button */
-            --video-red: #dc3545;
+            --primary-color: #d4af37; /* Gold */
+            --secondary-color: #f8f4f0; /* Cream */
+            --accent-color: #e8c4c4; /* Blush */
+            --dark-color: #333333; /* Dark gray */
+            --light-color: #ffffff; /* White */
+            --text-color: #4a4a4a; /* Soft black */
+            --success-color: #28a745; /* Green */
+            --video-red: #dc3545; /* Video badge red */
             --video-red-dark: #c82333;
         }
         
-        /* EXACT Base Styles from first file */
-        * {
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-light-secondary);
-            color: var(--text-dark);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-        
-        /* Dark Mode Styles - FIXED with lighter sections */
-        body.dark-mode {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
-        
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
-        }
-        
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-gold), var(--primary-gold-light));
-            border-radius: 2px;
-        }
-        
-        /* EXACT Dark Mode Toggle from first file */
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            z-index: 1000;
-            background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
-            color: white;
-            border: none;
-            padding: 14px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .dark-mode-toggle:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
-        }
-        
-        body.dark-mode .dark-mode-toggle {
-            background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
-            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
-        }
-        
-        body.dark-mode .dark-mode-toggle:hover {
-            box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
-        }
-
-        /* Mobile responsive positioning for dark mode toggle */
-        @media (max-width: 768px) {
-            .dark-mode-toggle {
-                bottom: 80px;
-                right: 15px;
-                padding: 12px 16px;
-                font-size: 14px;
-            }
-            
-            .dark-mode-toggle .toggle-text {
-                display: none;
-            }
-            
-            .dark-mode-toggle {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                justify-content: center;
-                padding: 0;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .dark-mode-toggle {
-                bottom: 70px;
-                right: 10px;
-                width: 45px;
-                height: 45px;
-            }
-        }
-
-        /* FIXED: NAVBAR STYLING - Fixed dark mode issue */
+        /* === EXACT NAVBAR STYLES === */
         .navbar {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-color: var(--bg-light) !important; /* FIX: Changed from var(--light-color) */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: var(--light-color) !important;
             padding: 15px 0;
             transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
         }
 
         .navbar.scrolled {
             padding: 10px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .navbar-brand {
             font-weight: 700;
             color: var(--primary-color) !important;
+            font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             display: flex;
             align-items: center;
-            font-family: 'Playfair Display', serif;
         }
 
         .nav-link {
             font-weight: 500;
-            color: var(--text-dark) !important; /* FIX: Changed from var(--dark-color) */
+            color: var(--dark-color) !important;
+            transition: all 0.3s ease;
             margin: 0 10px;
             position: relative;
-            transition: all 0.3s ease;
         }
 
         .nav-link:after {
@@ -205,23 +79,10 @@
             width: 100%;
         }
 
-        /* Dark Mode Navbar - NOW WORKS PROPERLY */
-        body.dark-mode .navbar {
-            background-color: var(--bg-dark-secondary) !important;
-        }
-
-        body.dark-mode .nav-link {
-            color: var(--text-light) !important;
-        }
-
-        body.dark-mode .navbar-brand {
-            color: var(--primary-gold-light) !important;
-        }
-
-        /* Professional Centered Navbar for Mobile - EXACT */
+        /* Professional Centered Navbar for Mobile */
         @media (max-width: 991px) {
             .navbar-collapse {
-                background-color: var(--bg-light);
+                background-color: var(--light-color);
                 border-radius: 12px;
                 padding: 15px 0;
                 margin-top: 10px;
@@ -250,7 +111,7 @@
                 font-size: 1.1rem;
                 transition: all 0.3s ease;
                 background-color: rgba(212,175,55,0.05);
-                color: var(--text-dark) !important; /* FIX: Changed from var(--dark-color) */
+                color: var(--dark-color) !important;
             }
 
             .nav-link:hover, .nav-link.active {
@@ -259,1032 +120,1739 @@
                 box-shadow: 0 4px 15px rgba(212,175,55,0.3);
             }
 
+            .nav-link:hover:after, .nav-link.active:after {
+                display: none;
+            }
+
             .navbar-brand {
                 width: 100%;
                 text-align: center;
                 margin-bottom: 10px;
                 font-size: 1.6rem;
             }
-            
-            /* Dark Mode Mobile */
-            body.dark-mode .navbar-collapse {
-                background-color: var(--card-dark);
-            }
-            
-            body.dark-mode .nav-link {
-                background-color: rgba(212,175,55,0.1);
-                color: var(--text-light) !important;
-            }
         }
-        
-        /* Hero Section - Wedding Planner Version */
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/allpack/catering/cateringdata/11.png') no-repeat center center/cover;
-            min-height: 90vh;
+        /* === END NAVBAR STYLES === */
+
+        /* === EXACT FOOTER STYLES === */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding-top: 60px;
+            padding-bottom: 30px;
+        }
+
+        .footer-link {
+            color: #f8f9fa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-social {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .footer-social:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        footer h5 {
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 20px;
+        }
+
+        footer hr {
+            background-color: rgba(255, 255, 255, 0.1);
+            height: 1px;
+            margin: 30px 0;
+        }
+
+        footer .text-light {
+            color: rgba(255, 255, 255, 0.8) !important;
+        }
+
+        footer .small {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        /* === END FOOTER STYLES === */
+
+        /* === LIGHTBOX STYLES === */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox-content {
+            position: relative;
+            margin: auto;
+            padding: 20px;
+            max-width: 95%;
+            max-height: 95vh;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-media-container {
             display: flex;
             align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .lightbox-media {
+            max-width: 85%;
+            max-height: 75vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-video {
+            max-width: 85%;
+            max-height: 75vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            background: #000;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10001;
+            background: rgba(0, 0, 0, 0.6);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .lightbox-close:hover {
+            background: rgba(220, 53, 69, 0.9);
+            transform: scale(1.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.6);
             color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10001;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(220, 53, 69, 0.9);
+            transform: translateY(-50%) scale(1.1);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            color: white;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 16px;
+            border-radius: 20px;
+            z-index: 10001;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .lightbox-title {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .lightbox-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            color: #e0e0e0;
+            line-height: 1.4;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .lightbox-media.slide-in {
+            animation: slideIn 0.3s ease;
+        }
+
+        /* Video autoplay overlay */
+        .video-autoplay-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10000;
+            pointer-events: none;
+        }
+
+        .video-autoplay-overlay button {
+            pointer-events: auto;
+        }
+
+        .video-autoplay-overlay button:hover {
+            background: rgba(220, 53, 69, 1) !important;
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-content {
+                max-width: 98%;
+                padding: 10px;
+            }
+
+            .lightbox-media {
+                max-width: 95%;
+                max-height: 65vh;
+            }
+
+            .lightbox-video {
+                max-width: 95%;
+                max-height: 60vh;
+            }
+
+            .lightbox-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+            }
+
+            .lightbox-prev {
+                left: 10px;
+            }
+
+            .lightbox-next {
+                right: 10px;
+            }
+
+            .lightbox-close {
+                top: 10px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
+                font-size: 25px;
+            }
+
+            .lightbox-counter {
+                top: 10px;
+                left: 15px;
+                font-size: 14px;
+                padding: 6px 12px;
+            }
+
+            .lightbox-caption {
+                padding: 15px 8px;
+                margin-top: 15px;
+                max-width: 95%;
+            }
+
+            .lightbox-title {
+                font-size: 1.2rem;
+            }
+
+            .lightbox-description {
+                font-size: 0.9rem;
+            }
+        }
+        /* === END LIGHTBOX STYLES === */
+
+        /* === BUTTON STYLES === */
+        .btn-gold {
+            background: linear-gradient(135deg, var(--primary-color), #b8941f);
+            border: 2px solid var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #b8941f, #9c7c1a);
+            border-color: #b8941f;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+            color: white;
+        }
+
+        .btn-outline-gold {
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-outline-gold:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-lg {
+            padding: 14px 35px;
+            font-size: 1.1rem;
+        }
+
+        /* === PROFESSIONAL HERO SECTION === */
+        .hero-section {
+            height: 85vh;
+            min-height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('/allpack/catering/cateringdata/11.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding-top: 100px;
             position: relative;
             overflow: hidden;
         }
         
-        .hero-section::before {
+        .hero-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease-out;
+            color: white !important;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white !important;
+            line-height: 1.6;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        /* Responsive Hero */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 70vh;
+                min-height: 500px;
+                padding-top: 80px;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+                padding: 0 15px;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+                padding: 0 15px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+                padding: 0 20px;
+            }
+
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 280px;
+                margin: 0 !important;
+                display: block;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                height: 65vh;
+                min-height: 450px;
+            }
+            
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-buttons .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+        /* === END HERO SECTION === */
+
+        /* === PROFESSIONAL PHILOSOPHY SECTION === */
+        .philosophy-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+            position: relative;
+        }
+
+        .philosophy-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        .philosophy-image-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: transform 0.5s ease;
+        }
+
+        .philosophy-image-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .philosophy-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .philosophy-image:hover {
+            transform: scale(1.05);
+        }
+
+        .philosophy-content {
+            padding-left: 40px;
+        }
+
+        .philosophy-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), #b8941f);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        .text-gold {
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .text-gold:after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: var(--primary-color);
+        }
+
+        .philosophy-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 25px;
+            margin: 30px 0;
+            line-height: 1.7;
+        }
+
+        .philosophy-text {
+            font-size: 1.05rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .planner-note {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(232, 196, 196, 0.1));
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 30px;
+        }
+
+        .planner-note h6 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .planner-note p {
+            color: #666;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 991px) {
+            .philosophy-content {
+                padding-left = 0;
+                margin-top: 40px;
+            }
+            
+            .philosophy-image {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .philosophy-section {
+                padding: 70px 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .philosophy-image {
+                height: 350px;
+            }
+        }
+
+        /* === PROFESSIONAL GALLERY SECTION === */
+        .gallery-section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .gallery-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            opacity: 0.3;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Cards with Better Vertical Spacing */
+        .gallery-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            margin-bottom: 40px;
+            margin-top: 20px; /* Added top margin for vertical spacing */
+            background: white;
+            position: relative;
+            transform: translateY(0);
+        }
+        
+        .gallery-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+        }
+        
+        .gallery-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            z-index: 1;
+        }
+        
+        .gallery-card-img-container {
+            position: relative;
+            overflow: hidden;
+            height: 280px;
+        }
+        
+        .gallery-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+        
+        .gallery-card:hover .gallery-card-img {
+            transform: scale(1.08);
+        }
+        
+        .card-body {
+            padding: 30px;
+        }
+        
+        .card-title {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+        
+        .card-text {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* === PROFESSIONAL VIDEO GALLERY === */
+        .video-gallery-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            position: relative;
+        }
+
+        .video-gallery-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--video-red), var(--primary-color));
+        }
+
+        .video-section-header {
+            margin-bottom: 80px;
+        }
+
+        .video-section-header .section-title,
+        .video-section-header .section-subtitle {
+            color: white;
+        }
+
+        .video-section-header .section-subtitle {
+            opacity: 0.8;
+        }
+
+        .video-thumbnail-card {
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            margin-bottom: 40px;
+            margin-top: 20px; /* Added top margin for vertical spacing */
+            background: #1a1a1a;
+            position: relative;
+            transform: translateY(0);
+        }
+        
+        .video-thumbnail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(220, 53, 69, 0.2);
+        }
+        
+        .video-thumbnail-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--video-red), #ff6b6b);
+            z-index: 1;
+        }
+        
+        .video-thumbnail-wrapper {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            height: 240px;
+        }
+        
+        .video-thumbnail-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+            filter: brightness(0.9);
+            border-radius: 12px 12px 0 0;
+            background: #000;
+        }
+        
+        .video-thumbnail-card:hover video {
+            transform: scale(1.08);
+            filter: brightness(1);
+        }
+        
+        .play-button-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .video-thumbnail-card:hover .play-button-overlay {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        .play-button {
+            width: 70px;
+            height: 70px;
+            background: rgba(220, 53, 69, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            transform: scale(1);
+        }
+        
+        .video-thumbnail-card:hover .play-button {
+            background: rgba(220, 53, 69, 1);
+            transform: scale(1.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .video-controls-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-thumbnail-wrapper:hover .video-controls-overlay {
+            opacity: 1;
+        }
+        
+        .video-control-button {
+            background: rgba(220, 53, 69, 0.8);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .video-control-button:hover {
+            background: rgba(220, 53, 69, 1);
+            transform: scale(1.1);
+        }
+        
+        .video-caption {
+            padding: 30px;
+            background: #1a1a1a;
+        }
+        
+        .video-caption h4 {
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            color: white;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        .video-caption p {
+            font-size: 0.95rem;
+            color: #aaa;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        /* Media Badges */
+        .media-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            z-index: 10;
+            letter-spacing: 1px;
+        }
+        
+        .photo-badge {
+            background: rgba(23, 162, 184, 0.95);
+            color: white;
+        }
+        
+        .video-badge {
+            background: rgba(220, 53, 69, 0.95);
+            color: white;
+        }
+
+        /* Add spacing to card columns for better vertical separation */
+        .col-lg-4, .col-md-6 {
+            padding-top: 10px; /* Added top padding to columns */
+            padding-bottom: 10px; /* Added bottom padding to columns */
+        }
+
+        /* Add vertical spacing between gallery items */
+        #imageGalleryContainer .row > div,
+        .video-gallery-section .row > div {
+            margin-top: 10px; /* Added top margin to each column */
+            margin-bottom: 10px; /* Added bottom margin to each column */
+        }
+
+        /* Add vertical spacing between sections */
+        .image-gallery-section {
+            margin-bottom: 60px;
+        }
+
+        .video-gallery-section {
+            margin-top: 60px;
+        }
+
+        /* === PROFESSIONAL PAGINATION === */
+        .pagination-section {
+            padding: 80px 0 60px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #f0f2f5 100%);
+        }
+
+        .pagination-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .pagination-info {
+            text-align: center;
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .pagination-info strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .page-item {
+            margin: 0;
+        }
+
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            background: white;
+            color: #666;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .page-link:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .page-link:focus {
+            box-shadow: none;
+        }
+
+        .page-item.active .page-link {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .page-item.disabled .page-link {
+            background: #f8f9fa;
+            color: #ccc;
+            border-color: #eee;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .page-item.prev .page-link,
+        .page-item.next .page-link {
+            width: auto;
+            padding: 0 25px;
+            gap: 8px;
+        }
+
+        .page-item.ellipsis .page-link {
+            border: none;
+            background: transparent;
+            color: #999;
+            cursor: default;
+        }
+
+        .page-item.ellipsis .page-link:hover {
+            background: transparent;
+            color: #999;
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .page-link {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+            
+            .page-item.prev .page-link,
+            .page-item.next .page-link {
+                padding: 0 15px;
+                font-size: 0.9rem;
+            }
+            
+            .page-item.prev .page-link span,
+            .page-item.next .page-link span {
+                display: none;
+            }
+        }
+
+        /* === PROFESSIONAL CTA SECTION === */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--dark-color) 0%, #2c2c2c 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.8) 100%);
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><path fill="%23d4af37" opacity="0.1" d="M0,0 L1000,0 L1000,1000 L0,1000 Z"/></svg>');
+            background-size: cover;
+            opacity: 0.1;
         }
         
-        .hero-content {
+        .cta-content {
             position: relative;
             z-index: 2;
+            text-align: center;
         }
         
-        .hero-title {
-            font-size: 4rem;
+        .cta-title {
+            font-size: 2.8rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            background: linear-gradient(135deg, #fff 0%, var(--primary-gold-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 20px;
+            color: white;
+            line-height: 1.2;
         }
         
+        .cta-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .cta-subtitle {
+                font-size: 1.1rem;
+                padding: 0 20px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
             }
         }
-        
-        .hero-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Button Styles - Using gold from first file */
-        .btn-gold {
-            background: linear-gradient(135deg, var(--primary-gold), var(--primary-gold-dark));
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-        
-        .btn-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-            color: white;
-        }
-        
-        .btn-outline-gold {
-            border: 2px solid var(--primary-gold);
-            color: var(--primary-gold);
-            background: transparent;
-            padding: 10px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-outline-gold:hover {
-            background: var(--primary-gold);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-        
-        body.dark-mode .btn-outline-gold {
-            color: var(--primary-gold-light);
-            border-color: var(--primary-gold-light);
-        }
-        
-        body.dark-mode .btn-outline-gold:hover {
-            background: var(--primary-gold-light);
-            color: var(--text-dark);
-        }
-        
-        /* Menu Cards - Now "Wedding Packages" */
-        .menu-card {
-            border: none;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            margin-bottom: 30px;
-            background: var(--card-light);
-        }
-        
-        body.dark-mode .menu-card {
-            background: var(--card-dark);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        .menu-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        
-        body.dark-mode .menu-card:hover {
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-            background: var(--card-dark-hover);
-        }
-        
-        .menu-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-        
-        .menu-card:hover .menu-img {
-            transform: scale(1.05);
-        }
-        
-        /* Video Gallery Section */
-        .video-gallery-section {
-            padding: 100px 0;
-            background-color: var(--bg-light-secondary);
-        }
-        
-        body.dark-mode .video-gallery-section {
-            background-color: var(--bg-dark);
-        }
-        
-        .video-gallery-container {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            background: var(--card-light);
-        }
-        
-        body.dark-mode .video-gallery-container {
-            background: var(--card-dark);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        .video-gallery-container:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        body.dark-mode .video-gallery-container:hover {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            background: var(--card-dark-hover);
-        }
-        
-        .video-thumbnail {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-            cursor: pointer;
-        }
-        
-        .video-gallery-container:hover .video-thumbnail {
-            transform: scale(1.08);
-        }
-        
-        /* Media Type Badges */
-        .media-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            z-index: 10;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-        
-        .photo-badge {
-            background: linear-gradient(135deg, #17a2b8, #0d8aa0);
-            color: white;
-        }
-        
-        .video-badge {
+
+        /* === DARK MODE TOGGLE === */
+        .theme-toggle {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
             background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
             color: white;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 6px 14px 6px 12px;
-        }
-        
-        .video-badge i {
-            font-size: 10px;
-        }
-        
-        .img-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-            color: white;
-            padding: 25px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 5;
-            transform: translateY(10px);
-        }
-        
-        .video-gallery-container:hover .img-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Video Play Button */
-        .video-play-btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70px;
-            height: 70px;
-            background: rgba(255,255,255,0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--video-red);
-            font-size: 26px;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            z-index: 5;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-        
-        .video-play-btn:hover {
-            background: rgba(220, 53, 69, 0.95);
-            color: white;
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-        
-        /* Philosophy Section - Wedding Planner Version */
-        .philosophy-section {
-            position: relative;
-            padding: 100px 0;
-            background-color: var(--bg-light);
-            overflow: hidden;
-        }
-        
-        body.dark-mode .philosophy-section {
-            background-color: var(--bg-dark-section) !important;
-        }
-        
-        .philosophy-image-container {
-            position: relative;
-            padding: 15px;
-            background: var(--card-light);
-            border-radius: 12px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
-            
-            transition: all 0.3s ease;
-            z-index: 1;
-        }
-        
-        body.dark-mode .philosophy-image-container {
-            background: var(--card-dark);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
-        }    
-        .philosophy-image {
-            width: 100%;
-            border-radius: 8px;
-            object-fit: cover;
-            height: 450px;
-            box-shadow: 0 10px 15px  rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Packages Section */
-        .menu-section {
-            padding: 100px 0;
-            background-color: var(--bg-light-secondary);
-        }
-        
-        body.dark-mode .menu-section {
-            background-color: var(--bg-dark);
-        }
-        
-        /* SLIDER GALLERY SECTION */
-        .gallery-slideshow {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        
-        .gallery-slide {
-            display: none;
-            text-align: center;
-            animation-duration: 1.5s;
-            animation-fill-mode: both;
-        }
-        
-        .gallery-slide.active {
-            display: flex;
-            justify-content: space-between;
-            animation-name: fadeIn;
-        }
-        
-        .gallery-slide.fade-out {
-            animation-name: fadeOut;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateX(0); }
-            to { opacity: 0; transform: translateX(-30px); }
-        }
-        
-        .gallery-slide-item {
-            flex: 0 0 32%;
-            margin: 0 0.5%;
-            transition: all 0.8s ease;
-        }
-        
-        .gallery-slide img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            transition: transform 0.8s ease;
-        }
-        
-        .gallery-slide img:hover {
-            transform: scale(1.03);
-        }
-        
-        .gallery-slide-caption {
-            margin-top: 10px;
-            font-style: italic;
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            transition: all 0.8s ease;
-        }
-        
-        body.dark-mode .gallery-slide-caption {
-            color: var(--text-light);
-        }
-        
-        .gallery-controls {
-            text-align: center;
-            margin-top: 30px;
-        }
-        
-        .gallery-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        
-        .gallery-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #555;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background 0.8s ease;
-        }
-        
-        .gallery-dot.active {
-            background: var(--primary-color);
-        }
-        
-        .gallery-btn {
-            background: var(--primary-color);
-            color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 14px 20px;
+            border-radius: 50px;
             cursor: pointer;
-            margin: 0 10px;
-            transition: all 0.8s ease;
-        }
-        
-        .gallery-btn:hover {
-            background: var(--primary-gold-dark);
-            transform: scale(1.05);
-        }
-        
-        .gallery-btn:disabled {
-            background: #6c757d;
-            cursor: not-allowed;
-            transform: scale(1);
-        }
-
-        /* Testimonials */
-        .testimonials-section {
-            padding: 100px 0;
-            background-color: var(--bg-light);
-            position: relative;
-        }
-        
-        body.dark-mode .testimonials-section {
-            background-color: var(--bg-dark-section) !important;
-        }
-        
-        .testimonial-card {
-            background: var(--card-light);
-            padding: 40px 30px;
-            margin-bottom: 30px;
-            height: 100%;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            border-left: 5px solid var(--primary-gold);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        body.dark-mode .testimonial-card {
-            background: var(--card-dark);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        .testimonial-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-        }
-        
-        body.dark-mode .testimonial-card:hover {
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 80px;
-            color: rgba(212, 175, 55, 0.1);
-            font-family: 'Playfair Display', serif;
-            line-height: 1;
-        }
-        
-        body.dark-mode .testimonial-card::before {
-            color: rgba(212, 175, 55, 0.08);
-        }
-        
-        .stars {
-            color: #ffc107;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 25px;
-            color: var(--text-dark);
-            line-height: 1.8;
-        }
-        
-        body.dark-mode .testimonial-text {
-            color: var(--text-light);
-        }
-        
-        .client-info h6 {
-            color: var(--primary-gold);
-            margin-bottom: 5px;
             font-weight: 600;
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
         
-        .client-info small {
-            color: var(--text-muted);
-            font-size: 0.85rem;
+        .theme-toggle:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
         }
         
-        body.dark-mode .client-info small {
-            color: var(--text-light-muted);
+        body.dark-mode .theme-toggle {
+            background: linear-gradient(135deg, var(--video-red), var(--video-red-dark));
+            box-shadow: 0 4px 20px rgba(220, 53, 69, 0.4);
+        }
+        
+        body.dark-mode .theme-toggle:hover {
+            box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
         }
 
-        /* FOOTER */
-        footer { 
-            background-color:#222; 
-            color:#eee; 
-            font-family:'Poppins', sans-serif; 
-        }
-        
-        footer h5 { 
-            font-family:'Playfair Display', serif; 
-        }
-        
-        footer .footer-link { 
-            text-decoration:none; 
-            display:inline-block; 
-            margin-bottom:8px; 
-            transition: all 0.3s ease; 
-        }
-        
-        footer .footer-link:hover { 
-            color: var(--primary-color); 
-            padding-left:6px; 
-        }
-        
-        footer .footer-social { 
-            font-size:1.2rem; 
-            display:flex; 
-            align-items:center; 
-            justify-content:center; 
-            width:36px; 
-            height:36px; 
-            border-radius:50%; 
-            background-color: rgba(212,175,55,0.2); 
-            transition: all 0.3s ease; 
-        }
-        
-        footer .footer-social:hover { 
-            background-color: var(--primary-color); 
-            color:#fff !important; 
-            box-shadow:0 0 10px rgba(212,175,55,0.6); 
-            transform:translateY(-3px); 
-        }
-        
-        footer hr.bg-secondary { 
-            border-top:1px solid rgba(255,255,255,0.2); 
+        @media (max-width: 768px) {
+            .theme-toggle {
+                bottom: 80px;
+                right: 15px;
+                padding: 12px 16px;
+                font-size: 14px;
+            }
+            
+            .theme-toggle .toggle-text {
+                display: none;
+            }
+            
+            .theme-toggle {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                justify-content: center;
+                padding: 0;
+            }
         }
 
-        /* Additional styles */
-        .bg-light {
-            background-color: var(--bg-light) !important;
+        @media (max-width: 576px) {
+            .theme-toggle {
+                bottom: 70px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+            }
         }
         
-        .bg-dark {
-            background-color: var(--dark-color) !important;
+        /* === DARK MODE STYLES === */
+        body.dark-mode {
+            background-color: #121212 !important;
+            color: #f8f9fa !important;
         }
         
-        .text-light {
-            color: #eee !important;
+        body.dark-mode .philosophy-section,
+        body.dark-mode .image-gallery-section,
+        body.dark-mode .pagination-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%) !important;
         }
         
-        .lead {
-            color: var(--text-dark);
+        body.dark-mode .section-title,
+        body.dark-mode .section-subtitle,
+        body.dark-mode .philosophy-text,
+        body.dark-mode .philosophy-quote,
+        body.dark-mode .planner-note p,
+        body.dark-mode .card-title,
+        body.dark-mode .card-text,
+        body.dark-mode .pagination-info {
+            color: #f8f9fa !important;
+        }
+        
+        body.dark-mode .planner-note {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(232, 196, 196, 0.1)) !important;
+            border-color: rgba(212, 175, 55, 0.3) !important;
+        }
+        
+        body.dark-mode .gallery-card {
+            background: #2c2c2c !important;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3) !important;
+        }
+        
+        body.dark-mode .gallery-card:hover {
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4) !important;
+        }
+        
+        body.dark-mode .page-link {
+            background: #2c2c2c !important;
+            border-color: #444 !important;
+            color: #f8f9fa !important;
+        }
+        
+        body.dark-mode .page-link:hover {
+            background: var(--primary-color) !important;
+            color: white !important;
+        }
+        
+        body.dark-mode .page-item.active .page-link {
+            background: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+            color: white !important;
+        }
+
+        /* === IMAGE FALLBACK === */
+        .image-fallback {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 16px;
+            min-height: 300px;
+            text-align: center;
+            padding: 40px 20px;
+            margin: 20px 0;
+        }
+
+        .image-fallback i {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             opacity: 0.8;
         }
-        
-        body.dark-mode .lead {
-            color: var(--text-light);
+
+        .image-fallback h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
         }
-        
-        /* Responsive adjustments */
+
+        .image-fallback p {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* === RESPONSIVE ADJUSTMENTS === */
+        @media (max-width: 1200px) {
+            .gallery-card-img-container {
+                height: 250px;
+            }
+            
+            .video-thumbnail-wrapper {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .gallery-card-img-container {
+                height: 220px;
+            }
+            
+            .video-thumbnail-wrapper {
+                height: 200px;
+            }
+            
+            .gallery-card,
+            .video-thumbnail-card {
+                margin-bottom: 35px;
+                margin-top: 15px; /* Adjusted for tablet */
+            }
+            
+            .col-lg-4, .col-md-6 {
+                padding-top: 8px;
+                padding-bottom: 8px;
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
+            .gallery-section,
+            .video-gallery-section {
+                padding: 80px 0;
             }
             
-            .gallery-slide-item {
-                flex: 0 0 100%;
-                margin: 10px 0;
+            .section-header {
+                margin-bottom: 60px;
             }
             
-            .gallery-slide.active {
-                flex-direction: column;
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+            
+            .gallery-card-img-container {
+                height: 200px;
+            }
+            
+            .video-thumbnail-wrapper {
+                height: 180px;
+            }
+            
+            .gallery-card,
+            .video-thumbnail-card {
+                margin-bottom: 30px;
+                margin-top: 10px; /* Adjusted for mobile */
+            }
+            
+            .card-body,
+            .video-caption {
+                padding: 25px;
+            }
+            
+            .col-lg-4, .col-md-6 {
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            
+            .image-gallery-section {
+                margin-bottom: 40px;
+            }
+            
+            .video-gallery-section {
+                margin-top: 40px;
+            }
+            
+            /* Stack cards with more spacing on mobile */
+            .col-md-6 {
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .gallery-section,
+            .video-gallery-section {
+                padding: 60px 0;
+            }
+            
+            .section-header {
+                margin-bottom: 50px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .gallery-card-img-container {
+                height: 180px;
+            }
+            
+            .video-thumbnail-wrapper {
+                height: 160px;
+            }
+            
+            .gallery-card,
+            .video-thumbnail-card {
+                margin-bottom: 25px;
+                margin-top: 5px; /* Minimal top margin for mobile */
+            }
+            
+            .card-body,
+            .video-caption {
+                padding: 20px;
+            }
+            
+            .card-title,
+            .video-caption h4 {
+                font-size: 1.1rem;
+            }
+            
+            .col-lg-4, .col-md-6 {
+                padding-top: 3px;
+                padding-bottom: 3px;
+            }
+            
+            .media-badge {
+                top: 15px;
+                right: 15px;
+                padding: 6px 12px;
+                font-size: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle -->
-    <button class="dark-mode-toggle" id="darkModeToggle">
-        <i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>
-    </button>
+  <!-- Dark Mode Toggle -->
+  <button class="theme-toggle" id="themeToggle" onclick="toggleDarkMode()">
+    <i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>
+  </button>
 
-    <!-- NAVBAR - FIXED for dark mode -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-heart me-2"></i>Dream Day</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/home"><i class="fas fa-home me-1"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/suppliers"><i class="fas fa-camera me-1"></i> Suppliers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/booking"><i class="fas fa-bookmark me-1"></i> Book Consultation</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section - WEDDING PLANNER -->
-    <header class="hero-section">
-        <div class="container text-center py-5 hero-content">
-            <h1 class="hero-title">Exquisite Wedding Planning</h1>
-            <p class="hero-subtitle">Professional coordination tailored to your special day</p>
-            <div>
-                <a href="#packages" class="btn btn-gold btn-lg px-5 me-3">View Packages</a>
-                <a href="#contact" class="btn btn-outline-gold btn-lg px-5">Get a Quote</a>
-            </div>
-        </div>
-    </header>
-
-    <!-- About Wedding Planning Section - CORRECTED -->
-<!-- About Catering Section - WEDDING PLANNER PERSPECTIVE ON CATERING -->
-<!-- About Catering Section - CONCISE VERSION -->
-<section class="philosophy-section">
+<!-- EXACT NAVBAR (unchanged) -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
-                <div class="philosophy-image-container">
-                    <img src="/allpack/catering/cateringdata/image1.jpeg" alt="Wedding catering setup" class="philosophy-image">
-                </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <div class="philosophy-content">
-                    <span class="text-warning fw-bold d-block mb-2">PLANNER'S PERSPECTIVE</span>
-                    <h2 class="section-title">Catering by <span class="text-warning">Wedding Experts</span></h2>
-                    <p class="philosophy-quote" style="font-style: italic; font-size: 1.2rem; margin-bottom: 25px;">"We design catering that flows perfectly with your wedding timeline."</p>
-                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px;">As wedding planners, we understand how food service impacts your entire event. Our catering integrates seamlessly with your celebration.</p>
-                    <ul class="list-unstyled" style="margin-bottom: 25px;">
-                        <!-- CONCISE POINTS -->
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1rem;">
-                            <i class="fas fa-check text-warning me-2"></i><strong>Event-Flow Menus:</strong> Designed by wedding planners
-                        </li>
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1rem;">
-                            <i class="fas fa-check text-warning me-2"></i><strong>Perfect Timing:</strong> Aligned with wedding schedule
-                        </li>
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1rem;">
-                            <i class="fas fa-check text-warning me-2"></i><strong>Vendor Harmony:</strong> Seamless teamwork
-                        </li>
-                        <li style="position: relative; padding-left: 30px; margin-bottom: 12px; font-size: 1rem;">
-                            <i class="fas fa-check text-warning me-2"></i><strong>Wedding-Focused Setup:</strong> Designed for celebration flow
-                        </li>
-                    </ul>
-                    <div class="planner-note p-3 mb-4" style="background: rgba(212, 175, 55, 0.08); border-left: 3px solid var(--primary-gold); border-radius: 6px;">
-                        <h6 class="text-warning mb-2" style="font-size: 1rem;">
-                            <i class="fas fa-heart me-2"></i>Wedding Planners Who Cater
-                        </h6>
-                        <p class="mb-0" style="font-size: 0.95rem; line-height: 1.5;">
-                            We create catering that enhances, not interrupts, your celebration.
-                        </p>
-                    </div>
-                 
-                </div>
-            </div>
+        <a class="navbar-brand" href="#">
+            <i class="fas fa-heart me-2"></i>Dream Day
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home"><i class="fas fa-home me-1"></i> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/suppliers"><i class="fas fa-camera me-1"></i>Suppliers</a>
+                </li>
+                 <li class="nav-item"><a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a></li>
+                <li class="nav-item">
+                    <a class="nav-link " href="/booking"><i class="fas fa-bookmark me-1"></i> Book Consultation</a>
+                </li>
+            </ul>
         </div>
     </div>
-</section>
+</nav>
+
+    <!-- Professional Hero Section -->
+    <section class="hero-section" id="main-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="hero-title">Exquisite Wedding Catering</h1>
+                    <p class="hero-subtitle">Where culinary artistry meets wedding perfection. We create unforgettable dining experiences tailored to your love story</p>
+                    <div class="hero-buttons">
+                        <a href="#image-gallery" class="btn btn-gold btn-lg">
+                            <i class="fas fa-images me-2"></i>View Gallery
+                        </a>
+                        <a href="/booking" class="btn btn-outline-gold btn-lg">
+                            <i class="fas fa-calendar-check me-2"></i>Book Consultation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Philosophy Section -->
+    <section class="philosophy-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                    <div class="philosophy-image-container">
+                        <img src="/allpack/catering/cateringdata/image1.jpeg" 
+                             alt="Wedding Catering Setup" 
+                             class="philosophy-image"
+                             loading="lazy"
+                             onerror="handleImageError(this)">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="philosophy-content">
+                        <span class="philosophy-badge">WEDDING PLANNER'S INSIGHT</span>
+                        <h2 class="section-title">Catering by <span class="text-gold">Wedding Experts</span></h2>
+                        <p class="philosophy-quote">
+                            "We design catering that flows perfectly with your wedding timeline, ensuring every course enhances the celebration."
+                        </p>
+                        <p class="philosophy-text">
+                            As experienced wedding planners, we understand that catering is more than just food—it's an integral part of your celebration's rhythm. Our approach combines culinary excellence with seamless event flow.
+                        </p>
+                        <div class="planner-note">
+                            <h6>
+                                <i class="fas fa-star me-2"></i>Wedding Planners Who Understand Catering
+                            </h6>
+                            <p>
+                                We create dining experiences that complement your wedding timeline, from cocktail hour to late-night snacks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Image Gallery Section -->
+    <section id="image-gallery" class="gallery-section image-gallery-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-images"></i>
+                </div>
+                <h2 class="section-title">Catering Gallery</h2>
+                <p class="section-subtitle">Discover our exquisite culinary presentations and beautifully crafted dining setups</p>
+            </div>
+            <div class="row" id="imageGalleryContainer">
+                <% 
+                const imageFiles = files ? files.filter(file => file.fileType === 'image') : [];
+                %>
+                <% if (imageFiles.length > 0) { %>
+                    <% imageFiles.forEach((file, index) => { %>
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="<%= index % 3 * 100 %>">
+                            <div class="gallery-card">
+                                <div class="gallery-card-img-container">
+                                    <img src="/all_disk/catering/<%= file.filePath %>" 
+                                         alt="<%= file.title || 'Wedding Catering' %>" 
+                                         class="gallery-card-img image-clickable"
+                                         loading="lazy"
+                                         onclick="openLightbox('<%= file._id %>', 'image')"
+                                         onerror="handleImageError(this)">
+                                    <span class="media-badge photo-badge">
+                                        <i class="fas fa-camera me-1"></i>Photo
+                                    </span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><%= file.title || 'Wedding Catering' %></h5>
+                                    <p class="card-text"><%= file.description || 'Exquisite wedding catering setup' %></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <div class="col-12 text-center py-5">
+                        <div class="image-fallback rounded-3 py-5">
+                            <i class="fas fa-images fa-4x mb-3"></i>
+                            <h4 class="mb-2">No catering images available yet</h4>
+                            <p class="text-muted mb-0">Check back later for our catering portfolio</p>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Video Gallery Section -->
     <section id="video-gallery" class="video-gallery-section">
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Our Wedding Planning Videos</h2>
-                    <p class="lead">See our wedding coordination in action</p>
+            <div class="section-header video-section-header">
+                <div class="section-icon">
+                    <i class="fas fa-video"></i>
                 </div>
+                <h2 class="section-title">Catering Videos</h2>
+                <p class="section-subtitle">Watch our culinary creations come to life with behind-the-scenes videos and event highlights</p>
             </div>
-            
             <div class="row">
-                <!-- Video 1 -->
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="video-gallery-container">
-                        <span class="media-badge video-badge">
-                            <i class="fas fa-play"></i> Video
-                        </span>
-                        <img src="/allpack/catering/cataringvideos/im1.png" 
-                             alt="Wedding Ceremony Coordination" 
-                             class="video-thumbnail">
-                        <div class="video-play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="img-overlay">
-                            <h5 class="text-white">
-                                <i class="fas fa-play-circle me-2"></i>Wedding Ceremony Coordination
-                            </h5>
-                            <p class="text-white small mb-0">See our elegant ceremony setup in action</p>
-                            <div class="mt-2">
-                                <small class="text-warning">
-                                    <i class="fas fa-video me-1"></i>Click to watch
-                                </small>
+                <% 
+                const videoFiles = files ? files.filter(file => file.fileType === 'video') : [];
+                %>
+                <% if (videoFiles.length > 0) { %>
+                    <% videoFiles.forEach((file, index) => { %>
+                        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="<%= index % 3 * 100 %>">
+                            <div class="video-thumbnail-card">
+                                <div class="video-thumbnail-wrapper" onclick="openLightbox('<%= file._id %>', 'video')">
+                                    <video muted 
+                                           loop
+                                           playsinline
+                                           preload="metadata"
+                                           onmouseenter="playVideoThumbnail(this)" 
+                                           onmouseleave="pauseVideoThumbnail(this)">
+                                        <source src="/all_disk/catering/<%= file.filePath %>" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <div class="play-button-overlay">
+                                        <div class="play-button">
+                                            <i class="fas fa-play"></i>
+                                        </div>
+                                    </div>
+                                    <div class="video-controls-overlay" onclick="event.stopPropagation()">
+                                        <button class="video-control-button" onclick="toggleVideoPlayback(this)">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <span style="color: white; font-size: 12px; margin-left: 10px;">Hover to play</span>
+                                    </div>
+                                    <span class="media-badge video-badge">
+                                        <i class="fas fa-video me-1"></i>Video
+                                    </span>
+                                </div>
+                                <div class="video-caption">
+                                    <h4><%= file.title || 'Catering Service Video' %></h4>
+                                    <p><%= file.description || 'Professional wedding catering service' %></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Video 2 -->
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="video-gallery-container">
-                        <span class="media-badge video-badge">
-                            <i class="fas fa-play"></i> Video
-                        </span>
-                        <img src="/allpack/catering/cataringvideos/im2.png" 
-                             alt="Reception Planning" 
-                             class="video-thumbnail">
-                        <div class="video-play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="img-overlay">
-                            <h5 class="text-white">
-                                <i class="fas fa-play-circle me-2"></i>Reception Planning
-                            </h5>
-                            <p class="text-white small mb-0">Our professional reception coordination</p>
-                            <div class="mt-2">
-                                <small class="text-warning">
-                                    <i class="fas fa-video me-1"></i>Click to watch
-                                </small>
-                            </div>
+                    <% }) %>
+                <% } else { %>
+                    <div class="col-12 text-center py-5">
+                        <div class="image-fallback rounded-3 py-5" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%) !important;">
+                            <i class="fas fa-video-slash fa-4x mb-3"></i>
+                            <h4 class="mb-2 text-white">No catering videos available yet</h4>
+                            <p class="text-light mb-0">Check back later for our catering service videos</p>
                         </div>
                     </div>
-                </div>
-                
-                <!-- Video 3 -->
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="video-gallery-container">
-                        <span class="media-badge video-badge">
-                            <i class="fas fa-play"></i> Video
-                        </span>
-                        <img src="/allpack/catering/cataringvideos/im3.png" 
-                             alt="Wedding Timeline Management" 
-                             class="video-thumbnail">
-                        <div class="video-play-btn">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <div class="img-overlay">
-                            <h5 class="text-white">
-                                <i class="fas fa-play-circle me-2"></i>Wedding Timeline Management
-                            </h5>
-                            <p class="text-white small mb-0">Perfect timing for your special moments</p>
-                            <div class="mt-2">
-                                <small class="text-warning">
-                                    <i class="fas fa-video me-1"></i>Click to watch
-                                </small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <% } %>
             </div>
         </div>
     </section>
 
-    <!-- Wedding Packages Section -->
-    <section id="packages" class="menu-section">
+    <!-- Professional Pagination Section -->
+    <% if (totalPages > 1) { %>
+    <section class="pagination-section">
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Our Wedding Packages</h2>
-                    <p class="lead">Customizable planning services for every couple</p>
+            <div class="pagination-container">
+                <div class="pagination-info">
+                    <p class="mb-0">
+                        Showing page <strong><%= currentPage %></strong> of <strong><%= totalPages %></strong>
+                        <span class="mx-2">•</span>
+                        <strong><%= totalItems %></strong> total items
+                        <% if (imageFiles && videoFiles) { %>
+                        <span class="mx-2">•</span>
+                        <strong><%= imageFiles.length %></strong> images • <strong><%= videoFiles.length %></strong> videos on this page
+                        <% } %>
+                    </p>
                 </div>
-            </div>
-            <div class="row">
-                <!-- Package 1 -->
-                <div class="col-md-4 mb-4" data-aos="fade-up">
-                    <div class="menu-card">
-                        <div class="position-relative">
-                            <img src="/allpack/catering/cateringdata/1.jpg" class="menu-img" alt="Day-of Coordination Package">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Day-of Coordination</h4>
-                            <p class="card-text">Perfect for couples who have planned but need execution</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-check text-warning me-2"></i> Final vendor confirmations</li>
-                                <li><i class="fas fa-check text-warning me-2"></i> Wedding day timeline management</li>
-                                <li><i class="fas fa-check text-warning me-2"></i> On-site coordination (10 hours)</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <span class="h5 text-warning mb-0">Starting at $1,500</span>
-                                <a href="#" class="btn btn-outline-gold">Customize</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Package 2 -->
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="menu-card">
-                        <div class="position-relative">
-                            <img src="/allpack/catering/cateringdata/2.jpg" class="menu-img" alt="Partial Planning Package">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Partial Planning</h4>
-                            <p class="card-text">Guidance with key planning elements</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-check text-warning me-2"></i> Vendor recommendations & management</li>
-                                <li><i class="fas fa-check text-warning me-2"></i> Design concept development</li>
-                                <li><i class="fas fa-check text-warning me-2"></i> Month-of coordination included</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <span class="h5 text-warning mb-0">Starting at $3,500</span>
-                                <a href="#" class="btn btn-outline-gold">Customize</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Package 3 -->
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="menu-card">
-                        <div class="position-relative">
-                            <img src="/allpack/catering/cateringdata/3.jpg" class="menu-img" alt="Full Wedding Planning">
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Full Wedding Planning</h4>
-                            <p class="card-text">Complete planning from start to finish</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-check text-warning me-2"></i> Complete wedding design & execution</li>
-                                <li><i class="fas fa-check text-warning me-2"></i> Unlimited vendor meetings</li>
-                                <li><i class="fas fa-check text-warning me-2"></i> Budget management & full coordination</li>
-                            </ul>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <span class="h5 text-warning mb-0">Starting at $6,500</span>
-                                <a href="#" class="btn btn-outline-gold">Customize</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <nav aria-label="Gallery pagination">
+                    <ul class="pagination">
+                        <li class="page-item prev <%= currentPage === 1 ? 'disabled' : '' %>">
+                            <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Previous">
+                                <i class="fas fa-chevron-left me-2"></i>
+                                <span>Previous</span>
+                            </a>
+                        </li>
+
+                        <% for (let i = 1; i <= totalPages; i++) { %>
+                            <% if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) { %>
+                                <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                                    <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+                                </li>
+                            <% } else if (i === currentPage - 2 || i === currentPage + 2) { %>
+                                <li class="page-item ellipsis">
+                                    <span class="page-link">...</span>
+                                </li>
+                            <% } %>
+                        <% } %>
+
+                        <li class="page-item next <%= currentPage === totalPages ? 'disabled' : '' %>">
+                            <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Next">
+                                <span>Next</span>
+                                <i class="fas fa-chevron-right ms-2"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </section>
+    <% } %>
 
-    <!-- Gallery Section - WEDDING PLANNER -->
-    <section class="py-5" id="image">
+    <!-- Professional CTA Section -->
+    <section class="cta-section">
         <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title" data-aos="fade-up">Our Planned Weddings</h2>
-                    <p class="lead" data-aos="fade-up" data-aos-delay="100">Beautiful weddings we've coordinated</p>
-                </div>
-            </div>
-            
-            <div class="gallery-slideshow" data-aos="fade-up">
-                <!-- Slide 1 (3 images) -->
-                <div class="gallery-slide active">
-                    <div class="gallery-slide-item">
-                        <a href="/allpack/catering/cateringdata/9.jpg">
-                            <img src="/allpack/catering/cateringdata/9.jpg" alt="Wedding ceremony coordination">
-                            <p class="gallery-slide-caption">Perfect ceremony setup</p>
-                        </a>
-                    </div>
-                    <div class="gallery-slide-item">
-                        <a href="/allpack/catering/cateringdata/10.png">
-                            <img src="/allpack/catering/cateringdata/10.png" alt="Reception planning">
-                            <p class="gallery-slide-caption">Elegant reception planning</p>
-                        </a>
-                    </div>
-                    <div class="gallery-slide-item">
-                        <a href="/allpack/catering/cateringdata/wall.jpg">
-                            <img src="/allpack/catering/cateringdata/wall.jpg" alt="Wedding decor coordination">
-                            <p class="gallery-slide-caption">Custom decor coordination</p>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Slide 2 (3 images) -->
-                <div class="gallery-slide">
-                    <div class="gallery-slide-item">
-                        <a href="/allpack/catering/cateringdata/4.jpg">
-                            <img src="/allpack/catering/cateringdata/4.jpg" alt="Cocktail hour planning">
-                            <p class="gallery-slide-caption">Cocktail hour coordination</p>
-                        </a>
-                    </div>
-                    <div class="gallery-slide-item">
-                        <a href="/allpack/catering/cateringdata/5.jpg">
-                            <img src="/allpack/catering/cateringdata/5.jpg" alt="Classic wedding planning">
-                            <p class="gallery-slide-caption">Classic wedding coordination</p>
-                        </a>
-                    </div>
-                    <div class="gallery-slide-item">
-                        <a href="/allpack/catering/cateringdata/6.png">
-                            <img src="/allpack/catering/cateringdata/6.png" alt="Modern wedding planning">
-                            <p class="gallery-slide-caption">Modern wedding planning</p>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Slide 3 (3 images) -->
-                <div class="gallery-slide">
-                    <div class="gallery-slide-item">
-                        <a href="/allpack/catering/cateringdata/7.png">
-                            <img src="/allpack/catering/cateringdata/7.png" alt="Rustic wedding coordination">
-                            <p class="gallery-slide-caption">Rustic wedding coordination</p>
-                        </a>
-                    </div>
-                    <div class="gallery-slide-item">
-                        <a href="/allpack/catering/cateringdata/8.png">
-                            <img src="/allpack/catering/cateringdata/8.png" alt="Wedding setup coordination">
-                            <p class="gallery-slide-caption">Professional setup coordination</p>
-                        </a>
-                    </div>
-                    <div class="gallery-slide-item">
-                        <a href="/allpack/catering/cateringdata/12.jpg">
-                            <img src="/allpack/catering/cateringdata/12.jpg" alt="Grand wedding planning">
-                            <p class="gallery-slide-caption">Grand wedding coordination</p>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="gallery-controls">
-                    <button class="gallery-btn" id="prevBtn"><i class="fas fa-chevron-left"></i> Previous</button>
-                    <button class="gallery-btn" id="nextBtn">Next <i class="fas fa-chevron-right"></i></button>
-                </div>
-                
-                <div class="gallery-dots">
-                    <span class="gallery-dot active" data-slide="0"></span>
-                    <span class="gallery-dot" data-slide="1"></span>
-                    <span class="gallery-dot" data-slide="2"></span>
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Taste Perfection?</h2>
+                <p class="cta-subtitle">Schedule your complimentary tasting session and let's create a menu that tells your love story through food.</p>
+                <div class="cta-buttons">
+                    <a href="/booking" class="btn btn-gold btn-lg px-5 py-3">
+                        <i class="fas fa-calendar-alt me-2"></i>Book Your Tasting
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section - WEDDING PLANNER -->
-    <section id="testimonials" class="testimonials-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-5">
-                    <h2 class="section-title">Client Testimonials</h2>
-                    <p class="lead">What couples say about our wedding planning</p>
-                </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"Our wedding planner made our day absolutely perfect! Every detail was flawlessly executed, and we were able to truly enjoy our day without any stress. Worth every penny!"</p>
-                        <div class="client-info">
-                            <h6>Jennifer & Mark</h6>
-                            <small>June 2024 Wedding</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"We had a destination wedding and our planner handled everything perfectly. She coordinated with vendors we'd never met and made sure everything ran smoothly from 2,000 miles away!"</p>
-                        <div class="client-info">
-                            <h6>Sarah & David</h6>
-                            <small>August 2024 Wedding</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card">
-                        <div class="stars">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="testimonial-text">"From our first consultation to the final dance, our planner was incredible. She anticipated needs we didn't even know we had and made our wedding truly magical."</p>
-                        <div class="client-info">
-                            <h6>Emily & James</h6>
-                            <small>September 2024 Wedding</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section - WEDDING PLANNER -->
-    <section class="py-5 bg-dark text-white">
-        <div class="container py-4">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h2 class="mb-4">Let's Plan Your Perfect Wedding</h2>
-                    <p class="lead mb-4">Contact us for a complimentary wedding planning consultation</p>
-                    <a href="booking.html" class="btn btn-gold btn-lg px-5 me-3">Book a Consultation</a>
-                    <a href="tel:+1234567890" class="btn btn-outline-gold btn-lg px-5">Call Us Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
+    <!-- EXACT FOOTER (unchanged) -->
     <footer class="bg-dark text-light pt-5 pb-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <h5 class="text-warning mb-3">About Us</h5>
-                    <p class="small text-light">We are professional wedding planners creating unforgettable wedding experiences.</p>
+                    <p class="small text-light">We are professional wedding caterers creating unforgettable culinary experiences for your special day.</p>
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5 class="text-warning mb-3">Quick Links</h5>
@@ -1307,181 +1875,561 @@
                 </div>
             </div>
             <hr class="bg-secondary">
-            <div class="text-center pt-3 small">&copy; <script>document.write(new Date().getFullYear())</script> Dream Day Weddings. All Rights Reserved.</div>
+             <div class="text-center pt-3 small">&copy; 2025 Dream Day Catering. All Rights Reserved.</div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Lightbox Modal -->
+    <div id="lightboxModal" class="lightbox-modal">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <button class="lightbox-nav lightbox-prev" onclick="changeMedia(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="lightbox-nav lightbox-next" onclick="changeMedia(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="lightbox-counter" id="lightboxCounter">1 / 1</div>
+        <div class="lightbox-content">
+            <div class="lightbox-media-container">
+                <img id="lightboxImage" class="lightbox-media" src="" alt="" style="display: none;">
+                <video id="lightboxVideo" class="lightbox-video" controls autoplay style="display: none;"></video>
+            </div>
+            <div class="lightbox-caption">
+                <div class="lightbox-title" id="lightboxTitle"></div>
+                <div class="lightbox-description" id="lightboxDescription"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    
     <script>
-        // Initialize AOS animation
+        // Initialize AOS
         AOS.init({
             duration: 800,
             easing: 'ease-in-out',
-            once: true
+            once: true,
+            offset: 100
         });
+
+        // ========== UPDATE CURRENT YEAR ==========
+        // Get current year for footer and testimonials
+        const currentYear = new Date().getFullYear();
+        
+        // Update footer copyright year
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = currentYear;
+        }
         
         // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-        
-        // Dark Mode Toggle Functionality - FIXED: Navbar now changes properly
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const body = document.body;
-        
-        // Check for saved theme preference
-        const currentTheme = localStorage.getItem('theme') || '';
-        if (currentTheme) {
-            body.classList.add(currentTheme);
-            updateToggleIcon(currentTheme);
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
         }
-        
-        darkModeToggle.addEventListener('click', () => {
-            if (body.classList.contains('dark-mode')) {
-                body.classList.remove('dark-mode');
-                localStorage.setItem('theme', '');
-                updateToggleIcon('');
-            } else {
-                body.classList.add('dark-mode');
-                localStorage.setItem('theme', 'dark-mode');
-                updateToggleIcon('dark-mode');
-            }
-        });
-        
-        function updateToggleIcon(theme) {
-            const icon = darkModeToggle.querySelector('i');
-            const toggleText = darkModeToggle.querySelector('.toggle-text');
+
+        // Image error handling
+        function handleImageError(img) {
+            const wrapper = img.parentElement;
+            const fallback = document.createElement('div');
+            fallback.className = 'image-fallback d-flex flex-column align-items-center justify-content-center';
+            fallback.style.height = '280px';
+            fallback.innerHTML = `
+                <i class="fas fa-image fa-3x mb-3"></i>
+                <p class="mb-1">${img.alt || 'Wedding Catering'}</p>
+                <small class="opacity-75">Image Preview</small>
+            `;
             
-            if (theme === 'dark-mode') {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                toggleText.textContent = 'Light Mode';
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                toggleText.textContent = 'Dark Mode';
+            if (wrapper) {
+                wrapper.replaceChild(fallback, img);
             }
         }
-        
-        // Add smooth scrolling to all links
+
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href.startsWith('/')) return;
+                
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const target = document.querySelector(href);
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
-        // SLIDER GALLERY JAVASCRIPT
-        document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.gallery-slide');
-            const dots = document.querySelectorAll('.gallery-dot');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            let currentSlide = 0;
-            const totalSlides = slides.length;
-            let isAnimating = false;
-            const slideDuration = 3000;
+        // ========== LIGHTBOX FUNCTIONALITY ==========
+        let currentMediaIndex = 0;
+        let currentMediaType = 'image';
+        let currentLightboxFileId = null;
+        
+        // Get files data from EJS template
+        let allFiles = [];
+        try {
+            // Parse the EJS files data
+            const filesData = '<%- JSON.stringify(files || []) %>';
+            if (filesData && filesData !== '[]') {
+                allFiles = JSON.parse(filesData.replace(/&quot;/g, '"'));
+            }
+        } catch (e) {
+            console.warn('Could not parse files data:', e);
+            allFiles = [];
+        }
+        
+        // Filter files for lightbox
+        const lightboxImageFiles = allFiles.filter(file => file.fileType === 'image');
+        const lightboxVideoFiles = allFiles.filter(file => file.fileType === 'video');
+        
+        // Combine all files in display order (images first, then videos)
+        const allLightboxFiles = [...lightboxImageFiles, ...lightboxVideoFiles];
+
+        console.log('=== LIGHTBOX DEBUG ===');
+        console.log('Total files:', allFiles.length);
+        console.log('Images:', lightboxImageFiles.length);
+        console.log('Videos:', lightboxVideoFiles.length);
+        console.log('Combined files:', allLightboxFiles.length);
+        console.log('All files:', allLightboxFiles);
+
+        function openLightbox(fileId, type) {
+            console.log('Opening lightbox for:', fileId, type);
             
-            function showSlide(n, direction = 1) {
-                if (isAnimating) return;
-                isAnimating = true;
-                
-                const currentActive = document.querySelector('.gallery-slide.active');
-                if (currentActive) {
-                    currentActive.classList.add('fade-out');
-                }
-                
-                if (n >= totalSlides) {
-                    n = 0;
-                } else if (n < 0) {
-                    n = totalSlides - 1;
-                }
-                
-                setTimeout(() => {
-                    slides.forEach(slide => {
-                        slide.classList.remove('active', 'fade-out');
-                    });
-                    dots.forEach(dot => dot.classList.remove('active'));
-                    
-                    slides[n].classList.add('active');
-                    dots[n].classList.add('active');
-                    
-                    currentSlide = n;
-                    
-                    prevBtn.disabled = currentSlide === 0;
-                    nextBtn.disabled = currentSlide === totalSlides - 1;
-                    
-                    isAnimating = false;
-                }, 1500);
+            // STOP ANY PLAYING VIDEO FIRST
+            const existingVideo = document.getElementById('lightboxVideo');
+            if (existingVideo && existingVideo.style.display === 'block') {
+                existingVideo.pause();
+                existingVideo.currentTime = 0;
+                existingVideo.innerHTML = ''; // Clear source when switching away from video
             }
             
-            nextBtn.addEventListener('click', () => {
-                showSlide(currentSlide + 1, 1);
-            });
+            let filesArray, fileIndex;
             
-            prevBtn.addEventListener('click', () => {
-                showSlide(currentSlide - 1, -1);
-            });
+            if (type === 'image') {
+                filesArray = lightboxImageFiles;
+                currentMediaType = 'image';
+            } else {
+                filesArray = lightboxVideoFiles;
+                currentMediaType = 'video';
+            }
             
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    const direction = index > currentSlide ? 1 : -1;
-                    showSlide(index, direction);
+            fileIndex = filesArray.findIndex(file => file._id === fileId);
+            
+            if (fileIndex === -1) {
+                console.error('File not found:', fileId);
+                console.log('Available files in array:', filesArray.map(f => f._id));
+                return;
+            }
+            
+            currentMediaIndex = fileIndex;
+            currentLightboxFileId = fileId;
+            
+            const lightbox = document.getElementById('lightboxModal');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const lightboxVideo = document.getElementById('lightboxVideo');
+            const lightboxCounter = document.getElementById('lightboxCounter');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+            const lightboxDescription = document.getElementById('lightboxDescription');
+
+            if (!lightbox || !lightboxImage || !lightboxVideo) {
+                console.error('Lightbox elements not found');
+                return;
+            }
+
+            // Hide both media types first
+            lightboxImage.style.display = 'none';
+            lightboxVideo.style.display = 'none';
+
+            const file = filesArray[fileIndex];
+            
+            // Find position in combined array
+            const combinedIndex = allLightboxFiles.findIndex(f => f._id === fileId);
+            const currentPosition = combinedIndex !== -1 ? combinedIndex + 1 : 1;
+            
+            if (type === 'image') {
+                lightboxImage.src = '/all_disk/catering/' + file.filePath;
+                lightboxImage.alt = file.title || 'Catering Image';
+                lightboxImage.style.display = 'block';
+                if (lightboxTitle) lightboxTitle.textContent = file.title || 'Wedding Catering';
+                if (lightboxDescription) lightboxDescription.textContent = file.description || '';
+                if (lightboxCounter) lightboxCounter.textContent = `${currentPosition} / ${allLightboxFiles.length}`;
+                
+                lightboxImage.classList.add('slide-in');
+                setTimeout(() => {
+                    lightboxImage.classList.remove('slide-in');
+                }, 300);
+            } 
+            else if (type === 'video') {
+                // Clear existing video source FIRST
+                lightboxVideo.innerHTML = '';
+                lightboxVideo.pause();
+                lightboxVideo.currentTime = 0;
+                
+                // Create new source element
+                const source = document.createElement('source');
+                source.src = '/all_disk/catering/' + file.filePath;
+                source.type = 'video/mp4';
+                
+                // Add source to video
+                lightboxVideo.appendChild(source);
+                lightboxVideo.style.display = 'block';
+                
+                if (lightboxTitle) lightboxTitle.textContent = file.title || 'Catering Service Video';
+                if (lightboxDescription) lightboxDescription.textContent = file.description || '';
+                if (lightboxCounter) lightboxCounter.textContent = `${currentPosition} / ${allLightboxFiles.length}`;
+                
+                lightboxVideo.classList.add('slide-in');
+                setTimeout(() => {
+                    lightboxVideo.classList.remove('slide-in');
+                }, 300);
+                
+                // Load and AUTOPLAY the video (this is what you wanted)
+                setTimeout(() => {
+                    lightboxVideo.load();
+                    // AUTOPLAY when switching to video
+                    lightboxVideo.play().then(() => {
+                        console.log('Video autoplay started successfully');
+                    }).catch(e => {
+                        console.log('Video autoplay failed, user may need to interact first:', e);
+                        // Show play button overlay if autoplay fails
+                        showPlayOverlay();
+                    });
+                }, 300);
+            }
+
+            lightbox.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function changeMedia(direction) {
+            console.log('Changing media from:', currentLightboxFileId, currentMediaType, currentMediaIndex);
+            
+            // STOP CURRENT VIDEO PLAYBACK
+            const lightboxVideo = document.getElementById('lightboxVideo');
+            if (lightboxVideo && lightboxVideo.style.display === 'block') {
+                lightboxVideo.pause();
+                lightboxVideo.currentTime = 0; // Reset video to start
+                lightboxVideo.innerHTML = ''; // Clear video source
+            }
+            
+            if (allLightboxFiles.length === 0) return;
+            
+            // Find current position in combined array
+            const currentIndex = allLightboxFiles.findIndex(file => file._id === currentLightboxFileId);
+            
+            if (currentIndex === -1) {
+                console.error('Current file not found in combined array:', currentLightboxFileId);
+                console.log('Looking for:', currentLightboxFileId);
+                console.log('Available files:', allLightboxFiles.map(f => ({id: f._id, type: f.fileType})));
+                return;
+            }
+            
+            // Calculate new index
+            let newIndex = currentIndex + direction;
+            
+            // Loop around
+            if (newIndex >= allLightboxFiles.length) {
+                newIndex = 0;
+            } else if (newIndex < 0) {
+                newIndex = allLightboxFiles.length - 1;
+            }
+            
+            // Get new file
+            const newFile = allLightboxFiles[newIndex];
+            
+            if (!newFile) {
+                console.error('No file found at index:', newIndex);
+                return;
+            }
+            
+            // Determine media type and open it
+            const newType = newFile.fileType === 'image' ? 'image' : 'video';
+            console.log('Navigating to:', newFile._id, newType, newIndex);
+            
+            openLightbox(newFile._id, newType);
+        }
+
+        // Helper function to show play overlay if autoplay fails
+        function showPlayOverlay() {
+            const video = document.getElementById('lightboxVideo');
+            if (!video) return;
+            
+            // Create overlay if it doesn't exist
+            let overlay = document.querySelector('.video-autoplay-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'video-autoplay-overlay';
+                overlay.innerHTML = `
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; 
+                                background: rgba(0,0,0,0.7); display: flex; align-items: center; 
+                                justify-content: center; z-index: 10000; border-radius: 8px;">
+                        <button onclick="playVideoFromOverlay()" 
+                                style="background: rgba(220, 53, 69, 0.9); border: none; 
+                                       width: 80px; height: 80px; border-radius: 50%; 
+                                       display: flex; align-items: center; justify-content: center;
+                                       cursor: pointer; color: white; font-size: 24px;">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                `;
+                video.parentElement.style.position = 'relative';
+                video.parentElement.appendChild(overlay);
+            }
+        }
+
+        function playVideoFromOverlay() {
+            const video = document.getElementById('lightboxVideo');
+            const overlay = document.querySelector('.video-autoplay-overlay');
+            
+            if (video) {
+                video.play().then(() => {
+                    if (overlay) overlay.remove();
+                }).catch(e => {
+                    console.log('Manual play also failed:', e);
                 });
-            });
+            }
+        }
+
+        // Handle video ended event
+        function handleVideoEnded() {
+            console.log('Video ended - staying on video');
+            // Video has ended, reset to beginning but don't autoplay
+            const lightboxVideo = document.getElementById('lightboxVideo');
+            if (lightboxVideo) {
+                lightboxVideo.currentTime = 0;
+            }
+        }
+
+        // Add ended event listener to video
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightboxVideo = document.getElementById('lightboxVideo');
+            if (lightboxVideo) {
+                lightboxVideo.addEventListener('ended', handleVideoEnded);
+            }
+        });
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightboxModal');
+            const lightboxVideo = document.getElementById('lightboxVideo');
+            const lightboxImage = document.getElementById('lightboxImage');
             
-            let slideInterval = setInterval(() => {
-                showSlide(currentSlide + 1, 1);
-            }, slideDuration);
+            // Pause video when closing
+            if (lightboxVideo && lightboxVideo.style.display === 'block') {
+                lightboxVideo.pause();
+                lightboxVideo.currentTime = 0;
+                lightboxVideo.innerHTML = ''; // Clear video source
+            }
             
-            const slideshow = document.querySelector('.gallery-slideshow');
-            slideshow.addEventListener('mouseenter', () => {
-                clearInterval(slideInterval);
-            });
+            // Remove any autoplay overlay
+            const overlay = document.querySelector('.video-autoplay-overlay');
+            if (overlay) overlay.remove();
             
-            slideshow.addEventListener('mouseleave', () => {
-                slideInterval = setInterval(() => {
-                    showSlide(currentSlide + 1, 1);
-                }, slideDuration);
-            });
+            // Reset image source to reduce memory
+            if (lightboxImage) {
+                lightboxImage.src = '';
+            }
             
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    showSlide(currentSlide - 1, -1);
+            if (lightbox) {
+                lightbox.style.display = 'none';
+            }
+            document.body.style.overflow = 'auto';
+        }
+
+        // Keyboard navigation for lightbox
+        document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('lightboxModal');
+            if (lightbox && lightbox.style.display === 'block') {
+                if (e.key === 'Escape') {
+                    closeLightbox();
+                } else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    // Stop current video before changing
+                    const video = document.getElementById('lightboxVideo');
+                    if (video && video.style.display === 'block') {
+                        video.pause();
+                        video.currentTime = 0;
+                        video.innerHTML = '';
+                    }
+                    changeMedia(-1);
                 } else if (e.key === 'ArrowRight') {
-                    showSlide(currentSlide + 1, 1);
+                    e.preventDefault();
+                    // Stop current video before changing
+                    const video = document.getElementById('lightboxVideo');
+                    if (video && video.style.display === 'block') {
+                        video.pause();
+                        video.currentTime = 0;
+                        video.innerHTML = '';
+                    }
+                    changeMedia(1);
+                } else if (e.key === ' ') {
+                    // Space bar to play/pause video
+                    e.preventDefault();
+                    const lightboxVideo = document.getElementById('lightboxVideo');
+                    if (lightboxVideo && lightboxVideo.style.display === 'block') {
+                        if (lightboxVideo.paused) {
+                            lightboxVideo.play().then(() => {
+                                // Remove overlay if it exists
+                                const overlay = document.querySelector('.video-autoplay-overlay');
+                                if (overlay) overlay.remove();
+                            });
+                        } else {
+                            lightboxVideo.pause();
+                        }
+                    }
+                }
+            }
+        });
+
+        // Close lightbox when clicking outside the content
+        const lightboxModal = document.getElementById('lightboxModal');
+        if (lightboxModal) {
+            lightboxModal.addEventListener('click', function(e) {
+                if (e.target === this || e.target.classList.contains('lightbox-media-container')) {
+                    closeLightbox();
                 }
             });
+        }
+
+        // Touch swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        if (lightboxModal) {
+            lightboxModal.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            lightboxModal.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+        }
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                changeMedia(1); // Swipe left - next
+            } else if (touchEndX > touchStartX + swipeThreshold) {
+                changeMedia(-1); // Swipe right - previous
+            }
+        }
+
+        // ========== VIDEO THUMBNAIL CONTROLS ==========
+        function playVideoThumbnail(video) {
+            video.play().catch(e => {
+                console.log('Video autoplay failed:', e);
+            });
+        }
+
+        function pauseVideoThumbnail(video) {
+            video.pause();
+            video.currentTime = 0;
+        }
+
+        function toggleVideoPlayback(button) {
+            const video = button.closest('.video-thumbnail-wrapper').querySelector('video');
+            const icon = button.querySelector('i');
             
-            showSlide(0);
+            if (video.paused) {
+                video.play();
+                icon.className = 'fas fa-pause';
+            } else {
+                video.pause();
+                video.currentTime = 0;
+                icon.className = 'fas fa-play';
+            }
             
-            // Video Gallery functionality
-            const videoItems = document.querySelectorAll('.video-gallery-container');
-            
-            videoItems.forEach((item, index) => {
-                const playBtn = item.querySelector('.video-play-btn');
+            // Prevent lightbox from opening
+            event.stopPropagation();
+        }
+
+        // Add event listeners for video thumbnails
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.video-thumbnail-wrapper video').forEach(video => {
+                video.addEventListener('mouseenter', function() {
+                    this.play().catch(e => {
+                        console.log('Video autoplay failed:', e);
+                    });
+                });
                 
-                playBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    alert('Video ' + (index + 1) + ' would play here. In real site, this would open a video player.');
+                video.addEventListener('mouseleave', function() {
+                    this.pause();
+                    this.currentTime = 0;
                 });
             });
-            
-            console.log("Wedding Planner site fully loaded!");
         });
+        // ========== END LIGHTBOX FUNCTIONALITY ==========
+
+        // ========== DARK MODE TOGGLE ==========
+        function toggleDarkMode() {
+            const body = document.body;
+            const isDark = body.classList.toggle('dark-mode');
+            
+            // Save preference
+            localStorage.setItem('darkMode', isDark.toString());
+            
+            // Update button
+            const icon = document.querySelector('#themeToggle i');
+            const text = document.querySelector('#themeToggle .toggle-text');
+            
+            if (isDark) {
+                icon.className = 'fas fa-sun';
+                text.textContent = 'Light Mode';
+                console.log('Dark mode ENABLED');
+            } else {
+                icon.className = 'fas fa-moon';
+                text.textContent = 'Dark Mode';
+                console.log('Dark mode DISABLED');
+            }
+        }
+        
+        // Apply saved dark mode preference on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            const body = document.body;
+            const icon = document.querySelector('#themeToggle i');
+            const text = document.querySelector('#themeToggle .toggle-text');
+            
+            if (isDarkMode) {
+                body.classList.add('dark-mode');
+                icon.className = 'fas fa-sun';
+                text.textContent = 'Light Mode';
+                console.log('Page loaded with dark mode');
+            } else {
+                console.log('Page loaded in light mode');
+            }
+        });
+
+        console.log('Professional Catering Interface Loaded');
+        console.log('Current Year:', currentYear);
+        
+        // Test lightbox function
+        window.testLightbox = function() {
+            console.log('Testing lightbox...');
+            if (lightboxImageFiles.length > 0) {
+                openLightbox(lightboxImageFiles[0]._id, 'image');
+            } else if (lightboxVideoFiles.length > 0) {
+                openLightbox(lightboxVideoFiles[0]._id, 'video');
+            } else {
+                alert('No media files available to test lightbox');
+            }
+        };
     </script>
 </body>
 </html>
