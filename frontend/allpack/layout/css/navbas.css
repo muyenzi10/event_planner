@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 1030;
 }
 
-/* SCROLL EFFECT - Working now */
+/* SCROLL EFFECT */
 .navbar.scrolled {
     padding: 12px 0 !important;
     box-shadow: var(--shadow-medium) !important;
@@ -127,40 +127,21 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1.1);
 }
 
-/* Menu Close Button - INSIDE THE MENU */
-
-.menu-close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
+/* Menu Close Button */
+.navbar-close-btn {
+    background: none;
     border: none;
-    background: var(--primary-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    color: #333;
     cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 1;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.8);
-}
-.menu-close-btn.show {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
+    padding: 0.5rem;
+    margin-left: 1rem;
+    z-index: 1001;
+    display: none; /* Hidden by default */
 }
 
-.menu-close-btn:hover {
-    background: var(--primary-hover);
-    transform: scale(1.1) rotate(90deg) !important;
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+.navbar-close-btn:hover {
+    color: #000;
 }
 
 /* Navigation Links */
@@ -222,7 +203,7 @@ body.menu-open {
 }
 
 /* Mobile responsive navbar */
-@media (max-width: 991px) {
+@media (max-width: 991.98px) {
     .navbar-collapse {
         background-color: var(--light-color);
         border-radius: 16px;
@@ -324,11 +305,16 @@ body.menu-open {
     .navbar.scrolled {
         padding: 15px 0 !important;
     }
+    
+    /* Show close button on mobile when needed */
+    .navbar-close-btn.mobile-visible {
+        display: block !important;
+    }
 }
 
 /* Desktop styles */
 @media (min-width: 992px) {
-    .menu-close-btn {
+    .navbar-close-btn {
         display: none !important;
     }
     
@@ -340,67 +326,8 @@ body.menu-open {
         position: relative !important;
         top: auto !important;
     }
-}
-.navbar-close-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #333;
-    cursor: pointer;
-    padding: 0.5rem;
-    margin-left: 1rem;
-}
-
-.navbar-close-btn:hover {
-    color: #000;
-}
-
-@media (min-width: 992px) {
-    .navbar-close-btn {
-        display: none !important;
-    }
-}
-/* Add a semi-transparent overlay when menu is open on mobile */
-body.menu-open::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999; /* Below navbar but above content */
-    display: block;
-}
-
-@media (min-width: 992px) {
-    body.menu-open::before {
+    
+    .navbar-toggler {
         display: none;
-    }
-}
-
-/* Ensure navbar stays above the overlay */
-.navbar {
-    z-index: 1000;
-}
-
-.navbar-close-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #333;
-    cursor: pointer;
-    padding: 0.5rem;
-    margin-left: 1rem;
-    z-index: 1001; /* Above everything */
-}
-
-.navbar-close-btn:hover {
-    color: #000;
-}
-
-@media (min-width: 992px) {
-    .navbar-close-btn {
-        display: none !important;
     }
 }

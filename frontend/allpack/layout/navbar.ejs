@@ -6,8 +6,8 @@
       <i class="fas fa-heart me-2"></i>Dream Day
     </a>
 
-    <!-- Hamburger (open) -->
-    <button class="navbar-toggler custom-toggler" type="button"
+    <!-- Hamburger (mobile only) -->
+    <button class="navbar-toggler custom-toggler d-lg-none" type="button"
       data-bs-toggle="collapse"
       data-bs-target="#navbarNav"
       aria-controls="navbarNav"
@@ -60,9 +60,8 @@
 
   </div>
 </nav>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
     var navbarCollapse = document.getElementById('navbarNav');
     var body = document.body;
     var navLinks = document.querySelectorAll('.nav-link');
@@ -75,20 +74,40 @@ document.addEventListener('DOMContentLoaded', function() {
         toggle: false
     });
 
-    // Add / remove menu-open class
+    // Function to handle menu state
+    function handleMenuState(isOpening) {
+        if (window.innerWidth < 992) { // Mobile only
+            if (isOpening) {
+                body.classList.add('menu-open');
+                if (closeBtn) {
+                    closeBtn.classList.add('mobile-visible');
+                    closeBtn.style.display = 'block';
+                }
+                if (hamburgerBtn) {
+                    hamburgerBtn.style.display = 'none';
+                }
+            } else {
+                body.classList.remove('menu-open');
+                if (closeBtn) {
+                    closeBtn.classList.remove('mobile-visible');
+                    closeBtn.style.display = 'none';
+                }
+                if (hamburgerBtn) {
+                    hamburgerBtn.style.display = 'block';
+                }
+            }
+        }
+    }
+
+    // Add event listeners for menu state
     navbarCollapse.addEventListener('show.bs.collapse', function () {
-        body.classList.add('menu-open');
-        // Show close button, hide hamburger
-        if (closeBtn) closeBtn.style.display = 'block';
-        if (hamburgerBtn) hamburgerBtn.style.display = 'none';
+        handleMenuState(true);
     });
 
     navbarCollapse.addEventListener('hide.bs.collapse', function () {
-        body.classList.remove('menu-open');
-        // Hide close button, show hamburger
-        if (closeBtn) closeBtn.style.display = 'none';
-        if (hamburgerBtn) hamburgerBtn.style.display = 'block';
+        handleMenuState(false);
         
+        // Reset animations
         navbarCollapse.querySelectorAll('.nav-item').forEach(function(item) {
             item.style.opacity = '1';
             item.style.animation = 'none';
@@ -116,37 +135,63 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Close menu when clicking outside (only on mobile)
     document.addEventListener('click', function(event) {
-        // Check if menu is open on mobile
         if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
-            // Check if click is outside the navbar
             var isClickInsideNavbar = navbar.contains(event.target);
             var isClickOnHamburger = hamburgerBtn && hamburgerBtn.contains(event.target);
             var isClickOnCloseBtn = closeBtn && closeBtn.contains(event.target);
             
-            // If click is outside navbar and not on hamburger/close button, close menu
             if (!isClickInsideNavbar && !isClickOnHamburger && !isClickOnCloseBtn) {
                 bsCollapse.hide();
             }
         }
     });
 
-    // Handle resize
-    window.addEventListener('resize', function() {
+    // Handle resize - ensure proper button states
+    function handleResize() {
         if (window.innerWidth >= 992) {
+            // Desktop: ensure menu is closed, hide mobile buttons
             body.classList.remove('menu-open');
-            // Reset button states on desktop
-            if (closeBtn) closeBtn.style.display = 'none';
-            if (hamburgerBtn) hamburgerBtn.style.display = 'block';
+            if (closeBtn) {
+                closeBtn.classList.remove('mobile-visible');
+                closeBtn.style.display = 'none';
+            }
+            if (hamburgerBtn) {
+                hamburgerBtn.style.display = 'none';
+            }
+            // Ensure menu is expanded on desktop
+            if (!navbarCollapse.classList.contains('show')) {
+                bsCollapse.show();
+            }
         } else {
-            // On mobile, check if menu is open
+            // Mobile: show hamburger, manage close button based on menu state
+            if (hamburgerBtn) {
+                hamburgerBtn.style.display = 'block';
+            }
             if (navbarCollapse.classList.contains('show')) {
-                if (closeBtn) closeBtn.style.display = 'block';
-                if (hamburgerBtn) hamburgerBtn.style.display = 'none';
+                if (closeBtn) {
+                    closeBtn.classList.add('mobile-visible');
+                    closeBtn.style.display = 'block';
+                }
+                if (hamburgerBtn) {
+                    hamburgerBtn.style.display = 'none';
+                }
             } else {
-                if (closeBtn) closeBtn.style.display = 'none';
-                if (hamburgerBtn) hamburgerBtn.style.display = 'block';
+                if (closeBtn) {
+                    closeBtn.classList.remove('mobile-visible');
+                    closeBtn.style.display = 'none';
+                }
             }
         }
+    }
+
+    // Add resize listener with debounce
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(handleResize, 100);
     });
+
+    // Initialize on load
+    handleResize();
 });
 </script>
