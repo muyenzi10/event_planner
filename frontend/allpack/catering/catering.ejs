@@ -1779,17 +1779,6 @@
     <section class="pagination-section">
         <div class="container">
             <div class="pagination-container">
-                <div class="pagination-info">
-                    <p class="mb-0">
-                        Showing page <strong><%= currentPage %></strong> of <strong><%= totalPages %></strong>
-                        <span class="mx-2">•</span>
-                        <strong><%= totalItems %></strong> total items
-                        <% if (imageFiles && videoFiles) { %>
-                        <span class="mx-2">•</span>
-                        <strong><%= imageFiles.length %></strong> images • <strong><%= videoFiles.length %></strong> videos on this page
-                        <% } %>
-                    </p>
-                </div>
                 <nav aria-label="Gallery pagination">
                     <ul class="pagination">
                         <li class="page-item prev <%= currentPage === 1 ? 'disabled' : '' %>">

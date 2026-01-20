@@ -1,0 +1,1701 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#2c3e50">
+  <title>Services</title>
+
+  <!-- Bootstrap & Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Your existing navbar & footer CSS -->
+  <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
+<link rel="stylesheet" href="/allpack/layout/css/footer.css">
+  <style>
+    /* ===== RESET FOR NAVBAR ISSUE ===== */
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow-x: hidden;
+    }
+
+    /* Remove any default spacing that might push navbar down */
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    /* Ensure navbar is at the very top */
+    .navbar {
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        margin: 0 !important;
+    }
+
+    /* Remove any container padding that might affect navbar */
+    .navbar > .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin: 0 auto !important;
+    }
+
+    /* ===== GALLERY DARK/LIGHT THEME ===== */
+    :root {
+        /* Light Theme Colors (default) */
+        --gallery-bg-light: #ffffff;
+        --gallery-bg-surface-light: #f8f9fa;
+        --gallery-text-light: #333333;
+        --gallery-text-secondary-light: #666666;
+        --gallery-card-bg-light: #ffffff;
+        --gallery-shadow-light: rgba(0,0,0,.12);
+        --gallery-border-light: rgba(0, 0, 0, 0.1);
+        
+        /* Dark Theme Colors */
+        --gallery-bg-dark: #121212;
+        --gallery-bg-surface-dark: #1e1e1e;
+        --gallery-text-dark: #f5f5f5;
+        --gallery-text-secondary-dark: #b0b0b0;
+        --gallery-card-bg-dark: #252525;
+        --gallery-shadow-dark: rgba(0,0,0,.3);
+        --gallery-border-dark: rgba(255, 255, 255, 0.1);
+        
+        /* Common Colors */
+        --gallery-primary: #2c3e50;
+        --gallery-secondary: #e74c3c;
+        --gallery-accent: #3498db;
+        --gallery-gradient-red: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    }
+
+    /* ===== THEME SWITCHER - FIXED FOR MOBILE ===== */
+    .theme-switcher {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 10000;
+    }
+
+    .theme-toggle-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: #2c3e50;
+        color: white;
+        border: 3px solid #e74c3c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        z-index: 10001;
+        position: relative;
+    }
+
+    .theme-toggle-btn:hover {
+        transform: scale(1.1) rotate(15deg);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* ===== GALLERY CONTAINER THEME ===== */
+    /* Light theme (default) */
+    .gallery-theme-container {
+        --gallery-bg: var(--gallery-bg-light);
+        --gallery-surface: var(--gallery-bg-surface-light);
+        --gallery-text: var(--gallery-text-light);
+        --gallery-text-secondary: var(--gallery-text-secondary-light);
+        --gallery-card-bg: var(--gallery-card-bg-light);
+        --gallery-shadow: var(--gallery-shadow-light);
+        --gallery-border: var(--gallery-border-light);
+        
+        background-color: var(--gallery-bg);
+        color: var(--gallery-text);
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Dark theme class */
+    .gallery-theme-container.dark-mode {
+        --gallery-bg: var(--gallery-bg-dark);
+        --gallery-surface: var(--gallery-bg-surface-dark);
+        --gallery-text: var(--gallery-text-dark);
+        --gallery-text-secondary: var(--gallery-text-secondary-dark);
+        --gallery-card-bg: var(--gallery-card-bg-dark);
+        --gallery-shadow: var(--gallery-shadow-dark);
+        --gallery-border: var(--gallery-border-dark);
+    }
+
+    /* ===== GALLERY PAGE ONLY STYLES ===== */
+    
+    /* ===== CARDS ===== */
+    .gallery-card {
+        border: none;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px var(--gallery-shadow);
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        height: 100%;
+        overflow: hidden;
+        background: var(--gallery-card-bg);
+        cursor: pointer;
+        color: var(--gallery-text);
+        border: 1px solid var(--gallery-border);
+    }
+
+    .gallery-card:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 20px 40px var(--gallery-shadow);
+    }
+
+    .gallery-card-body {
+        padding: 1.5rem;
+    }
+
+    .gallery-card-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: var(--gallery-primary);
+        transition: color 0.3s ease;
+    }
+
+    .gallery-card:hover .gallery-card-title {
+        color: var(--gallery-secondary);
+    }
+
+    .gallery-card-text {
+        font-size: 1rem;
+        color: var(--gallery-text-secondary);
+        margin-bottom: 0;
+        line-height: 1.5;
+    }
+
+    /* ===== MEDIA THUMBNAILS ===== */
+    .gallery-card-img-top {
+        width: 100%;
+        height: 240px;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .gallery-card:hover .gallery-card-img-top {
+        transform: scale(1.08);
+    }
+
+    /* ===== VIDEO PLAY ICON ===== */
+    .gallery-video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 64px;
+        color: rgba(255, 255, 255, 0.95);
+        opacity: 0;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(2px);
+        z-index: 2;
+    }
+
+    .gallery-card:hover .gallery-video-overlay {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+
+    .gallery-video-overlay i {
+        text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-card:hover .gallery-video-overlay i {
+        transform: scale(1.1);
+    }
+
+    /* ===== REDUCED HERO SECTION ===== */
+    .gallery-hero-section { 
+        min-height: 80vh;
+        position: relative;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        margin-top: 0 !important; /* Ensure no margin above hero */
+    }
+
+    /* REMOVE PIP FROM HERO VIDEO */
+    .gallery-hero-video {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        filter: brightness(0.7) contrast(1.1);
+        /* Disable Picture-in-Picture */
+        -webkit-media-controls: none;
+        -moz-media-controls: none;
+        -ms-media-controls: none;
+        media-controls: none;
+        /* Prevent any browser PIP */
+        disablePictureInPicture: true;
+    }
+
+    /* Remove PIP button from video controls */
+    .gallery-hero-video::-webkit-media-controls {
+        display: none !important;
+    }
+
+    .gallery-hero-video::-webkit-media-controls-picture-in-picture-button {
+        display: none !important;
+    }
+
+    .gallery-hero-video::-webkit-media-controls-overlay-enclosure {
+        display: none !important;
+    }
+
+    .gallery-hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, 
+            rgba(44, 62, 80, 0.9) 0%, 
+            rgba(26, 37, 48, 0.8) 50%,
+            rgba(231, 76, 60, 0.3) 100%);
+        z-index: -1;
+    }
+
+    .gallery-hero-content {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 2rem 2rem;
+        animation: galleryFadeInUp 1s ease-out;
+    }
+
+    @keyframes galleryFadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .gallery-hero-title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: white;
+        line-height: 1.1;
+        text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        letter-spacing: -0.5px;
+    }
+
+    .gallery-hero-title span {
+        background: var(--gallery-gradient-red);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+        animation: galleryColorShift 3s infinite alternate;
+    }
+
+    @keyframes galleryColorShift {
+        0% {
+            background: var(--gallery-gradient-red);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        100% {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+    }
+
+    .gallery-hero-subtitle {
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .gallery-hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 2rem;
+        background: var(--gallery-gradient-red);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 8px 24px rgba(231, 76, 60, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .gallery-hero-cta::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.7s ease;
+    }
+
+    .gallery-hero-cta:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 32px rgba(231, 76, 60, 0.4);
+    }
+
+    .gallery-hero-cta:hover::before {
+        left: 100%;
+    }
+
+    .gallery-hero-cta i {
+        font-size: 1.2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .gallery-hero-cta:hover i {
+        transform: translateX(5px);
+    }
+
+    .gallery-hero-scroll {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 1.5rem;
+        animation: galleryBounce 2s infinite;
+        opacity: 0.8;
+        cursor: pointer;
+    }
+
+    @keyframes galleryBounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateX(-50%) translateY(0);
+        }
+        40% {
+            transform: translateX(-50%) translateY(-10px);
+        }
+        60% {
+            transform: translateX(-50%) translateY(-5px);
+        }
+    }
+
+    /* ===== SECTION HEADERS ===== */
+    .gallery-section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        position: relative;
+    }
+
+    .gallery-section-title {
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 800;
+        color: var(--gallery-primary);
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+    }
+
+    .gallery-section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 4px;
+        background: var(--gallery-gradient-red);
+        border-radius: 2px;
+    }
+
+    .gallery-section-subtitle {
+        font-size: 1.25rem;
+        color: var(--gallery-text-secondary);
+        max-width: 700px;
+        margin: 1.5rem auto 0;
+        line-height: 1.6;
+    }
+
+    /* ===== GRID SYSTEM ===== */
+    .gallery-grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    /* ===== LIGHTBOX MODAL ===== */
+    .gallery-lightbox-modal .modal-content { 
+        border-radius: 16px; 
+        border: none;
+        background: transparent;
+        margin: 1rem;
+    }
+    
+    .gallery-lightbox-modal #lightboxImage, 
+    .gallery-lightbox-modal #lightboxVideo { 
+        max-height: 80vh; 
+        border-radius: 12px; 
+        width: 100%;
+        object-fit: contain;
+    }
+
+    .gallery-lightbox-modal .modal-body {
+        padding: 0;
+        position: relative;
+    }
+
+    /* ===== ENHANCED CLOSE BUTTON ===== */
+    .gallery-lightbox-close {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.7);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        margin: 0;
+    }
+
+    .gallery-lightbox-close::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(231, 76, 60, 0.9), rgba(192, 57, 43, 0.9));
+        border-radius: 50%;
+        transform: scale(0);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: -1;
+    }
+
+    .gallery-lightbox-close:hover {
+        transform: rotate(90deg) scale(1.1);
+        border-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+    }
+
+    .gallery-lightbox-close:hover::before {
+        transform: scale(1);
+    }
+
+    .gallery-lightbox-close:active {
+        transform: rotate(90deg) scale(0.95);
+        transition: transform 0.1s ease;
+    }
+
+    /* Pulse animation effect */
+    @keyframes galleryPulseGlow {
+        0% {
+            box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+        }
+    }
+
+    .gallery-lightbox-close.pulse {
+        animation: galleryPulseGlow 2s infinite;
+    }
+
+    /* ===== LIGHTBOX NAVIGATION BUTTONS ===== */
+    .gallery-lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.7);
+        border: none;
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 100;
+        opacity: 0.8;
+        border: 2px solid transparent;
+        margin: 0;
+    }
+
+    .gallery-lightbox-nav:hover {
+        background: rgba(0, 0, 0, 0.9);
+        opacity: 1;
+        transform: translateY(-50%) scale(1.1);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .gallery-lightbox-prev {
+        left: 30px;
+    }
+
+    .gallery-lightbox-next {
+        right: 30px;
+    }
+
+    /* ===== LIGHTBOX CAPTION ===== */
+    .gallery-lightbox-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+        color: white;
+        padding: 2rem 1rem 1rem;
+        text-align: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 99;
+        margin: 0;
+    }
+
+    .gallery-lightbox-modal .modal-body:hover .gallery-lightbox-caption {
+        opacity: 1;
+    }
+
+    .gallery-lightbox-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: white;
+    }
+
+    .gallery-lightbox-description {
+        font-size: 0.9375rem;
+        opacity: 0.9;
+        margin-bottom: 0;
+        color: rgba(255, 255, 255, 0.95);
+    }
+
+    .gallery-lightbox-counter {
+        font-size: 0.875rem;
+        opacity: 0.8;
+        margin-top: 0.5rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* ===== MODAL BACKDROP ===== */
+    .gallery-lightbox-modal .modal-backdrop {
+        background-color: rgba(0, 0, 0, 0.85);
+    }
+
+    /* ===== THEMED TEXT CLASSES ===== */
+    .gallery-text-muted {
+        color: var(--gallery-text-secondary) !important;
+    }
+
+    /* ===== PAGINATION STYLES ===== */
+    .pagination {
+        gap: 8px;
+    }
+
+    .page-link {
+        background-color: var(--gallery-card-bg);
+        border: 1px solid var(--gallery-border);
+        color: var(--gallery-text);
+        border-radius: 8px !important;
+        padding: 0.75rem 1rem;
+        min-width: 50px;
+        text-align: center;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .page-link:hover {
+        background-color: var(--gallery-primary);
+        color: white;
+        border-color: var(--gallery-primary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(44, 62, 80, 0.2);
+    }
+
+    .page-item.active .page-link {
+        background: var(--gallery-gradient-red);
+        border-color: transparent;
+        color: white;
+        box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+    }
+
+    .page-item.disabled .page-link {
+        background-color: var(--gallery-surface);
+        color: var(--gallery-text-secondary);
+        border-color: var(--gallery-border);
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .page-item:not(.disabled):not(.active) .page-link:focus {
+        box-shadow: 0 0 0 0.25rem rgba(44, 62, 80, 0.25);
+    }
+
+    /* Dark mode adjustments */
+    .gallery-theme-container.dark-mode .page-link {
+        background-color: var(--gallery-card-bg-dark);
+        border-color: var(--gallery-border-dark);
+    }
+
+    .gallery-theme-container.dark-mode .page-item.disabled .page-link {
+        background-color: var(--gallery-bg-surface-dark);
+    }
+
+    /* ===== RESPONSIVE DESIGN ===== */
+    @media (max-width: 767.98px) {
+        .gallery-hero-section { 
+            min-height: 50vh;
+        }
+        
+        .gallery-hero-title {
+            font-size: clamp(2rem, 6vw, 2.8rem);
+        }
+        
+        .gallery-hero-subtitle {
+            font-size: 1rem;
+        }
+        
+        .gallery-hero-content {
+            padding: 1.5rem 1rem;
+        }
+        
+        .gallery-hero-cta {
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .gallery-hero-scroll {
+            bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        .gallery-section-title {
+            font-size: clamp(2rem, 6vw, 2.5rem);
+        }
+        
+        .gallery-card-img-top { 
+            height: 200px; 
+        }
+        
+        .gallery-video-overlay { 
+            font-size: 48px; 
+        }
+        
+        .gallery-lightbox-modal .modal-dialog { 
+            margin: 1rem auto; 
+            max-width: 100%;
+        }
+        
+        .gallery-lightbox-modal .modal-content {
+            margin: 0.5rem;
+        }
+        
+        .gallery-lightbox-modal #lightboxImage, 
+        .gallery-lightbox-modal #lightboxVideo { 
+            max-height: 60vh; 
+        }
+        
+        .gallery-lightbox-nav {
+            width: 40px;
+            height: 40px;
+            font-size: 1.25rem;
+        }
+        
+        .gallery-lightbox-prev {
+            left: 15px;
+        }
+        
+        .gallery-lightbox-next {
+            right: 15px;
+        }
+        
+        .gallery-lightbox-close {
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            top: 15px;
+            right: 15px;
+        }
+        
+        .gallery-lightbox-caption {
+            padding: 1.5rem 0.75rem 0.75rem;
+            opacity: 1;
+        }
+        
+        .gallery-lightbox-title {
+            font-size: 1rem;
+        }
+        
+        .gallery-grid {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* ===== MOBILE FIX FOR THEME BUTTON ===== */
+        .theme-switcher {
+            bottom: 80px !important;
+            right: 20px !important;
+            z-index: 10000 !important;
+        }
+        
+        .theme-toggle-btn {
+            width: 60px !important;
+            height: 60px !important;
+            font-size: 1.4rem !important;
+            background: #e74c3c !important;
+            border: 3px solid #ffffff !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7) !important;
+            animation: mobilePulse 2s infinite;
+        }
+
+        /* Add pulse animation for better visibility */
+        @keyframes mobilePulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(231, 76, 60, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+            }
+        }
+
+        /* Mobile pagination */
+        .page-link {
+            padding: 0.5rem 0.75rem;
+            min-width: 40px;
+            font-size: 0.9rem;
+        }
+        
+        .pagination {
+            gap: 4px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+
+    /* ===== FIX FOR VERY SMALL SCREENS ===== */
+    @media (max-width: 375px) {
+        .theme-switcher {
+            bottom: 70px !important;
+            right: 15px !important;
+        }
+        
+        .theme-toggle-btn {
+            width: 55px !important;
+            height: 55px !important;
+            font-size: 1.3rem !important;
+        }
+    }
+
+    /* ===== SAFE AREA FOR IOS DEVICES ===== */
+    @supports (padding: max(0px)) {
+        .theme-switcher {
+            bottom: max(30px, env(safe-area-inset-bottom)) !important;
+            right: max(30px, env(safe-area-inset-right)) !important;
+        }
+        
+        @media (max-width: 767.98px) {
+            .theme-switcher {
+                bottom: max(80px, env(safe-area-inset-bottom)) !important;
+                right: max(20px, env(safe-area-inset-right)) !important;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .theme-switcher {
+                bottom: max(70px, env(safe-area-inset-bottom)) !important;
+                right: max(15px, env(safe-area-inset-right)) !important;
+            }
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        .gallery-hero-section { 
+            min-height: 55vh;
+        }
+        
+        .gallery-card-img-top { 
+            height: 220px; 
+        }
+        
+        .gallery-lightbox-modal .modal-dialog {
+            margin: 1.5rem auto;
+        }
+        
+        .gallery-lightbox-modal #lightboxImage, 
+        .gallery-lightbox-modal #lightboxVideo { 
+            max-height: 65vh; 
+        }
+        
+        .gallery-lightbox-nav {
+            width: 45px;
+            height: 45px;
+        }
+        
+        .gallery-lightbox-close {
+            width: 45px;
+            height: 45px;
+            top: 20px;
+            right: 20px;
+        }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR - Uses your existing layout.css -->
+<%- include('../layout/navbar') %>
+
+<%
+  const imageFiles = files?.filter(f => f.fileType === 'image') || [];
+  const videoFiles = files?.filter(f => f.fileType === 'video') || [];
+  const allMedia = [...imageFiles.map(f => ({...f, type: 'image'})), ...videoFiles.map(f => ({...f, type: 'video'}))];
+%>
+
+<!-- THEME SWITCHER -->
+<div class="theme-switcher">
+    <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+</div>
+
+<!-- REDUCED HERO SECTION -->
+<section class="gallery-hero-section position-relative">
+  <!-- REMOVED PIP ATTRIBUTES AND ADDED disablePictureInPicture -->
+  <video autoplay muted loop playsinline disablePictureInPicture class="gallery-hero-video">
+    <source src="/allpack/iriza/irizadata/v1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="gallery-hero-overlay"></div>
+  
+  <div class="container">
+    <div class="gallery-hero-content">
+      <h1 class="gallery-hero-title">
+        <span>Impeccable Service</span><br>for Your Perfect Day
+      </h1>
+      <p class="gallery-hero-subtitle">
+        We transform your vision into reality with meticulous attention to detail, 
+        seamless execution, and unforgettable experiences that last a lifetime.
+      </p>
+      <a href="#gallery" class="gallery-hero-cta">
+        <span>Explore Our Gallery</span>
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+  
+  <div class="gallery-hero-scroll" onclick="document.querySelector('#gallery').scrollIntoView({ behavior: 'smooth' })">
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- IMAGE GALLERY -->
+<section class="py-5 gallery-theme-container" id="gallery">
+  <div class="container">
+    <div class="gallery-section-header">
+      <h2 class="gallery-section-title">
+        <i class="fa-solid fa-image me-2"></i>Image Gallery
+      </h2>
+      <p class="gallery-section-subtitle">
+        Browse through our collection of stunning event moments captured with professional excellence
+      </p>
+    </div>
+
+    <% if (imageFiles.length === 0) { %>
+      <div class="text-center py-5">
+        <i class="fas fa-images fa-4x gallery-text-muted mb-4"></i>
+        <h3 class="gallery-text-muted fs-4 mb-2">No images available</h3>
+        <p class="gallery-text-muted">Check back soon for updates</p>
+      </div>
+    <% } else { %>
+      <div class="gallery-grid">
+        <% imageFiles.forEach((file, index) => { %>
+          <div class="card-wrapper">
+            <div class="gallery-card">
+              <div class="position-relative overflow-hidden">
+                <img
+                  src="/all_disk/service/<%= file.filePath %>"
+                  class="gallery-card-img-top gallery-item"
+                  alt="<%= file.title || 'Event Image' %>"
+                  loading="lazy"
+                  data-type="image"
+                  data-src="/all_disk/service/<%= file.filePath %>"
+                  data-title="<%= file.title || 'Untitled Image' %>"
+                  data-description="<%= file.description || '' %>"
+                  data-index="<%= index %>"
+                >
+              </div>
+              <div class="gallery-card-body">
+                <h5 class="gallery-card-title"><%= file.title || 'Untitled Image' %></h5>
+                <p class="gallery-card-text"><%= file.description || '' %></p>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<!-- VIDEO GALLERY -->
+<section class="py-5 gallery-theme-container">
+  <div class="container">
+    <div class="gallery-section-header">
+      <h2 class="gallery-section-title">
+        <i class="fa-solid fa-video me-2"></i>Video Gallery
+      </h2>
+      <p class="gallery-section-subtitle">
+        Experience the magic of our events through captivating video highlights
+      </p>
+    </div>
+
+    <% if (videoFiles.length === 0) { %>
+      <div class="text-center py-5">
+        <i class="fas fa-video fa-4x gallery-text-muted mb-4"></i>
+        <h3 class="gallery-text-muted fs-4 mb-2">No videos available</h3>
+        <p class="gallery-text-muted">Video content coming soon</p>
+      </div>
+    <% } else { %>
+      <div class="gallery-grid">
+        <% videoFiles.forEach((file, index) => { %>
+          <div class="card-wrapper">
+            <div class="gallery-card position-relative">
+              <div class="position-relative">
+                <!-- Disable PIP for gallery video thumbnails too -->
+                <video class="gallery-card-img-top gallery-item" muted preload="metadata" playsinline disablePictureInPicture
+                  data-type="video"
+                  data-src="/all_disk/service/<%= file.filePath %>"
+                  data-title="<%= file.title || 'Untitled Video' %>"
+                  data-description="<%= file.description || '' %>"
+                  data-index="<%= index + imageFiles.length %>"
+                >
+                  <source src="/all_disk/service/<%= file.filePath %>" type="video/mp4">
+                </video>
+                <div class="gallery-video-overlay">
+                  <i class="fa-solid fa-play-circle"></i>
+                </div>
+              </div>
+              <div class="gallery-card-body">
+                <h5 class="gallery-card-title"><%= file.title || 'Untitled Video' %></h5>
+                <p class="gallery-card-text"><%= file.description || '' %></p>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</section>
+
+<!-- PAGINATION SECTION -->
+<% if (totalPages > 1) { %>
+<section class="py-4 gallery-theme-container">
+  <div class="container">
+    <nav aria-label="Gallery pagination">
+      <ul class="pagination justify-content-center pagination-lg">
+        <% if (currentPage > 1) { %>
+          <li class="page-item">
+            <a class="page-link" href="?page=<%= currentPage - 1 %>" aria-label="Previous">
+              <i class="fas fa-chevron-left"></i>
+            </a>
+          </li>
+        <% } else { %>
+          <li class="page-item disabled">
+            <span class="page-link">
+              <i class="fas fa-chevron-left"></i>
+            </span>
+          </li>
+        <% } %>
+
+        <% const maxPagesToShow = 5;
+           let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+           let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+           
+           if (endPage - startPage + 1 < maxPagesToShow) {
+             startPage = Math.max(1, endPage - maxPagesToShow + 1);
+           }
+        %>
+
+        <% if (startPage > 1) { %>
+          <li class="page-item">
+            <a class="page-link" href="?page=1">1</a>
+          </li>
+          <% if (startPage > 2) { %>
+            <li class="page-item disabled">
+              <span class="page-link">...</span>
+            </li>
+          <% } %>
+        <% } %>
+
+        <% for (let i = startPage; i <= endPage; i++) { %>
+          <li class="page-item <%= (i === currentPage) ? 'active' : '' %>">
+            <% if (i === currentPage) { %>
+              <span class="page-link"><%= i %></span>
+            <% } else { %>
+              <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+            <% } %>
+          </li>
+        <% } %>
+
+        <% if (endPage < totalPages) { %>
+          <% if (endPage < totalPages - 1) { %>
+            <li class="page-item disabled">
+              <span class="page-link">...</span>
+            </li>
+          <% } %>
+          <li class="page-item">
+            <a class="page-link" href="?page=<%= totalPages %>"><%= totalPages %></a>
+          </li>
+        <% } %>
+
+        <% if (currentPage < totalPages) { %>
+          <li class="page-item">
+            <a class="page-link" href="?page=<%= currentPage + 1 %>" aria-label="Next">
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </li>
+        <% } else { %>
+          <li class="page-item disabled">
+            <span class="page-link">
+              <i class="fas fa-chevron-right"></i>
+            </span>
+          </li>
+        <% } %>
+      </ul>
+    </nav>
+  </div>
+</section>
+<% } %>
+
+<!-- LIGHTBOX MODAL -->
+<div class="modal fade gallery-lightbox-modal" id="lightboxModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-body text-center p-0 position-relative">
+        <!-- Custom Close Button -->
+        <button class="gallery-lightbox-close" aria-label="Close" id="lightboxClose">
+          <span class="close-icon">×</span>
+        </button>
+        
+        <!-- Navigation Buttons -->
+        <button class="gallery-lightbox-nav gallery-lightbox-prev" aria-label="Previous">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <button class="gallery-lightbox-nav gallery-lightbox-next" aria-label="Next">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <!-- Media Content -->
+        <img id="lightboxImage" class="img-fluid d-none" alt="">
+        <!-- Disable PIP for lightbox videos too -->
+        <video id="lightboxVideo" class="w-100 d-none" controls playsinline autoplay disablePictureInPicture>
+          Your browser does not support the video tag.
+        </video>
+        
+        <!-- Caption -->
+        <div class="gallery-lightbox-caption">
+          <h4 id="lightboxTitle" class="gallery-lightbox-title"></h4>
+          <p id="lightboxDescription" class="gallery-lightbox-description"></p>
+          <p id="lightboxCounter" class="gallery-lightbox-counter"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER - Uses your existing layout.css -->
+<%- include('../layout/footer') %>
+
+<!-- SCRIPTS -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // ===== FIX FOR NAVBAR AT THE VERY TOP =====
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      // Remove any body padding/margin that might push navbar down
+      document.body.style.margin = '0';
+      document.body.style.padding = '0';
+      document.body.style.paddingTop = '0';
+      
+      // Ensure navbar is at the very top
+      const navbar = document.querySelector('.navbar');
+      if (navbar) {
+        // Force navbar to top
+        navbar.style.position = 'sticky';
+        navbar.style.top = '0';
+        navbar.style.left = '0';
+        navbar.style.right = '0';
+        navbar.style.width = '100%';
+        navbar.style.zIndex = '1030';
+        navbar.style.margin = '0';
+        navbar.style.paddingTop = '0';
+        
+        // Remove any margin from parent elements
+        const parent = navbar.parentElement;
+        if (parent) {
+          parent.style.margin = '0';
+          parent.style.padding = '0';
+        }
+        
+        // Check and remove any spacing above navbar
+        const bodyRect = document.body.getBoundingClientRect();
+        const navbarRect = navbar.getBoundingClientRect();
+        
+        if (navbarRect.top > 0) {
+          // There's space above navbar, fix it
+          document.body.style.paddingTop = '0';
+          document.documentElement.style.paddingTop = '0';
+          
+          // Check for any elements before navbar
+          const elementsBeforeNavbar = [];
+          let currentElement = navbar.previousElementSibling;
+          while (currentElement) {
+            elementsBeforeNavbar.push(currentElement);
+            currentElement.style.display = 'none'; // Hide any elements above navbar
+            currentElement = currentElement.previousElementSibling;
+          }
+          
+          // If there were hidden elements, log them
+          if (elementsBeforeNavbar.length > 0) {
+            console.log('Hidden elements above navbar:', elementsBeforeNavbar);
+          }
+        }
+      }
+      
+      // Also check the hero section for any margin
+      const heroSection = document.querySelector('.gallery-hero-section');
+      if (heroSection) {
+        heroSection.style.marginTop = '0';
+      }
+    });
+    
+    // Also run on window load
+    window.addEventListener('load', function() {
+      const navbar = document.querySelector('.navbar');
+      if (navbar && navbar.getBoundingClientRect().top > 0) {
+        // Force navbar to top by adjusting body
+        document.body.style.scrollMarginTop = '0';
+        document.body.style.scrollPaddingTop = '0';
+        window.scrollTo(0, 0);
+      }
+    });
+  })();
+
+  // ===== GALLERY THEME TOGGLE (ONLY AFFECTS GALLERY) =====
+  (function() {
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const galleryContainers = document.querySelectorAll('.gallery-theme-container');
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('galleryTheme') || 'light';
+    
+    // Apply saved theme to gallery containers only
+    if (savedTheme === 'dark') {
+      galleryContainers.forEach(container => {
+        container.classList.add('dark-mode');
+      });
+      updateThemeIcon('dark');
+    } else {
+      galleryContainers.forEach(container => {
+        container.classList.remove('dark-mode');
+      });
+      updateThemeIcon('light');
+    }
+    
+    // Theme toggle event
+    themeToggle.addEventListener('click', () => {
+      const firstContainer = galleryContainers[0];
+      if (!firstContainer) return;
+      
+      if (firstContainer.classList.contains('dark-mode')) {
+        // Switch to light mode
+        galleryContainers.forEach(container => {
+          container.classList.remove('dark-mode');
+        });
+        localStorage.setItem('galleryTheme', 'light');
+        updateThemeIcon('light');
+      } else {
+        // Switch to dark mode
+        galleryContainers.forEach(container => {
+          container.classList.add('dark-mode');
+        });
+        localStorage.setItem('galleryTheme', 'dark');
+        updateThemeIcon('dark');
+      }
+      
+      // Animation effect
+      themeToggle.style.transform = 'scale(0.9)';
+      setTimeout(() => {
+        themeToggle.style.transform = '';
+      }, 150);
+    });
+    
+    // Update theme icon
+    function updateThemeIcon(theme) {
+      if (theme === 'dark') {
+        themeIcon.className = 'fas fa-sun';
+        themeIcon.setAttribute('aria-label', 'Switch to light mode');
+        themeToggle.style.background = '#e74c3c';
+        themeToggle.style.borderColor = '#2c3e50';
+      } else {
+        themeIcon.className = 'fas fa-moon';
+        themeIcon.setAttribute('aria-label', 'Switch to dark mode');
+        themeToggle.style.background = '#2c3e50';
+        themeToggle.style.borderColor = '#e74c3c';
+      }
+    }
+    
+    // Detect system preference
+    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    // If no saved theme, use system preference for gallery only
+    if (!localStorage.getItem('galleryTheme')) {
+      if (prefersDarkScheme.matches) {
+        galleryContainers.forEach(container => {
+          container.classList.add('dark-mode');
+        });
+        updateThemeIcon('dark');
+      }
+    }
+    
+    // Listen for system theme changes
+    prefersDarkScheme.addEventListener('change', (e) => {
+      if (!localStorage.getItem('galleryTheme')) {
+        if (e.matches) {
+          galleryContainers.forEach(container => {
+            container.classList.add('dark-mode');
+          });
+          updateThemeIcon('dark');
+        } else {
+          galleryContainers.forEach(container => {
+            container.classList.remove('dark-mode');
+          });
+          updateThemeIcon('light');
+        }
+      }
+    });
+  })();
+
+  // ===== MOBILE THEME BUTTON VISIBILITY FIX =====
+  (function() {
+    function adjustThemeButtonForMobile() {
+      const themeSwitcher = document.querySelector('.theme-switcher');
+      const themeButton = document.querySelector('.theme-toggle-btn');
+      
+      if (!themeSwitcher || !themeButton) return;
+      
+      // Always ensure highest z-index
+      themeSwitcher.style.zIndex = '10000';
+      themeButton.style.zIndex = '10001';
+      
+      // Adjust for mobile
+      if (window.innerWidth <= 768) {
+        // Move button higher to avoid mobile browser UI
+        themeSwitcher.style.bottom = '80px';
+        themeSwitcher.style.right = '20px';
+        
+        // Make button more visible
+        themeButton.style.background = '#e74c3c';
+        themeButton.style.borderColor = '#ffffff';
+        themeButton.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.7)';
+        
+        // Add pulse animation
+        themeButton.style.animation = 'mobilePulse 2s infinite';
+      } else {
+        // Reset for desktop
+        themeSwitcher.style.bottom = '30px';
+        themeSwitcher.style.right = '30px';
+        themeButton.style.animation = 'none';
+      }
+      
+      // Handle iOS safe areas
+      if (CSS.supports('padding: max(0px)')) {
+        if (window.innerWidth <= 768) {
+          themeSwitcher.style.bottom = `max(80px, env(safe-area-inset-bottom))`;
+          themeSwitcher.style.right = `max(20px, env(safe-area-inset-right))`;
+        } else {
+          themeSwitcher.style.bottom = `max(30px, env(safe-area-inset-bottom))`;
+          themeSwitcher.style.right = `max(30px, env(safe-area-inset-right))`;
+        }
+      }
+    }
+    
+    // Run on load and resize
+    window.addEventListener('load', adjustThemeButtonForMobile);
+    window.addEventListener('resize', adjustThemeButtonForMobile);
+    
+    // Also run after a short delay to ensure everything is loaded
+    setTimeout(adjustThemeButtonForMobile, 500);
+  })();
+
+  // ===== NAVBAR FIXED - NEVER CHANGES ON SCROLL =====
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = document.querySelector('.navbar');
+      if (!navbar) return;
+      
+      // Lock navbar to always be white (light mode)
+      navbar.style.backgroundColor = '#ffffff';
+      navbar.style.position = 'sticky';
+      navbar.style.top = '0';
+      navbar.style.zIndex = '1030';
+      
+      // Function to handle scroll - only change padding
+      function handleScroll() {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+          navbar.style.padding = '10px 0';
+          navbar.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
+        } else {
+          navbar.classList.remove('scrolled');
+          navbar.style.padding = '15px 0';
+          navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        }
+        
+        // Always keep background white
+        navbar.style.backgroundColor = '#ffffff';
+      }
+      
+      // Initial setup
+      handleScroll();
+      
+      // Watch for scroll
+      let scrollTimeout;
+      window.addEventListener('scroll', function() {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(handleScroll, 10);
+      });
+      
+      // Prevent any theme from changing navbar color
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+            // If background color is changed, revert it
+            if (navbar.style.backgroundColor !== 'rgb(255, 255, 255)') {
+              navbar.style.backgroundColor = '#ffffff';
+            }
+          }
+        });
+      });
+      
+      observer.observe(navbar, {
+        attributes: true,
+        attributeFilter: ['style']
+      });
+    });
+  })();
+
+  // ===== LIGHTBOX FUNCTIONALITY =====
+  (function() {
+    let lightboxModal = null;
+    let currentIndex = 0;
+    let allGalleryItems = [];
+    let pulseInterval = null;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      allGalleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+      
+      const modalEl = document.getElementById('lightboxModal');
+      if (modalEl) {
+        lightboxModal = new bootstrap.Modal(modalEl, {
+          backdrop: true,
+          keyboard: true
+        });
+      }
+      
+      // Close button
+      const closeBtn = document.getElementById('lightboxClose');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+          if (lightboxModal) lightboxModal.hide();
+        });
+      }
+      
+      // Gallery item click
+      allGalleryItems.forEach((item, index) => {
+        item.addEventListener('click', function(e) {
+          e.stopPropagation();
+          openLightboxAt(index);
+        });
+      });
+      
+      // Card click
+      document.querySelectorAll('.gallery-card').forEach((card) => {
+        card.addEventListener('click', function(e) {
+          if (e.target.classList.contains('gallery-card-body') || 
+              e.target.classList.contains('gallery-card-title') || 
+              e.target.classList.contains('gallery-card-text')) {
+            return;
+          }
+          
+          const item = this.querySelector('.gallery-item');
+          if (item) {
+            const itemIndex = allGalleryItems.indexOf(item);
+            if (itemIndex !== -1) openLightboxAt(itemIndex);
+          }
+        });
+      });
+      
+      // Setup navigation
+      setupLightboxNavigation();
+    });
+
+    function openLightboxAt(index) {
+      if (!lightboxModal || index < 0 || index >= allGalleryItems.length) return;
+      
+      currentIndex = index;
+      showCurrentMedia();
+      lightboxModal.show();
+      startCloseButtonPulse();
+    }
+
+    function showCurrentMedia() {
+      if (currentIndex < 0 || currentIndex >= allGalleryItems.length) return;
+      
+      const currentItem = allGalleryItems[currentIndex];
+      const type = currentItem.dataset.type;
+      const src = currentItem.dataset.src;
+      const title = currentItem.dataset.title || 'Untitled';
+      const description = currentItem.dataset.description || '';
+      
+      const imageEl = document.getElementById('lightboxImage');
+      const videoEl = document.getElementById('lightboxVideo');
+      const titleEl = document.getElementById('lightboxTitle');
+      const descriptionEl = document.getElementById('lightboxDescription');
+      const counterEl = document.getElementById('lightboxCounter');
+      
+      // Hide both
+      if (imageEl) imageEl.classList.add('d-none');
+      if (videoEl) {
+        videoEl.classList.add('d-none');
+        videoEl.pause();
+        videoEl.currentTime = 0;
+      }
+      
+      // Show appropriate media
+      if (type === 'image') {
+        if (imageEl) {
+          imageEl.src = src;
+          imageEl.alt = title;
+          imageEl.classList.remove('d-none');
+        }
+      } else if (type === 'video') {
+        if (videoEl) {
+          videoEl.src = src;
+          videoEl.load();
+          videoEl.classList.remove('d-none');
+          setTimeout(() => {
+            videoEl.play().catch(e => {
+              console.log('Autoplay prevented:', e);
+              videoEl.controls = true;
+            });
+          }, 300);
+        }
+      }
+      
+      // Update caption
+      if (titleEl) titleEl.textContent = title;
+      if (descriptionEl) descriptionEl.textContent = description;
+      if (counterEl) counterEl.textContent = `${currentIndex + 1} / ${allGalleryItems.length}`;
+      
+      updateNavigationButtons();
+    }
+
+    function navigateLightbox(direction) {
+      const videoEl = document.getElementById('lightboxVideo');
+      if (videoEl) videoEl.pause();
+      
+      const newIndex = currentIndex + direction;
+      if (newIndex >= 0 && newIndex < allGalleryItems.length) {
+        currentIndex = newIndex;
+        showCurrentMedia();
+      }
+    }
+
+    function setupLightboxNavigation() {
+      const prevBtn = document.querySelector('.gallery-lightbox-prev');
+      const nextBtn = document.querySelector('.gallery-lightbox-next');
+      
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          navigateLightbox(-1);
+        });
+      }
+      
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          navigateLightbox(1);
+        });
+      }
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        const modalEl = document.getElementById('lightboxModal');
+        if (!modalEl || !modalEl.classList.contains('show')) return;
+
+        switch(e.key) {
+          case 'Escape':
+            if (lightboxModal) lightboxModal.hide();
+            break;
+          case 'ArrowLeft':
+            navigateLightbox(-1);
+            break;
+          case 'ArrowRight':
+            navigateLightbox(1);
+            break;
+        }
+      });
+      
+      updateNavigationButtons();
+    }
+
+    function updateNavigationButtons() {
+      const prevBtn = document.querySelector('.gallery-lightbox-prev');
+      const nextBtn = document.querySelector('.gallery-lightbox-next');
+      
+      if (!prevBtn || !nextBtn) return;
+      
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex === allGalleryItems.length - 1;
+    }
+
+    function startCloseButtonPulse() {
+      const closeBtn = document.getElementById('lightboxClose');
+      if (!closeBtn) return;
+      
+      if (pulseInterval) clearInterval(pulseInterval);
+      
+      closeBtn.classList.add('pulse');
+      setTimeout(() => {
+        closeBtn.classList.remove('pulse');
+      }, 10000);
+      
+      pulseInterval = setInterval(() => {
+        if (document.getElementById('lightboxModal').classList.contains('show')) {
+          closeBtn.classList.add('pulse');
+          setTimeout(() => {
+            if (closeBtn.classList.contains('pulse')) {
+              closeBtn.classList.remove('pulse');
+            }
+          }, 10000);
+        } else {
+          clearInterval(pulseInterval);
+        }
+      }, 12000);
+    }
+
+    // Cleanup on modal close
+    document.addEventListener('DOMContentLoaded', function() {
+      const modalEl = document.getElementById('lightboxModal');
+      if (!modalEl) return;
+      
+      modalEl.addEventListener('hidden.bs.modal', () => {
+        const videoEl = document.getElementById('lightboxVideo');
+        const imageEl = document.getElementById('lightboxImage');
+        
+        if (videoEl) {
+          videoEl.pause();
+          videoEl.currentTime = 0;
+          videoEl.src = '';
+        }
+        if (imageEl) {
+          imageEl.src = '';
+        }
+        
+        if (pulseInterval) {
+          clearInterval(pulseInterval);
+          pulseInterval = null;
+        }
+        
+        const closeBtn = document.getElementById('lightboxClose');
+        if (closeBtn) {
+          closeBtn.classList.remove('pulse');
+        }
+      });
+    });
+  })();
+
+  // ===== DISABLE PIP FOR ALL VIDEOS =====
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      // Disable PIP for hero video
+      const heroVideo = document.querySelector('.gallery-hero-video');
+      if (heroVideo) {
+        heroVideo.disablePictureInPicture = true;
+        heroVideo.addEventListener('enterpictureinpicture', function(e) {
+          e.preventDefault();
+          document.exitPictureInPicture();
+        });
+      }
+      
+      // Disable PIP for lightbox video
+      const lightboxVideo = document.getElementById('lightboxVideo');
+      if (lightboxVideo) {
+        lightboxVideo.disablePictureInPicture = true;
+        lightboxVideo.addEventListener('enterpictureinpicture', function(e) {
+          e.preventDefault();
+          document.exitPictureInPicture();
+        });
+      }
+      
+      // Disable PIP for all thumbnail videos
+      const thumbnailVideos = document.querySelectorAll('video.gallery-item');
+      thumbnailVideos.forEach(video => {
+        video.disablePictureInPicture = true;
+        video.addEventListener('enterpictureinpicture', function(e) {
+          e.preventDefault();
+          document.exitPictureInPicture();
+        });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

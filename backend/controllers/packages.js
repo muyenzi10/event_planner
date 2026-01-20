@@ -18,7 +18,4 @@ exports.getgakondo = (req,res) =>{
     }       
 exports.getsound = (req,res) =>{
     res.sendFile(path.join(__dirname,"../../frontend/allpack/sound/sound.html"));
-    }    
-exports.getservice= (req,res)=>{
-    res.sendFile(path.join(__dirname,"../../frontend/allpack/iriza/iriza.html"));
-}      
+    }        

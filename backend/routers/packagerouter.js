@@ -8,7 +8,4 @@ routerpack.get("/beauty", packages.getbeauty);
 routerpack.get("/mc", packages.getmc);
 routerpack.get("/gakondo", packages.getgakondo);
 routerpack.get("/sound", packages.getsound);
-routerpack.get("/service", packages.getservice);
-
-
 module.exports = routerpack;

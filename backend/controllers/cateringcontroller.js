@@ -21,7 +21,7 @@ exports.postupload = async (req, res) => {
 };
 exports.getcatering = async(req,res)=>{
   try {
-        const itemsPerPage = 18; // number of items per page
+        const itemsPerPage = 24; // number of items per page
         const currentPage = parseInt(req.query.page) || 1; // current page from query, default 1
     
         // total number of documents

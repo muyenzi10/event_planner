@@ -1,19 +1,24 @@
 const path = require('path');
-exports.gethome = (req, res)=>{
-res.sendFile(path.join(__dirname,"../../frontend/home_packages/home.html"));
+exports.gethome = (req, res) => {
+  res.render('home_packages/home', { activePage: 'home' });
 };
-exports.getabout = (req, res)=>{
-    res.sendFile(path.join(__dirname,"../../frontend/home_packages/about.html"));
-    };
-exports.getpack = (req, res)=>{
-    res.sendFile(path.join(__dirname,"../../frontend/home_packages/index.html"));
-    };
-exports.getsupply = (req, res)=>{
-    res.render('home_packages/suply');
-    };       
-exports.getbook = (req, res)=>{
-        res.render('home_packages/booking');
-        };
+
+exports.getabout = (req, res) => {
+  res.render('home_packages/about', { activePage: 'about' });
+};
+
+exports.getpackages = (req, res) => {
+  res.render('home_packages/packages', { activePage: 'packages' });
+};
+
+exports.getsupply = (req, res) => {
+  res.render('home_packages/supply', { activePage: 'suppliers' });
+};
+
+exports.getbook = (req, res) => {
+  res.render('home_packages/booking', { activePage: 'booking' });
+};
+
 exports.getsignup = (req,res)=>{                
 res.render('signup_login/signup', {
             error: req.flash('error'),

@@ -1,0 +1,97 @@
+<footer class="bg-dark text-light">
+    <div class="container">
+        <div class="row">
+            <!-- About Us Section -->
+            <div class="col-md-4 mb-5 mb-md-0">
+                <h5>About Us</h5>
+                <div class="footer-about">
+                    <p>We are a passionate team of wedding planners, dedicated to turning your dreams into reality. By connecting seamlessly with a network of trusted local suppliers, we carefully coordinate every detail to bring your perfect celebration to life, creating unforgettable memories for you and your guests.</p>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@dreamdayvisuals.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Wedding Street, Celebration City</p>
+                </div>
+            </div>
+            
+            <!-- Quick Links Section -->
+            <div class="col-md-4 mb-5 mb-md-0">
+                <h5>Quick Links</h5>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="/home" class="footer-link">Home</a></li>
+                        <li><a href="/about" class="footer-link">About</a></li>
+                        <li><a href="/packages" class="footer-link">Packages</a></li>
+                        <li><a href="/contact" class="footer-link">Contact</a></li>
+                        <li><a href="/booking" class="footer-link">Booking</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Connect With Us Section -->
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <p class="mb-4" style="color: #bbb; font-size: 0.95rem;">Follow us on social media for the latest updates, wedding tips, and inspiration.</p>
+                
+                <div class="d-flex flex-wrap gap-3 mb-4">
+                    <a href="#" class="footer-social" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="footer-social" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="footer-social" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="footer-social" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="bg-secondary">
+        
+        <!-- Copyright -->
+        <div class="row">
+            <div class="col-12">
+                <div class="copyright text-center">
+                    &copy; 2025 Dream Day Visuals. All Rights Reserved. | 
+                    <a href="/privacy" class="text-muted mx-2" style="text-decoration: none;">Privacy Policy</a> | 
+                    <a href="/terms" class="text-muted mx-2" style="text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    
+
+    // Only apply smooth scrolling to footer links (not navbar links)
+    document.querySelectorAll('footer a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Newsletter form submission - Only if newsletter exists
+    document.addEventListener('DOMContentLoaded', function() {
+        const newsletterButton = document.querySelector('.newsletter button');
+        if (newsletterButton) {
+            newsletterButton.addEventListener('click', function() {
+                const emailInput = document.querySelector('.newsletter input');
+                if (emailInput && emailInput.value && emailInput.value.includes('@')) {
+                    alert('Thank you for subscribing to our newsletter!');
+                    emailInput.value = '';
+                } else {
+                    alert('Please enter a valid email address.');
+                }
+            });
+        }
+    });
+</script>

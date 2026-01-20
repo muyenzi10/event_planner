@@ -7,7 +7,7 @@ router.get("/home", nav.gethome);
 // about
 router.get("/about", nav.getabout);
 // packages
-router.get("/packages", nav.getpack);
+router.get("/packages", nav.getpackages);
 // supply
 router.get("/suppliers", nav.getsupply);
 // booking
