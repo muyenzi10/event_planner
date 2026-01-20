@@ -360,3 +360,47 @@ body.menu-open {
         display: none !important;
     }
 }
+/* Add a semi-transparent overlay when menu is open on mobile */
+body.menu-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Below navbar but above content */
+    display: block;
+}
+
+@media (min-width: 992px) {
+    body.menu-open::before {
+        display: none;
+    }
+}
+
+/* Ensure navbar stays above the overlay */
+.navbar {
+    z-index: 1000;
+}
+
+.navbar-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: 1rem;
+    z-index: 1001; /* Above everything */
+}
+
+.navbar-close-btn:hover {
+    color: #000;
+}
+
+@media (min-width: 992px) {
+    .navbar-close-btn {
+        display: none !important;
+    }
+}

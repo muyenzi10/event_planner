@@ -65,10 +65,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     var navbarCollapse = document.getElementById('navbarNav');
     var body = document.body;
-    var backdrop = document.querySelector('.navbar-backdrop');
     var navLinks = document.querySelectorAll('.nav-link');
     var closeBtn = document.querySelector('.navbar-close-btn');
     var hamburgerBtn = document.querySelector('.navbar-toggler');
+    var navbar = document.querySelector('.navbar');
 
     // Initialize Bootstrap Collapse
     var bsCollapse = new bootstrap.Collapse(navbarCollapse, {
@@ -104,13 +104,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Close menu on backdrop click
-    if (backdrop) {
-        backdrop.addEventListener('click', function() {
-            bsCollapse.hide();
-        });
-    }
-
     // Close menu on close button click
     if(closeBtn) {
         closeBtn.addEventListener('click', function() {
@@ -120,6 +113,22 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initially hide the close button
         closeBtn.style.display = 'none';
     }
+
+    // Close menu when clicking outside (only on mobile)
+    document.addEventListener('click', function(event) {
+        // Check if menu is open on mobile
+        if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+            // Check if click is outside the navbar
+            var isClickInsideNavbar = navbar.contains(event.target);
+            var isClickOnHamburger = hamburgerBtn && hamburgerBtn.contains(event.target);
+            var isClickOnCloseBtn = closeBtn && closeBtn.contains(event.target);
+            
+            // If click is outside navbar and not on hamburger/close button, close menu
+            if (!isClickInsideNavbar && !isClickOnHamburger && !isClickOnCloseBtn) {
+                bsCollapse.hide();
+            }
+        }
+    });
 
     // Handle resize
     window.addEventListener('resize', function() {
