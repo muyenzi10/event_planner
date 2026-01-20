@@ -1,342 +1,811 @@
-:root {
-    --primary-color: #d4af37;
-    --primary-hover: #b8941d;
-    --dark-color: #222;
-    --light-color: #fff;
-    --muted-color: #f8f4f0;
-    --shadow-light: 0 2px 15px rgba(0,0,0,0.08);
-    --shadow-medium: 0 4px 20px rgba(0,0,0,0.12);
-    --navbar-height: 80px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dream Day Wedding Planners</title>
 
-/* ================= NAVBAR ================= */
-.navbar {
-    box-shadow: var(--shadow-light);
-    padding: 20px 0;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255,255,255,.98) !important;
-    min-height: var(--navbar-height);
-    z-index: 1030;
-    transition: all .3s ease;
-}
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        crossorigin="anonymous"
+    />
 
-.navbar.scrolled {
-    padding: 12px 0;
-    box-shadow: var(--shadow-medium);
-    backdrop-filter: blur(15px);
-    background-color: rgba(255,255,255,.99) !important;
-}
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous"
+    />
 
-.navbar-brand {
-    font-weight: 700;
-    color: var(--primary-color) !important;
-    font-size: 1.8rem;
-    font-family: 'Playfair Display', serif;
-    display: flex;
-    align-items: center;
-    transition: transform 0.3s ease;
-}
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
-.navbar-brand:hover {
-    transform: scale(1.05);
-}
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-secondary: #FFD700;
+            --gold-light: #FFF8E7;
+            --rose-gold: #B76E79;
+        }
 
-/* ================= TOGGLER ================= */
-.navbar-toggler {
-    border: none !important;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px !important;
-    background: transparent !important;
-    outline: none !important;
-    box-shadow: none !important;
-}
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fefefe;
+            overflow-x: hidden;
+        }
 
-.hamburger-icon {
-    width: 24px;
-    height: 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all .3s ease;
-}
+        /* ============ VIDEO HERO ============ */
+        .video-hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            background: #000;
+        }
 
-.hamburger-icon span {
-    height: 2px;
-    width: 100%;
-    background: var(--primary-color);
-    border-radius: 2px;
-    transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-origin: center;
-}
+        .video-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(183, 110, 121, 0.2) 0%,
+                rgba(32, 32, 32, 0.55) 40%,
+                rgba(32, 32, 32, 0.65) 50%,
+                rgba(32, 32, 32, 0.55) 60%,
+                rgba(212, 175, 55, 0.2) 100%
+            );
+            z-index: 2;
+        }
 
-/* Hamburger to X animation */
-.navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-    background: var(--primary-hover);
-}
+        .video-hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
 
-.navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
-}
+        /* ============ HEART BADGE ABOVE HERO CONTENT ============ */
+        .heart-badge-above {
+            position: absolute;
+            top: 15%; /* Positioned above the hero content */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5; /* Above the hero content */
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
 
-.navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-    background: var(--primary-hover);
-}
+        /* Main Heart Container */
+        .heart-above-main {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-/* ================= NAV LINKS ================= */
-.nav-link {
-    color: var(--dark-color) !important;
-    padding: 8px 12px !important;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: all .3s ease;
-    position: relative;
-    margin: 0 8px;
-}
+        /* Primary Heart (Large & Rotating) */
+        .heart-above-primary {
+            font-size: 4rem;
+            color: var(--gold-primary);
+            animation: heartAboveFloat 10s ease-in-out infinite, heartAboveGlow 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.7));
+            position: absolute;
+        }
 
-.nav-link:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--primary-color);
-    transition: width .3s ease;
-}
+        /* Secondary Heart (Smaller & Opposite Rotation) */
+        .heart-above-secondary {
+            font-size: 2.2rem;
+            color: var(--rose-gold);
+            animation: heartAboveRotateReverse 14s linear infinite, heartAbovePulse 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(183, 110, 121, 0.6));
+            position: absolute;
+            opacity: 0.9;
+        }
 
-.nav-link:hover:after,
-.nav-link.active:after {
-    width: 80%;
-}
+        /* Center Heart Glow Effect */
+        .heart-above-glow {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(
+                circle,
+                rgba(212, 175, 55, 0.25) 0%,
+                rgba(212, 175, 55, 0.15) 30%,
+                transparent 70%
+            );
+            border-radius: 50%;
+            animation: heartAboveGlowPulse 8s ease-in-out infinite;
+        }
 
-.nav-link:hover,
-.nav-link.active {
-    color: var(--primary-color) !important;
-    background-color: rgba(212, 175, 55, 0.05);
-}
+        /* Connecting Line to Title */
+        .heart-connector {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, 
+                rgba(212, 175, 55, 0.8) 0%, 
+                rgba(212, 175, 55, 0.4) 50%, 
+                transparent 100%);
+            animation: connectorFade 4s ease-in-out infinite;
+        }
 
-/* ================= MOBILE MENU HEADER & CLOSE ================= */
-.mobile-menu-header {
-    display: none;
-}
+        /* Heart Animation Keyframes */
+        @keyframes heartAboveFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-12px) rotate(90deg) scale(1.05);
+            }
+            50% {
+                transform: translateY(6px) rotate(180deg) scale(1);
+            }
+            75% {
+                transform: translateY(-8px) rotate(270deg) scale(1.03);
+            }
+        }
 
-.menu-close-btn {
-    display: none;
-}
+        @keyframes heartAboveRotateReverse {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(-180deg) scale(1.15);
+            }
+            100% {
+                transform: rotate(-360deg) scale(1);
+            }
+        }
 
-/* ================= BACKDROP ================= */
-.navbar-backdrop {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.5);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    z-index: 1035;
-    transition: opacity .3s ease;
-}
+        @keyframes heartAbovePulse {
+            0%, 100% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
 
-body.menu-open .navbar-backdrop {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
+        @keyframes heartAboveGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.7));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.9));
+            }
+        }
 
-body.menu-open {
-    overflow: hidden;
-    touch-action: manipulation;
-}
+        @keyframes heartAboveGlowPulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.25);
+            }
+        }
 
-/* ================= MOBILE STYLES ================= */
-@media (max-width: 991px) {
-    .navbar-collapse {
-        position: fixed !important;
-        top: var(--navbar-height) !important;
-        left: 20px;
-        right: 20px;
-        background: var(--light-color);
-        border-radius: 16px;
-        padding: 30px 25px !important;
-        z-index: 1045;
-        max-height: calc(100vh - var(--navbar-height) - 40px);
-        overflow-y: auto;
-        box-shadow: var(--shadow-medium);
-        opacity: 0;
-        transform: translateY(-20px) scale(0.95);
-        visibility: hidden;
-        transition: all .3s ease;
-    }
-    
-    .navbar-collapse.show {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        visibility: visible;
-    }
-    
-    .navbar-collapse.collapsing {
-        transition: all .3s ease;
-        opacity: 0;
-        transform: translateY(-20px) scale(0.95);
-    }
+        @keyframes connectorFade {
+            0%, 100% {
+                opacity: 0.6;
+                height: 60px;
+            }
+            50% {
+                opacity: 1;
+                height: 80px;
+            }
+        }
 
-    .mobile-menu-header {
-        display: block;
-        position: relative;
-        height: 40px;
-        margin-bottom: 20px;
-    }
-    
-    .mobile-menu-title {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--primary-color);
-        text-align: center;
-        line-height: 40px;
-    }
-    
-    .menu-close-btn {
-        display: flex;
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 40px;
-        height: 40px;
-        border: none;
-        background: var(--primary-color);
-        border-radius: 50%;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.2rem;
-        cursor: pointer;
-        z-index: 1050;
-        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-        transition: all .3s ease;
-    }
-    
-    .menu-close-btn:hover {
-        background: var(--primary-hover);
-        transform: scale(1.1) rotate(90deg);
-        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-    }
+        /* Heart Beating Animation */
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10% {
+                transform: scale(1.1);
+            }
+            20% {
+                transform: scale(1);
+            }
+            30% {
+                transform: scale(1.15);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
 
-    .navbar-nav {
-        flex-direction: column;
-        gap: 8px;
-        width: 100%;
-        padding: 0;
-        margin: 0;
-    }
+        /* ============ HERO CONTENT ============ */
+        .hero-content {
+            position: relative;
+            z-index: 4; /* Below the heart badge */
+            color: #fff;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
 
-    .nav-item {
-        width: 100%;
-        opacity: 0;
-        animation: fadeInUp 0.3s ease forwards;
-    }
-    
-    /* Staggered animation for menu items */
-    .nav-item:nth-child(1) { animation-delay: 0.1s; }
-    .nav-item:nth-child(2) { animation-delay: 0.15s; }
-    .nav-item:nth-child(3) { animation-delay: 0.2s; }
-    .nav-item:nth-child(4) { animation-delay: 0.25s; }
-    .nav-item:nth-child(5) { animation-delay: 0.3s; }
-    
-    @keyframes fadeInUp {
-        from {
+        .hero-content .container {
+            max-width: 1200px;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
             opacity: 0;
-            transform: translateY(10px);
+            padding-top: 80px; /* Make room for the heart badge above */
         }
-        to {
-            opacity: 1;
-            transform: translateY(0);
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
+            line-height: 1.1;
+            position: relative;
         }
-    }
 
-    .nav-link {
-        width: 100%;
-        padding: 14px 20px !important;
-        text-align: center;
-        background: rgba(212, 175, 55, 0.05);
-        border: 1px solid rgba(212, 175, 55, 0.1);
-        margin: 0;
-    }
-    
-    .nav-link:after {
-        display: none;
-    }
+        .hero-title::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--gold-primary), transparent);
+        }
 
-    .nav-link:hover,
-    .nav-link.active {
-        background: var(--primary-color);
-        color: #fff !important;
-        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
-        transform: translateY(-2px);
-        border-color: var(--primary-color);
-    }
-    
-    .nav-link i {
-        font-size: 1.2rem;
-        margin-right: 10px;
-        width: 24px;
-        text-align: center;
-    }
-    
-    .navbar-brand {
-        font-size: 1.6rem;
-        padding-left: 10px;
-    }
-    
-    .navbar.scrolled {
-        padding: 15px 0 !important;
-    }
-    
-    .navbar-toggler {
-        order: 2;
-        margin-left: auto;
-    }
-}
+        .highlight-word {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            position: relative;
+        }
 
-/* ================= DESKTOP STYLES ================= */
-@media (min-width: 992px) {
-    .navbar-backdrop {
-        display: none !important;
-    }
-    
-    .navbar-collapse {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        background: transparent !important;
-        box-shadow: none !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        max-height: none !important;
-        overflow: visible !important;
-        opacity: 1 !important;
-        transform: none !important;
-        visibility: visible !important;
-    }
-    
-    .nav-item {
-        opacity: 1 !important;
-        animation: none !important;
-    }
-    
-    .nav-link {
-        margin: 0 8px;
-    }
-    
-    .menu-close-btn, .mobile-menu-header {
-        display: none !important;
-    }
-}
+        .highlight-word::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--rose-gold), transparent);
+            opacity: 0.6;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============ BUTTONS ============ */
+        .btn-gold-gradient {
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
+            border: none;
+            color: #000;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-gold-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+            color: #000;
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold-primary);
+            color: #fff;
+        }
+
+        /* ============ SCROLL INDICATOR ============ */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .scroll-indicator i {
+            color: var(--gold-primary);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* ============ RESPONSIVE DESIGN ============ */
+        @media (max-width: 992px) {
+            .heart-badge-above {
+                width: 100px;
+                height: 100px;
+                top: 12%;
+            }
+            
+            .heart-above-main {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .heart-above-primary {
+                font-size: 3.2rem;
+            }
+            
+            .heart-above-secondary {
+                font-size: 1.8rem;
+            }
+            
+            .heart-above-glow {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .heart-connector {
+                height: 50px;
+            }
+            
+            .hero-content .container {
+                padding-top: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-hero, .hero-content {
+                height: 90vh;
+                min-height: 500px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .btn-gold-gradient {
+                padding: 0.8rem 2rem;
+            }
+            
+            /* Adjust heart badge for mobile */
+            .heart-badge-above {
+                width: 80px;
+                height: 80px;
+                top: 10%;
+            }
+            
+            .heart-above-main {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .heart-above-primary {
+                font-size: 2.5rem;
+            }
+            
+            .heart-above-secondary {
+                font-size: 1.4rem;
+            }
+            
+            .heart-above-glow {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .heart-connector {
+                height: 40px;
+            }
+            
+            .hero-content .container {
+                padding-top: 50px;
+            }
+            
+            .hero-title::before {
+                top: -20px;
+                width: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-hero, .hero-content {
+                height: 85vh;
+                min-height: 450px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            /* Further adjust heart badge for very small screens */
+            .heart-badge-above {
+                width: 70px;
+                height: 70px;
+                top: 8%;
+            }
+            
+            .heart-above-main {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .heart-above-primary {
+                font-size: 2rem;
+            }
+            
+            .heart-above-secondary {
+                font-size: 1.1rem;
+            }
+            
+            .heart-above-glow {
+                width: 85px;
+                height: 85px;
+            }
+            
+            .heart-connector {
+                height: 30px;
+            }
+            
+            .hero-content .container {
+                padding-top: 40px;
+            }
+            
+            .hero-title::before {
+                top: -15px;
+                width: 50px;
+            }
+        }
+
+        /* Accessibility - Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .heart-above-primary,
+            .heart-above-secondary,
+            .heart-above-glow,
+            .heart-connector,
+            .scroll-indicator i {
+                animation: none !important;
+            }
+            
+            .heart-above-primary,
+            .heart-above-secondary {
+                opacity: 0.8;
+            }
+            
+            .heart-connector {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- VIDEO HERO SECTION -->
+    <section class="video-hero">
+        <!-- HEART BADGE ABOVE HERO CONTENT -->
+        <div class="heart-badge-above">
+            <div class="heart-above-glow"></div>
+            <div class="heart-above-main">
+                <i class="fas fa-heart heart-above-primary"></i>
+                <i class="fas fa-heart heart-above-secondary"></i>
+            </div>
+            <div class="heart-connector"></div>
+        </div>
+
+        <video 
+            autoplay 
+            loop 
+            muted 
+            playsinline
+            poster="/assethome/v1-poster.jpg">
+            <source src="/assethome/v1.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">
+                    Where <span class="highlight-word">Forever</span> Begins
+                </h1>
+                
+                <p class="hero-subtitle">
+                    We transform wedding dreams into breathtaking realities. Every detail is 
+                    meticulously crafted to create your perfect day—a celebration as unique 
+                    as your love story.
+                </p>
+                
+                <a href="/booking" class="btn btn-gold-gradient">
+                    <i class="fas fa-gem me-2"></i>Begin Your Love Story
+                </a>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"
+    ></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            scrollIndicator.addEventListener('click', function() {
+                const nextSection = document.querySelector('section:nth-of-type(2)');
+                if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            // Video loaded event
+            const video = document.querySelector('video');
+            video.addEventListener('loadeddata', function() {
+                console.log('Video loaded successfully');
+            });
+            
+            // Heart badge interactive effects
+            const heartBadge = document.querySelector('.heart-above-main');
+            
+            if (heartBadge) {
+                // Add hover effect for desktop
+                heartBadge.addEventListener('mouseenter', function() {
+                    if (window.innerWidth > 768) {
+                        // Pause animations
+                        const primaryHeart = this.querySelector('.heart-above-primary');
+                        const secondaryHeart = this.querySelector('.heart-above-secondary');
+                        const glow = document.querySelector('.heart-above-glow');
+                        const connector = document.querySelector('.heart-connector');
+                        
+                        if (primaryHeart) primaryHeart.style.animationPlayState = 'paused';
+                        if (secondaryHeart) secondaryHeart.style.animationPlayState = 'paused';
+                        if (glow) glow.style.animationPlayState = 'paused';
+                        if (connector) connector.style.animationPlayState = 'paused';
+                        
+                        // Add beat effect
+                        this.style.animation = 'heartBeat 1s ease';
+                        
+                        // Enhance glow
+                        if (glow) {
+                            glow.style.opacity = '0.9';
+                            glow.style.transform = 'scale(1.3)';
+                        }
+                        
+                        // Enhance connector
+                        if (connector) {
+                            connector.style.opacity = '1';
+                            connector.style.height = '100px';
+                        }
+                    }
+                });
+                
+                heartBadge.addEventListener('mouseleave', function() {
+                    if (window.innerWidth > 768) {
+                        // Resume animations
+                        const primaryHeart = this.querySelector('.heart-above-primary');
+                        const secondaryHeart = this.querySelector('.heart-above-secondary');
+                        const glow = document.querySelector('.heart-above-glow');
+                        const connector = document.querySelector('.heart-connector');
+                        
+                        if (primaryHeart) primaryHeart.style.animationPlayState = 'running';
+                        if (secondaryHeart) secondaryHeart.style.animationPlayState = 'running';
+                        if (glow) glow.style.animationPlayState = 'running';
+                        if (connector) connector.style.animationPlayState = 'running';
+                        
+                        // Remove beat effect
+                        this.style.animation = '';
+                        
+                        // Reset glow
+                        if (glow) {
+                            glow.style.opacity = '';
+                            glow.style.transform = '';
+                        }
+                        
+                        // Reset connector
+                        if (connector) {
+                            connector.style.opacity = '';
+                            connector.style.height = '';
+                        }
+                    }
+                });
+                
+                // Add click effect for mobile
+                heartBadge.addEventListener('click', function() {
+                    // Create pulse effect
+                    this.style.transform = 'scale(1.2)';
+                    
+                    // Emit floating hearts from the badge
+                    emitHeartsFromBadge(3);
+                    
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
+                });
+            }
+            
+            // Floating hearts emitter from the heart badge
+            function emitHeartsFromBadge(count = 3) {
+                const colors = ['#D4AF37', '#FFD700', '#B76E79'];
+                const badge = document.querySelector('.heart-badge-above');
+                
+                if (!badge) return;
+                
+                const badgeRect = badge.getBoundingClientRect();
+                const startX = badgeRect.left + badgeRect.width / 2;
+                const startY = badgeRect.top + badgeRect.height / 2;
+                
+                for (let i = 0; i < count; i++) {
+                    setTimeout(() => {
+                        createFloatingHeartFromBadge(startX, startY);
+                    }, i * 100);
+                }
+            }
+            
+            function createFloatingHeartFromBadge(startX, startY) {
+                const colors = ['#D4AF37', '#FFD700', '#B76E79'];
+                const heart = document.createElement('div');
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                heart.style.cssText = `
+                    position: fixed;
+                    font-size: ${Math.random() * 15 + 10}px;
+                    color: ${colors[Math.floor(Math.random() * colors.length)]};
+                    opacity: 0;
+                    z-index: 3;
+                    pointer-events: none;
+                    animation: floatFromBadge 2s ease-out forwards;
+                `;
+                
+                heart.style.left = `${startX}px`;
+                heart.style.top = `${startY}px`;
+                heart.style.transform = 'translate(-50%, -50%)';
+                
+                document.body.appendChild(heart);
+                
+                // Remove after animation completes
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, 2000);
+            }
+            
+            // Add floating heart animation from badge
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes floatFromBadge {
+                    0% {
+                        transform: translate(-50%, -50%) rotate(0deg) scale(0.3);
+                        opacity: 0.9;
+                    }
+                    100% {
+                        transform: translate(
+                            ${Math.random() > 0.5 ? '-' : ''}${Math.random() * 100 + 50}px, 
+                            -${Math.random() * 80 + 30}px
+                        ) rotate(${Math.random() > 0.5 ? '' : '-'}${Math.random() * 180}deg) scale(1);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Create occasional floating hearts from badge
+            let floatingHeartInterval;
+            
+            function startFloatingHearts() {
+                if (window.innerWidth > 768) {
+                    floatingHeartInterval = setInterval(() => {
+                        if (Math.random() > 0.8) {
+                            const badge = document.querySelector('.heart-badge-above');
+                            if (badge) {
+                                const badgeRect = badge.getBoundingClientRect();
+                                const startX = badgeRect.left + badgeRect.width / 2;
+                                const startY = badgeRect.top + badgeRect.height / 2;
+                                createFloatingHeartFromBadge(startX, startY);
+                            }
+                        }
+                    }, 4000);
+                }
+            }
+            
+            function stopFloatingHearts() {
+                if (floatingHeartInterval) {
+                    clearInterval(floatingHeartInterval);
+                }
+            }
+            
+            // Start floating hearts after page load
+            setTimeout(() => {
+                startFloatingHearts();
+            }, 2000);
+            
+            // Stop floating hearts when user scrolls
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                stopFloatingHearts();
+                
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    startFloatingHearts();
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -3,80 +3,840 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dream Day Wedding Planners</title>
 
-    <link rel="stylesheet" href="/">
-    <link rel="stylesheet" href="/css/navbar.css">
-    <title>Event</title>
+    <!-- Bootstrap CSS -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
         rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous"
     />
-   
-</head>
-<body>
- 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand logo-margin" href="#">Logo</a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               
-                <ul class="navbar-nav mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Service</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/packages">Packages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/suppliers">Suppliers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/booking">Booking</a>
-                    </li>
-                </ul>
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-secondary: #FFD700;
+            --gold-light: #FFF8E7;
+            --rose-gold: #B76E79;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fefefe;
+            overflow-x: hidden;
+        }
+
+        /* ============ VIDEO HERO ============ */
+        .video-hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(183, 110, 121, 0.2) 0%,
+                rgba(32, 32, 32, 0.55) 40%,
+                rgba(32, 32, 32, 0.65) 50%,
+                rgba(32, 32, 32, 0.55) 60%,
+                rgba(212, 175, 55, 0.2) 100%
+            );
+            z-index: 2;
+        }
+
+        .video-hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        /* ============ HEART BADGE ABOVE HERO CONTENT ============ */
+        .heart-badge-above {
+            position: absolute;
+            top: 15%; /* Positioned above the hero content */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5; /* Above the hero content */
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Main Heart Container */
+        .heart-above-main {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Primary Heart (Large & Rotating) */
+        .heart-above-primary {
+            font-size: 4rem;
+            color: var(--gold-primary);
+            animation: heartAboveFloat 10s ease-in-out infinite, heartAboveGlow 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.7));
+            position: absolute;
+        }
+
+        /* Secondary Heart (Smaller & Opposite Rotation) */
+        .heart-above-secondary {
+            font-size: 2.2rem;
+            color: var(--rose-gold);
+            animation: heartAboveRotateReverse 14s linear infinite, heartAbovePulse 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(183, 110, 121, 0.6));
+            position: absolute;
+            opacity: 0.9;
+        }
+
+        /* Center Heart Glow Effect */
+        .heart-above-glow {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(
+                circle,
+                rgba(212, 175, 55, 0.25) 0%,
+                rgba(212, 175, 55, 0.15) 30%,
+                transparent 70%
+            );
+            border-radius: 50%;
+            animation: heartAboveGlowPulse 8s ease-in-out infinite;
+        }
+
+        /* Connecting Line to Title */
+        .heart-connector {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, 
+                rgba(212, 175, 55, 0.8) 0%, 
+                rgba(212, 175, 55, 0.4) 50%, 
+                transparent 100%);
+            animation: connectorFade 4s ease-in-out infinite;
+        }
+
+        /* Heart Animation Keyframes */
+        @keyframes heartAboveFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-12px) rotate(90deg) scale(1.05);
+            }
+            50% {
+                transform: translateY(6px) rotate(180deg) scale(1);
+            }
+            75% {
+                transform: translateY(-8px) rotate(270deg) scale(1.03);
+            }
+        }
+
+        @keyframes heartAboveRotateReverse {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(-180deg) scale(1.15);
+            }
+            100% {
+                transform: rotate(-360deg) scale(1);
+            }
+        }
+
+        @keyframes heartAbovePulse {
+            0%, 100% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes heartAboveGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.7));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.9));
+            }
+        }
+
+        @keyframes heartAboveGlowPulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.25);
+            }
+        }
+
+        @keyframes connectorFade {
+            0%, 100% {
+                opacity: 0.6;
+                height: 60px;
+            }
+            50% {
+                opacity: 1;
+                height: 80px;
+            }
+        }
+
+        /* Heart Beating Animation */
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10% {
+                transform: scale(1.1);
+            }
+            20% {
+                transform: scale(1);
+            }
+            30% {
+                transform: scale(1.15);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        /* ============ HERO CONTENT ============ */
+        .hero-content {
+            position: relative;
+            z-index: 4; /* Below the heart badge */
+            color: #fff;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content .container {
+            max-width: 1200px;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+            opacity: 0;
+            padding-top: 80px; /* Make room for the heart badge above */
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
+            line-height: 1.1;
+            position: relative;
+        }
+
+        .hero-title::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--gold-primary), transparent);
+        }
+
+        .highlight-word {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            position: relative;
+        }
+
+        .highlight-word::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--rose-gold), transparent);
+            opacity: 0.6;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============ BUTTONS ============ */
+        .btn-gold-gradient {
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
+            border: none;
+            color: #000;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-gold-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+            color: #000;
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold-primary);
+            color: #fff;
+        }
+
+        /* ============ SCROLL INDICATOR ============ */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .scroll-indicator i {
+            color: var(--gold-primary);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* ============ RESPONSIVE DESIGN ============ */
+        @media (max-width: 992px) {
+            .heart-badge-above {
+                width: 100px;
+                height: 100px;
+                top: 12%;
+            }
+            
+            .heart-above-main {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .heart-above-primary {
+                font-size: 3.2rem;
+            }
+            
+            .heart-above-secondary {
+                font-size: 1.8rem;
+            }
+            
+            .heart-above-glow {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .heart-connector {
+                height: 50px;
+            }
+            
+            .hero-content .container {
+                padding-top: 60px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-hero, .hero-content {
+                height: 90vh;
+                min-height: 500px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .btn-gold-gradient {
+                padding: 0.8rem 2rem;
+            }
+            
+            /* Adjust heart badge for mobile */
+            .heart-badge-above {
+                width: 80px;
+                height: 80px;
+                top: 10%;
+            }
+            
+            .heart-above-main {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .heart-above-primary {
+                font-size: 2.5rem;
+            }
+            
+            .heart-above-secondary {
+                font-size: 1.4rem;
+            }
+            
+            .heart-above-glow {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .heart-connector {
+                height: 40px;
+            }
+            
+            .hero-content .container {
+                padding-top: 50px;
+            }
+            
+            .hero-title::before {
+                top: -20px;
+                width: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-hero, .hero-content {
+                height: 85vh;
+                min-height: 450px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            /* Further adjust heart badge for very small screens */
+            .heart-badge-above {
+                width: 70px;
+                height: 70px;
+                top: 8%;
+            }
+            
+            .heart-above-main {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .heart-above-primary {
+                font-size: 2rem;
+            }
+            
+            .heart-above-secondary {
+                font-size: 1.1rem;
+            }
+            
+            .heart-above-glow {
+                width: 85px;
+                height: 85px;
+            }
+            
+            .heart-connector {
+                height: 30px;
+            }
+            
+            .hero-content .container {
+                padding-top: 40px;
+            }
+            
+            .hero-title::before {
+                top: -15px;
+                width: 50px;
+            }
+        }
+
+        /* Accessibility - Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .heart-above-primary,
+            .heart-above-secondary,
+            .heart-above-glow,
+            .heart-connector,
+            .scroll-indicator i {
+                animation: none !important;
+            }
+            
+            .heart-above-primary,
+            .heart-above-secondary {
+                opacity: 0.8;
+            }
+            
+            .heart-connector {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- VIDEO HERO SECTION -->
+    <section class="video-hero">
+        <!-- HEART BADGE ABOVE HERO CONTENT -->
+        <div class="heart-badge-above">
+            <div class="heart-above-glow"></div>
+            <div class="heart-above-main">
+                <i class="fas fa-heart heart-above-primary"></i>
+                <i class="fas fa-heart heart-above-secondary"></i>
+            </div>
+            <div class="heart-connector"></div>
+        </div>
+
+        <video 
+            autoplay 
+            loop 
+            muted 
+            playsinline
+            disablePictureInPicture
+            controlsList="nodownload nofullscreen noremoteplayback nopictureinpicture"
+            poster="/assethome/v1-poster.jpg">
+            <source src="/assethome/v1.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">
+                    Where <span class="highlight-word">Forever</span> Begins
+                </h1>
+                
+                <p class="hero-subtitle">
+                    We transform wedding dreams into breathtaking realities. Every detail is 
+                    meticulously crafted to create your perfect day—a celebration as unique 
+                    as your love story.
+                </p>
+                
+                <a href="/booking" class="btn btn-gold-gradient">
+                    <i class="fas fa-gem me-2"></i>Begin Your Love Story
+                </a>
             </div>
         </div>
-    </nav>
-    <!--Video-->
-    <div class="video-container">
-        <video src="/assethome/v1.mp4" autoplay loop muted>
-        </video>
-        <div class="custom-caption">
-            <h1>Welcome to Wedding Planner</h5>
-            <p>We Already Be With You.</p>
-            <a href="#" class="btn btn-primary">Book Now</a>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
-        
-        
+    </section>
+
+    <!-- Bootstrap JS -->
     <script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"
     ></script>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-        crossorigin="anonymous"
-    ></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            scrollIndicator.addEventListener('click', function() {
+                const nextSection = document.querySelector('section:nth-of-type(2)');
+                if (nextSection) {
+                    nextSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            // Video loaded event with PiP prevention
+            const video = document.querySelector('video');
+            
+            // Disable PiP completely
+            if (video.disablePictureInPicture !== undefined) {
+                video.disablePictureInPicture = true;
+            }
+            
+            // Prevent right-click menu
+            video.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Exit PiP if somehow entered
+            video.addEventListener('enterpictureinpicture', function(e) {
+                e.preventDefault();
+                if (document.exitPictureInPicture) {
+                    document.exitPictureInPicture().catch(() => {});
+                }
+            });
+            
+            // Remove PiP button if browser adds it
+            setTimeout(() => {
+                const pipButtons = document.querySelectorAll('[data-pip], [aria-label*="Picture-in-Picture"], [title*="Picture-in-Picture"]');
+                pipButtons.forEach(btn => {
+                    btn.style.display = 'none';
+                    btn.remove();
+                });
+            }, 1000);
+            
+            video.addEventListener('loadeddata', function() {
+                console.log('Video loaded successfully - PiP disabled');
+            });
+            
+            // Heart badge interactive effects
+            const heartBadge = document.querySelector('.heart-above-main');
+            
+            if (heartBadge) {
+                // Add hover effect for desktop
+                heartBadge.addEventListener('mouseenter', function() {
+                    if (window.innerWidth > 768) {
+                        // Pause animations
+                        const primaryHeart = this.querySelector('.heart-above-primary');
+                        const secondaryHeart = this.querySelector('.heart-above-secondary');
+                        const glow = document.querySelector('.heart-above-glow');
+                        const connector = document.querySelector('.heart-connector');
+                        
+                        if (primaryHeart) primaryHeart.style.animationPlayState = 'paused';
+                        if (secondaryHeart) secondaryHeart.style.animationPlayState = 'paused';
+                        if (glow) glow.style.animationPlayState = 'paused';
+                        if (connector) connector.style.animationPlayState = 'paused';
+                        
+                        // Add beat effect
+                        this.style.animation = 'heartBeat 1s ease';
+                        
+                        // Enhance glow
+                        if (glow) {
+                            glow.style.opacity = '0.9';
+                            glow.style.transform = 'scale(1.3)';
+                        }
+                        
+                        // Enhance connector
+                        if (connector) {
+                            connector.style.opacity = '1';
+                            connector.style.height = '100px';
+                        }
+                    }
+                });
+                
+                heartBadge.addEventListener('mouseleave', function() {
+                    if (window.innerWidth > 768) {
+                        // Resume animations
+                        const primaryHeart = this.querySelector('.heart-above-primary');
+                        const secondaryHeart = this.querySelector('.heart-above-secondary');
+                        const glow = document.querySelector('.heart-above-glow');
+                        const connector = document.querySelector('.heart-connector');
+                        
+                        if (primaryHeart) primaryHeart.style.animationPlayState = 'running';
+                        if (secondaryHeart) secondaryHeart.style.animationPlayState = 'running';
+                        if (glow) glow.style.animationPlayState = 'running';
+                        if (connector) connector.style.animationPlayState = 'running';
+                        
+                        // Remove beat effect
+                        this.style.animation = '';
+                        
+                        // Reset glow
+                        if (glow) {
+                            glow.style.opacity = '';
+                            glow.style.transform = '';
+                        }
+                        
+                        // Reset connector
+                        if (connector) {
+                            connector.style.opacity = '';
+                            connector.style.height = '';
+                        }
+                    }
+                });
+                
+                // Add click effect for mobile
+                heartBadge.addEventListener('click', function() {
+                    // Create pulse effect
+                    this.style.transform = 'scale(1.2)';
+                    
+                    // Emit floating hearts from the badge
+                    emitHeartsFromBadge(3);
+                    
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
+                });
+            }
+            
+            // Floating hearts emitter from the heart badge
+            function emitHeartsFromBadge(count = 3) {
+                const colors = ['#D4AF37', '#FFD700', '#B76E79'];
+                const badge = document.querySelector('.heart-badge-above');
+                
+                if (!badge) return;
+                
+                const badgeRect = badge.getBoundingClientRect();
+                const startX = badgeRect.left + badgeRect.width / 2;
+                const startY = badgeRect.top + badgeRect.height / 2;
+                
+                for (let i = 0; i < count; i++) {
+                    setTimeout(() => {
+                        createFloatingHeartFromBadge(startX, startY);
+                    }, i * 100);
+                }
+            }
+            
+            function createFloatingHeartFromBadge(startX, startY) {
+                const colors = ['#D4AF37', '#FFD700', '#B76E79'];
+                const heart = document.createElement('div');
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                heart.style.cssText = `
+                    position: fixed;
+                    font-size: ${Math.random() * 15 + 10}px;
+                    color: ${colors[Math.floor(Math.random() * colors.length)]};
+                    opacity: 0;
+                    z-index: 3;
+                    pointer-events: none;
+                    animation: floatFromBadge 2s ease-out forwards;
+                `;
+                
+                heart.style.left = `${startX}px`;
+                heart.style.top = `${startY}px`;
+                heart.style.transform = 'translate(-50%, -50%)';
+                
+                document.body.appendChild(heart);
+                
+                // Remove after animation completes
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, 2000);
+            }
+            
+            // Add floating heart animation from badge
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes floatFromBadge {
+                    0% {
+                        transform: translate(-50%, -50%) rotate(0deg) scale(0.3);
+                        opacity: 0.9;
+                    }
+                    100% {
+                        transform: translate(
+                            ${Math.random() > 0.5 ? '-' : ''}${Math.random() * 100 + 50}px, 
+                            -${Math.random() * 80 + 30}px
+                        ) rotate(${Math.random() > 0.5 ? '' : '-'}${Math.random() * 180}deg) scale(1);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Create occasional floating hearts from badge
+            let floatingHeartInterval;
+            
+            function startFloatingHearts() {
+                if (window.innerWidth > 768) {
+                    floatingHeartInterval = setInterval(() => {
+                        if (Math.random() > 0.8) {
+                            const badge = document.querySelector('.heart-badge-above');
+                            if (badge) {
+                                const badgeRect = badge.getBoundingClientRect();
+                                const startX = badgeRect.left + badgeRect.width / 2;
+                                const startY = badgeRect.top + badgeRect.height / 2;
+                                createFloatingHeartFromBadge(startX, startY);
+                            }
+                        }
+                    }, 4000);
+                }
+            }
+            
+            function stopFloatingHearts() {
+                if (floatingHeartInterval) {
+                    clearInterval(floatingHeartInterval);
+                }
+            }
+            
+            // Start floating hearts after page load
+            setTimeout(() => {
+                startFloatingHearts();
+            }, 2000);
+            
+            // Stop floating hearts when user scrolls
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                stopFloatingHearts();
+                
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    startFloatingHearts();
+                }, 5000);
+            });
+        });
+    </script>
 </body>
 </html>

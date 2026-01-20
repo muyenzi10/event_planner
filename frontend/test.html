@@ -1,426 +1,267 @@
-close button not close collapse and remove second close button"<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <div class="container">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/index.css"/>
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <title>Event</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- FontAwesome for icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-    <!-- Brand -->
-    <a class="navbar-brand" href="#">
-      <i class="fas fa-heart me-2"></i>Dream Day
-    </a>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand logo-margin" href="#">Logo</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <!-- HAMBURGER (OPEN) with custom icon -->
-    <button class="navbar-toggler custom-toggler" type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation">
-      <div class="hamburger-icon">
-        <span></span>
-        <span></span>
-        <span></span>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/home">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Service</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/packages">Packages</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="suppliers">Suppliers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/booking">Booking</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </button>
+    </nav>
+<div class="image-container">
+    <img src="/assethome/5.jpg" class="img" alt="Welcome to Wedding Planner">
+    <div class="carousel-caption d-block">
+        <h5>Welcome to Wedding Planner</h5>
+        <p>We Already Be With You.</p>
+    </div>
+</div>
+<div class="title-container">
+  <h1>Services</h1>
+</div>
+<div class="container">
 
-    <!-- COLLAPSIBLE MENU -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-
-      <!-- CLOSE BUTTON (mobile only) -->
-      <button class="navbar-close-btn d-lg-none"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-label="Close">
-        <i class="fas fa-times"></i>
-      </button>
-
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link <%= activePage === 'home' ? 'active' : '' %>" href="/home">
-            <i class="fas fa-home me-1"></i> Home
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link <%= activePage === 'about' ? 'active' : '' %>" href="/about">
-            <i class="fas fa-info-circle me-1"></i> About
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link <%= activePage === 'packages' ? 'active' : '' %>" href="/packages">
-            <i class="fas fa-gift me-1"></i> Packages
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link <%= activePage === 'suppliers' ? 'active' : '' %>" href="/suppliers">
-            <i class="fas fa-camera me-1"></i> Suppliers
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link <%= activePage === 'booking' ? 'active' : '' %>" href="/booking">
-            <i class="fas fa-bookmark me-1"></i> Book Consultation
-          </a>
-        </li>
-      </ul>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <a href="/decor">
+        <img src="/assethome/venu3.jpg" class="card-img-top" alt="...">
+        </a>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title mb-2">Venue & Decor</h5>
+          <a href="/decor" class="btn btn-primary">Read More</a>
+        </div>
+      </div>
+    </div>
+  <div class="col-md-4">
+    <div class="card " >
+     <a href="/invetation">
+      <img src="/assethome/inv1.jpg" class="card-img-top" alt="...">
+      </a>
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title mb-2">Invitation Card</h5>
+        <a href="/invetation" class="btn btn-primary">Read More</a>
+      </div>
     </div>
   </div>
-</nav>
+  <div class="col-md-4">
+    <div class="card " >
+       <a href="/styles">
+      <img src="/assethome/dres.jpg" class="card-img-top" alt="...">
+      </a>
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title mb-2">styles</h5>
+        <a href="/styles" class="btn btn-primary">Read More</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card " >
+     <a href="/beauty">    
+      <img src="/assethome/beaty.jpg" class="card-img-top" alt="...">
+    </a> 
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title mb-2">Beaty</h5>
+        <a href="/beauty" class="btn btn-primary">Read More</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card " >
+     <a href="/mc">
+      <img src="/assethome/mc.jpg" class="card-img-top" alt="...">
+      </a>
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title mb-2">MC</h5>
+        <a href="/mc" class="btn btn-primary">Read More</a>
+      </div>
+    </div>
+  </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var navbarCollapse = document.getElementById('navbarNav');
-    var body = document.body;
+<!-- 4 -->
+  
+  <div class="col-md-4">
+    <div class="card " >
+      <a href="/troupe">
+        <img src="/assethome/aime.jpg" class="card-img-top" alt="Troupe">
+      </a>
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title mb-2">Troupe</h5>
+        <a href="/troupe" class="btn btn-primary">Read More</a>
+      </div>
+    </div>
+  </div>
 
-    navbarCollapse.addEventListener('show.bs.collapse', function () {
-        body.classList.add('menu-open');
-    });
+<!-- 5 -->
 
-    navbarCollapse.addEventListener('hide.bs.collapse', function () {
-        body.classList.remove('menu-open');
-    });
-});
-</script>:root {
-    --primary-color: #d4af37;
-    --primary-hover: #b8941d;
-    --dark-color: #222;
-    --light-color: #fff;
-    --muted-color: #f8f4f0;
-    --shadow-light: 0 2px 15px rgba(0,0,0,0.08);
-    --shadow-medium: 0 4px 20px rgba(0,0,0,0.12);
-    --navbar-height: 80px;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--muted-color);
-    color: var(--dark-color);
-    line-height: 1.7;
-    overflow-x: hidden;
-    padding-top: var(--navbar-height);
-    transition: all 0.3s ease;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-}
-
-/* ========== NAVBAR STYLES ========== */
-.navbar {
-    box-shadow: var(--shadow-light);
-    padding: 20px 0;
-    transition: all 0.3s ease !important;
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.98) !important;
-    min-height: var(--navbar-height);
-    z-index: 1030;
-}
-
-/* SCROLL EFFECT - Working now */
-.navbar.scrolled {
-    padding: 12px 0 !important;
-    box-shadow: var(--shadow-medium) !important;
-    backdrop-filter: blur(15px);
-    background-color: rgba(255, 255, 255, 0.99) !important;
-}
-
-.navbar-brand {
-    font-weight: 700;
-    color: var(--primary-color) !important;
-    font-size: 1.8rem;
-    display: flex;
-    align-items: center;
-    font-family: 'Playfair Display', serif;
-    transition: transform 0.3s ease;
-}
-
-.navbar-brand:hover {
-    transform: scale(1.05);
-}
-
-/* Custom Hamburger Icon */
-.navbar-toggler {
-    padding: 8px !important;
-    border: none !important;
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.navbar-toggler.custom-toggler {
-    background: transparent !important;
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.hamburger-icon {
-    width: 24px;
-    height: 18px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.3s ease;
-}
-
-.hamburger-icon span {
-    display: block;
-    height: 2px;
-    width: 100%;
-    background-color: var(--primary-color);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    transform-origin: center;
-}
-
-/* Hide default Bootstrap toggler icon */
-.navbar-toggler.custom-toggler .navbar-toggler-icon {
-    display: none;
-}
-
-/* Animate hamburger to X when menu is open */
-.navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-
-.navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
-}
-
-.navbar-toggler[aria-expanded="true"] .hamburger-icon span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
-.custom-toggler:hover .hamburger-icon span {
-    background-color: var(--primary-hover);
-}
-
-.custom-toggler:hover .hamburger-icon {
-    transform: scale(1.1);
-}
-
-/* Menu Close Button - INSIDE THE MENU */
-.menu-close-btn {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 40px;
-    height: 40px;
-    border: none;
-    background: var(--primary-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 1;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.8);
-}
-
-.menu-close-btn.show {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-}
-
-.menu-close-btn:hover {
-    background: var(--primary-hover);
-    transform: scale(1.1) rotate(90deg) !important;
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-}
-
-/* Navigation Links */
-.nav-link {
-    font-weight: 500;
-    color: var(--dark-color) !important;
-    margin: 0 10px;
-    position: relative;
-    transition: all 0.3s ease;
-    padding: 8px 12px !important;
-    border-radius: 6px;
-}
-
-.nav-link:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: var(--primary-color);
-    transition: width 0.3s ease;
-}
-
-.nav-link:hover:after, .nav-link.active:after {
-    width: 80%;
-}
-
-.nav-link:hover, .nav-link.active {
-    color: var(--primary-color) !important;
-    background-color: rgba(212, 175, 55, 0.05);
-}
-
-/* Backdrop created by JavaScript */
-.navbar-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1040;
-    pointer-events: none;
-}
-
-body.menu-open .navbar-backdrop {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: all;
-}
-
-/* Prevent body scroll when menu is open */
-body.menu-open {
-    overflow: hidden;
-}
-
-/* Mobile responsive navbar */
-@media (max-width: 991px) {
-    .navbar-collapse {
-        background-color: var(--light-color);
-        border-radius: 16px;
-        padding: 25px !important;
-        margin-top: 15px;
-        box-shadow: var(--shadow-medium);
-        position: fixed !important;
-        top: var(--navbar-height) !important;
-        left: 20px;
-        right: 20px;
-        max-height: calc(100vh - var(--navbar-height) - 40px);
-        overflow-y: auto;
-        z-index: 1050;
-    }
+    <div class="col-md-4">
+     
+      <div class="card " >
+      <a href="/gakondo">
+        <img src="/assethome/gak1.jpg" class="card-img-top" alt="...">
+        </a>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title mb-2">Gakondo</h5>
+          <a href="/gakondo" class="btn btn-primary">Read More</a>
+        </div>
+      </div>
+    </div>
+  <div class="col-md-4">
+    <div class="card " >
+      <a href="/sound">
+      <img src="/assethome/sound6.jpg" class="card-img-top" alt="...">
+      </a>
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title mb-2">Sound & lighting</h5>
+        <a href="/sound" class="btn btn-primary">Read More</a>
+      </div>
+    </div>
+  </div>
+  <!--6-->
+  
+      <div class="col-md-4">
+        <div class="card">
+          <a href="/photographers">
+          <img src="/assethome/photo.jpg" class="card-img-top" alt="...">
+          </a>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-2">photograph & videograph</h5>
+            <a href="/photographers" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card " >
+         <a href="/catering">
+          <img src="/assethome/food1.jpg" class="card-img-top" alt="...">
+          </a>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-2">Catering</h5>
+            <a href="/catering" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+      <div class="card " >
+        <a href="/service">
+        <img src="/assethome/iriza14.jpg" class="card-img-top" alt="...">
+        </a>
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title mb-2">Service</h5>
+          <a href="/service" class="btn btn-primary">Read More</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card " >
+  
+        <img src="/assethome/rugaba.jpg" class="card-img-top" alt="...">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title mb-2">Amahamba</h5>
+          <a href="#" class="btn btn-primary">Read More</a>
+        </div>
+      </div>
+    </div>
     
-    .navbar-collapse.show {
-        animation: slideDown 0.3s ease;
-    }
-    
-    @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-20px) scale(0.95);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
+    </div>
+</div>
 
-    .navbar-nav {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding: 0;
-        margin-top: 10px;
-    }
+   <!-- Footer -->
+   <footer class="bg-dark text-light py-4 footer-animated">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>About Us</h5>
+                <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Quick Links</h5>
+                <ul class="list-unstyled footer-content">
+                    <li><a href="home.htm" class="text-light">Home</a></li>
+                    <li><a href="#" class="text-light">About</a></li>
+                    <li><a href="#" class="text-light">Services</a></li>
+                    <li><a href="index.html" class="text-light">Packages</a></li>
+                    <li><a href="#" class="text-light">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Connect With Us</h5>
+                <ul class="list-unstyled footer-content">
+                    <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                    <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <p class="footer-content">&copy; 2025 Event Planner. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
 
-    .nav-item {
-        width: 100%;
-        opacity: 0;
-        animation: fadeInUp 0.3s ease forwards;
-    }
-    
-    /* Staggered animation for menu items */
-    .nav-item:nth-child(1) { animation-delay: 0.05s; }
-    .nav-item:nth-child(2) { animation-delay: 0.1s; }
-    .nav-item:nth-child(3) { animation-delay: 0.15s; }
-    .nav-item:nth-child(4) { animation-delay: 0.2s; }
-    .nav-item:nth-child(5) { animation-delay: 0.25s; }
-    
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+<!-- Initialize AOS -->
 
-    .nav-link {
-        display: block;
-        width: 100%;
-        text-align: center;
-        padding: 15px 20px !important;
-        border-radius: 10px;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        background-color: rgba(212, 175, 55, 0.05);
-        color: var(--dark-color) !important;
-        margin: 0;
-        border: 1px solid rgba(212, 175, 55, 0.1);
-    }
 
-    .nav-link:hover, .nav-link.active {
-        background-color: var(--primary-color);
-        color: #fff !important;
-        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
-        transform: translateY(-2px);
-        border-color: var(--primary-color);
-    }
-    
-    .nav-link i {
-        font-size: 1.2rem;
-        margin-right: 10px;
-        width: 24px;
-        text-align: center;
-    }
-    
-    .navbar-brand {
-        font-size: 1.6rem;
-        padding-left: 10px;
-    }
-    
-    .navbar.scrolled {
-        padding: 15px 0 !important;
-    }
-}
-
-/* Desktop styles */
-@media (min-width: 992px) {
-    .menu-close-btn {
-        display: none !important;
-    }
-    
-    .navbar-backdrop {
-        display: none !important;
-    }
-    
-    .navbar-collapse {
-        position: relative !important;
-        top: auto !important;
-    }
-}
+    <!-- bootstrap js -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
