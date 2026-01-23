@@ -1,267 +1,1648 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/index.css"/>
-    <link rel="stylesheet" href="/css/navbar.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <title>Event</title>
+    <title>Dream Day Wedding Planners</title>
+
+    <!-- Bootstrap CSS -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        crossorigin="anonymous"
     />
-    <!-- FontAwesome for icons -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand logo-margin" href="#">Logo</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous"
+    />
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-           
-          <ul class="navbar-nav mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="/about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Service</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="/packages">Packages</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="suppliers">Suppliers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="/booking">Booking</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-<div class="image-container">
-    <img src="/assethome/5.jpg" class="img" alt="Welcome to Wedding Planner">
-    <div class="carousel-caption d-block">
-        <h5>Welcome to Wedding Planner</h5>
-        <p>We Already Be With You.</p>
-    </div>
-</div>
-<div class="title-container">
-  <h1>Services</h1>
-</div>
-<div class="container">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
+    <link rel="stylesheet" href="/allpack/layout/css/footer.css">
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-secondary: #FFD700;
+            --gold-light: #FFF8E7;
+            --rose-gold: #B76E79;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --dark-card: #1a1a1a;
+        }
 
-  <div class="row">
-    <div class="col-md-4">
-      <div class="card">
-        <a href="/decor">
-        <img src="/assethome/venu3.jpg" class="card-img-top" alt="...">
-        </a>
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title mb-2">Venue & Decor</h5>
-          <a href="/decor" class="btn btn-primary">Read More</a>
-        </div>
-      </div>
-    </div>
-  <div class="col-md-4">
-    <div class="card " >
-     <a href="/invetation">
-      <img src="/assethome/inv1.jpg" class="card-img-top" alt="...">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title mb-2">Invitation Card</h5>
-        <a href="/invetation" class="btn btn-primary">Read More</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card " >
-       <a href="/styles">
-      <img src="/assethome/dres.jpg" class="card-img-top" alt="...">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title mb-2">styles</h5>
-        <a href="/styles" class="btn btn-primary">Read More</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card " >
-     <a href="/beauty">    
-      <img src="/assethome/beaty.jpg" class="card-img-top" alt="...">
-    </a> 
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title mb-2">Beaty</h5>
-        <a href="/beauty" class="btn btn-primary">Read More</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card " >
-     <a href="/mc">
-      <img src="/assethome/mc.jpg" class="card-img-top" alt="...">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title mb-2">MC</h5>
-        <a href="/mc" class="btn btn-primary">Read More</a>
-      </div>
-    </div>
-  </div>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fefefe;
+            overflow-x: hidden;
+        }
 
-<!-- 4 -->
-  
-  <div class="col-md-4">
-    <div class="card " >
-      <a href="/troupe">
-        <img src="/assethome/aime.jpg" class="card-img-top" alt="Troupe">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title mb-2">Troupe</h5>
-        <a href="/troupe" class="btn btn-primary">Read More</a>
-      </div>
-    </div>
-  </div>
+        /* ============ VIDEO HERO ============ */
+        .video-hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            background: #000;
+        }
 
-<!-- 5 -->
+        .video-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(183, 110, 121, 0.2) 0%,
+                rgba(32, 32, 32, 0.55) 40%,
+                rgba(32, 32, 32, 0.65) 50%,
+                rgba(32, 32, 32, 0.55) 60%,
+                rgba(212, 175, 55, 0.2) 100%
+            );
+            z-index: 2;
+        }
 
-    <div class="col-md-4">
-     
-      <div class="card " >
-      <a href="/gakondo">
-        <img src="/assethome/gak1.jpg" class="card-img-top" alt="...">
-        </a>
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title mb-2">Gakondo</h5>
-          <a href="/gakondo" class="btn btn-primary">Read More</a>
-        </div>
-      </div>
-    </div>
-  <div class="col-md-4">
-    <div class="card " >
-      <a href="/sound">
-      <img src="/assethome/sound6.jpg" class="card-img-top" alt="...">
-      </a>
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title mb-2">Sound & lighting</h5>
-        <a href="/sound" class="btn btn-primary">Read More</a>
-      </div>
-    </div>
-  </div>
-  <!--6-->
-  
-      <div class="col-md-4">
-        <div class="card">
-          <a href="/photographers">
-          <img src="/assethome/photo.jpg" class="card-img-top" alt="...">
-          </a>
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-2">photograph & videograph</h5>
-            <a href="/photographers" class="btn btn-primary">Read More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="card " >
-         <a href="/catering">
-          <img src="/assethome/food1.jpg" class="card-img-top" alt="...">
-          </a>
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title mb-2">Catering</h5>
-            <a href="/catering" class="btn btn-primary">Read More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-      <div class="card " >
-        <a href="/service">
-        <img src="/assethome/iriza14.jpg" class="card-img-top" alt="...">
-        </a>
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title mb-2">Service</h5>
-          <a href="/service" class="btn btn-primary">Read More</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card " >
-  
-        <img src="/assethome/rugaba.jpg" class="card-img-top" alt="...">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title mb-2">Amahamba</h5>
-          <a href="#" class="btn btn-primary">Read More</a>
-        </div>
-      </div>
-    </div>
-    
-    </div>
-</div>
+        .video-hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
 
-   <!-- Footer -->
-   <footer class="bg-dark text-light py-4 footer-animated">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>About Us</h5>
-                <p class="footer-content">We are a dedicated team of event planners, committed to creating unforgettable experiences. From weddings to corporate events, we handle every detail with care and expertise.</p>
+        /* ============ HEART BADGE ABOVE HERO CONTENT ============ */
+        .heart-badge-above {
+            position: absolute;
+            top: 15%; /* Positioned above the hero content */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5; /* Above the heart badge */
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Main Heart Container */
+        .heart-above-main {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Primary Heart (Large & Rotating) */
+        .heart-above-primary {
+            font-size: 4rem;
+            color: var(--gold-primary);
+            animation: heartAboveFloat 10s ease-in-out infinite, heartAboveGlow 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.7));
+            position: absolute;
+        }
+
+        /* Secondary Heart (Smaller & Opposite Rotation) */
+        .heart-above-secondary {
+            font-size: 2.2rem;
+            color: var(--rose-gold);
+            animation: heartAboveRotateReverse 14s linear infinite, heartAbovePulse 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(183, 110, 121, 0.6));
+            position: absolute;
+            opacity: 0.9;
+        }
+
+        /* Center Heart Glow Effect */
+        .heart-above-glow {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(
+                circle,
+                rgba(212, 175, 55, 0.25) 0%,
+                rgba(212, 175, 55, 0.15) 30%,
+                transparent 70%
+            );
+            border-radius: 50%;
+            animation: heartAboveGlowPulse 8s ease-in-out infinite;
+        }
+
+        /* Connecting Line to Title */
+        .heart-connector {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, 
+                rgba(212, 175, 55, 0.8) 0%, 
+                rgba(212, 175, 55, 0.4) 50%, 
+                transparent 100%);
+            animation: connectorFade 4s ease-in-out infinite;
+        }
+
+        /* Heart Animation Keyframes */
+        @keyframes heartAboveFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            25% {
+                transform: translateY(-12px) rotate(90deg) scale(1.05);
+            }
+            50% {
+                transform: translateY(6px) rotate(180deg) scale(1);
+            }
+            75% {
+                transform: translateY(-8px) rotate(270deg) scale(1.03);
+            }
+        }
+
+        @keyframes heartAboveRotateReverse {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(-180deg) scale(1.15);
+            }
+            100% {
+                transform: rotate(-360deg) scale(1);
+            }
+        }
+
+        @keyframes heartAbovePulse {
+            0%, 100% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes heartAboveGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.7));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.9));
+            }
+        }
+
+        @keyframes heartAboveGlowPulse {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.25);
+            }
+        }
+
+        @keyframes connectorFade {
+            0%, 100% {
+                opacity: 0.6;
+                height: 60px;
+            }
+            50% {
+                opacity: 1;
+                height: 80px;
+            }
+        }
+
+        /* Heart Beating Animation */
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            10% {
+                transform: scale(1.1);
+            }
+            20% {
+                transform: scale(1);
+            }
+            30% {
+                transform: scale(1.15);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+
+        /* ============ HERO CONTENT ============ */
+        .hero-content {
+            position: relative;
+            z-index: 4; /* Below the heart badge */
+            color: #fff;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content .container {
+            max-width: 1200px;
+            animation: fadeInUp 1s ease-out 0.3s forwards;
+            opacity: 0;
+            padding-top: 80px; /* Make room for the heart badge above */
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
+            line-height: 1.1;
+            position: relative;
+        }
+
+        .hero-title::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--gold-primary), transparent);
+        }
+
+        .highlight-word {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            position: relative;
+        }
+
+        .highlight-word::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--rose-gold), transparent);
+            opacity: 0.6;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============ BUTTONS ============ */
+        .btn-gold-gradient {
+            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
+            border: none;
+            color: #000;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-gold-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+            color: #000;
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--gold-primary);
+            color: #fff;
+        }
+
+        /* ============ SCROLL INDICATOR ============ */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .scroll-indicator i {
+            color: var(--gold-primary);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        /* ============ DARK PICTURE SLIDER SECTION ============ */
+        .picture-slider-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .picture-slider-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--gold-primary), 
+                var(--rose-gold), 
+                transparent
+            );
+            z-index: 1;
+        }
+
+        .picture-slider-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(183, 110, 121, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #fff;
+            position: relative;
+            padding-bottom: 1.5rem;
+            z-index: 2;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, 
+                transparent, 
+                var(--gold-primary), 
+                var(--rose-gold), 
+                transparent
+            );
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #aaa;
+            font-size: 1.2rem;
+            margin-top: -2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            z-index: 2;
+            position: relative;
+        }
+
+        .picture-slider-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .picture-slider {
+            overflow: hidden;
+            padding: 30px 0;
+        }
+
+        .picture-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .picture-slide {
+            min-width: 380px;
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.05),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+            background: var(--dark-card);
+        }
+
+        .picture-slide:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.4),
+                0 0 0 1px var(--gold-primary),
+                0 0 30px rgba(212, 175, 55, 0.2),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .picture-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .picture-slide:hover .picture-image {
+            transform: scale(1.08);
+        }
+
+        .picture-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                to bottom, 
+                transparent 0%, 
+                transparent 40%, 
+                rgba(0, 0, 0, 0.9) 100%
+            );
+            display: flex;
+            align-items: flex-end;
+            padding: 35px;
+            opacity: 0.9;
+            transition: all 0.5s ease;
+        }
+
+        .picture-slide:hover .picture-overlay {
+            background: linear-gradient(
+                to bottom, 
+                transparent 0%, 
+                transparent 20%, 
+                rgba(0, 0, 0, 0.95) 100%
+            );
+            opacity: 1;
+        }
+
+        .picture-title-container {
+            width: 100%;
+        }
+
+        .picture-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            margin: 0;
+            line-height: 1.2;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .picture-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(to right, var(--gold-primary), transparent);
+            transition: width 0.5s ease;
+        }
+
+        .picture-slide:hover .picture-title::after {
+            width: 100px;
+        }
+
+        .picture-subtitle {
+            color: #ddd;
+            font-size: 0.95rem;
+            margin-top: 8px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease 0.1s;
+            font-weight: 300;
+        }
+
+        .picture-slide:hover .picture-subtitle {
+            opacity: 0.8;
+            transform: translateY(0);
+        }
+
+        /* Picture slider controls */
+        .picture-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .picture-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 5px 15px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .picture-btn:hover {
+            background: var(--gold-primary);
+            color: #000;
+            border-color: var(--gold-primary);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 8px 25px rgba(212, 175, 55, 0.3),
+                0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .picture-dots {
+            display: flex;
+            gap: 12px;
+        }
+
+        .picture-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .picture-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .picture-dot.active {
+            background: transparent;
+            border-color: var(--gold-primary);
+        }
+
+        .picture-dot.active::before {
+            background: var(--gold-primary);
+        }
+
+        .picture-dot:hover:not(.active) {
+            background: rgba(212, 175, 55, 0.3);
+            transform: scale(1.2);
+        }
+
+        .slide-counter {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-left: 20px;
+            font-weight: 300;
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            }
+        }
+
+        /* ============ RESPONSIVE DESIGN ============ */
+        @media (max-width: 1200px) {
+            .picture-slide {
+                min-width: 340px;
+                height: 450px;
+            }
+            
+            .picture-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .heart-badge-above {
+                width: 100px;
+                height: 100px;
+                top: 12%;
+            }
+            
+            .heart-above-main {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .heart-above-primary {
+                font-size: 3.2rem;
+            }
+            
+            .heart-above-secondary {
+                font-size: 1.8rem;
+            }
+            
+            .heart-above-glow {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .heart-connector {
+                height: 50px;
+            }
+            
+            .hero-content .container {
+                padding-top: 60px;
+            }
+            
+            .section-title {
+                font-size: 2.6rem;
+            }
+            
+            .picture-slider-section {
+                padding: 5rem 0;
+            }
+            
+            .picture-slide {
+                min-width: 320px;
+                height: 420px;
+            }
+            
+            .picture-title {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-hero, .hero-content {
+                height: 90vh;
+                min-height: 500px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .btn-gold-gradient {
+                padding: 0.8rem 2rem;
+            }
+            
+            /* Adjust heart badge for mobile */
+            .heart-badge-above {
+                width: 80px;
+                height: 80px;
+                top: 10%;
+            }
+            
+            .heart-above-main {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .heart-above-primary {
+                font-size: 2.5rem;
+            }
+            
+            .heart-above-secondary {
+                font-size: 1.4rem;
+            }
+            
+            .heart-above-glow {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .heart-connector {
+                height: 40px;
+            }
+            
+            .hero-content .container {
+                padding-top: 50px;
+            }
+            
+            .hero-title::before {
+                top: -20px;
+                width: 60px;
+            }
+            
+            .picture-slider-section {
+                padding: 4rem 0;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+                margin-bottom: 3rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
+                margin-top: -2rem;
+                margin-bottom: 2rem;
+            }
+            
+            .picture-slide {
+                min-width: 280px;
+                height: 380px;
+            }
+            
+            .picture-overlay {
+                opacity: 1;
+                background: linear-gradient(
+                    to bottom, 
+                    transparent 0%, 
+                    transparent 20%, 
+                    rgba(0, 0, 0, 0.9) 100%
+                );
+            }
+            
+            .picture-title {
+                font-size: 1.6rem;
+            }
+            
+            .picture-btn {
+                width: 48px;
+                height: 48px;
+                font-size: 1.1rem;
+            }
+            
+            .picture-dot {
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-hero, .hero-content {
+                height: 85vh;
+                min-height: 450px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            /* Further adjust heart badge for very small screens */
+            .heart-badge-above {
+                width: 70px;
+                height: 70px;
+                top: 8%;
+            }
+            
+            .heart-above-main {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .heart-above-primary {
+                font-size: 2rem;
+            }
+            
+            .heart-above-secondary {
+                font-size: 1.1rem;
+            }
+            
+            .heart-above-glow {
+                width: 85px;
+                height: 85px;
+            }
+            
+            .heart-connector {
+                height: 30px;
+            }
+            
+            .hero-content .container {
+                padding-top: 40px;
+            }
+            
+            .hero-title::before {
+                top: -15px;
+                width: 50px;
+            }
+            
+            .picture-slider-section {
+                padding: 3rem 0;
+            }
+            
+            .section-title {
+                font-size: 1.9rem;
+                margin-bottom: 2.5rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            .picture-slide {
+                min-width: 260px;
+                height: 350px;
+            }
+            
+            .picture-title {
+                font-size: 1.4rem;
+                padding: 25px;
+            }
+            
+            .picture-btn {
+                width: 42px;
+                height: 42px;
+                font-size: 1rem;
+            }
+            
+            .picture-dot {
+                width: 8px;
+                height: 8px;
+            }
+        }
+
+        /* Accessibility - Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .heart-above-primary,
+            .heart-above-secondary,
+            .heart-above-glow,
+            .heart-connector,
+            .scroll-indicator i,
+            .picture-slide,
+            .picture-image,
+            .picture-overlay,
+            .picture-title::after,
+            .picture-subtitle,
+            .picture-btn {
+                animation: none !important;
+                transition: none !important;
+            }
+            
+            .heart-above-primary,
+            .heart-above-secondary {
+                opacity: 0.8;
+            }
+            
+            .heart-connector {
+                opacity: 0.5;
+            }
+            
+            .picture-overlay {
+                opacity: 1;
+                background: linear-gradient(
+                    to bottom, 
+                    transparent 0%, 
+                    transparent 20%, 
+                    rgba(0, 0, 0, 0.9) 100%
+                );
+            }
+            
+            .picture-subtitle {
+                opacity: 0.8;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <%- include('../allpack/layout/navbar') %>
+    <!-- VIDEO HERO SECTION -->
+    <section class="video-hero">
+        <!-- HEART BADGE ABOVE HERO CONTENT -->
+        <div class="heart-badge-above">
+            <div class="heart-above-glow"></div>
+            <div class="heart-above-main">
+                <i class="fas fa-heart heart-above-primary"></i>
+                <i class="fas fa-heart heart-above-secondary"></i>
             </div>
-            <div class="col-md-4">
-                <h5>Quick Links</h5>
-                <ul class="list-unstyled footer-content">
-                    <li><a href="home.htm" class="text-light">Home</a></li>
-                    <li><a href="#" class="text-light">About</a></li>
-                    <li><a href="#" class="text-light">Services</a></li>
-                    <li><a href="index.html" class="text-light">Packages</a></li>
-                    <li><a href="#" class="text-light">Contact</a></li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <h5>Connect With Us</h5>
-                <ul class="list-unstyled footer-content">
-                    <li><a href="#" class="text-light"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-                    <li><a href="#" class="text-light"><i class="fab fa-twitter"></i> Twitter</a></li>
-                    <li><a href="#" class="text-light"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    <li><a href="#" class="text-light"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-                </ul>
+            <div class="heart-connector"></div>
+        </div>
+
+        <video 
+            autoplay 
+            loop 
+            muted 
+            playsinline
+            disablePictureInPicture
+            controlsList="nodownload nofullscreen noremoteplayback nopictureinpicture"
+            poster="/assethome/v1-poster.jpg">
+            <source src="/assethome/v1.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">
+                    Where <span class="highlight-word">Forever</span> Begins
+                </h1>
+                
+                <p class="hero-subtitle">
+                    We transform wedding dreams into breathtaking realities. Every detail is 
+                    meticulously crafted to create your perfect day—a celebration as unique 
+                    as your love story.
+                </p>
+                
+                <a href="/booking" class="btn btn-gold-gradient">
+                    <i class="fas fa-gem me-2"></i>Begin Your Love Story
+                </a>
             </div>
         </div>
-        <div class="text-center mt-4">
-            <p class="footer-content">&copy; 2025 Event Planner. All Rights Reserved.</p>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
-    </div>
-</footer>
+    </section>
 
-<!-- Initialize AOS -->
+    <!-- DARK PICTURE SLIDER SECTION -->
+    <section class="picture-slider-section" id="picture-slider">
+        <div class="container">
+            <h2 class="section-title">Gallery of Love Stories</h2>
+            <p class="section-subtitle">Capturing moments that last a lifetime</p>
+            
+            <div class="picture-slider-container">
+                <div class="picture-slider">
+                    <div class="picture-track" id="pictureTrack">
+                        <!-- Picture 1 -->
+                        <div class="picture-slide">
+                            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Garden Wedding" class="picture-image">
+                            <div class="picture-overlay">
+                                <div class="picture-title-container">
+                                    <h3 class="picture-title">Elegant Garden Ceremony</h3>
+                                    <p class="picture-subtitle">Romantic outdoor celebration</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Picture 2 -->
+                        <div class="picture-slide">
+                            <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Beach Wedding" class="picture-image">
+                            <div class="picture-overlay">
+                                <div class="picture-title-container">
+                                    <h3 class="picture-title">Sunset Beach Bliss</h3>
+                                    <p class="picture-subtitle">Golden hour ocean romance</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Picture 3 -->
+                        <div class="picture-slide">
+                            <img src="https://images.unsplash.com/photo-1440186347098-386b7459ad6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ballroom Wedding" class="picture-image">
+                            <div class="picture-overlay">
+                                <div class="picture-title-container">
+                                    <h3 class="picture-title">Grand Ballroom Celebration</h3>
+                                    <p class="picture-subtitle">Luxurious crystal affair</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Picture 4 -->
+                        <div class="picture-slide">
+                            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Vineyard Wedding" class="picture-image">
+                            <div class="picture-overlay">
+                                <div class="picture-title-container">
+                                    <h3 class="picture-title">Vineyard Romance</h3>
+                                    <p class="picture-subtitle">Rustic sunset elegance</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Picture 5 -->
+                        <div class="picture-slide">
+                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Modern Wedding" class="picture-image">
+                            <div class="picture-overlay">
+                                <div class="picture-title-container">
+                                    <h3 class="picture-title">Contemporary Minimalist</h3>
+                                    <p class="picture-subtitle">Clean modern sophistication</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Picture 6 -->
+                        <div class="picture-slide">
+                            <img src="https://images.unsplash.com/photo-1532710095612-947e5e42bf1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Castle Wedding" class="picture-image">
+                            <div class="picture-overlay">
+                                <div class="picture-title-container">
+                                    <h3 class="picture-title">Enchanted Castle Wedding</h3>
+                                    <p class="picture-subtitle">Fairytale historic charm</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Picture 7 -->
+                        <div class="picture-slide">
+                            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Romantic Wedding" class="picture-image">
+                            <div class="picture-overlay">
+                                <div class="picture-title-container">
+                                    <h3 class="picture-title">Romantic Evening Affair</h3>
+                                    <p class="picture-subtitle">Intimate candlelit magic</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Picture 8 -->
+                        <div class="picture-slide">
+                            <img src="https://images.unsplash.com/photo-1478147427282-58a87a120781?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Floral Wedding" class="picture-image">
+                            <div class="picture-overlay">
+                                <div class="picture-title-container">
+                                    <h3 class="picture-title">Floral Fantasy</h3>
+                                    <p class="picture-subtitle">Blooming garden paradise</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Picture Slider Controls -->
+                <div class="picture-controls">
+                    <button class="picture-btn" id="picturePrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="picture-dots" id="pictureDots">
+                        <!-- Dots will be generated by JavaScript -->
+                    </div>
+                    
+                    <span class="slide-counter" id="slideCounter">1/4</span>
+                    
+                    <button class="picture-btn" id="pictureNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-    <!-- bootstrap js -->
+    <%- include('../allpack/layout/footer') %>
+    <!-- Bootstrap JS -->
     <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-      integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
-      crossorigin="anonymous"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"
     ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
-      integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            // Scroll to picture slider section
+            scrollIndicator.addEventListener('click', function() {
+                const pictureSliderSection = document.querySelector('#picture-slider');
+                if (pictureSliderSection) {
+                    pictureSliderSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            
+            // Video loaded event with PiP prevention
+            const video = document.querySelector('video');
+            
+            // Disable PiP completely
+            if (video.disablePictureInPicture !== undefined) {
+                video.disablePictureInPicture = true;
+            }
+            
+            // Prevent right-click menu
+            video.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+            
+            // Exit PiP if somehow entered
+            video.addEventListener('enterpictureinpicture', function(e) {
+                e.preventDefault();
+                if (document.exitPictureInPicture) {
+                    document.exitPictureInPicture().catch(() => {});
+                }
+            });
+            
+            // Remove PiP button if browser adds it
+            setTimeout(() => {
+                const pipButtons = document.querySelectorAll('[data-pip], [aria-label*="Picture-in-Picture"], [title*="Picture-in-Picture"]');
+                pipButtons.forEach(btn => {
+                    btn.style.display = 'none';
+                    btn.remove();
+                });
+            }, 1000);
+            
+            video.addEventListener('loadeddata', function() {
+                console.log('Video loaded successfully - PiP disabled');
+            });
+            
+            // Heart badge interactive effects
+            const heartBadge = document.querySelector('.heart-above-main');
+            
+            if (heartBadge) {
+                // Add hover effect for desktop
+                heartBadge.addEventListener('mouseenter', function() {
+                    if (window.innerWidth > 768) {
+                        // Pause animations
+                        const primaryHeart = this.querySelector('.heart-above-primary');
+                        const secondaryHeart = this.querySelector('.heart-above-secondary');
+                        const glow = document.querySelector('.heart-above-glow');
+                        const connector = document.querySelector('.heart-connector');
+                        
+                        if (primaryHeart) primaryHeart.style.animationPlayState = 'paused';
+                        if (secondaryHeart) secondaryHeart.style.animationPlayState = 'paused';
+                        if (glow) glow.style.animationPlayState = 'paused';
+                        if (connector) connector.style.animationPlayState = 'paused';
+                        
+                        // Add beat effect
+                        this.style.animation = 'heartBeat 1s ease';
+                        
+                        // Enhance glow
+                        if (glow) {
+                            glow.style.opacity = '0.9';
+                            glow.style.transform = 'scale(1.3)';
+                        }
+                        
+                        // Enhance connector
+                        if (connector) {
+                            connector.style.opacity = '1';
+                            connector.style.height = '100px';
+                        }
+                    }
+                });
+                
+                heartBadge.addEventListener('mouseleave', function() {
+                    if (window.innerWidth > 768) {
+                        // Resume animations
+                        const primaryHeart = this.querySelector('.heart-above-primary');
+                        const secondaryHeart = this.querySelector('.heart-above-secondary');
+                        const glow = document.querySelector('.heart-above-glow');
+                        const connector = document.querySelector('.heart-connector');
+                        
+                        if (primaryHeart) primaryHeart.style.animationPlayState = 'running';
+                        if (secondaryHeart) secondaryHeart.style.animationPlayState = 'running';
+                        if (glow) glow.style.animationPlayState = 'running';
+                        if (connector) connector.style.animationPlayState = 'running';
+                        
+                        // Remove beat effect
+                        this.style.animation = '';
+                        
+                        // Reset glow
+                        if (glow) {
+                            glow.style.opacity = '';
+                            glow.style.transform = '';
+                        }
+                        
+                        // Reset connector
+                        if (connector) {
+                            connector.style.opacity = '';
+                            connector.style.height = '';
+                        }
+                    }
+                });
+                
+                // Add click effect for mobile
+                heartBadge.addEventListener('click', function() {
+                    // Create pulse effect
+                    this.style.transform = 'scale(1.2)';
+                    
+                    // Emit floating hearts from the badge
+                    emitHeartsFromBadge(3);
+                    
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
+                });
+            }
+            
+            // Floating hearts emitter from the heart badge
+            function emitHeartsFromBadge(count = 3) {
+                const colors = ['#D4AF37', '#FFD700', '#B76E79'];
+                const badge = document.querySelector('.heart-badge-above');
+                
+                if (!badge) return;
+                
+                const badgeRect = badge.getBoundingClientRect();
+                const startX = badgeRect.left + badgeRect.width / 2;
+                const startY = badgeRect.top + badgeRect.height / 2;
+                
+                for (let i = 0; i < count; i++) {
+                    setTimeout(() => {
+                        createFloatingHeartFromBadge(startX, startY);
+                    }, i * 100);
+                }
+            }
+            
+            function createFloatingHeartFromBadge(startX, startY) {
+                const colors = ['#D4AF37', '#FFD700', '#B76E79'];
+                const heart = document.createElement('div');
+                heart.innerHTML = '<i class="fas fa-heart"></i>';
+                heart.style.cssText = `
+                    position: fixed;
+                    font-size: ${Math.random() * 15 + 10}px;
+                    color: ${colors[Math.floor(Math.random() * colors.length)]};
+                    opacity: 0;
+                    z-index: 3;
+                    pointer-events: none;
+                    animation: floatFromBadge 2s ease-out forwards;
+                `;
+                
+                heart.style.left = `${startX}px`;
+                heart.style.top = `${startY}px`;
+                heart.style.transform = 'translate(-50%, -50%)';
+                
+                document.body.appendChild(heart);
+                
+                // Remove after animation completes
+                setTimeout(() => {
+                    if (heart.parentNode) {
+                        heart.parentNode.removeChild(heart);
+                    }
+                }, 2000);
+            }
+            
+            // Add floating heart animation from badge
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes floatFromBadge {
+                    0% {
+                        transform: translate(-50%, -50%) rotate(0deg) scale(0.3);
+                        opacity: 0.9;
+                    }
+                    100% {
+                        transform: translate(
+                            ${Math.random() > 0.5 ? '-' : ''}${Math.random() * 100 + 50}px, 
+                            -${Math.random() * 80 + 30}px
+                        ) rotate(${Math.random() > 0.5 ? '' : '-'}${Math.random() * 180}deg) scale(1);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Create occasional floating hearts from badge
+            let floatingHeartInterval;
+            
+            function startFloatingHearts() {
+                if (window.innerWidth > 768) {
+                    floatingHeartInterval = setInterval(() => {
+                        if (Math.random() > 0.8) {
+                            const badge = document.querySelector('.heart-badge-above');
+                            if (badge) {
+                                const badgeRect = badge.getBoundingClientRect();
+                                const startX = badgeRect.left + badgeRect.width / 2;
+                                const startY = badgeRect.top + badgeRect.height / 2;
+                                createFloatingHeartFromBadge(startX, startY);
+                            }
+                        }
+                    }, 4000);
+                }
+            }
+            
+            function stopFloatingHearts() {
+                if (floatingHeartInterval) {
+                    clearInterval(floatingHeartInterval);
+                }
+            }
+            
+            // Start floating hearts after page load
+            setTimeout(() => {
+                startFloatingHearts();
+            }, 2000);
+            
+            // Stop floating hearts when user scrolls
+            let scrollTimeout;
+            window.addEventListener('scroll', function() {
+                stopFloatingHearts();
+                
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    startFloatingHearts();
+                }, 5000);
+            });
+            
+            // ============ DARK PICTURE SLIDER FUNCTIONALITY ============
+            const track = document.getElementById('pictureTrack');
+            const prevBtn = document.getElementById('picturePrev');
+            const nextBtn = document.getElementById('pictureNext');
+            const dotsContainer = document.getElementById('pictureDots');
+            const slideCounter = document.getElementById('slideCounter');
+            
+            if (!track) return;
+            
+            const slides = document.querySelectorAll('.picture-slide');
+            const slideWidth = slides[0].offsetWidth + 30; // width + gap
+            const containerWidth = track.parentElement.offsetWidth;
+            const visibleSlides = Math.floor(containerWidth / slideWidth);
+            const totalSlides = slides.length;
+            const totalSlideGroups = Math.ceil(totalSlides / visibleSlides);
+            
+            let currentPosition = 0;
+            let currentSlideGroup = 0;
+            
+            // Create dots
+            function createDots() {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalSlideGroups; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = `picture-dot ${i === 0 ? 'active' : ''}`;
+                    dot.addEventListener('click', () => goToSlideGroup(i));
+                    dotsContainer.appendChild(dot);
+                }
+                updateSlideCounter();
+            }
+            
+            // Update slide counter
+            function updateSlideCounter() {
+                if (slideCounter) {
+                    slideCounter.textContent = `${currentSlideGroup + 1}/${totalSlideGroups}`;
+                }
+            }
+            
+            // Update dots
+            function updateDots() {
+                const dots = document.querySelectorAll('.picture-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlideGroup);
+                });
+                updateSlideCounter();
+            }
+            
+            // Move to specific slide group
+            function goToSlideGroup(slideIndex) {
+                currentSlideGroup = Math.max(0, Math.min(slideIndex, totalSlideGroups - 1));
+                currentPosition = -currentSlideGroup * visibleSlides * slideWidth;
+                track.style.transform = `translateX(${currentPosition}px)`;
+                updateDots();
+            }
+            
+            // Next slide
+            function nextSlide() {
+                if (currentSlideGroup < totalSlideGroups - 1) {
+                    goToSlideGroup(currentSlideGroup + 1);
+                } else {
+                    goToSlideGroup(0); // Loop back to start
+                }
+            }
+            
+            // Previous slide
+            function prevSlide() {
+                if (currentSlideGroup > 0) {
+                    goToSlideGroup(currentSlideGroup - 1);
+                } else {
+                    goToSlideGroup(totalSlideGroups - 1); // Loop to end
+                }
+            }
+            
+            // Initialize slider
+            function initPictureSlider() {
+                createDots();
+                
+                // Button events
+                prevBtn.addEventListener('click', prevSlide);
+                nextBtn.addEventListener('click', nextSlide);
+                
+                // Touch/swipe support
+                let startX = 0;
+                let isDragging = false;
+                
+                track.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                    track.style.transition = 'none';
+                });
+                
+                track.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    const currentX = e.touches[0].clientX;
+                    const diff = currentX - startX;
+                    track.style.transform = `translateX(${currentPosition + diff}px)`;
+                });
+                
+                track.addEventListener('touchend', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    track.style.transition = 'transform 0.5s ease';
+                    
+                    const endX = e.changedTouches[0].clientX;
+                    const diff = endX - startX;
+                    
+                    if (Math.abs(diff) > 50) { // Minimum swipe distance
+                        if (diff > 0) {
+                            prevSlide();
+                        } else {
+                            nextSlide();
+                        }
+                    } else {
+                        goToSlideGroup(currentSlideGroup); // Return to current position
+                    }
+                });
+                
+                // Mouse drag support for desktop
+                track.addEventListener('mousedown', (e) => {
+                    startX = e.clientX;
+                    isDragging = true;
+                    track.style.transition = 'none';
+                    e.preventDefault();
+                });
+                
+                document.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    const currentX = e.clientX;
+                    const diff = currentX - startX;
+                    track.style.transform = `translateX(${currentPosition + diff}px)`;
+                });
+                
+                document.addEventListener('mouseup', (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    track.style.transition = 'transform 0.5s ease';
+                    
+                    const endX = e.clientX;
+                    const diff = endX - startX;
+                    
+                    if (Math.abs(diff) > 50) {
+                        if (diff > 0) {
+                            prevSlide();
+                        } else {
+                            nextSlide();
+                        }
+                    } else {
+                        goToSlideGroup(currentSlideGroup);
+                    }
+                });
+                
+                // Auto-advance every 6 seconds
+                let autoSlide = setInterval(nextSlide, 6000);
+                
+                // Pause auto-slide on hover
+                const sliderContainer = document.querySelector('.picture-slider');
+                sliderContainer.addEventListener('mouseenter', () => {
+                    clearInterval(autoSlide);
+                    // Add subtle glow effect to current slide
+                    const currentSlides = getCurrentVisibleSlides();
+                    currentSlides.forEach(slide => {
+                        slide.style.boxShadow = 
+                            '0 25px 50px rgba(0, 0, 0, 0.4), ' +
+                            '0 0 0 2px var(--gold-primary), ' +
+                            '0 0 40px rgba(212, 175, 55, 0.3), ' +
+                            'inset 0 0 0 1px rgba(255, 255, 255, 0.05)';
+                    });
+                });
+                
+                sliderContainer.addEventListener('mouseleave', () => {
+                    autoSlide = setInterval(nextSlide, 6000);
+                    // Remove glow effect
+                    const currentSlides = getCurrentVisibleSlides();
+                    currentSlides.forEach(slide => {
+                        slide.style.boxShadow = '';
+                    });
+                });
+                
+                // Get currently visible slides
+                function getCurrentVisibleSlides() {
+                    const startIndex = currentSlideGroup * visibleSlides;
+                    const endIndex = Math.min(startIndex + visibleSlides, totalSlides);
+                    return Array.from(slides).slice(startIndex, endIndex);
+                }
+                
+                // Add click effect to slides
+                slides.forEach(slide => {
+                    slide.addEventListener('click', function() {
+                        // Create click animation
+                        this.style.transform = 'scale(0.95) translateY(-15px)';
+                        
+                        // Show subtitle immediately on mobile
+                        if (window.innerWidth <= 768) {
+                            const subtitle = this.querySelector('.picture-subtitle');
+                            subtitle.style.opacity = '0.8';
+                            subtitle.style.transform = 'translateY(0)';
+                        }
+                        
+                        setTimeout(() => {
+                            this.style.transform = 'translateY(-15px) scale(1.02)';
+                        }, 150);
+                        
+                        // Get the title
+                        const title = this.querySelector('.picture-title').textContent;
+                        console.log(`Clicked on: ${title}`);
+                        
+                        // Optional: Add your custom click action here
+                        // For example: open a modal, navigate to gallery, etc.
+                    });
+                });
+                
+                // Add keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        prevSlide();
+                    } else if (e.key === 'ArrowRight') {
+                        nextSlide();
+                    }
+                });
+            }
+            
+            // Initialize slider
+            initPictureSlider();
+            
+            // Update on resize
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(() => {
+                    const newSlideWidth = slides[0].offsetWidth + 30;
+                    const newContainerWidth = track.parentElement.offsetWidth;
+                    const newVisibleSlides = Math.floor(newContainerWidth / newSlideWidth);
+                    const newTotalSlideGroups = Math.ceil(totalSlides / newVisibleSlides);
+                    
+                    if (newTotalSlideGroups !== totalSlideGroups) {
+                        currentSlideGroup = 0;
+                        currentPosition = 0;
+                        track.style.transform = 'translateX(0)';
+                        createDots();
+                    } else {
+                        // Recalculate position with new slide width
+                        currentPosition = -currentSlideGroup * newVisibleSlides * newSlideWidth;
+                        track.style.transform = `translateX(${currentPosition}px)`;
+                    }
+                }, 250);
+            });
+        });
+    </script>
+</body>
 </html>
