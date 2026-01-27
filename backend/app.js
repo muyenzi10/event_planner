@@ -21,7 +21,8 @@ const indinzi = require("./routers/troup");
 const photographers = require("./routers/photographyrouter");
 const cateringrouters = require("./routers/catereing");
 const service = require("./routers/service");
-const contact = require("./routers/contactrouter")
+const contact = require("./routers/contactrouter");
+const home = require("./routers/home");
 const bodyParser = require('body-parser');
 // Middleware setup
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -55,6 +56,7 @@ app.use("/all_disk/troupe_images", express.static(path.join(__dirname, "all_disk
 app.use("/all_disk/camera_images", express.static(path.join(__dirname, "all_disk/camera_images")));
 app.use("/all_disk/catering", express.static(path.join(__dirname, "all_disk/catering")));
 app.use("/all_disk/service", express.static(path.join(__dirname, "all_disk/service")));
+app.use("/all_disk/home", express.static(path.join(__dirname, "all_disk/home")));
 // Routes
 app.use(router);
 app.use(decorouter);
@@ -69,6 +71,7 @@ app.use(indinzi);
 app.use(photographers);
 app.use(cateringrouters);
 app.use(service);
+app.use(home);
 
 // Error handling middleware
 app.use((req, res, next) => {

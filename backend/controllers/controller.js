@@ -1,8 +1,4 @@
 const path = require('path');
-exports.gethome = (req, res) => {
-  res.render('home_packages/home', { activePage: 'home' });
-};
-
 exports.getabout = (req, res) => {
   res.render('home_packages/about', { activePage: 'about' });
 };
