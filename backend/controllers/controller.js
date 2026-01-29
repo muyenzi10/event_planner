@@ -2,11 +2,6 @@ const path = require('path');
 exports.getabout = (req, res) => {
   res.render('home_packages/about', { activePage: 'about' });
 };
-
-exports.getpackages = (req, res) => {
-  res.render('home_packages/packages', { activePage: 'packages' });
-};
-
 exports.getsupply = (req, res) => {
   res.render('home_packages/supply', { activePage: 'suppliers' });
 };

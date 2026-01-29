@@ -23,6 +23,7 @@ const cateringrouters = require("./routers/catereing");
 const service = require("./routers/service");
 const contact = require("./routers/contactrouter");
 const home = require("./routers/home");
+const pack = require("./routers/packrouter");
 const bodyParser = require('body-parser');
 // Middleware setup
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -72,7 +73,7 @@ app.use(photographers);
 app.use(cateringrouters);
 app.use(service);
 app.use(home);
-
+app.use(pack);
 // Error handling middleware
 app.use((req, res, next) => {
     res.status(404).sendFile(path.join(__dirname, '../frontend/error.html'));
