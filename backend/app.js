@@ -58,6 +58,7 @@ app.use("/all_disk/camera_images", express.static(path.join(__dirname, "all_disk
 app.use("/all_disk/catering", express.static(path.join(__dirname, "all_disk/catering")));
 app.use("/all_disk/service", express.static(path.join(__dirname, "all_disk/service")));
 app.use("/all_disk/home", express.static(path.join(__dirname, "all_disk/home")));
+app.use("/all_disk/packges", express.static(path.join(__dirname, "all_disk/packges")));
 // Routes
 app.use(router);
 app.use(decorouter);
