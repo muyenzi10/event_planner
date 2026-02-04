@@ -426,8 +426,9 @@
             transition: all var(--transition-duration);
             position: relative;
             padding: 0.5rem 0;
-            margin-top: 0.75rem; /* ADDED: Creates gap on desktop */
+            margin-top: auto; /* Changed to auto to push to bottom */
             z-index: 2;
+            flex-shrink: 0; /* Prevent link from shrinking on mobile */
         }
         
         .card-link::after {
@@ -869,20 +870,27 @@
             
             .card-content h4 {
                 font-size: 1.15rem;
+                margin-bottom: 0.5rem; /* Reduced margin on mobile */
             }
             
             .card-content p {
                 font-size: 0.88rem;
                 -webkit-line-clamp: 2;
+                margin-bottom: 1rem; /* Reduced margin on mobile */
+                flex: 0 1 auto; /* Don't grow too much */
             }
             
             .packages-section {
                 padding: 3rem 0;
             }
             
-            /* ADDED: Increased gap for mobile */
+            /* FIXED: Ensure link is visible on mobile */
             .card-link {
-                margin-top: 1rem; /* Increased from 0.75rem to 1rem for mobile */
+                display: inline-flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                margin-top: 0.5rem !important; /* Smaller gap for mobile */
+                position: static !important;
             }
             
             /* Complementary Services Grid Mobile */
@@ -1015,18 +1023,24 @@
             
             .card-content h4 {
                 font-size: 1.1rem;
-                margin-bottom: 0.5rem;
+                margin-bottom: 0.35rem; /* Further reduced for small screens */
             }
             
             .card-content p {
                 font-size: 0.85rem;
-                margin-bottom: 1rem;
+                margin-bottom: 0.75rem; /* Reduced margin */
                 -webkit-line-clamp: 2;
+                line-height: 1.5; /* Tighter line height */
             }
             
-            /* ADDED: Adjusted gap for very small screens */
+            /* FIXED: Ensure link is visible on very small screens */
             .card-link {
-                margin-top: 0.875rem; /* Slightly adjusted for very small screens */
+                margin-top: 0.5rem !important;
+                font-size: 0.85rem;
+                padding: 0.4rem 0;
+                display: inline-flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
             }
             
             .service-item {
@@ -1086,13 +1100,29 @@
                 font-size: 1.4rem;
             }
             
+            .card-content {
+                padding: 1rem;
+            }
+            
             .card-content h4 {
                 font-size: 1rem;
+                margin-bottom: 0.3rem;
             }
             
             .card-content p {
                 font-size: 0.82rem;
                 -webkit-line-clamp: 2;
+                margin-bottom: 0.6rem;
+                line-height: 1.4;
+            }
+            
+            .card-link {
+                margin-top: 0.4rem !important;
+                font-size: 0.8rem;
+                padding: 0.35rem 0;
+                display: inline-flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
             }
             
             .service-icon-wrapper {
@@ -1120,12 +1150,75 @@
         
         /* Special fix for very small screens */
         @media (max-width: 320px) {
+            .card-content {
+                padding: 0.875rem;
+            }
+            
+            .card-content h4 {
+                font-size: 0.95rem;
+            }
+            
+            .card-content p {
+                font-size: 0.78rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .card-link {
+                margin-top: 0.3rem !important;
+                font-size: 0.75rem;
+                display: inline-flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
             .back-to-top {
                 width: 40px;
                 height: 40px;
                 font-size: 0.9rem;
                 bottom: 50px;
                 right: 10px;
+            }
+        }
+        
+        /* SPECIAL FIX FOR MOBILE LINK VISIBILITY */
+        @media (max-width: 768px) {
+            .luxury-card {
+                min-height: auto !important;
+            }
+            
+            .card-content {
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important;
+            }
+            
+            .card-link {
+                order: 3; /* Ensure link is always at bottom */
+                flex-shrink: 0; /* Don't shrink */
+                margin-top: 0.5rem !important;
+            }
+            
+            .card-content p {
+                flex-shrink: 1; /* Allow paragraph to shrink */
+                min-height: 2.4em; /* Approx 2 lines of text */
+            }
+        }
+        
+        /* MOBILE FIX: Prevent cards from having fixed height on mobile after refresh */
+        @media (max-width: 991px) {
+            .luxury-card {
+                height: auto !important;
+                min-height: auto !important;
+            }
+        }
+        
+        /* Prevent text selection on mobile for better UX */
+        @media (max-width: 768px) {
+            .card-link {
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
             }
         }
     </style>
@@ -1336,15 +1429,14 @@
     
     <!-- Enhanced JavaScript -->
     <script>
-        // Enhanced scroll animations
+        // Enhanced scroll animations - FIXED FOR MOBILE
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.animate-on-scroll');
             
             elements.forEach(element => {
                 const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 100;
                 
-                if (elementTop < window.innerHeight - elementVisible) {
+                if (elementTop < window.innerHeight - 100) {
                     const delay = element.dataset.delay || 0;
                     setTimeout(() => {
                         element.classList.add('visible');
@@ -1354,28 +1446,42 @@
         };
 
         // Initialize on load
-        window.addEventListener('load', animateOnScroll);
+        document.addEventListener('DOMContentLoaded', function() {
+            animateOnScroll();
+            preloadCardImages();
+            
+            // MOBILE FIX: Don't equalize heights on mobile
+            if (window.innerWidth >= 992) {
+                equalizeCardHeights();
+            }
+            
+            // Initialize back to top button
+            toggleBackToTop();
+            
+            // MOBILE FIX: Ensure Explore Service links are always clickable
+            const exploreLinks = document.querySelectorAll('.card-link');
+            exploreLinks.forEach(link => {
+                link.style.display = 'inline-flex';
+                link.style.visibility = 'visible';
+                link.style.opacity = '1';
+            });
+        });
+        
         window.addEventListener('scroll', animateOnScroll);
 
-        // Smooth scroll with enhanced animation - ONLY for anchor links (#)
+        // Smooth scroll for anchor links only
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
                 const targetId = this.getAttribute('href');
                 if(targetId === '#') return;
                 
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
+                    e.preventDefault();
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
-                    // Add active class to navbar item (if your navbar supports it)
-                    document.querySelectorAll('nav a').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
                 }
             });
         });
@@ -1384,7 +1490,7 @@
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.luxury-hero');
-            if(hero) {
+            if(hero && window.innerWidth > 768) { // Only on desktop
                 hero.style.transform = `translateY(${scrolled * 0.05}px)`;
             }
         });
@@ -1396,54 +1502,43 @@
             element.style.animationDelay = `${index * 0.5}s`;
         });
 
-        // Card hover enhancement
+        // Card hover enhancement - FIXED FOR MOBILE
         document.querySelectorAll('.luxury-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.zIndex = '10';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.zIndex = '1';
-            });
+            // Only add hover effects for non-touch devices
+            if (!('ontouchstart' in window)) {
+                card.addEventListener('mouseenter', () => {
+                    card.style.zIndex = '10';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    card.style.zIndex = '1';
+                });
+            }
         });
 
-        // Service item hover enhancement
+        // Service item hover enhancement - FIXED FOR MOBILE
         document.querySelectorAll('.service-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.zIndex = '5';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.zIndex = '1';
-            });
+            if (!('ontouchstart' in window)) {
+                item.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '5';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            }
         });
 
-        // Lazy loading enhancement
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    const img = entry.target;
-                    if(img.dataset.src) {
-                        img.src = img.dataset.src;
-                    }
-                    observer.unobserve(img);
-                }
-            });
-        });
-
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
-        });
-
-        // Make all cards equal height on load
+        // Make all cards equal height on load - FIXED: Only on desktop
         function equalizeCardHeights() {
-            if (window.innerWidth >= 992) { // Only on desktop
+            if (window.innerWidth >= 992) {
                 const cards = document.querySelectorAll('.luxury-card');
                 let maxHeight = 0;
                 
                 // Reset heights first
                 cards.forEach(card => {
                     card.style.height = 'auto';
+                    card.style.minHeight = 'auto';
                 });
                 
                 // Find max height
@@ -1458,24 +1553,40 @@
                 cards.forEach(card => {
                     card.style.height = maxHeight + 'px';
                 });
+            } else {
+                // On mobile, ensure cards have auto height
+                document.querySelectorAll('.luxury-card').forEach(card => {
+                    card.style.height = 'auto';
+                    card.style.minHeight = 'auto';
+                });
             }
         }
 
-        // Run on load and resize
-        window.addEventListener('load', equalizeCardHeights);
-        window.addEventListener('resize', equalizeCardHeights);
+        // Run on resize with debounce
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                equalizeCardHeights();
+                // Force reset on mobile after resize
+                if (window.innerWidth < 992) {
+                    document.querySelectorAll('.luxury-card').forEach(card => {
+                        card.style.height = 'auto';
+                        card.style.minHeight = 'auto';
+                    });
+                }
+            }, 250);
+        });
 
         // Preload images for better UX
         function preloadCardImages() {
             const images = document.querySelectorAll('.card-image');
             images.forEach(img => {
+                if (img.complete) return;
                 const tempImg = new Image();
                 tempImg.src = img.src;
             });
         }
-
-        // Preload images after page loads
-        window.addEventListener('load', preloadCardImages);
 
         // ========== ROBUST BACK TO TOP FUNCTIONALITY ==========
         const backToTopButton = document.getElementById('backToTop');
@@ -1483,11 +1594,11 @@
         // Function to show/hide button
         const toggleBackToTop = () => {
             const isMobile = window.innerWidth <= 768;
-            const scrollThreshold = isMobile ? 100 : 300; // Lower threshold on mobile
+            const scrollThreshold = isMobile ? 100 : 300;
             
             if (window.pageYOffset > scrollThreshold) {
                 backToTopButton.classList.add('visible');
-                // Force styles on mobile
+                // Mobile-specific fixes
                 if (isMobile) {
                     backToTopButton.style.display = 'flex';
                     backToTopButton.style.opacity = '1';
@@ -1495,17 +1606,9 @@
                 }
             } else {
                 backToTopButton.classList.remove('visible');
-                // Reset styles when not visible
-                if (isMobile) {
-                    backToTopButton.style.display = 'flex';
-                    backToTopButton.style.opacity = '0';
-                    backToTopButton.style.visibility = 'hidden';
-                }
             }
         };
         
-        // Initialize on load
-        window.addEventListener('load', toggleBackToTop);
         window.addEventListener('scroll', toggleBackToTop);
         window.addEventListener('resize', toggleBackToTop);
         
@@ -1517,51 +1620,64 @@
             });
         });
         
-        // Also handle anchor links that go to top
-        document.querySelectorAll('a[href="#top"], a[href="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if(this.getAttribute('href') === '#top' || this.getAttribute('href') === '#') {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Force button to be visible on mobile (extra safety)
-        if (window.innerWidth <= 768) {
-            // Add touch event for better mobile handling
-            backToTopButton.addEventListener('touchstart', function() {
-                this.style.transform = 'translateY(-2px) scale(0.95)';
+        // Mobile touch events for back to top
+        if ('ontouchstart' in window) {
+            backToTopButton.addEventListener('touchstart', function(e) {
+                e.preventDefault();
+                this.style.transform = 'scale(0.95)';
             });
             
-            backToTopButton.addEventListener('touchend', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-            
-            // Test: Log button status on mobile
-            console.log('Mobile Back to Top Button Status:', {
-                exists: !!backToTopButton,
-                classList: backToTopButton.className,
-                computedStyle: window.getComputedStyle(backToTopButton),
-                zIndex: window.getComputedStyle(backToTopButton).zIndex
+            backToTopButton.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                this.style.transform = 'scale(1)';
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         }
 
-        // IMPORTANT FIX: Ensure route links (/services, /contact, etc.) work properly
-        // Remove any event listeners that might prevent navigation on non-anchor links
-        document.querySelectorAll('a:not([href^="#"]):not([href^="#top"]):not([href="#"])').forEach(link => {
-            // Ensure these links work normally
-            link.addEventListener('click', function(e) {
-                // Allow normal navigation for route links
-                // Don't prevent default behavior for non-anchor links
-                if (!this.getAttribute('href').startsWith('#')) {
-                    // These are regular route links, let them work normally
-                    return true;
-                }
+        // FIX: Ensure all non-anchor links work normally
+        document.querySelectorAll('a').forEach(link => {
+            const href = link.getAttribute('href');
+            // Only prevent default for anchor links
+            if (href && href.startsWith('#')) {
+                link.addEventListener('click', function(e) {
+                    if (href === '#') {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+        });
+
+        // Mobile-specific fix for Explore Service links
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.card-link').forEach(link => {
+                link.addEventListener('touchstart', function() {
+                    this.style.backgroundColor = 'rgba(245, 12, 24, 0.1)';
+                });
+                
+                link.addEventListener('touchend', function() {
+                    this.style.backgroundColor = 'transparent';
+                });
             });
+        }
+
+        // Force reset card heights on mobile after load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                if (window.innerWidth < 992) {
+                    document.querySelectorAll('.luxury-card').forEach(card => {
+                        card.style.height = 'auto';
+                        card.style.minHeight = 'auto';
+                        card.style.flexShrink = '0';
+                    });
+                }
+            }, 100);
         });
     </script>
 </body>
