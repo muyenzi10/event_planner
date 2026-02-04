@@ -3,7 +3,7 @@ const packages = require("../controllers/packages");
 const routerpack = express.Router();
 
 routerpack.get("/invitation", packages.getinvitation);
-routerpack.get("/styles", packages.getstyle);
+routerpack.get("/dresses", packages.getstyle);
 routerpack.get("/beauty", packages.getbeauty);
 routerpack.get("/mc", packages.getmc);
 routerpack.get("/gakondo", packages.getgakondo);

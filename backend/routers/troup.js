@@ -21,5 +21,4 @@ trouprouter.put("/update/troupe/:id", troupeupload.single("media"), troup.update
 trouprouter.delete("/delete/troupe/:id", troup.deletetroupe)
 trouprouter.get("/troupe", troup.getindinzi);
 
-
 module.exports=trouprouter;
