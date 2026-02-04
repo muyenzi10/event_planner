@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage});
 routerpack.post("/upload/packges", upload.single("media"),pack.packupload);
-routerpack.get("/packages", pack.getpackages);
+routerpack.get("/services", pack.getpackages);
 routerpack.get("/packages/add", pack.add);
 routerpack.get("/packages/edit/:id", pack.edit);
 routerpack.get("/packages/dashboard", pack.dash);

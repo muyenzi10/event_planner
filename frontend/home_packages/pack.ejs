@@ -21,11 +21,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
     <link rel="stylesheet" href="/allpack/layout/css/footer.css">
     
-    <title>Éclat Weddings | Luxury Wedding Planning</title>
+    <title>Éclat Weddings | Luxury Wedding Packages</title>
     
     <style>
         :root {
@@ -36,10 +35,17 @@
             --champagne: #F7E7CE;
             --charcoal: #2C2C2C;
             --light-charcoal: #3A3A3A;
+            /* Light theme variables */
+            --light-bg: #f9f9f9;
+            --light-card: #ffffff;
+            --light-section: #f5f5f5;
+            --light-text: #333333;
+            --light-text-light: #666666;
+            --light-border: #e0e0e0;
             --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
             --transition-duration: 0.4s;
-            --explore-service-color: #f50c18; /* NEW: Vibrant Red/Coral color */
-            --explore-service-hover: #ff3333; /* NEW: Brighter Red hover */
+            --explore-service-color: #f50c18;
+            --explore-service-hover: #ff3333;
         }
         
         * {
@@ -50,8 +56,8 @@
         
         body {
             font-family: 'Montserrat', sans-serif;
-            background: var(--ivory);
-            color: var(--charcoal);
+            background: var(--light-bg);
+            color: var(--light-text);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -60,9 +66,10 @@
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             line-height: 1.2;
+            color: var(--charcoal);
         }
         
-        /* Hero Section - Complete Redesign */
+        /* Hero Section - Keep dark for contrast */
         .luxury-hero {
             position: relative;
             height: 85vh;
@@ -70,7 +77,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), 
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), 
                         url('/assethome/5.jpg') center/cover no-repeat fixed;
             overflow: hidden;
         }
@@ -101,6 +108,7 @@
             margin-bottom: 1.5rem;
             line-height: 1.1;
             text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+            color: white;
         }
         
         .hero-content h1 span {
@@ -117,6 +125,7 @@
             margin: 0 auto 2rem;
             opacity: 0.9;
             font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .hero-divider {
@@ -185,13 +194,15 @@
             left: 100%;
         }
         
-        /* Services Section */
-        .services-section {
-            padding: 6rem 0;
-            background: var(--ivory);
+        /* TITLE - Light theme */
+        .title-container {
+            text-align: center;
+            padding: 5rem 0 3rem;
+            background: linear-gradient(135deg, var(--light-section) 0%, var(--light-card) 100%);
             position: relative;
         }
         
+        /* SECTION HEADER - Light theme */
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
@@ -205,7 +216,7 @@
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 1rem;
-            opacity: 0.8;
+            opacity: 0.9;
         }
         
         .section-title {
@@ -229,50 +240,46 @@
         
         .section-intro {
             max-width: 600px;
-            margin: 0 auto 3rem;
+            margin: 0 auto;
             font-size: 1.1rem;
-            color: var(--light-charcoal);
+            color: var(--light-text-light);
             line-height: 1.8;
         }
         
-        /* Card Design with EXPANDED Images and Clickable Image Area */
+        /* PACKAGES - Light theme */
+        .packages-section {
+            padding: 4rem 0;
+            background: var(--light-bg);
+            position: relative;
+        }
+        
         .luxury-card {
             position: relative;
             border-radius: 12px;
             overflow: hidden;
             margin-bottom: 2rem;
-            background: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            background: var(--light-card);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: all var(--transition-duration) var(--transition-smooth);
             height: 100%;
             display: flex;
             flex-direction: column;
+            border: 1px solid var(--light-border);
         }
         
         .luxury-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.3);
         }
         
-        /* EXPANDED Image Container - Much Larger Images */
+        /* FIXED: Use aspect ratio for consistent image height - CHANGED TO 3/4 FOR TALLER IMAGES */
         .card-image-wrapper {
             position: relative;
             width: 100%;
-            height: 280px; /* Increased from 220px */
             overflow: hidden;
             flex-shrink: 0;
-            cursor: pointer; /* Make image area clickable */
-        }
-        
-        /* Make the entire image area a clickable link */
-        .card-image-link {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 3;
-            text-decoration: none;
+            aspect-ratio: 3/4; /* CHANGED: From 4/3 to 3/4 for taller images */
         }
         
         .card-image-wrapper::before {
@@ -282,7 +289,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.6) 100%);
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.8) 100%);
             opacity: 0;
             transition: opacity var(--transition-duration) var(--transition-smooth);
             z-index: 1;
@@ -292,7 +299,6 @@
             opacity: 1;
         }
         
-        /* Expanded Image Styling */
         .card-image {
             width: 100%;
             height: 100%;
@@ -306,25 +312,29 @@
             transform: scale(1.08);
         }
         
+        video.card-image {
+            object-fit: cover;
+        }
+        
         .card-icon {
             position: absolute;
             top: 20px;
             right: 20px;
             width: 50px;
             height: 50px;
-            background: white;
+            background: var(--light-card);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary-gold);
             font-size: 1.3rem;
-            z-index: 4; /* Above the clickable layer */
+            z-index: 4;
             transform: translateY(-10px);
             opacity: 0;
             transition: all var(--transition-duration) var(--transition-smooth);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            pointer-events: none; /* Don't interfere with clicking */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid var(--light-border);
         }
         
         .luxury-card:hover .card-icon {
@@ -338,13 +348,13 @@
             left: 0;
             width: 100%;
             padding: 1.75rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
             color: white;
             z-index: 2;
             transform: translateY(10px);
             opacity: 0;
             transition: all var(--transition-duration) var(--transition-smooth);
-            pointer-events: none; /* Don't interfere with clicking */
+            pointer-events: none;
         }
         
         .luxury-card:hover .card-overlay {
@@ -359,17 +369,6 @@
             line-height: 1.3;
         }
         
-        /* Click indicator in overlay */
-        .card-overlay .click-hint {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-        
-        /* Optimized Card Content */
         .card-content {
             padding: 1.75rem;
             flex: 1;
@@ -382,10 +381,7 @@
             margin-bottom: 0.75rem;
             color: var(--charcoal);
             transition: color var(--transition-duration);
-            display: flex;
-            align-items: center;
             line-height: 1.3;
-            cursor: pointer; /* Make title clickable too */
         }
         
         .luxury-card:hover .card-content h4 {
@@ -393,7 +389,7 @@
         }
         
         .card-content p {
-            color: var(--light-charcoal);
+            color: var(--light-text-light);
             margin-bottom: 1.5rem;
             line-height: 1.6;
             font-size: 0.95rem;
@@ -404,12 +400,12 @@
             overflow: hidden;
         }
         
-        /* UPDATED: Explore Service link with #f50c18 color */
+        /* Explore Service link */
         .card-link {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: #f50c18 !important; /* Vibrant Red/Coral color */
+            color: #f50c18 !important;
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
@@ -418,8 +414,8 @@
             transition: all var(--transition-duration);
             position: relative;
             padding: 0.5rem 0;
-            margin-top: auto;
-            z-index: 2; /* Ensure it's above the image link */
+            margin-top: 0.75rem; /* ADDED: Creates gap on desktop */
+            z-index: 2;
         }
         
         .card-link::after {
@@ -429,42 +425,153 @@
             left: 0;
             width: 0;
             height: 1px;
-            background: #f50c18 !important; /* Vibrant Red/Coral color */
+            background: #f50c18 !important;
             transition: width var(--transition-duration) var(--transition-smooth), 
                        background var(--transition-duration) var(--transition-smooth);
         }
         
         .card-link:hover {
-            color: #ff3333 !important; /* Brighter Red hover */
+            color: #ff3333 !important;
         }
         
         .card-link:hover::after {
             width: 100%;
-            background: #ff3333 !important; /* Brighter Red hover */
+            background: #ff3333 !important;
         }
         
         .card-link i {
             font-size: 0.8rem;
             transition: transform var(--transition-duration) var(--transition-smooth);
-            color: inherit; /* Make icon inherit the text color */
+            color: inherit;
         }
         
         .card-link:hover i {
             transform: translateX(4px);
         }
         
-        /* Make entire card content area clickable on mobile */
-        @media (max-width: 768px) {
-            .card-content {
-                cursor: pointer;
-            }
+        /* ========== Complementary Services Table - DARK THEME ========== */
+        .complementary-services-section {
+            padding: 6rem 0;
+            background: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .complementary-services-section .section-subtitle {
+            color: var(--primary-gold);
+        }
+
+        .complementary-services-section .section-title {
+            color: white;
+        }
+
+        .complementary-services-section .section-title::after {
+            background: var(--primary-gold);
+        }
+
+        .complementary-services-section .section-intro {
+            color: rgba(255, 255, 255, 0.85);
         }
         
-        /* Floating Decorative Elements */
+        .luxury-table-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--light-charcoal);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        /* NEW: Grid layout for 2 rows x 3 columns */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .service-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all var(--transition-duration) var(--transition-smooth);
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            border-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.12);
+            z-index: 2;
+        }
+        
+        .service-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--charcoal);
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            transition: all var(--transition-duration) var(--transition-smooth);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-item:hover .service-icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+            background: linear-gradient(135deg, var(--dark-gold), var(--primary-gold));
+        }
+        
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .service-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .table-footer-note {
+            padding: 1.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-gold);
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .text-gold {
+            color: var(--primary-gold) !important;
+        }
+        
+        /* Floating decorative elements */
         .floating-element {
             position: absolute;
             z-index: 0;
-            opacity: 0.03;
+            opacity: 0.1;
             pointer-events: none;
         }
         
@@ -482,161 +589,11 @@
             border-radius: 50%;
         }
         
-        /* ========== BEGIN NEW SECTION: Complementary Services Table ========== */
-        .complementary-services-section {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, rgba(255, 255, 240, 0.7) 0%, rgba(247, 231, 206, 0.5) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .luxury-table-container {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-        }
-        
-        .luxury-services-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-bottom: 2rem;
-        }
-        
-        .luxury-services-table thead th {
-            background: linear-gradient(135deg, var(--ivory), var(--champagne));
-            padding: 1.25rem 1.5rem;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--charcoal);
-            border-bottom: 2px solid var(--primary-gold);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-        
-        .luxury-services-table tbody tr {
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-            transition: all var(--transition-duration) var(--transition-smooth);
-            position: relative;
-        }
-        
-        .luxury-services-table tbody tr:last-child {
-            border-bottom: none;
-        }
-        
-        .luxury-services-table tbody tr:hover {
-            background: rgba(212, 175, 55, 0.05);
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .luxury-services-table td {
-            padding: 1.5rem;
-            vertical-align: middle;
-            border: none;
-        }
-        
-        .service-icon-cell {
-            width: 80px;
-        }
-        
-        .service-icon-wrapper {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--light-gold), var(--primary-gold));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
-            transition: all var(--transition-duration) var(--transition-smooth);
-        }
-        
-        .luxury-services-table tbody tr:hover .service-icon-wrapper {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
-        }
-        
-        .service-name-cell {
-            min-width: 200px;
-        }
-        
-        .service-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            color: var(--charcoal);
-            margin-bottom: 0.25rem;
-            font-weight: 600;
-        }
-        
-        .service-mobile-desc {
-            font-size: 0.9rem;
-            color: var(--light-charcoal);
-            opacity: 0.8;
-            margin-bottom: 0;
-        }
-        
-        .service-desc-cell {
-            color: var(--light-charcoal);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            max-width: 400px;
-        }
-        
-        .service-action-cell {
-            width: 120px;
-        }
-        
-        .table-action-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: transparent;
-            color: var(--primary-gold);
-            border: 1px solid var(--primary-gold);
-            padding: 0.75rem 1.25rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all var(--transition-duration) var(--transition-smooth);
-            min-width: 100px;
-        }
-        
-        .table-action-btn:hover {
-            background: var(--primary-gold);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-        
-        .table-footer-note {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(184, 134, 11, 0.05));
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-gold);
-            font-size: 0.95rem;
-            color: var(--light-charcoal);
-        }
-        
-        .text-gold {
-            color: var(--primary-gold) !important;
-        }
-        
         /* Floating elements for table section */
         .table-floating-element {
             position: absolute;
             z-index: 0;
-            opacity: 0.03;
+            opacity: 0.05;
             pointer-events: none;
         }
         
@@ -657,23 +614,23 @@
             bottom: 20%;
             left: 5%;
         }
-        /* ========== END NEW SECTION: Complementary Services Table ========== */
         
-        /* Footer CTA */
+        /* ========== Call to Action - Light theme ========== */
         .footer-cta {
-            background: linear-gradient(135deg, rgba(42, 42, 42, 0.95) 0%, rgba(28, 28, 28, 0.98) 100%), 
+            background: linear-gradient(135deg, var(--light-section) 0%, #f0f0f0 100%), 
                         url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h20v20H0z" fill="none"/><path d="M10 3a7 7 0 100 14 7 7 0 000-14zm0 12a5 5 0 110-10 5 5 0 010 10z" fill="%23D4AF37" opacity=".1"/></svg>');
-            color: white;
+            color: var(--charcoal);
             padding: 5rem 0;
             text-align: center;
             position: relative;
             overflow: hidden;
+            border-top: 1px solid var(--light-border);
         }
         
         .footer-cta h3 {
             font-size: 2.5rem;
             margin-bottom: 1.25rem;
-            color: var(--light-gold);
+            color: var(--charcoal);
         }
         
         .footer-cta p {
@@ -682,6 +639,7 @@
             margin: 0 auto 2.5rem;
             opacity: 0.9;
             line-height: 1.6;
+            color: var(--light-text-light);
         }
         
         .cta-button-gold {
@@ -704,6 +662,61 @@
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
             background: linear-gradient(135deg, var(--dark-gold), var(--primary-gold));
+            color: white;
+        }
+        
+        /* ========== FIXED BACK TO TOP BUTTON ========== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 99999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all var(--transition-duration) var(--transition-smooth);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
+            pointer-events: auto;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
+            background: linear-gradient(135deg, var(--dark-gold), var(--primary-gold));
+        }
+        
+        .back-to-top:active {
+            transform: translateY(-2px);
+        }
+        
+        /* No packages message */
+        .no-packages {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .no-packages p {
+            font-size: 1.2rem;
+            color: var(--light-text-light);
         }
         
         /* Animations */
@@ -738,7 +751,8 @@
             transform: translateY(0);
         }
         
-        /* Responsive Design with EXPANDED Image Heights */
+        /* Responsive Design - Mobile First Approach */
+        /* Desktop first, then override for mobile */
         @media (max-width: 1200px) {
             .hero-content h1 {
                 font-size: 3.8rem;
@@ -752,38 +766,28 @@
                 font-size: 2.8rem;
             }
             
-            .card-image-wrapper {
-                height: 250px; /* Increased from 200px */
-            }
-            
-            .card-content {
-                padding: 1.5rem;
-            }
-            
-            .card-content h4 {
-                font-size: 1.25rem;
-            }
-            
-            .card-content p {
-                font-size: 0.92rem;
+            /* Adjust card margins for 3-column layout */
+            .packages-section .row {
+                --bs-gutter-x: 1.5rem;
             }
         }
         
         @media (max-width: 992px) {
-            .luxury-card {
-                margin-bottom: 1.5rem;
+            .luxury-hero {
+                height: 75vh;
+                min-height: 550px;
             }
             
-            .card-image-wrapper {
-                height: 230px; /* Increased from 180px */
+            .hero-content h1 {
+                font-size: 3.2rem;
             }
             
-            .card-content h4 {
-                font-size: 1.2rem;
+            .hero-content h1 span {
+                font-size: 2.2rem;
             }
             
-            .card-content p {
-                font-size: 0.9rem;
+            .section-title {
+                font-size: 2.5rem;
             }
             
             .card-icon {
@@ -792,27 +796,33 @@
                 font-size: 1.2rem;
             }
             
-            /* Complementary Services Table Responsive */
+            /* Complementary Services Grid Responsive */
+            .complementary-services-section {
+                padding: 5rem 0;
+            }
+            
             .luxury-table-container {
                 padding: 1.5rem;
                 border-radius: 15px;
             }
             
-            .luxury-services-table td {
-                padding: 1.25rem 1rem;
+            /* Change grid to 2 columns on tablet */
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                gap: 1.5rem;
             }
             
-            .service-icon-wrapper {
-                width: 45px;
-                height: 45px;
+            .back-to-top {
+                width: 50px;
+                height: 50px;
                 font-size: 1.1rem;
-            }
-            
-            .service-title {
-                font-size: 1.15rem;
+                bottom: 25px;
+                right: 25px;
             }
         }
         
+        /* Mobile Styles */
         @media (max-width: 768px) {
             .luxury-hero {
                 height: 70vh;
@@ -841,10 +851,6 @@
                 padding: 0 1rem;
             }
             
-            .card-image-wrapper {
-                height: 210px; /* Increased from 160px */
-            }
-            
             .card-content {
                 padding: 1.5rem;
             }
@@ -858,7 +864,16 @@
                 -webkit-line-clamp: 2;
             }
             
-            /* Complementary Services Table Mobile */
+            .packages-section {
+                padding: 3rem 0;
+            }
+            
+            /* ADDED: Increased gap for mobile */
+            .card-link {
+                margin-top: 1rem; /* Increased from 0.75rem to 1rem for mobile */
+            }
+            
+            /* Complementary Services Grid Mobile */
             .complementary-services-section {
                 padding: 4rem 0;
             }
@@ -868,29 +883,30 @@
                 border-radius: 12px;
             }
             
-            .luxury-services-table thead th {
-                padding: 1rem 0.75rem;
-                font-size: 1rem;
+            /* Change grid to 1 column on mobile */
+            .services-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, auto);
+                gap: 1.25rem;
             }
             
-            .luxury-services-table td {
-                padding: 1rem 0.75rem;
+            .service-item {
+                padding: 1.75rem 1.25rem;
             }
             
             .service-icon-wrapper {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
+                width: 60px;
+                height: 60px;
+                font-size: 1.3rem;
+                margin-bottom: 1.25rem;
             }
             
             .service-title {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
-            
-            .table-action-btn {
-                padding: 0.6rem 1rem;
-                min-width: 80px;
-                font-size: 0.85rem;
+
+            .service-description {
+                font-size: 0.9rem;
             }
             
             .table-footer-note {
@@ -908,6 +924,38 @@
             
             .footer-cta p {
                 font-size: 1rem;
+            }
+            
+            /* IMPORTANT: Mobile Back to Top Button Fix */
+            .back-to-top {
+                width: 55px;
+                height: 55px;
+                font-size: 1.2rem;
+                bottom: 80px; /* Moved up to avoid mobile browser UI */
+                right: 20px;
+                opacity: 0.95;
+                box-shadow: 0 5px 15px rgba(212, 175, 55, 0.7);
+                background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+                border: 2px solid rgba(255, 255, 255, 0.2);
+                animation: pulse 2s infinite;
+            }
+            
+            .back-to-top.visible {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
             }
         }
         
@@ -935,18 +983,18 @@
                 margin-bottom: 1.5rem;
             }
             
+            .title-container {
+                padding: 4rem 0 2rem;
+            }
+            
             .section-title {
                 font-size: 2rem;
                 margin-bottom: 1rem;
             }
             
             .section-intro {
-                margin-bottom: 2rem;
+                margin-bottom: 0;
                 font-size: 0.95rem;
-            }
-            
-            .card-image-wrapper {
-                height: 190px; /* Increased from 140px */
             }
             
             .card-content {
@@ -964,54 +1012,28 @@
                 -webkit-line-clamp: 2;
             }
             
-            /* Complementary Services Table Mobile Cards */
-            .luxury-services-table thead {
-                display: none;
+            /* ADDED: Adjusted gap for very small screens */
+            .card-link {
+                margin-top: 0.875rem; /* Slightly adjusted for very small screens */
             }
             
-            .luxury-services-table tbody tr {
-                display: block;
-                margin-bottom: 1.5rem;
-                padding: 1.5rem;
-                border: 1px solid rgba(212, 175, 55, 0.15);
-                border-radius: 12px;
-                background: white;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            }
-            
-            .luxury-services-table tbody tr:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            }
-            
-            .luxury-services-table td {
-                display: block;
-                padding: 0.5rem 0;
-                text-align: center;
-            }
-            
-            .service-icon-cell {
-                width: 100%;
-                margin-bottom: 0.5rem;
+            .service-item {
+                padding: 1.5rem 1rem;
             }
             
             .service-icon-wrapper {
-                margin: 0 auto;
+                width: 55px;
+                height: 55px;
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
             }
             
-            .service-name-cell {
-                min-width: 100%;
-                margin-bottom: 0.75rem;
+            .service-title {
+                font-size: 1.1rem;
             }
-            
-            .service-action-cell {
-                width: 100%;
-                margin-top: 1rem;
-            }
-            
-            .table-action-btn {
-                width: 100%;
-                justify-content: center;
+
+            .service-description {
+                font-size: 0.85rem;
             }
             
             .cta-button, .cta-button-gold {
@@ -1032,6 +1054,15 @@
                 font-size: 0.95rem;
                 margin-bottom: 2rem;
             }
+            
+            /* Small mobile Back to Top */
+            .back-to-top {
+                width: 50px;
+                height: 50px;
+                font-size: 1.1rem;
+                bottom: 70px; /* Adjusted for small screens */
+                right: 15px;
+            }
         }
         
         @media (max-width: 400px) {
@@ -1043,10 +1074,6 @@
                 font-size: 1.4rem;
             }
             
-            .card-image-wrapper {
-                height: 180px; /* Increased from 140px */
-            }
-            
             .card-content h4 {
                 font-size: 1rem;
             }
@@ -1055,13 +1082,46 @@
                 font-size: 0.82rem;
                 -webkit-line-clamp: 2;
             }
+            
+            .service-icon-wrapper {
+                width: 50px;
+                height: 50px;
+                font-size: 1.1rem;
+            }
+            
+            .service-title {
+                font-size: 1rem;
+            }
+
+            .service-description {
+                font-size: 0.8rem;
+            }
+            
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+                bottom: 60px;
+                right: 10px;
+            }
+        }
+        
+        /* Special fix for very small screens */
+        @media (max-width: 320px) {
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+                bottom: 50px;
+                right: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <%- include('../allpack/layout/navbar') %>
     
-    <!-- Luxury Hero Section -->
+    <!-- Luxury Hero Section - 100% same as original -->
     <section class="luxury-hero">
         <!-- Floating decorative elements -->
         <div class="floating-element diamond" style="top: 20%; left: 10%;"></div>
@@ -1069,153 +1129,93 @@
         
         <div class="hero-content">
             <div class="brand">Éclat Weddings</div>
-            <h1>Crafting Timeless<br><span>Wedding Experiences</span></h1>
+            <h1>Premium Wedding<br><span>Packages & Services</span></h1>
             <div class="hero-divider"></div>
-            <p>Where dreams intertwine with reality, creating moments that last a lifetime through exquisite planning and attention to detail.</p>
-            <a href="#services" class="cta-button animate-on-scroll">
-                Discover Our Services
+            <p>Discover our exquisite wedding packages, meticulously designed to create unforgettable moments and timeless celebrations.</p>
+            <a href="#packages" class="cta-button animate-on-scroll">
+                Explore Our Packages
                 <i class="fas fa-chevron-down"></i>
             </a>
         </div>
     </section>
     
-    <!-- Luxury Services Section -->
-    <section id="services" class="services-section">
+    <!-- TITLE -->
+    <div class="title-container" id="packages">
+        <div class="section-subtitle">Exclusive Collections</div>
+        <h2 class="section-title">Our Premium Packages</h2>
+        <p class="section-intro">Each package is carefully curated to provide a seamless wedding experience, combining luxury with personalized attention to every detail.</p>
+    </div>
+    
+    <!-- PACKAGES -->
+    <div class="packages-section">
         <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Exquisite Offerings</div>
-                <h2 class="section-title">Our Premium Services</h2>
-                <p class="section-intro">Each service is meticulously curated to ensure your wedding day reflects your unique love story with elegance and perfection.</p>
-            </div>
-            
-            <div class="row g-4">
-                <!-- Services Loop -->
-                <% const services = [
-                    { 
-                        name: "Venue & Decor", 
-                        icon: "fas fa-place-of-worship", 
-                        img: "/assethome/venu3.jpg", 
-                        link: "/decor",
-                        desc: "Transform any space into a breathtaking venue with our custom decor designs"
-                    },
-                    { 
-                        name: "Invitation Suite", 
-                        icon: "fas fa-envelope-open-text", 
-                        img: "/assethome/inv1.jpg", 
-                        link: "/invetation",
-                        desc: "Custom-designed invitations that set the tone for your special day"
-                    },
-                    { 
-                        name: "Bridal Couture", 
-                        icon: "fas fa-tshirt", 
-                        img: "/assethome/dres.jpg", 
-                        link: "/styles",
-                        desc: "Exclusive bridal fashion and styling for the perfect look"
-                    },
-                    { 
-                        name: "Beauty & Glamour", 
-                        icon: "fas fa-spa", 
-                        img: "/assethome/beaty.jpg", 
-                        link: "/beauty",
-                        desc: "Professional beauty services for bridal radiance"
-                    },
-                    { 
-                        name: "Ceremony Direction", 
-                        icon: "fas fa-microphone-alt", 
-                        img: "/assethome/mc.jpg", 
-                        link: "/mc",
-                        desc: "Expert masters of ceremony for seamless event flow"
-                    },
-                    { 
-                        name: "Entertainment Excellence", 
-                        icon: "fas fa-music", 
-                        img: "/assethome/aime.jpg", 
-                        link: "/troupe",
-                        desc: "Premium entertainment troupes for unforgettable moments"
-                    },
-                    { 
-                        name: "Cultural Heritage", 
-                        icon: "fas fa-drum", 
-                        img: "/assethome/gak1.jpg", 
-                        link: "/gakondo",
-                        desc: "Authentic traditional performances honoring cultural roots"
-                    },
-                    { 
-                        name: "Atmosphere Design", 
-                        icon: "fas fa-lightbulb", 
-                        img: "/assethome/sound6.jpg", 
-                        link: "/sound",
-                        desc: "State-of-the-art sound and lighting for immersive experiences"
-                    },
-                    { 
-                        name: "Visual Storytelling", 
-                        icon: "fas fa-camera-retro", 
-                        img: "/assethome/photo.jpg", 
-                        link: "/photographers",
-                        desc: "Award-winning photography and cinematography"
-                    },
-                    { 
-                        name: "Culinary Artistry", 
-                        icon: "fas fa-utensils", 
-                        img: "/assethome/food1.jpg", 
-                        link: "/catering",
-                        desc: "Gourmet catering with personalized menu design"
-                    },
-                    { 
-                        name: "Event Coordination", 
-                        icon: "fas fa-concierge-bell", 
-                        img: "/assethome/iriza14.jpg", 
-                        link: "/service",
-                        desc: "Full-service event management and coordination"
-                    },
-                    { 
-                        name: "Cultural Ambiance", 
-                        icon: "fas fa-monument", 
-                        img: "/assethome/rugaba.jpg", 
-                        link: "/amahamba",
-                        desc: "Traditional cultural elements for authentic celebrations"
-                    }
-                ]; %>
-                
-                <% services.forEach((service, index) => { %>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="luxury-card animate-on-scroll" data-delay="<%= index * 50 %>">
-                        <div class="card-image-wrapper">
-                            <!-- Invisible clickable link covering the entire image area -->
-                            <a href="<%= service.link %>" class="card-image-link" aria-label="View <%= service.name %> details"></a>
-                            
-                            <img src="<%= service.img %>" alt="<%= service.name %>" class="card-image" loading="lazy">
-                            <div class="card-icon">
-                                <i class="<%= service.icon %>"></i>
-                            </div>
-                            <div class="card-overlay">
-                                <h4><%= service.name %></h4>
-                                <div class="click-hint">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    <span>Click to view details</span>
+            <div class="row">
+                <% if (files.length === 0) { %>
+                    <div class="col-12 no-packages">
+                        <p>No packages available at the moment. Please check back soon!</p>
+                    </div>
+                <% } else { %>
+                    <% files.forEach((file, index) => { %>
+                        <!-- CHANGED: From col-xl-3 to col-xl-4 for 3 cards per row instead of 4 -->
+                        <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
+                            <div class="luxury-card animate-on-scroll" data-delay="<%= index * 50 %>">
+                                <div class="card-image-wrapper">
+                                    <% if (file.fileType === 'image') { %>
+                                        <img
+                                            src="/all_disk/packges/<%= file.filePath %>"
+                                            class="card-image"
+                                            alt="<%= file.title %>"
+                                            loading="lazy"
+                                        >
+                                    <% } else if (file.fileType === 'video') { %>
+                                        <video class="card-image" controls>
+                                            <source src="/all_disk/packges/<%= file.filePath %>">
+                                        </video>
+                                    <% } %>
+                                    <div class="card-icon">
+                                        <% if (file.fileType === 'image') { %>
+                                            <i class="fas fa-image"></i>
+                                        <% } else if (file.fileType === 'video') { %>
+                                            <i class="fas fa-video"></i>
+                                        <% } %>
+                                    </div>
+                                    <div class="card-overlay">
+                                        <h4><%= file.title %></h4>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h4><%= file.title %></h4>
+                                    <p><%= file.description %></p>
+                                    <% let link = '#'; %>
+
+<% if (file.title === 'Decor') { %>
+  <% link = '/decor'; %>
+<% } else if (file.title === 'Invitation') { %>
+  <% link = '/invitation'; %>
+<% } else if (file.title === 'Venues') { %>
+  <% link = '/venues'; %>
+<% } %>
+
+<a href="<%= link %>" class="card-link">
+  Explore Service
+  <i class="fas fa-arrow-right"></i>
+</a>
+
                                 </div>
                             </div>
                         </div>
-                        <div class="card-content">
-                            <!-- Title is also clickable -->
-                            <a href="<%= service.link %>" style="text-decoration: none; color: inherit;">
-                                <h4><%= service.name %></h4>
-                            </a>
-                            <p><%= service.desc %></p>
-                            <a href="<%= service.link %>" class="card-link">
-                                Explore Service
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <% }); %>
+                    <% }) %>
+                <% } %>
             </div>
         </div>
-    </section>
+    </div>
     
     <!-- ========== BEGIN NEW SECTION: Complementary Services Table ========== -->
     <section id="complementary-services" class="complementary-services-section">
+        <!-- Add decorative floating elements for dark theme -->
+        <div class="floating-element" style="top: 15%; left: 5%; width: 120px; height: 120px; border: 1px solid var(--primary-gold); border-radius: 50%; opacity: 0.05;"></div>
+        <div class="floating-element" style="bottom: 15%; right: 8%; width: 80px; height: 80px; border: 2px solid var(--primary-gold); transform: rotate(45deg); opacity: 0.05;"></div>
+        
         <div class="table-floating-element circle"></div>
         <div class="table-floating-element diamond-small"></div>
         
@@ -1227,137 +1227,52 @@
             </div>
             
             <div class="luxury-table-container">
-                <table class="luxury-services-table">
-                    <thead>
-                        <tr>
-                            <th class="text-center" style="width: 80px;"><i class="fas fa-star text-gold"></i></th>
-                            <th>Service</th>
-                            <th class="d-none d-md-table-cell">Description</th>
-                            <th class="text-center">Inquire</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Service 1: Luxury Transportation -->
-                        <tr class="animate-on-scroll" data-delay="0">
-                            <td class="service-icon-cell">
-                                <div class="service-icon-wrapper"><i class="fas fa-car"></i></div>
-                            </td>
-                            <td class="service-name-cell">
-                                <h4 class="service-title">Luxury Transportation</h4>
-                                <p class="service-mobile-desc d-md-none">Premium vehicles for bridal party & guests</p>
-                            </td>
-                            <td class="service-desc-cell d-none d-md-table-cell">
-                                <p>Chauffeured luxury vehicles including vintage cars, limousines, and premium SUVs for a grand arrival.</p>
-                            </td>
-                            <td class="service-action-cell">
-                                <a href="/contact?service=transport" class="table-action-btn" aria-label="Inquire about Luxury Transportation">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="d-none d-sm-inline">Inquire</span>
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <!-- Service 2: DJ & Music Selection -->
-                        <tr class="animate-on-scroll" data-delay="50">
-                            <td class="service-icon-cell">
-                                <div class="service-icon-wrapper"><i class="fas fa-compact-disc"></i></div>
-                            </td>
-                            <td class="service-name-cell">
-                                <h4 class="service-title">DJ & Music Selection</h4>
-                                <p class="service-mobile-desc d-md-none">Curated playlists & professional DJ services</p>
-                            </td>
-                            <td class="service-desc-cell d-none d-md-table-cell">
-                                <p>Personalized music curation and professional DJ services for seamless entertainment throughout your event.</p>
-                            </td>
-                            <td class="service-action-cell">
-                                <a href="/contact?service=dj" class="table-action-btn" aria-label="Inquire about DJ Services">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="d-none d-sm-inline">Inquire</span>
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <!-- Service 3: Karaoke Entertainment -->
-                        <tr class="animate-on-scroll" data-delay="100">
-                            <td class="service-icon-cell">
-                                <div class="service-icon-wrapper"><i class="fas fa-microphone"></i></div>
-                            </td>
-                            <td class="service-name-cell">
-                                <h4 class="service-title">Karaoke Entertainment</h4>
-                                <p class="service-mobile-desc d-md-none">Interactive guest entertainment system</p>
-                            </td>
-                            <td class="service-desc-cell d-none d-md-table-cell">
-                                <p>State-of-the-art karaoke systems with extensive song libraries for guest participation and fun.</p>
-                            </td>
-                            <td class="service-action-cell">
-                                <a href="/contact?service=karaoke" class="table-action-btn" aria-label="Inquire about Karaoke">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="d-none d-sm-inline">Inquire</span>
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <!-- Service 4: Live Band Coordination -->
-                        <tr class="animate-on-scroll" data-delay="150">
-                            <td class="service-icon-cell">
-                                <div class="service-icon-wrapper"><i class="fas fa-guitar"></i></div>
-                            </td>
-                            <td class="service-name-cell">
-                                <h4 class="service-title">Live Band Coordination</h4>
-                                <p class="service-mobile-desc d-md-none">Professional musical ensemble arrangements</p>
-                            </td>
-                            <td class="service-desc-cell d-none d-md-table-cell">
-                                <p>Professional live bands ranging from jazz ensembles to string quartets and modern cover bands.</p>
-                            </td>
-                            <td class="service-action-cell">
-                                <a href="/contact?service=liveband" class="table-action-btn" aria-label="Inquire about Live Bands">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="d-none d-sm-inline">Inquire</span>
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <!-- Service 5: Beverage Curation -->
-                        <tr class="animate-on-scroll" data-delay="200">
-                            <td class="service-icon-cell">
-                                <div class="service-icon-wrapper"><i class="fas fa-wine-glass-alt"></i></div>
-                            </td>
-                            <td class="service-name-cell">
-                                <h4 class="service-title">Beverage Curation</h4>
-                                <p class="service-mobile-desc d-md-none">Premium bar & signature cocktail design</p>
-                            </td>
-                            <td class="service-desc-cell d-none d-md-table-cell">
-                                <p>Custom bar services with signature cocktails, premium beverage selection, and professional bartending.</p>
-                            </td>
-                            <td class="service-action-cell">
-                                <a href="/contact?service=beverage" class="table-action-btn" aria-label="Inquire about Beverage Curation">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="d-none d-sm-inline">Inquire</span>
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <!-- Service 6: Honeymoon Planning -->
-                        <tr class="animate-on-scroll" data-delay="250">
-                            <td class="service-icon-cell">
-                                <div class="service-icon-wrapper"><i class="fas fa-heart"></i></div>
-                            </td>
-                            <td class="service-name-cell">
-                                <h4 class="service-title">Honeymoon Planning</h4>
-                                <p class="service-mobile-desc d-md-none">Luxury travel arrangements & romantic getaways</p>
-                            </td>
-                            <td class="service-desc-cell d-none d-md-table-cell">
-                                <p>Tailored honeymoon packages to exotic destinations with luxury accommodations and romantic experiences.</p>
-                            </td>
-                            <td class="service-action-cell">
-                                <a href="/contact?service=honeymoon" class="table-action-btn" aria-label="Inquire about Honeymoon Planning">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="d-none d-sm-inline">Inquire</span>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- NEW: Grid layout for 2 rows x 3 columns -->
+                <div class="services-grid">
+                    <!-- Row 1 -->
+                    <!-- Service 1: Luxury Transportation -->
+                    <div class="service-item animate-on-scroll" data-delay="0">
+                        <div class="service-icon-wrapper"><i class="fas fa-car"></i></div>
+                        <h4 class="service-title">Luxury Transportation</h4>
+                        <p class="service-description">Arrive in style with our premium fleet of luxury vehicles for the entire wedding party.</p>
+                    </div>
+                    
+                    <!-- Service 2: DJ & Music Selection -->
+                    <div class="service-item animate-on-scroll" data-delay="50">
+                        <div class="service-icon-wrapper"><i class="fas fa-compact-disc"></i></div>
+                        <h4 class="service-title">DJ & Music Selection</h4>
+                        <p class="service-description">Professional DJ services with customized playlists to keep your celebration alive.</p>
+                    </div>
+                    
+                    <!-- Service 3: Karaoke Entertainment -->
+                    <div class="service-item animate-on-scroll" data-delay="100">
+                        <div class="service-icon-wrapper"><i class="fas fa-microphone"></i></div>
+                        <h4 class="service-title">Karaoke Entertainment</h4>
+                        <p class="service-description">Fun karaoke setup for guests to showcase their talents and keep the party going.</p>
+                    </div>
+                    
+                    <!-- Row 2 -->
+                    <!-- Service 4: Live Band Coordination -->
+                    <div class="service-item animate-on-scroll" data-delay="150">
+                        <div class="service-icon-wrapper"><i class="fas fa-guitar"></i></div>
+                        <h4 class="service-title">Live Band Coordination</h4>
+                        <p class="service-description">Hire and coordinate live musical performances tailored to your wedding theme.</p>
+                    </div>
+                    
+                    <!-- Service 5: Beverage Curation -->
+                    <div class="service-item animate-on-scroll" data-delay="200">
+                        <div class="service-icon-wrapper"><i class="fas fa-wine-glass-alt"></i></div>
+                        <h4 class="service-title">Beverage Curation</h4>
+                        <p class="service-description">Expert selection and presentation of wines, cocktails, and non-alcoholic beverages.</p>
+                    </div>
+                    
+                    <!-- Service 6: Honeymoon Planning -->
+                    <div class="service-item animate-on-scroll" data-delay="250">
+                        <div class="service-icon-wrapper"><i class="fas fa-heart"></i></div>
+                        <h4 class="service-title">Honeymoon Planning</h4>
+                        <p class="service-description">Complete honeymoon planning service including travel, accommodation, and experiences.</p>
+                    </div>
+                </div>
                 
                 <div class="table-footer-note">
                     <p class="text-center mb-0">
@@ -1382,6 +1297,11 @@
             </a>
         </div>
     </section>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
     
     <%- include('../allpack/layout/footer') %>
     
@@ -1411,7 +1331,7 @@
         window.addEventListener('load', animateOnScroll);
         window.addEventListener('scroll', animateOnScroll);
 
-        // Smooth scroll with enhanced animation
+        // Smooth scroll with enhanced animation - ONLY for anchor links (#)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1461,13 +1381,13 @@
             });
         });
 
-        // Table row hover enhancement
-        document.querySelectorAll('.luxury-services-table tbody tr').forEach(row => {
-            row.addEventListener('mouseenter', function() {
+        // Service item hover enhancement
+        document.querySelectorAll('.service-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
                 this.style.zIndex = '5';
             });
             
-            row.addEventListener('mouseleave', function() {
+            item.addEventListener('mouseleave', function() {
                 this.style.zIndex = '1';
             });
         });
@@ -1531,33 +1451,91 @@
         // Preload images after page loads
         window.addEventListener('load', preloadCardImages);
 
-        // Make entire card clickable on mobile (except the "Explore Service" button)
-        document.querySelectorAll('.luxury-card').forEach(card => {
-            const cardContent = card.querySelector('.card-content');
-            const cardImageLink = card.querySelector('.card-image-link');
-            const cardButton = card.querySelector('.card-link');
-            const cardTitleLink = card.querySelector('.card-content h4 a');
+        // ========== ROBUST BACK TO TOP FUNCTIONALITY ==========
+        const backToTopButton = document.getElementById('backToTop');
+        
+        // Function to show/hide button
+        const toggleBackToTop = () => {
+            const isMobile = window.innerWidth <= 768;
+            const scrollThreshold = isMobile ? 100 : 300; // Lower threshold on mobile
             
-            // Prevent event bubbling for the button
-            if(cardButton) {
-                cardButton.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                });
+            if (window.pageYOffset > scrollThreshold) {
+                backToTopButton.classList.add('visible');
+                // Force styles on mobile
+                if (isMobile) {
+                    backToTopButton.style.display = 'flex';
+                    backToTopButton.style.opacity = '1';
+                    backToTopButton.style.visibility = 'visible';
+                }
+            } else {
+                backToTopButton.classList.remove('visible');
+                // Reset styles when not visible
+                if (isMobile) {
+                    backToTopButton.style.display = 'flex';
+                    backToTopButton.style.opacity = '0';
+                    backToTopButton.style.visibility = 'hidden';
+                }
             }
+        };
+        
+        // Initialize on load
+        window.addEventListener('load', toggleBackToTop);
+        window.addEventListener('scroll', toggleBackToTop);
+        window.addEventListener('resize', toggleBackToTop);
+        
+        // Smooth scroll to top
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Also handle anchor links that go to top
+        document.querySelectorAll('a[href="#top"], a[href="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#top' || this.getAttribute('href') === '#') {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Force button to be visible on mobile (extra safety)
+        if (window.innerWidth <= 768) {
+            // Add touch event for better mobile handling
+            backToTopButton.addEventListener('touchstart', function() {
+                this.style.transform = 'translateY(-2px) scale(0.95)';
+            });
             
-            // Make card content clickable (except the button)
-            if(cardContent && window.innerWidth <= 768) {
-                cardContent.addEventListener('click', function(e) {
-                    // Don't trigger if clicking on the button
-                    if(!e.target.closest('.card-link')) {
-                        const link = cardImageLink ? cardImageLink.href : 
-                                   cardTitleLink ? cardTitleLink.href : null;
-                        if(link) {
-                            window.location.href = link;
-                        }
-                    }
-                });
-            }
+            backToTopButton.addEventListener('touchend', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            // Test: Log button status on mobile
+            console.log('Mobile Back to Top Button Status:', {
+                exists: !!backToTopButton,
+                classList: backToTopButton.className,
+                computedStyle: window.getComputedStyle(backToTopButton),
+                zIndex: window.getComputedStyle(backToTopButton).zIndex
+            });
+        }
+
+        // IMPORTANT FIX: Ensure route links (/services, /contact, etc.) work properly
+        // Remove any event listeners that might prevent navigation on non-anchor links
+        document.querySelectorAll('a:not([href^="#"]):not([href^="#top"]):not([href="#"])').forEach(link => {
+            // Ensure these links work normally
+            link.addEventListener('click', function(e) {
+                // Allow normal navigation for route links
+                // Don't prevent default behavior for non-anchor links
+                if (!this.getAttribute('href').startsWith('#')) {
+                    // These are regular route links, let them work normally
+                    return true;
+                }
+            });
         });
     </script>
 </body>

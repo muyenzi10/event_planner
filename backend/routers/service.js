@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({storage})
 servicerouter.post("/upload/service", upload.single("media"),servicecontroller.postservice );
-servicerouter.get("/service",servicecontroller.getservice);
+servicerouter.get("/hospitality",servicecontroller.getservice);
 servicerouter.get("/service/add",servicecontroller.getadd);
 servicerouter.get("/service/edit/:id",servicecontroller.getedit);
 servicerouter.get("/dashboard/services",servicecontroller.getdashboard);

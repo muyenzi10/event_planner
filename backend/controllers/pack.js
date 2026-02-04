@@ -19,8 +19,18 @@ exports.packupload = async (req, res) => {
         res.status(500).send("Error uploading file");
     }
 };
-exports.getpackages = (req, res) => {
-  res.render('home_packages/pack', { activePage: 'packages' });
+exports.getpackages = async(req, res) => {
+    try {
+    const files = await File.find().sort({uploadedAt : -1 });
+    res.render('home_packages/pack', {
+      activePage: 'services',
+      files
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Failed to load packages');
+  }
+  
 };
 exports.add = (req, res) => {
   res.render('home_packages/pack_dash/add');

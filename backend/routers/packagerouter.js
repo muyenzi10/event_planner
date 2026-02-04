@@ -2,7 +2,7 @@ const express = require('express');
 const packages = require("../controllers/packages");
 const routerpack = express.Router();
 
-routerpack.get("/invetation", packages.getinvitation);
+routerpack.get("/invitation", packages.getinvitation);
 routerpack.get("/styles", packages.getstyle);
 routerpack.get("/beauty", packages.getbeauty);
 routerpack.get("/mc", packages.getmc);

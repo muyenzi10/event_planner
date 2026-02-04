@@ -69,6 +69,68 @@
       gap: 6px;
       justify-content: center;
     }
+
+    /* Description column styles */
+    .description-column {
+      max-width: 400px; /* Increased width */
+      min-width: 250px; /* Increased min width */
+      white-space: normal;
+      word-wrap: break-word;
+      text-align: left !important;
+      line-height: 1.4;
+    }
+
+    /* Tooltip enhancement */
+    [title] {
+      cursor: help;
+    }
+
+    /* CSS for word wrapping */
+    .description-text {
+      display: block;
+      max-height: 4.2em; /* Shows about 3 lines */
+      overflow: hidden;
+      position: relative;
+    }
+
+    .description-text.truncated::after {
+      content: '...';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background: white;
+      padding-left: 2px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1200px) {
+      .description-column {
+        max-width: 350px;
+        min-width: 200px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .sidebar {
+        width: 70px;
+      }
+      .sidebar .nav-link span {
+        display: none;
+      }
+      .sidebar h4 {
+        font-size: 0;
+      }
+      .sidebar h4 i {
+        font-size: 1.5rem;
+      }
+      .main-content {
+        margin-left: 70px;
+      }
+      .description-column {
+        max-width: 250px;
+        min-width: 150px;
+      }
+    }
   </style>
 </head>
 
@@ -80,14 +142,14 @@
     <h4><i class="fas fa-heart"></i> Wedding Planner</h4>
   </div>
 
-  <a href="/home" class="nav-link"><i class="fas fa-home me-2"></i> Back Home</a>
-  <a href="/dashboard/home" class="nav-link"><i class="fas fa-house me-2"></i> Home</a>
-  <a href="/dashboard/suppliers" class="nav-link"><i class="fas fa-users me-2"></i> Suppliers</a>
-  <a href="/packages/dashboard" class="nav-link active"><i class="fas fa-bookmark me-2"></i> Packages</a>
-  <a href="/dashboard/services" class="nav-link"><i class="fas fa-concierge-bell me-2"></i> Services</a>
-  <a href="/dashboard/decor" class="nav-link"><i class="fas fa-image me-2"></i> Decor</a>
-  <a href="/dashboard/troupe" class="nav-link"><i class="fas fa-drum me-2"></i> Troupe</a>
-  <a href="/dashboard/media" class="nav-link"><i class="fas fa-camera me-2"></i> Photo & Video</a>
+  <a href="/home" class="nav-link"><i class="fas fa-home me-2"></i> <span>Back Home</span></a>
+  <a href="/dashboard/home" class="nav-link"><i class="fas fa-house me-2"></i> <span>Home</span></a>
+  <a href="/dashboard/suppliers" class="nav-link"><i class="fas fa-users me-2"></i> <span>Suppliers</span></a>
+  <a href="/packages/dashboard" class="nav-link active"><i class="fas fa-bookmark me-2"></i> <span>Packages</span></a>
+  <a href="/dashboard/services" class="nav-link"><i class="fas fa-concierge-bell me-2"></i> <span>Services</span></a>
+  <a href="/dashboard/decor" class="nav-link"><i class="fas fa-image me-2"></i> <span>Decor</span></a>
+  <a href="/dashboard/troupe" class="nav-link"><i class="fas fa-drum me-2"></i> <span>Troupe</span></a>
+  <a href="/dashboard/media" class="nav-link"><i class="fas fa-camera me-2"></i> <span>Photo & Video</span></a>
 
   <div class="mt-auto text-center text-white-50 p-3">
     © 2026 Wedding Planner Pro
@@ -110,7 +172,7 @@
         <tr>
           <th>#</th>
           <th>Title</th>
-          <th>Description</th>
+          <th class="description-column">Description</th>
           <th>Type</th>
           <th>Media</th>
           <th>Actions</th>
@@ -119,16 +181,52 @@
 
       <tbody>
         <% if (files && files.length > 0) { %>
-          <% files.forEach((file, index) => { %>
+          <% files.forEach((file, index) => { 
+            // Smart truncation function for 100 characters at word boundaries
+            let displayDescription = '—';
+            let tooltipDescription = file.description || 'No description';
+            let isTruncated = false;
+            
+            if (file.description) {
+              if (file.description.length <= 100) {
+                // If description is 100 characters or less, show it all
+                displayDescription = file.description;
+              } else {
+                // If longer than 100 chars, truncate at last complete word
+                // First, get the first 100 characters
+                let first100 = file.description.substring(0, 100);
+                // Find the last space in the first 100 characters
+                let lastSpace = first100.lastIndexOf(' ');
+                
+                if (lastSpace > 0) {
+                  // If we found a space, cut there
+                  displayDescription = file.description.substring(0, lastSpace) + '...';
+                } else {
+                  // If no space found (unlikely), cut at 100
+                  displayDescription = file.description.substring(0, 97) + '...';
+                }
+                isTruncated = true;
+              }
+            }
+          %>
             <tr>
               <td>
                 <%= (currentPage - 1) * itemsPerPage + index + 1 %>
               </td>
 
               <td><%= file.title || '—' %></td>
-
-              <td>
-                <%= file.description ? file.description.substring(0, 60) : '—' %>
+              <td class="description-column" 
+                  title="<%= tooltipDescription %>"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top">
+                <span class="description-text <%= isTruncated ? 'truncated' : '' %>">
+                  <%= displayDescription %>
+                </span>
+                <% if (isTruncated && file.description.length > 100) { %>
+                  <small class="text-muted d-block mt-1">
+                    <i class="fas fa-info-circle"></i> Hover to see full description
+                  </small>
+                <% } %>
               </td>
 
               <td>
@@ -136,29 +234,52 @@
                   <span class="badge bg-info">Image</span>
                 <% } else if (file.fileType === 'video') { %>
                   <span class="badge bg-danger">Video</span>
+                <% } else { %>
+                  <span class="badge bg-secondary">Other</span>
                 <% } %>
               </td>
 
               <td>
                 <% if (file.fileType === 'image') { %>
-                  <img src="/all_disk/packges/<%= file.filePath %>" class="media-thumbnail" alt="<%= file.title %>">
+                  <img src="/all_disk/packges/<%= file.filePath %>" 
+                       class="media-thumbnail" 
+                       alt="<%= file.title || 'Image' %>"
+                       style="cursor: pointer;"
+                       onclick="openImageModal('/all_disk/packges/<%= file.filePath %>')">
+                <% } else if (file.fileType === 'video') { %>
+                  <video src="/all_disk/packges/<%= file.filePath %>" 
+                         class="media-thumbnail" 
+                         controls
+                         preload="metadata"
+                         title="<%= file.title || 'Video' %>"></video>
                 <% } else { %>
-                  <video src="/all_disk/packges/<%= file.filePath %>" class="media-thumbnail" controls></video>
+                  <div class="media-thumbnail bg-light d-flex align-items-center justify-content-center">
+                    <i class="fas fa-file text-muted"></i>
+                  </div>
                 <% } %>
               </td>
 
               <td>
                 <div class="action-buttons">
-                  <a href="/packages/edit/<%= file._id %>" class="btn btn-sm btn-warning">
+                  <a href="/packages/edit/<%= file._id %>" 
+                     class="btn btn-sm btn-warning"
+                     title="Edit <%= file.title || 'Item' %>"
+                     data-bs-toggle="tooltip"
+                     data-bs-placement="top">
                     <i class="fas fa-edit"></i>
                   </a>
 
                   <form
                     action="/delete/packages/<%= file._id %>?_method=DELETE"
                     method="POST"
-                    onsubmit="return confirm('Delete this package?')"
+                    onsubmit="return confirm('Are you sure you want to delete this package: <%= file.title || 'Untitled' %>?')"
+                    style="display: inline;"
                   >
-                    <button class="btn btn-sm btn-danger">
+                    <button class="btn btn-sm btn-danger" 
+                            title="Delete <%= file.title || 'Item' %>"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            type="submit">
                       <i class="fas fa-trash"></i>
                     </button>
                   </form>
@@ -168,8 +289,9 @@
           <% }) %>
         <% } else { %>
           <tr>
-            <td colspan="6" class="text-muted text-center">
-              No packages found
+            <td colspan="6" class="text-muted text-center py-4">
+              <i class="fas fa-folder-open fa-2x mb-2"></i><br>
+              No packages found. <a href="/packages/add" class="text-primary">Add your first package</a>
             </td>
           </tr>
         <% } %>
@@ -177,16 +299,38 @@
     </table>
 
     <!-- Pagination -->
+    <% if (files && files.length > 0) { %>
     <nav>
       <ul class="pagination justify-content-center">
 
         <li class="page-item <%= currentPage === 1 ? 'disabled' : '' %>">
           <a class="page-link" href="?page=<%= currentPage - 1 %>">
-            &laquo; Prev
+            <i class="fas fa-chevron-left"></i> Previous
           </a>
         </li>
 
-        <% for (let i = 1; i <= totalPages; i++) { %>
+        <% 
+          let startPage = Math.max(1, currentPage - 2);
+          let endPage = Math.min(totalPages, startPage + 4);
+          
+          // Adjust start page if we're near the end
+          if (endPage - startPage < 4) {
+            startPage = Math.max(1, endPage - 4);
+          }
+        %>
+
+        <% if (startPage > 1) { %>
+          <li class="page-item">
+            <a class="page-link" href="?page=1">1</a>
+          </li>
+          <% if (startPage > 2) { %>
+            <li class="page-item disabled">
+              <span class="page-link">...</span>
+            </li>
+          <% } %>
+        <% } %>
+
+        <% for (let i = startPage; i <= endPage; i++) { %>
           <li class="page-item <%= i === currentPage ? 'active' : '' %>">
             <a class="page-link" href="?page=<%= i %>">
               <%= i %>
@@ -194,17 +338,85 @@
           </li>
         <% } %>
 
+        <% if (endPage < totalPages) { %>
+          <% if (endPage < totalPages - 1) { %>
+            <li class="page-item disabled">
+              <span class="page-link">...</span>
+            </li>
+          <% } %>
+          <li class="page-item">
+            <a class="page-link" href="?page=<%= totalPages %>"><%= totalPages %></a>
+          </li>
+        <% } %>
+
         <li class="page-item <%= currentPage === totalPages ? 'disabled' : '' %>">
           <a class="page-link" href="?page=<%= currentPage + 1 %>">
-            Next &raquo;
+            Next <i class="fas fa-chevron-right"></i>
           </a>
         </li>
 
       </ul>
     </nav>
+    <% } %>
 
   </div>
 </main>
+
+<!-- Modal for full-size image -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Image Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="modalImage" src="" class="img-fluid rounded" alt="">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// Function to open image in modal
+function openImageModal(src) {
+  const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+  const modalImage = document.getElementById('modalImage');
+  modalImage.src = src;
+  modalImage.alt = 'Package Image';
+  modal.show();
+}
+
+// Initialize tooltips on page load
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize all Bootstrap tooltips
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl, {
+      delay: { show: 100, hide: 100 },
+      placement: 'top'
+    });
+  });
+  
+  // Add tooltips to description cells that don't have data-bs-toggle
+  var descriptionCells = document.querySelectorAll('.description-column');
+  descriptionCells.forEach(function(cell) {
+    if (!cell.hasAttribute('data-bs-toggle')) {
+      cell.setAttribute('data-bs-toggle', 'tooltip');
+      new bootstrap.Tooltip(cell, {
+        delay: { show: 100, hide: 100 },
+        placement: 'top'
+      });
+    }
+  });
+});
+</script>
 
 </body>
 </html>
