@@ -282,6 +282,16 @@
             aspect-ratio: 3/4; /* CHANGED: From 4/3 to 3/4 for taller images */
         }
         
+        /* Make the entire image area a clickable link */
+        .card-image-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+        
         .card-image-wrapper::before {
             content: '';
             position: absolute;
@@ -293,6 +303,7 @@
             opacity: 0;
             transition: opacity var(--transition-duration) var(--transition-smooth);
             z-index: 1;
+            pointer-events: none;
         }
         
         .luxury-card:hover .card-image-wrapper::before {
@@ -335,6 +346,7 @@
             transition: all var(--transition-duration) var(--transition-smooth);
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             border: 1px solid var(--light-border);
+            pointer-events: none;
         }
         
         .luxury-card:hover .card-icon {
@@ -1156,22 +1168,50 @@
                     </div>
                 <% } else { %>
                     <% files.forEach((file, index) => { %>
+                        <!-- Determine the link based on the title -->
+                        <% let link = '#'; %>
+                        <% if (file.title === 'Decor') { %>
+                            <% link = '/decor'; %>
+                        <% } else if (file.title === 'Invitation') { %>
+                            <% link = '/invitation'; %>
+                        <% } else if (file.title === 'Dresses') { %>
+                            <% link = '/dresses'; %>
+                        <% } else if (file.title === 'm.c') { %>
+                            <% link = '/mc'; %>
+                        <% } else if (file.title === 'Troupe') { %>
+                            <% link = '/troupe'; %>
+                        <% } else if (file.title === 'sound') { %>
+                            <% link = '/sound'; %>
+                        <% } else if (file.title === 'Photography') { %>
+                            <% link = '/photographers'; %>
+                        <% } else if (file.title === 'Catering') { %>
+                            <% link = '/catering'; %>
+                        <% } else if (file.title === 'Hospitality') { %>
+                            <% link = '/hospitality'; %>       
+                        <% } %>
+                        
                         <!-- CHANGED: From col-xl-3 to col-xl-4 for 3 cards per row instead of 4 -->
                         <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
                             <div class="luxury-card animate-on-scroll" data-delay="<%= index * 50 %>">
                                 <div class="card-image-wrapper">
-                                    <% if (file.fileType === 'image') { %>
-                                        <img
-                                            src="/all_disk/packges/<%= file.filePath %>"
-                                            class="card-image"
-                                            alt="<%= file.title %>"
-                                            loading="lazy"
-                                        >
-                                    <% } else if (file.fileType === 'video') { %>
-                                        <video class="card-image" controls>
-                                            <source src="/all_disk/packges/<%= file.filePath %>">
-                                        </video>
-                                    <% } %>
+                                    <!-- Wrapped the image/video in an anchor tag -->
+                                    <a href="<%= link %>" class="card-image-link">
+                                        <% if (file.fileType === 'image') { %>
+                                            <img
+                                                src="/all_disk/packges/<%= file.filePath %>"
+                                                class="card-image"
+                                                alt="<%= file.title %>"
+                                                loading="lazy"
+                                            >
+                                        <% } else if (file.fileType === 'video') { %>
+                                            <video class="card-image" controls>
+                                                <source src="/all_disk/packges/<%= file.filePath %>">
+                                            </video>
+                                        <% } %>
+                                        <div class="card-overlay">
+                                            <h4><%= file.title %></h4>
+                                        </div>
+                                    </a>
                                     <div class="card-icon">
                                         <% if (file.fileType === 'image') { %>
                                             <i class="fas fa-image"></i>
@@ -1179,40 +1219,14 @@
                                             <i class="fas fa-video"></i>
                                         <% } %>
                                     </div>
-                                    <div class="card-overlay">
-                                        <h4><%= file.title %></h4>
-                                    </div>
                                 </div>
                                 <div class="card-content">
                                     <h4><%= file.title %></h4>
                                     <p><%= file.description %></p>
-                                    <% let link = '#'; %>
-
-<% if (file.title === 'Decor') { %>
-  <% link = '/decor'; %>
-<% } else if (file.title === 'Invitation') { %>
-  <% link = '/invitation'; %>
-<% } else if (file.title === 'Dresses') { %>
-  <% link = '/dresses'; %>
-<% } else if (file.title === 'm.c') { %>
-  <% link = '/mc'; %>
-<% } else if (file.title === 'Troupe') { %>
-  <% link = '/troupe'; %>
-<% } else if (file.title === 'sound') { %>
-  <% link = '/sound'; %>
-<% } else if (file.title === 'Photography') { %>
-  <% link = '/photographers'; %>
-<% } else if (file.title === 'Catering') { %>
-  <% link = '/catering'; %>
-<% } else if (file.title === 'Hospitality') { %>
-  <% link = '/hospitality'; %>       
-<% } %>
-
-<a href="<%= link %>" class="card-link">
-  Explore Service
-  <i class="fas fa-arrow-right"></i>
-</a>
-
+                                    <a href="<%= link %>" class="card-link">
+                                        Explore Service
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
