@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
     <link rel="stylesheet" href="/allpack/layout/css/footer.css">
     
-    <title>Éclat Weddings | Luxury Wedding Packages</title>
+    <title>Services</title>
     
     <style>
         :root {
@@ -246,8 +246,8 @@
             line-height: 1.8;
         }
         
-        /* PACKAGES - Light theme */
-        .packages-section {
+        /* SERVICES SECTION - Light theme */
+        .services-section {
             padding: 4rem 0;
             background: var(--light-bg);
             position: relative;
@@ -721,13 +721,13 @@
             transform: translateY(-2px);
         }
         
-        /* No packages message */
-        .no-packages {
+        /* No services message */
+        .no-services {
             padding: 4rem 0;
             text-align: center;
         }
         
-        .no-packages p {
+        .no-services p {
             font-size: 1.2rem;
             color: var(--light-text-light);
         }
@@ -780,7 +780,7 @@
             }
             
             /* Adjust card margins for 3-column layout */
-            .packages-section .row {
+            .services-section .row {
                 --bs-gutter-x: 1.5rem;
             }
         }
@@ -880,7 +880,7 @@
                 flex: 0 1 auto; /* Don't grow too much */
             }
             
-            .packages-section {
+            .services-section {
                 padding: 3rem 0;
             }
             
@@ -1226,38 +1226,38 @@
 <body>
     <%- include('../allpack/layout/navbar') %>
     
-    <!-- Luxury Hero Section - 100% same as original -->
+    <!-- Luxury Hero Section - FIXED: Removed duplicate "Premium" and "Discover our exquisite" -->
     <section class="luxury-hero">
         <!-- Floating decorative elements -->
         <div class="floating-element diamond" style="top: 20%; left: 10%;"></div>
         <div class="floating-element ring" style="bottom: 20%; right: 10%;"></div>
         
         <div class="hero-content">
-            <div class="brand">Éclat Weddings</div>
-            <h1>Premium Wedding<br><span>Packages & Services</span></h1>
+            <div class="brand">Dazzle Weddings</div>
+            <h1>Wedding Solutions<br><span>Planning through Signature Services</span></h1>
             <div class="hero-divider"></div>
-            <p>Discover our exquisite wedding packages, meticulously designed to create unforgettable moments and timeless celebrations.</p>
-            <a href="#packages" class="cta-button animate-on-scroll">
-                Explore Our Packages
+            <p>Our services are shaped with intention, allowing moments to unfold with depth and lasting presence</p>
+            <a href="#services" class="cta-button animate-on-scroll">
+                Explore Our Services
                 <i class="fas fa-chevron-down"></i>
             </a>
         </div>
     </section>
     
     <!-- TITLE -->
-    <div class="title-container" id="packages">
+    <div class="title-container" id="services">
         <div class="section-subtitle">Exclusive Collections</div>
-        <h2 class="section-title">Our Premium Packages</h2>
-        <p class="section-intro">Each package is carefully curated to provide a seamless wedding experience, combining luxury with personalized attention to every detail.</p>
+        <h2 class="section-title">Our Luxury Services</h2>
+        <p class="section-intro">Thoughtfully orchestrated experiences shaped with precision, discretion, and an uncompromising eye for detail</p>
     </div>
     
-    <!-- PACKAGES -->
-    <div class="packages-section">
+    <!-- SERVICES SECTION -->
+    <div class="services-section">
         <div class="container">
             <div class="row">
                 <% if (files.length === 0) { %>
-                    <div class="col-12 no-packages">
-                        <p>No packages available at the moment. Please check back soon!</p>
+                    <div class="col-12 no-services">
+                        <p>No services available at the moment. Please check back soon!</p>
                     </div>
                 <% } else { %>
                     <% files.forEach((file, index) => { %>
@@ -1283,7 +1283,6 @@
                             <% link = '/hospitality'; %>       
                         <% } %>
                         
-                        <!-- CHANGED: From col-xl-3 to col-xl-4 for 3 cards per row instead of 4 -->
                         <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
                             <div class="luxury-card animate-on-scroll" data-delay="<%= index * 50 %>">
                                 <div class="card-image-wrapper">
@@ -1329,7 +1328,7 @@
         </div>
     </div>
     
-    <!-- ========== BEGIN NEW SECTION: Complementary Services Table ========== -->
+    <!-- ========== Complementary Services Table ========== -->
     <section id="complementary-services" class="complementary-services-section">
         <!-- Add decorative floating elements for dark theme -->
         <div class="floating-element" style="top: 15%; left: 5%; width: 120px; height: 120px; border: 1px solid var(--primary-gold); border-radius: 50%; opacity: 0.05;"></div>
@@ -1385,37 +1384,32 @@
                         <p class="service-description">Expert selection and presentation of wines, cocktails, and non-alcoholic beverages.</p>
                     </div>
                     
-                    <!-- Service 6: Honeymoon Planning -->
-                    <div class="service-item animate-on-scroll" data-delay="250">
-                        <div class="service-icon-wrapper"><i class="fas fa-heart"></i></div>
-                        <h4 class="service-title">Honeymoon Planning</h4>
-                        <p class="service-description">Complete honeymoon planning service including travel, accommodation, and experiences.</p>
-                    </div>
-                </div>
-                
-                <div class="table-footer-note">
-                    <p class="text-center mb-0">
-                        <i class="fas fa-info-circle text-gold me-2"></i>
-                        All complementary services can be customized to match your wedding theme and requirements.
-                        <a href="/contact" class="text-gold fw-bold ms-2">Contact us for bespoke packages</a>
-                    </p>
-                </div>
-            </div>
+                   <!-- Service 6: Gakondo singers -->
+<div class="service-item animate-on-scroll" data-delay="250">
+    <div class="service-icon-wrapper"><i class="fas fa-music"></i></div>
+    <h4 class="service-title">Gakondo Singers</h4>
+    <p class="service-description">
+        performances by talented Gakondo singers, delivering traditional melodies and rhythms that make every celebration unforgettable.
+    </p>
+</div>                
+        </div>
         </div>
     </section>
-    <!-- ========== END NEW SECTION: Complementary Services Table ========== -->
+    <!-- ========== END Complementary Services Table ========== -->
     
-    <!-- Call to Action -->
     <section class="footer-cta">
         <div class="container">
             <h3>Begin Your Journey</h3>
-            <p>Let us transform your wedding vision into an extraordinary reality. Schedule a consultation with our expert planners today.</p>
-            <a href="/contact" class="cta-button-gold">
+            <p class="service-description">
+        Let us turn your wedding dreams into a flawless celebration. Our expert planners connect you with top vendors and handle every detail
+    </p>
+            <a href="/booking" class="cta-button-gold">
                 <i class="fas fa-calendar-check"></i>
                 Book Exclusive Consultation
             </a>
         </div>
     </section>
+
     
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop" aria-label="Back to top">
