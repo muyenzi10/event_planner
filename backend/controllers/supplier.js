@@ -1,13 +1,33 @@
 const supplier = require("../models/supplier");
-exports.postsupplier = async (req,res)=>{
-    try{
-        const newsuppliers = await supplier.create(req.body);
-        res.status(200).json({message:"Supplier created successfully", data:newsuppliers});
-        
-    }catch(error){
-        res.status(500).json({Message: error.message});
-    }
-}
+exports.postsupplier = async (req, res) => {
+  try {
+    await supplier.create(req.body);
+
+    // Success case
+    res.render("home_packages/errorofsupplier/suppliermessage", {
+      title: "Application Submitted",
+      message: "Thank you for applying! Your supplier application has been received successfully.",
+      subMessage:
+        "Our team will review your application within 2–3 business days and contact you via email or phone.",
+      nextSteps:
+        "If you have any questions, feel free to reach out to contact",
+      error: false // ✅ add this
+    });
+
+  } catch (err) {
+    // Error case
+    res.render("home_packages/errorofsupplier/suppliermessage", {
+      title: "Submission Failed",
+      message: "Something went wrong while submitting your application.",
+      error: true, // ✅ add this
+      errorMessage: err.message, // optional to display error details
+      subMessage: null,
+      nextSteps: null
+    });
+  }
+};
+
+
 exports.getsuppliers = async(req,res)=>{
     try{
      let page = parseInt(req.query.page) || 1;

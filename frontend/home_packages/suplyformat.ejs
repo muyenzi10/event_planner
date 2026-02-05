@@ -101,7 +101,7 @@
                 <td><% if(s.link){ %><a href="<%= s.link %>" target="_blank">View</a><% } else { %>—<% } %></td>
                 <td>
                   <a href="/Dashboard/suppliers/edit/<%= s._id %>" class="btn btn-sm btn-outline-warning"><i class="fas fa-pen"></i></a>
-                  <form action="/Dashboard/suppliers/delete/<%= s._id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('Delete this supplier?');">
+                  <form action="/Dashboard/suppliers/delete/<%= s._id %>?_method=DELETE" method="POST" style="display:inline;">
                     <button type="submit" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i></button>
                   </form>
                 </td>

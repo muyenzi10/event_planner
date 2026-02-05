@@ -9,20 +9,19 @@ exports.postbook = async (req, res) => {
       weddingLocation, weddingVision
     } = req.body;
 
-    // Check for missing fields
     if (!firstname || !lastname || !email || !phone || !weddingDate ||
         !guestsNumber || !weddingType || !weddingLocation || !weddingVision) {
-      return res.status(400).send("Please fill in all required fields.");
+      return res.status(400).json({ message: "Missing required fields" });
     }
 
     const booking = await bookingdb.create(req.body);
-    res.status(201).send("Thank you for your booking request! We'll contact you shortly to confirm details.");
+    res.status(201).json({
+      message: "Booking created successfully",
+      booking
+    });
   } catch (error) {
     console.error("Error creating booking:", error);
-    res.status(500).json({ 
-      message: "We encountered an error processing your request. Please try again or contact support.", 
-      error: error.message 
-    });
+    res.status(500).json({ message: "Error creating booking", error: error.message });
   }
 };
 

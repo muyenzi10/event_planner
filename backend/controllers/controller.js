@@ -3,7 +3,7 @@ exports.getabout = (req, res) => {
   res.render('home_packages/about', { activePage: 'about' });
 };
 exports.getsupply = (req, res) => {
-  res.render('home_packages/supply', { activePage: 'suppliers' });
+  res.render('home_packages/suply', { activePage: 'suppliers' });
 };
 
 exports.getbook = (req, res) => {
