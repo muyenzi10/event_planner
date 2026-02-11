@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 
 exports.getcontact = (req, res) => {
-    res.render("home_packages/contact");
+    res.render("home_packages/contact", { activePage: 'contact' });
 };
 
 exports.postcontact = async (req, res) => {

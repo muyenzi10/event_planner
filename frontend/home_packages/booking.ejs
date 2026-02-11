@@ -9,101 +9,49 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
+    <link rel="stylesheet" href="/allpack/layout/css/footer.css">
     <style>
-        :root {
-            --primary-color: #d4af37; /* Gold */
-            --secondary-color: #f8f4f0; /* Cream */
-            --accent-color: #e8c4c4; /* Blush */
-            --dark-color: #333333; /* Dark gray */
-            --light-color: #ffffff; /* White */
-            --text-color: #4a4a4a; /* Soft black */
-            --success-color: #28a745; /* Green */
-        }
+        /* =========================================== */
+        /* BOOKING PAGE STYLES - NO CONFLICTS WITH FOOTER */
+        /* =========================================== */
         
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: var(--text-color);
-            background-color: var(--secondary-color);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            line-height: 1.6;
+        /* Main booking page wrapper - keeps our styles contained */
+        .booking-page-content {
+            background-color: #f8f4f0;
+            min-height: calc(100vh - 140px); /* Adjust based on navbar/footer height */
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            color: var(--dark-color);
-        }
-
-        .navbar {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            background-color: var(--light-color) !important;
-            padding: 15px 0;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--primary-color) !important;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            color: var(--dark-color) !important;
-            transition: all 0.3s ease;
-            margin: 0 10px;
-            position: relative;
-        }
-
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover:after, .nav-link.active:after {
-            width: 100%;
-        }
-
-        .hero-section {
+        /* Hero Section - completely isolated */
+        .booking-hero-section {
             position: relative;
             height: 80vh;
             overflow: hidden;
-            margin-top: 76px;
+        }
+
+        .booking-hero-video {
+            background: #333;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .booking-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
             z-index: 1;
         }
 
-        .hero-video {
-    /* Existing styles */
-    background: var(--dark-color);
-}
-
-/* Add modern video styling */
-video::-webkit-media-controls {
-    display: none !important;
-}
-
-video::-webkit-media-controls-enclosure {
-    display: none !important;
-}
-
-        .hero-content {
+        .booking-hero-content {
+            position: relative;
+            z-index: 2;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -112,57 +60,49 @@ video::-webkit-media-controls-enclosure {
             color: white;
             text-align: center;
             padding: 0 20px;
-            z-index: 2;
-            animation: fadeIn 1.5s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .booking-hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            color: white;
+            position: relative;
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px 30px;
+            border-radius: 10px;
+        }
+        
+        .booking-hero-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.5);
         }
 
-        .hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Increased shadow opacity */
-    animation: fadeIn 1s ease 0.2s both;
-    color: var(--light-color); /* Changed to white */
-    position: relative;
-    display: inline-block;
-    background: rgba(0, 0, 0, 0.3); /* Add semi-transparent background */
-    padding: 15px 30px;
-    border-radius: 10px;
-}
-.hero-content h1::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 3px;
-    background: rgba(255, 255, 255, 0.5); /* Brighter line */
-}
-
-.hero-content p {
-    font-size: 1.5rem;
-    max-width: 800px;
-    margin-bottom: 30px;
-    animation: fadeIn 1s ease 0.4s both;
-    color: var(--light-color); /* Pure white */
-    font-weight: 400; /* Increased from 300 */
-    letter-spacing: 0.5px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Stronger shadow */
-    background: rgba(0, 0, 0, 0.2); /* Subtle background */
-    padding: 10px 20px;
-    border-radius: 8px;
-    backdrop-filter: blur(2px); /* Soft blur effect */
-}
-        .hero-content .btn {
-            animation: fadeIn 1s ease 0.6s both;
+        .booking-hero-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin-bottom: 30px;
+            color: white;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(2px);
         }
 
-        .booking-container {
+        /* Booking Form Container */
+        .booking-form-container {
             max-width: 1200px;
             margin: -100px auto 50px;
             padding: 0 20px;
@@ -170,21 +110,21 @@ video::-webkit-media-controls-enclosure {
             z-index: 10;
         }
 
-        .booking-card {
+        .booking-form-card {
             border-radius: 15px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            background: var(--light-color);
+            background: #ffffff;
             border: 1px solid rgba(212, 175, 55, 0.2);
             transition: transform 0.3s ease;
         }
 
-        .booking-card:hover {
+        .booking-form-card:hover {
             transform: translateY(-5px);
         }
 
-        .booking-header {
-            background: linear-gradient(135deg, var(--primary-color), #f1d27a);
+        .booking-form-header {
+            background: linear-gradient(135deg, #d4af37, #f1d27a);
             color: white;
             padding: 30px;
             text-align: center;
@@ -192,61 +132,56 @@ video::-webkit-media-controls-enclosure {
             overflow: hidden;
         }
 
-        .booking-header:before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(255,255,255,0.3) 0%,
-                rgba(255,255,255,0) 60%
-            );
-            transform: rotate(30deg);
-        }
-
-        .booking-header h2 {
+        .booking-form-header h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             margin-bottom: 10px;
-            position: relative;
+            color: white;
         }
 
-        .booking-body {
+        .booking-form-body {
             padding: 40px;
         }
 
-        .form-label {
+        /* Form Styles - completely unique classes */
+        .booking-form-label {
+            font-family: 'Montserrat', sans-serif;
             font-weight: 600;
-            color: var(--dark-color);
+            color: #333;
             margin-bottom: 8px;
             display: flex;
             align-items: center;
         }
 
-        .form-label .required {
-            color: var(--primary-color);
+        .booking-form-required {
+            color: #d4af37;
             margin-left: 4px;
         }
 
-        .form-control, .form-select {
+        .booking-form-input,
+        .booking-form-select {
+            font-family: 'Montserrat', sans-serif;
             padding: 12px 15px;
             border-radius: 8px;
             border: 1px solid #ddd;
             transition: all 0.3s;
-            background-color: var(--secondary-color);
+            background-color: #f8f4f0;
+            width: 100%;
+            box-sizing: border-box;
         }
 
-        .form-control:focus, .form-select:focus {
-            border-color: var(--primary-color);
+        .booking-form-input:focus,
+        .booking-form-select:focus {
+            border-color: #d4af37;
             box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
-            outline: 2px solid var(--primary-color);
+            outline: 2px solid #d4af37;
             outline-offset: 2px;
         }
 
-        .btn-primary {
-            background-color: var(--primary-color);
+        /* Custom Button - unique class */
+        .booking-submit-btn {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #d4af37;
             border: none;
             padding: 15px 30px;
             font-weight: 600;
@@ -254,101 +189,79 @@ video::-webkit-media-controls-enclosure {
             transition: all 0.3s;
             font-size: 1.1rem;
             letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
+            color: white;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            cursor: pointer;
         }
 
-        .btn-primary:after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(255,255,255,0.3) 0%,
-                rgba(255,255,255,0) 60%
-            );
-            transform: rotate(30deg);
-            transition: all 0.3s;
-            opacity: 0;
-        }
-
-        .btn-primary:hover {
+        .booking-submit-btn:hover {
             background-color: #c19b2c;
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            color: white;
         }
 
-        .btn-primary:hover:after {
-            opacity: 1;
-        }
-
-        .feature-icon {
+        /* Feature Section */
+        .booking-feature-icon {
             font-size: 2.5rem;
-            color: var(--primary-color);
+            color: #d4af37;
             margin-bottom: 20px;
             transition: transform 0.3s ease;
         }
 
-        .feature-card {
+        .booking-feature-box {
             padding: 30px;
             border-radius: 10px;
-            background: var(--light-color);
+            background: #ffffff;
             height: 100%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s ease;
             border: 1px solid rgba(212, 175, 55, 0.1);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            cursor: default;
         }
 
-        .feature-card:hover {
+        .booking-feature-box:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             border-color: rgba(212, 175, 55, 0.3);
         }
 
-        .feature-card:hover .feature-icon {
+        .booking-feature-box:hover .booking-feature-icon {
             transform: scale(1.1);
         }
 
-        .why-choose-us {
-            background: var(--secondary-color);
+        .booking-why-section {
+            background: #f8f4f0;
             padding: 80px 0;
         }
 
-        .section-title {
+        .booking-section-title {
             position: relative;
             margin-bottom: 50px;
             text-align: center;
         }
 
-        .section-title h2 {
+        .booking-section-title h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 2.8rem;
-            color: var(--dark-color);
+            color: #333;
         }
 
-        .section-title:after {
+        .booking-section-title::after {
             content: '';
             display: block;
             width: 100px;
             height: 4px;
-            background: var(--primary-color);
+            background: #d4af37;
             margin: 20px auto;
             border-radius: 2px;
         }
 
-        footer {
-            background: var(--dark-color);
-            color: white;
-            padding: 60px 0 30px;
-            margin-top: auto;
-        }
-
-        .form-section-title {
+        .booking-form-subtitle {
+            font-family: 'Playfair Display', serif;
             font-size: 1.3rem;
-            color: var(--primary-color);
+            color: #d4af37;
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
@@ -356,284 +269,269 @@ video::-webkit-media-controls-enclosure {
             align-items: center;
         }
 
-        .wedding-details {
+        .booking-details-box {
             background-color: rgba(232, 196, 196, 0.1);
             padding: 20px;
             border-radius: 10px;
             margin-bottom: 25px;
-            border-left: 4px solid var(--primary-color);
+            border-left: 4px solid #d4af37;
             transition: transform 0.3s ease;
         }
 
-        .wedding-details:hover {
+        .booking-details-box:hover {
             transform: translateX(5px);
         }
 
-        /* Custom checkbox styling */
-        .form-check-input:checked {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        /* Placeholder styling */
-        ::placeholder {
-            color: #999;
-            opacity: 1;
-        }
-
-        /* Success message styling */
-        .success-message {
+        .booking-success-alert {
             display: none;
             background-color: rgba(40, 167, 69, 0.1);
-            border-left: 4px solid var(--success-color);
+            border-left: 4px solid #28a745;
             padding: 20px;
             margin-bottom: 30px;
             border-radius: 5px;
-            animation: fadeIn 0.5s ease;
         }
 
-        .success-message i {
-            color: var(--success-color);
+        .booking-success-alert i {
+            color: #28a745;
             font-size: 1.5rem;
             margin-right: 15px;
         }
 
-        /* Loading spinner */
-        .spinner-border {
+        .booking-spinner {
             display: none;
             width: 1.5rem;
             height: 1.5rem;
             margin-right: 10px;
-            border-width: 0.2em;
+            border: 0.2em solid currentColor;
+            border-right-color: transparent;
+            border-radius: 50%;
+            animation: booking-spin 0.75s linear infinite;
+        }
+
+        @keyframes booking-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* Responsive styles */
         @media (max-width: 992px) {
-            .hero-content h1 {
+            .booking-hero-title {
                 font-size: 3rem;
             }
             
-            .hero-content p {
+            .booking-hero-text {
                 font-size: 1.2rem;
             }
         }
 
         @media (max-width: 768px) {
-            .hero-section {
+            .booking-hero-section {
                 height: 60vh;
             }
             
-            .booking-container {
+            .booking-form-container {
                 margin-top: -50px;
             }
             
-            .hero-content h1 {
+            .booking-hero-title {
                 font-size: 2.5rem;
             }
             
-            .section-title h2 {
+            .booking-section-title h2 {
                 font-size: 2.2rem;
             }
 
-            .navbar {
-                padding: 10px 0;
-            }
-
-            .booking-body {
+            .booking-form-body {
                 padding: 25px;
             }
         }
 
         @media (max-width: 576px) {
-            .hero-section {
+            .booking-hero-section {
                 height: 50vh;
             }
             
-            .hero-content h1 {
+            .booking-hero-title {
                 font-size: 2rem;
             }
             
-            .booking-header h2 {
+            .booking-form-header h2 {
                 font-size: 2rem;
             }
 
-            .form-section-title {
+            .booking-form-subtitle {
                 font-size: 1.1rem;
             }
+        }
+
+        /* Helper classes for layout - no Bootstrap conflict */
+        .booking-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .booking-grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .booking-grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .booking-flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .booking-text-center {
+            text-align: center;
+        }
+
+        .booking-mb-4 {
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-mb-5 {
+            margin-bottom: 3rem;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-heart me-2"></i>Dream Day
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/home"><i class="fas fa-home me-1"></i> Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a>
-                    </li>
-                    
-                    <li class="nav-item">
-                        <a class="nav-link" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/suppliers"><i class="fas fa-camera me-1"></i>Suppliers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/booking"><i class="fas fa-bookmark me-1"></i> Book Consultation</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section with Video Background -->
-    <section class="hero-section">
-        <video class="hero-video" autoplay loop muted playsinline>
-            <source src="/assethome/booking.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="hero-content">
-            <div class="container">
-                <h1 class="fw-bold mb-4">Your Dream Wedding Starts Here</h1>
-                <p class="lead mb-5">Let us craft the perfect celebration of your love story with personalized planning and exquisite attention to detail</p>
-                <a href="#booking-form" class="btn btn-primary btn-lg px-4 py-3">
-                    <i class="fas fa-calendar-plus me-2"></i> Book Your Consultation
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Form Section -->
-    <div class="booking-container" id="booking-form">
-        <div class="booking-card">
-            <div class="booking-header">
-                <h2><i class="fas fa-heart me-2"></i> Wedding Planning Consultation</h2>
-                <p class="mb-0">Begin your journey to the perfect wedding day</p>
-            </div>
-            <div class="booking-body">
-                <!-- Success Message (hidden by default) -->
-                <div class="success-message d-flex align-items-center" id="successMessage">
-                    <i class="fas fa-check-circle"></i>
-                    <div>
-                        <h5>Thank you for your request!</h5>
-                        <p class="mb-0">We've received your wedding consultation request and will contact you within 24 hours.</p>
-                    </div>
+    <%- include('../allpack/layout/navbar') %>
+    
+    <!-- Booking page content with unique, non-conflicting classes -->
+    <div class="booking-page-content">
+        <!-- Hero Section -->
+        <section class="booking-hero-section">
+            <video class="booking-hero-video" autoplay loop muted playsinline>
+                <source src="/assethome/booking.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="booking-hero-overlay"></div>
+            <div class="booking-hero-content">
+                <div class="container">
+                    <h1 class="booking-hero-title">Your Dream Wedding Starts Here</h1>
+                    <p class="booking-hero-text">Let us craft the perfect celebration of your love story with personalized planning and exquisite attention to detail</p>
+                    <a href="#booking-form" class="booking-submit-btn" style="display: inline-block; width: auto;">
+                        <i class="fas fa-calendar-plus me-2"></i> Book Your Consultation
+                    </a>
                 </div>
-                
-                <form id="weddingBookingForm" action="/booking/submit" method="POST">
-                    <!-- Couple's Information -->
-                    <div class="wedding-details">
-                      <h5 class="form-section-title"><i class="fas fa-user-friends me-2"></i> Couple's Information</h5>
-                      <div class="row">
-                        <div class="col-md-6 mb-4">
-                          <label for="brideName" class="form-label">First Name <span class="required">*</span></label>
-                          <input type="text" class="form-control" id="brideName" name="couple[firstname]" required>
+            </div>
+        </section>
+
+        <!-- Booking Form Section -->
+        <div class="booking-form-container" id="booking-form">
+            <div class="booking-form-card">
+                <div class="booking-form-header">
+                    <h2><i class="fas fa-heart me-2"></i> Wedding Planning Consultation</h2>
+                    <p class="mb-0">Begin your journey to the perfect wedding day</p>
+                </div>
+                <div class="booking-form-body">
+                    <!-- Success Message -->
+                    <div class="booking-success-alert booking-flex-center" id="bookingSuccessAlert">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h5>Thank you for your request!</h5>
+                            <p class="mb-0">We've received your wedding consultation request and will contact you within 24 hours.</p>
                         </div>
-                        <div class="col-md-6 mb-4">
-                          <label for="groomName" class="form-label">Last Name <span class="required">*</span></label>
-                          <input type="text" class="form-control" id="groomName" name="couple[lastname]" required>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6 mb-4">
-                          <label for="email" class="form-label">Email Address <span class="required">*</span></label>
-                          <input type="email" class="form-control" id="email" name="couple[email]" required placeholder="couple@example.com">
-                        </div>
-                        <div class="col-md-6 mb-4">
-                          <label for="phone" class="form-label">Phone Number</label>
-                          <input type="tel" class="form-control" id="phone" name="couple[phone]" required placeholder="+250 785300707">
-                        </div>
-                      </div>
                     </div>
-                  
-                    <!-- Wedding Details -->
-                    <div class="wedding-details">
-                      <h5 class="form-section-title"><i class="fas fa-calendar-heart me-2"></i> Wedding Details</h5>
-                      <div class="row">
-                        <div class="col-md-6 mb-4">
-                          <label for="weddingDate" class="form-label">Wedding Date <span class="required">*</span></label>
-                          <input type="date" class="form-control" id="weddingDate" name="weddingDate" required min="<?php echo date('Y-m-d'); ?>">
-                          <small class="text-muted">Please select a date at least 3 months from today</small>
+                    
+                    <form id="weddingBookingForm" action="/booking/submit" method="POST">
+                        <!-- Couple's Information -->
+                        <div class="booking-details-box">
+                          <h5 class="booking-form-subtitle"><i class="fas fa-user-friends me-2"></i> Couple's Information</h5>
+                          <div class="booking-grid booking-grid-2">
+                            <div class="booking-mb-4">
+                              <label for="brideName" class="booking-form-label">First Name <span class="booking-form-required">*</span></label>
+                              <input type="text" class="booking-form-input" id="brideName" name="couple[firstname]" required>
+                            </div>
+                            <div class="booking-mb-4">
+                              <label for="groomName" class="booking-form-label">Last Name <span class="booking-form-required">*</span></label>
+                              <input type="text" class="booking-form-input" id="groomName" name="couple[lastname]" required>
+                            </div>
+                          </div>
+                          <div class="booking-grid booking-grid-2">
+                            <div class="booking-mb-4">
+                              <label for="email" class="booking-form-label">Email Address <span class="booking-form-required">*</span></label>
+                              <input type="email" class="booking-form-input" id="email" name="couple[email]" required placeholder="couple@example.com">
+                            </div>
+                            <div class="booking-mb-4">
+                              <label for="phone" class="booking-form-label">Phone Number</label>
+                              <input type="tel" class="booking-form-input" id="phone" name="couple[phone]" required placeholder="+250 785300707">
+                            </div>
+                          </div>
                         </div>
-                        <div class="col-md-6 mb-4">
-                          <label for="guestsNumber" class="form-label">Estimated Number of Guests <span class="required">*</span></label>
-                          <input type="number" class="form-control" id="guestsNumber" name="guestsNumber" required min="1" placeholder="150">
+                      
+                        <!-- Wedding Details -->
+                        <div class="booking-details-box">
+                          <h5 class="booking-form-subtitle"><i class="fas fa-calendar-heart me-2"></i> Wedding Details</h5>
+                          <div class="booking-grid booking-grid-2">
+                            <div class="booking-mb-4">
+                              <label for="weddingDate" class="booking-form-label">Wedding Date <span class="booking-form-required">*</span></label>
+                              <input type="date" class="booking-form-input" id="weddingDate" name="weddingDate" required>
+                              <small style="color: #6c757d; display: block; margin-top: 5px;">Please select a date at least 3 months from today</small>
+                            </div>
+                            <div class="booking-mb-4">
+                              <label for="guestsNumber" class="booking-form-label">Estimated Number of Guests <span class="booking-form-required">*</span></label>
+                              <input type="number" class="booking-form-input" id="guestsNumber" name="guestsNumber" required min="1" placeholder="150">
+                            </div>
+                          </div>
+                          <div class="booking-grid booking-grid-2">
+                            <div class="booking-mb-4">
+                              <label for="weddingType" class="booking-form-label">Wedding Style</label>
+                              <select class="booking-form-select" id="weddingType" name="weddingType" required>
+                                <option value="" disabled selected>Select Wedding Style</option>
+                                <option value="Gusaba no Gukwa">Gusaba no Gukwa</option>
+                                <option value="Reception">Reception</option>
+                                <option value="Other">Other</option>
+                              </select>
+                            </div>
+                            <div class="booking-mb-4">
+                              <label for="weddingLocation" class="booking-form-label">Wedding Location (if known)</label>
+                              <input type="text" class="booking-form-input" id="weddingLocation" name="weddingLocation" placeholder="Venue name or city">
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6 mb-4">
-                          <label for="weddingType" class="form-label">Wedding Style</label>
-                          <select class="form-select" id="weddingType" name="weddingType" required>
-                            <option value="" disabled selected>Select Wedding Style</option>
-                            <option value="Gusaba no Gukwa">Gusaba no Gukwa</option>
-                            <option value="Reception">Reception</option>
-                            <option value="Other">Other</option>
-                          </select>
+                      
+                        <!-- Additional Information -->
+                        <div class="booking-mb-5">
+                          <label for="weddingVision" class="booking-form-label">Tell Us About Your Wedding Vision</label>
+                          <textarea class="booking-form-input" id="weddingVision" name="weddingVision" rows="4" placeholder="Describe your dream wedding theme, colors, special requirements..."></textarea>
                         </div>
-                        <div class="col-md-6 mb-4">
-                          <label for="weddingLocation" class="form-label">Wedding Location (if known)</label>
-                          <input type="text" class="form-control" id="weddingLocation" name="weddingLocation" placeholder="Venue name or city">
-                        </div>
-                      </div>
-                    </div>
-                  
-                    <!-- Additional Information -->
-                    <div class="mb-4">
-                      <label for="weddingVision" class="form-label">Tell Us About Your Wedding Vision</label>
-                      <textarea class="form-control" id="weddingVision" name="weddingVision" rows="4" placeholder="Describe your dream wedding theme, colors, special requirements..."></textarea>
-                    </div>
-                  
-                    <div class="d-grid">
-                      <button type="submit" class="btn btn-primary py-3" id="submitButton">
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        <i class="fas fa-paper-plane me-2"></i> Request Consultation
-                      </button>
-                    </div>
-                  </form>
-                  
-                  
+                      
+                        <button type="submit" class="booking-submit-btn" id="bookingSubmitBtn">
+                            <span class="booking-spinner" role="status" aria-hidden="true"></span>
+                            <i class="fas fa-paper-plane me-2"></i> Request Consultation
+                        </button>
+                      </form>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Why Choose Us Section -->
-    <section class="why-choose-us">
-        <div class="container">
-            <div class="section-title">
-                <h2>Why Couples Choose Us</h2>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon">
+        <!-- Why Choose Us Section -->
+        <section class="booking-why-section">
+            <div class="container">
+                <div class="booking-section-title">
+                    <h2>Why Couples Choose Us</h2>
+                </div>
+                <div class="booking-grid booking-grid-3" style="gap: 2rem;">
+                    <div class="booking-feature-box booking-text-center">
+                        <div class="booking-feature-icon">
                             <i class="fas fa-gem"></i>
                         </div>
                         <h4>Luxury Experience</h4>
                         <p>We specialize in creating luxurious, stress-free wedding experiences with attention to every detail.</p>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon">
+                    <div class="booking-feature-box booking-text-center">
+                        <div class="booking-feature-icon">
                             <i class="fas fa-hand-holding-heart"></i>
                         </div>
                         <h4>Personalized Service</h4>
                         <p>Your wedding is unique, and we tailor our services to reflect your personal love story.</p>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="feature-card text-center">
-                        <div class="feature-icon">
+                    <div class="booking-feature-box booking-text-center">
+                        <div class="booking-feature-icon">
                             <i class="fas fa-network-wired"></i>
                         </div>
                         <h4>Vendor Network</h4>
@@ -641,98 +539,56 @@ video::-webkit-media-controls-enclosure {
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5><i class="fas fa-heart me-2"></i> Dream Day Weddings</h5>
-                    <p>Crafting unforgettable wedding experiences since 2008.</p>
-                    <div class="social-icons">
-                        <a href="#" class="text-white me-3"><i class="fab fa-pinterest-p"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Wedding Resources</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Planning Checklist</a></li>
-                        <li><a href="#" class="text-white">Vendor Directory</a></li>
-                        <li><a href="#" class="text-white">Wedding Inspiration</a></li>
-                        <li><a href="#" class="text-white">Budget Calculator</a></li>
-                        <li><a href="#" class="text-white">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Contact Our Planners</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-map-marker-alt me-2"></i> 456 Wedding Lane, Beverly Hills, CA</li>
-                        <li><i class="fas fa-phone me-2"></i> (310) 555-1212</li>
-                        <li><i class="fas fa-envelope me-2"></i> hello@dreamday.com</li>
-                        <li><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM-6PM</li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="my-4 bg-light">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2023 Dream Day Weddings. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+        </section>
+    </div> <!-- End of booking-page-content -->
+    
+    <%- include('../allpack/layout/footer') %>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Navbar scroll effect
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-        
             // Form elements
             const form = document.getElementById('weddingBookingForm');
-            const successMessage = document.getElementById('successMessage');
-            const submitButton = document.getElementById('submitButton');
+            const successMessage = document.getElementById('bookingSuccessAlert');
+            const submitButton = document.getElementById('bookingSubmitBtn');
+            
+            if (!form || !successMessage || !submitButton) {
+                console.error('Booking form elements not found');
+                return;
+            }
             
             // Set minimum date to today
             const today = new Date().toISOString().split('T')[0];
-            document.getElementById('weddingDate').min = today;
-            
-            // Date validation
             const weddingDateInput = document.getElementById('weddingDate');
-            weddingDateInput.addEventListener('change', function() {
-                const selectedDate = new Date(this.value);
-                const minDate = new Date();
-                minDate.setMonth(minDate.getMonth() + 3);
+            if (weddingDateInput) {
+                weddingDateInput.min = today;
                 
-                if (selectedDate < minDate) {
-                    alert('Please select a date at least 3 months from today to allow proper planning time.');
-                    this.value = '';
-                }
-            });
+                // Date validation
+                weddingDateInput.addEventListener('change', function() {
+                    const selectedDate = new Date(this.value);
+                    const minDate = new Date();
+                    minDate.setMonth(minDate.getMonth() + 3);
+                    
+                    if (selectedDate < minDate) {
+                        alert('Please select a date at least 3 months from today to allow proper planning time.');
+                        this.value = '';
+                    }
+                });
+            }
             
             // Form submission
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
                 // Show loading state
-                const spinner = submitButton.querySelector('.spinner-border');
+                const spinner = submitButton.querySelector('.booking-spinner');
                 const submitIcon = submitButton.querySelector('.fa-paper-plane');
-                spinner.style.display = 'inline-block';
-                submitIcon.style.display = 'none';
+                if (spinner) spinner.style.display = 'inline-block';
+                if (submitIcon) submitIcon.style.display = 'none';
                 submitButton.disabled = true;
                 
                 try {
-                    // Collect form data - matching your schema
+                    // Collect form data
                     const formData = {
                         firstname: this.elements['couple[firstname]'].value,
                         lastname: this.elements['couple[lastname]'].value,
@@ -776,24 +632,13 @@ video::-webkit-media-controls-enclosure {
                     alert('An error occurred while submitting the form');
                 } finally {
                     // Reset button state
-                    spinner.style.display = 'none';
-                    submitIcon.style.display = 'inline-block';
+                    if (spinner) spinner.style.display = 'none';
+                    if (submitIcon) submitIcon.style.display = 'inline-block';
                     submitButton.disabled = false;
                 }
             });
-        
-            // Feature card animations
-            const featureCards = document.querySelectorAll('.feature-card');
-            featureCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px)';
-                });
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
             
-            // Smooth scrolling for anchor links
+            // Smooth scrolling
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -804,13 +649,13 @@ video::-webkit-media-controls-enclosure {
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
                         window.scrollTo({
-                            top: targetElement.offsetTop - 80,
+                            top: targetElement.offsetTop - 100,
                             behavior: 'smooth'
                         });
                     }
                 });
             });
         });
-        </script>
+    </script>
 </body>
 </html>

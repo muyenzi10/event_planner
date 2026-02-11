@@ -5,6 +5,6 @@ const router = express.Router();
 router.get("/about", nav.getabout);
 // supply
 router.get("/suppliers", nav.getsupply);
-// booking
-router.get('/booking', nav.getbook);
+router.get("/booking", nav.getbook);
+
 module.exports = router;

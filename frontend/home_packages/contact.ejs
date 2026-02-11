@@ -7,7 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
+    <link rel="stylesheet" href="/allpack/layout/css/footer.css">
     <style>
         :root {
             --primary-color: #d4af37;
@@ -28,110 +29,12 @@
             line-height: 1.6;
         }
         
-        /* 🌸 Navbar Styling */
-        .navbar {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            background-color: var(--light-color) !important;
-            padding: 15px 0;
-            transition: all 0.3s ease;
-        }
-
-        .navbar.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--primary-color) !important;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            color: var(--dark-color) !important;
-            margin: 0 10px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover:after {
-            width: 100%;
-        }
-
-        .nav-link.active:after {
-            width: 100%;
-        }
-
-        /* ✨ Professional Centered Navbar for Mobile */
-        @media (max-width: 991px) {
-            .navbar-collapse {
-                background-color: var(--light-color);
-                border-radius: 12px;
-                padding: 15px 0;
-                margin-top: 10px;
-                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            }
-
-            .navbar-nav {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
-                padding: 0;
-            }
-
-            .nav-item {
-                width: 90%;
-            }
-
-            .nav-link {
-                display: block;
-                width: 100%;
-                text-align: center;
-                padding: 12px 0;
-                border-radius: 8px;
-                font-size: 1.1rem;
-                transition: all 0.3s ease;
-                background-color: rgba(212,175,55,0.05);
-                color: var(--dark-color) !important;
-            }
-
-            .nav-link:hover, .nav-link.active {
-                background-color: var(--primary-color);
-                color: #fff !important;
-                box-shadow: 0 4px 15px rgba(212,175,55,0.3);
-            }
-
-            .navbar-brand {
-                width: 100%;
-                text-align: center;
-                margin-bottom: 10px;
-                font-size: 1.6rem;
-            }
-        }
-        
-        /* Contact Section */
+        /* Contact Section - UPDATED FOR MOBILE */
         .contact-section {
-            padding: 120px 0 80px;
-            min-height: 100vh;
+            padding: 100px 0 60px;
+            min-height: auto;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             background: linear-gradient(to bottom, var(--pink-light), #fff);
         }
         
@@ -140,23 +43,25 @@
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             overflow: hidden;
-            padding: 40px;
+            padding: 35px;
             animation: fadeIn 0.8s ease-out;
+            margin-bottom: 20px;
         }
         
         .contact-card h2 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
             color: var(--pink-primary);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             position: relative;
             animation: slideInLeft 0.8s ease-out;
+            font-size: 1.8rem;
         }
         
         .contact-card h2:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 0;
             width: 60px;
             height: 3px;
@@ -166,12 +71,19 @@
             transform: scaleX(0);
         }
         
+        .contact-card > p {
+            margin-bottom: 25px;
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
         .form-control {
             border-radius: 10px;
             padding: 12px 15px;
             box-shadow: none;
             border: 1px solid #ddd;
             transition: all 0.3s ease;
+            font-size: 0.95rem;
         }
         
         .form-control:focus {
@@ -189,6 +101,8 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            font-weight: 500;
+            font-size: 1rem;
         }
         
         .btn-send:hover {
@@ -227,31 +141,34 @@
             height: 100%;
             animation: slideInRight 0.8s ease-out;
             box-shadow: 0 10px 25px rgba(233,30,99,0.3);
+            margin-top: 0;
         }
         
         .contact-info h4 {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             position: relative;
             animation: fadeIn 1s ease-out 0.3s both;
+            font-size: 1.5rem;
         }
         
         .contact-info h4:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 0;
-            width: 60px;
+            width: 50px;
             height: 3px;
             background: white;
         }
         
         .contact-info p {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             display: flex;
             align-items: flex-start;
             animation: fadeInUp 0.8s ease-out both;
+            font-size: 0.95rem;
         }
         
         .contact-info p:nth-child(2) { animation-delay: 0.4s; }
@@ -260,14 +177,15 @@
         .contact-info p:nth-child(5) { animation-delay: 0.7s; }
         
         .contact-info i {
-            margin-right: 15px;
-            font-size: 1.2rem;
-            margin-top: 3px;
+            margin-right: 12px;
+            font-size: 1.1rem;
+            margin-top: 2px;
             flex-shrink: 0;
+            min-width: 20px;
         }
         
         .social-links {
-            margin-top: 30px;
+            margin-top: 25px;
             animation: fadeIn 1s ease-out 0.8s both;
         }
         
@@ -275,13 +193,14 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 8px;
             color: white;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
         
         .social-links a:hover {
@@ -291,7 +210,7 @@
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             animation: fadeInUp 0.8s ease-out both;
         }
         
@@ -300,53 +219,27 @@
         .form-group:nth-child(3) { animation-delay: 0.4s; }
         .form-group:nth-child(4) { animation-delay: 0.5s; }
         
-        /* Footer */
-        footer { 
-            background-color: var(--dark-color); 
-            color: #eee; 
-            font-family: 'Poppins', sans-serif; 
+        /* Flash Messages */
+        .error-message {
+            color: var(--error);
+            background: #FEE2E2;
+            padding: 0.9rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            animation: errorEnter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-left: 4px solid var(--error);
+            font-size: 0.9rem;
         }
-        
-        footer h5 { 
-            font-family: 'Playfair Display', serif; 
-            color: var(--primary-color);
-        }
-        
-        footer .footer-link { 
-            text-decoration: none; 
-            display: inline-block; 
-            margin-bottom: 8px; 
-            transition: all 0.3s ease; 
-            color: #eee;
-        }
-        
-        footer .footer-link:hover { 
-            color: var(--primary-color); 
-            padding-left: 6px; 
-        }
-        
-        footer .footer-social { 
-            font-size: 1.2rem; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            width: 36px; 
-            height: 36px; 
-            border-radius: 50%; 
-            background-color: rgba(212,175,55,0.2); 
-            transition: all 0.3s ease; 
-            color: #eee;
-        }
-        
-        footer .footer-social:hover { 
-            background-color: var(--primary-color); 
-            color: #fff !important; 
-            box-shadow: 0 0 10px rgba(212,175,55,0.6); 
-            transform: translateY(-3px); 
-        }
-        
-        footer hr.bg-secondary { 
-            border-top: 1px solid rgba(255,255,255,0.2); 
+
+        .success-message {
+            color: #065F46;
+            background: #D1FAE5;
+            padding: 0.9rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            animation: errorEnter 0.4s ease;
+            border-left: 4px solid var(--success);
+            font-size: 0.9rem;
         }
 
         /* Animations */
@@ -358,7 +251,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -369,7 +262,7 @@
         @keyframes slideInLeft {
             from {
                 opacity: 0;
-                transform: translateX(-30px);
+                transform: translateX(-20px);
             }
             to {
                 opacity: 1;
@@ -380,7 +273,7 @@
         @keyframes slideInRight {
             from {
                 opacity: 0;
-                transform: translateX(30px);
+                transform: translateX(20px);
             }
             to {
                 opacity: 1;
@@ -404,82 +297,179 @@
             }
         }
 
-        /* Flash Messages like the login example */
-        .error-message {
-            color: var(--error);
-            background: #FEE2E2;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            animation: errorEnter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border-left: 4px solid var(--error);
-        }
-
-        .success-message {
-            color: #065F46;
-            background: #D1FAE5;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            animation: errorEnter 0.4s ease;
-            border-left: 4px solid var(--success);
-        }
-
         @keyframes errorEnter {
             0% { opacity: 0; transform: translateY(-10px); }
             100% { opacity: 1; transform: translateY(0); }
         }
         
-        /* Responsive adjustments */
+        /* MOBILE OPTIMIZATIONS - UPDATED */
         @media (max-width: 992px) {
+            .contact-section {
+                padding: 90px 0 50px;
+                align-items: stretch;
+            }
+            
             .contact-card {
-                padding: 30px;
+                padding: 25px;
+                margin-bottom: 25px;
             }
             
             .contact-info {
-                margin-top: 40px;
+                margin-top: 0;
+                padding: 25px;
+            }
+            
+            .row.justify-content-center.align-items-center {
+                align-items: stretch !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-section {
+                padding: 80px 0 40px;
+            }
+            
+            .contact-card h2 {
+                font-size: 1.6rem;
+            }
+            
+            .contact-info h4 {
+                font-size: 1.4rem;
+            }
+            
+            .contact-card > p {
+                font-size: 0.9rem;
+            }
+            
+            .form-control, .contact-info p {
+                font-size: 0.9rem;
+            }
+            
+            .btn-send {
+                padding: 10px 20px;
+                font-size: 0.95rem;
             }
         }
         
         @media (max-width: 576px) {
             .contact-section {
-                padding: 100px 0 40px;
+                padding: 70px 0 30px;
             }
             
             .contact-card {
                 padding: 20px;
                 border-radius: 15px;
+                margin-bottom: 20px;
             }
             
             .contact-info {
-                padding: 25px;
+                padding: 20px;
                 border-radius: 15px;
             }
-        } 
+            
+            .contact-card h2 {
+                font-size: 1.5rem;
+                margin-bottom: 12px;
+            }
+            
+            .contact-info h4 {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+            
+            .contact-card > p {
+                font-size: 0.85rem;
+                margin-bottom: 20px;
+            }
+            
+            .form-group {
+                margin-bottom: 15px;
+            }
+            
+            .form-label {
+                font-size: 0.9rem;
+                margin-bottom: 5px;
+            }
+            
+            .form-control {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+            
+            .btn-send {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .contact-info p {
+                font-size: 0.85rem;
+                margin-bottom: 15px;
+            }
+            
+            .social-links a {
+                width: 35px;
+                height: 35px;
+                font-size: 0.85rem;
+            }
+            
+            .error-message, .success-message {
+                padding: 0.8rem;
+                font-size: 0.85rem;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .contact-section {
+                padding: 60px 0 20px;
+            }
+            
+            .contact-card {
+                padding: 15px;
+            }
+            
+            .contact-info {
+                padding: 18px;
+            }
+            
+            .contact-card h2 {
+                font-size: 1.4rem;
+            }
+            
+            .contact-info h4 {
+                font-size: 1.2rem;
+            }
+            
+            .btn-send {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+        }
+        
+        /* Extra small devices optimization */
+        @media (max-width: 350px) {
+            .contact-card, .contact-info {
+                padding: 12px;
+            }
+            
+            .contact-card h2 {
+                font-size: 1.3rem;
+            }
+            
+            .contact-info h4 {
+                font-size: 1.1rem;
+            }
+            
+            .social-links a {
+                width: 32px;
+                height: 32px;
+                margin-right: 6px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-heart me-2"></i>Dream Day</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/home"><i class="fas fa-home me-1"></i> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/suppliers"><i class="fas fa-camera me-1"></i> Suppliers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/booking"><i class="fas fa-bookmark me-1"></i> Book Consultation</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+   <%- include('../allpack/layout/navbar') %>
 
     <!-- Contact Section -->
     <section class="contact-section">
@@ -550,48 +540,8 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-light pt-5 pb-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5 class="mb-3">About Us</h5>
-                    <p class="small text-light">We are a dedicated team of event planners, creating unforgettable wedding experiences that reflect your unique love story.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5 class="mb-3">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="/home" class="text-light footer-link">Home</a></li>
-                        <li><a href="/about" class="text-light footer-link">About</a></li>
-                        <li><a href="/services" class="text-light footer-link">Services</a></li>
-                        <li><a href="/packages" class="text-light footer-link">Packages</a></li>
-                        <li><a href="/contact" class="text-light footer-link">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5 class="mb-3">Connect With Us</h5>
-                    <ul class="list-unstyled d-flex gap-3">
-                        <li><a href="#" class="text-light footer-social"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" class="text-light footer-social"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#" class="text-light footer-social"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#" class="text-light footer-social"><i class="fab fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="bg-secondary">
-            <div class="text-center pt-3 small">&copy; <script>document.write(new Date().getFullYear())</script> Dream Day Weddings. All Rights Reserved.</div>
-        </div>
-    </footer>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
         // Form submission animation
         document.getElementById('contactForm').addEventListener('submit', function() {
             const button = this.querySelector('button');
@@ -609,33 +559,20 @@
                 input.parentElement.style.transform = 'translateY(0)';
             });
         });
-
-        // Active nav link highlighting
-        document.addEventListener('DOMContentLoaded', function() {
-            const currentPage = window.location.pathname;
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            navLinks.forEach(link => {
-                // Remove active class from all links
-                link.classList.remove('active');
-                
-                // Add active class to current page link
-                if (link.getAttribute('href') === currentPage) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Optional: Add click event to update active state when clicking links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                // Remove active class from all links
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                
-                // Add active class to clicked link
-                this.classList.add('active');
-            });
-        });
+        
+        // Mobile optimization - adjust textarea rows for smaller screens
+        function adjustTextareaRows() {
+            const textarea = document.getElementById('message');
+            if (window.innerWidth < 576) {
+                textarea.rows = 3;
+            } else {
+                textarea.rows = 4;
+            }
+        }
+        
+        // Run on load and resize
+        window.addEventListener('load', adjustTextareaRows);
+        window.addEventListener('resize', adjustTextareaRows);
     </script>
 </body>
 </html>
