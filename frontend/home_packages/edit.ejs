@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Edit Booking | Event Planner Pro</title>
+  <title>Edit Booking </title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -95,13 +95,29 @@
                   <div id="collapsePersonal" class="accordion-collapse collapse show" data-bs-parent="#bookingAccordion">
                     <div class="accordion-body">
                       <div class="mb-3">
-                        <label class="form-label"><i class="fas fa-user"></i>First Name<span class="required-star">*</span></label>
-                        <input type="text" name="firstname" class="form-control" value="<%= booking.firstname %>" required>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label"><i class="fas fa-user"></i>Last Name<span class="required-star">*</span></label>
-                        <input type="text" name="lastname" class="form-control" value="<%= booking.lastname %>" required>
-                      </div>
+  <label class="form-label">
+    <i class="fas fa-user"></i> Bride Name
+    <span class="required-star">*</span>
+  </label>
+  <input type="text"
+         name="brideName"
+         class="form-control"
+         value="<%= booking.brideName %>"
+         required>
+</div>
+
+<div class="mb-3">
+  <label class="form-label">
+    <i class="fas fa-user"></i> Groom Name
+    <span class="required-star">*</span>
+  </label>
+  <input type="text"
+         name="groomName"
+         class="form-control"
+         value="<%= booking.groomName %>"
+         required>
+</div>
+
                       <div class="mb-3">
                         <label class="form-label"><i class="fas fa-envelope"></i>Email<span class="required-star">*</span></label>
                         <input type="email" name="email" class="form-control" value="<%= booking.email %>" required>

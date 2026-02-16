@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const bookingSchema = mongoose.Schema({
-    firstname: {
+    brideName: {
         type: String,
         required: [true, 'First name is required'],
         trim: true
     },
-    lastname: {
+    groomName: {
         type: String,
         required: [true, 'Last name is required'],
         trim: true

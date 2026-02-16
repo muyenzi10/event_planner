@@ -4,27 +4,43 @@ const bookingdb = require("../models/mydb");
 exports.postbook = async (req, res) => {
   try {
     const {
-      firstname, lastname, email, phone,
+      brideName, groomName, email, phone,
       weddingDate, guestsNumber, weddingType,
       weddingLocation, weddingVision
     } = req.body;
 
-    // Check for missing fields
-    if (!firstname || !lastname || !email || !phone || !weddingDate ||
-        !guestsNumber || !weddingType || !weddingLocation || !weddingVision) {
-      return res.status(400).send("Please fill in all required fields.");
+    if (!brideName || !groomName || !email || !phone || !weddingDate ||
+        !guestsNumber || !weddingType) {
+      return res.status(400).json({
+        message: "Please fill in all required fields."
+      });
     }
 
-    const booking = await bookingdb.create(req.body);
-    res.status(201).send("Thank you for your booking request! We'll contact you shortly to confirm details.");
+    await bookingdb.create({
+      brideName,
+      groomName,
+      email,
+      phone,
+      weddingDate,
+      guestsNumber,
+      weddingType,
+      weddingLocation,
+      weddingVision
+    });
+
+    res.status(201).json({
+      message: "Thank you for your booking request! We'll contact you shortly to confirm details."
+    });
+
   } catch (error) {
     console.error("Error creating booking:", error);
-    res.status(500).json({ 
-      message: "We encountered an error processing your request. Please try again or contact support.", 
-      error: error.message 
+    res.status(500).json({
+      message: "We encountered an error processing your request.",
+      error: error.message
     });
   }
 };
+
 
 // READ ALL with Filters + Pagination
 exports.getbookformat = async (req, res) => {

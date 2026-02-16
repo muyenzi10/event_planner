@@ -1,1564 +1,1166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Premium wedding planning services creating unforgettable moments">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Dream Wedding · Consultation Booking</title>
+
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/assethome/wedding-bg.webp" as="image" type="image/webp">
+    <link rel="preload" href="/assethome/wedding-bg.jpg" as="image" type="image/jpeg">
     
-    <!-- Preconnect to CDNs for better performance -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <!-- Bootstrap 5 & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <!-- Bootstrap 5.3 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- FontAwesome 6.4 -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Nav/Footer styles (existing paths) -->
     <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
     <link rel="stylesheet" href="/allpack/layout/css/footer.css">
-    
-    <title>Éclat Weddings | Luxury Wedding Planning</title>
-    
+
     <style>
+        /* =========================================== */
+        /* DREAM WEDDING BOOKING – FULLY RESPONSIVE     */
+        /* WHY CHOOSE US – STACKED ON MOBILE (NO INLINE)*/
+        /* =========================================== */
+
         :root {
-            --primary-gold: #D4AF37;
-            --dark-gold: #B8860B;
-            --light-gold: #F5E8B5;
-            --ivory: #FFFFF0;
-            --champagne: #F7E7CE;
-            --charcoal: #2C2C2C;
-            --light-charcoal: #3A3A3A;
-            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-duration: 0.4s;
-            --explore-service-color: #f50c18; /* NEW: Vibrant Red/Coral color */
-            --explore-service-hover: #ff3333; /* NEW: Brighter Red hover */
+            --gold: #e6b0aa;
+            --gold-light: #f5d1cc;
+            --gold-dark: #c48a82;
+            --gold-glow: rgba(230, 176, 170, 0.4);
+            --dark-soft: #2c2c2c;
+            --cream-bg: #f8f4f0;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --shadow-sm: 0 10px 25px rgba(0,0,0,0.05);
+            --shadow-md: 0 15px 35px rgba(0,0,0,0.1);
+            --shadow-gold: 0 10px 25px var(--gold-glow);
+            --transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+
+        .booking-page-content {
+            background-color: var(--cream-bg);
+            min-height: calc(100vh - 140px);
         }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: var(--ivory);
-            color: var(--charcoal);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            line-height: 1.2;
-        }
-        
-        /* Hero Section - Complete Redesign */
-        .luxury-hero {
+
+        /* ---------- HERO – 60vh ---------- */
+        .booking-hero-section {
             position: relative;
-            height: 85vh;
-            min-height: 600px;
+            height: 60vh;
+            min-height: 500px;
+            overflow: hidden;
+            isolation: isolate;
+            background-color: var(--dark-soft);
+            z-index: 15;  /* ✅ above form container (z-index:10) */
+        }
+
+        .booking-hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/assethome/wedding-bg.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            z-index: 0;
+            will-change: transform;
+            transition: transform 0.1s linear;
+            animation: subtleZoom 8s ease-out forwards;
+        }
+
+        @supports (background-image: image-set(url('/assethome/wedding-bg.webp') 1x)) {
+            .booking-hero-background {
+                background-image: image-set(
+                    url('/assethome/wedding-bg.webp') type('image/webp') 1x,
+                    url('/assethome/wedding-bg.jpg') type('image/jpeg') 1x
+                );
+            }
+        }
+
+        @keyframes subtleZoom {
+            0% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .booking-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 40%, 
+                        rgba(230, 176, 170, 0.2) 0%,
+                        rgba(0, 0, 0, 0.65) 90%);
+            z-index: 1;
+            animation: gentleShift 12s infinite alternate ease-in-out;
+        }
+
+        @keyframes gentleShift {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 10% 10%; }
+        }
+
+        .booking-hero-content {
+            position: relative;
+            z-index: 2;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), 
-                        url('/assethome/5.jpg') center/cover no-repeat fixed;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            color: white;
-            max-width: 800px;
-            padding: 2rem;
-            animation: fadeInUp 1s var(--transition-smooth) 0.3s both;
-        }
-        
-        .hero-content .brand {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            color: var(--light-gold);
-            opacity: 0.9;
-        }
-        
-        .hero-content h1 {
-            font-size: 4.5rem;
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
-        }
-        
-        .hero-content h1 span {
-            display: block;
-            font-size: 3rem;
-            color: var(--light-gold);
-            font-weight: 300;
-            margin-top: 0.5rem;
-        }
-        
-        .hero-content p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-        
-        .hero-divider {
-            width: 100px;
-            height: 2px;
-            background: var(--primary-gold);
-            margin: 2rem auto;
-            position: relative;
-        }
-        
-        .hero-divider::before,
-        .hero-divider::after {
-            content: '';
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: var(--primary-gold);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .hero-divider::before {
-            left: -20px;
-        }
-        
-        .hero-divider::after {
-            right: -20px;
-        }
-        
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: transparent;
-            color: white;
-            border: 2px solid var(--primary-gold);
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all var(--transition-duration) var(--transition-smooth);
-            position: relative;
-            overflow: hidden;
-            margin-top: 1rem;
-        }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
-            transition: left 0.6s;
-        }
-        
-        .cta-button:hover {
-            background: rgba(212, 175, 55, 0.1);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-        }
-        
-        .cta-button:hover::before {
-            left: 100%;
-        }
-        
-        /* Services Section */
-        .services-section {
-            padding: 6rem 0;
-            background: var(--ivory);
-            position: relative;
-        }
-        
-        .section-header {
+            color: white;
             text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
+            padding: 0 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
         }
-        
-        .section-subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            color: var(--primary-gold);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            opacity: 0.8;
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .section-title {
-            font-size: 3.2rem;
-            color: var(--charcoal);
-            margin-bottom: 1.5rem;
-            position: relative;
-            display: inline-block;
+
+        .booking-hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 8vw, 5rem);
+            margin-bottom: 0.5rem;
+            color: white;
+            text-shadow: 0 4px 25px rgba(0,0,0,0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUpItem 0.8s 0.2s forwards;
         }
-        
-        .section-title::after {
-            content: '';
+
+        .booking-hero-text {
+            font-family: var(--font-sans);
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            max-width: 800px;
+            margin: 1.5rem auto;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUpItem 0.8s 0.4s forwards;
+        }
+
+        @keyframes fadeUpItem {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ---------- SCROLL INDICATOR – ELEGANT & INTERACTIVE ---------- */
+        .booking-scroll-indicator {
+            --indicator-bg: rgba(255, 255, 255, 0.1);
+            --indicator-border: rgba(230, 176, 170, 0.6);
+            --indicator-hover-bg: rgba(230, 176, 170, 0.15);
+            --indicator-glow: 0 0 20px rgba(230, 176, 170, 0.5);
+
             position: absolute;
-            bottom: -10px;
+            bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--primary-gold);
-        }
-        
-        .section-intro {
-            max-width: 600px;
-            margin: 0 auto 3rem;
-            font-size: 1.1rem;
-            color: var(--light-charcoal);
-            line-height: 1.8;
-        }
-        
-        /* Card Design with EXPANDED Images and Clickable Image Area */
-        .luxury-card {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            background: white;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: all var(--transition-duration) var(--transition-smooth);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .luxury-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
-        }
-        
-        /* EXPANDED Image Container - Much Larger Images */
-        .card-image-wrapper {
-            position: relative;
-            width: 100%;
-            height: 280px; /* Increased from 220px */
-            overflow: hidden;
-            flex-shrink: 0;
-            cursor: pointer; /* Make image area clickable */
-        }
-        
-        /* Make the entire image area a clickable link */
-        .card-image-link {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 3;
-            text-decoration: none;
-        }
-        
-        .card-image-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.6) 100%);
-            opacity: 0;
-            transition: opacity var(--transition-duration) var(--transition-smooth);
-            z-index: 1;
-        }
-        
-        .luxury-card:hover .card-image-wrapper::before {
-            opacity: 1;
-        }
-        
-        /* Expanded Image Styling */
-        .card-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.8s var(--transition-smooth);
-            will-change: transform;
-        }
-        
-        .luxury-card:hover .card-image {
-            transform: scale(1.08);
-        }
-        
-        .card-icon {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 50%;
+            z-index: 20;
+            
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: var(--primary-gold);
-            font-size: 1.3rem;
-            z-index: 4; /* Above the clickable layer */
-            transform: translateY(-10px);
-            opacity: 0;
-            transition: all var(--transition-duration) var(--transition-smooth);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-            pointer-events: none; /* Don't interfere with clicking */
-        }
-        
-        .luxury-card:hover .card-icon {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .card-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.75rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+            gap: 12px;
+            padding: 12px 24px;
+            background: var(--indicator-bg);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1.5px solid var(--indicator-border);
+            border-radius: 60px;
             color: white;
-            z-index: 2;
-            transform: translateY(10px);
-            opacity: 0;
-            transition: all var(--transition-duration) var(--transition-smooth);
-            pointer-events: none; /* Don't interfere with clicking */
-        }
-        
-        .luxury-card:hover .card-overlay {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .card-overlay h4 {
-            font-size: 1.4rem;
-            margin-bottom: 0.25rem;
-            color: white;
-            line-height: 1.3;
-        }
-        
-        /* Click indicator in overlay */
-        .card-overlay .click-hint {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85rem;
-            opacity: 0.8;
-            margin-top: 0.5rem;
-        }
-        
-        /* Optimized Card Content */
-        .card-content {
-            padding: 1.75rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .card-content h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
-            color: var(--charcoal);
-            transition: color var(--transition-duration);
-            display: flex;
-            align-items: center;
-            line-height: 1.3;
-            cursor: pointer; /* Make title clickable too */
-        }
-        
-        .luxury-card:hover .card-content h4 {
-            color: var(--primary-gold);
-        }
-        
-        .card-content p {
-            color: var(--light-charcoal);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            font-size: 0.95rem;
-            flex: 1;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        /* UPDATED: Explore Service link with #f50c18 color */
-        .card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: #f50c18 !important; /* Vibrant Red/Coral color */
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: all var(--transition-duration);
-            position: relative;
-            padding: 0.5rem 0;
-            margin-top: auto;
-            z-index: 2; /* Ensure it's above the image link */
-        }
-        
-        .card-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: #f50c18 !important; /* Vibrant Red/Coral color */
-            transition: width var(--transition-duration) var(--transition-smooth), 
-                       background var(--transition-duration) var(--transition-smooth);
-        }
-        
-        .card-link:hover {
-            color: #ff3333 !important; /* Brighter Red hover */
-        }
-        
-        .card-link:hover::after {
-            width: 100%;
-            background: #ff3333 !important; /* Brighter Red hover */
-        }
-        
-        .card-link i {
-            font-size: 0.8rem;
-            transition: transform var(--transition-duration) var(--transition-smooth);
-            color: inherit; /* Make icon inherit the text color */
-        }
-        
-        .card-link:hover i {
-            transform: translateX(4px);
-        }
-        
-        /* Make entire card content area clickable on mobile */
-        @media (max-width: 768px) {
-            .card-content {
-                cursor: pointer;
-            }
-        }
-        
-        /* Floating Decorative Elements */
-        .floating-element {
-            position: absolute;
-            z-index: 0;
-            opacity: 0.03;
-            pointer-events: none;
-        }
-        
-        .floating-element.diamond {
-            width: 100px;
-            height: 100px;
-            border: 2px solid var(--primary-gold);
-            transform: rotate(45deg);
-        }
-        
-        .floating-element.ring {
-            width: 150px;
-            height: 150px;
-            border: 1px solid var(--primary-gold);
-            border-radius: 50%;
-        }
-        
-        /* ========== BEGIN NEW SECTION: Complementary Services Table ========== */
-        .complementary-services-section {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, rgba(255, 255, 240, 0.7) 0%, rgba(247, 231, 206, 0.5) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .luxury-table-container {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-        }
-        
-        .luxury-services-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin-bottom: 2rem;
-        }
-        
-        .luxury-services-table thead th {
-            background: linear-gradient(135deg, var(--ivory), var(--champagne));
-            padding: 1.25rem 1.5rem;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--charcoal);
-            border-bottom: 2px solid var(--primary-gold);
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-        
-        .luxury-services-table tbody tr {
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-            transition: all var(--transition-duration) var(--transition-smooth);
-            position: relative;
-        }
-        
-        .luxury-services-table tbody tr:last-child {
-            border-bottom: none;
-        }
-        
-        .luxury-services-table tbody tr:hover {
-            background: rgba(212, 175, 55, 0.05);
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .luxury-services-table td {
-            padding: 1.5rem;
-            vertical-align: middle;
-            border: none;
-        }
-        
-        .service-icon-cell {
-            width: 80px;
-        }
-        
-        .service-icon-wrapper {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--light-gold), var(--primary-gold));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
-            transition: all var(--transition-duration) var(--transition-smooth);
-        }
-        
-        .luxury-services-table tbody tr:hover .service-icon-wrapper {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
-        }
-        
-        .service-name-cell {
-            min-width: 200px;
-        }
-        
-        .service-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            color: var(--charcoal);
-            margin-bottom: 0.25rem;
-            font-weight: 600;
-        }
-        
-        .service-mobile-desc {
-            font-size: 0.9rem;
-            color: var(--light-charcoal);
-            opacity: 0.8;
-            margin-bottom: 0;
-        }
-        
-        .service-desc-cell {
-            color: var(--light-charcoal);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            max-width: 400px;
-        }
-        
-        .service-action-cell {
-            width: 120px;
-        }
-        
-        .table-action-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            background: transparent;
-            color: var(--primary-gold);
-            border: 1px solid var(--primary-gold);
-            padding: 0.75rem 1.25rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all var(--transition-duration) var(--transition-smooth);
-            min-width: 100px;
-        }
-        
-        .table-action-btn:hover {
-            background: var(--primary-gold);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
-        }
-        
-        .table-footer-note {
-            padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(184, 134, 11, 0.05));
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-gold);
-            font-size: 0.95rem;
-            color: var(--light-charcoal);
-        }
-        
-        .text-gold {
-            color: var(--primary-gold) !important;
-        }
-        
-        /* Floating elements for table section */
-        .table-floating-element {
-            position: absolute;
-            z-index: 0;
-            opacity: 0.03;
-            pointer-events: none;
-        }
-        
-        .table-floating-element.circle {
-            width: 200px;
-            height: 200px;
-            border: 2px solid var(--primary-gold);
-            border-radius: 50%;
-            top: 10%;
-            right: 5%;
-        }
-        
-        .table-floating-element.diamond-small {
-            width: 80px;
-            height: 80px;
-            border: 1px solid var(--primary-gold);
-            transform: rotate(45deg);
-            bottom: 20%;
-            left: 5%;
-        }
-        /* ========== END NEW SECTION: Complementary Services Table ========== */
-        
-        /* Footer CTA */
-        .footer-cta {
-            background: linear-gradient(135deg, rgba(42, 42, 42, 0.95) 0%, rgba(28, 28, 28, 0.98) 100%), 
-                        url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h20v20H0z" fill="none"/><path d="M10 3a7 7 0 100 14 7 7 0 000-14zm0 12a5 5 0 110-10 5 5 0 010 10z" fill="%23D4AF37" opacity=".1"/></svg>');
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .footer-cta h3 {
-            font-size: 2.5rem;
-            margin-bottom: 1.25rem;
-            color: var(--light-gold);
-        }
-        
-        .footer-cta p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .cta-button-gold {
-            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
-            color: white;
-            border: none;
-            padding: 1rem 2.5rem;
+            font-family: var(--font-sans);
             font-size: 1rem;
             font-weight: 500;
-            text-decoration: none;
-            border-radius: 25px;
-            transition: all var(--transition-duration) var(--transition-smooth);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2), 0 0 0 0 rgba(230,176,170,0);
+            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+
+        .booking-scroll-indicator:hover,
+        .booking-scroll-indicator:focus-visible {
+            background: var(--indicator-hover-bg);
+            border-color: var(--gold);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3), var(--indicator-glow);
+            padding: 12px 32px;
+        }
+
+        .booking-scroll-indicator:focus-visible {
+            outline: 3px solid white;
+            outline-offset: 3px;
+        }
+
+        .scroll-label {
+            transform: translateX(0);
+            transition: transform 0.3s ease, opacity 0.3s;
+            opacity: 0.9;
+        }
+
+        .booking-scroll-indicator:hover .scroll-label,
+        .booking-scroll-indicator:focus-visible .scroll-label {
+            transform: translateX(-5px);
+            opacity: 1;
+        }
+
+        .scroll-icon {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: var(--gold);
+            border-radius: 50%;
+            color: #2c2c2c;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            animation: gentleBounce 2s infinite ease-in-out;
         }
-        
-        .cta-button-gold:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
-            background: linear-gradient(135deg, var(--dark-gold), var(--primary-gold));
+
+        .booking-scroll-indicator:hover .scroll-icon,
+        .booking-scroll-indicator:focus-visible .scroll-icon {
+            animation: none;
+            transform: scale(1.15);
+            background: white;
         }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        @keyframes gentleBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
         }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-15px) rotate(3deg);
-            }
-        }
-        
-        .animate-on-scroll {
+
+        .scroll-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(230,176,170,0.3) 0%, transparent 80%);
+            border-radius: 60px;
             opacity: 0;
-            transform: translateY(25px);
-            transition: opacity 0.6s var(--transition-smooth), transform 0.6s var(--transition-smooth);
+            transition: opacity 0.4s;
+            pointer-events: none;
+            top: 0;
+            left: 0;
         }
-        
-        .animate-on-scroll.visible {
+
+        .booking-scroll-indicator:hover .scroll-glow,
+        .booking-scroll-indicator:focus-visible .scroll-glow {
             opacity: 1;
+        }
+
+        .booking-scroll-indicator.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-50%) translateY(20px);
+            transition: opacity 0.4s, transform 0.4s;
+        }
+
+        /* ---------- CTA BUTTON ---------- */
+        .booking-submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 40px;
+            background: linear-gradient(145deg, var(--gold), var(--gold-dark));
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: white;
+            box-shadow: var(--shadow-gold);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .booking-submit-btn i {
+            transition: transform 0.2s;
+        }
+
+        .booking-submit-btn:hover i {
+            transform: translateX(6px) scale(1.1);
+        }
+
+        .booking-submit-btn:hover {
+            background: linear-gradient(145deg, var(--gold-dark), #a8716a);
+            transform: translateY(-3px);
+            box-shadow: 0 18px 35px rgba(230, 176, 170, 0.6);
+        }
+
+        .booking-submit-btn:active {
             transform: translateY(0);
         }
-        
-        /* Responsive Design with EXPANDED Image Heights */
-        @media (max-width: 1200px) {
-            .hero-content h1 {
-                font-size: 3.8rem;
-            }
-            
-            .hero-content h1 span {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2.8rem;
-            }
-            
-            .card-image-wrapper {
-                height: 250px; /* Increased from 200px */
-            }
-            
-            .card-content {
-                padding: 1.5rem;
-            }
-            
-            .card-content h4 {
-                font-size: 1.25rem;
-            }
-            
-            .card-content p {
-                font-size: 0.92rem;
+
+        .booking-submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.5);
+            transition: opacity 0.4s, transform 0.4s;
+        }
+
+        .booking-submit-btn:focus-visible::after {
+            opacity: 0.3;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* ---------- DECORATIVE HEARTS ---------- */
+        .booking-heart-float {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 2.5rem;
+            z-index: 2;
+            pointer-events: none;
+            animation: float 12s infinite ease-in-out;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            will-change: transform;
+        }
+
+        .heart-1 { bottom: 15%; left: 5%; animation-delay: 0s; }
+        .heart-2 { top: 20%; right: 8%; animation-delay: 2.5s; font-size: 3rem; }
+        .heart-3 { bottom: 25%; right: 20%; animation-delay: 5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(5deg); }
+        }
+
+        /* ---------- FORM CARD – NARROWER, BLUSH ROSE ---------- */
+        .booking-form-container {
+            max-width: 900px;
+            margin: -70px auto 50px;   /* default (mobile first) – will be overridden on large screens */
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ✅ Desktop: form sits below the hero, not overlapping the scroll button */
+        @media (min-width: 992px) {
+            .booking-form-container {
+                margin-top: 30px;   /* positive margin – form starts after hero */
             }
         }
-        
+
+        .booking-form-card {
+            border-radius: 24px;
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            background: white;
+            border: 1px solid rgba(230, 176, 170, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s;
+            backdrop-filter: blur(4px);
+        }
+
+        @media (hover: hover) {
+            .booking-form-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+                border-color: rgba(230, 176, 170, 0.4);
+            }
+        }
+
+        .booking-form-header {
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: white;
+            padding: 32px 30px;
+            text-align: center;
+        }
+
+        .booking-form-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2.3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .booking-form-body {
+            padding: 45px 40px;
+        }
+
+        /* ----- FORM FIELDS ----- */
+        .booking-details-box {
+            background-color: rgba(230, 176, 170, 0.04);
+            padding: 28px 25px;
+            border-radius: 18px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--gold);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .booking-details-box:focus-within {
+            background-color: rgba(230, 176, 170, 0.08);
+            border-left-width: 6px;
+        }
+
+        .booking-form-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            color: var(--gold-dark);
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(230, 176, 170, 0.3);
+            display: flex;
+            align-items: center;
+        }
+
+        .booking-form-label {
+            font-family: var(--font-sans);
+            font-weight: 600;
+            color: #2e2e2e;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+
+        .booking-form-required {
+            color: var(--gold-dark);
+            margin-left: 5px;
+            font-size: 1.1em;
+        }
+
+        .booking-form-input,
+        .booking-form-select {
+            font-family: var(--font-sans);
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1.5px solid #e0d6cc;
+            transition: var(--transition);
+            background-color: #fffcf8;
+            width: 100%;
+            font-size: 1rem;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .booking-form-input:focus,
+        .booking-form-select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(230, 176, 170, 0.2);
+            outline: none;
+            background-color: white;
+        }
+
+        .booking-form-input.error,
+        .booking-form-select.error {
+            border-color: #dc3545;
+            background-color: #fff8f8;
+            padding-right: 45px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='%23dc3545'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 6px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+        }
+
+        .booking-success-alert {
+            display: none;
+            background: linear-gradient(to right, #eaf7e9, #dff0d8);
+            border-left: 6px solid #28a745;
+            padding: 24px 28px;
+            margin-bottom: 30px;
+            border-radius: 16px;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            box-shadow: var(--shadow-sm);
+            animation: slideIn 0.4s;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-15px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .booking-success-alert i {
+            color: #28a745;
+            font-size: 2rem;
+        }
+
+        .booking-spinner {
+            display: none;
+            width: 1.2rem;
+            height: 1.2rem;
+            border: 0.2em solid white;
+            border-right-color: transparent;
+            border-radius: 50%;
+            animation: booking-spin 0.65s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes booking-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .booking-submit-btn .btn-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ---------- CUSTOM GRID – DESKTOP DEFAULTS ---------- */
+        .booking-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .booking-grid-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .booking-grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;          /* desktop gap – matches original inline value */
+        }
+        .booking-flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .booking-text-center {
+            text-align: center;
+        }
+        .booking-mb-4 {
+            margin-bottom: 1.5rem;
+        }
+        .booking-mb-5 {
+            margin-bottom: 2rem;
+        }
+
+        /* ---------- WHY CHOOSE US – DESKTOP ---------- */
+        .booking-why-section {
+            background: var(--cream-bg);
+            padding: 80px 0;
+        }
+        .booking-section-title {
+            text-align: center;
+        }
+        .booking-section-title h2 {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            color: #2c2c2c;
+        }
+        .booking-section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gold);
+            margin: 20px auto;
+            border-radius: 2px;
+        }
+        .booking-feature-box {
+            padding: 30px;
+            border-radius: 20px;
+            background: white;
+            height: 100%;
+            transition: var(--transition);
+            border: 1px solid rgba(230,176,170,0.15);
+            box-shadow: var(--shadow-sm);
+        }
+        .booking-feature-box:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--gold-light);
+        }
+        .booking-feature-icon {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+        .booking-feature-box:hover .booking-feature-icon {
+            transform: scale(1.15);
+        }
+
+        /* ---------- RESPONSIVE – PERFECT MOBILE STACK ---------- */
         @media (max-width: 992px) {
-            .luxury-card {
-                margin-bottom: 1.5rem;
-            }
-            
-            .card-image-wrapper {
-                height: 230px; /* Increased from 180px */
-            }
-            
-            .card-content h4 {
-                font-size: 1.2rem;
-            }
-            
-            .card-content p {
-                font-size: 0.9rem;
-            }
-            
-            .card-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
-            
-            /* Complementary Services Table Responsive */
-            .luxury-table-container {
-                padding: 1.5rem;
-                border-radius: 15px;
-            }
-            
-            .luxury-services-table td {
-                padding: 1.25rem 1rem;
-            }
-            
-            .service-icon-wrapper {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
-            }
-            
-            .service-title {
-                font-size: 1.15rem;
+            .booking-hero-title { font-size: 3.2rem; }
+            .booking-hero-text { font-size: 1.2rem; }
+            .booking-form-container {
+                max-width: 800px;
+                margin-top: -50px;   /* slight overlap on tablet */
             }
         }
-        
+
         @media (max-width: 768px) {
-            .luxury-hero {
-                height: 70vh;
-                min-height: 500px;
-                background-attachment: scroll;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero-content h1 span {
-                font-size: 2rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-            
-            .section-title {
-                font-size: 2.3rem;
-            }
-            
-            .section-intro {
-                font-size: 1rem;
-                padding: 0 1rem;
-            }
-            
-            .card-image-wrapper {
-                height: 210px; /* Increased from 160px */
-            }
-            
-            .card-content {
-                padding: 1.5rem;
-            }
-            
-            .card-content h4 {
-                font-size: 1.15rem;
-            }
-            
-            .card-content p {
-                font-size: 0.88rem;
-                -webkit-line-clamp: 2;
-            }
-            
-            /* Complementary Services Table Mobile */
-            .complementary-services-section {
-                padding: 4rem 0;
-            }
-            
-            .luxury-table-container {
-                padding: 1.25rem;
-                border-radius: 12px;
-            }
-            
-            .luxury-services-table thead th {
-                padding: 1rem 0.75rem;
-                font-size: 1rem;
-            }
-            
-            .luxury-services-table td {
-                padding: 1rem 0.75rem;
-            }
-            
-            .service-icon-wrapper {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-            
-            .service-title {
-                font-size: 1.1rem;
-            }
-            
-            .table-action-btn {
-                padding: 0.6rem 1rem;
-                min-width: 80px;
-                font-size: 0.85rem;
-            }
-            
-            .table-footer-note {
-                padding: 1.25rem;
-                font-size: 0.9rem;
-            }
-            
-            .footer-cta {
-                padding: 4rem 1rem;
-            }
-            
-            .footer-cta h3 {
-                font-size: 2rem;
-            }
-            
-            .footer-cta p {
-                font-size: 1rem;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .luxury-hero {
-                height: 65vh;
+            .booking-hero-section {
+                height: 50vh;
                 min-height: 450px;
             }
+            .booking-hero-background {
+                background-position: 65% center;
+            }
+            .booking-form-container {
+                max-width: 95%;
+                margin-top: -30px;
+            }
+            .booking-form-body {
+                padding: 30px 25px;
+            }
+            .booking-heart-float { display: none; }
+            .booking-form-header h2 { font-size: 2rem; }
             
-            .hero-content h1 {
-                font-size: 2.2rem;
+            .booking-grid-2 {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
             
-            .hero-content h1 span {
-                font-size: 1.6rem;
+            .booking-grid-3 {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
             
-            .hero-content .brand {
-                font-size: 1.1rem;
-                letter-spacing: 4px;
+            .booking-scroll-indicator {
+                padding: 10px 20px;
+                font-size: 0.8rem;
             }
-            
-            .hero-content p {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 1rem;
-            }
-            
-            .section-intro {
-                margin-bottom: 2rem;
-                font-size: 0.95rem;
-            }
-            
-            .card-image-wrapper {
-                height: 190px; /* Increased from 140px */
-            }
-            
-            .card-content {
-                padding: 1.25rem;
-            }
-            
-            .card-content h4 {
-                font-size: 1.1rem;
-                margin-bottom: 0.5rem;
-            }
-            
-            .card-content p {
-                font-size: 0.85rem;
-                margin-bottom: 1rem;
-                -webkit-line-clamp: 2;
-            }
-            
-            /* Complementary Services Table Mobile Cards */
-            .luxury-services-table thead {
+            .scroll-label {
                 display: none;
             }
-            
-            .luxury-services-table tbody tr {
-                display: block;
-                margin-bottom: 1.5rem;
-                padding: 1.5rem;
-                border: 1px solid rgba(212, 175, 55, 0.15);
-                border-radius: 12px;
-                background: white;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            .booking-scroll-indicator:hover,
+            .booking-scroll-indicator:focus-visible {
+                padding: 10px 20px;
             }
-            
-            .luxury-services-table tbody tr:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+
+            /* ---------- MAKE WHY CHOOSE US LOOK LIKE HOW-IT-WORKS ON MOBILE ---------- */
+            .booking-why-section {
+                background: linear-gradient(135deg, #0a0a0a 0%, #050505 100%);
+                padding: 60px 0;
             }
-            
-            .luxury-services-table td {
-                display: block;
-                padding: 0.5rem 0;
+            .booking-section-title {
                 text-align: center;
             }
-            
-            .service-icon-cell {
-                width: 100%;
-                margin-bottom: 0.5rem;
+            .booking-section-title h2 {
+                color: white;
+                font-size: 2.2rem;
+                text-align: center;
             }
-            
-            .service-icon-wrapper {
-                margin: 0 auto;
+            .booking-section-title::after {
+                display: block;
+                content: '';
+                width: 80px;
+                height: 3px;
+                background: linear-gradient(to right, var(--gold), var(--gold-dark), var(--gold));
+                margin: 20px auto;
+                border-radius: 2px;
             }
-            
-            .service-name-cell {
-                min-width: 100%;
-                margin-bottom: 0.75rem;
+            .booking-grid-3 {
+                counter-reset: step-counter;
+                gap: 1.5rem;
             }
-            
-            .service-action-cell {
-                width: 100%;
-                margin-top: 1rem;
+            .booking-feature-box {
+                background: rgba(255, 255, 255, 0.05);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(230, 176, 170, 0.1);
+                border-radius: 20px;
+                padding: 2rem;
+                color: white;
+                position: relative;
+                text-align: center;
+                max-width: 90%;
+                margin-left: auto;
+                margin-right: auto;
+                height: auto;
+                box-shadow: none;
+                transform: none;
+                transition: all 0.3s ease;
+                counter-increment: step-counter;
+                border-left: none;
             }
-            
-            .table-action-btn {
-                width: 100%;
+            .booking-feature-box:hover {
+                transform: translateY(-5px);
+                border-color: rgba(230, 176, 170, 0.3);
+                box-shadow: 0 15px 30px rgba(230, 176, 170, 0.1);
+                background: rgba(255, 255, 255, 0.08);
+            }
+            .booking-feature-box::before {
+                content: counter(step-counter);
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+                color: #2c2c2c;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
                 justify-content: center;
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin: 0 auto 1.5rem;
+                position: relative;
+                top: 0;
+                left: 0;
             }
-            
-            .cta-button, .cta-button-gold {
-                padding: 0.9rem 2rem;
-                font-size: 0.95rem;
+            .booking-feature-icon {
+                font-size: 2.5rem;
+                color: var(--gold);
+                margin-bottom: 1rem;
+                margin-top: 0;
+                transition: transform 0.3s ease;
             }
-            
-            .footer-cta {
-                padding: 3rem 1rem;
+            .booking-feature-box:hover .booking-feature-icon {
+                transform: scale(1.1);
             }
-            
-            .footer-cta h3 {
-                font-size: 1.8rem;
+            .booking-feature-box h4 {
+                color: white;
+                font-family: var(--font-serif);
+                font-size: 1.5rem;
                 margin-bottom: 1rem;
             }
-            
-            .footer-cta p {
+            .booking-feature-box p {
+                color: #ddd;
+                line-height: 1.6;
                 font-size: 0.95rem;
-                margin-bottom: 2rem;
             }
         }
-        
-        @media (max-width: 400px) {
-            .hero-content h1 {
-                font-size: 1.9rem;
+
+        @media (max-width: 576px) {
+            .booking-hero-section {
+                height: 40vh;
+                min-height: 400px;
             }
-            
-            .hero-content h1 span {
-                font-size: 1.4rem;
+            .booking-hero-title {
+                font-size: 2rem;
             }
-            
-            .card-image-wrapper {
-                height: 180px; /* Increased from 140px */
-            }
-            
-            .card-content h4 {
+            .booking-hero-content .booking-submit-btn {
+                padding: 14px 28px;
                 font-size: 1rem;
             }
-            
-            .card-content p {
-                font-size: 0.82rem;
-                -webkit-line-clamp: 2;
+            .booking-form-container {
+                margin-top: -20px;
             }
+            .booking-form-header {
+                padding: 25px 20px;
+            }
+            .booking-form-header h2 {
+                font-size: 1.8rem;
+            }
+            .booking-form-body {
+                padding: 25px 20px;
+            }
+            .booking-details-box {
+                padding: 20px 18px;
+            }
+            .booking-form-subtitle {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+            }
+            
+            .booking-grid-2 {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .booking-grid-3 {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .booking-feature-box {
+                padding: 1.5rem;
+                max-width: 90%;
+            }
+            .booking-feature-box::before {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            .booking-feature-icon {
+                font-size: 2.2rem;
+            }
+            .booking-feature-box h4 {
+                font-size: 1.3rem;
+            }
+            .booking-why-section {
+                padding: 50px 0;
+            }
+            .booking-section-title h2 {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .booking-hero-background { transform: scale(1) !important; }
+            .scroll-icon { animation: none; }
+            .booking-scroll-indicator { transition: none; }
         }
     </style>
 </head>
 <body>
     <%- include('../allpack/layout/navbar') %>
     
-    <!-- Luxury Hero Section -->
-    <section class="luxury-hero">
-        <!-- Floating decorative elements -->
-        <div class="floating-element diamond" style="top: 20%; left: 10%;"></div>
-        <div class="floating-element ring" style="bottom: 20%; right: 10%;"></div>
-        
-        <div class="hero-content">
-            <div class="brand">Éclat Weddings</div>
-            <h1>Crafting Timeless<br><span>Wedding Experiences</span></h1>
-            <div class="hero-divider"></div>
-            <p>Where dreams intertwine with reality, creating moments that last a lifetime through exquisite planning and attention to detail.</p>
-            <a href="#services" class="cta-button animate-on-scroll">
-                Discover Our Services
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </div>
-    </section>
-    
-    <!-- Luxury Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Exquisite Offerings</div>
-                <h2 class="section-title">Our Premium Services</h2>
-                <p class="section-intro">Each service is meticulously curated to ensure your wedding day reflects your unique love story with elegance and perfection.</p>
-            </div>
+    <div class="booking-page-content">
+        <!-- ============= HERO – 60vh ============= -->
+        <section class="booking-hero-section" aria-label="Elegant wedding hero with booking call to action">
+            <div class="booking-hero-background" aria-hidden="true"></div>
+            <div class="booking-hero-overlay" aria-hidden="true"></div>
             
-            <div class="row g-4">
-                <!-- Services Loop -->
-                <% const services = [
-                    { 
-                        name: "Venue & Decor", 
-                        icon: "fas fa-place-of-worship", 
-                        img: "/assethome/venu3.jpg", 
-                        link: "/decor",
-                        desc: "Transform any space into a breathtaking venue with our custom decor designs"
-                    },
-                    { 
-                        name: "Invitation Suite", 
-                        icon: "fas fa-envelope-open-text", 
-                        img: "/assethome/inv1.jpg", 
-                        link: "/invetation",
-                        desc: "Custom-designed invitations that set the tone for your special day"
-                    },
-                    { 
-                        name: "Bridal Couture", 
-                        icon: "fas fa-tshirt", 
-                        img: "/assethome/dres.jpg", 
-                        link: "/styles",
-                        desc: "Exclusive bridal fashion and styling for the perfect look"
-                    },
-                    { 
-                        name: "Beauty & Glamour", 
-                        icon: "fas fa-spa", 
-                        img: "/assethome/beaty.jpg", 
-                        link: "/beauty",
-                        desc: "Professional beauty services for bridal radiance"
-                    },
-                    { 
-                        name: "Ceremony Direction", 
-                        icon: "fas fa-microphone-alt", 
-                        img: "/assethome/mc.jpg", 
-                        link: "/mc",
-                        desc: "Expert masters of ceremony for seamless event flow"
-                    },
-                    { 
-                        name: "Entertainment Excellence", 
-                        icon: "fas fa-music", 
-                        img: "/assethome/aime.jpg", 
-                        link: "/troupe",
-                        desc: "Premium entertainment troupes for unforgettable moments"
-                    },
-                    { 
-                        name: "Cultural Heritage", 
-                        icon: "fas fa-drum", 
-                        img: "/assethome/gak1.jpg", 
-                        link: "/gakondo",
-                        desc: "Authentic traditional performances honoring cultural roots"
-                    },
-                    { 
-                        name: "Atmosphere Design", 
-                        icon: "fas fa-lightbulb", 
-                        img: "/assethome/sound6.jpg", 
-                        link: "/sound",
-                        desc: "State-of-the-art sound and lighting for immersive experiences"
-                    },
-                    { 
-                        name: "Visual Storytelling", 
-                        icon: "fas fa-camera-retro", 
-                        img: "/assethome/photo.jpg", 
-                        link: "/photographers",
-                        desc: "Award-winning photography and cinematography"
-                    },
-                    { 
-                        name: "Culinary Artistry", 
-                        icon: "fas fa-utensils", 
-                        img: "/assethome/food1.jpg", 
-                        link: "/catering",
-                        desc: "Gourmet catering with personalized menu design"
-                    },
-                    { 
-                        name: "Event Coordination", 
-                        icon: "fas fa-concierge-bell", 
-                        img: "/assethome/iriza14.jpg", 
-                        link: "/service",
-                        desc: "Full-service event management and coordination"
-                    },
-                    { 
-                        name: "Cultural Ambiance", 
-                        icon: "fas fa-monument", 
-                        img: "/assethome/rugaba.jpg", 
-                        link: "/amahamba",
-                        desc: "Traditional cultural elements for authentic celebrations"
-                    }
-                ]; %>
-                
-                <% services.forEach((service, index) => { %>
-                <div class="col-xl-3 col-lg-4 col-md-6">
-                    <div class="luxury-card animate-on-scroll" data-delay="<%= index * 50 %>">
-                        <div class="card-image-wrapper">
-                            <!-- Invisible clickable link covering the entire image area -->
-                            <a href="<%= service.link %>" class="card-image-link" aria-label="View <%= service.name %> details"></a>
-                            
-                            <img src="<%= service.img %>" alt="<%= service.name %>" class="card-image" loading="lazy">
-                            <div class="card-icon">
-                                <i class="<%= service.icon %>"></i>
-                            </div>
-                            <div class="card-overlay">
-                                <h4><%= service.name %></h4>
-                                <div class="click-hint">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    <span>Click to view details</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <!-- Title is also clickable -->
-                            <a href="<%= service.link %>" style="text-decoration: none; color: inherit;">
-                                <h4><%= service.name %></h4>
-                            </a>
-                            <p><%= service.desc %></p>
-                            <a href="<%= service.link %>" class="card-link">
-                                Explore Service
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <% }); %>
-            </div>
-        </div>
-    </section>
-    
-    <!-- ========== BEGIN NEW SECTION: Complementary Services Table ========== -->
-    <section id="complementary-services" class="complementary-services-section">
-        <div class="table-floating-element circle"></div>
-        <div class="table-floating-element diamond-small"></div>
-        
-        <div class="container">
-            <div class="section-header">
-                <div class="section-subtitle">Additional Excellence</div>
-                <h2 class="section-title">Complementary Services</h2>
-                <p class="section-intro">Complete your wedding experience with our additional premium offerings that ensure every detail is perfect.</p>
-            </div>
+            <div class="booking-heart-float heart-1" aria-hidden="true"><i class="fas fa-heart"></i></div>
+            <div class="booking-heart-float heart-2" aria-hidden="true"><i class="fas fa-heart"></i></div>
+            <div class="booking-heart-float heart-3" aria-hidden="true"><i class="fas fa-heart"></i></div>
             
-            <div class="luxury-table-container">
-                <table class="luxury-services-table">
-                    <thead>
-                        <tr>
-                            <th class="text-center" style="width: 80px;"><i class="fas fa-star text-gold"></i></th>
-                            <th>Service</th>
-                            <th class="d-none d-md-table-cell">Description</th>
-                            <th class="text-center">Inquire</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Service 1: Luxury Transportation -->
-                        <tr class="animate-on-scroll" data-delay="0">
-                            <td class="service-icon-cell">
-                                <div class="service-icon-wrapper"><i class="fas fa-car"></i></div>
-                            </td>
-                            <td class="service-name-cell">
-                                <h4 class="service-title">Luxury Transportation</h4>
-                                <p class="service-mobile-desc d-md-none">Premium vehicles for bridal party & guests</p>
-                            </td>
-                            <td class="service-desc-cell d-none d-md-table-cell">
-                                <p>Chauffeured luxury vehicles including vintage cars, limousines, and premium SUVs for a grand arrival.</p>
-                            </td>
-                            <td class="service-action-cell">
-                                <a href="/contact?service=transport" class="table-action-btn" aria-label="Inquire about Luxury Transportation">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="d-none d-sm-inline">Inquire</span>
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <!-- Service 2: DJ & Music Selection -->
-                        <tr class="animate-on-scroll" data-delay="50">
-                            <td class="service-icon-cell">
-                                <div class="service-icon-wrapper"><i class="fas fa-compact-disc"></i></div>
-                            </td>
-                            <td class="service-name-cell">
-                                <h4 class="service-title">DJ & Music Selection</h4>
-                                <p class="service-mobile-desc d-md-none">Curated playlists & professional DJ services</p>
-                            </td>
-                            <td class="service-desc-cell d-none d-md-table-cell">
-                                <p>Personalized music curation and professional DJ services for seamless entertainment throughout your event.</p>
-                            </td>
-                            <td class="service-action-cell">
-                                <a href="/contact?service=dj" class="table-action-btn" aria-label="Inquire about DJ Services">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="d-none d-sm-inline">Inquire</span>
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <!-- Service 3: Karaoke Entertainment -->
-                        <tr class="animate-on-scroll" data-delay="100">
-                            <td class="service-icon-cell">
-                                <div class="service-icon-wrapper"><i class="fas fa-microphone"></i></div>
-                            </td>
-                            <td class="service-name-cell">
-                                <h4 class="service-title">Karaoke Entertainment</h4>
-                                <p class="service-mobile-desc d-md-none">Interactive guest entertainment system</p>
-                            </td>
-                            <td class="service-desc-cell d-none d-md-table-cell">
-                                <p>State-of-the-art karaoke systems with extensive song libraries for guest participation and fun.</p>
-                            </td>
-                            <td class="service-action-cell">
-                                <a href="/contact?service=karaoke" class="table-action-btn" aria-label="Inquire about Karaoke">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="d-none d-sm-inline">Inquire</span>
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <!-- Service 4: Live Band Coordination -->
-                        <tr class="animate-on-scroll" data-delay="150">
-                            <td class="service-icon-cell">
-                                <div class="service-icon-wrapper"><i class="fas fa-guitar"></i></div>
-                            </td>
-                            <td class="service-name-cell">
-                                <h4 class="service-title">Live Band Coordination</h4>
-                                <p class="service-mobile-desc d-md-none">Professional musical ensemble arrangements</p>
-                            </td>
-                            <td class="service-desc-cell d-none d-md-table-cell">
-                                <p>Professional live bands ranging from jazz ensembles to string quartets and modern cover bands.</p>
-                            </td>
-                            <td class="service-action-cell">
-                                <a href="/contact?service=liveband" class="table-action-btn" aria-label="Inquire about Live Bands">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="d-none d-sm-inline">Inquire</span>
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <!-- Service 5: Beverage Curation -->
-                        <tr class="animate-on-scroll" data-delay="200">
-                            <td class="service-icon-cell">
-                                <div class="service-icon-wrapper"><i class="fas fa-wine-glass-alt"></i></div>
-                            </td>
-                            <td class="service-name-cell">
-                                <h4 class="service-title">Beverage Curation</h4>
-                                <p class="service-mobile-desc d-md-none">Premium bar & signature cocktail design</p>
-                            </td>
-                            <td class="service-desc-cell d-none d-md-table-cell">
-                                <p>Custom bar services with signature cocktails, premium beverage selection, and professional bartending.</p>
-                            </td>
-                            <td class="service-action-cell">
-                                <a href="/contact?service=beverage" class="table-action-btn" aria-label="Inquire about Beverage Curation">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="d-none d-sm-inline">Inquire</span>
-                                </a>
-                            </td>
-                        </tr>
-                        
-                        <!-- Service 6: Honeymoon Planning -->
-                        <tr class="animate-on-scroll" data-delay="250">
-                            <td class="service-icon-cell">
-                                <div class="service-icon-wrapper"><i class="fas fa-heart"></i></div>
-                            </td>
-                            <td class="service-name-cell">
-                                <h4 class="service-title">Honeymoon Planning</h4>
-                                <p class="service-mobile-desc d-md-none">Luxury travel arrangements & romantic getaways</p>
-                            </td>
-                            <td class="service-desc-cell d-none d-md-table-cell">
-                                <p>Tailored honeymoon packages to exotic destinations with luxury accommodations and romantic experiences.</p>
-                            </td>
-                            <td class="service-action-cell">
-                                <a href="/contact?service=honeymoon" class="table-action-btn" aria-label="Inquire about Honeymoon Planning">
-                                    <i class="fas fa-envelope"></i>
-                                    <span class="d-none d-sm-inline">Inquire</span>
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="table-footer-note">
-                    <p class="text-center mb-0">
-                        <i class="fas fa-info-circle text-gold me-2"></i>
-                        All complementary services can be customized to match your wedding theme and requirements.
-                        <a href="/contact" class="text-gold fw-bold ms-2">Contact us for bespoke packages</a>
+            <div class="booking-hero-content">
+                <div class="container">
+                    <h1 class="booking-hero-title">Your Dream Wedding Starts Here</h1>
+                    <p class="booking-hero-text">
+                        Personalized planning, timeless elegance — we craft celebrations as unique as your love story.
                     </p>
                 </div>
             </div>
+            
+            <button class="booking-scroll-indicator" 
+                    id="bookingScrollBtn"
+                    aria-label="Scroll to consultation form"
+                    title="Scroll to form">
+                <span class="scroll-label" aria-hidden="true">Begin your story</span>
+                <span class="scroll-icon" aria-hidden="true">
+                    <i class="fas fa-chevron-down"></i>
+                </span>
+                <span class="scroll-glow" aria-hidden="true"></span>
+            </button>
+        </section>
+
+        <!-- Booking Form – NARROW WIDTH, STACKED ON MOBILE -->
+        <div class="booking-form-container" id="booking-form">
+            <div class="booking-form-card">
+                <div class="booking-form-header">
+                    <h2><i class="fas fa-heart me-2"></i> Wedding Planning Consultation</h2>
+                    <p class="mb-0">Tell us your vision — we’ll bring it to life</p>
+                </div>
+                <div class="booking-form-body">
+                    <div id="bookingSuccessAlert" class="booking-success-alert" role="alert" aria-hidden="true">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    
+                    <form id="weddingBookingForm" action="/booking/submit" method="POST" novalidate>
+                        <!-- COUPLE'S INFORMATION -->
+                        <div class="booking-details-box">
+                            <h5 class="booking-form-subtitle"><i class="fas fa-user-friends me-2"></i> Couple's Information</h5>
+                            <div class="booking-grid booking-grid-2">
+                                <div class="booking-mb-4">
+                                    <label for="brideFullName" class="booking-form-label">Bride's Full Name <span class="booking-form-required">*</span></label>
+                                    <input type="text" class="booking-form-input" id="brideFullName" name="brideName" placeholder="e.g. Marie Uwase" required autocomplete="name">
+                                    <div class="error-message" id="error-brideFullName"></div>
+                                </div>
+                                <div class="booking-mb-4">
+                                    <label for="groomFullName" class="booking-form-label">Groom's Full Name <span class="booking-form-required">*</span></label>
+                                    <input type="text" class="booking-form-input" id="groomFullName" name="groomName" placeholder="e.g. Jean Mugisha" required autocomplete="name">
+                                    <div class="error-message" id="error-groomFullName"></div>
+                                </div>
+                            </div>
+                            <div class="booking-grid booking-grid-2">
+                                <div class="booking-mb-4">
+                                    <label for="email" class="booking-form-label">Email Address <span class="booking-form-required">*</span></label>
+                                    <input type="email" class="booking-form-input" id="email" name="email" required placeholder="couple@example.com" autocomplete="email">
+                                    <div class="error-message" id="error-email"></div>
+                                </div>
+                                <div class="booking-mb-4">
+                                    <label for="phone" class="booking-form-label">Phone Number <span class="booking-form-required">*</span></label>
+                                    <input type="tel" class="booking-form-input" id="phone" name="phone" required placeholder="+250 785 300 707" autocomplete="tel">
+                                    <div class="error-message" id="error-phone"></div>
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <!-- WEDDING DETAILS – STACKED ON MOBILE -->
+                        <div class="booking-details-box">
+                            <h5 class="booking-form-subtitle"><i class="fas fa-calendar-heart me-2"></i> Wedding Details</h5>
+                            <div class="booking-grid booking-grid-2">
+                                <div class="booking-mb-4">
+                                    <label for="weddingDate" class="booking-form-label">Wedding Date <span class="booking-form-required">*</span></label>
+                                    <input type="date" class="booking-form-input" id="weddingDate" name="weddingDate" required>
+                                    <small style="color: #6c757d; display: block; margin-top: 6px;">At least 3 months ahead</small>
+                                    <div class="error-message" id="error-weddingDate"></div>
+                                </div>
+                                <div class="booking-mb-4">
+                                    <label for="guestsNumber" class="booking-form-label">Estimated Guests <span class="booking-form-required">*</span></label>
+                                    <input type="number" class="booking-form-input" id="guestsNumber" name="guestsNumber" required min="1" placeholder="150">
+                                    <div class="error-message" id="error-guestsNumber"></div>
+                                </div>
+                            </div>
+                            <div class="booking-grid booking-grid-2">
+                                <div class="booking-mb-4">
+                                    <label for="weddingType" class="booking-form-label">Wedding Style</label>
+                                    <select class="booking-form-select" id="weddingType" name="weddingType" required>
+                                        <option value="" disabled selected>Select style</option>
+                                        <option value="Gusaba no Gukwa">Gusaba no Gukwa</option>
+                                        <option value="Reception">Reception</option>
+                                        <option value="Modern">Modern</option>
+                                        <option value="Traditional">Traditional</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <div class="error-message" id="error-weddingType"></div>
+                                </div>
+                                <div class="booking-mb-4">
+                                    <label for="weddingLocation" class="booking-form-label">Venue / City (if known)</label>
+                                    <input type="text" class="booking-form-input" id="weddingLocation" name="weddingLocation" placeholder="e.g. Kigali Marriott">
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <!-- VISION -->
+                        <div class="booking-mb-5">
+                            <label for="weddingVision" class="booking-form-label">Share Your Wedding Vision</label>
+                            <textarea class="booking-form-input" id="weddingVision" name="weddingVision" rows="4" placeholder="Colors, theme, must-haves..."></textarea>
+                        </div>
+                      
+                        <button type="submit" class="booking-submit-btn" id="bookingSubmitBtn">
+                            <span class="booking-spinner" role="status" aria-hidden="true"></span>
+                            <span class="btn-text"><i class="fas fa-paper-plane"></i> Request Consultation</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
-    </section>
-    <!-- ========== END NEW SECTION: Complementary Services Table ========== -->
-    
-    <!-- Call to Action -->
-    <section class="footer-cta">
-        <div class="container">
-            <h3>Begin Your Journey</h3>
-            <p>Let us transform your wedding vision into an extraordinary reality. Schedule a consultation with our expert planners today.</p>
-            <a href="/contact" class="cta-button-gold">
-                <i class="fas fa-calendar-check"></i>
-                Book Exclusive Consultation
-            </a>
-        </div>
-    </section>
-    
+
+        <!-- Why Choose Us – STACKED ON MOBILE (no inline, ever) -->
+        <section class="booking-why-section">
+            <div class="container">
+                <div class="booking-section-title">
+                    <h2>Why Couples Choose Us</h2>
+                </div>
+                <div class="booking-grid booking-grid-3">
+                    <div class="booking-feature-box booking-text-center">
+                        <div class="booking-feature-icon"><i class="fas fa-gem"></i></div>
+                        <h4>Luxury Experience</h4>
+                        <p>Stress-free planning with obsessive attention to every detail.</p>
+                    </div>
+                    <div class="booking-feature-box booking-text-center">
+                        <div class="booking-feature-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                        <h4>Personalized Service</h4>
+                        <p>Your story, your style — no cookie-cutter weddings.</p>
+                    </div>
+                    <div class="booking-feature-box booking-text-center">
+                        <div class="booking-feature-icon"><i class="fas fa-network-wired"></i></div>
+                        <h4>Curated Vendors</h4>
+                        <p>Access to Rwanda’s finest photographers, venues & caterers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <%- include('../allpack/layout/footer') %>
     
-    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Enhanced JavaScript -->
+
     <script>
-        // Enhanced scroll animations
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 100;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    const delay = element.dataset.delay || 0;
-                    setTimeout(() => {
-                        element.classList.add('visible');
-                    }, delay);
-                }
+        (function() {
+            'use strict';
+
+            // Light Parallax
+            const bg = document.querySelector('.booking-hero-background');
+            if (bg) {
+                let ticking = false;
+                window.addEventListener('scroll', () => {
+                    if (!ticking) {
+                        window.requestAnimationFrame(() => {
+                            const scrolled = window.scrollY;
+                            bg.style.transform = `translateY(${scrolled * 0.12}px)`;
+                            ticking = false;
+                        });
+                        ticking = true;
+                    }
+                }, { passive: true });
+            }
+
+            // Form validation & submission
+            const form = document.getElementById('weddingBookingForm');
+            const successAlert = document.getElementById('bookingSuccessAlert');
+            const submitBtn = document.getElementById('bookingSubmitBtn');
+            const spinner = submitBtn.querySelector('.booking-spinner');
+            const btnText = submitBtn.querySelector('.btn-text');
+
+            const weddingDateInput = document.getElementById('weddingDate');
+            if (weddingDateInput) {
+                const today = new Date();
+                const threeMonthsLater = new Date(today.setMonth(today.getMonth() + 3));
+                const minDate = threeMonthsLater.toISOString().split('T')[0];
+                weddingDateInput.min = minDate;
+                weddingDateInput.value = '';
+            }
+
+            function showError(inputId, message) {
+                const input = document.getElementById(inputId);
+                const errorDiv = document.getElementById(`error-${inputId}`);
+                if (input) input.classList.add('error');
+                if (errorDiv) errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+            }
+
+            function clearError(inputId) {
+                const input = document.getElementById(inputId);
+                const errorDiv = document.getElementById(`error-${inputId}`);
+                if (input) input.classList.remove('error');
+                if (errorDiv) errorDiv.innerHTML = '';
+            }
+
+            const allInputs = form.querySelectorAll('.booking-form-input, .booking-form-select');
+            allInputs.forEach(input => {
+                input.addEventListener('input', function() { clearError(this.id); });
+                input.addEventListener('change', function() { clearError(this.id); });
             });
-        };
 
-        // Initialize on load
-        window.addEventListener('load', animateOnScroll);
-        window.addEventListener('scroll', animateOnScroll);
-
-        // Smooth scroll with enhanced animation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
+
+                document.querySelectorAll('.error-message').forEach(el => el.innerHTML = '');
+                document.querySelectorAll('.booking-form-input, .booking-form-select').forEach(el => el.classList.remove('error'));
+
+                const brideName = document.getElementById('brideFullName').value.trim();
+                const groomName = document.getElementById('groomFullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const weddingDate = document.getElementById('weddingDate').value;
+                const guests = document.getElementById('guestsNumber').value.trim();
+                const weddingType = document.getElementById('weddingType').value;
+                const location = document.getElementById('weddingLocation').value.trim();
+                const vision = document.getElementById('weddingVision').value.trim();
+
+                let isValid = true;
+
+                if (!brideName) { showError('brideFullName', 'Bride’s full name is required'); isValid = false; }
+                if (!groomName) { showError('groomFullName', 'Groom’s full name is required'); isValid = false; }
                 
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!email) { showError('email', 'Email address is required'); isValid = false; }
+                else if (!emailRegex.test(email)) { showError('email', 'Enter a valid email'); isValid = false; }
+
+                if (!phone) { showError('phone', 'Phone number is required'); isValid = false; }
+                else if (phone.replace(/\D/g, '').length < 10) { showError('phone', 'Enter a valid phone number (≥10 digits)'); isValid = false; }
+
+                if (!weddingDate) { showError('weddingDate', 'Please select your wedding date'); isValid = false; }
+                else {
+                    const selectedDate = new Date(weddingDate);
+                    const minDate = new Date();
+                    minDate.setMonth(minDate.getMonth() + 3);
+                    if (selectedDate < minDate) {
+                        showError('weddingDate', 'Date must be at least 3 months from today');
+                        isValid = false;
+                    }
+                }
+
+                if (!guests) { showError('guestsNumber', 'Estimated guests is required'); isValid = false; }
+                else if (parseInt(guests) < 1) { showError('guestsNumber', 'Must be at least 1 guest'); isValid = false; }
+
+                if (!weddingType) { showError('weddingType', 'Please select a wedding style'); isValid = false; }
+
+                if (!isValid) {
+                    const firstError = document.querySelector('.error');
+                    if (firstError) firstError.focus({ preventScroll: false });
+                    return;
+                }
+
+                spinner.style.display = 'inline-block';
+                btnText.style.opacity = '0.7';
+                submitBtn.disabled = true;
+
+                try {
+                    const formData = {
+                        brideName, groomName, email, phone, weddingDate,
+                        guestsNumber: guests, weddingType,
+                        weddingLocation: location, weddingVision: vision
+                    };
+
+                    const response = await fetch('/booking/submit', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
                     });
-                    
-                    // Add active class to navbar item (if your navbar supports it)
-                    document.querySelectorAll('nav a').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        form.style.display = 'none';
+                        successAlert.style.display = 'flex';
+                        successAlert.setAttribute('aria-hidden', 'false');
+                        successAlert.focus({ preventScroll: true });
+                        
+                        setTimeout(() => {
+                            form.reset();
+                            form.style.display = 'block';
+                            successAlert.style.display = 'none';
+                            successAlert.setAttribute('aria-hidden', 'true');
+                        }, 5000);
+                    } else {
+                        alert('Submission failed: ' + (result.message || 'Please try again.'));
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Network error. Please check your connection.');
+                } finally {
+                    spinner.style.display = 'none';
+                    btnText.style.opacity = '1';
+                    submitBtn.disabled = false;
                 }
             });
-        });
 
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.luxury-hero');
-            if(hero) {
-                hero.style.transform = `translateY(${scrolled * 0.05}px)`;
+            // ---------- FIXED SCROLL INDICATOR ----------
+            const scrollBtn = document.getElementById('bookingScrollBtn');
+            const heroSection = document.querySelector('.booking-hero-section');
+            
+            function toggleScrollIndicator() {
+                if (!heroSection || !scrollBtn) return;
+                const heroBottom = heroSection.getBoundingClientRect().bottom;
+                // Hide only when the hero section has completely left the viewport
+                scrollBtn.classList.toggle('hidden', heroBottom <= 0);
             }
-        });
 
-        // Floating elements animation
-        const floatingElements = document.querySelectorAll('.floating-element, .table-floating-element');
-        floatingElements.forEach((element, index) => {
-            element.style.animation = `float ${6 + index * 2}s ease-in-out infinite`;
-            element.style.animationDelay = `${index * 0.5}s`;
-        });
+            window.addEventListener('scroll', toggleScrollIndicator, { passive: true });
+            window.addEventListener('resize', toggleScrollIndicator);
+            // Call once after layout is ready – ensures correct initial state
+            requestAnimationFrame(toggleScrollIndicator);
 
-        // Card hover enhancement
-        document.querySelectorAll('.luxury-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.zIndex = '10';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.zIndex = '1';
-            });
-        });
-
-        // Table row hover enhancement
-        document.querySelectorAll('.luxury-services-table tbody tr').forEach(row => {
-            row.addEventListener('mouseenter', function() {
-                this.style.zIndex = '5';
-            });
-            
-            row.addEventListener('mouseleave', function() {
-                this.style.zIndex = '1';
-            });
-        });
-
-        // Lazy loading enhancement
-        const imageObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    const img = entry.target;
-                    if(img.dataset.src) {
-                        img.src = img.dataset.src;
-                    }
-                    observer.unobserve(img);
-                }
-            });
-        });
-
-        document.querySelectorAll('img[data-src]').forEach(img => {
-            imageObserver.observe(img);
-        });
-
-        // Make all cards equal height on load
-        function equalizeCardHeights() {
-            if (window.innerWidth >= 992) { // Only on desktop
-                const cards = document.querySelectorAll('.luxury-card');
-                let maxHeight = 0;
-                
-                // Reset heights first
-                cards.forEach(card => {
-                    card.style.height = 'auto';
-                });
-                
-                // Find max height
-                cards.forEach(card => {
-                    const cardHeight = card.offsetHeight;
-                    if (cardHeight > maxHeight) {
-                        maxHeight = cardHeight;
-                    }
-                });
-                
-                // Set all cards to max height
-                cards.forEach(card => {
-                    card.style.height = maxHeight + 'px';
+            if (scrollBtn) {
+                scrollBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const formSection = document.getElementById('booking-form');
+                    if (formSection) formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
             }
-        }
 
-        // Run on load and resize
-        window.addEventListener('load', equalizeCardHeights);
-        window.addEventListener('resize', equalizeCardHeights);
-
-        // Preload images for better UX
-        function preloadCardImages() {
-            const images = document.querySelectorAll('.card-image');
-            images.forEach(img => {
-                const tempImg = new Image();
-                tempImg.src = img.src;
+            document.querySelectorAll('a[href^="#"]').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (!targetId || targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
             });
-        }
-
-        // Preload images after page loads
-        window.addEventListener('load', preloadCardImages);
-
-        // Make entire card clickable on mobile (except the "Explore Service" button)
-        document.querySelectorAll('.luxury-card').forEach(card => {
-            const cardContent = card.querySelector('.card-content');
-            const cardImageLink = card.querySelector('.card-image-link');
-            const cardButton = card.querySelector('.card-link');
-            const cardTitleLink = card.querySelector('.card-content h4 a');
-            
-            // Prevent event bubbling for the button
-            if(cardButton) {
-                cardButton.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                });
-            }
-            
-            // Make card content clickable (except the button)
-            if(cardContent && window.innerWidth <= 768) {
-                cardContent.addEventListener('click', function(e) {
-                    // Don't trigger if clicking on the button
-                    if(!e.target.closest('.card-link')) {
-                        const link = cardImageLink ? cardImageLink.href : 
-                                   cardTitleLink ? cardTitleLink.href : null;
-                        if(link) {
-                            window.location.href = link;
-                        }
-                    }
-                });
-            }
-        });
+        })();
     </script>
 </body>
 </html>

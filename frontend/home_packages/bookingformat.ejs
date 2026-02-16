@@ -83,7 +83,12 @@
           <% } else { %>
             <% bookings.forEach(b => { %>
               <tr>
-                <td><%= b.firstname %> <%= b.lastname %></td>
+                <td>
+        <div class="fw-bold text-primary">
+        <%= b.brideName %> & <%= b.groomName %>
+      </div>
+      </td>
+
                 <td><div><%= b.email %></div><div class="text-muted small"><%= b.phone %></div></td>
                 <td><%= new Date(b.weddingDate).toDateString() %></td>
                 <td><%= b.guestsNumber %></td>
