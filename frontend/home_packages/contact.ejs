@@ -29,7 +29,7 @@
             line-height: 1.6;
         }
         
-        /* Contact Section - UPDATED FOR MOBILE */
+        /* Contact Section */
         .contact-section {
             padding: 100px 0 60px;
             min-height: auto;
@@ -138,10 +138,12 @@
             background: linear-gradient(135deg, var(--pink-primary), var(--pink-dark));
             border-radius: 20px;
             color: white;
-            height: 100%;
+            height: auto; /* Changed from 100% to auto */
+            min-height: auto; /* Added */
             animation: slideInRight 0.8s ease-out;
             box-shadow: 0 10px 25px rgba(233,30,99,0.3);
             margin-top: 0;
+            overflow-y: visible; /* Added */
         }
         
         .contact-info h4 {
@@ -187,6 +189,7 @@
         .social-links {
             margin-top: 25px;
             animation: fadeIn 1s ease-out 0.8s both;
+            margin-bottom: 0; /* Added */
         }
         
         .social-links a {
@@ -302,7 +305,7 @@
             100% { opacity: 1; transform: translateY(0); }
         }
         
-        /* MOBILE OPTIMIZATIONS - UPDATED */
+        /* MOBILE OPTIMIZATIONS */
         @media (max-width: 992px) {
             .contact-section {
                 padding: 90px 0 50px;
@@ -317,10 +320,7 @@
             .contact-info {
                 margin-top: 0;
                 padding: 25px;
-            }
-            
-            .row.justify-content-center.align-items-center {
-                align-items: stretch !important;
+                height: auto; /* Ensure auto height on mobile */
             }
         }
         
@@ -349,6 +349,10 @@
                 padding: 10px 20px;
                 font-size: 0.95rem;
             }
+            
+            .contact-info {
+                height: auto; /* Ensure auto height */
+            }
         }
         
         @media (max-width: 576px) {
@@ -365,6 +369,9 @@
             .contact-info {
                 padding: 20px;
                 border-radius: 15px;
+                height: auto; /* Critical - allows content to determine height */
+                margin-bottom: 0; /* Remove any bottom margin */
+                overflow: visible; /* Ensure nothing gets cut off */
             }
             
             .contact-card h2 {
@@ -406,10 +413,16 @@
                 margin-bottom: 15px;
             }
             
+            .social-links {
+                margin-top: 20px;
+                margin-bottom: 0;
+            }
+            
             .social-links a {
                 width: 35px;
                 height: 35px;
                 font-size: 0.85rem;
+                margin-bottom: 0; /* Ensure no bottom margin */
             }
             
             .error-message, .success-message {
@@ -429,6 +442,7 @@
             
             .contact-info {
                 padding: 18px;
+                height: auto; /* Keep auto height */
             }
             
             .contact-card h2 {
@@ -443,12 +457,21 @@
                 padding: 8px 12px;
                 font-size: 0.85rem;
             }
+            
+            .contact-info p {
+                margin-bottom: 12px; /* Slightly reduce spacing */
+            }
         }
         
         /* Extra small devices optimization */
         @media (max-width: 350px) {
+            .contact-section {
+                padding: 50px 0 15px;
+            }
+            
             .contact-card, .contact-info {
                 padding: 12px;
+                height: auto; /* Keep auto height */
             }
             
             .contact-card h2 {
@@ -463,6 +486,23 @@
                 width: 32px;
                 height: 32px;
                 margin-right: 6px;
+            }
+            
+            .contact-info p {
+                margin-bottom: 10px; /* Further reduce spacing */
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Ensure the row doesn't constrain height on mobile */
+        @media (max-width: 768px) {
+            .row.justify-content-center.align-items-center {
+                align-items: stretch !important;
+            }
+            
+            /* Make sure both columns can expand naturally */
+            .col-lg-6, .col-lg-5 {
+                height: auto;
             }
         }
     </style>

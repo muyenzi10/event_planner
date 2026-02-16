@@ -903,7 +903,7 @@
                                 <div class="booking-mb-4">
                                     <label for="weddingDate" class="booking-form-label">Wedding Date <span class="booking-form-required">*</span></label>
                                     <input type="date" class="booking-form-input" id="weddingDate" name="weddingDate" required>
-                                    <small style="color: #6c757d; display: block; margin-top: 6px;">At least 3 months ahead</small>
+                                    <small style="color: #6c757d; display: block; margin-top: 6px;">Please select your preferred wedding date</small>
                                     <div class="error-message" id="error-weddingDate"></div>
                                 </div>
                                 <div class="booking-mb-4">
@@ -934,7 +934,7 @@
                         <!-- VISION -->
                         <div class="booking-mb-5">
                             <label for="weddingVision" class="booking-form-label">Share Your Wedding Vision</label>
-                            <textarea class="booking-form-input" id="weddingVision" name="weddingVision" rows="4" placeholder="Colors, theme, must-haves..."></textarea>
+                            <textarea class="booking-form-input" id="weddingVision" name="weddingVision" rows="4"></textarea>
                         </div>
                       
                         <button type="submit" class="booking-submit-btn" id="bookingSubmitBtn">
@@ -1004,15 +1004,6 @@
             const spinner = submitBtn.querySelector('.booking-spinner');
             const btnText = submitBtn.querySelector('.btn-text');
 
-            const weddingDateInput = document.getElementById('weddingDate');
-            if (weddingDateInput) {
-                const today = new Date();
-                const threeMonthsLater = new Date(today.setMonth(today.getMonth() + 3));
-                const minDate = threeMonthsLater.toISOString().split('T')[0];
-                weddingDateInput.min = minDate;
-                weddingDateInput.value = '';
-            }
-
             function showError(inputId, message) {
                 const input = document.getElementById(inputId);
                 const errorDiv = document.getElementById(`error-${inputId}`);
@@ -1062,15 +1053,6 @@
                 else if (phone.replace(/\D/g, '').length < 10) { showError('phone', 'Enter a valid phone number (≥10 digits)'); isValid = false; }
 
                 if (!weddingDate) { showError('weddingDate', 'Please select your wedding date'); isValid = false; }
-                else {
-                    const selectedDate = new Date(weddingDate);
-                    const minDate = new Date();
-                    minDate.setMonth(minDate.getMonth() + 3);
-                    if (selectedDate < minDate) {
-                        showError('weddingDate', 'Date must be at least 3 months from today');
-                        isValid = false;
-                    }
-                }
 
                 if (!guests) { showError('guestsNumber', 'Estimated guests is required'); isValid = false; }
                 else if (parseInt(guests) < 1) { showError('guestsNumber', 'Must be at least 1 guest'); isValid = false; }

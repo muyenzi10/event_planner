@@ -2,1165 +2,453 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Dream Wedding · Consultation Booking</title>
-
-    <!-- Preload critical assets -->
-    <link rel="preload" href="/assethome/wedding-bg.webp" as="image" type="image/webp">
-    <link rel="preload" href="/assethome/wedding-bg.jpg" as="image" type="image/jpeg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Dream Wedding Planners | Our Story & Team</title>
+    
+    <!-- SEO Meta Tags - Unique to About page -->
+    <meta name="description" content="Meet the team behind Dream Wedding Planners. Learn our story, meet our expert wedding planners, and discover our philosophy of creating magical weddings through trusted partnerships.">
+    <meta name="keywords" content="wedding planners team, about wedding planning company, wedding experts, wedding planning philosophy">
     
     <!-- Bootstrap 5 & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Nav/Footer styles (existing paths) -->
-    <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
-    <link rel="stylesheet" href="/allpack/layout/css/footer.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* =========================================== */
-        /* DREAM WEDDING BOOKING – FULLY RESPONSIVE     */
-        /* WHY CHOOSE US – STACKED ON MOBILE (NO INLINE)*/
-        /* =========================================== */
-
-        :root {
-            --gold: #e6b0aa;
-            --gold-light: #f5d1cc;
-            --gold-dark: #c48a82;
-            --gold-glow: rgba(230, 176, 170, 0.4);
-            --dark-soft: #2c2c2c;
-            --cream-bg: #f8f4f0;
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Montserrat', sans-serif;
-            --shadow-sm: 0 10px 25px rgba(0,0,0,0.05);
-            --shadow-md: 0 15px 35px rgba(0,0,0,0.1);
-            --shadow-gold: 0 10px 25px var(--gold-glow);
-            --transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1);
-        }
-
-        .booking-page-content {
-            background-color: var(--cream-bg);
-            min-height: calc(100vh - 140px);
-        }
-
-        /* ---------- HERO – 60vh ---------- */
-        .booking-hero-section {
-            position: relative;
-            height: 60vh;
-            min-height: 500px;
-            overflow: hidden;
-            isolation: isolate;
-            background-color: var(--dark-soft);
-            z-index: 15;  /* ✅ above form container (z-index:10) */
-        }
-
-        .booking-hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('/assethome/wedding-bg.jpg');
+        .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
-            background-position: center 30%;
-            background-repeat: no-repeat;
-            z-index: 0;
-            will-change: transform;
-            transition: transform 0.1s linear;
-            animation: subtleZoom 8s ease-out forwards;
-        }
-
-        @supports (background-image: image-set(url('/assethome/wedding-bg.webp') 1x)) {
-            .booking-hero-background {
-                background-image: image-set(
-                    url('/assethome/wedding-bg.webp') type('image/webp') 1x,
-                    url('/assethome/wedding-bg.jpg') type('image/jpeg') 1x
-                );
-            }
-        }
-
-        @keyframes subtleZoom {
-            0% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .booking-hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 40%, 
-                        rgba(230, 176, 170, 0.2) 0%,
-                        rgba(0, 0, 0, 0.65) 90%);
-            z-index: 1;
-            animation: gentleShift 12s infinite alternate ease-in-out;
-        }
-
-        @keyframes gentleShift {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 10% 10%; }
-        }
-
-        .booking-hero-content {
-            position: relative;
-            z-index: 2;
+            background-position: center;
+            height: 70vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            height: 100%;
             color: white;
             text-align: center;
-            padding: 0 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
         }
-
-        @keyframes fadeUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .booking-hero-title {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 8vw, 5rem);
-            margin-bottom: 0.5rem;
-            color: white;
-            text-shadow: 0 4px 25px rgba(0,0,0,0.5);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUpItem 0.8s 0.2s forwards;
-        }
-
-        .booking-hero-text {
-            font-family: var(--font-sans);
-            font-size: clamp(1rem, 4vw, 1.5rem);
-            max-width: 800px;
-            margin: 1.5rem auto;
-            font-weight: 400;
-            letter-spacing: 0.3px;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.5);
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUpItem 0.8s 0.4s forwards;
-        }
-
-        @keyframes fadeUpItem {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ---------- SCROLL INDICATOR – ELEGANT & INTERACTIVE ---------- */
-        .booking-scroll-indicator {
-            --indicator-bg: rgba(255, 255, 255, 0.1);
-            --indicator-border: rgba(230, 176, 170, 0.6);
-            --indicator-hover-bg: rgba(230, 176, 170, 0.15);
-            --indicator-glow: 0 0 20px rgba(230, 176, 170, 0.5);
-
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 20;
-            
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 24px;
-            background: var(--indicator-bg);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1.5px solid var(--indicator-border);
-            border-radius: 60px;
-            color: white;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2), 0 0 0 0 rgba(230,176,170,0);
-            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-            cursor: pointer;
-            border: none;
-            outline: none;
-        }
-
-        .booking-scroll-indicator:hover,
-        .booking-scroll-indicator:focus-visible {
-            background: var(--indicator-hover-bg);
-            border-color: var(--gold);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.3), var(--indicator-glow);
-            padding: 12px 32px;
-        }
-
-        .booking-scroll-indicator:focus-visible {
-            outline: 3px solid white;
-            outline-offset: 3px;
-        }
-
-        .scroll-label {
-            transform: translateX(0);
-            transition: transform 0.3s ease, opacity 0.3s;
-            opacity: 0.9;
-        }
-
-        .booking-scroll-indicator:hover .scroll-label,
-        .booking-scroll-indicator:focus-visible .scroll-label {
-            transform: translateX(-5px);
-            opacity: 1;
-        }
-
-        .scroll-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            background: var(--gold);
-            border-radius: 50%;
-            color: #2c2c2c;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            animation: gentleBounce 2s infinite ease-in-out;
-        }
-
-        .booking-scroll-indicator:hover .scroll-icon,
-        .booking-scroll-indicator:focus-visible .scroll-icon {
-            animation: none;
-            transform: scale(1.15);
-            background: white;
-        }
-
-        @keyframes gentleBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(6px); }
-        }
-
-        .scroll-glow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(230,176,170,0.3) 0%, transparent 80%);
-            border-radius: 60px;
-            opacity: 0;
-            transition: opacity 0.4s;
-            pointer-events: none;
-            top: 0;
-            left: 0;
-        }
-
-        .booking-scroll-indicator:hover .scroll-glow,
-        .booking-scroll-indicator:focus-visible .scroll-glow {
-            opacity: 1;
-        }
-
-        .booking-scroll-indicator.hidden {
-            opacity: 0;
-            pointer-events: none;
-            transform: translateX(-50%) translateY(20px);
-            transition: opacity 0.4s, transform 0.4s;
-        }
-
-        /* ---------- CTA BUTTON ---------- */
-        .booking-submit-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 16px 40px;
-            background: linear-gradient(145deg, var(--gold), var(--gold-dark));
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            color: white;
-            box-shadow: var(--shadow-gold);
-            transition: var(--transition);
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #333;
             position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .booking-submit-btn i {
-            transition: transform 0.2s;
-        }
-
-        .booking-submit-btn:hover i {
-            transform: translateX(6px) scale(1.1);
-        }
-
-        .booking-submit-btn:hover {
-            background: linear-gradient(145deg, var(--gold-dark), #a8716a);
-            transform: translateY(-3px);
-            box-shadow: 0 18px 35px rgba(230, 176, 170, 0.6);
-        }
-
-        .booking-submit-btn:active {
-            transform: translateY(0);
-        }
-
-        .booking-submit-btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(0.5);
-            transition: opacity 0.4s, transform 0.4s;
-        }
-
-        .booking-submit-btn:focus-visible::after {
-            opacity: 0.3;
-            transform: translate(-50%, -50%) scale(1);
-        }
-
-        /* ---------- DECORATIVE HEARTS ---------- */
-        .booking-heart-float {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.2);
-            font-size: 2.5rem;
-            z-index: 2;
-            pointer-events: none;
-            animation: float 12s infinite ease-in-out;
-            text-shadow: 0 2px 15px rgba(0,0,0,0.3);
-            will-change: transform;
-        }
-
-        .heart-1 { bottom: 15%; left: 5%; animation-delay: 0s; }
-        .heart-2 { top: 20%; right: 8%; animation-delay: 2.5s; font-size: 3rem; }
-        .heart-3 { bottom: 25%; right: 20%; animation-delay: 5s; }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-25px) rotate(5deg); }
-        }
-
-        /* ---------- FORM CARD – NARROWER, BLUSH ROSE ---------- */
-        .booking-form-container {
-            max-width: 900px;
-            margin: -70px auto 50px;   /* default (mobile first) – will be overridden on large screens */
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
-        }
-
-        /* ✅ Desktop: form sits below the hero, not overlapping the scroll button */
-        @media (min-width: 992px) {
-            .booking-form-container {
-                margin-top: 30px;   /* positive margin – form starts after hero */
-            }
-        }
-
-        .booking-form-card {
-            border-radius: 24px;
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-            background: white;
-            border: 1px solid rgba(230, 176, 170, 0.15);
-            transition: transform 0.4s ease, box-shadow 0.4s;
-            backdrop-filter: blur(4px);
-        }
-
-        @media (hover: hover) {
-            .booking-form-card:hover {
-                transform: translateY(-6px);
-                box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
-                border-color: rgba(230, 176, 170, 0.4);
-            }
-        }
-
-        .booking-form-header {
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            color: white;
-            padding: 32px 30px;
-            text-align: center;
-        }
-
-        .booking-form-header h2 {
-            font-family: var(--font-serif);
-            font-size: 2.3rem;
-            margin-bottom: 10px;
-            color: white;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .booking-form-body {
-            padding: 45px 40px;
-        }
-
-        /* ----- FORM FIELDS ----- */
-        .booking-details-box {
-            background-color: rgba(230, 176, 170, 0.04);
-            padding: 28px 25px;
-            border-radius: 18px;
-            margin-bottom: 30px;
-            border-left: 5px solid var(--gold);
-            transition: transform 0.2s, background 0.2s;
-        }
-
-        .booking-details-box:focus-within {
-            background-color: rgba(230, 176, 170, 0.08);
-            border-left-width: 6px;
-        }
-
-        .booking-form-subtitle {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            color: var(--gold-dark);
-            margin-bottom: 25px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid rgba(230, 176, 170, 0.3);
-            display: flex;
-            align-items: center;
-        }
-
-        .booking-form-label {
-            font-family: var(--font-sans);
-            font-weight: 600;
-            color: #2e2e2e;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            font-size: 0.95rem;
-        }
-
-        .booking-form-required {
-            color: var(--gold-dark);
-            margin-left: 5px;
-            font-size: 1.1em;
-        }
-
-        .booking-form-input,
-        .booking-form-select {
-            font-family: var(--font-sans);
-            padding: 14px 18px;
-            border-radius: 12px;
-            border: 1.5px solid #e0d6cc;
-            transition: var(--transition);
-            background-color: #fffcf8;
-            width: 100%;
-            font-size: 1rem;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
-        }
-
-        .booking-form-input:focus,
-        .booking-form-select:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(230, 176, 170, 0.2);
-            outline: none;
-            background-color: white;
-        }
-
-        .booking-form-input.error,
-        .booking-form-select.error {
-            border-color: #dc3545;
-            background-color: #fff8f8;
-            padding-right: 45px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='%23dc3545'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-        }
-
-        .error-message {
-            color: #dc3545;
-            font-size: 0.8rem;
-            margin-top: 6px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-weight: 500;
-        }
-
-        .booking-success-alert {
-            display: none;
-            background: linear-gradient(to right, #eaf7e9, #dff0d8);
-            border-left: 6px solid #28a745;
-            padding: 24px 28px;
-            margin-bottom: 30px;
-            border-radius: 16px;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-            box-shadow: var(--shadow-sm);
-            animation: slideIn 0.4s;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-15px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        .booking-success-alert i {
-            color: #28a745;
-            font-size: 2rem;
-        }
-
-        .booking-spinner {
-            display: none;
-            width: 1.2rem;
-            height: 1.2rem;
-            border: 0.2em solid white;
-            border-right-color: transparent;
-            border-radius: 50%;
-            animation: booking-spin 0.65s linear infinite;
-            margin-right: 8px;
-        }
-
-        @keyframes booking-spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .booking-submit-btn .btn-text {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* ---------- CUSTOM GRID – DESKTOP DEFAULTS ---------- */
-        .booking-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-        .booking-grid-2 {
-            grid-template-columns: repeat(2, 1fr);
-        }
-        .booking-grid-3 {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;          /* desktop gap – matches original inline value */
-        }
-        .booking-flex-center {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .booking-text-center {
-            text-align: center;
-        }
-        .booking-mb-4 {
-            margin-bottom: 1.5rem;
-        }
-        .booking-mb-5 {
             margin-bottom: 2rem;
         }
-
-        /* ---------- WHY CHOOSE US – DESKTOP ---------- */
-        .booking-why-section {
-            background: var(--cream-bg);
-            padding: 80px 0;
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #d4af37;
         }
-        .booking-section-title {
+        
+        .section-title.text-start:after {
+            left: 0;
+            transform: none;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+            border-left: 2px solid #d4af37;
+        }
+        
+        .timeline-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .team-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+        
+        .team-info {
+            padding: 1.5rem;
             text-align: center;
         }
-        .booking-section-title h2 {
-            font-family: var(--font-serif);
-            font-size: 2.8rem;
-            color: #2c2c2c;
+        
+        .team-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
         }
-        .booking-section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: var(--gold);
-            margin: 20px auto;
-            border-radius: 2px;
+        
+        .team-role {
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
-        .booking-feature-box {
-            padding: 30px;
-            border-radius: 20px;
-            background: white;
+        
+        .team-bio {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .team-social {
+            margin-top: 1rem;
+        }
+        
+        .team-social a {
+            color: #999;
+            margin: 0 8px;
+            transition: color 0.3s ease;
+        }
+        
+        .team-social a:hover {
+            color: #d4af37;
+        }
+        
+        .philosophy-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
             height: 100%;
-            transition: var(--transition);
-            border: 1px solid rgba(230,176,170,0.15);
-            box-shadow: var(--shadow-sm);
+            border-bottom: 3px solid #d4af37;
+            transition: transform 0.3s ease;
         }
-        .booking-feature-box:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--gold-light);
+        
+        .philosophy-card:hover {
+            transform: translateY(-5px);
         }
-        .booking-feature-icon {
-            font-size: 2.8rem;
-            color: var(--gold);
-            margin-bottom: 20px;
-            transition: transform 0.2s;
+        
+        .philosophy-icon {
+            font-size: 2.5rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
         }
-        .booking-feature-box:hover .booking-feature-icon {
-            transform: scale(1.15);
+        
+        .partner-badge {
+            background: white;
+            border-radius: 50px;
+            padding: 0.8rem 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
         }
-
-        /* ---------- RESPONSIVE – PERFECT MOBILE STACK ---------- */
-        @media (max-width: 992px) {
-            .booking-hero-title { font-size: 3.2rem; }
-            .booking-hero-text { font-size: 1.2rem; }
-            .booking-form-container {
-                max-width: 800px;
-                margin-top: -50px;   /* slight overlap on tablet */
-            }
+        
+        .partner-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+            border-color: #d4af37;
         }
-
-        @media (max-width: 768px) {
-            .booking-hero-section {
-                height: 50vh;
-                min-height: 450px;
-            }
-            .booking-hero-background {
-                background-position: 65% center;
-            }
-            .booking-form-container {
-                max-width: 95%;
-                margin-top: -30px;
-            }
-            .booking-form-body {
-                padding: 30px 25px;
-            }
-            .booking-heart-float { display: none; }
-            .booking-form-header h2 { font-size: 2rem; }
-            
-            .booking-grid-2 {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .booking-grid-3 {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .booking-scroll-indicator {
-                padding: 10px 20px;
-                font-size: 0.8rem;
-            }
-            .scroll-label {
-                display: none;
-            }
-            .booking-scroll-indicator:hover,
-            .booking-scroll-indicator:focus-visible {
-                padding: 10px 20px;
-            }
-
-            /* ---------- MAKE WHY CHOOSE US LOOK LIKE HOW-IT-WORKS ON MOBILE ---------- */
-            .booking-why-section {
-                background: linear-gradient(135deg, #0a0a0a 0%, #050505 100%);
-                padding: 60px 0;
-            }
-            .booking-section-title {
-                text-align: center;
-            }
-            .booking-section-title h2 {
-                color: white;
-                font-size: 2.2rem;
-                text-align: center;
-            }
-            .booking-section-title::after {
-                display: block;
-                content: '';
-                width: 80px;
-                height: 3px;
-                background: linear-gradient(to right, var(--gold), var(--gold-dark), var(--gold));
-                margin: 20px auto;
-                border-radius: 2px;
-            }
-            .booking-grid-3 {
-                counter-reset: step-counter;
-                gap: 1.5rem;
-            }
-            .booking-feature-box {
-                background: rgba(255, 255, 255, 0.05);
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(230, 176, 170, 0.1);
-                border-radius: 20px;
-                padding: 2rem;
-                color: white;
-                position: relative;
-                text-align: center;
-                max-width: 90%;
-                margin-left: auto;
-                margin-right: auto;
-                height: auto;
-                box-shadow: none;
-                transform: none;
-                transition: all 0.3s ease;
-                counter-increment: step-counter;
-                border-left: none;
-            }
-            .booking-feature-box:hover {
-                transform: translateY(-5px);
-                border-color: rgba(230, 176, 170, 0.3);
-                box-shadow: 0 15px 30px rgba(230, 176, 170, 0.1);
-                background: rgba(255, 255, 255, 0.08);
-            }
-            .booking-feature-box::before {
-                content: counter(step-counter);
-                width: 60px;
-                height: 60px;
-                background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-                color: #2c2c2c;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.5rem;
-                font-weight: bold;
-                margin: 0 auto 1.5rem;
-                position: relative;
-                top: 0;
-                left: 0;
-            }
-            .booking-feature-icon {
-                font-size: 2.5rem;
-                color: var(--gold);
-                margin-bottom: 1rem;
-                margin-top: 0;
-                transition: transform 0.3s ease;
-            }
-            .booking-feature-box:hover .booking-feature-icon {
-                transform: scale(1.1);
-            }
-            .booking-feature-box h4 {
-                color: white;
-                font-family: var(--font-serif);
-                font-size: 1.5rem;
-                margin-bottom: 1rem;
-            }
-            .booking-feature-box p {
-                color: #ddd;
-                line-height: 1.6;
-                font-size: 0.95rem;
-            }
+        
+        .milestone-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #d4af37;
+            line-height: 1;
         }
-
-        @media (max-width: 576px) {
-            .booking-hero-section {
-                height: 40vh;
-                min-height: 400px;
-            }
-            .booking-hero-title {
-                font-size: 2rem;
-            }
-            .booking-hero-content .booking-submit-btn {
-                padding: 14px 28px;
-                font-size: 1rem;
-            }
-            .booking-form-container {
-                margin-top: -20px;
-            }
-            .booking-form-header {
-                padding: 25px 20px;
-            }
-            .booking-form-header h2 {
-                font-size: 1.8rem;
-            }
-            .booking-form-body {
-                padding: 25px 20px;
-            }
-            .booking-details-box {
-                padding: 20px 18px;
-            }
-            .booking-form-subtitle {
-                font-size: 1.2rem;
-                margin-bottom: 20px;
-            }
-            
-            .booking-grid-2 {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .booking-grid-3 {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            .booking-feature-box {
-                padding: 1.5rem;
-                max-width: 90%;
-            }
-            .booking-feature-box::before {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-            .booking-feature-icon {
-                font-size: 2.2rem;
-            }
-            .booking-feature-box h4 {
-                font-size: 1.3rem;
-            }
-            .booking-why-section {
-                padding: 50px 0;
-            }
-            .booking-section-title h2 {
-                font-size: 1.8rem;
-                text-align: center;
-            }
+        
+        .bg-soft-gold {
+            background: linear-gradient(135deg, #fdf9f0 0%, #fff 100%);
         }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-            .booking-hero-background { transform: scale(1) !important; }
-            .scroll-icon { animation: none; }
-            .booking-scroll-indicator { transition: none; }
+        
+        .btn-gold {
+            background: #d4af37;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-gold:hover {
+            background: #c4a027;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-outline-gold {
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: transparent;
+        }
+        
+        .btn-outline-gold:hover {
+            background: #d4af37;
+            color: white;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            height: 100%;
+            border: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-color: #d4af37;
+        }
+        
+        .testimonial-card i.fa-quote-left {
+            font-size: 2rem;
+            opacity: 0.3;
+            color: #d4af37;
+        }
+        
+        .stats-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #d4af37;
+            line-height: 1.2;
+        }
+        
+        .stats-label {
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
     </style>
+    
+    <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
+    <link rel="stylesheet" href="/allpack/layout/css/footer.css">
 </head>
 <body>
     <%- include('../allpack/layout/navbar') %>
     
-    <div class="booking-page-content">
-        <!-- ============= HERO – 60vh ============= -->
-        <section class="booking-hero-section" aria-label="Elegant wedding hero with booking call to action">
-            <div class="booking-hero-background" aria-hidden="true"></div>
-            <div class="booking-hero-overlay" aria-hidden="true"></div>
-            
-            <div class="booking-heart-float heart-1" aria-hidden="true"><i class="fas fa-heart"></i></div>
-            <div class="booking-heart-float heart-2" aria-hidden="true"><i class="fas fa-heart"></i></div>
-            <div class="booking-heart-float heart-3" aria-hidden="true"><i class="fas fa-heart"></i></div>
-            
-            <div class="booking-hero-content">
-                <div class="container">
-                    <h1 class="booking-hero-title">Your Dream Wedding Starts Here</h1>
-                    <p class="booking-hero-text">
-                        Personalized planning, timeless elegance — we craft celebrations as unique as your love story.
-                    </p>
-                </div>
-            </div>
-            
-            <button class="booking-scroll-indicator" 
-                    id="bookingScrollBtn"
-                    aria-label="Scroll to consultation form"
-                    title="Scroll to form">
-                <span class="scroll-label" aria-hidden="true">Begin your story</span>
-                <span class="scroll-icon" aria-hidden="true">
-                    <i class="fas fa-chevron-down"></i>
-                </span>
-                <span class="scroll-glow" aria-hidden="true"></span>
-            </button>
-        </section>
+    <!-- Hero Section - Focus on Team & Story -->
+    <section class="about-hero">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">We're The Faces Behind<br>Your Dream Wedding</h1>
+            <p class="lead mb-4 mx-auto" style="max-width: 800px;">A dedicated team of wedding experts who believe that every love story deserves to be celebrated beautifully</p>
+        </div>
+    </section>
 
-        <!-- Booking Form – NARROW WIDTH, STACKED ON MOBILE -->
-        <div class="booking-form-container" id="booking-form">
-            <div class="booking-form-card">
-                <div class="booking-form-header">
-                    <h2><i class="fas fa-heart me-2"></i> Wedding Planning Consultation</h2>
-                    <p class="mb-0">Tell us your vision — we’ll bring it to life</p>
-                </div>
-                <div class="booking-form-body">
-                    <div id="bookingSuccessAlert" class="booking-success-alert" role="alert" aria-hidden="true">
-                        <i class="fas fa-check-circle"></i>
+    
+
+    <!-- Our Philosophy - Core Values -->
+    <section class="py-5 bg-soft-gold">
+        <div class="container py-4">
+            <h2 class="section-title text-center">What Guides Us</h2>
+            <p class="text-center text-muted mb-5">Four pillars that shape every wedding we create</p>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="philosophy-card">
+                        <div class="philosophy-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h4>Authenticity</h4>
+                        <p class="text-muted mb-0">We honor your unique story. No cookie-cutter weddings - every detail reflects who you are as a couple.</p>
                     </div>
-                    
-                    <form id="weddingBookingForm" action="/booking/submit" method="POST" novalidate>
-                        <!-- COUPLE'S INFORMATION -->
-                        <div class="booking-details-box">
-                            <h5 class="booking-form-subtitle"><i class="fas fa-user-friends me-2"></i> Couple's Information</h5>
-                            <div class="booking-grid booking-grid-2">
-                                <div class="booking-mb-4">
-                                    <label for="brideFullName" class="booking-form-label">Bride's Full Name <span class="booking-form-required">*</span></label>
-                                    <input type="text" class="booking-form-input" id="brideFullName" name="brideName" placeholder="e.g. Marie Uwase" required autocomplete="name">
-                                    <div class="error-message" id="error-brideFullName"></div>
-                                </div>
-                                <div class="booking-mb-4">
-                                    <label for="groomFullName" class="booking-form-label">Groom's Full Name <span class="booking-form-required">*</span></label>
-                                    <input type="text" class="booking-form-input" id="groomFullName" name="groomName" placeholder="e.g. Jean Mugisha" required autocomplete="name">
-                                    <div class="error-message" id="error-groomFullName"></div>
-                                </div>
-                            </div>
-                            <div class="booking-grid booking-grid-2">
-                                <div class="booking-mb-4">
-                                    <label for="email" class="booking-form-label">Email Address <span class="booking-form-required">*</span></label>
-                                    <input type="email" class="booking-form-input" id="email" name="email" required placeholder="couple@example.com" autocomplete="email">
-                                    <div class="error-message" id="error-email"></div>
-                                </div>
-                                <div class="booking-mb-4">
-                                    <label for="phone" class="booking-form-label">Phone Number <span class="booking-form-required">*</span></label>
-                                    <input type="tel" class="booking-form-input" id="phone" name="phone" required placeholder="+250 785 300 707" autocomplete="tel">
-                                    <div class="error-message" id="error-phone"></div>
-                                </div>
-                            </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="philosophy-card">
+                        <div class="philosophy-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
                         </div>
-                      
-                        <!-- WEDDING DETAILS – STACKED ON MOBILE -->
-                        <div class="booking-details-box">
-                            <h5 class="booking-form-subtitle"><i class="fas fa-calendar-heart me-2"></i> Wedding Details</h5>
-                            <div class="booking-grid booking-grid-2">
-                                <div class="booking-mb-4">
-                                    <label for="weddingDate" class="booking-form-label">Wedding Date <span class="booking-form-required">*</span></label>
-                                    <input type="date" class="booking-form-input" id="weddingDate" name="weddingDate" required>
-                                    <small style="color: #6c757d; display: block; margin-top: 6px;">At least 3 months ahead</small>
-                                    <div class="error-message" id="error-weddingDate"></div>
-                                </div>
-                                <div class="booking-mb-4">
-                                    <label for="guestsNumber" class="booking-form-label">Estimated Guests <span class="booking-form-required">*</span></label>
-                                    <input type="number" class="booking-form-input" id="guestsNumber" name="guestsNumber" required min="1" placeholder="150">
-                                    <div class="error-message" id="error-guestsNumber"></div>
-                                </div>
-                            </div>
-                            <div class="booking-grid booking-grid-2">
-                                <div class="booking-mb-4">
-                                    <label for="weddingType" class="booking-form-label">Wedding Style</label>
-                                    <select class="booking-form-select" id="weddingType" name="weddingType" required>
-                                        <option value="" disabled selected>Select style</option>
-                                        <option value="Gusaba no Gukwa">Gusaba no Gukwa</option>
-                                        <option value="Reception">Reception</option>
-                                        <option value="Modern">Modern</option>
-                                        <option value="Traditional">Traditional</option>
-                                        <option value="Other">Other</option>
-                                    </select>
-                                    <div class="error-message" id="error-weddingType"></div>
-                                </div>
-                                <div class="booking-mb-4">
-                                    <label for="weddingLocation" class="booking-form-label">Venue / City (if known)</label>
-                                    <input type="text" class="booking-form-input" id="weddingLocation" name="weddingLocation" placeholder="e.g. Kigali Marriott">
-                                </div>
-                            </div>
+                        <h4>Integrity</h4>
+                        <p class="text-muted mb-0">Transparent communication, honest advice, and partnerships built on trust with both couples and vendors.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="philosophy-card">
+                        <div class="philosophy-icon">
+                            <i class="fas fa-star"></i>
                         </div>
-                      
-                        <!-- VISION -->
-                        <div class="booking-mb-5">
-                            <label for="weddingVision" class="booking-form-label">Share Your Wedding Vision</label>
-                            <textarea class="booking-form-input" id="weddingVision" name="weddingVision" rows="4" placeholder="Colors, theme, must-haves..."></textarea>
+                        <h4>Excellence</h4>
+                        <p class="text-muted mb-0">We never settle for "good enough." Every element, from flowers to timeline, is meticulously crafted.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="philosophy-card">
+                        <div class="philosophy-icon">
+                            <i class="fas fa-users"></i>
                         </div>
-                      
-                        <button type="submit" class="booking-submit-btn" id="bookingSubmitBtn">
-                            <span class="booking-spinner" role="status" aria-hidden="true"></span>
-                            <span class="btn-text"><i class="fas fa-paper-plane"></i> Request Consultation</span>
-                        </button>
-                    </form>
+                        <h4>Connection</h4>
+                        <p class="text-muted mb-0">We believe in the power of relationships - with our couples, our team, and our trusted vendor partners.</p>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Why Choose Us – STACKED ON MOBILE (no inline, ever) -->
-        <section class="booking-why-section">
-            <div class="container">
-                <div class="booking-section-title">
-                    <h2>Why Couples Choose Us</h2>
+    <!-- Our Approach - The Dream Method -->
+    <section class="py-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">The Dream Method™</h2>
+                    <p class="lead mb-5">Our signature approach that combines creative vision with flawless execution</p>
                 </div>
-                <div class="booking-grid booking-grid-3">
-                    <div class="booking-feature-box booking-text-center">
-                        <div class="booking-feature-icon"><i class="fas fa-gem"></i></div>
-                        <h4>Luxury Experience</h4>
-                        <p>Stress-free planning with obsessive attention to every detail.</p>
+            </div>
+            
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80" alt="Wedding planning consultation" class="img-fluid rounded-4 shadow">
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="milestone-number">01</div>
+                        </div>
+                        <div>
+                            <h4>Listen & Understand</h4>
+                            <p class="text-muted">We start by deeply understanding your vision, style, and priorities through in-depth conversations and personality assessments.</p>
+                        </div>
                     </div>
-                    <div class="booking-feature-box booking-text-center">
-                        <div class="booking-feature-icon"><i class="fas fa-hand-holding-heart"></i></div>
-                        <h4>Personalized Service</h4>
-                        <p>Your story, your style — no cookie-cutter weddings.</p>
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="milestone-number">02</div>
+                        </div>
+                        <div>
+                            <h4>Design & Curate</h4>
+                            <p class="text-muted">We create a personalized roadmap, mood boards, and hand-select vendors that align perfectly with your vision and budget.</p>
+                        </div>
                     </div>
-                    <div class="booking-feature-box booking-text-center">
-                        <div class="booking-feature-icon"><i class="fas fa-network-wired"></i></div>
-                        <h4>Curated Vendors</h4>
-                        <p>Access to Rwanda’s finest photographers, venues & caterers.</p>
+                    <div class="d-flex mb-4">
+                        <div class="me-4">
+                            <div class="milestone-number">03</div>
+                        </div>
+                        <div>
+                            <h4>Execute Flawlessly</h4>
+                            <p class="text-muted">With meticulous planning and coordination, we bring your dream to life while you enjoy every moment stress-free.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+    <!-- Why Choose Us -->
+    <section class="py-5">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="section-title text-start">What Sets Us Apart</h2>
+                    <div class="d-flex mb-4">
+                        <div class="me-3">
+                            <i class="fas fa-check-circle" style="color: #d4af37; font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h5>We're with you from start to finish</h5>
+                            <p class="text-muted">Not just day-of coordination. We're your partner through every step of the journey, from first consultation to the last dance.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="me-3">
+                            <i class="fas fa-check-circle" style="color: #d4af37; font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h5>Deep vendor relationships</h5>
+                            <p class="text-muted">Our partnerships go beyond business - we know their work, their style, and their reliability firsthand. This means better prices and priority treatment for you.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4">
+                        <div class="me-3">
+                            <i class="fas fa-check-circle" style="color: #d4af37; font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h5>Creative + practical</h5>
+                            <p class="text-muted">We dream big while keeping your budget and timeline realistic. The perfect balance of vision and execution, with no surprises.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="me-3">
+                            <i class="fas fa-check-circle" style="color: #d4af37; font-size: 1.5rem;"></i>
+                        </div>
+                        <div>
+                            <h5>One team, one vision</h5>
+                            <p class="text-muted">Unlike agencies that outsource, our core team handles every aspect of your wedding. Consistent communication, consistent quality.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Happy couple with planner" class="img-fluid rounded-4 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- CTA - Meet the Team -->
+    <section class="py-5 text-white" style="background: linear-gradient(135deg, #2c2c2c, #4a4a4a);">
+        <div class="container py-4 text-center">
+            <h2 class="display-5 fw-bold mb-4" style="font-family: 'Playfair Display', serif;">Let's Create Something Beautiful Together</h2>
+            <p class="lead mb-4">We'd love to hear your story and explore how we can bring your vision to life. Schedule a complimentary consultation with our team.</p>
+            <a href="#" class="btn btn-gold btn-lg me-3">Meet With Our Team</a>
+            <a href="#" class="btn btn-outline-light btn-lg">View Our Portfolio</a>
+        </div>
+    </section>
+    
     <%- include('../allpack/layout/footer') %>
     
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    
     <script>
-        (function() {
-            'use strict';
-
-            // Light Parallax
-            const bg = document.querySelector('.booking-hero-background');
-            if (bg) {
-                let ticking = false;
-                window.addEventListener('scroll', () => {
-                    if (!ticking) {
-                        window.requestAnimationFrame(() => {
-                            const scrolled = window.scrollY;
-                            bg.style.transform = `translateY(${scrolled * 0.12}px)`;
-                            ticking = false;
-                        });
-                        ticking = true;
+        // Simple animations for About page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
                     }
-                }, { passive: true });
-            }
-
-            // Form validation & submission
-            const form = document.getElementById('weddingBookingForm');
-            const successAlert = document.getElementById('bookingSuccessAlert');
-            const submitBtn = document.getElementById('bookingSubmitBtn');
-            const spinner = submitBtn.querySelector('.booking-spinner');
-            const btnText = submitBtn.querySelector('.btn-text');
-
-            const weddingDateInput = document.getElementById('weddingDate');
-            if (weddingDateInput) {
-                const today = new Date();
-                const threeMonthsLater = new Date(today.setMonth(today.getMonth() + 3));
-                const minDate = threeMonthsLater.toISOString().split('T')[0];
-                weddingDateInput.min = minDate;
-                weddingDateInput.value = '';
-            }
-
-            function showError(inputId, message) {
-                const input = document.getElementById(inputId);
-                const errorDiv = document.getElementById(`error-${inputId}`);
-                if (input) input.classList.add('error');
-                if (errorDiv) errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
-            }
-
-            function clearError(inputId) {
-                const input = document.getElementById(inputId);
-                const errorDiv = document.getElementById(`error-${inputId}`);
-                if (input) input.classList.remove('error');
-                if (errorDiv) errorDiv.innerHTML = '';
-            }
-
-            const allInputs = form.querySelectorAll('.booking-form-input, .booking-form-select');
-            allInputs.forEach(input => {
-                input.addEventListener('input', function() { clearError(this.id); });
-                input.addEventListener('change', function() { clearError(this.id); });
+                });
             });
-
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
-
-                document.querySelectorAll('.error-message').forEach(el => el.innerHTML = '');
-                document.querySelectorAll('.booking-form-input, .booking-form-select').forEach(el => el.classList.remove('error'));
-
-                const brideName = document.getElementById('brideFullName').value.trim();
-                const groomName = document.getElementById('groomFullName').value.trim();
-                const email = document.getElementById('email').value.trim();
-                const phone = document.getElementById('phone').value.trim();
-                const weddingDate = document.getElementById('weddingDate').value;
-                const guests = document.getElementById('guestsNumber').value.trim();
-                const weddingType = document.getElementById('weddingType').value;
-                const location = document.getElementById('weddingLocation').value.trim();
-                const vision = document.getElementById('weddingVision').value.trim();
-
-                let isValid = true;
-
-                if (!brideName) { showError('brideFullName', 'Bride’s full name is required'); isValid = false; }
-                if (!groomName) { showError('groomFullName', 'Groom’s full name is required'); isValid = false; }
-                
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!email) { showError('email', 'Email address is required'); isValid = false; }
-                else if (!emailRegex.test(email)) { showError('email', 'Enter a valid email'); isValid = false; }
-
-                if (!phone) { showError('phone', 'Phone number is required'); isValid = false; }
-                else if (phone.replace(/\D/g, '').length < 10) { showError('phone', 'Enter a valid phone number (≥10 digits)'); isValid = false; }
-
-                if (!weddingDate) { showError('weddingDate', 'Please select your wedding date'); isValid = false; }
-                else {
-                    const selectedDate = new Date(weddingDate);
-                    const minDate = new Date();
-                    minDate.setMonth(minDate.getMonth() + 3);
-                    if (selectedDate < minDate) {
-                        showError('weddingDate', 'Date must be at least 3 months from today');
-                        isValid = false;
-                    }
-                }
-
-                if (!guests) { showError('guestsNumber', 'Estimated guests is required'); isValid = false; }
-                else if (parseInt(guests) < 1) { showError('guestsNumber', 'Must be at least 1 guest'); isValid = false; }
-
-                if (!weddingType) { showError('weddingType', 'Please select a wedding style'); isValid = false; }
-
-                if (!isValid) {
-                    const firstError = document.querySelector('.error');
-                    if (firstError) firstError.focus({ preventScroll: false });
-                    return;
-                }
-
-                spinner.style.display = 'inline-block';
-                btnText.style.opacity = '0.7';
-                submitBtn.disabled = true;
-
-                try {
-                    const formData = {
-                        brideName, groomName, email, phone, weddingDate,
-                        guestsNumber: guests, weddingType,
-                        weddingLocation: location, weddingVision: vision
-                    };
-
-                    const response = await fetch('/booking/submit', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(formData)
-                    });
-
-                    const result = await response.json();
-
-                    if (response.ok) {
-                        form.style.display = 'none';
-                        successAlert.style.display = 'flex';
-                        successAlert.setAttribute('aria-hidden', 'false');
-                        successAlert.focus({ preventScroll: true });
-                        
-                        setTimeout(() => {
-                            form.reset();
-                            form.style.display = 'block';
-                            successAlert.style.display = 'none';
-                            successAlert.setAttribute('aria-hidden', 'true');
-                        }, 5000);
-                    } else {
-                        alert('Submission failed: ' + (result.message || 'Please try again.'));
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('Network error. Please check your connection.');
-                } finally {
-                    spinner.style.display = 'none';
-                    btnText.style.opacity = '1';
-                    submitBtn.disabled = false;
-                }
-            });
-
-            // ---------- FIXED SCROLL INDICATOR ----------
-            const scrollBtn = document.getElementById('bookingScrollBtn');
-            const heroSection = document.querySelector('.booking-hero-section');
             
-            function toggleScrollIndicator() {
-                if (!heroSection || !scrollBtn) return;
-                const heroBottom = heroSection.getBoundingClientRect().bottom;
-                // Hide only when the hero section has completely left the viewport
-                scrollBtn.classList.toggle('hidden', heroBottom <= 0);
-            }
-
-            window.addEventListener('scroll', toggleScrollIndicator, { passive: true });
-            window.addEventListener('resize', toggleScrollIndicator);
-            // Call once after layout is ready – ensures correct initial state
-            requestAnimationFrame(toggleScrollIndicator);
-
-            if (scrollBtn) {
-                scrollBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const formSection = document.getElementById('booking-form');
-                    if (formSection) formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Fade in elements on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
                 });
-            }
-
-            document.querySelectorAll('a[href^="#"]').forEach(el => {
-                el.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (!targetId || targetId === '#') return;
-                    const target = document.querySelector(targetId);
-                    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.team-card, .philosophy-card, .timeline-item, .testimonial-card, .partner-badge').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
             });
-        })();
+        });
     </script>
 </body>
 </html>
