@@ -67,6 +67,7 @@ exports.dash = async(req, res) => {
       const totalPages = Math.ceil(totalItems / itemsPerPage);
   
       res.render("home_packages/pack_dash/dash", {
+        activeP:'servicepack',
         files,
         currentPage,
         totalPages,

@@ -47,7 +47,9 @@ exports.getsuppliers = async(req,res)=>{
     const suppliers = await supplier.find(filter).skip(skip).limit(limit);
     const totalSuppliers = await supplier.countDocuments(filter);
     const totalpage = Math.ceil(totalSuppliers / limit);
-    res.render("home_packages/suplyformat", {suppliers,
+    res.render("home_packages/suplyformat", {
+      activeP:"suppliersformat",
+      suppliers,
       currentpage:page,
       totalpage,
       totalSuppliers,

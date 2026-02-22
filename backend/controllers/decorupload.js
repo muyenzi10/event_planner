@@ -136,6 +136,7 @@ exports.getdecorclient = async (req, res) => {
 
     // ✅ Normal page render
     res.render("allpack/venues/venues", {
+      activeP: 'decorformat',
       files,
       allFiles,
       currentP,

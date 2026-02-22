@@ -67,6 +67,7 @@ exports.getdashboard = async(req,res)=>{
       const totalPages = Math.ceil(totalItems / itemsPerPage);
   
       res.render("home_packages/dashboadhome", {
+        activeP:'homedash',
         files,
         currentPage,
         totalPages,

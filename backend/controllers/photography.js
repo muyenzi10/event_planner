@@ -65,6 +65,7 @@ exports.getdashbord = async (req, res) => {
     const totalpage = Math.ceil(totalItems / itempage);
 
     res.render("allpack/photographers/dashboadphpto", {
+      activeP: 'mediaformat',
       files,
       currentpage,
       totalpage,

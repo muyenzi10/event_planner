@@ -35,6 +35,7 @@ exports.getindinzi = async (req, res) => {
 
    const allFiles = await File.find().sort({ uploadedAt: -1 });       
     res.render("allpack/indinzi/troup/indinzi", {
+      activeP: 'troupeformat',
       files,
       allFiles,
       currentPage,

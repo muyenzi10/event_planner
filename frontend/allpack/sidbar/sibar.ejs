@@ -37,73 +37,58 @@
     <a href="/dashboard/catering" class="nav-link <%= activeP === 'cateringformat' ? 'active' : '' %>">
       <i class="fas fa-utensils me-2"></i> <span>Catering</span>
     </a>
+    <a href="/dashboard/services" class="nav-link <%= activeP === 'irizadash' ? 'active' : '' %>">
+      <i class="fas fa-concierge-bell me-2"></i> <span>Hospitality</span>
+    </a>
+    <a href="/dashboard/home" class="nav-link <%= activeP === 'homedash' ? 'active' : '' %>">
+      <i class="fas fa-house me-2"></i> <span>Home</span>
+    </a>
+    <a href="/packages/dashboard" class="nav-link <%= activeP === 'servicepack' ? 'active' : '' %>">
+      <i class="fas fa-box-open me-2"></i> <span>Services</span>
+    </a>
   </div>
 
   <div class="sidebar-footer">
     &copy; 2025 Wedding Planner Pro
   </div>
 </nav>
-
-<!-- Sidebar Script (Safe DOM Ready Version) -->
 <script>
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-  console.log('Sidebar script loaded safely');
+  const sidebar = document.getElementById("sidebar");
+  const toggleBtn = document.getElementById("toggleSidebar");
+  const mobileToggle = document.getElementById("mobileToggle");
+  const navLinks = document.querySelectorAll(".nav-link");
 
-  const sidebar = document.getElementById('sidebar');
-  const toggleBtn = document.getElementById('toggleSidebar');
-  const mobileToggle = document.getElementById('mobileToggle');
-
-  if (!sidebar || !toggleBtn || !mobileToggle) {
-    console.error('Sidebar elements missing – check IDs');
-    return;
-  }
-
-  // Start expanded
-  let pinned = true;
-  sidebar.classList.add('pinned');
-
-  // Desktop Toggle
-  toggleBtn.addEventListener('click', function () {
-    pinned = !pinned;
-
-    if (pinned) {
-      sidebar.classList.add('pinned');
-      sidebar.classList.remove('collapsed');
-      toggleBtn.setAttribute('title', 'Collapse sidebar');
-    } else {
-      sidebar.classList.remove('pinned');
-      sidebar.classList.add('collapsed');
-      toggleBtn.setAttribute('title', 'Expand sidebar');
+  // ===== DESKTOP COLLAPSE =====
+  toggleBtn.addEventListener("click", function () {
+    if (window.innerWidth > 768) {
+      sidebar.classList.toggle("collapsed");
     }
   });
 
-  // Hover expand when collapsed
-  sidebar.addEventListener('mouseenter', function () {
-    if (!pinned) {
-      sidebar.classList.remove('collapsed');
-    }
+  // ===== MOBILE TOGGLE =====
+  mobileToggle.addEventListener("click", function () {
+    sidebar.classList.toggle("show");
   });
 
-  sidebar.addEventListener('mouseleave', function () {
-    if (!pinned) {
-      sidebar.classList.add('collapsed');
-    }
-  });
-
-  // Mobile Toggle
-  mobileToggle.addEventListener('click', function () {
-    sidebar.classList.toggle('show');
-  });
-
-  // Close mobile sidebar when clicking outside
-  document.addEventListener('click', function (event) {
+  // ===== CLOSE WHEN CLICK OUTSIDE (MOBILE) =====
+  document.addEventListener("click", function (e) {
     if (window.innerWidth <= 768) {
-      if (!sidebar.contains(event.target) && !mobileToggle.contains(event.target)) {
-        sidebar.classList.remove('show');
+      if (!sidebar.contains(e.target) && !mobileToggle.contains(e.target)) {
+        sidebar.classList.remove("show");
       }
     }
   });
 
+  // ===== CLOSE WHEN CLICK LINK (MOBILE) =====
+  navLinks.forEach(link => {
+    link.addEventListener("click", function () {
+      if (window.innerWidth <= 768) {
+        sidebar.classList.remove("show");
+      }
+    });
+  });
+
 });
-</script>"
+</script>

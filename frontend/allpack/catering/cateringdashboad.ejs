@@ -6,83 +6,25 @@
   <title>Wedding Planner Dashboard - Catering</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/allpack/sidbar/sidbar.css">
   <style>
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background: #f9f9f9;
       margin: 0;
     }
-    #overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-      z-index: 900;
-      display: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .sidebar {
-      width: 240px;
-      background: linear-gradient(180deg, #6a11cb, #2575fc);
-      color: #fff;
-      height: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      padding-top: 60px;
-      transform: translateX(0);
-      transition: transform 0.3s ease;
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-    }
-    @media (max-width:768px) {
-      .sidebar {
-        transform: translateX(-100%);
-        margin-left: 0 !important;
-        top: 0;
-      }
-      .sidebar.active {
-        transform: translateX(0);
-      }
-      .main-content {
-        margin-left: 0 !important;
-      }
-    }
-    .sidebar-header h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .nav-link {
-      padding: 12px 20px;
-      color: #ffffff;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      border-left: 4px solid transparent;
-      transition: all 0.3s ease;
-    }
-    .nav-link:hover, .nav-link.active {
-      background: rgba(255,255,255,0.15);
-      border-left-color: #0e7ee7;
-      transform: translateX(5px);
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-    }
+
     .main-content {
-      margin-left: 240px;
       padding: 30px;
       margin-top: 56px;
-      transition: margin-left 0.3s ease;
     }
+
     @media (max-width:768px) {
       .main-content {
-        margin-left: 0;
         padding: 15px;
       }
     }
+
     .table-container {
       background: #fff;
       border-radius: 12px;
@@ -91,15 +33,18 @@
       margin-bottom: 20px;
       overflow-x: auto;
     }
+
     .table thead th {
       background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
       color: #2c3e50;
       font-weight: 700;
     }
+
     .table tbody tr:hover {
       background: #f9f9ff;
       transition: 0.3s;
     }
+
     .pagination-container {
       display: flex;
       justify-content: center;
@@ -108,26 +53,23 @@
       overflow-x: auto;
       padding: 10px 0;
     }
+
     .pagination {
       flex-wrap: nowrap;
       margin-bottom: 0;
     }
+
     .pagination .page-item.active .page-link {
       background-color: #2575fc;
       border-color: #2575fc;
       color: #fff;
     }
+
     .pagination .page-link {
       color: #2575fc;
       white-space: nowrap;
     }
-    .sidebar-footer {
-      margin-top: auto;
-      padding: 20px;
-      text-align: center;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.7);
-    }
+
     .scroll-hint {
       text-align: center;
       margin: 10px 0;
@@ -136,6 +78,7 @@
       opacity: 1;
       transition: opacity 1s ease;
     }
+
     @media (min-width: 992px) {
       .scroll-hint {
         display: none;
@@ -245,10 +188,6 @@
       .main-content {
         padding-bottom: 80px;
       }
-      
-      .sidebar-toggle {
-        z-index: 101;
-      }
     }
     
     .text-muted {
@@ -324,49 +263,10 @@
       object-fit: cover;
       border-radius: 8px;
     }
-    
-    .sidebar-toggle {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      z-index: 1001;
-      background: white;
-      border: none;
-      border-radius: 5px;
-      padding: 8px 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
   </style>
 </head>
 <body>
-
-  <!-- Sidebar Toggle -->
-  <button class="sidebar-toggle" onclick="toggleSidebar()">
-    <i class="fas fa-bars"></i>
-  </button>
-
-  <!-- Overlay -->
-  <div id="overlay" onclick="toggleSidebar()"></div>
-
-  <!-- Sidebar -->
-  <nav class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-      <h2><i class="fas fa-heart"></i> Wedding Planner</h2>
-    </div>
-    <div class="nav-links">
-      <a href="/home" class="nav-link"><i class="fas fa-home"></i> Back Home</a>
-      <a href="/Dashboard/view/suppliers" class="nav-link"><i class="fas fa-users"></i> Suppliers</a>
-      <a href="/Dashboard/booking" class="nav-link"><i class="fas fa-bookmark"></i> Bookings</a>
-      <a href="/dashboard/decor" class="nav-link"><i class="fas fa-image"></i> Decor</a>
-      <a href="/dashboard/troupe" class="nav-link"><i class="fas fa-drum"></i> Troupe</a>
-      <a href="/dashboard/media" class="nav-link"><i class="fas fa-camera"></i> Photo & Video</a>
-      <a href="/dashboard/catering" class="nav-link active"><i class="fas fa-utensils"></i> Catering</a>
-    </div>
-    <div class="sidebar-footer">
-      &copy; <%= new Date().getFullYear() %> Wedding Planner Pro
-    </div>
-  </nav>
-
+  <%- include('../sidbar/sibar', { activeP: 'cateringformat' }) %>
   <!-- Main Content -->
   <main class="main-content">
     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -470,27 +370,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    const sidebar = document.getElementById('sidebar');
-    const main = document.querySelector('.main-content');
-    const overlay = document.getElementById('overlay');
-
-    function toggleSidebar(){
-      if(window.innerWidth <= 768){
-        if(sidebar.classList.contains('active')){
-          sidebar.classList.remove('active');
-          overlay.style.opacity = '0';
-          setTimeout(()=> overlay.style.display='none', 300);
-        } else {
-          sidebar.classList.add('active');
-          overlay.style.display = 'block';
-          setTimeout(()=> overlay.style.opacity='1', 10);
-        }
-      } else {
-        sidebar.classList.toggle('active');
-        main.classList.toggle('active');
-      }
-    }
-
     // Hide scroll hint
     setTimeout(()=>{
       const hint = document.querySelector('.scroll-hint');
@@ -517,14 +396,6 @@
           });
         });
       });
-    });
-
-    window.addEventListener('resize', ()=>{
-      if(window.innerWidth > 768){
-        sidebar.classList.remove('active');
-        overlay.style.opacity = '0';
-        overlay.style.display = 'none';
-      }
     });
   </script>
 

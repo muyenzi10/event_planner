@@ -84,6 +84,7 @@ exports.getdashboard = async(req, res)=>{
             const totalPages = Math.ceil(totalItems / itemsPerPage);
         
             res.render("allpack/iriza/dashboard", {
+              activeP:'irizadash',
               files,
               currentPage,
               totalPages,

@@ -56,8 +56,8 @@ exports.getbookformat = async (req, res) => {
     if (searchTerm) {
       const nameRegex = new RegExp(searchTerm, "i");
       filter.$or = [
-        { firstname:nameRegex },
-        { lastname:nameRegex },
+        { brideName:nameRegex },
+        { groomName:nameRegex },
         { email:nameRegex }
       ];
     }
@@ -71,6 +71,7 @@ exports.getbookformat = async (req, res) => {
     const totalPages = Math.ceil(totalBookings / limit);
 
     res.render("home_packages/bookingformat", {
+      activeP:'bookingformat',
       bookings,
       currentPage: page,
       totalPages,
