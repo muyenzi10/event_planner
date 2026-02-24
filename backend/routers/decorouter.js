@@ -2,6 +2,7 @@ const express = require("express");
 const uploadimage = require("../controllers/decorupload");
 const path = require("path");
 const multer = require("multer");
+const { requireAuth, restrictTo } = require("../middleware/jwtaut")
 const uploadrouter = express.Router();
 const storage = multer.diskStorage({
     destination:(req,file,cb)=> {

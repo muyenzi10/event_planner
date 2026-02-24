@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {requireAuth} = require("../middleware/jwtaut");
+const { requireAuth, restrictTo } = require("../middleware/jwtaut");
 const bookingformat = require("../controllers/bookingcontroller");
-router.get("/Dashboard/booking",bookingformat.getbookformat);
-router.get("/Dashboard/booking/edit/:id", bookingformat.readdata);
-router.put("/Dashboard/booking/update/:id", bookingformat.updatedata);
-router.delete("/Dashboard/booking/delete/:id", bookingformat.deletedata);
+router.get("/Dashboard/booking",requireAuth,restrictTo("admin"),bookingformat.getbookformat);
+router.get("/Dashboard/booking/edit/:id",requireAuth,restrictTo("admin"), bookingformat.readdata);
+router.put("/Dashboard/booking/update/:id", requireAuth,restrictTo("admin"),bookingformat.updatedata);
+router.delete("/Dashboard/booking/delete/:id", requireAuth,restrictTo("admin"),bookingformat.deletedata);
 module.exports = router;
