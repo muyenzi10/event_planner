@@ -13,7 +13,8 @@ exports.getbook = (req, res) => {
 exports.getsignup = (req,res)=>{                
 res.render('signup_login/signup', {
             error: req.flash('error'),
-            success: req.flash('success')
+            success: req.flash('success'),
+            activeP:"signupformat"
           });
         };
 exports.login = (req, res) => {

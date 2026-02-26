@@ -44,7 +44,11 @@ exports.postlogin = async (req, res) => {
 
     // 6. Successful login flash message and redirect
     req.flash("success", "Logged in successfully");
-    return res.redirect("/Dashboard/booking");
+    if (user.role === "admin") {
+  return res.redirect("/Dashboard/booking");
+} else {
+  return res.redirect("/dashboard/catering");
+}
 
   } catch (error) {
     console.error("Login error:", error);
