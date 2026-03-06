@@ -38,6 +38,7 @@ exports.getDecorformat = async (req, res) => {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
     res.render("allpack/venues/decorformat", {
+       
       files,
       currentPage,
       totalPages,
@@ -137,6 +138,7 @@ exports.getdecorclient = async (req, res) => {
     // ✅ Normal page render
     res.render("allpack/venues/venues", {
       activeP: 'decorformat',
+      activePage:'services', 
       files,
       allFiles,
       currentP,
