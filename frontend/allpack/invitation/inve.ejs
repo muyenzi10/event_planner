@@ -272,6 +272,7 @@
             height: 250px;
             object-fit: cover;
             transition: transform 0.8s;
+            cursor: pointer;
         }
 
         .gallery-item:hover img {
@@ -415,6 +416,12 @@
                 padding: 2rem;
             }
         }
+
+        /* Modal image styling */
+        .modal-img {
+            width: 100%;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -458,140 +465,87 @@
             <h2>✨ Curated Collection</h2>
             <p class="section-subtitle">Each design tells a unique story. Hover to feel the magic.</p>
             <div class="gallery-grid">
-                <!-- 20 gallery items (preserved) -->
+                <!-- 20 gallery items – removed data-bs-toggle and data-bs-target, kept onclick -->
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/17.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/17.jpg')">
+                    <img src="/allpack/invitation/invdar/17.jpg" onclick="openModal('/allpack/invitation/invdar/17.jpg')">
                     <div class="caption">Timeless romance</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/2.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/2.jpg')">
+                    <img src="/allpack/invitation/invdar/2.jpg" onclick="openModal('/allpack/invitation/invdar/2.jpg')">
                     <div class="caption">Modern elegance</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/18.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/18.jpg')">
+                    <img src="/allpack/invitation/invdar/18.jpg" onclick="openModal('/allpack/invitation/invdar/18.jpg')">
                     <div class="caption">Vintage charm</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/4.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/4.jpg')">
+                    <img src="/allpack/invitation/invdar/4.jpg" onclick="openModal('/allpack/invitation/invdar/4.jpg')">
                     <div class="caption">Opulent affair</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/5.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/5.jpg')">
+                    <img src="/allpack/invitation/invdar/5.jpg" onclick="openModal('/allpack/invitation/invdar/5.jpg')">
                     <div class="caption">Minimalist love</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/6.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/6.jpg')">
+                    <img src="/allpack/invitation/invdar/6.jpg" onclick="openModal('/allpack/invitation/invdar/6.jpg')">
                     <div class="caption">Classic story</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/7.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/7.jpg')">
+                    <img src="/allpack/invitation/invdar/7.jpg" onclick="openModal('/allpack/invitation/invdar/7.jpg')">
                     <div class="caption">Whisper of love</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/8.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/8.jpg')">
+                    <img src="/allpack/invitation/invdar/8.jpg" onclick="openModal('/allpack/invitation/invdar/8.jpg')">
                     <div class="caption">Nature's touch</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/9.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/9.jpg')">
+                    <img src="/allpack/invitation/invdar/9.jpg" onclick="openModal('/allpack/invitation/invdar/9.jpg')">
                     <div class="caption">Bohemian dream</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/10.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/10.jpg')">
+                    <img src="/allpack/invitation/invdar/10.jpg" onclick="openModal('/allpack/invitation/invdar/10.jpg')">
                     <div class="caption">Floral fantasy</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/11.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/11.jpg')">
+                    <img src="/allpack/invitation/invdar/11.jpg" onclick="openModal('/allpack/invitation/invdar/11.jpg')">
                     <div class="caption">Golden touch</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/12.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/12.jpg')">
+                    <img src="/allpack/invitation/invdar/12.jpg" onclick="openModal('/allpack/invitation/invdar/12.jpg')">
                     <div class="caption">Enchanted forest</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/13.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/13.jpg')">
+                    <img src="/allpack/invitation/invdar/13.jpg" onclick="openModal('/allpack/invitation/invdar/13.jpg')">
                     <div class="caption">Coastal chic</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/14.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/14.jpg')">
+                    <img src="/allpack/invitation/invdar/14.jpg" onclick="openModal('/allpack/invitation/invdar/14.jpg')">
                     <div class="caption">Winter wonderland</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/15.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/15.jpg')">
+                    <img src="/allpack/invitation/invdar/15.jpg" onclick="openModal('/allpack/invitation/invdar/15.jpg')">
                     <div class="caption">Art deco glam</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/16.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/16.jpg')">
+                    <img src="/allpack/invitation/invdar/16.jpg" onclick="openModal('/allpack/invitation/invdar/16.jpg')">
                     <div class="caption">Tropical paradise</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/1.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/1.jpg')">
+                    <img src="/allpack/invitation/invdar/1.jpg" onclick="openModal('/allpack/invitation/invdar/1.jpg')">
                     <div class="caption">Whimsical wonder</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/13.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/13.jpg')">
+                    <img src="/allpack/invitation/invdar/13.jpg" onclick="openModal('/allpack/invitation/invdar/13.jpg')">
                     <div class="caption">Ethereal beauty</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/19.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/19.jpg')">
+                    <img src="/allpack/invitation/invdar/19.jpg" onclick="openModal('/allpack/invitation/invdar/19.jpg')">
                     <div class="caption">Regal affair</div>
                 </div>
                 <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/20.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/20.jpg')">
+                    <img src="/allpack/invitation/invdar/20.jpg" onclick="openModal('/allpack/invitation/invdar/20.jpg')">
                     <div class="caption">Celestial charm</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- DESIGN YOUR OWN SECTION (interactive) -->
-    <section class="design-section">
-        <div class="container">
-            <div class="design-card text-center">
-                <h2 class="design-title">💡 Design Your Own Invitation</h2>
-                <p class="mb-4">Pick a style and see it come to life. Then click to customize further.</p>
-                <div class="design-options">
-                    <span class="design-option selected" data-style="classic">Classic</span>
-                    <span class="design-option" data-style="modern">Modern</span>
-                    <span class="design-option" data-style="rustic">Rustic</span>
-                    <span class="design-option" data-style="bohemian">Bohemian</span>
-                </div>
-                <div class="design-preview" id="designPreview" style="background-image: url('/allpack/invitation/invdar/17.jpg');"></div>
-                <a href="#" class="btn btn-gradient mt-4"><i class="fas fa-magic me-2"></i>Customize Fully</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- TESTIMONIAL CAROUSEL -->
-    <section class="testimonial-section">
-        <div class="container">
-            <h2 class="text-center" style="color: var(--dark-lavender);">❤️ Love from Couples</h2>
-            <div id="testimonialCarousel" class="carousel slide testimonial-carousel" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="testimonial-item">
-                            <p class="testimonial-text">The invitations were absolutely stunning! Our guests couldn't stop complimenting them.</p>
-                            <p class="testimonial-author">— Sarah & Michael</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-item">
-                            <p class="testimonial-text">We designed our own and the process was so fun. The quality exceeded expectations!</p>
-                            <p class="testimonial-author">— Priya & Raj</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-item">
-                            <p class="testimonial-text">Fast shipping, beautiful designs, and the paper feels luxurious. Highly recommend!</p>
-                            <p class="testimonial-author">— Emily & James</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </button>
             </div>
         </div>
     </section>
@@ -603,8 +557,8 @@
                 <div class="modal-header">
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body">
-                    <img id="modalImage" class="d-block w-100 modal-img">
+                <div class="modal-body text-center">
+                    <img id="modalImage" class="modal-img" style="max-width:100%; height:auto;">
                 </div>
             </div>
         </div>
@@ -615,9 +569,12 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Open modal
+        // Open modal – sets image source and shows modal
         function openModal(src) {
             document.getElementById('modalImage').src = src;
+            // Use Bootstrap's modal API to show the modal
+            var myModal = new bootstrap.Modal(document.getElementById('imageModal'));
+            myModal.show();
         }
 
         // Typed.js animation
@@ -640,7 +597,9 @@
             document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
         });
 
-        // Design Your Own interactive preview
+        // Design Your Own interactive preview (optional, if you keep that section)
+        // (Commented out because the design section was removed – if you add it back, uncomment)
+        /*
         const options = document.querySelectorAll('.design-option');
         const preview = document.getElementById('designPreview');
         const styleImages = {
@@ -658,6 +617,7 @@
                 preview.style.backgroundImage = `url('${styleImages[style]}')`;
             });
         });
+        */
 
         // Disable right-click on video (optional)
         document.querySelector('video').addEventListener('contextmenu', e => e.preventDefault());
