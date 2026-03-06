@@ -1243,69 +1243,94 @@
         </div>
     </section>
     
-    <!-- SLOW MOTION GALLERY SLIDER SECTION - Only show if files are available -->
-    <% if (files && files.length > 0) { %>
-    <section class="picture-slider-section" id="gallery">
-        <div class="container">
-            <h2 class="section-title">Real Weddings, Real Connections</h2>
-            <p class="section-subtitle">See the magic created through our supplier network</p>
-            
-            <div class="picture-slider-container">
-                <div class="picture-slider">
-                    <div class="picture-track" id="pictureTrack">
-                        <% files.forEach((file, index) => { %>
-                            <!-- Dynamic Slide with Progress Bar -->
-                            <div class="picture-slide" data-index="<%= index %>">
-                                <% if (file.filePath) { %>
-                                    <img src="/all_disk/home/<%= file.filePath %>" 
-                                         alt="<%= file.title || 'Wedding Image' %>" 
-                                         class="picture-image"
-                                         loading="lazy">
-                                <% } %>
-                                
-                                <!-- Progress Bar -->
-                                <div class="slide-progress"></div>
-                                
-                                <div class="picture-overlay">
-                                    <div class="picture-title-container">
-                                        <h3 class="picture-title">
-                                            <%= file.title || 'Wedding Gallery' %>
-                                        </h3>
-                                        <p class="picture-subtitle">
-                                            <%= file.description || 'Beautiful wedding moment captured' %>
-                                            <% if (file.category) { %>
-                                                | Category: <%= file.category %>
-                                            <% } %>
-                                        </p>
-                                    </div>
+ <!-- SLOW MOTION GALLERY SLIDER SECTION - Only show if files are available -->
+<% if (files && files.length > 0) { %>
+<section class="picture-slider-section" id="gallery">
+    <div class="container">
+        <h2 class="section-title">Browse Wedding Services</h2>
+        <p class="section-subtitle">Click any image to explore trusted vendors in that category</p>
+
+        <div class="picture-slider-container">
+            <div class="picture-slider">
+                <div class="picture-track" id="pictureTrack">
+                    <% files.forEach((file, index) => { %>
+                        <% 
+                            // Determine the link based on file.title
+                            let link = '#';
+                            if (file.title === 'Wedding Décor') { 
+                                link = '/decor'; 
+                            } 
+                          
+                             else if (file.title === 'Master of Ceremony (MC)') { 
+                                link = '/mc'; 
+                            } else if (file.title === 'Cultural Troupe') { 
+                                link = '/troupe'; 
+                            }  
+                             else if (file.title === 'Photography') { 
+                                link = '/photographers'; 
+                            } else if (file.title === 'Catering Services') { 
+                                link = '/catering'; 
+                            } else if (file.title === 'Services') { 
+                                link = '/hospitality'; 
+                            }
+                        %>
+                        <!-- Dynamic Slide with Progress Bar -->
+                        <a href="<%= link %>" 
+                           class="picture-slide" 
+                           data-index="<%= index %>"
+                           aria-label="View <%= file.title || 'wedding' %> vendors"
+                           tabindex="0"
+                           rel="noopener noreferrer">
+                            <% if (file.filePath) { %>
+                                <img src="/all_disk/home/<%= file.filePath %>" 
+                                     alt="<%= file.title || 'Wedding Image' %>" 
+                                     class="picture-image"
+                                     loading="lazy">
+                            <% } %>
+                            
+                            <!-- Progress Bar -->
+                            <div class="slide-progress"></div>
+                            
+                            <div class="picture-overlay">
+                                <div class="picture-title-container">
+                                    <h3 class="picture-title">
+                                        <%= file.title || 'Wedding Service' %>
+                                    </h3>
+                                    <p class="picture-subtitle">
+                                        <%= file.description || 'Click to explore vendors' %>
+                                        <% if (file.category) { %>
+                                            | Category: <%= file.category %>
+                                        <% } %>
+                                    </p>
                                 </div>
                             </div>
-                        <% }) %>
-                    </div>
-                </div>
-                
-                <!-- Picture Slider Controls -->
-                <div class="picture-controls">
-                    <button class="picture-btn" id="picturePrev" aria-label="Previous slide">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    
-                    <div class="picture-dots" id="pictureDots">
-                        <!-- Dots will be generated by JavaScript -->
-                    </div>
-                    
-                    <span class="slide-counter" id="slideCounter">
-                        1/<%= files.length %>
-                    </span>
-                    
-                    <button class="picture-btn" id="pictureNext" aria-label="Next slide">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
+                        </a>
+                    <% }) %>
                 </div>
             </div>
+
+            <!-- Picture Slider Controls (unchanged) -->
+            <div class="picture-controls">
+                <button class="picture-btn" id="picturePrev" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+
+                <div class="picture-dots" id="pictureDots">
+                    <!-- Dots will be generated by JavaScript -->
+                </div>
+
+                <span class="slide-counter" id="slideCounter">
+                    1/<%= files.length %>
+                </span>
+
+                <button class="picture-btn" id="pictureNext" aria-label="Next slide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
         </div>
-    </section>
-    <% } %>
+    </div>
+</section>
+<% } %>
 
     <!-- WHAT WE OFFER SECTION -->
     <section id="what-we-offer" class="what-we-offer">
