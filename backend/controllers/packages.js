@@ -1,7 +1,7 @@
 const path = require('path');
 
 exports.getinvitation = (req, res) =>{
-    res.sendFile(path.join(__dirname, "../../frontend/allpack/invitation/inve.html"));
+    res.render("allpack/invitation/inve",{activePage:'services'});
 }
 exports.getstyle = (req, res) =>{
     res.sendFile(path.join(__dirname, "../../frontend/allpack/st/st.html"));

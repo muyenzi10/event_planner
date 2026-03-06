@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unique Invitation Cards</title>
+<link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        crossorigin="anonymous"
+    />
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        crossorigin="anonymous"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Typed.js for animated text -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
+    <link rel="stylesheet" href="/allpack/layout/css/footer.css">
+    
+    <style>
+        :root {
+            --primary-lavender: #9b8bcf;
+            --primary-blush: #f7cac9;
+            --gold-soft: #e6c8a0;
+            --deep-rose: #b76e79;
+            --dark-lavender: #6b5b95;
+            --bg-light: #fff9f9;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            color: #4a4a4a;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-lavender) 0%, var(--deep-rose) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(107, 91, 149, 0.3);
+            border: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(107, 91, 149, 0.4);
+        }
+
+        /* ============ UNIQUE VIDEO HERO ============ */
+        .video-hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            min-height: 650px;
+            overflow: hidden;
+            background: #1a1a2e;
+        }
+
+        .video-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(155, 139, 207, 0.3) 0%,
+                rgba(26, 26, 46, 0.7) 50%,
+                rgba(183, 110, 121, 0.3) 100%
+            );
+            z-index: 2;
+        }
+
+        .video-hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        /* ============ HERO CONTENT ============ */
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            color: #fff;
+            height: 100vh;
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-content .container {
+            max-width: 900px;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 20px rgba(0,0,0,0.5);
+            line-height: 1.1;
+        }
+
+        .hero-title .typed-text {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(135deg, var(--primary-blush), var(--gold-soft));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ============ BUTTONS ============ */
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--primary-lavender) 0%, var(--deep-rose) 100%);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(107, 91, 149, 0.4);
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.2rem;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(107, 91, 149, 0.6);
+            color: white;
+        }
+
+        .btn-outline-unique {
+            background: transparent;
+            border: 2px solid var(--primary-blush);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline-unique:hover {
+            background: var(--primary-blush);
+            color: #4a4a4a;
+            border-color: var(--primary-blush);
+        }
+
+        /* ============ SCROLL INDICATOR ============ */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            color: white;
+            font-size: 2rem;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* ============ GALLERY SECTION (unique hover) ============ */
+        .gallery-section {
+            padding: 80px 0;
+            background: var(--bg-light);
+            position: relative;
+        }
+
+        .gallery-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--dark-lavender);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #777;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 0 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-15px) rotateX(2deg) rotateY(2deg);
+            box-shadow: 0 30px 45px rgba(107, 91, 149, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.8s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.5s;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .gallery-item:hover .caption {
+            transform: translateY(0);
+        }
+
+        /* ============ DESIGN YOUR OWN SECTION (unique) ============ */
+        .design-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f3e9ff 0%, #ffe6e5 100%);
+        }
+
+        .design-card {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px rgba(107, 91, 149, 0.15);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .design-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dark-lavender);
+            margin-bottom: 2rem;
+        }
+
+        .design-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .design-option {
+            background: #f0f0f0;
+            border-radius: 50px;
+            padding: 0.8rem 1.8rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .design-option.selected {
+            background: var(--primary-lavender);
+            color: white;
+            border-color: var(--deep-rose);
+        }
+
+        .design-preview {
+            width: 100%;
+            height: 200px;
+            background: #ddd;
+            border-radius: 20px;
+            margin-top: 2rem;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.3s;
+            border: 3px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* ============ TESTIMONIAL CAROUSEL ============ */
+        .testimonial-section {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .testimonial-carousel {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-item {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .testimonial-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '“';
+            font-size: 4rem;
+            color: var(--primary-lavender);
+            position: absolute;
+            left: -20px;
+            top: -20px;
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--deep-rose);
+        }
+
+        .carousel-indicators [data-bs-target] {
+            background-color: var(--primary-lavender);
+        }
+
+        /* ============ ANIMATIONS ============ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .design-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <%- include('../layout/navbar') %>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- UNIQUE VIDEO HERO (without floating cards and countdown) -->
+    <section class="video-hero">
+        <video autoplay loop muted playsinline disablePictureInPicture>
+            <source src="/allpack/invitation/invdar/v3.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <div class="container">
+                <h1 class="hero-title">
+                    Creating the Beginning of Your Forever<br>
+                    <span class="typed-text"></span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                   A collection of unique and elegant wedding invitation designs.
+                </p>
+                
+                <div class="d-flex flex-wrap justify-content-center gap-3 mt-4">
+                    <a href="/booking" class="btn btn-gradient"><i class="fas fa-feather me-2"></i>Booking Now</a>
+                    <a href="#gallery" class="btn btn-outline-unique"><i class="fas fa-images me-2"></i>Explore Gallery</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION with 3D tilt effect -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <h2>✨ Curated Collection</h2>
+            <p class="section-subtitle">Each design tells a unique story. Hover to feel the magic.</p>
+            <div class="gallery-grid">
+                <!-- 20 gallery items (preserved) -->
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/17.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/17.jpg')">
+                    <div class="caption">Timeless romance</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/2.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/2.jpg')">
+                    <div class="caption">Modern elegance</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/18.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/18.jpg')">
+                    <div class="caption">Vintage charm</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/4.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/4.jpg')">
+                    <div class="caption">Opulent affair</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/5.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/5.jpg')">
+                    <div class="caption">Minimalist love</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/6.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/6.jpg')">
+                    <div class="caption">Classic story</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/7.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/7.jpg')">
+                    <div class="caption">Whisper of love</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/8.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/8.jpg')">
+                    <div class="caption">Nature's touch</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/9.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/9.jpg')">
+                    <div class="caption">Bohemian dream</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/10.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/allpack/invitation/invdar/10.jpg')">
+                    <div class="caption">Floral fantasy</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/11.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/11.jpg')">
+                    <div class="caption">Golden touch</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/12.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/12.jpg')">
+                    <div class="caption">Enchanted forest</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/13.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/13.jpg')">
+                    <div class="caption">Coastal chic</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/14.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/14.jpg')">
+                    <div class="caption">Winter wonderland</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/15.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/15.jpg')">
+                    <div class="caption">Art deco glam</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/16.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/16.jpg')">
+                    <div class="caption">Tropical paradise</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/1.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/1.jpg')">
+                    <div class="caption">Whimsical wonder</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/13.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/13.jpg')">
+                    <div class="caption">Ethereal beauty</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/19.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/19.jpg')">
+                    <div class="caption">Regal affair</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="/allpack/invitation/invdar/20.jpg" data-bs-toggle="modal" data-bs-target="#imageModal" onclick="openModal('/frontend/allpack/invitation/invdar/20.jpg')">
+                    <div class="caption">Celestial charm</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESIGN YOUR OWN SECTION (interactive) -->
+    <section class="design-section">
+        <div class="container">
+            <div class="design-card text-center">
+                <h2 class="design-title">💡 Design Your Own Invitation</h2>
+                <p class="mb-4">Pick a style and see it come to life. Then click to customize further.</p>
+                <div class="design-options">
+                    <span class="design-option selected" data-style="classic">Classic</span>
+                    <span class="design-option" data-style="modern">Modern</span>
+                    <span class="design-option" data-style="rustic">Rustic</span>
+                    <span class="design-option" data-style="bohemian">Bohemian</span>
+                </div>
+                <div class="design-preview" id="designPreview" style="background-image: url('/allpack/invitation/invdar/17.jpg');"></div>
+                <a href="#" class="btn btn-gradient mt-4"><i class="fas fa-magic me-2"></i>Customize Fully</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL CAROUSEL -->
+    <section class="testimonial-section">
+        <div class="container">
+            <h2 class="text-center" style="color: var(--dark-lavender);">❤️ Love from Couples</h2>
+            <div id="testimonialCarousel" class="carousel slide testimonial-carousel" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="testimonial-item">
+                            <p class="testimonial-text">The invitations were absolutely stunning! Our guests couldn't stop complimenting them.</p>
+                            <p class="testimonial-author">— Sarah & Michael</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-item">
+                            <p class="testimonial-text">We designed our own and the process was so fun. The quality exceeded expectations!</p>
+                            <p class="testimonial-author">— Priya & Raj</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="testimonial-item">
+                            <p class="testimonial-text">Fast shipping, beautiful designs, and the paper feels luxurious. Highly recommend!</p>
+                            <p class="testimonial-author">— Emily & James</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal (unchanged) -->
+    <div class="modal fade" id="imageModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImage" class="d-block w-100 modal-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('../layout/footer') %>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Open modal
+        function openModal(src) {
+            document.getElementById('modalImage').src = src;
+        }
+
+        // Typed.js animation
+        new Typed('.typed-text', {
+            strings: ['Elegant Invitations', 'Timeless Designs', 'Your Love Story', 'Magical Moments'],
+            typeSpeed: 80,
+            backSpeed: 40,
+            loop: true
+        });
+
+        // Back to top
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backBtn.classList.toggle('visible', window.scrollY > 300);
+        });
+        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Scroll indicator
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Design Your Own interactive preview
+        const options = document.querySelectorAll('.design-option');
+        const preview = document.getElementById('designPreview');
+        const styleImages = {
+            classic: '/allpack/invitation/invdar/17.jpg',
+            modern: '/allpack/invitation/invdar/2.jpg',
+            rustic: '/allpack/invitation/invdar/6.jpg',
+            bohemian: '/allpack/invitation/invdar/9.jpg'
+        };
+
+        options.forEach(opt => {
+            opt.addEventListener('click', function() {
+                options.forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                const style = this.dataset.style;
+                preview.style.backgroundImage = `url('${styleImages[style]}')`;
+            });
+        });
+
+        // Disable right-click on video (optional)
+        document.querySelector('video').addEventListener('contextmenu', e => e.preventDefault());
+    </script>
+</body>
+</html>
