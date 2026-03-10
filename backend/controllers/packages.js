@@ -10,7 +10,7 @@ exports.getbeauty = (req, res) =>{
     res.sendFile(path.join(__dirname, "../../frontend/allpack/makeup/beaty.html"));
 }
 exports.getmc = (req, res) =>{
-    res.sendFile(path.join(__dirname, "../../frontend/allpack/mc/mc.html"));
+    res.render("allpack/mc/mc",{activePage:"services" });
 }
 
 exports.getgakondo = (req,res) =>{
