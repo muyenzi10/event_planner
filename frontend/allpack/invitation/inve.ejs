@@ -1,33 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unique Invitation Cards</title>
-<link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        crossorigin="anonymous"
-    />
-
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-        crossorigin="anonymous"
-    />
-
-    <!-- Google Fonts -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Invitation Cards</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&family=Quicksand:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Typed.js for animated text -->
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
+    <!-- Your existing CSS files (navbas, footer) - keep paths as is -->
     <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
     <link rel="stylesheet" href="/allpack/layout/css/footer.css">
-    
+
     <style>
         :root {
             --primary-lavender: #9b8bcf;
@@ -84,7 +71,7 @@
             box-shadow: 0 6px 20px rgba(107, 91, 149, 0.4);
         }
 
-        /* ============ UNIQUE VIDEO HERO ============ */
+        /* ============ VIDEO HERO ============ */
         .video-hero {
             position: relative;
             width: 100%;
@@ -101,12 +88,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                135deg,
-                rgba(155, 139, 207, 0.3) 0%,
-                rgba(26, 26, 46, 0.7) 50%,
-                rgba(183, 110, 121, 0.3) 100%
-            );
+            background: linear-gradient(135deg, rgba(155, 139, 207, 0.3) 0%, rgba(26, 26, 46, 0.7) 50%, rgba(183, 110, 121, 0.3) 100%);
             z-index: 2;
         }
 
@@ -121,7 +103,6 @@
             z-index: 1;
         }
 
-        /* ============ HERO CONTENT ============ */
         .hero-content {
             position: relative;
             z-index: 5;
@@ -168,7 +149,6 @@
             margin-right: auto;
         }
 
-        /* ============ BUTTONS ============ */
         .btn-gradient {
             background: linear-gradient(135deg, var(--primary-lavender) 0%, var(--deep-rose) 100%);
             border: none;
@@ -206,7 +186,6 @@
             border-color: var(--primary-blush);
         }
 
-        /* ============ SCROLL INDICATOR ============ */
         .scroll-indicator {
             position: absolute;
             bottom: 30px;
@@ -223,11 +202,10 @@
             text-shadow: 0 0 10px rgba(0,0,0,0.5);
         }
 
-        /* ============ GALLERY SECTION (unique hover) ============ */
+        /* ============ GALLERY SECTION (enhanced) ============ */
         .gallery-section {
             padding: 80px 0;
             background: var(--bg-light);
-            position: relative;
         }
 
         .gallery-section h2 {
@@ -245,6 +223,34 @@
             margin-bottom: 3rem;
         }
 
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 8px 25px;
+            border: 2px solid var(--primary-lavender);
+            background: transparent;
+            color: var(--dark-lavender);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-lavender);
+            color: white;
+            border-color: var(--deep-rose);
+        }
+
+        /* Gallery Grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -269,14 +275,36 @@
 
         .gallery-item img {
             width: 100%;
-            height: 250px;
+            height: 280px;
             object-fit: cover;
             transition: transform 0.8s;
+            display: block;
             cursor: pointer;
         }
 
         .gallery-item:hover img {
             transform: scale(1.1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            color: white;
+            font-size: 2rem;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
         }
 
         .gallery-item .caption {
@@ -291,114 +319,112 @@
             transition: transform 0.5s;
             font-size: 1rem;
             text-align: center;
+            font-weight: 500;
+            pointer-events: none;
         }
 
         .gallery-item:hover .caption {
             transform: translateY(0);
         }
 
-        /* ============ DESIGN YOUR OWN SECTION (unique) ============ */
-        .design-section {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #f3e9ff 0%, #ffe6e5 100%);
+        /* ============ ENHANCED MODAL (LIGHTBOX) - ADJUSTED FOR PC ============ */
+        .modal-content.bg-transparent {
+            background: transparent !important;
         }
 
-        .design-card {
-            background: white;
-            border-radius: 30px;
-            padding: 3rem;
-            box-shadow: 0 25px 50px rgba(107, 91, 149, 0.15);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .design-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: var(--dark-lavender);
-            margin-bottom: 2rem;
-        }
-
-        .design-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-
-        .design-option {
-            background: #f0f0f0;
-            border-radius: 50px;
-            padding: 0.8rem 1.8rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .design-option.selected {
-            background: var(--primary-lavender);
-            color: white;
-            border-color: var(--deep-rose);
-        }
-
-        .design-preview {
-            width: 100%;
-            height: 200px;
-            background: #ddd;
-            border-radius: 20px;
-            margin-top: 2rem;
-            background-size: cover;
-            background-position: center;
-            transition: background-image 0.3s;
-            border: 3px solid white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        /* ============ TESTIMONIAL CAROUSEL ============ */
-        .testimonial-section {
-            padding: 60px 0;
-            background: white;
-        }
-
-        .testimonial-carousel {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .testimonial-item {
-            text-align: center;
-            padding: 30px;
-        }
-
-        .testimonial-text {
-            font-size: 1.3rem;
-            font-style: italic;
-            color: #555;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .testimonial-text::before {
-            content: '“';
-            font-size: 4rem;
-            color: var(--primary-lavender);
+        .btn-close-white {
+            filter: invert(1) grayscale(100%) brightness(200%);
+            opacity: 0.8;
             position: absolute;
-            left: -20px;
-            top: -20px;
-            opacity: 0.3;
+            right: 20px;
+            top: 20px;
+            z-index: 1060;
         }
 
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--deep-rose);
+        .lightbox-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
         }
 
-        .carousel-indicators [data-bs-target] {
-            background-color: var(--primary-lavender);
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 70vh;
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        /* ============ ANIMATIONS ============ */
+        /* Make modal dialog smaller on large screens */
+        @media (min-width: 992px) {
+            .modal-dialog {
+                max-width: 900px;
+            }
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            transition: background 0.3s;
+            z-index: 1050;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.6);
+            color: #333;
+        }
+
+        .lightbox-nav.prev {
+            left: 20px;
+        }
+
+        .lightbox-nav.next {
+            right: 20px;
+        }
+
+        .lightbox-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 1.2rem;
+            text-shadow: 0 2px 5px black;
+            background: rgba(0,0,0,0.4);
+            padding: 8px 20px;
+            border-radius: 30px;
+            width: fit-content;
+            margin: 0 auto;
+            backdrop-filter: blur(3px);
+        }
+
+        .lightbox-counter {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 1rem;
+            backdrop-filter: blur(3px);
+        }
+
+        /* Animations */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -412,15 +438,18 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .design-card {
-                padding: 2rem;
+            .lightbox-nav {
+                font-size: 1.8rem;
+                padding: 5px 10px;
             }
         }
 
-        /* Modal image styling */
-        .modal-img {
-            width: 100%;
-            border-radius: 8px;
+        /* Additional adjustment for PC: reduce navigation button size */
+        @media (min-width: 992px) {
+            .lightbox-nav {
+                font-size: 2rem;
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
@@ -430,7 +459,7 @@
     <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
 
-    <!-- UNIQUE VIDEO HERO (without floating cards and countdown) -->
+    <!-- VIDEO HERO -->
     <section class="video-hero">
         <video autoplay loop muted playsinline disablePictureInPicture>
             <source src="/allpack/invitation/invdar/v3.mp4" type="video/mp4">
@@ -459,106 +488,170 @@
         </div>
     </section>
 
-    <!-- GALLERY SECTION with 3D tilt effect -->
+    <!-- ============ ENHANCED GALLERY SECTION ============ -->
     <section class="gallery-section" id="gallery">
         <div class="container">
             <h2>✨ Curated Collection</h2>
             <p class="section-subtitle">Each design tells a unique story. Hover to feel the magic.</p>
-            <div class="gallery-grid">
-                <!-- 20 gallery items – removed data-bs-toggle and data-bs-target, kept onclick -->
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/17.jpg" onclick="openModal('/allpack/invitation/invdar/17.jpg')">
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="classic">Classic</button>
+                <button class="filter-btn" data-filter="modern">Modern</button>
+                <button class="filter-btn" data-filter="vintage">Vintage</button>
+                <button class="filter-btn" data-filter="bohemian">Bohemian</button>
+            </div>
+
+            <!-- Gallery Grid (20 items with categories and captions) -->
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- 1 -->
+                <div class="gallery-item" data-category="classic">
+                    <img src="/allpack/invitation/invdar/17.jpg" alt="Timeless romance" loading="lazy" data-caption="Timeless romance">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Timeless romance</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/2.jpg" onclick="openModal('/allpack/invitation/invdar/2.jpg')">
+                <!-- 2 -->
+                <div class="gallery-item" data-category="modern">
+                    <img src="/allpack/invitation/invdar/2.jpg" alt="Modern elegance" loading="lazy" data-caption="Modern elegance">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Modern elegance</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/18.jpg" onclick="openModal('/allpack/invitation/invdar/18.jpg')">
+                <!-- 3 -->
+                <div class="gallery-item" data-category="vintage">
+                    <img src="/allpack/invitation/invdar/18.jpg" alt="Vintage charm" loading="lazy" data-caption="Vintage charm">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Vintage charm</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/4.jpg" onclick="openModal('/allpack/invitation/invdar/4.jpg')">
+                <!-- 4 -->
+                <div class="gallery-item" data-category="classic">
+                    <img src="/allpack/invitation/invdar/4.jpg" alt="Opulent affair" loading="lazy" data-caption="Opulent affair">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Opulent affair</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/5.jpg" onclick="openModal('/allpack/invitation/invdar/5.jpg')">
+                <!-- 5 -->
+                <div class="gallery-item" data-category="modern">
+                    <img src="/allpack/invitation/invdar/5.jpg" alt="Minimalist love" loading="lazy" data-caption="Minimalist love">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Minimalist love</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/6.jpg" onclick="openModal('/allpack/invitation/invdar/6.jpg')">
+                <!-- 6 -->
+                <div class="gallery-item" data-category="vintage">
+                    <img src="/allpack/invitation/invdar/6.jpg" alt="Classic story" loading="lazy" data-caption="Classic story">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Classic story</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/7.jpg" onclick="openModal('/allpack/invitation/invdar/7.jpg')">
+                <!-- 7 -->
+                <div class="gallery-item" data-category="bohemian">
+                    <img src="/allpack/invitation/invdar/7.jpg" alt="Whisper of love" loading="lazy" data-caption="Whisper of love">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Whisper of love</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/8.jpg" onclick="openModal('/allpack/invitation/invdar/8.jpg')">
+                <!-- 8 -->
+                <div class="gallery-item" data-category="modern">
+                    <img src="/allpack/invitation/invdar/8.jpg" alt="Nature's touch" loading="lazy" data-caption="Nature's touch">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Nature's touch</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/9.jpg" onclick="openModal('/allpack/invitation/invdar/9.jpg')">
+                <!-- 9 -->
+                <div class="gallery-item" data-category="bohemian">
+                    <img src="/allpack/invitation/invdar/9.jpg" alt="Bohemian dream" loading="lazy" data-caption="Bohemian dream">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Bohemian dream</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/10.jpg" onclick="openModal('/allpack/invitation/invdar/10.jpg')">
+                <!-- 10 -->
+                <div class="gallery-item" data-category="vintage">
+                    <img src="/allpack/invitation/invdar/10.jpg" alt="Floral fantasy" loading="lazy" data-caption="Floral fantasy">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Floral fantasy</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/11.jpg" onclick="openModal('/allpack/invitation/invdar/11.jpg')">
+                <!-- 11 -->
+                <div class="gallery-item" data-category="classic">
+                    <img src="/allpack/invitation/invdar/11.jpg" alt="Golden touch" loading="lazy" data-caption="Golden touch">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Golden touch</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/12.jpg" onclick="openModal('/allpack/invitation/invdar/12.jpg')">
+                <!-- 12 -->
+                <div class="gallery-item" data-category="bohemian">
+                    <img src="/allpack/invitation/invdar/12.jpg" alt="Enchanted forest" loading="lazy" data-caption="Enchanted forest">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Enchanted forest</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/13.jpg" onclick="openModal('/allpack/invitation/invdar/13.jpg')">
+                <!-- 13 -->
+                <div class="gallery-item" data-category="modern">
+                    <img src="/allpack/invitation/invdar/13.jpg" alt="Coastal chic" loading="lazy" data-caption="Coastal chic">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Coastal chic</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/14.jpg" onclick="openModal('/allpack/invitation/invdar/14.jpg')">
+                <!-- 14 -->
+                <div class="gallery-item" data-category="vintage">
+                    <img src="/allpack/invitation/invdar/14.jpg" alt="Winter wonderland" loading="lazy" data-caption="Winter wonderland">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Winter wonderland</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/15.jpg" onclick="openModal('/allpack/invitation/invdar/15.jpg')">
+                <!-- 15 -->
+                <div class="gallery-item" data-category="classic">
+                    <img src="/allpack/invitation/invdar/15.jpg" alt="Art deco glam" loading="lazy" data-caption="Art deco glam">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Art deco glam</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/16.jpg" onclick="openModal('/allpack/invitation/invdar/16.jpg')">
+                <!-- 16 -->
+                <div class="gallery-item" data-category="bohemian">
+                    <img src="/allpack/invitation/invdar/16.jpg" alt="Tropical paradise" loading="lazy" data-caption="Tropical paradise">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Tropical paradise</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/1.jpg" onclick="openModal('/allpack/invitation/invdar/1.jpg')">
+                <!-- 17 -->
+                <div class="gallery-item" data-category="modern">
+                    <img src="/allpack/invitation/invdar/1.jpg" alt="Whimsical wonder" loading="lazy" data-caption="Whimsical wonder">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Whimsical wonder</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/13.jpg" onclick="openModal('/allpack/invitation/invdar/13.jpg')">
+                <!-- 18 -->
+                <div class="gallery-item" data-category="classic">
+                    <img src="/allpack/invitation/invdar/13.jpg" alt="Ethereal beauty" loading="lazy" data-caption="Ethereal beauty">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Ethereal beauty</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/19.jpg" onclick="openModal('/allpack/invitation/invdar/19.jpg')">
+                <!-- 19 -->
+                <div class="gallery-item" data-category="vintage">
+                    <img src="/allpack/invitation/invdar/19.jpg" alt="Regal affair" loading="lazy" data-caption="Regal affair">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Regal affair</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="/allpack/invitation/invdar/20.jpg" onclick="openModal('/allpack/invitation/invdar/20.jpg')">
+                <!-- 20 -->
+                <div class="gallery-item" data-category="bohemian">
+                    <img src="/allpack/invitation/invdar/20.jpg" alt="Celestial charm" loading="lazy" data-caption="Celestial charm">
+                    <div class="overlay"><i class="fas fa-search-plus"></i></div>
                     <div class="caption">Celestial charm</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Image Modal (unchanged) -->
-    <div class="modal fade" id="imageModal" tabindex="-1">
+    <!-- ENHANCED LIGHTBOX MODAL (adjusted size) -->
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <div class="modal-content bg-transparent border-0">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body text-center">
-                    <img id="modalImage" class="modal-img" style="max-width:100%; height:auto;">
+                <div class="modal-body text-center p-0">
+                    <div class="lightbox-container">
+                        <img id="modalImage" class="lightbox-img" alt="Enlarged view">
+                        
+                        <!-- Navigation arrows -->
+                        <button class="lightbox-nav prev" id="prevBtn" aria-label="Previous image">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="lightbox-nav next" id="nextBtn" aria-label="Next image">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                        
+                        <!-- Caption and counter -->
+                        <div class="lightbox-caption" id="modalCaption"></div>
+                        <div class="lightbox-counter" id="imageCounter"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -569,15 +662,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Open modal – sets image source and shows modal
-        function openModal(src) {
-            document.getElementById('modalImage').src = src;
-            // Use Bootstrap's modal API to show the modal
-            var myModal = new bootstrap.Modal(document.getElementById('imageModal'));
-            myModal.show();
-        }
-
-        // Typed.js animation
+        // ============ TYPED.JS ============
         new Typed('.typed-text', {
             strings: ['Elegant Invitations', 'Timeless Designs', 'Your Love Story', 'Magical Moments'],
             typeSpeed: 80,
@@ -585,42 +670,113 @@
             loop: true
         });
 
-        // Back to top
+        // ============ BACK TO TOP ============
         const backBtn = document.getElementById('backToTop');
         window.addEventListener('scroll', () => {
             backBtn.classList.toggle('visible', window.scrollY > 300);
         });
         backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // Scroll indicator
+        // ============ SCROLL INDICATOR ============
         document.querySelector('.scroll-indicator').addEventListener('click', () => {
             document.getElementById('gallery').scrollIntoView({ behavior: 'smooth' });
         });
 
-        // Design Your Own interactive preview (optional, if you keep that section)
-        // (Commented out because the design section was removed – if you add it back, uncomment)
-        /*
-        const options = document.querySelectorAll('.design-option');
-        const preview = document.getElementById('designPreview');
-        const styleImages = {
-            classic: '/allpack/invitation/invdar/17.jpg',
-            modern: '/allpack/invitation/invdar/2.jpg',
-            rustic: '/allpack/invitation/invdar/6.jpg',
-            bohemian: '/allpack/invitation/invdar/9.jpg'
-        };
+        // ============ GALLERY FILTER ============
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
 
-        options.forEach(opt => {
-            opt.addEventListener('click', function() {
-                options.forEach(o => o.classList.remove('selected'));
-                this.classList.add('selected');
-                const style = this.dataset.style;
-                preview.style.backgroundImage = `url('${styleImages[style]}')`;
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.dataset.filter;
+
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.dataset.category === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
             });
         });
-        */
+
+        // ============ LIGHTBOX (ENHANCED MODAL) ============
+        // Collect image data
+        const images = [];
+        const captions = [];
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            images.push(img.src);
+            captions.push(img.dataset.caption || '');
+        });
+
+        let currentIndex = 0;
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const imageCounter = document.getElementById('imageCounter');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+
+        // Update modal content
+        function updateModal(index) {
+            currentIndex = index;
+            modalImage.src = images[currentIndex];
+            modalCaption.textContent = captions[currentIndex];
+            imageCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+        }
+
+        // Open modal on image click
+        document.querySelectorAll('.gallery-item img').forEach((img, idx) => {
+            img.addEventListener('click', () => {
+                updateModal(idx);
+                imageModal.show();
+            });
+        });
+
+        // Navigation
+        prevBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            let newIndex = currentIndex - 1;
+            if (newIndex < 0) newIndex = images.length - 1;
+            updateModal(newIndex);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            let newIndex = currentIndex + 1;
+            if (newIndex >= images.length) newIndex = 0;
+            updateModal(newIndex);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('imageModal').classList.contains('show')) return;
+
+            if (e.key === 'ArrowLeft') {
+                prevBtn.click();
+            } else if (e.key === 'ArrowRight') {
+                nextBtn.click();
+            } else if (e.key === 'Escape') {
+                imageModal.hide();
+            }
+        });
+
+        // Touch swipe (simple)
+        let touchStartX = 0;
+        modalImage.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        modalImage.addEventListener('touchend', (e) => {
+            let touchEndX = e.changedTouches[0].screenX;
+            if (touchEndX < touchStartX - 50) nextBtn.click(); // swipe left
+            if (touchEndX > touchStartX + 50) prevBtn.click(); // swipe right
+        });
 
         // Disable right-click on video (optional)
-        document.querySelector('video').addEventListener('contextmenu', e => e.preventDefault());
+        document.querySelector('video')?.addEventListener('contextmenu', e => e.preventDefault());
     </script>
 </body>
 </html>
