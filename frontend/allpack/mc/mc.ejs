@@ -212,68 +212,197 @@
             }
         }
 
-        /* Content Section */
+        /* ========== IMPROVED MC CONTENT SECTION ========== */
         .mc-content {
-            padding: 80px 0;
+            padding: 100px 0;
+            background: linear-gradient(135deg, #fff9f9 0%, #fff 100%);
         }
 
-        .mc-content h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
+        #mcCarousel {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border: 5px solid white;
         }
 
-        .mc-content .lead {
-            font-size: 1.2rem;
+        #mcCarousel .carousel-control-prev,
+        #mcCarousel .carousel-control-next {
+            width: 8%;
+            opacity: 0.8;
+        }
+
+        #mcCarousel .carousel-control-prev-icon,
+        #mcCarousel .carousel-control-next-icon {
+            background-color: rgba(107, 91, 149, 0.7);
+            border-radius: 50%;
+            padding: 15px;
+        }
+
+        .mc-content-text {
+            padding-left: 40px;
+        }
+
+        .mc-content-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #6b5b95;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .mc-content-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #9b8bcf, #b76e79);
+            border-radius: 2px;
+        }
+
+        .mc-content-text .subhead {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #b76e79;
+            margin: 20px 0 15px;
+        }
+
+        .mc-content-text .lead {
+            font-size: 1.1rem;
             line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
         }
 
-        .mc-content ul {
+        .feature-list {
             list-style: none;
             padding: 0;
+            margin-bottom: 40px;
         }
 
-        .mc-content ul li {
-            margin-bottom: 10px;
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
             font-size: 1.1rem;
         }
 
-        .mc-content ul li i {
-            margin-right: 10px;
-            color: #28a745;
+        .feature-list li i {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #9b8bcf 0%, #b76e79 100%);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            margin-right: 20px;
+            box-shadow: 0 10px 15px rgba(155, 139, 207, 0.3);
         }
 
-        /* Carousel Section */
-        #mcCarousel {
-            height: 400px;
+        .feature-list li span {
+            color: #444;
+            font-weight: 500;
+        }
+
+        .mc-signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #6b5b95;
+            margin-top: 20px;
+        }
+
+        .mc-signature i {
+            color: #b76e79;
+            font-size: 1.2rem;
+            margin: 0 10px;
+        }
+
+        /* ========== FIXED MC GALLERY SECTION (no cropping) ========== */
+        .mc-gallery {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .mc-gallery h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #6b5b95;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
             overflow: hidden;
-            border-radius: 10px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            height: 280px; /* fixed height for grid uniformity */
+            width: 100%;
+            cursor: pointer;
+            background-color: #e9ecef; /* light background for letterboxing */
         }
 
-        .carousel-inner, .carousel-item {
-            height: 100%;
-        }
-
-        .carousel-item img {
+        .gallery-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
+            object-fit: contain; /* show full image without cropping */
+            transition: transform 0.5s ease;
         }
 
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 5%;
+        .gallery-item:hover img {
+            transform: scale(1.1);
         }
 
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            padding: 10px;
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
-        /* Testimonials Section */
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: white;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* Mobile adjustment */
+        @media (max-width: 768px) {
+            .gallery-item {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mc-content-text {
+                padding-left: 0;
+                margin-top: 40px;
+            }
+        }
+
+        /* Testimonials Section (unchanged) */
         .mc-testimonials {
             background: #f8f9fa;
             padding: 80px 0;
@@ -308,25 +437,170 @@
             color: #333;
         }
 
-        /* Gallery Section */
-        .mc-gallery {
+        /* FAQ Section (unchanged) */
+        .mc-faq {
+            background: #f8f9fa;
             padding: 80px 0;
         }
 
-        .mc-gallery h2 {
+        .mc-faq h2 {
             font-size: 2.5rem;
             font-weight: bold;
             margin-bottom: 40px;
             text-align: center;
         }
 
-        .mc-gallery img {
-            border-radius: 10px;
-            transition: transform 0.3s ease;
+        /* ========== IMPROVED LIGHTBOX MODAL (elegant & smooth) ========== */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .mc-gallery img:hover {
-            transform: scale(1.05);
+        .lightbox-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transform: scale(0.95);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .lightbox-modal.show .lightbox-image {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Close button - modern circle */
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: -10px;
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.6);
+            transform: rotate(90deg);
+            color: #fff;
+        }
+
+        /* Navigation arrows - circular with gradient */
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.15);
+            border: 2px solid rgba(255,255,255,0.2);
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            font-size: 2.2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        /* Image counter - minimal pill */
+        .lightbox-counter {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 0.95rem;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            padding: 6px 18px;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .lightbox-nav {
+                width: 44px;
+                height: 44px;
+                font-size: 1.6rem;
+            }
+            .lightbox-prev {
+                left: 10px;
+            }
+            .lightbox-next {
+                right: 10px;
+            }
+            .lightbox-close {
+                top: -45px;
+                right: 0;
+                width: 42px;
+                height: 42px;
+                font-size: 1.8rem;
+            }
+            .lightbox-counter {
+                bottom: -35px;
+                font-size: 0.85rem;
+                padding: 4px 14px;
+            }
         }
 
         /* Animations */
@@ -344,7 +618,7 @@
 <body>
     <%- include('../layout/navbar') %>
 
-    <!-- REDESIGNED MC HERO SECTION (without stats card) -->
+    <!-- REDESIGNED MC HERO SECTION (unchanged) -->
     <section class="mc-hero" data-aos="fade-down">
         <div class="hero-overlay"></div>
         
@@ -369,12 +643,12 @@
         </div>
     </section>
 
-    <!-- MC Content Section -->
+    <!-- IMPROVED MC CONTENT SECTION -->
     <section class="mc-content">
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-md-6" data-aos="fade-right">
-                    <!-- Image Slider -->
+                    <!-- Image Slider with improved styling -->
                     <div id="mcCarousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -403,22 +677,27 @@
                         </button>
                     </div>
                 </div>
-                <div class="col-md-6" data-aos="fade-left">
+                <div class="col-md-6 mc-content-text" data-aos="fade-left">
                     <h2>About Our MC</h2>
+                    <div class="subhead">Meet the voice behind the mic</div>
                     <p class="lead">Our Master of Ceremony is a seasoned professional with years of experience in hosting weddings and events. With a charismatic personality and excellent communication skills, they ensure your wedding runs smoothly and memorably.</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-check-circle text-success"></i> Engaging and interactive hosting style</li>
-                        <li><i class="fas fa-check-circle text-success"></i> Customized scripts tailored to your wedding theme</li>
-                        <li><i class="fas fa-check-circle text-success"></i> Multilingual capabilities</li>
-                        <li><i class="fas fa-check-circle text-success"></i> Professional audio equipment provided</li>
+                    
+                    <ul class="feature-list">
+                        <li><i class="fas fa-microphone-alt"></i> <span>Engaging and interactive hosting style</span></li>
+                        <li><i class="fas fa-heart"></i> <span>Customized scripts tailored to your theme</span></li>
+                        <li><i class="fas fa-language"></i> <span>Fluent in Kinyarwanda, English & French</span></li>
+                        <li><i class="fas fa-volume-up"></i> <span>Professional audio equipment included</span></li>
                     </ul>
-                   
+
+                    <div class="mc-signature">
+                        <i class="fas fa-quote-left"></i> Let's make your day unforgettable <i class="fas fa-quote-right"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- MC Testimonials Section -->
+    <!-- MC Testimonials Section (unchanged) -->
     <section class="mc-testimonials">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">What Couples Say</h2>
@@ -445,35 +724,40 @@
         </div>
     </section>
 
-    <!-- MC Gallery Section -->
+    <!-- FIXED MC GALLERY SECTION (no cropping) -->
     <section class="mc-gallery" id="gallery">
         <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">Gallery</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <img src="/allpack/mc/mcdata/ranf.webp" class="img-fluid rounded" alt="MC Image 1">
+            <h2 data-aos="fade-up">Moments Captured</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="zoom-in">
+                    <img src="/allpack/mc/mcdata/ranf.webp" alt="MC Image 1">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <img src="/allpack/mc/mcdata/mc1.jpg" class="img-fluid rounded" alt="MC Image 2">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="/allpack/mc/mcdata/mc1.jpg" alt="MC Image 2">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <img src="/allpack/mc/mcdata/muvunyi.jpg" class="img-fluid rounded" alt="MC Image 3">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="/allpack/mc/mcdata/muvunyi.jpg" alt="MC Image 3">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <img src="/allpack/mc/mcdata/eric.jpeg" class="img-fluid rounded" alt="MC Image 3">
+                <div class="gallery-item" data-aos="zoom-in">
+                    <img src="/allpack/mc/mcdata/eric.jpeg" alt="MC Image 4">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <img src="/allpack/mc/mcdata/igihame2.jpeg" class="img-fluid rounded" alt="MC Image 3">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="/allpack/mc/mcdata/igihame2.jpeg" alt="MC Image 5">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <img src="/allpack/mc/mcdata/kamanzi.jpg" class="img-fluid rounded" alt="MC Image 3">
+                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="/allpack/mc/mcdata/kamanzi.jpg" alt="MC Image 6">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
             </div>
         </div>
     </section>
 
-
-    <!-- MC FAQ Section -->
+    <!-- MC FAQ Section (unchanged) -->
     <section class="mc-faq py-5">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Frequently Asked Questions</h2>
@@ -505,6 +789,17 @@
             </div>
         </div>
     </section>
+
+    <!-- IMPROVED LIGHTBOX MODAL (elegant) -->
+    <div class="lightbox-modal" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+            <img class="lightbox-image" id="lightboxImg" src="" alt="">
+            <button class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+            <div class="lightbox-counter" id="lightboxCounter"></div>
+        </div>
+    </div>
     
     <%- include('../layout/footer') %>
 
@@ -525,6 +820,85 @@
         AOS.init({
             duration: 1000,
             once: true,
+        });
+
+        // ========== LIGHTBOX SCRIPT (unchanged functionality) ==========
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+        const closeBtn = document.getElementById('lightboxClose');
+        const prevBtn = document.getElementById('lightboxPrev');
+        const nextBtn = document.getElementById('lightboxNext');
+
+        // Get all gallery items
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const images = [];
+        galleryItems.forEach(item => {
+            const img = item.querySelector('img');
+            images.push({
+                src: img.src,
+                alt: img.alt
+            });
+        });
+
+        let currentIndex = 0;
+
+        // Open lightbox
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightboxImage();
+            lightbox.classList.add('show');
+            document.body.style.overflow = 'hidden'; // prevent scrolling
+        }
+
+        // Update image and counter
+        function updateLightboxImage() {
+            lightboxImg.src = images[currentIndex].src;
+            lightboxImg.alt = images[currentIndex].alt;
+            lightboxCounter.textContent = `${currentIndex + 1} / ${images.length}`;
+        }
+
+        // Close lightbox
+        function closeLightbox() {
+            lightbox.classList.remove('show');
+            document.body.style.overflow = ''; // restore scrolling
+        }
+
+        // Next image
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateLightboxImage();
+        }
+
+        // Previous image
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateLightboxImage();
+        }
+
+        // Add click event to gallery items
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                openLightbox(index);
+            });
+        });
+
+        // Event listeners for controls
+        closeBtn.addEventListener('click', closeLightbox);
+        prevBtn.addEventListener('click', prevImage);
+        nextBtn.addEventListener('click', nextImage);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('show')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowRight') nextImage();
+        });
+
+        // Click outside image to close (optional)
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
         });
     </script>
 </body>
