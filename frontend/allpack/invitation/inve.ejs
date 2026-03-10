@@ -327,18 +327,38 @@
             transform: translateY(0);
         }
 
-        /* ============ ENHANCED MODAL (LIGHTBOX) - ADJUSTED FOR PC ============ */
+        /* ============ ENHANCED MODAL (LIGHTBOX) ============ */
         .modal-content.bg-transparent {
             background: transparent !important;
         }
 
+        /* ----- IMPROVED CLOSE BUTTON ----- */
         .btn-close-white {
-            filter: invert(1) grayscale(100%) brightness(200%);
-            opacity: 0.8;
+            filter: none !important; /* Remove default filter to avoid double effect */
+            background: rgba(0, 0, 0, 0.6) url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath d='M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+            opacity: 1;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
             position: absolute;
             right: 20px;
             top: 20px;
             z-index: 1060;
+        }
+
+        .btn-close-white:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+            border-color: rgba(255,255,255,0.8);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+
+        .btn-close-white:focus {
+            box-shadow: none;
+            outline: none;
         }
 
         .lightbox-container {
@@ -441,6 +461,12 @@
             .lightbox-nav {
                 font-size: 1.8rem;
                 padding: 5px 10px;
+            }
+            .btn-close-white {
+                width: 2rem;
+                height: 2rem;
+                right: 10px;
+                top: 10px;
             }
         }
 
@@ -629,11 +655,12 @@
         </div>
     </section>
 
-    <!-- ENHANCED LIGHTBOX MODAL (adjusted size) -->
+    <!-- ENHANCED LIGHTBOX MODAL (with improved close button) -->
     <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content bg-transparent border-0">
                 <div class="modal-header border-0">
+                    <!-- Custom close button (improved) -->
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center p-0">
