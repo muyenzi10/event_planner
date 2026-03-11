@@ -35,7 +35,7 @@ exports.getindinzi = async (req, res) => {
 
    const allFiles = await File.find().sort({ uploadedAt: -1 });       
     res.render("allpack/indinzi/troup/indinzi", {
-      activeP: 'troupeformat',
+      activePage:'services', 
       files,
       allFiles,
       currentPage,
@@ -59,7 +59,9 @@ exports.gettroupedashboad = async (req, res) => {
         const files= await File.find().sort({uploadedAt: -1})
         .skip((currentPage -1) * itemsPerPage)
         .limit(itemsPerPage)
-        res.render("allpack/indinzi/troup/troupformat", { files,
+        res.render("allpack/indinzi/troup/troupformat", { 
+          activeP: 'troupeformat',
+          files,
           itemsPerPage,
           currentPage,
           totalitems

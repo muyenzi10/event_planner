@@ -11,11 +11,15 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <!-- AOS Animation -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+     <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
+    <link rel="stylesheet" href="/allpack/layout/css/footer.css">
     
     <style>
         :root {
@@ -123,111 +127,12 @@
             padding: 80px 0;
         }
 
-        /* Rest of your existing CSS remains the same */
-        .navbar {
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            background-color: var(--light-color) !important;
-            padding: 15px 0;
-            transition: all 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .navbar.scrolled {
-            padding: 10px 0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--primary-color) !important;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-link {
-            font-weight: 500;
-            color: var(--dark-color) !important;
-            transition: all 0.3s ease;
-            margin: 0 10px;
-            position: relative;
-        }
-
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover:after, .nav-link.active:after {
-            width: 100%;
-        }
-
-        /* Professional Centered Navbar for Mobile */
-        @media (max-width: 991px) {
-            .navbar-collapse {
-                background-color: var(--light-color);
-                border-radius: 12px;
-                padding: 15px 0;
-                margin-top: 10px;
-                box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            }
-
-            .navbar-nav {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 12px;
-                padding: 0;
-            }
-
-            .nav-item {
-                width: 90%;
-            }
-
-            .nav-link {
-                display: block;
-                width: 100%;
-                text-align: center;
-                padding: 12px 0;
-                border-radius: 8px;
-                font-size: 1.1rem;
-                transition: all 0.3s ease;
-                background-color: rgba(212,175,55,0.05);
-                color: var(--dark-color) !important;
-            }
-
-            .nav-link:hover, .nav-link.active {
-                background-color: var(--primary-color);
-                color: #fff !important;
-                box-shadow: 0 4px 15px rgba(212,175,55,0.3);
-            }
-
-            .nav-link:hover:after, .nav-link.active:after {
-                display: none;
-            }
-
-            .navbar-brand {
-                width: 100%;
-                text-align: center;
-                margin-bottom: 10px;
-                font-size: 1.6rem;
-            }
-        }
-
         /* Enhanced Hero Section with Slider */
         .hero-section {
             position: relative;
             height: 80vh;
             overflow: hidden;
-            margin-top: 76px;
+            margin-top: 0; /* Removed navbar offset */
             z-index: 1;
         }
 
@@ -736,9 +641,6 @@
             margin-bottom: 0;
         }
 
-        /* Image Gallery Section */
-        
-
         /* Image click effect */
         .image-clickable {
             cursor: pointer;
@@ -767,7 +669,7 @@
             margin: 20px auto 0; /* Increased top margin */
         }
 
-        /* Fix for sticky navbar anchor links */
+        /* Fix for sticky navbar anchor links (no longer needed but kept) */
         .gallery-section {
             scroll-margin-top: 120px;
         }
@@ -1055,53 +957,6 @@
             transform: scale(1.05);
         }
 
-         /* EXACT FOOTER STYLING from provided code */
-        footer { 
-            background-color:#222; 
-            color:#eee; 
-            font-family:'Poppins', sans-serif; 
-        }
-        
-        footer h5 { 
-            font-family:'Playfair Display', serif; 
-        }
-        
-        footer .footer-link { 
-            text-decoration:none; 
-            display:inline-block; 
-            margin-bottom:8px; 
-            transition: all 0.3s ease; 
-        }
-        
-        footer .footer-link:hover { 
-            color: var(--primary-color); 
-            padding-left:6px; 
-        }
-        
-        footer .footer-social { 
-            font-size:1.2rem; 
-            display:flex; 
-            align-items:center; 
-            justify-content:center; 
-            width:36px; 
-            height:36px; 
-            border-radius:50%; 
-            background-color: rgba(212,175,55,0.2); 
-            transition: all 0.3s ease; 
-        }
-        
-        footer .footer-social:hover { 
-            background-color: var(--primary-color); 
-            color:#fff !important; 
-            box-shadow:0 0 10px rgba(212,175,55,0.6); 
-            transform:translateY(-3px); 
-        }
-        
-        footer hr.bg-secondary { 
-            border-top:1px solid rgba(255,255,255,0.2); 
-        }
-
-
         /* Theme variables and styles */
         :root {
             --primary: #e4002b;
@@ -1113,7 +968,6 @@
             --text-color: #212529;
             --card-bg: #ffffff;
             --section-bg: #e9ecef;
-            --footer-bg: #343a40;
             --border-color: #dee2e6;
             
             /* Dark mode colors */
@@ -1121,7 +975,6 @@
             --text-color-dark: #f8f9fa;
             --card-bg-dark: #1e1e1e;
             --section-bg-dark: #1a1a1a;
-            --footer-bg-dark: #121212;
             --border-color-dark: #333;
         }
         
@@ -1140,7 +993,6 @@
             --text-color: var(--text-color-dark);
             --card-bg: var(--card-bg-dark);
             --section-bg: var(--section-bg-dark);
-            --footer-bg: var(--footer-bg-dark);
             --border-color: var(--border-color-dark);
         }
         
@@ -1168,42 +1020,13 @@
     </style>
 </head>
 <body>
+    <%- include('../../layout/navbar') %>
   <!-- FIXED: Dark Mode Toggle with proper mobile positioning -->
   <button class="theme-toggle" id="themeToggle">
     <i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>
   </button>
 
-<!-- Enhanced Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <i class="fas fa-heart me-2"></i>Dream Day
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/home"><i class="fas fa-home me-1"></i> Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about"><i class="fas fa-info-circle me-1"></i> About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/packages"><i class="fas fa-gift me-1"></i> Packages</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/suppliers"><i class="fas fa-camera me-1"></i>Suppliers</a>
-                </li>
-                 <li class="nav-item"><a class="nav-link" href="/contact"><i class="fas fa-envelope me-1"></i> Contact</a></li>
-                <li class="nav-item">
-                    <a class="nav-link " href="/booking"><i class="fas fa-bookmark me-1"></i> Book Consultation</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+  <!-- Navbar removed -->
 
     <!-- Hero Section with Image Slider Only -->
     <section class="hero-section">
@@ -1425,39 +1248,8 @@
             </div>
         </div>
     </div>
-
-    <!-- EXACT FOOTER from photographers code -->
-    <footer class="bg-dark text-light pt-5 pb-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5 class="text-warning mb-3">About Us</h5>
-                    <p class="small text-light">We are a dedicated team of event planners, creating unforgettable experiences.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5 class="text-warning mb-3">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="/home" class="text-light footer-link">Home</a></li>
-                        <li><a href="/about" class="text-light footer-link">About</a></li>
-                        <li><a href="/services" class="text-light footer-link">Services</a></li>
-                        <li><a href="/packages" class="text-light footer-link">Packages</a></li>
-                        <li><a href="/contact" class="text-light footer-link">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5 class="text-warning mb-3">Connect With Us</h5>
-                    <ul class="list-unstyled d-flex gap-3">
-                        <li><a href="#" class="text-light footer-social"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" class="text-light footer-social"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#" class="text-light footer-social"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#" class="text-light footer-social"><i class="fab fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="bg-secondary">
-            <div class="text-center pt-3 small">&copy; <script>document.write(new Date().getFullYear())</script> Rwandan Traditional Dance Troupe. All Rights Reserved.</div>
-        </div>
-    </footer>
+     <%- include('../../layout/footer') %>
+    <!-- Footer removed -->
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -1473,15 +1265,7 @@
             once: true
         });
 
-        // Navbar scroll effect
-        const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // Navbar scroll effect removed
 
         // Hero Slider Functionality
         const heroSlider = document.querySelector('.hero-slider');
@@ -1784,16 +1568,7 @@
             });
         });
         
-        // Optional: Add click event to update active state when clicking links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                // Remove active class from all links
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                
-                // Add active class to clicked link
-                this.classList.add('active');
-            });
-        });
+        // Navbar active link click handler removed
     </script>
 </body>
 </html>
