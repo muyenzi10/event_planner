@@ -501,17 +501,116 @@
             }
         }
 
-        /* FAQ Section (unchanged) */
+        /* ========== REDESIGNED FAQ SECTION (elegant) ========== */
         .mc-faq {
-            background: #f8f9fa;
             padding: 80px 0;
+            background: linear-gradient(135deg, #faf5ff 0%, #fff5f5 100%);
         }
 
         .mc-faq h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #6b5b95;
             margin-bottom: 40px;
             text-align: center;
+            position: relative;
+        }
+
+        .mc-faq h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #9b8bcf, #b76e79);
+            border-radius: 2px;
+        }
+
+        .faq-accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            border: none;
+            margin-bottom: 20px;
+            border-radius: 15px !important;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            background: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .accordion-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(155,139,207,0.15);
+        }
+
+        .accordion-header {
+            margin: 0;
+        }
+
+        .accordion-button {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            color: #4a4a4a;
+            background: white;
+            border: none;
+            padding: 20px 25px;
+            transition: all 0.3s;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: linear-gradient(135deg, #9b8bcf 0%, #b76e79 100%);
+            color: white;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+            border-color: transparent;
+        }
+
+        .accordion-button::after {
+            background-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            filter: brightness(0) invert(1);
+        }
+
+        .accordion-body {
+            padding: 25px;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #555;
+            background: #fefcfc;
+            border-top: 1px solid rgba(155,139,207,0.2);
+        }
+
+        /* Add a subtle icon to questions */
+        .accordion-button i {
+            margin-right: 15px;
+            font-size: 1.3rem;
+            color: #9b8bcf;
+            transition: color 0.3s;
+        }
+
+        .accordion-button:not(.collapsed) i {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .accordion-button {
+                font-size: 1rem;
+                padding: 15px 20px;
+            }
+            .accordion-body {
+                padding: 20px;
+            }
         }
 
         /* ========== IMPROVED LIGHTBOX MODAL ========== */
@@ -671,8 +770,6 @@
     <section class="mc-hero" data-aos="fade-down">
         <div class="hero-overlay"></div>
         <div class="hero-float-icon float-1"><i class="fas fa-microphone-alt"></i></div>
-        <div class="hero-float-icon float-2"><i class="fas fa-glass-cheers"></i></div>
-        <div class="hero-float-icon float-3"><i class="fas fa-music"></i></div>
         <div class="hero-content text-center">
             <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">The Voice of Your Celebration</p>
             <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">Master of <span>Ceremony</span></h1>
@@ -755,7 +852,7 @@
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="/allpack/mc/mcdata/igihame2.jpeg" alt="MC Image 5">
+                    <img src="/allpack/mc/mcdata/ibrahim.jpg" alt="MC Image 5">
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
@@ -766,32 +863,34 @@
         </div>
     </section>
 
-    <!-- MC FAQ Section (unchanged) -->
+    <!-- REDESIGNED MC FAQ SECTION (elegant) -->
     <section class="mc-faq py-5">
         <div class="container">
             <h2 class="text-center mb-5" data-aos="fade-up">Frequently Asked Questions</h2>
-            <div class="accordion" id="faqAccordion">
-                <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            What is included in the MC service?
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Our MC service includes a customized script, professional hosting, and coordination with your event timeline.
+            <div class="faq-accordion" data-aos="fade-up" data-aos-delay="100">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fas fa-question-circle"></i> What is included in the MC service?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Our MC service includes a customized script written specifically for your wedding, professional hosting throughout your event, and coordination with your timeline to ensure everything runs smoothly. We also provide a consultation before the big day to understand your vision.
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Can the MC speak multiple languages?
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Yes, our MC is fluent in Kinyarwanda, English, and French.
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <i class="fas fa-language"></i> Can the MC speak multiple languages?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Absolutely! Our MC is fluent in Kinyarwanda, English, and French. This ensures we can connect with all your guests, regardless of their preferred language, and make everyone feel included.
+                            </div>
                         </div>
                     </div>
                 </div>
