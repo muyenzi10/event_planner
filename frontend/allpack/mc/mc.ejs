@@ -284,6 +284,27 @@
         /* Text side */
         .mc-content-text {
             padding-left: 50px;
+            max-height: 500px; /* match carousel height */
+            overflow-y: auto; /* scroll if content exceeds */
+            padding-right: 10px; /* space for scrollbar */
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: #9b8bcf #f1e9e9; /* Firefox */
+        }
+
+        /* Webkit scrollbar styling */
+        .mc-content-text::-webkit-scrollbar {
+            width: 6px;
+        }
+        .mc-content-text::-webkit-scrollbar-track {
+            background: #f1e9e9;
+            border-radius: 10px;
+        }
+        .mc-content-text::-webkit-scrollbar-thumb {
+            background: #9b8bcf;
+            border-radius: 10px;
+        }
+        .mc-content-text::-webkit-scrollbar-thumb:hover {
+            background: #b76e79;
         }
 
         .mc-content-text h2 {
@@ -386,6 +407,8 @@
             .mc-content-text {
                 padding-left: 0;
                 margin-top: 50px;
+                max-height: none; /* remove max-height on stacked layout */
+                overflow-y: visible;
             }
             .carousel-item img {
                 height: 400px;
@@ -476,41 +499,6 @@
             .gallery-item {
                 height: 220px;
             }
-        }
-
-        /* Testimonials Section (unchanged) */
-        .mc-testimonials {
-            background: #f8f9fa;
-            padding: 80px 0;
-        }
-
-        .mc-testimonials h2 {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .testimonial-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .testimonial-card p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .testimonial-card .text-end {
-            font-weight: bold;
-            color: #333;
         }
 
         /* FAQ Section (unchanged) */
@@ -696,7 +684,7 @@
         </div>
     </section>
 
-    <!-- REDESIGNED MC CONTENT SECTION (elegant) -->
+    <!-- REDESIGNED MC CONTENT SECTION (elegant) with matching heights -->
     <section class="mc-content">
         <div class="container">
             <div class="row align-items-center">
@@ -705,9 +693,6 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <img src="/allpack/mc/mcdata/ran1.jpg" class="d-block w-100" alt="MC Image 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/allpack/mc/mcdata/Webp.net-resizeimage(14).jpg" class="d-block w-100" alt="MC Image 2">
                             </div>
                             <div class="carousel-item">
                                 <img src="/allpack/mc/mcdata/mc.jpg" class="d-block w-100" alt="MC Image 3">
@@ -738,38 +723,10 @@
                         <li><i class="fas fa-microphone-alt"></i> <span>Engaging and interactive hosting style</span></li>
                         <li><i class="fas fa-heart"></i> <span>Customized scripts tailored to your theme</span></li>
                         <li><i class="fas fa-language"></i> <span>Fluent in Kinyarwanda, English & French</span></li>
-                        <li><i class="fas fa-volume-up"></i> <span>Professional audio equipment included</span></li>
                     </ul>
 
                     <div class="mc-signature">
                         <i class="fas fa-quote-left"></i> Let's make your day unforgettable <i class="fas fa-quote-right"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MC Testimonials Section (unchanged) -->
-    <section class="mc-testimonials">
-        <div class="container">
-            <h2 class="text-center mb-5" data-aos="fade-up">What Couples Say</h2>
-            <div class="row">
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-card">
-                        <p>"The MC was fantastic! They kept everyone entertained and made our wedding day truly special."</p>
-                        <p class="text-end"><strong>- Sarah & John</strong></p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-card">
-                        <p>"We couldn't have asked for a better MC. They were professional, funny, and kept everything on schedule."</p>
-                        <p class="text-end"><strong>- Emily & Michael</strong></p>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="testimonial-card">
-                        <p>"Our guests are still talking about how amazing the MC was. Highly recommend!"</p>
-                        <p class="text-end"><strong>- Laura & David</strong></p>
                     </div>
                 </div>
             </div>
@@ -870,7 +827,7 @@
     <script>
         AOS.init({ duration: 1000, once: true });
 
-        // Lightbox script (unchanged)
+        // Lightbox script
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const lightboxCounter = document.getElementById('lightboxCounter');
