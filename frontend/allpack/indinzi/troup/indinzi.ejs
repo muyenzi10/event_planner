@@ -11,14 +11,14 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
-  <!-- Google Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <!-- AOS Animation -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-     <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
+    <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
     <link rel="stylesheet" href="/allpack/layout/css/footer.css">
     
     <style>
@@ -32,7 +32,7 @@
             --success-color: #28a745; /* Green */
         }
         
-        /* FIXED: Enhanced Dark Mode Toggle - VIDEO BADGE RED COLOR */
+        /* Dark Mode Toggle */
         .theme-toggle {
             position: fixed;
             bottom: 25px;
@@ -68,17 +68,17 @@
             box-shadow: 0 6px 25px rgba(220, 53, 69, 0.6);
         }
 
-        /* FIXED: Mobile responsive positioning for dark mode toggle */
+        /* Mobile responsive positioning for dark mode toggle */
         @media (max-width: 768px) {
             .theme-toggle {
-                bottom: 80px; /* Moved higher to avoid mobile browser UI */
+                bottom: 80px;
                 right: 15px;
                 padding: 12px 16px;
                 font-size: 14px;
             }
             
             .theme-toggle .toggle-text {
-                display: none; /* Hide text on mobile for cleaner look */
+                display: none;
             }
             
             .theme-toggle {
@@ -127,12 +127,12 @@
             padding: 80px 0;
         }
 
-        /* Enhanced Hero Section with Slider */
+        /* ===== HERO SECTION WITH SINGLE COMMON CAPTION ===== */
         .hero-section {
             position: relative;
             height: 80vh;
             overflow: hidden;
-            margin-top: 0; /* Removed navbar offset */
+            margin-top: 0;
             z-index: 1;
         }
 
@@ -153,7 +153,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: #4a4a4a; /* Fallback color */
+            background-color: #4a4a4a;
         }
 
         .hero-slide.active {
@@ -167,60 +167,107 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.3);
             z-index: 1;
         }
 
-        /* Slide Caption Styling - Right Side */
+        /* ===== SINGLE COMMON CAPTION – CENTERED BOTTOM ON ALL DEVICES ===== */
         .slide-caption {
             position: absolute;
-            right: 50px;
-            top: 50%;
-            transform: translateY(-50%);
+            bottom: 40px;              /* Space from bottom */
+            left: 50%;
+            transform: translateX(-50%);
             color: white;
-            text-align: right;
-            z-index: 2;
-            max-width: 300px;
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-            backdrop-filter: blur(5px);
-            border-left: 4px solid var(--primary-color);
+            text-align: center;
+            z-index: 20;
+            width: 90%;                /* Responsive width */
+            max-width: 700px;          /* Max width on large screens */
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px 40px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border-bottom: 6px solid var(--primary-color); /* Gold bottom border */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .slide-caption h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 2.4rem;
+            margin-bottom: 15px;
             color: var(--primary-color);
             font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
         .slide-caption p {
-            font-size: 0.9rem;
-            line-height: 1.4;
+            font-size: 1.2rem;
+            line-height: 1.6;
             margin-bottom: 0;
             color: #f8f8f8;
+            font-weight: 300;
         }
 
-        @media (max-width: 768px) {
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate(-50%, 30px);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+
+        /* Tablet adjustments */
+        @media (max-width: 992px) {
             .slide-caption {
-                right: 20px;
-                left: 20px;
-                max-width: none;
-                text-align: center;
-                padding: 15px;
+                max-width: 600px;
+                padding: 25px 30px;
             }
-
             .slide-caption h3 {
-                font-size: 1.2rem;
+                font-size: 2rem;
             }
-
             .slide-caption p {
-                font-size: 0.8rem;
+                font-size: 1.1rem;
             }
         }
 
-        /* Fixed Hero Content Section */
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 70vh;
+            }
+            .slide-caption {
+                bottom: 30px;
+                width: 90%;
+                padding: 20px 25px;
+            }
+            .slide-caption h3 {
+                font-size: 1.8rem;
+            }
+            .slide-caption p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                height: 60vh;
+            }
+            .slide-caption {
+                bottom: 20px;
+                padding: 15px 20px;
+            }
+            .slide-caption h3 {
+                font-size: 1.5rem;
+            }
+            .slide-caption p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Hero Content Section (below slider) */
         .hero-content-section {
             background: linear-gradient(135deg, var(--secondary-color) 0%, var(--light-color) 100%);
             padding: 80px 0;
@@ -256,7 +303,7 @@
             line-height: 1.6;
         }
 
-        /* Fixed Button Styles */
+        /* Button Styles */
         .hero-buttons {
             display: flex;
             justify-content: center;
@@ -271,11 +318,10 @@
             border-radius: 50px;
             transition: all 0.3s ease;
             font-weight: 600;
-            min-width: 160px;
+            min-width: 180px;
             text-align: center;
         }
 
-        /* Improved Primary Button with Better Color */
         .hero-buttons .btn-primary {
             background: linear-gradient(135deg, #e4002b 0%, #b30021 100%);
             border-color: #e4002b;
@@ -288,67 +334,46 @@
             border-color: #b30021;
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(228, 0, 43, 0.4);
-            color: white;
         }
 
-        /* Improved Outline Button */
         .hero-buttons .btn-outline-primary {
-            color: #e4002b;
-            border: 2px solid #e4002b;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
             background: transparent;
         }
 
         .hero-buttons .btn-outline-primary:hover {
-            background: #e4002b;
-            color: white;
+            background: var(--primary-color);
+            color: var(--dark-color);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(228, 0, 43, 0.3);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            border-color: var(--primary-color);
         }
 
-        /* Fixed Mobile Responsiveness */
+        /* Mobile button adjustments */
         @media (max-width: 768px) {
             .hero-content-section {
                 padding: 60px 0;
             }
-
             .hero-content-section h1 {
                 font-size: 2.5rem;
             }
-
             .hero-content-section .lead {
                 font-size: 1.2rem;
                 padding: 0 20px;
             }
-
             .hero-buttons {
                 flex-direction: column;
                 gap: 15px;
                 padding: 0 20px;
             }
-
             .hero-buttons .btn {
                 width: 100%;
                 max-width: 280px;
-                margin: 0 !important;
-                display: block;
             }
         }
 
-        @media (max-width: 576px) {
-            .hero-content-section h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content-section .lead {
-                font-size: 1.1rem;
-            }
-
-            .hero-buttons .btn {
-                padding: 12px 25px;
-                font-size: 1rem;
-            }
-        }
-
+        /* Slider Controls */
         .slider-controls {
             position: absolute;
             bottom: 30px;
@@ -357,25 +382,33 @@
             display: flex;
             align-items: center;
             z-index: 3;
+            gap: 15px;
         }
 
         .slider-dots {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
 
         .slider-dot {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.6);
             cursor: pointer;
             transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
         .slider-dot.active {
             background: var(--primary-color);
-            transform: scale(1.2);
+            transform: scale(1.3);
+            border-color: white;
+        }
+
+        .slider-dot:focus-visible {
+            outline: 2px solid white;
+            outline-offset: 2px;
         }
 
         .slider-arrow {
@@ -385,37 +418,62 @@
             background: rgba(0, 0, 0, 0.5);
             color: white;
             border: none;
-            width: 50px;
-            height: 50px;
+            width: 54px;
+            height: 54px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 22px;
             cursor: pointer;
             z-index: 3;
             transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .slider-arrow:hover {
             background: var(--primary-color);
+            border-color: white;
+        }
+
+        .slider-arrow:focus-visible {
+            outline: 2px solid white;
+            outline-offset: 2px;
         }
 
         .slider-arrow.prev {
-            left: 20px;
+            left: 25px;
         }
 
         .slider-arrow.next {
-            right: 20px;
+            right: 25px;
         }
 
-        /* FIXED: Gallery Container Spacing */
+        @media (max-width: 768px) {
+            .slider-arrow {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
+            .slider-arrow.prev {
+                left: 10px;
+            }
+            .slider-arrow.next {
+                right: 10px;
+            }
+            .slider-dot {
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        /* ===== REMAINING STYLES (GALLERY, LIGHTBOX, ETC.) – UNCHANGED ===== */
+        /* Gallery Container Spacing */
         .gallery-section .container {
             padding-top: 30px;
             position: relative;
         }
 
-        /* FIXED: Row Spacing - Override Bootstrap negative margins */
         .gallery-section .row {
             margin-top: 0;
             margin-bottom: 20px;
@@ -520,7 +578,6 @@
                 margin-bottom: 0.5rem;
             }
 
-            /* Mobile spacing adjustments */
             .gallery-section {
                 padding: 60px 0 40px 0;
             }
@@ -529,7 +586,6 @@
                 padding: 40px 0 20px 0;
             }
 
-            /* Mobile container adjustments */
             .gallery-section .container {
                 padding-top: 20px;
             }
@@ -539,7 +595,7 @@
             }
         }
 
-        /* FIXED CARD STYLES - Proper spacing */
+        /* CARD STYLES */
         .card {
             border: none;
             border-radius: 10px;
@@ -548,7 +604,7 @@
             transition: transform 0.3s, box-shadow 0.3s;
             height: 100%;
             margin-bottom: 30px;
-            margin-top: 20px; /* ADDED: Space from top for cards */
+            margin-top: 20px;
             background-color: var(--card-bg);
             position: relative;
         }
@@ -593,7 +649,7 @@
         .video-thumbnail {
             position: relative;
             margin-bottom: 30px;
-            margin-top: 20px; /* ADDED: Space from top for video thumbnails */
+            margin-top: 20px;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -651,10 +707,10 @@
             opacity: 0.9;
         }
 
-        /* Enhanced Section Title Spacing */
+        /* Section Title */
         .section-title {
             position: relative;
-            margin-bottom: 70px; /* Increased for more space */
+            margin-bottom: 70px;
             text-align: center;
             color: var(--text-color);
             padding-top: 20px;
@@ -666,15 +722,15 @@
             width: 80px;
             height: 4px;
             background: var(--primary-color);
-            margin: 20px auto 0; /* Increased top margin */
+            margin: 20px auto 0;
         }
 
-        /* Fix for sticky navbar anchor links (no longer needed but kept) */
+        /* Fix for sticky navbar anchor links */
         .gallery-section {
             scroll-margin-top: 120px;
         }
 
-        /* Custom Lightbox Styles */
+        /* Lightbox Styles */
         .lightbox-modal {
             display: none;
             position: fixed;
@@ -834,7 +890,7 @@
             animation: slideIn 0.3s ease;
         }
 
-        /* Responsive adjustments */
+        /* Responsive adjustments for lightbox */
         @media (max-width: 768px) {
             .lightbox-content {
                 max-width: 98%;
@@ -894,34 +950,14 @@
                 font-size: 0.9rem;
             }
 
-            /* Hero slider mobile adjustments */
-            .hero-section {
-                height: 70vh;
-            }
-
-            .slider-arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-
-            .slider-arrow.prev {
-                left: 10px;
-            }
-
-            .slider-arrow.next {
-                right: 10px;
-            }
-
-            /* Mobile card adjustments */
             .card {
                 margin-bottom: 25px;
-                margin-top: 15px; /* Adjusted for mobile */
+                margin-top: 15px;
             }
             
             .video-thumbnail {
                 margin-bottom: 25px;
-                margin-top: 15px; /* Adjusted for mobile */
+                margin-top: 15px;
             }
 
             .section-title {
@@ -1010,7 +1046,7 @@
             color: white;
             font-size: 1.2rem;
             font-weight: bold;
-            margin-top: 20px; /* ADDED: Space from top for fallback */
+            margin-top: 20px;
         }
 
         .image-fallback i {
@@ -1021,51 +1057,50 @@
 </head>
 <body>
     <%- include('../../layout/navbar') %>
-  <!-- FIXED: Dark Mode Toggle with proper mobile positioning -->
-  <button class="theme-toggle" id="themeToggle">
-    <i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>
-  </button>
 
-  <!-- Navbar removed -->
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <i class="fas fa-moon"></i> <span class="toggle-text">Dark Mode</span>
+    </button>
 
-    <!-- Hero Section with Image Slider Only -->
-    <section class="hero-section">
+    <!-- ===== HERO SECTION WITH SINGLE COMMON CAPTION ===== -->
+    <section class="hero-section" aria-label="Hero slider showcasing Rwandan dance">
         <div class="hero-slider">
-            <!-- Slide 1 -->
-            <div class="hero-slide active" style="background-image: url('/allpack/indinzi/assetindinzi/pic9.jpg');">
-               
-            </div>
+            <!-- Slide 1 - no caption inside -->
+            <div class="hero-slide active" style="background-image: url('/allpack/indinzi/assetindinzi/pic9.jpg');"></div>
             
-            <!-- Slide 2 -->
-            <div class="hero-slide" style="background-image: url('/allpack/indinzi/assetindinzi/pic10.jpg');">
-                
-            </div>
+            <!-- Slide 2 - no caption inside -->
+            <div class="hero-slide" style="background-image: url('/allpack/indinzi/assetindinzi/pic10.jpg');"></div>
             
-            <!-- Slide 3 -->
-            <div class="hero-slide" style="background-image: url('/allpack/indinzi/assetindinzi/a1.jpg');">
-               >
-            </div>
+            <!-- Slide 3 - no caption inside -->
+            <div class="hero-slide" style="background-image: url('/allpack/indinzi/assetindinzi/a1.jpg');"></div>
+        </div>
+        
+        <!-- Single common caption for all slides -->
+        <div class="slide-caption">
+            <h3>Rwandan Traditional Dance</h3>
+            <p>A celebration of culture, rhythm, and storytelling passed down through generations.</p>
         </div>
         
         <!-- Navigation Arrows -->
-        <button class="slider-arrow prev">
+        <button class="slider-arrow prev" aria-label="Previous slide">
             <i class="fas fa-chevron-left"></i>
         </button>
-        <button class="slider-arrow next">
+        <button class="slider-arrow next" aria-label="Next slide">
             <i class="fas fa-chevron-right"></i>
         </button>
         
         <!-- Slider Dots -->
         <div class="slider-controls">
-            <div class="slider-dots">
-                <div class="slider-dot active" data-slide="0"></div>
-                <div class="slider-dot" data-slide="1"></div>
-                <div class="slider-dot" data-slide="2"></div>
+            <div class="slider-dots" role="tablist">
+                <div class="slider-dot active" role="tab" data-slide="0" aria-label="Slide 1" tabindex="0"></div>
+                <div class="slider-dot" role="tab" data-slide="1" aria-label="Slide 2" tabindex="0"></div>
+                <div class="slider-dot" role="tab" data-slide="2" aria-label="Slide 3" tabindex="0"></div>
             </div>
         </div>
     </section>
 
-    <!-- Hero Content Section Below Slider -->
+    <!-- Hero Content Section -->
     <section class="hero-content-section">
         <div class="container">
             <h1 class="fw-bold mb-4">Rwandan Traditional Dance</h1>
@@ -1248,8 +1283,8 @@
             </div>
         </div>
     </div>
-     <%- include('../../layout/footer') %>
-    <!-- Footer removed -->
+
+    <%- include('../../layout/footer') %>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -1265,8 +1300,6 @@
             once: true
         });
 
-        // Navbar scroll effect removed
-
         // Hero Slider Functionality
         const heroSlider = document.querySelector('.hero-slider');
         const slides = document.querySelectorAll('.hero-slide');
@@ -1278,42 +1311,36 @@
         const slideCount = slides.length;
         let slideInterval;
 
-        // Function to show a specific slide
         function showSlide(index) {
-            // Remove active class from all slides and dots
             slides.forEach(slide => slide.classList.remove('active'));
             dots.forEach(dot => dot.classList.remove('active'));
             
-            // Add active class to current slide and dot
             slides[index].classList.add('active');
             dots[index].classList.add('active');
+            
+            dots.forEach((dot, i) => {
+                dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
+            });
             
             currentSlide = index;
         }
 
-        // Function to show next slide
         function nextSlide() {
-            let nextIndex = (currentSlide + 1) % slideCount;
-            showSlide(nextIndex);
+            showSlide((currentSlide + 1) % slideCount);
         }
 
-        // Function to show previous slide
         function prevSlide() {
-            let prevIndex = (currentSlide - 1 + slideCount) % slideCount;
-            showSlide(prevIndex);
+            showSlide((currentSlide - 1 + slideCount) % slideCount);
         }
 
-        // Start auto slide
         function startAutoSlide() {
             slideInterval = setInterval(nextSlide, 5000);
         }
 
-        // Stop auto slide
         function stopAutoSlide() {
             clearInterval(slideInterval);
         }
 
-        // Event listeners for navigation
         prevBtn.addEventListener('click', () => {
             prevSlide();
             stopAutoSlide();
@@ -1326,20 +1353,25 @@
             startAutoSlide();
         });
 
-        // Event listeners for dots
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 showSlide(index);
                 stopAutoSlide();
                 startAutoSlide();
             });
+            dot.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    showSlide(index);
+                    stopAutoSlide();
+                    startAutoSlide();
+                }
+            });
         });
 
-        // Pause auto slide when hovering over slider
         heroSlider.addEventListener('mouseenter', stopAutoSlide);
         heroSlider.addEventListener('mouseleave', startAutoSlide);
 
-        // Start the slider
         startAutoSlide();
 
         // Lightbox functionality
@@ -1359,7 +1391,6 @@
             const lightboxTitle = document.getElementById('lightboxTitle');
             const lightboxDescription = document.getElementById('lightboxDescription');
 
-            // Hide both media types first
             lightboxImage.style.display = 'none';
             lightboxVideo.style.display = 'none';
 
@@ -1372,11 +1403,8 @@
                 lightboxDescription.textContent = file.description || '';
                 lightboxCounter.textContent = `${index + 1} / ${imageFiles.length}`;
                 
-                // Add slide-in animation
                 lightboxImage.classList.add('slide-in');
-                setTimeout(() => {
-                    lightboxImage.classList.remove('slide-in');
-                }, 300);
+                setTimeout(() => lightboxImage.classList.remove('slide-in'), 300);
             } 
             else if (type === 'video' && videoFiles[index]) {
                 const file = videoFiles[index];
@@ -1390,18 +1418,12 @@
                 lightboxDescription.textContent = file.description || '';
                 lightboxCounter.textContent = `${index + 1} / ${videoFiles.length}`;
                 
-                // Try to play the video
                 setTimeout(() => {
-                    lightboxVideo.play().catch(e => {
-                        console.log('Video autoplay failed:', e);
-                    });
+                    lightboxVideo.play().catch(e => console.log('Video autoplay failed:', e));
                 }, 300);
                 
-                // Add slide-in animation
                 lightboxVideo.classList.add('slide-in');
-                setTimeout(() => {
-                    lightboxVideo.classList.remove('slide-in');
-                }, 300);
+                setTimeout(() => lightboxVideo.classList.remove('slide-in'), 300);
             }
 
             lightbox.style.display = 'block';
@@ -1412,7 +1434,6 @@
             const lightbox = document.getElementById('lightboxModal');
             const lightboxVideo = document.getElementById('lightboxVideo');
             
-            // Pause video when closing
             if (lightboxVideo.style.display === 'block') {
                 lightboxVideo.pause();
                 lightboxVideo.currentTime = 0;
@@ -1423,86 +1444,51 @@
         }
 
         function changeMedia(direction) {
-            let files;
-            if (currentMediaType === 'image') {
-                files = imageFiles;
-            } else {
-                files = videoFiles;
-            }
-            
+            let files = currentMediaType === 'image' ? imageFiles : videoFiles;
             if (files && files.length > 0) {
-                currentMediaIndex += direction;
-                
-                // Loop around
-                if (currentMediaIndex >= files.length) {
-                    currentMediaIndex = 0;
-                } else if (currentMediaIndex < 0) {
-                    currentMediaIndex = files.length - 1;
-                }
-                
+                currentMediaIndex = (currentMediaIndex + direction + files.length) % files.length;
                 openLightbox(currentMediaIndex, currentMediaType);
             }
         }
 
-        // Keyboard navigation
+        // Keyboard navigation for lightbox
         document.addEventListener('keydown', function(e) {
             const lightbox = document.getElementById('lightboxModal');
             if (lightbox.style.display === 'block') {
-                if (e.key === 'Escape') {
-                    closeLightbox();
-                } else if (e.key === 'ArrowLeft') {
-                    changeMedia(-1);
-                } else if (e.key === 'ArrowRight') {
-                    changeMedia(1);
-                } else if (e.key === ' ') {
-                    // Space bar to play/pause video
+                if (e.key === 'Escape') closeLightbox();
+                else if (e.key === 'ArrowLeft') changeMedia(-1);
+                else if (e.key === 'ArrowRight') changeMedia(1);
+                else if (e.key === ' ') {
                     e.preventDefault();
                     const lightboxVideo = document.getElementById('lightboxVideo');
                     if (lightboxVideo.style.display === 'block') {
-                        if (lightboxVideo.paused) {
-                            lightboxVideo.play();
-                        } else {
-                            lightboxVideo.pause();
-                        }
+                        lightboxVideo.paused ? lightboxVideo.play() : lightboxVideo.pause();
                     }
                 }
             }
         });
 
-        // Close lightbox when clicking outside the content
+        // Close lightbox on background click
         document.getElementById('lightboxModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeLightbox();
-            }
+            if (e.target === this) closeLightbox();
         });
 
-        // Touch swipe support for mobile
+        // Touch swipe for lightbox
         let touchStartX = 0;
-        let touchEndX = 0;
-
-        document.getElementById('lightboxModal').addEventListener('touchstart', function(e) {
+        document.getElementById('lightboxModal').addEventListener('touchstart', e => {
             touchStartX = e.changedTouches[0].screenX;
         });
-
-        document.getElementById('lightboxModal').addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
+        document.getElementById('lightboxModal').addEventListener('touchend', e => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const threshold = 50;
+            if (touchEndX < touchStartX - threshold) changeMedia(1);
+            else if (touchEndX > touchStartX + threshold) changeMedia(-1);
         });
-
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            if (touchEndX < touchStartX - swipeThreshold) {
-                changeMedia(1); // Swipe left - next
-            } else if (touchEndX > touchStartX + swipeThreshold) {
-                changeMedia(-1); // Swipe right - previous
-            }
-        }
         
-        // FIXED: Enhanced Dark Mode Toggle Functionality
+        // Dark Mode Toggle
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
         
-        // Check for saved theme preference
         const currentTheme = localStorage.getItem('theme') || '';
         if (currentTheme) {
             body.classList.add(currentTheme);
@@ -1524,14 +1510,11 @@
         function updateToggleIcon(theme) {
             const icon = themeToggle.querySelector('i');
             const toggleText = themeToggle.querySelector('.toggle-text');
-            
             if (theme === 'dark-mode') {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
+                icon.classList.replace('fa-moon', 'fa-sun');
                 toggleText.textContent = 'Light Mode';
             } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
+                icon.classList.replace('fa-sun', 'fa-moon');
                 toggleText.textContent = 'Dark Mode';
             }
         }
@@ -1541,24 +1524,14 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });
 
         // Video thumbnail hover play
         document.querySelectorAll('.video-thumbnail-wrapper video').forEach(video => {
-            video.addEventListener('mouseenter', function() {
-                this.play();
-            });
-            
-            video.addEventListener('mouseleave', function() {
-                this.pause();
-                this.currentTime = 0;
-            });
+            video.addEventListener('mouseenter', function() { this.play(); });
+            video.addEventListener('mouseleave', function() { this.pause(); this.currentTime = 0; });
         });
 
         // Image error handling
@@ -1567,8 +1540,6 @@
                 console.log('Image failed to load:', this.src);
             });
         });
-        
-        // Navbar active link click handler removed
     </script>
 </body>
 </html>
