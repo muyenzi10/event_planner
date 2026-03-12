@@ -17,5 +17,5 @@ exports.getgakondo = (req,res) =>{
     res.sendFile(path.join(__dirname,"../../frontend/allpack/iganze/gakondo.html"));
     }       
 exports.getsound = (req,res) =>{
-    res.sendFile(path.join(__dirname,"../../frontend/allpack/sound/sound.html"));
+    res.render("allpack/sound/sound",{activePage:'services' });
     }        
