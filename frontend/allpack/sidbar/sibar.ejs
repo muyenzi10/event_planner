@@ -1,7 +1,10 @@
-<!-- Mobile toggle button (appears only on small screens) -->
-<button class="mobile-toggle" id="mobileToggle">
+<!-- Hidden checkbox that controls the sidebar on mobile -->
+<input type="checkbox" id="mobileMenuToggle" class="menu-checkbox">
+
+<!-- Mobile toggle button (label) – this is what you click -->
+<label for="mobileMenuToggle" class="mobile-toggle">
   <i class="fas fa-bars"></i> Menu
-</button>
+</label>
 
 <!-- Sidebar navigation -->
 <nav class="sidebar pinned" id="sidebar">
@@ -10,12 +13,14 @@
       <i class="fas fa-heart"></i>
       <span>Wedding Planner</span>
     </h2>
+    <!-- Desktop collapse button (still uses JavaScript) -->
     <button class="toggle-btn" id="toggleSidebar" title="Collapse sidebar">
       <i class="fas fa-bars"></i>
     </button>
   </div>
 
   <div class="nav-links">
+    <!-- Your existing nav links with EJS active classes -->
     <a href="/home" class="nav-link <%= activeP === 'home' ? 'active' : '' %>">
       <i class="fas fa-home"></i> <span>Back Home</span>
     </a>
@@ -55,43 +60,34 @@
     &copy; 2025 Wedding Planner Pro
   </div>
 </nav>
+
+<!-- Overlay for mobile (clicking it closes the sidebar) -->
+<label for="mobileMenuToggle" class="sidebar-overlay"></label>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-
   const sidebar = document.getElementById("sidebar");
   const toggleBtn = document.getElementById("toggleSidebar");
-  const mobileToggle = document.getElementById("mobileToggle");
-  const navLinks = document.querySelectorAll(".nav-link");
 
-  // ===== DESKTOP COLLAPSE =====
-  toggleBtn.addEventListener("click", function () {
-    if (window.innerWidth > 768) {
-      sidebar.classList.toggle("collapsed");
-    }
-  });
-
-  // ===== MOBILE TOGGLE =====
-  mobileToggle.addEventListener("click", function () {
-    sidebar.classList.toggle("show");
-  });
-
-  // ===== CLOSE WHEN CLICK OUTSIDE (MOBILE) =====
-  document.addEventListener("click", function (e) {
-    if (window.innerWidth <= 768) {
-      if (!sidebar.contains(e.target) && !mobileToggle.contains(e.target)) {
-        sidebar.classList.remove("show");
-      }
-    }
-  });
-
-  // ===== CLOSE WHEN CLICK LINK (MOBILE) =====
-  navLinks.forEach(link => {
-    link.addEventListener("click", function () {
-      if (window.innerWidth <= 768) {
-        sidebar.classList.remove("show");
+  // Desktop collapse
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", function () {
+      if (window.innerWidth > 768) {
+        sidebar.classList.toggle("collapsed");
       }
     });
-  });
+  }
 
+  // Optional: When a nav link is clicked on mobile, uncheck the checkbox to close sidebar
+  const navLinks = document.querySelectorAll(".nav-link");
+  const menuCheckbox = document.getElementById("mobileMenuToggle");
+  if (menuCheckbox) {
+    navLinks.forEach(link => {
+      link.addEventListener("click", function () {
+        if (window.innerWidth <= 768) {
+          menuCheckbox.checked = false; // uncheck to hide sidebar
+        }
+      });
+    });
+  }
 });
 </script>
