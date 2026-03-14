@@ -9,20 +9,20 @@
     <title>Wedding Sound & Lighting | Professional Audio Visual</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
-    <!-- AOS Animation Library -->
+    <!-- AOS Animation -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- Your external CSS (kept exactly as you requested) -->
+    <!-- External CSS (navbar & footer) -->
     <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
     <link rel="stylesheet" href="/allpack/layout/css/footer.css">
 
-    <!-- Additional inline styles -->
+    <!-- Consolidated & Improved Styles -->
     <style>
         :root {
             --gold-primary: #D4AF37;
@@ -32,472 +32,202 @@
             --dark-bg: #0a0a0a;
             --darker-bg: #050505;
             --dark-card: #1a1a1a;
+            --text-muted: #6c757d;
         }
 
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #fefefe;
             overflow-x: hidden;
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
         }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: #f0f0f0;
+        }
+        body.dark-mode .text-muted { color: #adb5bd !important; }
+        body.dark-mode .bg-white { background-color: var(--dark-card) !important; }
+        body.dark-mode .portfolio-card .bg-white { background-color: var(--dark-card) !important; }
+        body.dark-mode .portfolio-card small { color: #adb5bd !important; }
+        body.dark-mode .bg-gold-light { background: #2a2a2a; }
+        body.dark-mode .testimonial-card { background-color: var(--dark-card); border-color: #444; }
+        body.dark-mode .btn-outline-dark { border-color: #f0f0f0; color: #f0f0f0; }
+        body.dark-mode .btn-outline-dark:hover { background: #f0f0f0; color: #000; }
 
         /* Back to Top Button */
         .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
+            position: fixed; bottom: 30px; right: 30px;
+            width: 50px; height: 50px;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #000;
-            font-size: 1.2rem;
-            cursor: pointer;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
+            display: flex; align-items: center; justify-content: center;
+            color: #000; font-size: 1.2rem; cursor: pointer;
+            z-index: 1000; opacity: 0; visibility: hidden;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
             border: none;
         }
+        .back-to-top.visible { opacity: 1; visibility: visible; }
+        .back-to-top:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); }
 
-        .back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed; bottom: 20px; right: 20px;
+            background: #3498db; color: white; border: none;
+            padding: 10px 20px; border-radius: 50px; cursor: pointer;
+            z-index: 1000; font-weight: 500; transition: 0.3s;
         }
-
-        .back-to-top:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
-        }
+        .dark-mode-toggle:hover { background: #2980b9; }
 
         /* ============ VIDEO HERO ============ */
         .video-hero {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            min-height: 600px;
-            overflow: hidden;
-            background: #000;
+            position: relative; width: 100%; height: 100vh; min-height: 600px;
+            overflow: hidden; background: #000;
         }
-
         .video-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                135deg,
-                rgba(183, 110, 121, 0.2) 0%,
-                rgba(32, 32, 32, 0.55) 40%,
-                rgba(32, 32, 32, 0.65) 50%,
-                rgba(32, 32, 32, 0.55) 60%,
-                rgba(212, 175, 55, 0.2) 100%
-            );
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(183,110,121,0.2) 0%, rgba(32,32,32,0.55) 40%, rgba(32,32,32,0.65) 50%, rgba(32,32,32,0.55) 60%, rgba(212,175,55,0.2) 100%);
             z-index: 2;
         }
-
         .video-hero video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: translate(-50%, -50%);
-            z-index: 1;
+            position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
+            object-fit: cover; transform: translate(-50%, -50%); z-index: 1;
         }
 
-        /* ============ SOUND BADGE ABOVE HERO – THREE ICONS LEFT, CENTER, RIGHT ============ */
+        /* Sound Badge Above Hero */
         .sound-badge-above {
-            position: absolute;
-            top: 15%;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            width: 380px;          /* wide enough for three icons */
-            height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(8px);
-            border-radius: 60px;
-            padding: 0 30px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            position: absolute; top: 15%; left: 50%; transform: translateX(-50%);
+            z-index: 5; width: 380px; height: 100px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(0,0,0,0.4); backdrop-filter: blur(8px);
+            border-radius: 60px; padding: 0 30px;
+            border: 1px solid rgba(212,175,55,0.3); box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
-
         .sound-icon {
-            font-size: 3rem;
-            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 70px;
-            height: 70px;
+            font-size: 3rem; filter: drop-shadow(0 0 20px rgba(212,175,55,0.8));
+            display: flex; align-items: center; justify-content: center;
+            width: 70px; height: 70px;
         }
-
-        .sound-icon i {
-            animation: iconFloat 4s ease-in-out infinite;
-        }
-
-        /* individual animation delays for variety */
-        .sound-icon.left i {
-            animation-delay: 0s;
-            color: var(--gold-primary);
-        }
-        .sound-icon.center i {
-            animation-delay: 0.5s;
-            color: var(--gold-secondary);
-        }
-        .sound-icon.right i {
-            animation-delay: 1s;
-            color: var(--rose-gold);
-        }
+        .sound-icon i { animation: iconFloat 4s ease-in-out infinite; }
+        .sound-icon.left i { animation-delay: 0s; color: var(--gold-primary); }
+        .sound-icon.center i { animation-delay: 0.5s; color: var(--gold-secondary); }
+        .sound-icon.right i { animation-delay: 1s; color: var(--rose-gold); }
 
         .sound-connector {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 50px;
-            background: linear-gradient(to bottom, 
-                rgba(212, 175, 55, 0.8) 0%, 
-                rgba(212, 175, 55, 0.3) 70%, 
-                transparent 100%);
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+            width: 2px; height: 50px;
+            background: linear-gradient(to bottom, rgba(212,175,55,0.8) 0%, rgba(212,175,55,0.3) 70%, transparent 100%);
             animation: connectorFade 4s ease-in-out infinite;
         }
 
-        @keyframes iconFloat {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-10px) scale(1.1); }
-        }
+        @keyframes iconFloat { 0%,100%{ transform:translateY(0) scale(1); } 50%{ transform:translateY(-10px) scale(1.1); } }
+        @keyframes connectorFade { 0%,100%{ opacity:0.5; height:50px; } 50%{ opacity:1; height:70px; } }
 
-        @keyframes connectorFade {
-            0%, 100% { opacity: 0.5; height: 50px; }
-            50% { opacity: 1; height: 70px; }
-        }
-
-        /* ============ HERO CONTENT ============ */
+        /* Hero Content */
         .hero-content {
-            position: relative;
-            z-index: 4;
-            color: #fff;
-            height: 100vh;
-            min-height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            position: relative; z-index: 4; color: #fff; height: 100vh; min-height: 600px;
+            display: flex; align-items: center; justify-content: center; text-align: center;
             padding: 0 20px;
         }
-
         .hero-content .container {
-            max-width: 1200px;
-            animation: fadeInUp 1s ease-out 0.3s forwards;
-            opacity: 0;
-            padding-top: 80px;
+            max-width: 1200px; animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0; padding-top: 80px;
         }
-
         .hero-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
-            line-height: 1.1;
-            position: relative;
+            font-family: 'Playfair Display', serif; font-size: clamp(2.5rem,5vw,4.5rem);
+            font-weight: 700; margin-bottom: 1.5rem; text-shadow: 3px 3px 15px rgba(0,0,0,0.5);
+            line-height: 1.1; position: relative;
         }
-
         .hero-title::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(to right, transparent, var(--gold-primary), transparent);
+            content: ''; position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+            width: 80px; height: 3px; background: linear-gradient(to right, transparent, var(--gold-primary), transparent);
         }
-
         .highlight-word {
             font-family: 'Dancing Script', cursive;
-            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
             display: inline-block;
-            position: relative;
         }
-
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2vw, 1.8rem);
-            font-weight: 300;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.4;
+            font-size: clamp(1.1rem,2vw,1.8rem); font-weight: 300; margin-bottom: 2.5rem;
+            opacity: 0.95; max-width: 900px; margin-left: auto; margin-right: auto; line-height: 1.4;
         }
 
-        /* ============ BUTTONS ============ */
+        /* Buttons */
         .btn-gold-gradient {
-            background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-secondary) 100%);
-            border: none;
-            color: #000;
-            font-weight: 600;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
-            text-decoration: none;
-            display: inline-block;
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            border: none; color: #000; font-weight: 600; padding: 1rem 2.5rem;
+            border-radius: 50px; transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212,175,55,0.3); text-decoration: none; display: inline-block;
         }
-
-        .btn-gold-gradient:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
-            color: #000;
-        }
+        .btn-gold-gradient:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(212,175,55,0.4); color: #000; }
 
         .btn-outline-light {
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: #fff;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            background: transparent; border: 2px solid rgba(255,255,255,0.3); color: #fff;
+            padding: 0.8rem 2rem; border-radius: 50px; transition: all 0.3s ease; text-decoration: none;
             display: inline-block;
         }
+        .btn-outline-light:hover { background: rgba(255,255,255,0.1); border-color: var(--gold-primary); color: #fff; }
 
-        .btn-outline-light:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--gold-primary);
-            color: #fff;
+        .btn-outline-gold {
+            border: 2px solid var(--gold-primary); color: var(--gold-primary); background: transparent;
+            transition: all 0.3s; border-radius: 50px; padding: 0.6rem 1.5rem;
         }
+        .btn-outline-gold:hover { background: var(--gold-primary); color: #000; }
 
-        /* ============ SCROLL INDICATOR ============ */
+        .btn-outline-dark {
+            border: 2px solid #000; color: #000; background: transparent; transition: 0.3s;
+        }
+        .btn-outline-dark:hover { background: #000; color: #fff; }
+
+        /* Scroll Indicator */
         .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            cursor: pointer;
+            position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+            z-index: 5; cursor: pointer;
         }
+        .scroll-indicator i { color: var(--gold-primary); font-size: 2rem; animation: bounce 2s infinite; }
 
-        .scroll-indicator i {
-            color: var(--gold-primary);
-            font-size: 2rem;
-            animation: bounce 2s infinite;
-        }
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+        @keyframes bounce { 0%,20%,50%,80%,100%{ transform:translateY(0); } 40%{ transform:translateY(-10px); } 60%{ transform:translateY(-5px); } }
 
-        /* ============ ANIMATIONS ============ */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* ============ REDESIGNED SECTION STYLES ============ */
+        .text-gold { color: var(--gold-primary) !important; }
+        .bg-gold-subtle { background: rgba(212,175,55,0.12); }
+        .bg-gold-light { background: linear-gradient(145deg, #fff9e6, #fff0d4); }
+        .bg-gold { background: var(--gold-primary); }
+        .text-gradient-gold {
+            background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+            -webkit-background-clip: text; background-clip: text; color: transparent;
         }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+        .experience-badge {
+            background: var(--gold-primary); color: #1a1a1a; line-height: 1.2;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2); font-weight: bold;
         }
-
-        /* ============ ORIGINAL SOUND PAGE STYLES (preserved) ============ */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .dark-mode {
-            background-color: #1a1a1a;
-            color: #f0f0f0;
-        }
-        .display-4 {
-            font-weight: bold;
-            color: #fdfeff;
-        }
-        .lead {
-            color: #7f8c8d;
-        }
-        .custom-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 15px;
+        .portfolio-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background: white; border: none;
         }
-        .custom-image:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        .portfolio-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
         }
-        .custom-card {
-            width: 100%;
-            height: auto;
-            border: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-            border-radius: 10px;
-            margin: 10px;
-            overflow: hidden;
+        .carousel-control-prev-icon.bg-gold, .carousel-control-next-icon.bg-gold {
+            background-color: var(--gold-primary); background-size: 60%;
+            width: 3.2rem; height: 3.2rem; border-radius: 50%;
         }
-        .custom-card img {
-            height: 300px;
-            object-fit: cover;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-        .custom-card .card-body {
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .custom-card .card-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        .custom-card .card-text {
-            color: #7f8c8d;
-            font-size: 1rem;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-        .custom-card:hover {
-            transform: scale(1.05);
-        }
-        .dark-mode-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            z-index: 1000;
-        }
-        .parallax {
-            background-image: url('/allpack/sound/sounddata/sound1.jpg');
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 50px;
-            height: 50px;
-            background-color: rgb(168, 23, 23);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-        .carousel-control-prev:hover,
-        .carousel-control-next:hover {
-            opacity: 1;
-            background-color: rgba(172, 67, 67, 0.9);
-        }
-        .carousel-control-prev {
-            left: -25px;
-        }
-        .carousel-control-next {
-            right: -25px;
-        }
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            filter: invert(1);
-            width: 30px;
-            height: 30px;
-        }
-        .testimonials {
-            background-color: #f8f9fa;
-            padding: 50px 0;
-        }
-        .dark-mode .testimonials {
-            background-color: #1a1a1a;
-        }
-        .testimonial-card {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .dark-mode .testimonial-card {
-            background-color: #2c3e50;
-            color: #f0f0f0;
-        }
-        .testimonial-card h5 {
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .testimonial-card p {
-            color: #7f8c8d;
-            font-style: italic;
-        }
-        .dark-mode .testimonial-card p {
-            color: #bdc3c7;
-        }
+        .border-gold-soft { border-color: rgba(212,175,55,0.2) !important; }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .custom-image {
-                height: 200px;
-            }
-            .custom-card {
-                width: 100%;
-                margin: 10px 0;
-            }
-            .carousel-control-prev,
-            .carousel-control-next {
-                display: none;
-            }
-            .sound-badge-above {
-                width: 300px;
-                height: 80px;
-                padding: 0 20px;
-            }
-            .sound-icon {
-                font-size: 2.2rem;
-                width: 50px;
-                height: 50px;
-            }
+            .sound-badge-above { width: 300px; height: 80px; padding: 0 20px; }
+            .sound-icon { font-size: 2.2rem; width: 50px; height: 50px; }
+            .carousel-control-prev, .carousel-control-next { display: none; }
         }
+        /* Carousel control positioning (overrides any red background from old styles) */
+        .carousel-control-prev, .carousel-control-next { background: none !important; }
     </style>
 </head>
 <body>
@@ -513,9 +243,8 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <!-- VIDEO HERO SECTION (SOUND VERSION) -->
+    <!-- VIDEO HERO SECTION -->
     <section class="video-hero">
-        <!-- BADGE WITH THREE ICONS: left, center, right -->
         <div class="sound-badge-above">
             <div class="sound-icon left"><i class="fas fa-microphone"></i></div>
             <div class="sound-icon center"><i class="fas fa-music"></i></div>
@@ -523,14 +252,9 @@
             <div class="sound-connector"></div>
         </div>
 
-        <video 
-            autoplay 
-            loop 
-            muted 
-            playsinline
-            disablePictureInPicture
-            controlsList="nodownload nofullscreen noremoteplayback nopictureinpicture"
-            poster="/allpack/sound/sounddata/sound1.jpg">
+        <video autoplay loop muted playsinline disablePictureInPicture
+               controlsList="nodownload nofullscreen noremoteplayback nopictureinpicture"
+               poster="/allpack/sound/sounddata/sound1.jpg">
             <source src="/allpack/sound/sounddata/sound-hero.mp4" type="video/mp4">
         </video>
 
@@ -539,17 +263,12 @@
                 <h1 class="hero-title">
                     Professional <span class="highlight-word">Sound & Lighting</span> for Your Wedding
                 </h1>
-                
                 <p class="hero-subtitle">
                     From crystal-clear audio to breathtaking lighting design – we create the perfect ambiance for your celebration. Trust our experts to make every moment unforgettable.
                 </p>
-                
                 <div class="d-flex flex-wrap justify-content-center gap-3">
                     <a href="/booking" class="btn btn-gold-gradient">
                         <i class="fas fa-headphones me-2"></i>Explore Packages
-                    </a>
-                    <a href="#contact" class="btn btn-outline-light">
-                        <i class="fas fa-envelope me-2"></i>Get a Quote
                     </a>
                 </div>
             </div>
@@ -560,183 +279,157 @@
         </div>
     </section>
 
-    <!-- (Optional) demonstration row – can be removed if not needed, but kept for clarity -->
-    <section class="container my-5 py-4" style="background: #f9f9f9; border-radius: 20px;">
-        <h2 class="text-center mb-4" style="font-family: 'Playfair Display';">Icons at different positions (flex example)</h2>
-        <div class="row align-items-center">
-            <div class="col-md-4 text-start">
-                <i class="fas fa-microphone fa-3x text-primary"></i>
-                <p class="mt-2">Left aligned</p>
-            </div>
-            <div class="col-md-4 text-center">
-                <i class="fas fa-music fa-3x text-success"></i>
-                <p class="mt-2">Center aligned</p>
-            </div>
-            <div class="col-md-4 text-end">
-                <i class="fas fa-volume-up fa-3x text-warning"></i>
-                <p class="mt-2">Right aligned</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== ORIGINAL SOUND PAGE CONTENT (preserved) ========== -->
-    <section class="container my-5">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1 class="display-5" data-aos="fade-up">Wedding Sound & Lighting Services</h1>
-                <p class="lead" data-aos="fade-up" data-aos-delay="100">Make your special day unforgettable with our professional audio and lighting solutions.</p>
+    <!-- MAIN SERVICES SECTION (with ID for scroll target) -->
+    <section id="main-services" class="container my-5 py-4">
+        <!-- Section Header -->
+        <div class="row mb-5 text-center" data-aos="fade-up">
+            <div class="col-lg-8 mx-auto">
+                <span class="badge bg-gold-subtle text-gold px-4 py-2 rounded-pill mb-3">
+                    <i class="fas fa-waveform me-2"></i>Wedding Audio Visual Excellence
+                </span>
+                <h2 class="display-5 fw-bold mb-3">Sound & Lighting <span class="text-gradient-gold">Perfected</span></h2>
+                <p class="lead text-muted">We blend cutting-edge technology with artistic flair to create an immersive atmosphere your guests will never forget.</p>
             </div>
         </div>
 
-        <!-- Sound Systems -->
-        <div class="row mt-5">
-            <div class="col-md-6" data-aos="fade-right">
-                <img src="/allpack/sound/sounddata/sound1.jpg" alt="Sound System" class="img-fluid rounded custom-image">
+        <!-- Sound Systems Deep Dive -->
+        <div class="row align-items-center g-5 mb-5" data-aos="fade-up">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="position-relative">
+                    <img src="/allpack/sound/sounddata/sound1.jpg" alt="Professional sound system setup" class="img-fluid rounded-4 shadow-lg">
+                    <!-- Experience badge removed as requested -->
+                </div>
             </div>
-            <div class="col-md-6" data-aos="fade-left" data-aos-delay="100">
-                <h2>Sound Systems</h2>
-                <p>Our state-of-the-art sound systems ensure crystal-clear audio for every moment of your wedding. From the ceremony to the reception, we provide tailored solutions to meet your needs.</p>
+            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
+                <span class="badge bg-gold-subtle text-gold px-3 py-2 rounded-pill mb-3">SOUND SYSTEMS</span>
+                <h3 class="fw-bold mb-3">Crystal‑Clear Audio for Every Moment</h3>
+                <p class="text-muted mb-4">From the softest whisper of your vows to the energy of your first dance—our sound systems deliver pristine, natural audio. We tailor the setup to your venue, ensuring perfect coverage without feedback or distortion.</p>
                 <ul class="list-unstyled">
-                    <li><i class="fas fa-check-circle text-primary"></i> High-quality speakers and microphones</li>
-                    <li><i class="fas fa-check-circle text-primary"></i> Wireless and wired setups</li>
-                    <li><i class="fas fa-check-circle text-primary"></i> Expert sound technicians</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> High‑definition line arrays & subwoofers</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> Wireless handheld & lapel microphones</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> Dedicated sound engineer on site</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> Seamless integration with live musicians or DJ</li>
                 </ul>
+                <a href="/booking" class="btn btn-outline-gold rounded-pill px-4 mt-3">Explore sound packages <i class="fas fa-arrow-right ms-2"></i></a>
             </div>
         </div>
 
-        <!-- Lighting Design -->
-        <div class="row mt-5">
-            <div class="col-md-6 order-md-2" data-aos="fade-left">
-                <img src="/allpack/sound/sounddata/sound2.jpg" alt="Lighting Design" class="img-fluid rounded custom-image">
+        <!-- Lighting Design Deep Dive -->
+        <div class="row align-items-center g-5 mb-5" data-aos="fade-up">
+            <div class="col-lg-6 order-lg-2" data-aos="fade-left">
+                <img src="/allpack/sound/sounddata/sound2.jpg" alt="Elegant wedding lighting" class="img-fluid rounded-4 shadow-lg">
             </div>
-            <div class="col-md-6 order-md-1" data-aos="fade-right" data-aos-delay="100">
-                <h2>Lighting Design</h2>
-                <p>Create the perfect ambiance for your wedding with our professional lighting services. From elegant uplighting to dynamic stage lighting, we bring your vision to life.</p>
+            <div class="col-lg-6 order-lg-1" data-aos="fade-right" data-aos-delay="100">
+                <span class="badge bg-gold-subtle text-gold px-3 py-2 rounded-pill mb-3">LIGHTING DESIGN</span>
+                <h3 class="fw-bold mb-3">Set the Mood with Light</h3>
+                <p class="text-muted mb-4">Lighting transforms a space—whether you desire a romantic, candlelit glow or a vibrant, colourful reception. Our designers create custom lighting plots that enhance your decor and photograph beautifully.</p>
                 <ul class="list-unstyled">
-                    <li><i class="fas fa-check-circle text-primary"></i> Custom lighting designs</li>
-                    <li><i class="fas fa-check-circle text-primary"></i> LED and intelligent lighting</li>
-                    <li><i class="fas fa-check-circle text-primary"></i> Energy-efficient solutions</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> Uplighting in your wedding colours</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> Monogram / gobo projection (your names or logo)</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> Dynamic dance floor effects: moving heads, strobes</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> Fairy light backdrops & soft ambient options</li>
                 </ul>
+                <a href="/booking" class="btn btn-outline-gold rounded-pill px-4 mt-3">View lighting options <i class="fas fa-arrow-right ms-2"></i></a>
             </div>
         </div>
 
-        <!-- Card-Style Gallery Slider -->
-        <div class="row mt-5">
-            <div class="col-md-12 text-center">
-                <h2 data-aos="fade-up">Our Work in Action</h2>
-                <p class="lead" data-aos="fade-up" data-aos-delay="100">Check out some of our recent wedding projects.</p>
+        <!-- Gallery / Portfolio Slider -->
+        <div class="row mt-5 pt-4" data-aos="fade-up">
+            <div class="col-12 text-center mb-4">
+                <h3 class="fw-bold">Recent Weddings We've Lit & Soundtracked</h3>
+                <p class="text-muted">Real moments from real celebrations.</p>
             </div>
-            <div class="col-md-12 card-slider" data-aos="fade-up">
-                <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="col-12">
+                <div id="portfolioCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
-                        <!-- First Slide -->
+                        <!-- Slide 1 -->
                         <div class="carousel-item active">
-                            <div class="d-flex justify-content-center">
-                                <div class="card custom-card">
-                                    <a href="/allpack/sound/sounddata/sound3.jpg">
-                                        <img src="/allpack/sound/sounddata/sound3.jpg" class="card-img-top" alt="Gallery Image 1">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Wedding Sound Setup</h5>
-                                        <p class="card-text">Perfect audio for your special day.</p>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="portfolio-card rounded-4 overflow-hidden shadow-sm h-100">
+                                        <img src="/allpack/sound/sounddata/sound3.jpg" class="img-fluid w-100" alt="Wedding sound setup" style="height: 250px; object-fit: cover;">
+                                        <div class="p-3 bg-white">
+                                            <h6 class="fw-bold mb-1">Outdoor ceremony PA</h6>
+                                            <small class="text-muted">Clear sound for hillside vows</small>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card custom-card">
-                                    <a href="/allpack/sound/sounddata/sound11.jpg">
-                                        <img src="/allpack/sound/sounddata/sound11.jpg" class="card-img-top" alt="Gallery Image 2">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Event Lighting Design</h5>
-                                        <p class="card-text">Creating the perfect ambiance.</p>
+                                <div class="col-md-4">
+                                    <div class="portfolio-card rounded-4 overflow-hidden shadow-sm h-100">
+                                        <img src="/allpack/sound/sounddata/sound11.jpg" class="img-fluid w-100" alt="Wedding lighting design" style="height: 250px; object-fit: cover;">
+                                        <div class="p-3 bg-white">
+                                            <h6 class="fw-bold mb-1">Elegant uplighting</h6>
+                                            <small class="text-muted">Reception in gold & ivory</small>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card custom-card">
-                                    <a href="/allpack/sound/sounddata/sound5.jpg">
-                                        <img src="/allpack/sound/sounddata/sound5.jpg" class="card-img-top" alt="Gallery Image 3">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Wedding Reception Setup</h5>
-                                        <p class="card-text">Professional sound and lighting for wedding receptions.</p>
+                                <div class="col-md-4">
+                                    <div class="portfolio-card rounded-4 overflow-hidden shadow-sm h-100">
+                                        <img src="/allpack/sound/sounddata/sound5.jpg" class="img-fluid w-100" alt="Wedding reception lighting" style="height: 250px; object-fit: cover;">
+                                        <div class="p-3 bg-white">
+                                            <h6 class="fw-bold mb-1">Dance floor energy</h6>
+                                            <small class="text-muted">Moving heads & gobo</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- Second Slide -->
+                        <!-- Slide 2 -->
                         <div class="carousel-item">
-                            <div class="d-flex justify-content-center">
-                                <div class="card custom-card">
-                                    <a href="/allpack/sound/sounddata/sound6.jpg">
-                                        <img src="/allpack/sound/sounddata/sound6.jpg" class="card-img-top" alt="Gallery Image 4">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Outdoor Wedding Setup</h5>
-                                        <p class="card-text">Perfect sound and lighting for outdoor weddings.</p>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="portfolio-card rounded-4 overflow-hidden shadow-sm h-100">
+                                        <img src="/allpack/sound/sounddata/sound6.jpg" class="img-fluid w-100" alt="Outdoor wedding sound" style="height: 250px; object-fit: cover;">
+                                        <div class="p-3 bg-white">
+                                            <h6 class="fw-bold mb-1">Intimate marquee setup</h6>
+                                            <small class="text-muted">Speeches & background music</small>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card custom-card">
-                                    <a href="/allpack/sound/sounddata/sound7.jpg">
-                                        <img src="/allpack/sound/sounddata/sound7.jpg" class="card-img-top" alt="Gallery Image 5">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Wedding Stage Lighting</h5>
-                                        <p class="card-text">Dynamic lighting for wedding stages.</p>
+                                <div class="col-md-4">
+                                    <div class="portfolio-card rounded-4 overflow-hidden shadow-sm h-100">
+                                        <img src="/allpack/sound/sounddata/sound7.jpg" class="img-fluid w-100" alt="Ceremony lighting" style="height: 250px; object-fit: cover;">
+                                        <div class="p-3 bg-white">
+                                            <h6 class="fw-bold mb-1">Ceremony lighting</h6>
+                                            <small class="text-muted">Soft wash on aisle</small>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card custom-card">
-                                    <a href="/allpack/sound/sounddata/sound8.jpg">
-                                        <img src="/allpack/sound/sounddata/sound8.jpg" class="card-img-top" alt="Gallery Image 6">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Wedding Ceremony Setup</h5>
-                                        <p class="card-text">Professional sound and lighting for wedding ceremonies.</p>
+                                <div class="col-md-4">
+                                    <div class="portfolio-card rounded-4 overflow-hidden shadow-sm h-100">
+                                        <img src="/allpack/sound/sounddata/sound8.jpg" class="img-fluid w-100" alt="First dance spotlight" style="height: 250px; object-fit: cover;">
+                                        <div class="p-3 bg-white">
+                                            <h6 class="fw-bold mb-1">First dance spotlight</h6>
+                                            <small class="text-muted">Follow spot & atmosphere</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <!-- Carousel Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#portfolioCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon bg-gold rounded-circle p-3" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <button class="carousel-control-next" type="button" data-bs-target="#portfolioCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon bg-gold rounded-circle p-3" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Why Choose Us Section -->
-        <div class="row mt-5">
-            <div class="col-md-12 text-center" data-aos="fade-up">
-                <h2>Why Choose Our Sound & Lighting?</h2>
-                <p>We combine cutting-edge audio technology with expert craftsmanship to deliver unforgettable wedding experiences. Our team is dedicated to making your wedding seamless and spectacular.</p>
-                <a href="booking.html" class="btn btn-primary btn-lg">Book Now</a>
-            </div>
-        </div>
-
-        <!-- Testimonials Section -->
-        <div class="testimonials mt-5">
-            <div class="container">
-                <h2 class="text-center mb-5">What Our Clients Say</h2>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="testimonial-card">
-                            <h5>Sarah & John</h5>
-                            <p>"Our wedding was absolutely magical, thanks to the Wedding Planner team. The sound and lighting were perfect, and everything ran so smoothly. We couldn't have asked for a better experience!"</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="testimonial-card">
-                            <h5>Emily & Michael</h5>
-                            <p>"The Wedding Planner team made our dream wedding come true. The lighting design was stunning, and the sound system was flawless. Highly recommend their services!"</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="testimonial-card">
-                            <h5>Jessica & David</h5>
-                            <p>"From the ceremony to the reception, everything was perfect. The team was professional, attentive, and made sure every detail was taken care of. Thank you for making our day unforgettable!"</p>
-                        </div>
+        <!-- Why Choose Us + CTA -->
+        <div class="row mt-5 pt-5 justify-content-center" data-aos="fade-up">
+            <div class="col-lg-10">
+                <div class="bg-gold-light p-5 rounded-5 shadow text-center">
+                    <h3 class="fw-bold mb-3">We don't just set up equipment—we create experiences.</h3>
+                    <p class="mb-4 fs-5">From the initial consultation to the last song, our team is with you every step. We visit your venue, create a custom plan, and run everything behind the scenes so you can relax and enjoy.</p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="/booking" class="btn btn-gold-gradient rounded-pill px-5 py-3 fw-bold">
+                            <i class="fas fa-calendar-check me-2"></i>Check Availability
+                        </a>
                     </div>
                 </div>
             </div>
@@ -753,42 +446,32 @@
         AOS.init();
 
         function toggleDarkMode() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-            const darkModeToggle = document.querySelector('.dark-mode-toggle');
-            if (body.classList.contains('dark-mode')) {
-                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
-            } else {
-                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
-            }
+            document.body.classList.toggle('dark-mode');
+            const btn = document.querySelector('.dark-mode-toggle');
+            btn.innerHTML = document.body.classList.contains('dark-mode') 
+                ? '<i class="fas fa-sun"></i> Light Mode' 
+                : '<i class="fas fa-moon"></i> Dark Mode';
         }
 
+        // Back to Top
         const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
+        window.addEventListener('scroll', () => {
+            backToTop.classList.toggle('visible', window.pageYOffset > 300);
         });
-        backToTop.addEventListener('click', function() {
+        backToTop.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        const scrollIndicator = document.querySelector('.scroll-indicator');
-        if (scrollIndicator) {
-            scrollIndicator.addEventListener('click', function() {
-                const nextSection = document.querySelector('.container');
-                if (nextSection) {
-                    nextSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        }
+        // Scroll indicator - now scrolls to the main services section
+        document.querySelector('.scroll-indicator')?.addEventListener('click', () => {
+            document.getElementById('main-services')?.scrollIntoView({ behavior: 'smooth' });
+        });
 
+        // Prevent video right-click & PiP
         const video = document.querySelector('video');
         if (video) {
-            video.addEventListener('contextmenu', (e) => e.preventDefault());
-            video.addEventListener('enterpictureinpicture', (e) => {
+            video.addEventListener('contextmenu', e => e.preventDefault());
+            video.addEventListener('enterpictureinpicture', e => {
                 e.preventDefault();
                 if (document.exitPictureInPicture) document.exitPictureInPicture();
             });
