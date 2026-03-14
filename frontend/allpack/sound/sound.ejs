@@ -214,9 +214,9 @@
             transform: scale(1.02);
             box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
         }
+        /* Remove old icon styles to avoid conflict */
         .carousel-control-prev-icon.bg-gold, .carousel-control-next-icon.bg-gold {
-            background-color: var(--gold-primary); background-size: 60%;
-            width: 3.2rem; height: 3.2rem; border-radius: 50%;
+            /* Not used anymore, but keep empty or delete */
         }
         .border-gold-soft { border-color: rgba(212,175,55,0.2) !important; }
 
@@ -333,7 +333,7 @@
             </div>
         </div>
 
-        <!-- Gallery / Portfolio Slider -->
+        <!-- Gallery / Portfolio Slider (with fixed prev/next buttons) -->
         <div class="row mt-5 pt-4" data-aos="fade-up">
             <div class="col-12 text-center mb-4">
                 <h3 class="fw-bold">Recent Weddings We've Lit & Soundtracked</h3>
@@ -407,13 +407,17 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Carousel Controls -->
+                    <!-- Carousel Controls (fixed with Font Awesome icons) -->
                     <button class="carousel-control-prev" type="button" data-bs-target="#portfolioCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon bg-gold rounded-circle p-3" aria-hidden="true"></span>
+                        <span class="bg-gold rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 3.2rem; height: 3.2rem;">
+                            <i class="fas fa-chevron-left text-dark"></i>
+                        </span>
                         <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#portfolioCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon bg-gold rounded-circle p-3" aria-hidden="true"></span>
+                        <span class="bg-gold rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 3.2rem; height: 3.2rem;">
+                            <i class="fas fa-chevron-right text-dark"></i>
+                        </span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
