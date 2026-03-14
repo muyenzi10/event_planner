@@ -31,7 +31,7 @@
             --dark-bg: #0a0a0a;
             --darker-bg: #050505;
             --dark-card: #1a1a1a;
-            --text-muted: #adb5bd;        /* lighter muted for dark bg */
+            --text-muted: #adb5bd;
         }
 
         html { scroll-behavior: smooth; }
@@ -48,7 +48,7 @@
         .bg-white { background-color: var(--dark-card) !important; }
         .portfolio-card .bg-white { background-color: var(--dark-card) !important; }
         .portfolio-card small { color: var(--text-muted) !important; }
-        .bg-gold-light { background: #2a2a2a; }  /* dark card background */
+        .bg-gold-light { background: #2a2a2a; }
         .btn-outline-dark { border-color: #f0f0f0; color: #f0f0f0; }
         .btn-outline-dark:hover { background: #f0f0f0; color: #000; }
 
@@ -83,7 +83,7 @@
             object-fit: cover; transform: translate(-50%, -50%); z-index: 1;
         }
 
-        /* Sound Badge Above Hero */
+        /* Sound Badge Above Hero (hidden on mobile) */
         .sound-badge-above {
             position: absolute; top: 15%; left: 50%; transform: translateX(-50%);
             z-index: 5; width: 380px; height: 100px;
@@ -92,6 +92,45 @@
             border-radius: 60px; padding: 0 30px;
             border: 1px solid rgba(212,175,55,0.3); box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
+        /* Hide badge on mobile, show on desktop */
+        @media (max-width: 767px) {
+            .sound-badge-above {
+                display: none;
+            }
+        }
+
+        /* Mobile hero icons (visible only on mobile) */
+        .mobile-hero-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .mobile-hero-icons .sound-icon {
+            font-size: 2.5rem;
+            filter: drop-shadow(0 0 20px rgba(212,175,55,0.8));
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mobile-hero-icons .sound-icon i {
+            animation: iconFloat 4s ease-in-out infinite;
+        }
+        .mobile-hero-icons .sound-icon.left i {
+            color: var(--gold-primary);
+        }
+        .mobile-hero-icons .sound-icon.center i {
+            color: var(--gold-secondary);
+            animation-delay: 0.5s;
+        }
+        .mobile-hero-icons .sound-icon.right i {
+            color: var(--rose-gold);
+            animation-delay: 1s;
+        }
+
         .sound-icon {
             font-size: 3rem; filter: drop-shadow(0 0 20px rgba(212,175,55,0.8));
             display: flex; align-items: center; justify-content: center;
@@ -287,6 +326,7 @@
 
     <!-- VIDEO HERO SECTION -->
     <section class="video-hero">
+        <!-- Desktop sound badge (hidden on mobile) -->
         <div class="sound-badge-above">
             <div class="sound-icon left"><i class="fas fa-microphone"></i></div>
             <div class="sound-icon center"><i class="fas fa-music"></i></div>
@@ -302,6 +342,12 @@
 
         <div class="hero-content">
             <div class="container">
+                <!-- Mobile icons (visible only on mobile) -->
+                <div class="mobile-hero-icons d-md-none">
+                    <div class="sound-icon left"><i class="fas fa-microphone"></i></div>
+                    <div class="sound-icon center"><i class="fas fa-music"></i></div>
+                    <div class="sound-icon right"><i class="fas fa-volume-up"></i></div>
+                </div>
                 <h1 class="hero-title">
                     Professional <span class="highlight-word">Sound & Lighting</span> for Your Wedding
                 </h1>
