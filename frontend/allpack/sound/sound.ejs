@@ -158,8 +158,16 @@
             padding: 0 20px;
         }
         .hero-content .container {
-            max-width: 1200px; animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0; padding-top: 80px;
+            max-width: 1200px; animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0;
+            padding-top: 100px; /* increased to avoid sticky navbar overlap */
         }
+        /* Extra padding on mobile if navbar is taller */
+        @media (max-width: 767px) {
+            .hero-content .container {
+                padding-top: 120px;
+            }
+        }
+
         .hero-title {
             font-family: 'Playfair Display', serif; font-size: clamp(2.5rem,5vw,4.5rem);
             font-weight: 700; margin-bottom: 1.5rem; text-shadow: 3px 3px 15px rgba(0,0,0,0.5);
