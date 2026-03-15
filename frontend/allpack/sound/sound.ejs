@@ -322,6 +322,195 @@
                 font-size: 1.5rem;
             }
         }
+
+        /* ---------- ADDITIONAL MOBILE FINE-TUNING ---------- */
+        @media (max-width: 576px) {
+            /* Reduce hero title size on very small phones */
+            .hero-title {
+                font-size: clamp(2rem, 8vw, 2.5rem);
+            }
+            /* Adjust section header */
+            .display-5 {
+                font-size: 2rem;
+            }
+            /* Reduce excessive padding in CTA box */
+            .bg-gold-light.p-5 {
+                padding: 2rem !important;
+            }
+            /* Back to top button closer to edge */
+            .back-to-top {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+            /* Slightly smaller buttons on mobile */
+            .btn-gold-gradient {
+                padding: 0.75rem 1.5rem;
+            }
+            /* Adjust gap in hero button group */
+            .gap-3 {
+                gap: 0.75rem !important;
+            }
+            /* Extra container padding for very small screens */
+            .container {
+                padding-left: 1.2rem;
+                padding-right: 1.2rem;
+            }
+        }
+
+        /* Extra small devices (≤400px) */
+        @media (max-width: 400px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .mobile-hero-icons .sound-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 2rem;
+            }
+        }
+
+        /* ---------- DEEP DIVE SECTIONS MOBILE OPTIMIZATION ---------- */
+        @media (max-width: 767px) {
+            /* Reduce the large gap between image and text */
+            .row.align-items-center.g-5 {
+                --bs-gutter-y: 1.5rem;  /* override Bootstrap gap-5 (3rem) */
+                margin-top: 0;
+            }
+            /* Adjust heading and paragraph sizes */
+            .row.align-items-center h3 {
+                font-size: 1.5rem;
+            }
+            .row.align-items-center p {
+                font-size: 0.95rem;
+            }
+            /* Make buttons more compact */
+            .row.align-items-center .btn {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.9rem;
+            }
+            /* Reduce bottom margin of the row */
+            .row.align-items-center.mb-5 {
+                margin-bottom: 2.5rem !important;
+            }
+        }
+
+        /* ========== EXTREME MOBILE FIXES (REAL DEVICES) ========== */
+        @media (max-width: 480px) {
+            /* Force no horizontal scroll */
+            html, body {
+                overflow-x: hidden !important;
+                width: 100%;
+            }
+
+            /* Hero section – adjust height and spacing */
+            .video-hero {
+                min-height: 100vh;  /* fallback */
+                min-height: 100dvh; /* use dynamic viewport height where supported */
+            }
+
+            .hero-content .container {
+                padding-top: 80px;   /* reduce top padding if navbar is sticky */
+                padding-bottom: 20px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem !important;  /* force smaller size */
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+
+            .hero-title::before {
+                top: -20px;          /* adjust decorative line position */
+                width: 60px;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem !important;
+                margin-bottom: 1.5rem;
+                padding: 0 5px;
+            }
+
+            .mobile-hero-icons {
+                gap: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .mobile-hero-icons .sound-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.8rem;
+            }
+
+            /* Buttons – full width on tiny screens for easier tapping */
+            .btn-gold-gradient,
+            .btn-outline-gold {
+                width: 100%;
+                text-align: center;
+                padding: 0.8rem 1rem !important;
+                font-size: 1rem;
+            }
+
+            /* Deep dive sections – reduce spacing and font sizes */
+            .row.align-items-center.g-5 {
+                --bs-gutter-y: 1rem;   /* override gap-5 (3rem) */
+            }
+
+            .row.align-items-center h3 {
+                font-size: 1.3rem;
+                margin-top: 0.5rem;
+            }
+
+            .row.align-items-center p {
+                font-size: 0.9rem;
+            }
+
+            .row.align-items-center ul {
+                font-size: 0.9rem;
+                padding-left: 0;
+            }
+
+            .row.align-items-center li {
+                margin-bottom: 0.5rem;
+            }
+
+            .row.align-items-center .btn {
+                width: 100%;          /* make buttons full width on mobile */
+                margin-top: 0.5rem !important;
+            }
+
+            /* Images – ensure they never overflow */
+            .img-fluid {
+                max-width: 100%;
+                height: auto;
+            }
+
+            /* Section headers */
+            .display-5 {
+                font-size: 1.8rem;
+            }
+
+            .lead {
+                font-size: 1rem;
+            }
+        }
+
+        /* Even smaller devices (≤360px) */
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 1.5rem !important;
+            }
+            .hero-subtitle {
+                font-size: 0.9rem !important;
+            }
+            .mobile-hero-icons .sound-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
