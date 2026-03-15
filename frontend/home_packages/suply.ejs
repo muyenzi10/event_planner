@@ -591,6 +591,24 @@
             .hero-image {
                 border: 4px solid rgba(255,255,255,0.1);
             }
+
+            /* ✅ FIX: Scroll indicator for tablets */
+            .hero-scroll-indicator {
+                bottom: 20px;
+            }
+            .scroll-down {
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* ✅ FIX: Scroll indicator for small phones */
+            .hero-scroll-indicator {
+                bottom: 15px;
+            }
         }
     </style>
 </head>

@@ -37,6 +37,7 @@ exports.getcatering = async(req,res)=>{
         const totalPages = Math.ceil(totalItems / itemsPerPage);
     
         res.render("allpack/catering/catering", {
+          activePage:'services',
           files,
           currentPage,
           totalPages,

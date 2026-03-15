@@ -37,7 +37,7 @@ exports.getservice = async (req, res)=>{
            const totalPages = Math.ceil(totalItems / itemsPerPage);
        
            res.render("allpack/iriza/iriza", {
-            activePage: 'packages', 
+            activePage:'services',
             files,
              currentPage,
              totalPages,

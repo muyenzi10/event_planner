@@ -224,6 +224,8 @@
             animation: fadeInUp 1s ease-out 0.3s forwards;
             opacity: 0;
             padding-top: 80px;
+            /* ensure bottom padding so scroll indicator isn't overlapped */
+            padding-bottom: 20px;
         }
 
         .hero-title {
@@ -266,6 +268,22 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.4;
+        }
+
+        /* ============ SCROLL INDICATOR ============ */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            cursor: pointer;
+        }
+
+        .scroll-indicator i {
+            color: var(--gold-primary);
+            font-size: 2rem;
+            animation: bounce 2s infinite;
         }
 
         /* ============ BUTTONS ============ */
@@ -575,22 +593,6 @@
             font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
-
-        /* ============ SCROLL INDICATOR ============ */
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 5;
-            cursor: pointer;
-        }
-
-        .scroll-indicator i {
-            color: var(--gold-primary);
-            font-size: 2rem;
-            animation: bounce 2s infinite;
         }
 
         /* ============ SLOW MOTION PICTURE SLIDER SECTION ============ */
@@ -1130,6 +1132,15 @@
                 height: 45px;
                 font-size: 1.1rem;
             }
+
+            /* Scroll indicator mobile fix */
+            .scroll-indicator {
+                bottom: 20px;
+            }
+
+            .scroll-indicator i {
+                font-size: 1.8rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1171,6 +1182,15 @@
             .picture-controls {
                 flex-wrap: wrap;
                 gap: 10px;
+            }
+
+            /* Scroll indicator fine-tune for very small screens */
+            .scroll-indicator {
+                bottom: 15px;
+            }
+
+            .scroll-indicator i {
+                font-size: 1.6rem;
             }
         }
 

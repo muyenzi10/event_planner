@@ -38,6 +38,7 @@ exports.getphotograph = async (req, res) => {
     const totalpage = Math.ceil(totalItems / itempage);
 
     res.render("allpack/photographers/photographers", {
+      activePage:'services',
       files,
       currentpage,
       totalpage,
