@@ -22,13 +22,12 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
-    <!-- ✅ EXTERNAL FOOTER CSS – KEPT (sole source of footer styles) -->
     <link rel="stylesheet" href="/allpack/layout/css/footer.css">
     
     <title>Services</title>
     
     <style>
-        /* ===== GLOBAL & NAVBAR STYLES (NO FOOTER STYLES HERE) ===== */
+        /* ===== GLOBAL & NAVBAR STYLES ===== */
         :root {
             --primary-gold: #D4AF37;
             --dark-gold: #B8860B;
@@ -443,8 +442,7 @@
             width: 0;
             height: 1px;
             background: #f50c18 !important;
-            transition: width var(--transition-duration) var(--transition-smooth), 
-                       background var(--transition-duration) var(--transition-smooth);
+            transition: width var(--transition-duration) var(--transition-smooth);
         }
         
         .card-link:hover {
@@ -453,13 +451,11 @@
         
         .card-link:hover::after {
             width: 100%;
-            background: #ff3333 !important;
         }
         
         .card-link i {
             font-size: 0.8rem;
-            transition: transform var(--transition-duration) var(--transition-smooth);
-            color: inherit;
+            transition: transform var(--transition-duration);
         }
         
         .card-link:hover i {
@@ -570,70 +566,210 @@
             line-height: 1.5;
         }
         
-        .table-footer-note {
+        /* ============ SLIDE CARDS CAROUSEL SECTION WITH CLICKABLE IMAGES ============ */
+        .slide-cards-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--light-section) 0%, var(--light-card) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cards-carousel-wrapper {
+            position: relative;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .cards-carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .cards-carousel {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+
+        .slide-card {
+            flex: 0 0 calc(33.333% - 20px);
+            background: var(--light-card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all var(--transition-duration) var(--transition-smooth);
+            cursor: pointer;
+        }
+
+        .slide-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Make the entire image area clickable */
+        .slide-card-image-link {
+            display: block;
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .slide-card-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slide-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .slide-card:hover .slide-card-image img {
+            transform: scale(1.08);
+        }
+
+        .slide-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(0, 0, 0, 0.6));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .slide-card:hover .slide-card-overlay {
+            opacity: 1;
+        }
+
+        .slide-card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-gold);
+            color: var(--charcoal);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .slide-card-content {
             padding: 1.5rem;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-gold);
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.9);
         }
-        
-        .text-gold {
-            color: var(--primary-gold) !important;
+
+        .slide-card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
         }
-        
-        /* Decorative Elements */
-        .floating-element {
+
+        .slide-card-content p {
+            color: var(--light-text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .slide-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-gold);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: gap 0.3s ease;
+        }
+
+        .slide-card-link:hover {
+            gap: 12px;
+            color: var(--dark-gold);
+        }
+
+        /* Carousel Navigation Buttons */
+        .carousel-nav-btn {
             position: absolute;
-            z-index: 0;
-            opacity: 0.1;
-            pointer-events: none;
-        }
-        
-        .floating-element.diamond {
-            width: 100px;
-            height: 100px;
-            border: 2px solid var(--primary-gold);
-            transform: rotate(45deg);
-        }
-        
-        .floating-element.ring {
-            width: 150px;
-            height: 150px;
-            border: 1px solid var(--primary-gold);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gold);
+            color: var(--charcoal);
+            border: none;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
         }
-        
-        .table-floating-element {
-            position: absolute;
-            z-index: 0;
-            opacity: 0.05;
-            pointer-events: none;
+
+        .carousel-nav-btn:hover {
+            background: var(--dark-gold);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
         }
-        
-        .table-floating-element.circle {
-            width: 200px;
-            height: 200px;
-            border: 2px solid var(--primary-gold);
+
+        .carousel-nav-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .carousel-nav-btn.prev {
+            left: 0;
+        }
+
+        .carousel-nav-btn.next {
+            right: 0;
+        }
+
+        /* Carousel Dots Indicators */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            top: 10%;
-            right: 5%;
+            background: var(--light-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
-        
-        .table-floating-element.diamond-small {
-            width: 80px;
-            height: 80px;
-            border: 1px solid var(--primary-gold);
-            transform: rotate(45deg);
-            bottom: 20%;
-            left: 5%;
+
+        .carousel-dot.active {
+            background: var(--primary-gold);
+            transform: scale(1.3);
         }
-        
+
+        .carousel-dot:hover {
+            background: var(--primary-gold);
+        }
+
         /* Call to Action */
         .footer-cta {
-            background: linear-gradient(135deg, var(--light-section) 0%, #f0f0f0 100%), 
-                        url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h20v20H0z" fill="none"/><path d="M10 3a7 7 0 100 14 7 7 0 000-14zm0 12a5 5 0 110-10 5 5 0 010 10z" fill="%23D4AF37" opacity=".1"/></svg>');
+            background: linear-gradient(135deg, var(--light-section) 0%, #f0f0f0 100%);
             color: var(--charcoal);
             padding: 5rem 0;
             text-align: center;
@@ -702,9 +838,6 @@
             transform: translateY(20px);
             transition: all var(--transition-duration) var(--transition-smooth);
             box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
-            pointer-events: auto;
-            text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
         }
         
         .back-to-top.visible {
@@ -716,11 +849,6 @@
         .back-to-top:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
-            background: linear-gradient(135deg, var(--dark-gold), var(--primary-gold));
-        }
-        
-        .back-to-top:active {
-            transform: translateY(-2px);
         }
         
         .no-services {
@@ -765,16 +893,59 @@
             transform: translateY(0);
         }
 
-        /* ===== ALL FOOTER STYLES HAVE BEEN REMOVED ===== */
-        /* Footer is now styled exclusively by /allpack/layout/css/footer.css */
-        /* This eliminates 100% of duplicate CSS conflicts with Privacy Policy, Terms of Service, etc. */
+        /* Decorative Elements */
+        .floating-element {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        .floating-element.diamond {
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--primary-gold);
+            transform: rotate(45deg);
+        }
+        
+        .floating-element.ring {
+            width: 150px;
+            height: 150px;
+            border: 1px solid var(--primary-gold);
+            border-radius: 50%;
+        }
+        
+        .table-floating-element {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        
+        .table-floating-element.circle {
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--primary-gold);
+            border-radius: 50%;
+            top: 10%;
+            right: 5%;
+        }
+        
+        .table-floating-element.diamond-small {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--primary-gold);
+            transform: rotate(45deg);
+            bottom: 20%;
+            left: 5%;
+        }
 
-        /* Responsive overrides (non‑footer) */
+        /* Responsive */
         @media (max-width: 1200px) {
             .hero-content h1 { font-size: 3.8rem; }
             .hero-content h1 span { font-size: 2.5rem; }
             .section-title { font-size: 2.8rem; }
-            .services-section .row { --bs-gutter-x: 1.5rem; }
+            .slide-card { flex: 0 0 calc(50% - 15px); }
         }
         
         @media (max-width: 992px) {
@@ -785,8 +956,9 @@
             .card-icon { width: 45px; height: 45px; font-size: 1.2rem; }
             .complementary-services-section { padding: 5rem 0; }
             .luxury-table-container { padding: 1.5rem; border-radius: 15px; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); gap: 1.5rem; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
             .back-to-top { width: 50px; height: 50px; font-size: 1.1rem; bottom: 25px; right: 25px; }
+            .slide-card { flex: 0 0 calc(50% - 15px); }
         }
         
         @media (max-width: 768px) {
@@ -797,29 +969,20 @@
             .section-title { font-size: 2.3rem; }
             .section-intro { font-size: 1rem; padding: 0 1rem; }
             .card-content { padding: 1.5rem; }
-            .card-content h4 { font-size: 1.15rem; margin-bottom: 0.5rem; }
-            .card-content p { font-size: 0.88rem; -webkit-line-clamp: 2; margin-bottom: 1rem; flex: 0 1 auto; }
+            .card-content h4 { font-size: 1.15rem; }
+            .card-content p { font-size: 0.88rem; -webkit-line-clamp: 2; }
             .services-section { padding: 3rem 0; }
-            .card-link { display: inline-flex !important; visibility: visible !important; opacity: 1 !important; margin-top: 0.5rem !important; position: static !important; }
             .complementary-services-section { padding: 4rem 0; }
             .luxury-table-container { padding: 1.25rem; border-radius: 12px; }
-            .services-grid { grid-template-columns: 1fr; grid-template-rows: repeat(6, auto); gap: 1.25rem; }
+            .services-grid { grid-template-columns: 1fr; gap: 1.25rem; }
             .service-item { padding: 1.75rem 1.25rem; }
-            .service-icon-wrapper { width: 60px; height: 60px; font-size: 1.3rem; margin-bottom: 1.25rem; }
+            .service-icon-wrapper { width: 60px; height: 60px; font-size: 1.3rem; }
             .service-title { font-size: 1.2rem; }
-            .service-description { font-size: 0.9rem; }
-            .table-footer-note { padding: 1.25rem; font-size: 0.9rem; }
-            .footer-cta { padding: 4rem 1rem; }
-            .footer-cta h3 { font-size: 2rem; }
-            .footer-cta p { font-size: 1rem; }
-            .back-to-top { width: 55px; height: 55px; font-size: 1.2rem; bottom: 80px; right: 20px; opacity: 0.95; box-shadow: 0 5px 15px rgba(212,175,55,0.7); background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold)); border: 2px solid rgba(255,255,255,0.2); animation: pulse 2s infinite; }
-            .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(212,175,55,0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(212,175,55,0); }
-            100% { box-shadow: 0 0 0 0 rgba(212,175,55,0); }
+            .slide-cards-section { padding: 3rem 0; }
+            .cards-carousel-wrapper { padding: 0 30px; }
+            .slide-card { flex: 0 0 calc(100% - 20px); }
+            .carousel-nav-btn { width: 40px; height: 40px; font-size: 1rem; }
+            .back-to-top { width: 55px; height: 55px; font-size: 1.2rem; bottom: 80px; right: 20px; }
         }
         
         @media (max-width: 576px) {
@@ -827,59 +990,18 @@
             .hero-content h1 { font-size: 2.2rem; }
             .hero-content h1 span { font-size: 1.6rem; }
             .hero-content .brand { font-size: 1.1rem; letter-spacing: 4px; }
-            .hero-content p { font-size: 1rem; margin-bottom: 1.5rem; }
-            .title-container { padding: 4rem 0 2rem; }
-            .section-title { font-size: 2rem; margin-bottom: 1rem; }
-            .section-intro { margin-bottom: 0; font-size: 0.95rem; }
+            .section-title { font-size: 2rem; }
             .card-content { padding: 1.25rem; }
-            .card-content h4 { font-size: 1.1rem; margin-bottom: 0.35rem; }
-            .card-content p { font-size: 0.85rem; margin-bottom: 0.75rem; -webkit-line-clamp: 2; line-height: 1.5; }
-            .card-link { margin-top: 0.5rem !important; font-size: 0.85rem; padding: 0.4rem 0; display: inline-flex !important; visibility: visible !important; opacity: 1 !important; }
-            .service-item { padding: 1.5rem 1rem; }
-            .service-icon-wrapper { width: 55px; height: 55px; font-size: 1.2rem; margin-bottom: 1rem; }
+            .card-content h4 { font-size: 1.1rem; }
+            .card-content p { font-size: 0.85rem; }
+            .service-icon-wrapper { width: 55px; height: 55px; font-size: 1.2rem; }
             .service-title { font-size: 1.1rem; }
-            .service-description { font-size: 0.85rem; }
             .cta-button, .cta-button-gold { padding: 0.9rem 2rem; font-size: 0.95rem; }
             .footer-cta { padding: 3rem 1rem; }
-            .footer-cta h3 { font-size: 1.8rem; margin-bottom: 1rem; }
-            .footer-cta p { font-size: 0.95rem; margin-bottom: 2rem; }
+            .footer-cta h3 { font-size: 1.8rem; }
             .back-to-top { width: 50px; height: 50px; font-size: 1.1rem; bottom: 70px; right: 15px; }
-        }
-        
-        @media (max-width: 400px) {
-            .hero-content h1 { font-size: 1.9rem; }
-            .hero-content h1 span { font-size: 1.4rem; }
-            .card-content { padding: 1rem; }
-            .card-content h4 { font-size: 1rem; margin-bottom: 0.3rem; }
-            .card-content p { font-size: 0.82rem; margin-bottom: 0.6rem; -webkit-line-clamp: 2; line-height: 1.4; }
-            .card-link { margin-top: 0.4rem !important; font-size: 0.8rem; padding: 0.35rem 0; display: inline-flex !important; visibility: visible !important; opacity: 1 !important; }
-            .service-icon-wrapper { width: 50px; height: 50px; font-size: 1.1rem; }
-            .service-title { font-size: 1rem; }
-            .service-description { font-size: 0.8rem; }
-            .back-to-top { width: 45px; height: 45px; font-size: 1rem; bottom: 60px; right: 10px; }
-        }
-        
-        @media (max-width: 320px) {
-            .card-content { padding: 0.875rem; }
-            .card-content h4 { font-size: 0.95rem; }
-            .card-content p { font-size: 0.78rem; margin-bottom: 0.5rem; }
-            .card-link { margin-top: 0.3rem !important; font-size: 0.75rem; display: inline-flex !important; visibility: visible !important; opacity: 1 !important; }
-            .back-to-top { width: 40px; height: 40px; font-size: 0.9rem; bottom: 50px; right: 10px; }
-        }
-        
-        @media (max-width: 768px) {
-            .luxury-card { min-height: auto !important; }
-            .card-content { display: flex !important; flex-direction: column !important; justify-content: space-between !important; }
-            .card-link { order: 3; flex-shrink: 0; margin-top: 0.5rem !important; }
-            .card-content p { flex-shrink: 1; min-height: 2.4em; }
-        }
-        
-        @media (max-width: 991px) {
-            .luxury-card { height: auto !important; min-height: auto !important; }
-        }
-        
-        @media (max-width: 768px) {
-            .card-link { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+            .cards-carousel-wrapper { padding: 0 20px; }
+            .carousel-nav-btn { width: 35px; height: 35px; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -1033,6 +1155,98 @@
         </div>
     </section>
     
+    <!-- ============ SLIDE CARDS CAROUSEL SECTION WITH CLICKABLE IMAGES ============ -->
+    <section class="slide-cards-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-subtitle">Visual Inspirations</div>
+                <h2 class="section-title">Our Signature Gallery</h2>
+                <p class="section-intro">Experience the elegance and artistry that define our wedding services</p>
+            </div>
+
+            <div class="cards-carousel-wrapper">
+                <button class="carousel-nav-btn prev" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="cards-carousel-container">
+                    <div class="cards-carousel" id="cardsCarousel">
+                        <!-- Slide Card 1 -->
+                        <div class="slide-card">
+                            <a href="/booking" class="slide-card-image-link">
+                                <div class="slide-card-image">
+                                    <img src="/home_packages/packdata/1.png" alt="Elegant Wedding Venue">
+                                    <div class="slide-card-overlay"></div>
+                                    <span class="slide-card-badge">Venue Styling</span>
+                                </div>
+                            </a>
+                            <div class="slide-card-content">
+                                <h3>Elegant Wedding Venue</h3>
+                                <p>Breathtaking floral arrangements and sophisticated decor that creates unforgettable moments.</p>
+                                <a href="/booking" class="slide-card-link">Meet with our team <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide Card 2 -->
+                        <div class="slide-card">
+                            <a href="/booking" class="slide-card-image-link">
+                                <div class="slide-card-image">
+                                    <img src="/home_packages/packdata/2.jpg" alt="Exquisite Wedding Cake">
+                                    <div class="slide-card-overlay"></div>
+                                    <span class="slide-card-badge">Cake Design</span>
+                                </div>
+                            </a>
+                            <div class="slide-card-content">
+                                <h3>Artisan Wedding Cakes</h3>
+                                <p>Exquisite designs and delightful flavors crafted by master pastry chefs.</p>
+                                <a href="/booking" class="slide-card-link">Meet with our team <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide Card 3 -->
+                        <div class="slide-card">
+                            <a href="/booking" class="slide-card-image-link">
+                                <div class="slide-card-image">
+                                    <img src="/home_packages/packdata/beaty.jpg" alt="Bridal Beauty">
+                                    <div class="slide-card-overlay"></div>
+                                    <span class="slide-card-badge">Bridal Styling</span>
+                                </div>
+                            </a>
+                            <div class="slide-card-content">
+                                <h3>Bridal Beauty</h3>
+                                <p>Exquisite bridal styling and luxurious accessories for your special day.</p>
+                                <a href="/booking" class="slide-card-link">Meet with our team <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide Card 4 -->
+                        <div class="slide-card">
+                            <a href="/booking" class="slide-card-image-link">
+                                <div class="slide-card-image">
+                                    <img src="/home_packages/packdata/amazinainka.png" alt="Cultural Ceremony">
+                                    <div class="slide-card-overlay"></div>
+                                    <span class="slide-card-badge">Cultural Events</span>
+                                </div>
+                            </a>
+                            <div class="slide-card-content">
+                                <h3>Amazina y'inka</h3>
+                                <p>Authentic ceremonies celebrating heritage and love in meaningful ways.</p>
+                                <a href="/booking" class="slide-card-link">Meet with our team <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-nav-btn next" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Carousel Dots -->
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+    
     <section class="footer-cta">
         <div class="container">
             <h3>Begin Your Journey</h3>
@@ -1056,9 +1270,9 @@
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Enhanced JavaScript -->
+    <!-- Enhanced JavaScript with Fixed Carousel Rotation -->
     <script>
-        // Full JavaScript – unchanged and conflict‑free
+        // Animation on scroll
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.animate-on-scroll');
             elements.forEach(element => {
@@ -1075,15 +1289,225 @@
             preloadCardImages();
             if (window.innerWidth >= 992) equalizeCardHeights();
             toggleBackToTop();
+            
+            // Ensure card links are visible
             document.querySelectorAll('.card-link').forEach(link => {
                 link.style.display = 'inline-flex';
                 link.style.visibility = 'visible';
                 link.style.opacity = '1';
             });
+            
+            // Initialize slide cards carousel with infinite rotation
+            initInfiniteCarousel();
         });
+        
+        // Fixed Infinite Carousel Implementation
+        function initInfiniteCarousel() {
+            const carousel = document.getElementById('cardsCarousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsContainer = document.getElementById('carouselDots');
+            
+            if (!carousel || !prevBtn || !nextBtn) return;
+            
+            // Original slides data
+            const originalSlides = Array.from(document.querySelectorAll('.slide-card'));
+            const totalSlides = originalSlides.length;
+            let currentIndex = 1;
+            let isTransitioning = false;
+            let autoPlayInterval;
+            const autoPlayDelay = 5000;
+            
+            // Store HTML of original slides
+            const slidesHTML = originalSlides.map(slide => slide.outerHTML);
+            
+            // Setup carousel with clones
+            function setupCarousel() {
+                carousel.innerHTML = '';
+                
+                // Add clone of last slide at beginning
+                const lastClone = document.createElement('div');
+                lastClone.innerHTML = slidesHTML[totalSlides - 1];
+                carousel.appendChild(lastClone.firstElementChild);
+                
+                // Add all original slides
+                slidesHTML.forEach(html => {
+                    const div = document.createElement('div');
+                    div.innerHTML = html;
+                    carousel.appendChild(div.firstElementChild);
+                });
+                
+                // Add clone of first slide at end
+                const firstClone = document.createElement('div');
+                firstClone.innerHTML = slidesHTML[0];
+                carousel.appendChild(firstClone.firstElementChild);
+                
+                // Set initial position
+                updateCarouselPosition(false);
+                
+                // Create dots
+                createDots();
+                updateActiveDot();
+            }
+            
+            function getSlideWidth() {
+                const slide = document.querySelector('.slide-card');
+                if (!slide) return 350;
+                const gap = 30;
+                return slide.offsetWidth + gap;
+            }
+            
+            function updateCarouselPosition(animate = true) {
+                const slideWidth = getSlideWidth();
+                const transformValue = -currentIndex * slideWidth;
+                
+                if (animate) {
+                    carousel.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                } else {
+                    carousel.style.transition = 'none';
+                }
+                
+                carousel.style.transform = `translateX(${transformValue}px)`;
+                updateActiveDot();
+            }
+            
+            function goToSlide(index, animate = true) {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                
+                currentIndex = index;
+                updateCarouselPosition(animate);
+                
+                setTimeout(() => {
+                    // Handle infinite loop wrapping
+                    if (currentIndex <= 0) {
+                        // Jump to the last real slide
+                        carousel.style.transition = 'none';
+                        currentIndex = totalSlides;
+                        updateCarouselPosition(false);
+                        setTimeout(() => {
+                            carousel.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                        }, 50);
+                    } else if (currentIndex >= totalSlides + 1) {
+                        // Jump to the first real slide
+                        carousel.style.transition = 'none';
+                        currentIndex = 1;
+                        updateCarouselPosition(false);
+                        setTimeout(() => {
+                            carousel.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                        }, 50);
+                    }
+                    
+                    isTransitioning = false;
+                    updateActiveDot();
+                }, 500);
+            }
+            
+            function nextSlide() {
+                if (isTransitioning) return;
+                goToSlide(currentIndex + 1);
+                resetAutoPlay();
+            }
+            
+            function prevSlide() {
+                if (isTransitioning) return;
+                goToSlide(currentIndex - 1);
+                resetAutoPlay();
+            }
+            
+            function createDots() {
+                if (!dotsContainer) return;
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalSlides; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('carousel-dot');
+                    dot.addEventListener('click', () => {
+                        goToSlide(i + 1);
+                        resetAutoPlay();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+            
+            function updateActiveDot() {
+                if (!dotsContainer) return;
+                const dots = dotsContainer.querySelectorAll('.carousel-dot');
+                let activeIndex = currentIndex - 1;
+                
+                // Handle edge cases
+                if (activeIndex < 0) activeIndex = totalSlides - 1;
+                if (activeIndex >= totalSlides) activeIndex = 0;
+                
+                dots.forEach((dot, idx) => {
+                    if (idx === activeIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            function startAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(() => {
+                    nextSlide();
+                }, autoPlayDelay);
+            }
+            
+            function resetAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    startAutoPlay();
+                }
+            }
+            
+            function stopAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = null;
+                }
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                prevSlide();
+            });
+            
+            nextBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                nextSlide();
+            });
+            
+            // Pause auto-play on hover
+            const carouselContainer = document.querySelector('.cards-carousel-container');
+            if (carouselContainer) {
+                carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+                carouselContainer.addEventListener('mouseleave', startAutoPlay);
+            }
+            
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    updateCarouselPosition(false);
+                    setTimeout(() => {
+                        carousel.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    }, 50);
+                }, 250);
+            });
+            
+            // Initialize carousel
+            setupCarousel();
+            
+            // Start auto-play
+            startAutoPlay();
+        }
         
         window.addEventListener('scroll', animateOnScroll);
 
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
@@ -1096,29 +1520,17 @@
             });
         });
 
+        // Parallax effect on hero
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.luxury-hero');
             if(hero && window.innerWidth > 768) hero.style.transform = `translateY(${scrolled * 0.05}px)`;
         });
 
+        // Floating elements animation
         document.querySelectorAll('.floating-element, .table-floating-element').forEach((el, i) => {
             el.style.animation = `float ${6 + i * 2}s ease-in-out infinite`;
             el.style.animationDelay = `${i * 0.5}s`;
-        });
-
-        document.querySelectorAll('.luxury-card').forEach(card => {
-            if (!('ontouchstart' in window)) {
-                card.addEventListener('mouseenter', () => card.style.zIndex = '10');
-                card.addEventListener('mouseleave', () => card.style.zIndex = '1');
-            }
-        });
-
-        document.querySelectorAll('.service-item').forEach(item => {
-            if (!('ontouchstart' in window)) {
-                item.addEventListener('mouseenter', function() { this.style.zIndex = '5'; });
-                item.addEventListener('mouseleave', function() { this.style.zIndex = '1'; });
-            }
         });
 
         function equalizeCardHeights() {
@@ -1159,44 +1571,12 @@
             const isMobile = window.innerWidth <= 768;
             if (window.pageYOffset > (isMobile ? 100 : 300)) {
                 backToTopButton.classList.add('visible');
-                if (isMobile) {
-                    backToTopButton.style.display = 'flex';
-                    backToTopButton.style.opacity = '1';
-                    backToTopButton.style.visibility = 'visible';
-                }
             } else backToTopButton.classList.remove('visible');
         };
+        
         window.addEventListener('scroll', toggleBackToTop);
         window.addEventListener('resize', toggleBackToTop);
         backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        if ('ontouchstart' in window) {
-            backToTopButton.addEventListener('touchstart', function(e) { e.preventDefault(); this.style.transform = 'scale(0.95)'; });
-            backToTopButton.addEventListener('touchend', function(e) { e.preventDefault(); this.style.transform = 'scale(1)'; window.scrollTo({ top: 0, behavior: 'smooth' }); });
-            document.querySelectorAll('.card-link').forEach(link => {
-                link.addEventListener('touchstart', function() { this.style.backgroundColor = 'rgba(245,12,24,0.1)'; });
-                link.addEventListener('touchend', function() { this.style.backgroundColor = 'transparent'; });
-            });
-        }
-
-        document.querySelectorAll('a').forEach(link => {
-            const href = link.getAttribute('href');
-            if (href && href.startsWith('#') && href !== '#') {
-                link.addEventListener('click', function(e) {
-                    if (href === '#') { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-                });
-            }
-        });
-
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                if (window.innerWidth < 992) {
-                    document.querySelectorAll('.luxury-card').forEach(c => {
-                        c.style.height = 'auto'; c.style.minHeight = 'auto'; c.style.flexShrink = '0';
-                    });
-                }
-            }, 100);
-        });
     </script>
 </body>
 </html>

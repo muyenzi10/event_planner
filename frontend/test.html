@@ -1,142 +1,1558 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Premium wedding planning services creating unforgettable moments">
+    
+    <!-- Preconnect to CDNs for better performance -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome 6.4 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/allpack/layout/css/navbas.css">
+    <link rel="stylesheet" href="/allpack/layout/css/footer.css">
+    
+    <title>Services</title>
+    
+    <style>
+        /* ===== GLOBAL & NAVBAR STYLES ===== */
+        :root {
+            --primary-gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --light-gold: #F5E8B5;
+            --primary-color: #D4AF37;
+            --ivory: #FFFFF0;
+            --champagne: #F7E7CE;
+            --charcoal: #2C2C2C;
+            --light-charcoal: #3A3A3A;
+            --light-bg: #f9f9f9;
+            --light-card: #ffffff;
+            --light-section: #f5f5f5;
+            --light-text: #333333;
+            --light-text-light: #666666;
+            --light-border: #e0e0e0;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-duration: 0.4s;
+            --explore-service-color: #f50c18;
+            --explore-service-hover: #ff3333;
+            --navbar-height: 80px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--light-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: var(--navbar-height);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link {
+            font-family: 'Poppins', sans-serif !important;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--charcoal);
+        }
+        
+        /* Hero Section */
+        .luxury-hero {
+            position: relative;
+            height: 85vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), 
+                        url('/assethome/5.jpg') center/cover no-repeat fixed;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s var(--transition-smooth) 0.3s both;
+        }
+        
+        .hero-content .brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: var(--light-gold);
+            opacity: 0.9;
+        }
+        
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+            color: white;
+        }
+        
+        .hero-content h1 span {
+            display: block;
+            font-size: 3rem;
+            color: var(--light-gold);
+            font-weight: 300;
+            margin-top: 0.5rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .hero-divider {
+            width: 100px;
+            height: 2px;
+            background: var(--primary-gold);
+            margin: 2rem auto;
+            position: relative;
+        }
+        
+        .hero-divider::before,
+        .hero-divider::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--primary-gold);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .hero-divider::before {
+            left: -20px;
+        }
+        
+        .hero-divider::after {
+            right: -20px;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: white;
+            border: 2px solid var(--primary-gold);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all var(--transition-duration) var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: left 0.6s;
+        }
+        
+        .cta-button:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .title-container {
+            text-align: center;
+            padding: 5rem 0 3rem;
+            background: linear-gradient(135deg, var(--light-section) 0%, var(--light-card) 100%);
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--primary-gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .section-title {
+            font-size: 3.2rem;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-gold);
+        }
+        
+        .section-intro {
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--light-text-light);
+            line-height: 1.8;
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 4rem 0;
+            background: var(--light-bg);
+            position: relative;
+        }
+        
+        .luxury-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            background: var(--light-card);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all var(--transition-duration) var(--transition-smooth);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--light-border);
+        }
+        
+        .luxury-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+        
+        .card-image-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            flex-shrink: 0;
+            aspect-ratio: 3/4;
+        }
+        
+        .card-image-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .card-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.8) 100%);
+            opacity: 0;
+            transition: opacity var(--transition-duration) var(--transition-smooth);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .luxury-card:hover .card-image-wrapper::before {
+            opacity: 1;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.8s var(--transition-smooth);
+            will-change: transform;
+        }
+        
+        .luxury-card:hover .card-image {
+            transform: scale(1.08);
+        }
+        
+        video.card-image {
+            object-fit: cover;
+        }
+        
+        .card-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--light-card);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-gold);
+            font-size: 1.3rem;
+            z-index: 4;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all var(--transition-duration) var(--transition-smooth);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid var(--light-border);
+            pointer-events: none;
+        }
+        
+        .luxury-card:hover .card-icon {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.75rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            color: white;
+            z-index: 2;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all var(--transition-duration) var(--transition-smooth);
+            pointer-events: none;
+        }
+        
+        .luxury-card:hover .card-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .card-overlay h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.25rem;
+            color: white;
+            line-height: 1.3;
+        }
+        
+        .card-content {
+            padding: 1.75rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--charcoal);
+            transition: color var(--transition-duration);
+            line-height: 1.3;
+        }
+        
+        .luxury-card:hover .card-content h4 {
+            color: var(--primary-gold);
+        }
+        
+        .card-content p {
+            color: var(--light-text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            flex: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #f50c18 !important;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all var(--transition-duration);
+            position: relative;
+            padding: 0.5rem 0;
+            margin-top: auto;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+        
+        .card-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #f50c18 !important;
+            transition: width var(--transition-duration) var(--transition-smooth);
+        }
+        
+        .card-link:hover {
+            color: #ff3333 !important;
+        }
+        
+        .card-link:hover::after {
+            width: 100%;
+        }
+        
+        .card-link i {
+            font-size: 0.8rem;
+            transition: transform var(--transition-duration);
+        }
+        
+        .card-link:hover i {
+            transform: translateX(4px);
+        }
+        
+        /* Complementary Services – Dark Theme */
+        .complementary-services-section {
+            padding: 6rem 0;
+            background: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
 
-<!-- Font Awesome -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        .complementary-services-section .section-subtitle {
+            color: var(--primary-gold);
+        }
 
-<!-- AOS -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<style>
-/* ================= HERO ================= */
-.invitation-hero {
-    position: relative;
-    height: 85vh;
-    min-height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    overflow: hidden;
-    margin-top: 0;          /* Space for fixed navbar */
-}
-.invitation-hero video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -2;
-}
+        .complementary-services-section .section-title {
+            color: white;
+        }
 
-.invitation-hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.45);
-    z-index: -1;
-}
+        .complementary-services-section .section-title::after {
+            background: var(--primary-gold);
+        }
 
-.invitation-hero h2 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
+        .complementary-services-section .section-intro {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        .luxury-table-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--light-charcoal);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .service-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all var(--transition-duration) var(--transition-smooth);
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(10px);
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            border-color: var(--primary-gold);
+            background: rgba(212, 175, 55, 0.12);
+            z-index: 2;
+        }
+        
+        .service-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--charcoal);
+            font-size: 1.5rem;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+            transition: all var(--transition-duration) var(--transition-smooth);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-item:hover .service-icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+            background: linear-gradient(135deg, var(--dark-gold), var(--primary-gold));
+        }
+        
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
 
-.invitation-hero .lead {
-    font-size: 1.3rem;
-    max-width: 600px;
-    margin: auto;
-}
+        .service-description {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        /* ============ SLIDE CARDS CAROUSEL SECTION WITH INFINITE ROTATION ============ */
+        .slide-cards-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--light-section) 0%, var(--light-card) 100%);
+            position: relative;
+            overflow: hidden;
+        }
 
-.invitation-hero .btn {
-    margin-top: 20px;
-    padding: 12px 30px;
-    border-radius: 30px;
-    font-size: 1.1rem;
-}
+        .cards-carousel-wrapper {
+            position: relative;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
 
-/* ================= GALLERY ================= */
-.invitation-gallery {
-    padding: 80px 0;
-    background: #f8f9fa;
-}
+        .cards-carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
 
-.invitation-gallery h2 {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 2.4rem;
-    font-weight: 700;
-}
+        .cards-carousel {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
 
-.invitation-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
+        .slide-card {
+            flex: 0 0 calc(33.333% - 20px);
+            background: var(--light-card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all var(--transition-duration) var(--transition-smooth);
+            cursor: pointer;
+        }
 
-.invitation-item {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    transition: .3s;
-}
+        .slide-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
 
-.invitation-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
+        .slide-card-image {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+        }
 
-.invitation-item img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    cursor: pointer;
-    transition: .4s;
-}
+        .slide-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
 
-.invitation-item:hover img {
-    transform: scale(1.1);
-}
+        .slide-card:hover .slide-card-image img {
+            transform: scale(1.08);
+        }
 
-.invitation-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,0.65);
-    color: white;
-    padding: 12px;
-    text-align: center;
-    font-size: .9rem;
-    opacity: 0;
-    transition: .3s;
-}
+        .slide-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(0, 0, 0, 0.6));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
 
-.invitation-item:hover .invitation-caption {
-    opacity: 1;
-}
+        .slide-card:hover .slide-card-overlay {
+            opacity: 1;
+        }
 
-/* ================= MODAL ================= */
-.invitation-modal-img {
-    width: 100%;
-    border-radius: 10px;
-}
+        .slide-card-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-gold);
+            color: var(--charcoal);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
 
-/* ================= MOBILE ADJUSTMENTS (only for page content, NOT navbar) ================= */
-@media(max-width:768px) {
-    .invitation-hero {
-        height: 70vh;
-    }
-    .invitation-hero h2 {
-        font-size: 2rem;
-    }
-    .invitation-hero .lead {
-        font-size: 1rem;
-    }
-    .invitation-grid {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    }
-}
-</style>
+        .slide-card-content {
+            padding: 1.5rem;
+        }
+
+        .slide-card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--charcoal);
+        }
+
+        .slide-card-content p {
+            color: var(--light-text-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .slide-card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-gold);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85rem;
+            transition: gap 0.3s ease;
+        }
+
+        .slide-card-link:hover {
+            gap: 12px;
+            color: var(--dark-gold);
+        }
+
+        /* Carousel Navigation Buttons */
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--primary-gold);
+            color: var(--charcoal);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+        }
+
+        .carousel-nav-btn:hover {
+            background: var(--dark-gold);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .carousel-nav-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .carousel-nav-btn.prev {
+            left: 0;
+        }
+
+        .carousel-nav-btn.next {
+            right: 0;
+        }
+
+        /* Carousel Dots Indicators */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--light-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--primary-gold);
+            transform: scale(1.3);
+        }
+
+        .carousel-dot:hover {
+            background: var(--primary-gold);
+        }
+
+        /* Call to Action */
+        .footer-cta {
+            background: linear-gradient(135deg, var(--light-section) 0%, #f0f0f0 100%);
+            color: var(--charcoal);
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid var(--light-border);
+        }
+        
+        .footer-cta h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.25rem;
+            color: var(--charcoal);
+        }
+        
+        .footer-cta p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+            color: var(--light-text-light);
+        }
+        
+        .cta-button-gold {
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all var(--transition-duration) var(--transition-smooth);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cta-button-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, var(--dark-gold), var(--primary-gold));
+            color: white;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-gold), var(--dark-gold));
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 99999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all var(--transition-duration) var(--transition-smooth);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
+        }
+        
+        .no-services {
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .no-services p {
+            font-size: 1.2rem;
+            color: var(--light-text-light);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(3deg);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s var(--transition-smooth), transform 0.6s var(--transition-smooth);
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Decorative Elements */
+        .floating-element {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+        
+        .floating-element.diamond {
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--primary-gold);
+            transform: rotate(45deg);
+        }
+        
+        .floating-element.ring {
+            width: 150px;
+            height: 150px;
+            border: 1px solid var(--primary-gold);
+            border-radius: 50%;
+        }
+        
+        .table-floating-element {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        
+        .table-floating-element.circle {
+            width: 200px;
+            height: 200px;
+            border: 2px solid var(--primary-gold);
+            border-radius: 50%;
+            top: 10%;
+            right: 5%;
+        }
+        
+        .table-floating-element.diamond-small {
+            width: 80px;
+            height: 80px;
+            border: 1px solid var(--primary-gold);
+            transform: rotate(45deg);
+            bottom: 20%;
+            left: 5%;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content h1 { font-size: 3.8rem; }
+            .hero-content h1 span { font-size: 2.5rem; }
+            .section-title { font-size: 2.8rem; }
+            .slide-card { flex: 0 0 calc(50% - 15px); }
+        }
+        
+        @media (max-width: 992px) {
+            .luxury-hero { height: 75vh; min-height: 550px; }
+            .hero-content h1 { font-size: 3.2rem; }
+            .hero-content h1 span { font-size: 2.2rem; }
+            .section-title { font-size: 2.5rem; }
+            .card-icon { width: 45px; height: 45px; font-size: 1.2rem; }
+            .complementary-services-section { padding: 5rem 0; }
+            .luxury-table-container { padding: 1.5rem; border-radius: 15px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .back-to-top { width: 50px; height: 50px; font-size: 1.1rem; bottom: 25px; right: 25px; }
+            .slide-card { flex: 0 0 calc(50% - 15px); }
+        }
+        
+        @media (max-width: 768px) {
+            .luxury-hero { height: 70vh; min-height: 500px; background-attachment: scroll; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content h1 span { font-size: 2rem; }
+            .hero-content p { font-size: 1.1rem; }
+            .section-title { font-size: 2.3rem; }
+            .section-intro { font-size: 1rem; padding: 0 1rem; }
+            .card-content { padding: 1.5rem; }
+            .card-content h4 { font-size: 1.15rem; }
+            .card-content p { font-size: 0.88rem; -webkit-line-clamp: 2; }
+            .services-section { padding: 3rem 0; }
+            .complementary-services-section { padding: 4rem 0; }
+            .luxury-table-container { padding: 1.25rem; border-radius: 12px; }
+            .services-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .service-item { padding: 1.75rem 1.25rem; }
+            .service-icon-wrapper { width: 60px; height: 60px; font-size: 1.3rem; }
+            .service-title { font-size: 1.2rem; }
+            .slide-cards-section { padding: 3rem 0; }
+            .cards-carousel-wrapper { padding: 0 30px; }
+            .slide-card { flex: 0 0 calc(100% - 20px); }
+            .carousel-nav-btn { width: 40px; height: 40px; font-size: 1rem; }
+            .back-to-top { width: 55px; height: 55px; font-size: 1.2rem; bottom: 80px; right: 20px; }
+        }
+        
+        @media (max-width: 576px) {
+            .luxury-hero { height: 65vh; min-height: 450px; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content h1 span { font-size: 1.6rem; }
+            .hero-content .brand { font-size: 1.1rem; letter-spacing: 4px; }
+            .section-title { font-size: 2rem; }
+            .card-content { padding: 1.25rem; }
+            .card-content h4 { font-size: 1.1rem; }
+            .card-content p { font-size: 0.85rem; }
+            .service-icon-wrapper { width: 55px; height: 55px; font-size: 1.2rem; }
+            .service-title { font-size: 1.1rem; }
+            .cta-button, .cta-button-gold { padding: 0.9rem 2rem; font-size: 0.95rem; }
+            .footer-cta { padding: 3rem 1rem; }
+            .footer-cta h3 { font-size: 1.8rem; }
+            .back-to-top { width: 50px; height: 50px; font-size: 1.1rem; bottom: 70px; right: 15px; }
+            .cards-carousel-wrapper { padding: 0 20px; }
+            .carousel-nav-btn { width: 35px; height: 35px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <%- include('../allpack/layout/navbar') %>
+    
+    <!-- Luxury Hero Section -->
+    <section class="luxury-hero">
+        <div class="floating-element diamond" style="top: 20%; left: 10%;"></div>
+        <div class="floating-element ring" style="bottom: 20%; right: 10%;"></div>
+        
+        <div class="hero-content">
+            <div class="brand">Dazzle Weddings</div>
+            <h1>Wedding Solutions<br><span>Planning through Signature Services</span></h1>
+            <div class="hero-divider"></div>
+            <p>Our services are shaped with intention, allowing moments to unfold with depth and lasting presence</p>
+            <a href="#services" class="cta-button animate-on-scroll">
+                Explore Our Services
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+    
+    <!-- TITLE -->
+    <div class="title-container" id="services">
+        <div class="section-subtitle">Exclusive Collections</div>
+        <h2 class="section-title">Our Luxury Services</h2>
+        <p class="section-intro">Thoughtfully orchestrated experiences shaped with precision, discretion, and an uncompromising eye for detail</p>
+    </div>
+    
+    <!-- SERVICES SECTION -->
+    <div class="services-section">
+        <div class="container">
+            <div class="row">
+                <% if (files.length === 0) { %>
+                    <div class="col-12 no-services">
+                        <p>No services available at the moment. Please check back soon!</p>
+                    </div>
+                <% } else { %>
+                    <% files.forEach((file, index) => { %>
+                        <% 
+                            let link = '#';
+                            if (file.title === 'Decor') { 
+                                link = '/decor'; 
+                            } else if (file.title === 'Invitation') { 
+                                link = '/invitation'; 
+                            } else if (file.title === 'Dresses') { 
+                                link = '/dresses'; 
+                            } else if (file.title === 'm.c') { 
+                                link = '/mc'; 
+                            } else if (file.title === 'Troupe') { 
+                                link = '/troupe'; 
+                            } else if (file.title === 'sound') { 
+                                link = '/sound'; 
+                            } else if (file.title === 'Photography') { 
+                                link = '/photographers'; 
+                            } else if (file.title === 'Catering') { 
+                                link = '/catering'; 
+                            } else if (file.title === 'Hospitality') { 
+                                link = '/hospitality'; 
+                            }
+                        %>
+                        
+                        <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
+                            <div class="luxury-card animate-on-scroll" data-delay="<%= index * 50 %>">
+                                <div class="card-image-wrapper">
+                                    <a href="<%= link %>" class="card-image-link">
+                                        <% if (file.fileType === 'image') { %>
+                                            <img src="/all_disk/packges/<%= file.filePath %>" class="card-image" alt="<%= file.title %>" loading="lazy">
+                                        <% } else if (file.fileType === 'video') { %>
+                                            <video class="card-image" controls>
+                                                <source src="/all_disk/packges/<%= file.filePath %>">
+                                            </video>
+                                        <% } %>
+                                        <div class="card-overlay">
+                                            <h4><%= file.title %></h4>
+                                        </div>
+                                    </a>
+                                    <div class="card-icon">
+                                        <% if (file.fileType === 'image') { %>
+                                            <i class="fas fa-image"></i>
+                                        <% } else if (file.fileType === 'video') { %>
+                                            <i class="fas fa-video"></i>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="card-content">
+                                    <h4><%= file.title %></h4>
+                                    <p><%= file.description %></p>
+                                    <a href="<%= link %>" class="card-link">
+                                        Explore Service
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Complementary Services Table -->
+    <section id="complementary-services" class="complementary-services-section">
+        <div class="floating-element" style="top: 15%; left: 5%; width: 120px; height: 120px; border: 1px solid var(--primary-gold); border-radius: 50%; opacity: 0.05;"></div>
+        <div class="floating-element" style="bottom: 15%; right: 8%; width: 80px; height: 80px; border: 2px solid var(--primary-gold); transform: rotate(45deg); opacity: 0.05;"></div>
+        <div class="table-floating-element circle"></div>
+        <div class="table-floating-element diamond-small"></div>
+        
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Additional Excellence</div>
+                <h2 class="section-title">Complementary Services</h2>
+                <p class="section-intro">Complete your wedding experience with our additional premium offerings that ensure every detail is perfect.</p>
+            </div>
+            
+            <div class="luxury-table-container">
+                <div class="services-grid">
+                    <div class="service-item animate-on-scroll" data-delay="0">
+                        <div class="service-icon-wrapper"><i class="fas fa-car"></i></div>
+                        <h4 class="service-title">Luxury Transportation</h4>
+                        <p class="service-description">Arrive in style with our premium fleet of luxury vehicles for the entire wedding party.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll" data-delay="50">
+                        <div class="service-icon-wrapper"><i class="fas fa-compact-disc"></i></div>
+                        <h4 class="service-title">DJ & Music Selection</h4>
+                        <p class="service-description">Professional DJ services with customized playlists to keep your celebration alive.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll" data-delay="100">
+                        <div class="service-icon-wrapper"><i class="fas fa-microphone"></i></div>
+                        <h4 class="service-title">Karaoke Entertainment</h4>
+                        <p class="service-description">Fun karaoke setup for guests to showcase their talents and keep the party going.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll" data-delay="150">
+                        <div class="service-icon-wrapper"><i class="fas fa-guitar"></i></div>
+                        <h4 class="service-title">Live Band Coordination</h4>
+                        <p class="service-description">Hire and coordinate live musical performances tailored to your wedding theme.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll" data-delay="200">
+                        <div class="service-icon-wrapper"><i class="fas fa-wine-glass-alt"></i></div>
+                        <h4 class="service-title">Beverage Curation</h4>
+                        <p class="service-description">Expert selection and presentation of wines, cocktails, and non-alcoholic beverages.</p>
+                    </div>
+                    <div class="service-item animate-on-scroll" data-delay="250">
+                        <div class="service-icon-wrapper"><i class="fas fa-music"></i></div>
+                        <h4 class="service-title">Gakondo Singers</h4>
+                        <p class="service-description">Performances by talented Gakondo singers, delivering traditional melodies and rhythms that make every celebration unforgettable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============ SLIDE CARDS CAROUSEL SECTION WITH INFINITE ROTATION ============ -->
+    <section class="slide-cards-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <div class="section-subtitle">Visual Inspirations</div>
+                <h2 class="section-title">Our Signature Gallery</h2>
+                <p class="section-intro">Experience the elegance and artistry that define our wedding services</p>
+            </div>
+
+            <div class="cards-carousel-wrapper">
+                <button class="carousel-nav-btn prev" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <div class="cards-carousel-container">
+                    <div class="cards-carousel" id="cardsCarousel">
+                        <div class="slide-card">
+                            <div class="slide-card-image">
+                                <img src="/home_packages/packdata/1.png" alt="Elegant Wedding Venue">
+                                <div class="slide-card-overlay"></div>
+                                <span class="slide-card-badge">Venue Styling</span>
+                            </div>
+                            <div class="slide-card-content">
+                                <h3>Elegant Wedding Venue</h3>
+                                <p>Breathtaking floral arrangements and sophisticated decor that creates unforgettable moments.</p>
+                                <a href="#" class="slide-card-link">Discover More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="slide-card">
+                            <div class="slide-card-image">
+                                <img src="/home_packages/packdata/2.jpg" alt="Exquisite Wedding Cake">
+                                <div class="slide-card-overlay"></div>
+                                <span class="slide-card-badge">Cake Design</span>
+                            </div>
+                            <div class="slide-card-content">
+                                <h3>Artisan Wedding Cakes</h3>
+                                <p>Exquisite designs and delightful flavors crafted by master pastry chefs.</p>
+                                <a href="#" class="slide-card-link">Discover More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="slide-card">
+                            <div class="slide-card-image">
+                                <img src="/home_packages/packdata/beaty.jpg" alt="Bridal Beauty">
+                                <div class="slide-card-overlay"></div>
+                                <span class="slide-card-badge">Bridal Styling</span>
+                            </div>
+                            <div class="slide-card-content">
+                                <h3>Bridal Beauty</h3>
+                                <p>Exquisite bridal styling and luxurious accessories for your special day.</p>
+                                <a href="#" class="slide-card-link">Discover More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="slide-card">
+                            <div class="slide-card-image">
+                                <img src="/home_packages/packdata/amazinainka.png" alt="Cultural Ceremony">
+                                <div class="slide-card-overlay"></div>
+                                <span class="slide-card-badge">Cultural Events</span>
+                            </div>
+                            <div class="slide-card-content">
+                                <h3>Cultural Traditions</h3>
+                                <p>Authentic ceremonies celebrating heritage and love in meaningful ways.</p>
+                                <a href="#" class="slide-card-link">Discover More <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-nav-btn next" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <!-- Carousel Dots -->
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+    </section>
+    
+    <section class="footer-cta">
+        <div class="container">
+            <h3>Begin Your Journey</h3>
+            <p class="service-description">
+                Let us turn your wedding dreams into a flawless celebration. Our expert planners connect you with top vendors and handle every detail
+            </p>
+            <a href="/booking" class="cta-button-gold">
+                <i class="fas fa-calendar-check"></i>
+                Book Exclusive Consultation
+            </a>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <%- include('../allpack/layout/footer') %>
+    
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Enhanced JavaScript -->
+    <script>
+        // Animation on scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                if (elementTop < window.innerHeight - 100) {
+                    const delay = element.dataset.delay || 0;
+                    setTimeout(() => { element.classList.add('visible'); }, delay);
+                }
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            animateOnScroll();
+            preloadCardImages();
+            if (window.innerWidth >= 992) equalizeCardHeights();
+            toggleBackToTop();
+            
+            // Ensure card links are visible
+            document.querySelectorAll('.card-link').forEach(link => {
+                link.style.display = 'inline-flex';
+                link.style.visibility = 'visible';
+                link.style.opacity = '1';
+            });
+            
+            // Initialize slide cards carousel with infinite rotation
+            initInfiniteCarousel();
+        });
+        
+        // Infinite Carousel Implementation
+        function initInfiniteCarousel() {
+            const carousel = document.getElementById('cardsCarousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsContainer = document.getElementById('carouselDots');
+            
+            if (!carousel || !prevBtn || !nextBtn) return;
+            
+            // Get all slides
+            const slides = Array.from(document.querySelectorAll('.slide-card'));
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+            let autoPlayInterval;
+            const autoPlayDelay = 5000; // 5 seconds
+            
+            // Clone slides for infinite effect
+            function setupInfiniteCarousel() {
+                // Clear existing content
+                carousel.innerHTML = '';
+                
+                // Clone all slides for infinite loop (add clones at beginning and end)
+                const cloneFirst = slides[0].cloneNode(true);
+                const cloneLast = slides[totalSlides - 1].cloneNode(true);
+                
+                // Add clone at the end
+                slides.forEach(slide => {
+                    carousel.appendChild(slide.cloneNode(true));
+                });
+                // Add clone of first at the end
+                carousel.appendChild(cloneFirst);
+                // Add clone of last at the beginning
+                carousel.insertBefore(cloneLast, carousel.firstChild);
+                
+                // Update slides collection
+                const allSlides = Array.from(document.querySelectorAll('.slide-card'));
+                const slideWidth = getSlideWidth();
+                
+                // Set initial position to first real slide
+                carousel.style.transform = `translateX(-${slideWidth}px)`;
+                currentIndex = 1;
+                
+                // Create dots
+                createDots();
+                updateActiveDot();
+                
+                return allSlides;
+            }
+            
+            function getSlideWidth() {
+                const slide = document.querySelector('.slide-card');
+                if (!slide) return 0;
+                const gap = 30; // gap between slides
+                return slide.offsetWidth + gap;
+            }
+            
+            function updateCarousel() {
+                const slideWidth = getSlideWidth();
+                const transformValue = -currentIndex * slideWidth;
+                carousel.style.transform = `translateX(${transformValue}px)`;
+                updateActiveDot();
+            }
+            
+            function goToSlide(index) {
+                const slideWidth = getSlideWidth();
+                const totalVisibleSlides = getTotalVisibleSlides();
+                const totalRealSlides = totalSlides;
+                
+                carousel.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                currentIndex = index;
+                updateCarousel();
+                
+                // Handle infinite loop after transition
+                setTimeout(() => {
+                    if (currentIndex <= 0) {
+                        carousel.style.transition = 'none';
+                        currentIndex = totalRealSlides;
+                        updateCarousel();
+                        setTimeout(() => {
+                            carousel.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                        }, 50);
+                    } else if (currentIndex >= totalRealSlides + 1) {
+                        carousel.style.transition = 'none';
+                        currentIndex = 1;
+                        updateCarousel();
+                        setTimeout(() => {
+                            carousel.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                        }, 50);
+                    }
+                }, 500);
+            }
+            
+            function nextSlide() {
+                if (!carousel) return;
+                goToSlide(currentIndex + 1);
+                resetAutoPlay();
+            }
+            
+            function prevSlide() {
+                if (!carousel) return;
+                goToSlide(currentIndex - 1);
+                resetAutoPlay();
+            }
+            
+            function getTotalVisibleSlides() {
+                if (window.innerWidth >= 1200) return 3;
+                if (window.innerWidth >= 768) return 2;
+                return 1;
+            }
+            
+            function createDots() {
+                if (!dotsContainer) return;
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalSlides; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('carousel-dot');
+                    dot.addEventListener('click', () => {
+                        goToSlide(i + 1);
+                        resetAutoPlay();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+            
+            function updateActiveDot() {
+                if (!dotsContainer) return;
+                const dots = dotsContainer.querySelectorAll('.carousel-dot');
+                let activeIndex = currentIndex - 1;
+                if (activeIndex < 0) activeIndex = totalSlides - 1;
+                if (activeIndex >= totalSlides) activeIndex = 0;
+                
+                dots.forEach((dot, idx) => {
+                    if (idx === activeIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            function startAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(() => {
+                    nextSlide();
+                }, autoPlayDelay);
+            }
+            
+            function resetAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    startAutoPlay();
+                }
+            }
+            
+            function stopAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = null;
+                }
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetAutoPlay();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetAutoPlay();
+            });
+            
+            // Pause auto-play on hover
+            const carouselContainer = document.querySelector('.cards-carousel-container');
+            if (carouselContainer) {
+                carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+                carouselContainer.addEventListener('mouseleave', startAutoPlay);
+            }
+            
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    const slideWidth = getSlideWidth();
+                    carousel.style.transition = 'none';
+                    updateCarousel();
+                    setTimeout(() => {
+                        carousel.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    }, 50);
+                }, 250);
+            });
+            
+            // Setup infinite carousel
+            setupInfiniteCarousel();
+            
+            // Start auto-play
+            startAutoPlay();
+            
+            // Update on window resize for slide count
+            window.addEventListener('resize', () => {
+                updateActiveDot();
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Parallax effect on hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.luxury-hero');
+            if(hero && window.innerWidth > 768) hero.style.transform = `translateY(${scrolled * 0.05}px)`;
+        });
+
+        // Floating elements animation
+        document.querySelectorAll('.floating-element, .table-floating-element').forEach((el, i) => {
+            el.style.animation = `float ${6 + i * 2}s ease-in-out infinite`;
+            el.style.animationDelay = `${i * 0.5}s`;
+        });
+
+        function equalizeCardHeights() {
+            if (window.innerWidth >= 992) {
+                const cards = document.querySelectorAll('.luxury-card');
+                cards.forEach(c => { c.style.height = 'auto'; c.style.minHeight = 'auto'; });
+                let max = 0;
+                cards.forEach(c => { if (c.offsetHeight > max) max = c.offsetHeight; });
+                cards.forEach(c => { c.style.height = max + 'px'; });
+            } else {
+                document.querySelectorAll('.luxury-card').forEach(c => {
+                    c.style.height = 'auto'; c.style.minHeight = 'auto';
+                });
+            }
+        }
+
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                equalizeCardHeights();
+                if (window.innerWidth < 992) {
+                    document.querySelectorAll('.luxury-card').forEach(c => {
+                        c.style.height = 'auto'; c.style.minHeight = 'auto';
+                    });
+                }
+            }, 250);
+        });
+
+        function preloadCardImages() {
+            document.querySelectorAll('.card-image').forEach(img => {
+                if (!img.complete) { const tmp = new Image(); tmp.src = img.src; }
+            });
+        }
+
+        const backToTopButton = document.getElementById('backToTop');
+        const toggleBackToTop = () => {
+            const isMobile = window.innerWidth <= 768;
+            if (window.pageYOffset > (isMobile ? 100 : 300)) {
+                backToTopButton.classList.add('visible');
+            } else backToTopButton.classList.remove('visible');
+        };
+        
+        window.addEventListener('scroll', toggleBackToTop);
+        window.addEventListener('resize', toggleBackToTop);
+        backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+</body>
+</html>

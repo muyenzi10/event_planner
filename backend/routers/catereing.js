@@ -18,8 +18,8 @@ const upload = multer({storage});
 //-----------------------
 //private router
 cateringrouter.post("/upload/catering",requireAuth,restrictTo("user","admin"),upload.single("media"),cater.postupload);
-cateringrouter.get("/catering", cater.getcatering);
-cateringrouter.get("/dashboard/catering",requireAuth,restrictTo("user","admin"),cater.getdash);
+cateringrouter.get("/catering",requireAuth,restrictTo("user","admin"),cater.getcatering);
+cateringrouter.get("/dashboard/catering",cater.getdash);
 cateringrouter.get("/add/catering", requireAuth,restrictTo("user","admin"),cater.getadd);
 cateringrouter.get("/edit/catering/:id", requireAuth,restrictTo("user","admin"),cater.getedit);
 cateringrouter.put("/update/catering/:id",requireAuth,restrictTo("user","admin"), upload.single("media"), cater.updatecatering)
